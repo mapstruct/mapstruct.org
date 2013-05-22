@@ -5,7 +5,7 @@ base_url: ''
 
 profiles:
   production:
-    base_url: http://mapstruct.github.io/mapstruct.org
+    base_url: http://mapstruct.org
     deploy:
       host: github_pages
       branch: gh-pages
