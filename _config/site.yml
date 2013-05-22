@@ -2,3 +2,10 @@ name: MapStruct
 title: Creating Bean Mappings the Easy Way
 org: Gunnar Morling
 base_url: ''
+
+profiles:
+  production:
+    base_url: http://mapstruct.github.io/mapstruct.org
+    deploy:
+      host: github_pages
+      branch: gh-pages
