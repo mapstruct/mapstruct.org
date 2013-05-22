@@ -2,26 +2,171 @@
 layout: base
 ---
 .hero-unit
-  %h1 You're awestruct!
-  %p This site is all setup to use Bootstrap 2 with Awestruct.
+  %h1 MapStruct
+  %p Java bean mappings, the easy way!
   %p
-    %a.btn.btn-primary.btn-large{ :href=>'http://awestruct.org' }
-      %i.icon-info-sign.icon-white
-      Learn more &raquo;
+    %a.btn.btn-large.btn-primary#btn-getting-started{ :href=>'#getting-started'} Get started &raquo;
+
+    :javascript
+      $('#btn-getting-started').bind('click', function(e) {
+         e.preventDefault();
+         var s = $(this.hash);
+         $('html, body').animate({ scrollTop: $(this.hash).offset().top - 50 }, 300);
+
+         // edit: Opera requires the "html" elm. animated
+      });
+
 .row
   .span4
-    %h2 About
-    %p Awestruct is a framework for creating static HTML sites. It's inspired by the awesome Jekyll utility in the same genre.
-    %p Additionally, Awestruct integrates technologies such as Compass, Markdown and Haml.
-    %p
-      %a.btn{ :href=>'http://awestruct.org' } View details &raquo; 
+    %h2 What is it?
+    %p MapStruct is a code generator which greatly simplifies the implementation of mappings between Java bean types based on a a convention over configuration approach.
+    %p The generated mapping code uses plain method invocations and thus is fast, type-safe and easy to understand.
+
   .span4
-    %h2 Goal
-    %p The goal of Awestruct is to make it trivially easy to bake out non-trivial static websites. In addition to providing template-driven site creation (using Haml), Awestruct provides facilities for easily priming the site creation with additional non-page data.
-    %p
-      %a.btn{ :href=>'http://awestruct.org' } View details &raquo; 
+    %h2 Why?
+    %p Writing mapping code between to objects of different models (e.g. entities and DTOs) is a tedious and error-prone task. MapStruct aims at simplifying this work by automatic it as much as possible.
+    %p In contrast to other mapping frameworks MapStruct generates bean mappings at compile-time  which allows for fast developer feedback and thorough error checking.
+
   .span4
-    %h2 Concept
-    %p The core concept of Awestruct is that of structures, specifically Ruby OpenStruct structures. The struct aspect allows arbitrary, schema-less data to be associated with a specific page or the entire site.
-    %p
-      %a.btn{ :href=>'http://awestruct.org' } View details &raquo; 
+    %h2 How?
+    %p MapStruct is an annotation processor which is plugged into the Java compiler and can be used in command-line builds (Maven, Gradle etc.) as well as from within your preferred IDE.
+    %p MapStruct uses sensible defaults but steps out of your way when it comes to configuring or implementing special behavior.
+
+.row
+  .span12
+    %p &nbsp;
+    %hr
+    %a#getting-started{ :name=>'getting-started'}
+    %h2 MapStruct in 2 minutes
+
+.row
+  .span4
+    %p The following shows how map two objects using MapStruct. Let's assume there is a class representing cars (e.g. a JPA entity) and an accompanying data transfer object (DTO):
+  .span8
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          %a{ :href=>'#tab1', :'data-toggle'=>"tab"} Car.java
+        %li
+          %a{ :href=>'#tab2', :'data-toggle'=>"tab"} CarDto.java
+
+      :javascript
+        $('#tab1 a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+        });
+        $('#tab2 a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+        });
+
+      .tab-content
+        .tab-pane.active#tab1
+          %pre.prettyprint.linenums
+            = preserve do
+              :escaped
+                public class Car {
+
+                  private String make;
+                  private int numberOfSeats;
+
+                  //constructor, getters, setters etc.
+                }
+        .tab-pane#tab2
+          %pre.prettyprint.linenums
+            = preserve do
+              :escaped
+                public class CarDto {
+
+                  private String make;
+                  private int seatCount;
+
+                  //constructor, getters, setters etc.
+                }
+
+.row
+  .span12
+    %hr
+    %h3 The mapper interface
+.row
+  .span4
+    :markdown
+      Both types are rather similar, only the seat count attributes have different names. To generate a mapper for creating a `CarDto` object out of a `Car` object, a mapper interface needs to be defined:
+
+  .span8
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          %a{ :href=>'#tab3', :'data-toggle'=>"tab"} CarMapper.java
+
+      :javascript
+        $('#tab3 a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+        });
+
+      .tab-content
+        .tab-pane.active#tab3
+          %pre.prettyprint.linenums
+            = preserve do
+              :escaped
+                @Mapper (1)
+                public interface CarMapper {
+
+                    CarMapper INSTANCE = Mappers.getMapper( CarMapper.class ); (3)
+
+                    @Mapping(source = "numberOfSeats", target = "seatCount")
+                    CarDto carToCarDto(Car car); (2)
+                }
+
+.row
+  .span6
+    :markdown
+      The `@Mapper` annotation (1) marks the interface as mapping interface and let's the MapStruct processor kick in during compilation.
+
+      The actual mapping method (2) expects the source object as parameter and returns the target object. Its name can be freely chosen. For attributes with different names in source and target object, the
+  .span6
+    :markdown
+      `@Mapping` annotation can be used to configure the names. Of course there can be multiple mapping methods in one interface.
+
+      An instance of the interface implementation can be retrieved from the `Mappers` class. By convention, the interface declares a member `INSTANCE` (3), providing clients access to the mapper implementation.
+
+.row
+  .span12
+    %hr
+    %h3 Using the mapper
+
+.row
+  .span4
+    Based on the mapper interface, clients can perform object mappings in a very easy and type-safe manner:
+  .span8
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          %a{ :href=>'#tab4', :'data-toggle'=>"tab"} CarMapperTest.java
+
+      :javascript
+        $('#tab4 a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+        });
+
+      .tab-content
+        .tab-pane.active#tab4
+          %pre.prettyprint.linenums
+            = preserve do
+              :escaped
+                @Test
+                public void shouldMapCarToDto() {
+                    //given
+                    Car car = new Car( "Morris", 2 );
+
+                    //when
+                    CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );
+
+                    //then
+                    assertThat( carDto ).isNotNull();
+                    assertThat( carDto.getMake() ).isEqualTo( car.getMake() );
+                    assertThat( carDto.getSeatCount() )
+                            .isEqualTo( car.getNumberOfSeats() );
+                }
