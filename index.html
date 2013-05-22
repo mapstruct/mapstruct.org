@@ -1,1 +1,219 @@
-GitHub Pages placeholder
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MapStruct - Java Bean Mappings, the Easy Way!</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <script src="http://mapstruct.github.io/mapstruct.org/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="http://mapstruct.github.io/mapstruct.org/javascripts/bootstrap-tab.js" type="text/javascript"></script>
+    <link href="http://mapstruct.github.io/mapstruct.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="http://mapstruct.github.io/mapstruct.org/stylesheets/gh-fork-ribbon.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      <link href="http://mapstruct.github.io/mapstruct.org/stylesheets/gh-fork-ribbon.ie.css" rel="stylesheet" type="text/css">
+    <![endif]-->
+    <link href="http://mapstruct.github.io/mapstruct.org/stylesheets/prettify.css" rel="stylesheet" type="text/css">
+    <script src="http://mapstruct.github.io/mapstruct.org/javascripts/prettify.js" type="text/javascript"></script>
+    <script>
+      (function(jQuery){
+        jQuery( document ).ready( function() {
+          prettyPrint();
+        } );
+      }(jQuery))
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+          <a href="https://github.com/mapstruct/mapstruct">Fork me on GitHub</a>
+        </div>
+      </div>
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://mapstruct.github.io/mapstruct.org">MapStruct</a>
+          <ul class="nav">
+            <li>
+              <a href="http://mapstruct.github.io/mapstruct.org">Home</a>
+            </li>
+            <li>
+              <a class="disabled" href="#">News</a>
+            </li>
+            <li>
+              <a href="#">Documentation</a>
+            </li>
+            <li>
+              <a href="#">Getting help</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.github.io/mapstruct.org/contributing">Contributing</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="hero-unit">
+        <h1>MapStruct</h1>
+        <p>Java bean mappings, the easy way!</p>
+        <p>
+          <a class="btn btn-large btn-primary" href="#getting-started" id="btn-getting-started">Get started &raquo;</a>
+          <script>
+            $('#btn-getting-started').bind('click', function(e) {
+               e.preventDefault();
+               var s = $(this.hash);
+               $('html, body').animate({ scrollTop: $(this.hash).offset().top - 50 }, 300);
+            
+               // edit: Opera requires the "html" elm. animated
+            });
+          </script>
+        </p>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <h2>What is it?</h2>
+          <p>MapStruct is a code generator which greatly simplifies the implementation of mappings between Java bean types based on a a convention over configuration approach.</p>
+          <p>The generated mapping code uses plain method invocations and thus is fast, type-safe and easy to understand.</p>
+        </div>
+        <div class="span4">
+          <h2>Why?</h2>
+          <p>Writing mapping code between to objects of different models (e.g. entities and DTOs) is a tedious and error-prone task. MapStruct aims at simplifying this work by automatic it as much as possible.</p>
+          <p>In contrast to other mapping frameworks MapStruct generates bean mappings at compile-time  which allows for fast developer feedback and thorough error checking.</p>
+        </div>
+        <div class="span4">
+          <h2>How?</h2>
+          <p>MapStruct is an annotation processor which is plugged into the Java compiler and can be used in command-line builds (Maven, Gradle etc.) as well as from within your preferred IDE.</p>
+          <p>MapStruct uses sensible defaults but steps out of your way when it comes to configuring or implementing special behavior.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <p>&nbsp;</p>
+          <hr>
+          <a id="getting-started" name="getting-started"></a>
+          <h2>MapStruct in 2 minutes</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <p>The following shows how map two objects using MapStruct. Let's assume there is a class representing cars (e.g. a JPA entity) and an accompanying data transfer object (DTO):</p>
+        </div>
+        <div class="span8">
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a data-toggle="tab" href="#tab1">Car.java</a>
+              </li>
+              <li>
+                <a data-toggle="tab" href="#tab2">CarDto.java</a>
+              </li>
+            </ul>
+            <script>
+              $('#tab1 a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+              });
+              $('#tab2 a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+              });
+            </script>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1">
+                <pre class="prettyprint linenums">public class Car {&#x000A;&#x000A;  private String make;&#x000A;  private int numberOfSeats;&#x000A;&#x000A;  //constructor, getters, setters etc.&#x000A;}</pre>
+              </div>
+              <div class="tab-pane" id="tab2">
+                <pre class="prettyprint linenums">public class CarDto {&#x000A;&#x000A;  private String make;&#x000A;  private int seatCount;&#x000A;&#x000A;  //constructor, getters, setters etc.&#x000A;}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <hr>
+          <h3>The mapper interface</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <p>Both types are rather similar, only the seat count attributes have different names. To generate a mapper for creating a <code>CarDto</code> object out of a <code>Car</code> object, a mapper interface needs to be defined:</p>
+        </div>
+        <div class="span8">
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a data-toggle="tab" href="#tab3">CarMapper.java</a>
+              </li>
+            </ul>
+            <script>
+              $('#tab3 a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+              });
+            </script>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab3">
+                <pre class="prettyprint linenums">@Mapper (1)&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarMapper INSTANCE = Mappers.getMapper( CarMapper.class ); (3)&#x000A;&#x000A;    @Mapping(source = &quot;numberOfSeats&quot;, target = &quot;seatCount&quot;)&#x000A;    CarDto carToCarDto(Car car); (2)&#x000A;}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <p>The <code>@Mapper</code> annotation (1) marks the interface as mapping interface and let&#8217;s the MapStruct processor kick in during compilation.</p>
+          
+          <p>The actual mapping method (2) expects the source object as parameter and returns the target object. Its name can be freely chosen. For attributes with different names in source and target object, the</p>
+        </div>
+        <div class="span6">
+          <p><code>@Mapping</code> annotation can be used to configure the names. Of course there can be multiple mapping methods in one interface.</p>
+          
+          <p>An instance of the interface implementation can be retrieved from the <code>Mappers</code> class. By convention, the interface declares a member <code>INSTANCE</code> (3), providing clients access to the mapper implementation.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <hr>
+          <h3>Using the mapper</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          Based on the mapper interface, clients can perform object mappings in a very easy and type-safe manner:
+        </div>
+        <div class="span8">
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a data-toggle="tab" href="#tab4">CarMapperTest.java</a>
+              </li>
+            </ul>
+            <script>
+              $('#tab4 a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+              });
+            </script>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab4">
+                <pre class="prettyprint linenums">@Test&#x000A;public void shouldMapCarToDto() {&#x000A;    //given&#x000A;    Car car = new Car( &quot;Morris&quot;, 2 );&#x000A;&#x000A;    //when&#x000A;    CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );&#x000A;&#x000A;    //then&#x000A;    assertThat( carDto ).isNotNull();&#x000A;    assertThat( carDto.getMake() ).isEqualTo( car.getMake() );&#x000A;    assertThat( carDto.getSeatCount() )&#x000A;            .isEqualTo( car.getNumberOfSeats() );&#x000A;}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Gunnar Morling 2013</p>
+      </footer>
+    </div>
+  </body>
+</html>
