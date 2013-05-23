@@ -9,18 +9,18 @@
         padding-top: 60px;
       }
     </style>
-    <script src="http://mapstruct.org/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="http://mapstruct.org/javascripts/bootstrap-tab.js" type="text/javascript"></script>
-    <link href="http://mapstruct.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="/javascripts/bootstrap-tab.js" type="text/javascript"></script>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
-    <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/gh-fork-ribbon.css" rel="stylesheet" type="text/css">
     <!--[if IE]>
-      <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.ie.css" rel="stylesheet" type="text/css">
+      <link href="/stylesheets/gh-fork-ribbon.ie.css" rel="stylesheet" type="text/css">
     <![endif]-->
-    <link href="http://mapstruct.org/stylesheets/prettify.css" rel="stylesheet" type="text/css">
-    <script src="http://mapstruct.org/javascripts/prettify.js" type="text/javascript"></script>
+    <link href="/stylesheets/prettify.css" rel="stylesheet" type="text/css">
+    <script src="/javascripts/prettify.js" type="text/javascript"></script>
     <script>
       (function(jQuery){
         jQuery( document ).ready( function() {
@@ -38,22 +38,22 @@
       </div>
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="http://mapstruct.org">MapStruct</a>
+          <a class="brand" href="">MapStruct</a>
           <ul class="nav">
             <li>
-              <a href="http://mapstruct.org">Home</a>
+              <a href="">Home</a>
             </li>
             <li>
               <a class="disabled" href="#">News</a>
             </li>
             <li>
-              <a href="http://mapstruct.org/documentation">Documentation</a>
+              <a href="#">Documentation</a>
             </li>
             <li>
               <a href="#">Getting help</a>
             </li>
             <li>
-              <a href="http://mapstruct.org/contributing">Contributing</a>
+              <a href="/contributing">Contributing</a>
             </li>
           </ul>
         </div>
@@ -94,13 +94,27 @@
           </table>
           <p>MapStruct follows the <em>Fork &amp; Pull</em> development approach. To get started just fork the <a href='http://github.com/mapstruct/mapstruct'>MapStruct repository</a> to your GitHub account and create a new topic branch for each change. Once you are done with your change, submit a <a href='https://help.github.com/articles/using-pull-requests'>pull request</a> against the MapStruct repo.</p>
           
+          <p>When doing changes, keep the following best practices in mind:</p>
+          
+          <ul>
+          <li>Provide test cases</li>
+          
+          <li>Update the <a href='mapstruct.org/documentation'>reference documentation</a> on <a href='mapstruct.org'>mapstruct.org</a> where required</li>
+          
+          <li>Discuss new features you&#8217;d like to implement at the <a href='https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users'>Google group</a> before getting started</li>
+          
+          <li>Create one pull request per feature</li>
+          
+          <li>Provide a meaningful history, e.g. squash intermediary commits before submitting a pull request</li>
+          </ul>
+          
           <h3 id='updating_mapstructorg'>Updating mapstruct.org</h3>
           
           <p>This web site (mapstruct.org) is created using the fantastic <a href='http://awestruct.org/'>awestruct</a> tool. To update this site, fork the <a href='http://github.com/mapstruct/mapstruct.org'>mapstruct.org repo</a> and create a pull request. The individual pages are written in <a href='http://haml.info/'>Haml</a> and <a href='http://daringfireball.net/projects/markdown/'>Markdown</a>. Building the site using awestruct requires Ruby to be installed on your system.</p>
           
           <h3 id='license'>License</h3>
           
-          <p>MapStruct is distributed under the <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2.0</a>. By submitting a pull request you agree to license your work under that license.</p>
+          <p>MapStruct is distributed under the <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2.0</a>. By submitting a pull request you agree to license your work under that license and you affirm that your contribution doesn&#8217;t violate any rights of other parties.</p>
         </div>
       </div>
       <hr>
