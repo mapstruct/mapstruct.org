@@ -2,6 +2,8 @@ name: MapStruct
 title: Creating Bean Mappings the Easy Way
 org: Gunnar Morling
 base_url: ''
+google_analytics: UA-41136939-1
+google_analytics_anonymize: true
 
 profiles:
   production:
