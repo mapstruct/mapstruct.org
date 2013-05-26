@@ -11,6 +11,8 @@
     </style>
     <script src="/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="/javascripts/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="/javascripts/bootstrap-scrollspy.js" type="text/javascript"></script>
+    <script src="/javascripts/bootstrap-affix.js" type="text/javascript"></script>
     <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
@@ -62,53 +64,191 @@
     <div class="container">
       <div class="row">
         <div class="span12">
-          <h2>MapStruct Reference</h2>
+          <h2>MapStruct User Guide</h2>
         </div>
       </div>
       <div class="row">
-        <div class="span3">
-          <ul class='nav nav-tabs nav-stacked'>
-             <li><a href='#'>Another Link 1</a></li>
-             <li><a href='#'>Another Link 2</a></li>
-             <li><a href='#'>Another Link 3</a></li>
-           </ul>
-        </div>
         <div class="span9">
-          <h2 id='installation'>Installation</h2>
-          
-          <p>asdafasf</p>
-          
-          <p>afasfsadfas</p>
-          
-          <p>asdafasf</p>
-          
-          <p>afasfsadfas asdafasf</p>
-          
-          <p>afasfsadfas</p>
-          
-          <p>asdafasf</p>
-          
-          <p>afasfsadfas</p>
-          
-          <p>asdafasf</p>
-          
-          <p>afasfsadfas asdafasf</p>
-          
-          <p>afasfsadfas</p>
-          
-          <p>asdafasf</p>
-          
-          <p>afasfsadfas</p>
-          
-          <h2 id='defining_a_mapper'>Defining a mapper</h2>
-          
-          <h2 id='retrieving_a_mapper'>Retrieving a mapper</h2>
-          
-          <h2 id='implicit_type_conversions'>Implicit type conversions</h2>
-          
-          <h2 id='reusing_mappers'>Re-using mappers</h2>
-          
-          <h2 id='mapping_collections'>Mapping collections</h2>
+          <div class="row">
+            <div class="span9">
+              <p>This is the MapStruct reference documentation which covers all functionality provided by MapStruct. In case this guide doesn&#8217;t answer all your questions just join the MapStruct <a href='https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users'>Google group</a> to get help.</p>
+              
+              <p>You found a typo or other error in this guide? Your pull request against this web site&#8217;s <a href='http://github.com/mapstruct/mapstruct.org'>GitHub repository</a> is more than welcome!</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-01">1. Introduction</h3>
+              <p>MapStruct is a Java <a href='http://docs.oracle.com/javase/6/docs/technotes/guides/apt/index.html'>annotation processor</a> for the generation of type-safe bean mapping classes.</p>
+              
+              <p>All you have to do is to define a mapper interface which declares any required mapping methods. During compilation, MapStruct will generate an implementation of this interface. This implementation uses plain Java method invocations for mapping between source and target objects, i.e. no reflection or similar.</p>
+              
+              <p>Compared to writing mapping code from hand, MapStruct saves time by generating code which is tedious and error-prone to write. Following a convention over configuration approach, MapStruct uses sensible defaults but steps out of your way when it comes to configuring or implementing special behavior.</p>
+              
+              <p>Compared to dynamic mapping frameworks, MapStruct offers the following advantages:</p>
+              
+              <ul>
+              <li>Fast execution by using plain method invocations instead of reflection</li>
+              
+              <li>Compile-time type safety: Only objects and attributes mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.</li>
+              
+              <li>Clear error-reports at build time, if entities or attributes can&#8217;t be mapped</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-02">2. Set up</h3>
+              <p>MapStruct is a Java annotation processor based on <a href='jcp.org/en/jsr/detail?id=269'>JSR 269</a> and as such can be used within command line builds (javac, Ant, Maven etc.) as well as from within your IDE.</p>
+              
+              <p>It comprises two artifacts:</p>
+              
+              <ul>
+              <li><em>org.mapstruct:mapstruct</em>: contains the required annotations such as <code>@Mapping</code></li>
+              
+              <li><em>org.mapstruct:mapstruct-processor</em>: contains the annotation processor which generates mapper implementations</li>
+              </ul>
+              
+              <p>For Maven based projects add the following to your POM file in order to use MapStruct:</p>
+              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;0.1.0.Final&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.3&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-03">3. Defining a mapper</h3>
+              <p>TODO</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-04">4. Retrieving a mapper</h3>
+              <p>Mapper instances can be retrieved via the <code>org.mapstruct.Mappers</code> class. Just invoke the <code>getMapper()</code> method, passing the interface type of the mapper to return:</p>
+              <pre class="prettyprint lang-java linenums">CarMapper mapper = Mappers.getMapper( CarMapper.class );</pre>
+              <p>By convention, a mapper interface should define a member called <code>INSTANCE</code> which holds a single instance of the mapper type:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarMapper INSTANCE = Mappers.getMapper( CarMapper.class );&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
+              <p>This pattern makes it very easy for clients to use mapper objects without repeatedly instantiating new instances:</p>
+              <pre class="prettyprint lang-java linenums">Car car = ...;&#x000A;CarDto dto = CarMapper.INSTANCE.carToCarDto( car );</pre>
+              <p>Note that mappers generated by MapStruct are thread-safe and thus can safely be accessed from several threads at the same time.</p>
+              <div class="alert alert-info">
+                <p><strong>Tip!</strong> If you are working with a dependency injection solution such as CDI or Spring, you can also set up application/singleton scoped beans for your maper objects, making them injectable into your application code. By default, the generated mapper classes have the same name as their interface, with the suffix <em>Impl</em> appended, e.g. <code>CarMapperImpl</code>.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-05">5. Data type conversions</h3>
+              <p>Not always a mapped attribute has the same type in the source and target objects. For instance an attribute may be of type <code>int</code> in the source bean but of type <code>Long</code> in the target bean.</p>
+              
+              <p>Another example are references to other objects which should be mapped to the corresponding types in the target model. E.g. the class <code>Car</code> might have a property <code>driver</code> of the type <code>Person</code> which needs to be converted into a <code>PersonDto</code> object when mapping a <code>Car</code> object.</p>
+              
+              <p>In this section you&#8217;ll learn how MapStruct deals with such data type conversions.</p>
+              <h4 id="section05-01">5.1 Implicit type conversions</h4>
+              <p>MapStruct takes care of type conversions automatically in many cases. If for instance an attribute is of type <code>int</code> in the source bean but of type <code>String</code> in the target bean, the generated code will transparently perform a conversion by calling <code>String#valueOf(int)</code> and <code>Integer#parseInt(String)</code>, respectively.</p>
+              
+              <p>Currently the following conversions are applied automatically:</p>
+              
+              <ul>
+              <li>
+              <p>Between all Java primitive data types and their corresponding wrapper types, e.g. between <code>int</code> and <code>Integer</code>, <code>boolean</code> and <code>Boolean</code> etc. The generated code is <code>null</code> aware, i.e. when converting a wrapper type into the corresponding primitive type a <code>null</code> check will performed.</p>
+              </li>
+              
+              <li>
+              <p>Between all Java primitive number types and the wrapper types, e.g. between <code>int</code> and <code>long</code> or <code>byte</code> and <code>Integer</code>. <p>
+                <span class='label label-warning'>Warning</span><span>&#160;Converting from larger data types to smaller ones (e.g. from <code>long</code> to <code>int</code>) can cause a value or precision loss. It <a href='https://github.com/mapstruct/mapstruct/issues/5'>is planned</a> to provide an option for raising a warning in such cases in a future MapStruct version.</span>
+              </p></p>
+              </li>
+              
+              <li>
+              <p>Between all Java primitive types (including their wrappers) and <code>String</code>, e.g. between <code>int</code> and <code>String</code> or <code>Boolean</code> and <code>String</code>.</p>
+              </li>
+              
+              <li>
+              <p>Between <code>enum</code> types and <code>String</code>.</p>
+              </li>
+              </ul>
+              
+              <p>More automatic conversions <a href='https://github.com/mapstruct/mapstruct/issues/26'>will be</a> provided soon, e.g. for types such as <code>Date</code>, <code>Calendar</code> or <code>BigInteger</code>.</p>
+              <h4 id="section05-02">5.2 Mapping object references</h4>
+              <p>Typically an object has not only primitive attributes but also references other objects. E.g. the <code>Car</code> class could contain a reference to a <code>Person</code> object (representing the car&#8217;s driver) which should be mapped to a <code>PersonDto</code> object referenced by the <code>CarDto</code> class.</p>
+              
+              <p>In this case just define a mapping method for the referenced object type as well:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;&#x000A;    PersonDto personToPersonDto(Person person);&#x000A;}</pre>
+              <p>The generated code for the <code>carToCarDto()</code> method will invoke the <code>personToPersonDto()</code> method for mapping the <code>driver</code> attribute, while the generated implementation for <code>personToPersonDto()</code> performs the mapping of person objects.</p>
+              
+              <p>That way it is possible to map arbitrary deep object graphs. Of course you also could convert a referenced object into a string representation or e.g. just refer to its id in the target object:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    @Mapping(source = &quot;driver&quot;, target = &quot;driverId&quot;)&#x000A;    CarDto carToCarDto(Car car);&#x000A;&#x000A;    long personToId(Person person);&#x000A;}</pre>
+              <p>When generating the implementation of a mapping method, MapStruct will apply the following routine for each attribute pair in the source and target object:</p>
+              
+              <ul>
+              <li>If source and target attribute have the same type, the value will be simply copied from source to target. If the attribute is a collection (e.g. a <code>List</code>) a copy of the collection will be set into the target attribute.</li>
+              
+              <li>If source and target attribute type differ, check whether there is a another mapping method which has the type of the source attribute as parameter type and the type of the target attribute as return type. If such a method exists it will be invoked in the generated mapping implementation.</li>
+              
+              <li>If no such method exists MapStruct will look whether a built-in conversion for the source and target type of the attribute exists. If this is the case, the generated mapping code will apply this conversion.</li>
+              
+              <li>Otherwise an error will be raised at build time, indicating the non-mappable attribute.</li>
+              </ul>
+              <h4 id="section05-05">4.3 Invoking other mappers</h4>
+              <p>In addition to methods defined on the same mapper type MapStruct can also invoke mapping methods defined in other classes, be it mappers generated by MapStruct or hand-written mapping methods. This can be useful to structure your mapping code in several classes (e.g. with on mapper type per application module) or you want to provide custom mapping logic which can&#8217;t be generated by MapStruct.</p>
+              
+              <p>For instance the <code>Car</code> class might contain an attribute <code>manufacturingDate</code> while the corresponding DTO attribute is of type String. In order to map this attribute, you could implement a mapper class like this:</p>
+              <pre class="prettyprint lang-java linenums">public class DateMapper {&#x000A;&#x000A;    public String asString(Date date) {&#x000A;        return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )&#x000A;            .format( date ) : null;&#x000A;    }&#x000A;&#x000A;    public Date asDate(String date) {&#x000A;        try {&#x000A;            return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )&#x000A;                .parse( date ) : null;&#x000A;        }&#x000A;        catch ( ParseException e ) {&#x000A;            throw new RuntimeException( e );&#x000A;        }&#x000A;    }&#x000A;}</pre>
+              <p>In the <code>@Mapper</code> annotation at the <code>CarMapper</code> interface reference the <code>DateMapper</code> class like this:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper(uses=DateMapper.class)&#x000A;public class CarMapperMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
+              <p>When generating code for the implementation of the <code>carToCarDto()</code> method, MapStruct will look for a method which maps a <code>Date</code> object into a String, find it on the <code>DateMapper</code> class and generate an invocation of <code>asString()</code> for mapping the <code>manufacturingDate</code> attribute.</p>
+              
+              <p>Note that hand-written classes to be used by MapStruct generated mappers must declare a public no-args constructor in order to be instantiable by MapStruct.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-06">6. Mapping collections</h3>
+              <p>TODO</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-07">7. Reverse mappings</h3>
+              <p>TODO</p>
+            </div>
+          </div>
+        </div>
+        <div class="span3">
+          <div data-offset-top="0" data-spy="affix" id="toc">
+            <h5>Contents</h5>
+            <ol class="nav nav-list">
+              <li class="active">
+                <a href="#section-01">Introduction</a>
+              </li>
+              <li>
+                <a href="#section-02">Set up</a>
+              </li>
+              <li>
+                <a href="#section-03">Defining a mapper</a>
+              </li>
+              <li>
+                <a href="#section-04">Retrieving a mapper</a>
+              </li>
+              <li>
+                <a href="#section-05">Data type conversions</a>
+              </li>
+              <li>
+                <a href="#section-06">Mapping collections</a>
+              </li>
+              <li>
+                <a href="#section-07">Reverse mappings</a>
+              </li>
+            </ol>
+          </div>
+          <script>
+            (function(jQuery){
+              jQuery( document ).ready( function() {
+                $(document.body).scrollspy({
+                  target: "#toc"
+                });
+              });
+            }(jQuery))
+          </script>
         </div>
       </div>
       <hr>
