@@ -5,9 +5,37 @@ $navbarText:                      #FFFFFF ;
 $navbarLinkColor:                 #FFFFFF ;
 $navbarSearchPlaceholderColor:    #37B6CE ;
 
-
 @import "bootstrap";
 
+code {
+    color: #555555;
+}
+
+#toc {
+    padding-top: 2px;
+    border-left: 1px solid #E5E5E5;
+    padding-bottom: 10px;
+}
+
+#toc > h5 {
+    color: grey;
+    padding-left: 10px;
+}
+
+.nav {
+    margin-left: 20px;
+}
+
+.nav-list {
+    list-style: decimal outside none;
+    color: grey;
+}
+
+.nav-list > li > a {
+    padding: 3px 10px;
+    margin-left: -4px;
+    margin-right: -4px;
+}
 
 //@navbarBackgroundHighlight
 
