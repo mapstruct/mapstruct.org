@@ -47,7 +47,26 @@ layout: base
 
       ### Updating mapstruct.org
 
-      This web site (mapstruct.org) is created using the fantastic [awestruct](http://awestruct.org/) tool. To update this site, fork the [mapstruct.org repo](http://github.com/mapstruct/mapstruct.org) and create a pull request. The individual pages are written in [Haml](http://haml.info/) and [Markdown](http://daringfireball.net/projects/markdown/). Building the site using awestruct requires Ruby to be installed on your system.
+      This web site ([mapstruct.org/](http://mapstruct.org)) is created using the fantastic [awestruct](http://awestruct.org/) tool. To update the web site fork the [mapstruct.org repo](http://github.com/mapstruct/mapstruct.org) and create a pull request with your changes.
+
+      The individual pages are written in [Haml](http://haml.info/) and [Markdown](http://daringfireball.net/projects/markdown/) and converted into HTML by awestruct. Building the site requires Ruby 1.9.x to be installed on your system. You also need to install the gems _awestruct_ and _maruku_:
+
+    %pre.prettyprint.linenums
+      = preserve do
+        :escaped
+          $ gem install awestruct
+          $ gem install maruku
+
+    :markdown
+      To build the web page run
+
+    %pre.prettyprint.linenums
+      = preserve do
+        :escaped
+          awestruct -d
+
+    :markdown
+      The web site can then be acessed at [http://localhost:4242](http://localhost:4242).
 
       ### License
 
