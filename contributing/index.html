@@ -9,20 +9,20 @@
         padding-top: 60px;
       }
     </style>
-    <script src="/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="/javascripts/bootstrap-tab.js" type="text/javascript"></script>
-    <script src="/javascripts/bootstrap-scrollspy.js" type="text/javascript"></script>
-    <script src="/javascripts/bootstrap-affix.js" type="text/javascript"></script>
-    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <script src="http://mapstruct.org/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-scrollspy.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-affix.js" type="text/javascript"></script>
+    <link href="http://mapstruct.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
-    <link href="/stylesheets/gh-fork-ribbon.css" rel="stylesheet" type="text/css">
+    <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.css" rel="stylesheet" type="text/css">
     <!--[if IE]>
-      <link href="/stylesheets/gh-fork-ribbon.ie.css" rel="stylesheet" type="text/css">
+      <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.ie.css" rel="stylesheet" type="text/css">
     <![endif]-->
-    <link href="/stylesheets/prettify.css" rel="stylesheet" type="text/css">
-    <script src="/javascripts/prettify.js" type="text/javascript"></script>
+    <link href="http://mapstruct.org/stylesheets/prettify.css" rel="stylesheet" type="text/css">
+    <script src="http://mapstruct.org/javascripts/prettify.js" type="text/javascript"></script>
     <script>
       (function(jQuery){
         jQuery( document ).ready( function() {
@@ -46,16 +46,16 @@
               <a href="/">Home</a>
             </li>
             <li>
-              <a class="disabled" href="/news">News</a>
+              <a class="disabled" href="http://mapstruct.org/news">News</a>
             </li>
             <li>
-              <a href="/documentation">Documentation</a>
+              <a href="http://mapstruct.org/documentation">Documentation</a>
             </li>
             <li>
-              <a href="/getting-help">Getting help</a>
+              <a href="http://mapstruct.org/getting-help">Getting help</a>
             </li>
             <li>
-              <a href="/contributing">Contributing</a>
+              <a href="http://mapstruct.org/contributing">Contributing</a>
             </li>
           </ul>
         </div>
@@ -112,7 +112,13 @@
           
           <h3 id='updating_mapstructorg'>Updating mapstruct.org</h3>
           
-          <p>This web site (mapstruct.org) is created using the fantastic <a href='http://awestruct.org/'>awestruct</a> tool. To update this site, fork the <a href='http://github.com/mapstruct/mapstruct.org'>mapstruct.org repo</a> and create a pull request. The individual pages are written in <a href='http://haml.info/'>Haml</a> and <a href='http://daringfireball.net/projects/markdown/'>Markdown</a>. Building the site using awestruct requires Ruby to be installed on your system.</p>
+          <p>This web site (<a href='http://mapstruct.org'>mapstruct.org/</a>) is created using the fantastic <a href='http://awestruct.org/'>awestruct</a> tool. To update the web site fork the <a href='http://github.com/mapstruct/mapstruct.org'>mapstruct.org repo</a> and create a pull request with your changes.</p>
+          
+          <p>The individual pages are written in <a href='http://haml.info/'>Haml</a> and <a href='http://daringfireball.net/projects/markdown/'>Markdown</a> and converted into HTML by awestruct. Building the site requires Ruby 1.9.x to be installed on your system. You also need to install the gems <em>awestruct</em> and <em>maruku</em>:</p>
+          <pre class="prettyprint linenums">$ gem install awestruct&#x000A;$ gem install maruku</pre>
+          <p>To build the web page run</p>
+          <pre class="prettyprint linenums">awestruct -d</pre>
+          <p>The web site can then be acessed at <a href='http://localhost:4242'>http://localhost:4242</a>.</p>
           
           <h3 id='license'>License</h3>
           
