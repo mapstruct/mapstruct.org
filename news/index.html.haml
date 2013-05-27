@@ -3,10 +3,17 @@ layout: base
 ---
 .row
   .span12
-    %h2 News
+    <h2>News <a href="/news.atom" title="MapStruct news feed"><img src="/images/feed-icon-28x28.png" style="padding-bottom: 3px;"/></a></h2>
 
 .row
   .span12
-    :markdown
-      TODO
+    - for post in page.posts
+      .post
+        %h3
+          %a{ :href=>"#{post.url}"} #{post.title}
 
+        %h5
+          = post.author + ", " + post.date.strftime( '%d %B %Y' )
+        %p
+          = post.content
+    = page.posts.links

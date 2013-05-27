@@ -34,6 +34,26 @@ layout: base
 
 .row
   .span12
+    %hr
+    %h2 News
+    - for post in site.posts[0, 3]
+      .post
+        %h3
+          = post.title
+        %h5
+          = post.author + ", " + post.date.strftime( '%d %B %Y' )
+        %p
+          = summarize( html_to_text( post.content ), 30 )
+        %p
+          %a{ :href=>post.url} Read complete post &raquo;
+
+    %p.links
+      %a{ :href=>"#{site.base_url}/news" } More news &raquo;
+      |
+      %a{ :href=>"#{site.base_url}/news.atom" } News feed &raquo;
+
+.row
+  .span12
     %p &nbsp;
     %hr
     %a#getting-started{ :name=>'getting-started'}

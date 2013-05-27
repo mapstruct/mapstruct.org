@@ -37,6 +37,14 @@ code {
     margin-right: -4px;
 }
 
+.post > h5, .post-header > h5 {
+    color: grey;
+    font-weight: normal;
+}
+
+.links {
+  text-align: center;
+}
 //@navbarBackgroundHighlight
 
 // Include responsive Bootstrap styles
