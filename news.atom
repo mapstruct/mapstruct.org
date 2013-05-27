@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
-  <id>/</id>
+  <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2013-05-27T01:04:41+02:00</updated>
-  <link href="/news.atom" rel="self" type="application/atom+xml" />
-  <link href="/" rel="alternate" type="text/html" />
+  <updated>2013-05-28T01:13:04+02:00</updated>
+  <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
+  <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
   <entry>
-    <id>/news/2013/05/22/website-live.html</id>
+    <id>http://mapstruct.org/news/2013/05/22/website-live.html</id>
     <title>mapstruct.org has landed!</title>
-    <updated>2013-05-27T01:04:41+02:00</updated>
+    <updated>2013-05-28T01:13:04+02:00</updated>
     <published>2013-05-22T00:00:00+00:00</published>
-    <link href="/news/2013/05/22/website-live.html" rel="alternate" type="text/html" />
+    <link href="http://mapstruct.org/news/2013/05/22/website-live.html" rel="alternate" type="text/html" />
     <author>
       <name>Gunnar Morling</name>
     </author>
-    <category term="site"></category>
+    <category term="web-site"></category>
     <summary>
-      mapstruct.org has landed!...
+      MapStruct has now its own web site, mapstruct.org!...
     </summary>
     <content type="html">
-      &lt;p&gt;mapstruct.org has landed!&lt;/p&gt;
+      &lt;p&gt;MapStruct has now its own web site, &lt;a href=&quot;http://mapstruct.org&quot;&gt;mapstruct.org&lt;/a&gt;!&lt;/p&gt;
     </content>
   </entry>
 </feed>
