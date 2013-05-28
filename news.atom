@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2013-05-28T23:21:12+02:00</updated>
+  <updated>2013-05-29T00:04:56+02:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://mapstruct.org/news/2013/05/22/website-live.html</id>
     <title>mapstruct.org has landed!</title>
-    <updated>2013-05-28T23:21:12+02:00</updated>
+    <updated>2013-05-29T00:04:56+02:00</updated>
     <published>2013-05-22T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/05/22/website-live.html" rel="alternate" type="text/html" />
     <author>
