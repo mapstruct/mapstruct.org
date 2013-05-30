@@ -52,12 +52,22 @@
               %a{ :href=>"#{site.base_url}/news" } News
             %li
               %a{ :href=>"#{site.base_url}/documentation" } Documentation
-            %li
-              %a{ :href=>"#{site.base_url}/download" } Download
+            -#%li
+            -#  %a{ :href=>"#{site.base_url}/download" } Download
             %li
               %a{ :href=>"#{site.base_url}/getting-help" } Getting help
             %li
               %a{ :href=>"#{site.base_url}/contributing" } Contributing
+          .pull-right{ :style=>"padding-top: 10px; margin-right: -28px;" }
+            .g-plusone{ :"data-size"=>"medium" }
+
+            :javascript
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+
     .container
       ~ content
       %hr
