@@ -4,6 +4,7 @@
     %meta{ :charset=>'utf-8' }
     %title MapStruct - Java Bean Mappings, the Easy Way!
     %meta{ :name=>'viewport', :content=>'width=device-width, initial-scale=1.0' }
+
     :css
       body {
         padding-top: 60px;
@@ -39,7 +40,17 @@
 
   %body
     .navbar.navbar-fixed-top
-      .github-fork-ribbon-wrapper.right
+      .hidden-phone.pull-right{ :style=>"padding-top: 11px; margin-right: 120px;" }
+        .g-plusone{ :"data-size"=>"medium" }
+
+        :javascript
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+
+      .hidden-phone.github-fork-ribbon-wrapper.right
         .github-fork-ribbon
           %a{ :href=>"https://github.com/mapstruct/mapstruct" } Fork me on GitHub
       .navbar-inner
@@ -58,15 +69,6 @@
               %a{ :href=>"#{site.base_url}/getting-help" } Getting help
             %li
               %a{ :href=>"#{site.base_url}/contributing" } Contributing
-          .pull-right{ :style=>"padding-top: 10px; margin-right: -28px;" }
-            .g-plusone{ :"data-size"=>"medium" }
-
-            :javascript
-              (function() {
-                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                po.src = 'https://apis.google.com/js/plusone.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-              })();
 
     .container
       ~ content
