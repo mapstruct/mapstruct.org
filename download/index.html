@@ -74,56 +74,11 @@
     <div class="container">
       <div class="row">
         <div class="span12">
-          <div class="post-header">
-            <h1>
-              mapstruct.org has landed!
-            </h1>
-            <h5>
-              Gunnar Morling, 22 May 2013
-            </h5>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
-          <p>MapStruct has now its own web site, <a href='http://mapstruct.org'>mapstruct.org</a>!</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
-          <p>
-            Tags:
-            <a href="/news/tags/web-site/">
-              web-site
-            </a>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span4">
-        </div>
-        <div class="span4" style="text-align: center;">
-          <a href="http://mapstruct.org/news">All news</a>
-        </div>
-        <div class="span4" style="text-align: right;">
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
+          <h2>Download</h2>
+          <p>You&#8217;can obtain a distribution bundle containing the MapStruct binaries, source code and API documentation from <a href='http://sourceforge.net/projects/mapstruct/files/'>SourceForge</a>.</p>
           
-                      <div id="disqus_thread"></div>
-                      <script type="text/javascript">
-                      var disqus_shortname = 'mapstruct';
-                      var disqus_url = "http://mapstruct.org/news/2013/05/22/website-live.html";
-                      var disqus_developer = null;
-                      var disqus_identifier = "c5b44cbf43e49cb0c396003770f5129b3fd55f89";
-                      (function() {
-                        var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
-                        dsq.src = "http://mapstruct.disqus.com/embed.js";
-                        (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
-                      })();
-                      </script>
-                      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=mapstruct">comments powered by Disqus.</a></noscript>
+          <p>If you&#8217;re using Maven to build your project add the following to your <em>pom.xml</em> to use MapStruct:</p>
+          <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Alpha1&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.3&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
         </div>
       </div>
       <hr>
