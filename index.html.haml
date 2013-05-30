@@ -4,8 +4,9 @@ layout: base
 .hero-unit
   %h1 MapStruct
   %p Java bean mappings, the easy way!
-  %p
+  %p{ :style=>"padding-top: 15px;"}
     %a.btn.btn-large.btn-primary#btn-getting-started{ :href=>'#getting-started'} Get started &raquo;
+    %a.btn.btn-large{ :href=>"#{site.base_url}/download" } Download &raquo;
 
     :javascript
       $('#btn-getting-started').bind('click', function(e) {
@@ -25,7 +26,7 @@ layout: base
   .span4
     %h2 Why?
     %p Multi-layered applications often require to map between different object models (e.g. entities and DTOs). Writing such mapping code is a tedious and error-prone task. MapStruct aims at simplifying this work by automating it as much as possible.
-    %p In contrast to other mapping frameworks MapStruct generates bean mappings at compile-time which ensures a high performance and allows for fast developer feedback and thorough error checking.
+    %p In contrast to other mapping frameworks MapStruct generates bean mappings at compile-time which ensures a high performance, allows for fast developer feedback and thorough error checking.
 
   .span4
     %h2 How?
