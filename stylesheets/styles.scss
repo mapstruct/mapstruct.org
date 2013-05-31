@@ -12,13 +12,18 @@ code {
 }
 
 h2, h3, h3 {
-  color: #3F3F3F;
+    color: #3F3F3F;
+}
+
+h1.h1-phone {
+    font-size: 45px;
 }
 
 #toc {
     padding-top: 2px;
     border-left: 1px solid #E5E5E5;
     padding-bottom: 10px;
+    width: 203px;
 }
 
 #toc > h5 {
@@ -47,8 +52,9 @@ h2, h3, h3 {
 }
 
 .links {
-  text-align: center;
+    text-align: center;
 }
+
 //@navbarBackgroundHighlight
 
 // Include responsive Bootstrap styles
