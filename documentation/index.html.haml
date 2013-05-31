@@ -94,6 +94,48 @@ layout: base
                   </plugins>
               </build>
 
+        %h4#section-02-01 2.1 Configuration options
+
+        :markdown
+          The MapStruct code generator can be configured using _annotation processor options_.
+
+          When invoking javac directly, these options are passed to the compiler in the form _-Akey=value_. When using MapStruct via Maven, any processor options can be passed using an `options` element within the configuration of the Maven processor plug-in like this:
+
+        %pre.prettyprint.lang-xml.linenums
+          = preserve do
+            :escaped
+              ...
+              <plugin>
+                  <groupId>org.bsc.maven</groupId>
+                  <artifactId>maven-processor-plugin</artifactId>
+                  <configuration>
+                      <processors>
+                          <processor>org.mapstruct.ap.MappingProcessor</processor>
+                      </processors>
+                      <options>
+                          <suppressGeneratorTimestamp>true</suppressGeneratorTimestamp>
+                      </options>
+                      ...
+                  </configuration>
+                  ...
+              <plugin>
+              ...
+
+        :markdown
+          Currently the following options exist:
+
+        %table.table
+          %thead
+            %tr
+              %th Option
+              %th Purpose
+              %th Default
+          %tbody
+            %tr
+              %td suppressGeneratorTimestamp
+              %td Whether the creation of a time stamp in the generated mapper classes is suppressed or not
+              %td false
+
     .row
       .span9
         %h3#section-03 3. Defining a mapper
