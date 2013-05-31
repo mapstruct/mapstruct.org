@@ -121,6 +121,28 @@
               
               <p>For Maven based projects add the following to your POM file in order to use MapStruct:</p>
               <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Alpha1&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.3&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
+              <h4 id="section-02-01">2.1 Configuration options</h4>
+              <p>The MapStruct code generator can be configured using <em>annotation processor options</em>.</p>
+              
+              <p>When invoking javac directly, these options are passed to the compiler in the form <em>-Akey=value</em>. When using MapStruct via Maven, any processor options can be passed using an <code>options</code> element within the configuration of the Maven processor plug-in like this:</p>
+              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;plugin&gt;&#x000A;    &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;    &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;    &lt;configuration&gt;&#x000A;        &lt;processors&gt;&#x000A;            &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;        &lt;/processors&gt;&#x000A;        &lt;options&gt;&#x000A;            &lt;suppressGeneratorTimestamp&gt;true&lt;/suppressGeneratorTimestamp&gt;&#x000A;        &lt;/options&gt;&#x000A;        ...&#x000A;    &lt;/configuration&gt;&#x000A;    ...&#x000A;&lt;plugin&gt;&#x000A;...</pre>
+              <p>Currently the following options exist:</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Purpose</th>
+                    <th>Default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>suppressGeneratorTimestamp</td>
+                    <td>Whether the creation of a time stamp in the generated mapper classes is suppressed or not</td>
+                    <td>false</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="row">
