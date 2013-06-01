@@ -138,17 +138,22 @@ layout: base
 
       .tab-content
         .tab-pane.active#tab3
-          %pre.prettyprint.linenums
-            = preserve do
-              :escaped
-                @Mapper (1)
-                public interface CarMapper {
+          -#
+            %pre.prettyprint.linenums
+              = preserve do
+                :escaped
+                  @Mapper (1)
+                  public interface CarMapper {
 
-                    CarMapper INSTANCE = Mappers.getMapper( CarMapper.class ); (3)
+                      CarMapper INSTANCE = Mappers.getMapper( CarMapper.class ); (3)
 
-                    @Mapping(source = "numberOfSeats", target = "seatCount")
-                    CarDto carToCarDto(Car car); (2)
-                }
+                      @Mapping(source = "numberOfSeats", target = "seatCount")
+                      CarDto carToCarDto(Car car); (2)
+                  }
+
+          -# Adding the generated and prettified mark up from the listing above explicitely in order to insert badges
+
+          <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="lit">@Mapper</span><span class="pln"> </span><span class="badge badge-info">1</span></li><li class="L1"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">interface</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pln"> </span><span class="pun">{</span></li><li class="L2"><span class="pln">&nbsp;</span></li><li class="L3"><span class="pln">    </span><span class="typ">CarMapper</span><span class="pln"> INSTANCE </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Mappers</span><span class="pun">.</span><span class="pln">getMapper</span><span class="pun">(</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pun">.</span><span class="kwd">class</span><span class="pln"> </span><span class="pun">);</span><span class="pln"> </span><span class="badge badge-info">3</span></li><li class="L4"><span class="pln">&nbsp;</span></li><li class="L5"><span class="pln">    </span><span class="lit">@Mapping</span><span class="pun">(</span><span class="pln">source </span><span class="pun">=</span><span class="pln"> </span><span class="str">"numberOfSeats"</span><span class="pun">,</span><span class="pln"> target </span><span class="pun">=</span><span class="pln"> </span><span class="str">"seatCount"</span><span class="pun">)</span></li><li class="L6"><span class="pln">    </span><span class="typ">CarDto</span><span class="pln"> carToCarDto</span><span class="pun">(</span><span class="typ">Car</span><span class="pln"> car</span><span class="pun">);</span><span class="pln"> </span><span class="badge badge-info">2</span></li><li class="L7"><span class="pun">}</span></li></ol></pre>
 
 .row
   .span4
