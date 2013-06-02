@@ -14,6 +14,11 @@ layout: base
 
         %h5
           = post.author + ", " + post.date.strftime( '%d %B %Y' )
-        %p
-          = post.content
-    = page.posts.links
+        %div
+          ~ post.content
+
+- if page.posts.size > 5
+  .row
+    .span12
+      %hr
+        = page.posts.links

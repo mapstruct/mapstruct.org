@@ -9,19 +9,14 @@ layout: base
         #{page.title}
 
       %h5
-        = page.author + ", " + page.date.strftime( '%d %B %Y' )
+        = page.author + ", " + page.date.strftime( '%d %B %Y' ) + ", Tags: "
+        - page.tags.each do |tag|
+          %a{:href=>tag.primary_page.url}
+            = tag
 
 .row
   .span12
     ~ content
-
-.row
-  .span12
-    %p
-      Tags:
-      - page.tags.each do |tag|
-        %a{:href=>tag.primary_page.url}
-          = tag
 
 .row
   .span4
@@ -35,4 +30,5 @@ layout: base
 
 .row
   .span12
+    %hr
     = page.disqus_comments
