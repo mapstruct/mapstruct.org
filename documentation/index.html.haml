@@ -302,19 +302,7 @@ layout: base
         :markdown
           The generated code for the `carToCarDto()` method will invoke the `personToPersonDto()` method for mapping the `driver` attribute, while the generated implementation for `personToPersonDto()` performs the mapping of person objects.
 
-          That way it is possible to map arbitrary deep object graphs. Of course you also could convert a referenced object into a string representation or e.g. just refer to its id in the target object:
-
-        %pre.prettyprint.lang-java.linenums
-          = preserve do
-            :escaped
-              @Mapper
-              public interface CarMapper {
-
-                  @Mapping(source = "driver", target = "driverId")
-                  CarDto carToCarDto(Car car);
-
-                  long personToId(Person person);
-              }
+          That way it is possible to map arbitrary deep object graphs. When mapping from entities into data transfer objects it is often useful to cut references to other entities at a certain point. To do so, implement a custom mapping method (see the next section) which e.g. maps a referenced entity to its id in the target object.
 
         :markdown
 
