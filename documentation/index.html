@@ -224,8 +224,7 @@
               <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;&#x000A;    PersonDto personToPersonDto(Person person);&#x000A;}</pre>
               <p>The generated code for the <code>carToCarDto()</code> method will invoke the <code>personToPersonDto()</code> method for mapping the <code>driver</code> attribute, while the generated implementation for <code>personToPersonDto()</code> performs the mapping of person objects.</p>
               
-              <p>That way it is possible to map arbitrary deep object graphs. Of course you also could convert a referenced object into a string representation or e.g. just refer to its id in the target object:</p>
-              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    @Mapping(source = &quot;driver&quot;, target = &quot;driverId&quot;)&#x000A;    CarDto carToCarDto(Car car);&#x000A;&#x000A;    long personToId(Person person);&#x000A;}</pre>
+              <p>That way it is possible to map arbitrary deep object graphs. When mapping from entities into data transfer objects it is often useful to cut references to other entities at a certain point. To do so, implement a custom mapping method (see the next section) which e.g. maps a referenced entity to its id in the target object.</p>
               <p>When generating the implementation of a mapping method, MapStruct will apply the following routine for each attribute pair in the source and target object:</p>
               
               <ul>
