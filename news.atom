@@ -2,13 +2,140 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2013-06-03T01:06:36+02:00</updated>
+  <updated>2013-07-08T22:47:42+02:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
   <entry>
+    <id>http://mapstruct.org/news/2013/07/08/using-mapstruct-with-gradle.html</id>
+    <title>Using MapStruct with Gradle</title>
+    <updated>2013-07-08T22:47:42+02:00</updated>
+    <published>2013-07-08T00:00:00+00:00</published>
+    <link href="http://mapstruct.org/news/2013/07/08/using-mapstruct-with-gradle.html" rel="alternate" type="text/html" />
+    <author>
+      <name>Gunnar Morling</name>
+    </author>
+    <category term="how-to"></category>
+    <category term="build"></category>
+    <category term="gradle"></category>
+    <summary>
+      
+      You work with Gradle to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.
+      
+      Background
+      
+      MapStruct is implemented in form of an annotation processor as specified by JSR 269. Annotation processors are plugged into the Java compiler and can inspect the sources during compilation as well as create new sources as it is done by MapStruct. JSR 269 processors can be integrated into basically any form of Java build as long as you work with...
+    </summary>
+    <content type="html">
+      
+      &lt;p&gt;You work with &lt;a href=&quot;http://www.gradle.org/&quot;&gt;Gradle&lt;/a&gt; to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.&lt;/p&gt;
+      
+      &lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+      
+      &lt;p&gt;MapStruct is implemented in form of an annotation processor as specified by &lt;a href=&quot;http://jcp.org/en/jsr/detail?id=269&quot;&gt;JSR 269&lt;/a&gt;. Annotation processors are plugged into the Java compiler and can inspect the sources during compilation as well as create new sources as it is done by MapStruct. JSR 269 processors can be integrated into basically any form of Java build as long as you work with Java 6 or later.&lt;/p&gt;
+      
+      &lt;p&gt;One way of using an annotation processor is to put its JAR onto the compilation classpath where it will be picked up automatically by the Java compiler. This approach works, but it has the advantage that it exposes the processor and its classes to the compiled application which thus &amp;#150; accidentially or not &amp;#150; could import types from the processor.&lt;/p&gt;
+      
+      &lt;p&gt;This sort of issue can be avoided by setting up the processor separately. When working with &lt;code&gt;javac&lt;/code&gt; directly, the &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/technotes/tools/solaris/javac.html#options&quot;&gt;processorpath&lt;/a&gt; option can be used for this purpose, while for Maven projects the &lt;a href=&quot;http://code.google.com/p/maven-annotation-plugin/&quot;&gt;maven-annotation-plugin&lt;/a&gt; is the recommended way to integrate annotation processors.&lt;/p&gt;
+      
+      &lt;h3 id=&quot;set-up-mapstruct-in-your-gradle-build&quot;&gt;Set up MapStruct in your Gradle build&lt;/h3&gt;
+      
+      &lt;p&gt;To integrate MapStruct into a Gradle build, first make sure you use the Java 6 language level by adding the following to the &lt;em&gt;build.gradle&lt;/em&gt; file of your project:&lt;/p&gt;
+      
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      ext {
+          javaLanguageLevel = '1.6'
+          generatedMapperSourcesDir = &quot;${buildDir}/generated-src/mapstruct/main&quot;
+      }
+      
+      sourceCompatibility = rootProject.javaLanguageLevel&lt;/pre&gt;
+      
+      &lt;p&gt;It's a good idea to declare a property which holds the language level. That way it can be referenced later on where required. We also define a property which specifies the target directory for the generated mapper classes.&lt;/p&gt;
+      
+      &lt;p&gt;The next step is to add the MapStruct annotation module (&lt;em&gt;org.mapstruct:mapstruct:&amp;lt;VERSION&amp;gt;&lt;/em&gt;) as compilation dependency and to declare a separate &lt;a href=&quot;http://www.gradle.org/docs/current/userguide/dependency_management.html#sub:configurations&quot;&gt;dependency configuration&lt;/a&gt; which contains the MapStruct processor module (&lt;em&gt;org.mapstruct:mapstruct-processor:&amp;lt;VERSION&amp;gt;&lt;/em&gt;):&lt;/p&gt;
+      
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      configurations {
+          mapstruct
+      }
+      
+      dependencies {
+          compile( 'org.mapstruct:mapstruct:&amp;lt;VERSION&amp;gt;' )
+          mapstruct( 'org.mapstruct:mapstruct-processor:&amp;lt;VERSION&amp;gt;' )
+      }&lt;/pre&gt;
+      
+      &lt;p&gt;The separate dependency configuration makes sure that the classes from the processor aren't visible to the compiled application. To make the generated sources available for the actual compilation step add the previously configured path to the main &lt;a href=&quot;http://www.gradle.org/docs/current/userguide/java_plugin.html#N11D51&quot;&gt;source set&lt;/a&gt; like this:&lt;/p&gt;
+      
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      sourceSets.main {
+          ext.originalJavaSrcDirs = java.srcDirs
+          java.srcDir &quot;${generatedMapperSourcesDir}&quot;
+      }&lt;/pre&gt;
+      
+      &lt;p&gt;We also store the original source directories in a property in order to reference them later on. Now it's time to set up a task for the invocation of the annotation processor. To do so, declare a task of the type &lt;a href=&quot;http://www.gradle.org/docs/current/dsl/org.gradle.api.tasks.compile.JavaCompile.html&quot;&gt;JavaCompile&lt;/a&gt; like this:&lt;/p&gt;
+      
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      task generateMainMapperClasses(type: JavaCompile) {
+          ext.aptDumpDir = file( &quot;${buildDir}/tmp/apt/mapstruct&quot; )
+          destinationDir = aptDumpDir
+      
+          classpath = compileJava.classpath + configurations.mapstruct
+          source = sourceSets.main.originalJavaSrcDirs
+          ext.sourceDestDir = file ( &quot;$generatedMapperSourcesDir&quot; )
+      
+          options.define(
+              compilerArgs: [
+                  &quot;-nowarn&quot;,
+                  &quot;-proc:only&quot;,
+                  &quot;-encoding&quot;, &quot;UTF-8&quot;,
+                  &quot;-processor&quot;, &quot;org.mapstruct.ap.MappingProcessor&quot;,
+                  &quot;-s&quot;, sourceDestDir.absolutePath,
+                  &quot;-source&quot;, rootProject.javaLanguageLevel,
+                  &quot;-target&quot;, rootProject.javaLanguageLevel,
+              ]
+          );
+      
+          inputs.dir source
+          outputs.dir generatedMapperSourcesDir;
+          doFirst {
+               sourceDestDir.mkdirs()
+          }
+          doLast {
+              aptDumpDir.delete()
+          }
+      }&lt;/pre&gt;
+      
+      &lt;p&gt;The task's classpath comprises both, the actual compilation classpath as well as the &lt;code&gt;mapstruct&lt;/code&gt; configuration set up before. As source path the previously stored source directories are used.&lt;/p&gt;
+      
+      &lt;p&gt;The options passed to the compile task should be rather self-explanatory. Note that by passing &lt;code&gt;-proc:only&lt;/code&gt;, the task will only invoke the given processor but perform no compilation (that will be done by the default compilation step later on).&lt;/p&gt;
+      
+      &lt;p&gt;By declaring the &lt;code&gt;inputs&lt;/code&gt; and &lt;code&gt;outputs&lt;/code&gt; of the task we make sure Gradle's &lt;a href=&quot;http://www.gradle.org/docs/current/userguide/more_about_tasks.html#sec:up_to_date_checks&quot;&gt;incremental build&lt;/a&gt; functionality is leveraged. That way Gradle will skip the task when running the build a second time and the generated output files still are up to date.&lt;/p&gt;
+      
+      &lt;p&gt;Finally you need to make sure that the generation of mapper types happens before the compilation of all sources. This can be achieved by declaring the following dependency:&lt;/p&gt;
+      
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      compileJava.dependsOn generateMainMapperClasses&lt;/pre&gt;
+      
+      &lt;h3 id=&quot;give-it-a-shot&quot;&gt;Give it a shot&lt;/h3&gt;
+      
+      &lt;p&gt;You can find the complete &lt;a href=&quot;https://github.com/mapstruct/mapstruct-examples/blob/master/mapstruct-on-gradle/build.gradle&quot;&gt;build.gradle&lt;/a&gt; file on GitHub. It is part of an example project which generates a simple mapper class and executes some tests against it. To clone the example project just execute&lt;/p&gt;
+      
+      &lt;pre class=&quot;prettyprint lang-sh linenums&quot;&gt;
+      git clone https://github.com/mapstruct/mapstruct-examples.git&lt;/pre&gt;
+      
+      &lt;p&gt;You can then build the example by running&lt;/p&gt;
+      
+      &lt;pre class=&quot;prettyprint lang-sh linenums&quot;&gt;
+      cd mapstruct-on-gradle &amp;amp;&amp;amp; ./gradlew build&lt;/pre&gt;
+      
+      &lt;p&gt;The project comes with the &lt;a href=&quot;http://www.gradle.org/docs/current/userguide/userguide_single.html#gradle_wrapper&quot;&gt;Gradle Wrapper&lt;/a&gt;, a small utility which retrieves the right Gradle version upon the first build. So it is not required to install Gradle separately.&lt;/p&gt;
+      
+      &lt;p&gt;In case you have questions, ideas or any other kind of feedback just add a comment to this post or leave a message in the &lt;a href=&quot;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&quot;&gt;mapstruct-users&lt;/a&gt; group.&lt;/p&gt;
+    </content>
+  </entry>
+  <entry>
     <id>http://mapstruct.org/news/2013/06/03/announcing-mapstruct.html</id>
     <title>Announcing MapStruct</title>
-    <updated>2013-06-03T01:06:36+02:00</updated>
+    <updated>2013-07-08T22:47:33+02:00</updated>
     <published>2013-06-03T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/06/03/announcing-mapstruct.html" rel="alternate" type="text/html" />
     <author>
@@ -17,6 +144,7 @@
     <category term="release"></category>
     <category term="feedback"></category>
     <summary>
+      
       It is my pleasure to announce the first release of the MapStruct project!
       
       MapStruct is a code generator which simplifies the implementation of mappings between Java bean types by generating mapping code at compile time, following a convention-over-configuration approach.
@@ -30,11 +158,12 @@
       Writing the required mapping code from hand can be an error-prone and tedious task....
     </summary>
     <content type="html">
+      
       &lt;p&gt;It is my pleasure to announce the first release of the MapStruct project!&lt;/p&gt;
       
       &lt;p&gt;MapStruct is a code generator which simplifies the implementation of mappings between Java bean types by generating mapping code at compile time, following a convention-over-configuration approach.&lt;/p&gt;
       
-      &lt;h3 id=&quot;the_problem&quot;&gt;The problem&lt;/h3&gt;
+      &lt;h3 id=&quot;the-problem&quot;&gt;The problem&lt;/h3&gt;
       
       &lt;p&gt;In multi-layered applications there is often the need to map between objects from diffent models.&lt;/p&gt;
       
@@ -42,15 +171,16 @@
       
       &lt;p&gt;Writing the required mapping code from hand can be an error-prone and tedious task. MapStruct aims at simplifying this work by automating it as much as possible.&lt;/p&gt;
       
-      &lt;h3 id=&quot;the_solution&quot;&gt;The solution&lt;/h3&gt;
+      &lt;h3 id=&quot;the-solution&quot;&gt;The solution&lt;/h3&gt;
       
       &lt;p&gt;MapStruct is an annotation processor which is plugged into the Java compiler and generates mapping code at build time.&lt;/p&gt;
       
       &lt;p&gt;Unlike reflection-based mapping solutions, the mapping code generated by MapStruct uses plain method invocations for propagating values from the source to the target model and thus is fast, type-safe and easy to understand. This approach also allows for fast developer feedback; for instance you will get an error report at build time if two entities or attributes can’t be mapped.&lt;/p&gt;
       
-      &lt;h3 id=&quot;some_code_please&quot;&gt;Some code, please&lt;/h3&gt;
+      &lt;h3 id=&quot;some-code-please&quot;&gt;Some code, please&lt;/h3&gt;
       
-      &lt;p&gt;It’s time to have a look at some code. Let’s assume there as an entity &lt;code&gt;Car&lt;/code&gt; and an accompanying data transfer object.&lt;/p&gt;
+      &lt;p&gt;It's time to have a look at some code. Let's assume there as an entity &lt;code&gt;Car&lt;/code&gt; and an accompanying data transfer object.&lt;/p&gt;
+      
       &lt;pre class=&quot;prettyprint linenums&quot;&gt;
       public class Car {
       
@@ -61,7 +191,9 @@
           private Category category; //an enum; SEDAN, CONVERTIBLE etc.
       
           //constructor, getters, setters etc.
-      }&lt;/pre&gt;&lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      }&lt;/pre&gt;
+      
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
       public class CarDto {
       
           private String make;
@@ -72,21 +204,20 @@
       
           //constructor, getters, setters etc.
       }&lt;/pre&gt;
+      
       &lt;p&gt;Both types are structure-wise quite similar, with only a few differences:&lt;/p&gt;
       
       &lt;ul&gt;
-      &lt;li&gt;the attribute representing the number of seats is named &lt;code&gt;numberOfSeats&lt;/code&gt; in the entity but &lt;code&gt;seatCount&lt;/code&gt; in the DTO&lt;/li&gt;
-      
-      &lt;li&gt;the attribute representing the manufacturing year is once named &lt;code&gt;manufacturingDate&lt;/code&gt; and once &lt;code&gt;manufacturingYear&lt;/code&gt;
+        &lt;li&gt;the attribute representing the number of seats is named &lt;code&gt;numberOfSeats&lt;/code&gt; in the entity but &lt;code&gt;seatCount&lt;/code&gt; in the DTO&lt;/li&gt;
+        &lt;li&gt;the attribute representing the manufacturing year is once named &lt;code&gt;manufacturingDate&lt;/code&gt; and once &lt;code&gt;manufacturingYear&lt;/code&gt;
       &lt;/li&gt;
-      
-      &lt;li&gt;the &lt;code&gt;category&lt;/code&gt; attribute is an enum in the entity but a string in the DTO&lt;/li&gt;
-      
-      &lt;li&gt;the object referenced by the &lt;code&gt;driver&lt;/code&gt; attribute is once of type &lt;code&gt;Person&lt;/code&gt; (another entity) and once of type &lt;code&gt;PersonDto&lt;/code&gt;
+        &lt;li&gt;the &lt;code&gt;category&lt;/code&gt; attribute is an enum in the entity but a string in the DTO&lt;/li&gt;
+        &lt;li&gt;the object referenced by the &lt;code&gt;driver&lt;/code&gt; attribute is once of type &lt;code&gt;Person&lt;/code&gt; (another entity) and once of type &lt;code&gt;PersonDto&lt;/code&gt;
       &lt;/li&gt;
       &lt;/ul&gt;
       
-      &lt;p&gt;Now let’s see how to generate a mapper for these objects. To do so, just define a plain Java interface which declares a method for each required mapping:&lt;/p&gt;
+      &lt;p&gt;Now let's see how to generate a mapper for these objects. To do so, just define a plain Java interface which declares a method for each required mapping:&lt;/p&gt;
+      
       &lt;pre class=&quot;prettyprint linenums&quot;&gt;
       @Mapper
       public interface CarMapper {
@@ -99,6 +230,7 @@
       
           PersonDto personToPersonDto(Person person);
       }&lt;/pre&gt;
+      
       &lt;p&gt;The &lt;code&gt;@Mapper&lt;/code&gt; annotation marks the interface as mapping interface and lets the MapStruct processor kick in during compilation (see the &lt;a href=&quot;http://mapstruct.org/documentation/#section-02&quot;&gt;reference documentation&lt;/a&gt; to learn how to hook the processor into your build). You can have several mapper interfaces as per your requirements, e.g. one per application module.&lt;/p&gt;
       
       &lt;p&gt;Each mapping methods expects the source object as parameter and returns the target object. The names can be freely chosen. For attributes with different names in source and target object, the &lt;code&gt;@Mapping&lt;/code&gt; annotation can be used to configure the names.&lt;/p&gt;
@@ -108,6 +240,7 @@
       &lt;p&gt;If no mapping method for the required types exist, an automatic conversion will be applied if possible; e.g. the &lt;code&gt;category&lt;/code&gt; attribute will be converted from the enumeration type into a string. There are many type conversions built into MapStruct by default but you also can easily implement custom mapping methods if required. Refer to &lt;a href=&quot;http://mapstruct.org/documentation/#section-05&quot;&gt;Data type conversions&lt;/a&gt; for the details.&lt;/p&gt;
       
       &lt;p&gt;To obtain an instance of a mapper the method &lt;code&gt;Mappers#getMapper()&lt;/code&gt; can be used. By convention, each mapper interface defines a member named &lt;code&gt;INSTANCE&lt;/code&gt; holding an instance of the mapper type:&lt;/p&gt;
+      
       &lt;pre class=&quot;prettyprint linenums&quot;&gt;
       @Mapper
       public interface CarMapper {
@@ -116,9 +249,11 @@
       
           //...
       }&lt;/pre&gt;
+      
       &lt;p&gt;In the future it will also &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/32&quot;&gt;be possible&lt;/a&gt; to obtain mapper objects using dependency injection containers such as CDI or Spring.&lt;/p&gt;
       
-      &lt;p&gt;Finally let’s have a look at how the mapper is used to convert a &lt;code&gt;Car&lt;/code&gt; object into a &lt;code&gt;CarDto&lt;/code&gt;:&lt;/p&gt;
+      &lt;p&gt;Finally let's have a look at how the mapper is used to convert a &lt;code&gt;Car&lt;/code&gt; object into a &lt;code&gt;CarDto&lt;/code&gt;:&lt;/p&gt;
+      
       &lt;pre class=&quot;prettyprint linenums&quot;&gt;
       @Test
       public void shouldMapAttributeByName() {
@@ -142,43 +277,43 @@
           assertThat( carDto.getDriver().getName() ).isEqualTo( &quot;Bob&quot; );
           assertThat( carDto.getCategory() ).isEqualTo( &quot;SEDAN&quot; );
       }&lt;/pre&gt;
-      &lt;p&gt;Note that a dedicated mapper interface centered around the types of your application makes mappings type-safe, so unlike with a generic mapping API you can’t accidentally map e.g. a &lt;code&gt;Car&lt;/code&gt; into a &lt;code&gt;PersonDto&lt;/code&gt;.&lt;/p&gt;
+      
+      &lt;p&gt;Note that a dedicated mapper interface centered around the types of your application makes mappings type-safe, so unlike with a generic mapping API you can't accidentally map e.g. a &lt;code&gt;Car&lt;/code&gt; into a &lt;code&gt;PersonDto&lt;/code&gt;.&lt;/p&gt;
       
       &lt;p&gt;The test also shows that the implementation of the &lt;code&gt;carToCarDto()&lt;/code&gt; method handles the property name mappings (e.g. &lt;code&gt;numberOfSeats&lt;/code&gt; vs. &lt;code&gt;seatCount&lt;/code&gt;) as well as type conversions (for the &lt;code&gt;driver&lt;/code&gt; and &lt;code&gt;category&lt;/code&gt; attributes).&lt;/p&gt;
       
-      &lt;h3 id=&quot;trying_it_out_youself&quot;&gt;Trying it out youself&lt;/h3&gt;
+      &lt;h3 id=&quot;trying-it-out-youself&quot;&gt;Trying it out youself&lt;/h3&gt;
       
-      &lt;p&gt;You want to give MapStruct a try? That’s great! You can download the distribution containing source and binaries from &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/&quot;&gt;SourceForge&lt;/a&gt;. MapStruct is released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;&gt;Apache Software License 2.0&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;You want to give MapStruct a try? That's great! You can download the distribution containing source and binaries from &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/&quot;&gt;SourceForge&lt;/a&gt;. MapStruct is released under the &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;&gt;Apache Software License 2.0&lt;/a&gt;.&lt;/p&gt;
       
-      &lt;p&gt;If you’re using Maven or a similar dependency manager, you also can obtain MapStruct from Maven Central. The GAV coordinates are&lt;/p&gt;
+      &lt;p&gt;If you're using Maven or a similar dependency manager, you also can obtain MapStruct from Maven Central. The GAV coordinates are &lt;/p&gt;
       
       &lt;ul&gt;
-      &lt;li&gt;
+        &lt;li&gt;
       &lt;em&gt;org.mapstruct:mapstruct:1.0.0.Alpha1&lt;/em&gt; for the core module containing the annotations and&lt;/li&gt;
-      
-      &lt;li&gt;
+        &lt;li&gt;
       &lt;em&gt;org.mapstruct:mapstruct-processor:1.0.0.Alpha1&lt;/em&gt; for the annotation processor module.&lt;/li&gt;
       &lt;/ul&gt;
       
       &lt;p&gt;Check out the &lt;a href=&quot;http://mapstruct.org/documentation&quot;&gt;reference documentation&lt;/a&gt; to learn about all the ins and outs of MapStruct, including features such as collection mappings, reverse mappings or making use of hand-written mapping methods.&lt;/p&gt;
       
-      &lt;p&gt;If you’re are stuck, come and join the MapStruct &lt;a href=&quot;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&quot;&gt;google-group&lt;/a&gt; and ask your questions there. This is also the right place to discuss any feature requests or other suggestions. And should you find a bug, please file a report in our &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues&quot;&gt;issue tracker&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;If you're are stuck, come and join the MapStruct &lt;a href=&quot;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&quot;&gt;google-group&lt;/a&gt; and ask your questions there. This is also the right place to discuss any feature requests or other suggestions. And should you find a bug, please file a report in our &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues&quot;&gt;issue tracker&lt;/a&gt;.&lt;/p&gt;
       
-      &lt;h3 id=&quot;whats_next&quot;&gt;What’s next?&lt;/h3&gt;
+      &lt;h3 id=&quot;whats-next&quot;&gt;What's next?&lt;/h3&gt;
       
-      &lt;p&gt;MapStruct is just in its beginnings. Today’s Alpha1 release is the first of a series of preview releases towards 1.0.0.Final.&lt;/p&gt;
+      &lt;p&gt;MapStruct is just in its beginnings. Today's Alpha1 release is the first of a series of preview releases towards 1.0.0.Final.&lt;/p&gt;
       
       &lt;p&gt;If you have any feedback on MapStruct in general or certain features in particular make sure to let us know either by commenting here or by posting to the Google group.&lt;/p&gt;
       
       &lt;p&gt;On the roadmap for the next releases are improved support for &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/4&quot;&gt;collection mappings&lt;/a&gt;, mappings &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/31&quot;&gt;several source objects&lt;/a&gt; into one target object and mapping into immutable objects via constructor invocations.&lt;/p&gt;
       
-      &lt;p&gt;You like MapStruct and want to contribute? That’s awesome! MapStruct is in a very early stage and your participation can make a big difference. &lt;a href=&quot;http://github.com/mapstruct/mapstruct&quot;&gt;The sources&lt;/a&gt; are hosted on GitHub, and &lt;a href=&quot;http://mapstruct.org/documentation/#section-05&quot;&gt;Contributing&lt;/a&gt; has all the infos to get you started with hacking on MapStruct. Many thanks to &lt;a href=&quot;https://github.com/agudian&quot;&gt;Andreas&lt;/a&gt; who stepped up and contributed to the Alpha1 release!&lt;/p&gt;
+      &lt;p&gt;You like MapStruct and want to contribute? That's awesome! MapStruct is in a very early stage and your participation can make a big difference. &lt;a href=&quot;http://github.com/mapstruct/mapstruct&quot;&gt;The sources&lt;/a&gt; are hosted on GitHub, and &lt;a href=&quot;http://mapstruct.org/documentation/#section-05&quot;&gt;Contributing&lt;/a&gt; has all the infos to get you started with hacking on MapStruct. Many thanks to &lt;a href=&quot;https://github.com/agudian&quot;&gt;Andreas&lt;/a&gt; who stepped up and contributed to the Alpha1 release!&lt;/p&gt;
     </content>
   </entry>
   <entry>
     <id>http://mapstruct.org/news/2013/05/22/website-live.html</id>
     <title>mapstruct.org has landed!</title>
-    <updated>2013-06-03T01:06:05+02:00</updated>
+    <updated>2013-07-08T22:47:33+02:00</updated>
     <published>2013-05-22T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/05/22/website-live.html" rel="alternate" type="text/html" />
     <author>
@@ -186,9 +321,12 @@
     </author>
     <category term="web-site"></category>
     <summary>
-      MapStruct has now its own web site, mapstruct.org!...
+      
+      MapStruct has now its own web site, mapstruct.org!
+      ...
     </summary>
     <content type="html">
+      
       &lt;p&gt;MapStruct has now its own web site, &lt;a href=&quot;http://mapstruct.org&quot;&gt;mapstruct.org&lt;/a&gt;!&lt;/p&gt;
     </content>
   </entry>

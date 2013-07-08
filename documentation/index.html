@@ -84,15 +84,15 @@
         <div class="span9">
           <div class="row">
             <div class="span9">
-              <p>This is the MapStruct reference documentation which covers all functionality provided by MapStruct. In case this guide doesn&#8217;t answer all your questions just join the MapStruct <a href='https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users'>Google group</a> to get help.</p>
+              <p>This is the MapStruct reference documentation which covers all functionality provided by MapStruct. In case this guide doesn't answer all your questions just join the MapStruct <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">Google group</a> to get help.</p>
               
-              <p>You found a typo or other error in this guide? Your pull request against this web site&#8217;s <a href='http://github.com/mapstruct/mapstruct.org'>GitHub repository</a> is more than welcome!</p>
+              <p>You found a typo or other error in this guide? Your pull request against this web site's <a href="http://github.com/mapstruct/mapstruct.org">GitHub repository</a> is more than welcome!</p>
             </div>
           </div>
           <div class="row">
             <div class="span9">
               <h3 id="section-01">1. Introduction</h3>
-              <p>MapStruct is a Java <a href='http://docs.oracle.com/javase/6/docs/technotes/guides/apt/index.html'>annotation processor</a> for the generation of type-safe bean mapping classes.</p>
+              <p>MapStruct is a Java <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/apt/index.html">annotation processor</a> for the generation of type-safe bean mapping classes.</p>
               
               <p>All you have to do is to define a mapper interface which declares any required mapping methods. During compilation, MapStruct will generate an implementation of this interface. This implementation uses plain Java method invocations for mapping between source and target objects, i.e. no reflection or similar.</p>
               
@@ -101,25 +101,22 @@
               <p>Compared to dynamic mapping frameworks, MapStruct offers the following advantages:</p>
               
               <ul>
-              <li>Fast execution by using plain method invocations instead of reflection</li>
-              
-              <li>Compile-time type safety: Only objects and attributes mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.</li>
-              
-              <li>Clear error-reports at build time, if entities or attributes can&#8217;t be mapped</li>
+                <li>Fast execution by using plain method invocations instead of reflection</li>
+                <li>Compile-time type safety: Only objects and attributes mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.</li>
+                <li>Clear error-reports at build time, if entities or attributes can't be mapped</li>
               </ul>
             </div>
           </div>
           <div class="row">
             <div class="span9">
               <h3 id="section-02">2. Set up</h3>
-              <p>MapStruct is a Java annotation processor based on <a href='jcp.org/en/jsr/detail?id=269'>JSR 269</a> and as such can be used within command line builds (javac, Ant, Maven etc.) as well as from within your IDE.</p>
+              <p>MapStruct is a Java annotation processor based on <a href="jcp.org/en/jsr/detail?id=269">JSR 269</a> and as such can be used within command line builds (javac, Ant, Maven etc.) as well as from within your IDE.</p>
               
               <p>It comprises two artifacts:</p>
               
               <ul>
-              <li><em>org.mapstruct:mapstruct</em>: contains the required annotations such as <code>@Mapping</code></li>
-              
-              <li><em>org.mapstruct:mapstruct-processor</em>: contains the annotation processor which generates mapper implementations</li>
+                <li><em>org.mapstruct:mapstruct</em>: contains the required annotations such as <code>@Mapping</code></li>
+                <li><em>org.mapstruct:mapstruct-processor</em>: contains the annotation processor which generates mapper implementations</li>
               </ul>
               
               <p>For Maven based projects add the following to your POM file in order to use MapStruct:</p>
@@ -157,15 +154,15 @@
               
               <p>In the generated method implementations all readable properties from the source type (e.g. <code>Car</code>) will be copied ino the corresponding property in the target type (e.g. <code>CarDto</code>). If a property has a different name in the target entity, its name can be specified via the <code>@Mapping</code> annotation.</p>
               <div class="alert alert-info">
-                <p><strong>Tip!</strong> The property name as defined in the <a href='http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html'>JavaBeans spefication</a> must be specified in the <code>@Mapping</code> annotation, e.g. <em>seatCount</em> for a property with the accessor methods <code>getSeatCount()</code> and <code>setSeatCount()</code>.</p>
+                <p><strong>Tip!</strong> The property name as defined in the <a href="http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html">JavaBeans spefication</a> must be specified in the <code>@Mapping</code> annotation, e.g. <em>seatCount</em> for a property with the accessor methods <code>getSeatCount()</code> and <code>setSeatCount()</code>.</p>
               </div>
               <p>To get a better understanding of what MapStruct does have a look at the following implementation of the <code>carToCarDto()</code> method as generated by MapStruct:</p>
               <pre class="prettyprint lang-java linenums">// GENERATED CODE&#x000A;public class CarMapperImpl implements CarMapper {&#x000A;&#x000A;    @Override&#x000A;    public CarDto carToCarDto(Car car) {&#x000A;        if ( car == null ) {&#x000A;            return null;&#x000A;        }&#x000A;&#x000A;        CarDto carDto = new CarDto();&#x000A;&#x000A;        if ( car.getFeatures() != null ) {&#x000A;            carDto.setFeatures( new ArrayList&lt;String&gt;( car.getFeatures() ) );&#x000A;        }&#x000A;        carDto.setManufacturer( car.getMake() );&#x000A;        carDto.setSeatCount( car.getNumberOfSeats() );&#x000A;        carDto.setDriver( personToPersonDto( car.getDriver() ) );&#x000A;        carDto.setPrice( String.valueOf( car.getPrice() ) );&#x000A;        if ( car.getCategory() != null ) {&#x000A;            carDto.setCategory( car.getCategory().toString() );&#x000A;        }&#x000A;&#x000A;        return carDto;&#x000A;    }&#x000A;&#x000A;    //Other methods...&#x000A;}</pre>
               <p>The general philosophy of MapStruct is to generate code which looks as much as possible as if you had written it yourself from hand. In particular this means that the values are copied from source to target by plain getter/setter invocations instead of reflection or similar.</p>
               
-              <p>As the example shows the generated code takes into account any name mappings specified via <code>@Mapping</code>. If the type of a mapped attribute is different in source and target entity, MapStruct will either apply an automatic conversion (as e.g. for the <em>price</em> property, see also <a href='#section-05-01'>Implicit type conversions</a>) or optionally invoke another mapping method (as e.g. for the <em>driver</em> property, see also <a href='#section-05-02'>Mapping object references</a>).</p>
+              <p>As the example shows the generated code takes into account any name mappings specified via <code>@Mapping</code>. If the type of a mapped attribute is different in source and target entity, MapStruct will either apply an automatic conversion (as e.g. for the <em>price</em> property, see also <a href="#section-05-01">Implicit type conversions</a>) or optionally invoke another mapping method (as e.g. for the <em>driver</em> property, see also <a href="#section-05-02">Mapping object references</a>).</p>
               
-              <p>Collection-typed attributes with the same element type will be copied by creating a new instance of the target collection type containing the elements from the source property. For collection-typed attributes with different element types each element will mapped individually and added to the target collection (see <a href='#section-06'>Mapping collections</a>).</p>
+              <p>Collection-typed attributes with the same element type will be copied by creating a new instance of the target collection type containing the elements from the source property. For collection-typed attributes with different element types each element will mapped individually and added to the target collection (see <a href="#section-06">Mapping collections</a>).</p>
             </div>
           </div>
           <div class="row">
@@ -190,35 +187,36 @@
               
               <p>Another example are references to other objects which should be mapped to the corresponding types in the target model. E.g. the class <code>Car</code> might have a property <code>driver</code> of the type <code>Person</code> which needs to be converted into a <code>PersonDto</code> object when mapping a <code>Car</code> object.</p>
               
-              <p>In this section you&#8217;ll learn how MapStruct deals with such data type conversions.</p>
+              <p>In this section you'll learn how MapStruct deals with such data type conversions.</p>
               <h4 id="section-05-01">5.1 Implicit type conversions</h4>
               <p>MapStruct takes care of type conversions automatically in many cases. If for instance an attribute is of type <code>int</code> in the source bean but of type <code>String</code> in the target bean, the generated code will transparently perform a conversion by calling <code>String#valueOf(int)</code> and <code>Integer#parseInt(String)</code>, respectively.</p>
               
               <p>Currently the following conversions are applied automatically:</p>
               
               <ul>
-              <li>
-              <p>Between all Java primitive data types and their corresponding wrapper types, e.g. between <code>int</code> and <code>Integer</code>, <code>boolean</code> and <code>Boolean</code> etc. The generated code is <code>null</code> aware, i.e. when converting a wrapper type into the corresponding primitive type a <code>null</code> check will performed.</p>
-              </li>
+                <li>
+                  <p>Between all Java primitive data types and their corresponding wrapper types, e.g. between <code>int</code> and <code>Integer</code>, <code>boolean</code> and <code>Boolean</code> etc. The generated code is <code>null</code> aware, i.e. when converting a wrapper type into the corresponding primitive type a <code>null</code> check will performed.</p>
+                </li>
+                <li>
+                  <p>Between all Java primitive number types and the wrapper types, e.g. between <code>int</code> and <code>long</code> or <code>byte</code> and <code>Integer</code>.
+              &lt;p markdown="1"&gt;
+                <span class="label label-warning">Warning</span><span>&nbsp;Converting from larger data types to smaller ones (e.g. from <code>long</code> to <code>int</code>) can cause a value or precision loss. It <a href="https://github.com/mapstruct/mapstruct/issues/5">is planned</a> to provide an option for raising a warning in such cases in a future MapStruct version.</span></p>
+                </li>
+              </ul>
+              <p>&lt;/p&gt;</p>
               
-              <li>
-              <p>Between all Java primitive number types and the wrapper types, e.g. between <code>int</code> and <code>long</code> or <code>byte</code> and <code>Integer</code>. <p>
-                <span class='label label-warning'>Warning</span><span>&#160;Converting from larger data types to smaller ones (e.g. from <code>long</code> to <code>int</code>) can cause a value or precision loss. It <a href='https://github.com/mapstruct/mapstruct/issues/5'>is planned</a> to provide an option for raising a warning in such cases in a future MapStruct version.</span>
-              </p></p>
-              </li>
-              
-              <li>
-              <p>Between all Java primitive types (including their wrappers) and <code>String</code>, e.g. between <code>int</code> and <code>String</code> or <code>Boolean</code> and <code>String</code>.</p>
-              </li>
-              
-              <li>
-              <p>Between <code>enum</code> types and <code>String</code>.</p>
-              </li>
+              <ul>
+                <li>
+                  <p>Between all Java primitive types (including their wrappers) and <code>String</code>, e.g. between <code>int</code> and <code>String</code> or <code>Boolean</code> and <code>String</code>.</p>
+                </li>
+                <li>
+                  <p>Between <code>enum</code> types and <code>String</code>.</p>
+                </li>
               </ul>
               
-              <p>More automatic conversions <a href='https://github.com/mapstruct/mapstruct/issues/26'>will be</a> provided soon, e.g. for types such as <code>Date</code>, <code>Calendar</code> or <code>BigInteger</code>.</p>
+              <p>More automatic conversions <a href="https://github.com/mapstruct/mapstruct/issues/26">will be</a> provided soon, e.g. for types such as <code>Date</code>, <code>Calendar</code> or <code>BigInteger</code>.</p>
               <h4 id="section-05-02">5.2 Mapping object references</h4>
-              <p>Typically an object has not only primitive attributes but also references other objects. E.g. the <code>Car</code> class could contain a reference to a <code>Person</code> object (representing the car&#8217;s driver) which should be mapped to a <code>PersonDto</code> object referenced by the <code>CarDto</code> class.</p>
+              <p>Typically an object has not only primitive attributes but also references other objects. E.g. the <code>Car</code> class could contain a reference to a <code>Person</code> object (representing the car's driver) which should be mapped to a <code>PersonDto</code> object referenced by the <code>CarDto</code> class.</p>
               
               <p>In this case just define a mapping method for the referenced object type as well:</p>
               <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;&#x000A;    PersonDto personToPersonDto(Person person);&#x000A;}</pre>
@@ -228,16 +226,13 @@
               <p>When generating the implementation of a mapping method, MapStruct will apply the following routine for each attribute pair in the source and target object:</p>
               
               <ul>
-              <li>If source and target attribute have the same type, the value will be simply copied from source to target. If the attribute is a collection (e.g. a <code>List</code>) a copy of the collection will be set into the target attribute.</li>
-              
-              <li>If source and target attribute type differ, check whether there is a another mapping method which has the type of the source attribute as parameter type and the type of the target attribute as return type. If such a method exists it will be invoked in the generated mapping implementation.</li>
-              
-              <li>If no such method exists MapStruct will look whether a built-in conversion for the source and target type of the attribute exists. If this is the case, the generated mapping code will apply this conversion.</li>
-              
-              <li>Otherwise an error will be raised at build time, indicating the non-mappable attribute.</li>
+                <li>If source and target attribute have the same type, the value will be simply copied from source to target. If the attribute is a collection (e.g. a <code>List</code>) a copy of the collection will be set into the target attribute.</li>
+                <li>If source and target attribute type differ, check whether there is a another mapping method which has the type of the source attribute as parameter type and the type of the target attribute as return type. If such a method exists it will be invoked in the generated mapping implementation.</li>
+                <li>If no such method exists MapStruct will look whether a built-in conversion for the source and target type of the attribute exists. If this is the case, the generated mapping code will apply this conversion.</li>
+                <li>Otherwise an error will be raised at build time, indicating the non-mappable attribute.</li>
               </ul>
               <h4 id="section-05-03">5.3 Invoking other mappers</h4>
-              <p>In addition to methods defined on the same mapper type MapStruct can also invoke mapping methods defined in other classes, be it mappers generated by MapStruct or hand-written mapping methods. This can be useful to structure your mapping code in several classes (e.g. with on mapper type per application module) or you want to provide custom mapping logic which can&#8217;t be generated by MapStruct.</p>
+              <p>In addition to methods defined on the same mapper type MapStruct can also invoke mapping methods defined in other classes, be it mappers generated by MapStruct or hand-written mapping methods. This can be useful to structure your mapping code in several classes (e.g. with on mapper type per application module) or you want to provide custom mapping logic which can't be generated by MapStruct.</p>
               
               <p>For instance the <code>Car</code> class might contain an attribute <code>manufacturingDate</code> while the corresponding DTO attribute is of type String. In order to map this attribute, you could implement a mapper class like this:</p>
               <pre class="prettyprint lang-java linenums">public class DateMapper {&#x000A;&#x000A;    public String asString(Date date) {&#x000A;        return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )&#x000A;            .format( date ) : null;&#x000A;    }&#x000A;&#x000A;    public Date asDate(String date) {&#x000A;        try {&#x000A;            return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )&#x000A;                .parse( date ) : null;&#x000A;        }&#x000A;        catch ( ParseException e ) {&#x000A;            throw new RuntimeException( e );&#x000A;        }&#x000A;    }&#x000A;}</pre>

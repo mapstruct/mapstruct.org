@@ -82,8 +82,9 @@
       </div>
       <div class="row">
         <div class="span9">
-          <p>You love MapStruct but miss a certain feature? You found a bug and want to report it, or even better, fix it yourself? That&#8217;s great! MapStruct is all open source and your help is highly appreciated.</p>
-          <table class='table'>
+          <p>You love MapStruct but miss a certain feature? You found a bug and want to report it, or even better, fix it yourself? That's great! MapStruct is all open source and your help is highly appreciated.</p>
+          
+          <table class="table">
             <thead>
               <tr>
                 <th>What</th><th>Where</th>
@@ -91,57 +92,53 @@
             </thead>
             <tbody>
               <tr>
-                <td>Source code</td><td><a href='http://github.com/mapstruct/mapstruct'>http://github.com/mapstruct/mapstruct</a></td>
+                <td>Source code</td><td><a href="http://github.com/mapstruct/mapstruct">http://github.com/mapstruct/mapstruct</a></td>
               </tr>
               <tr>
-                <td>Issue tracker</td><td><a href='https://github.com/mapstruct/mapstruct/issues'>https://github.com/mapstruct/mapstruct/issues</a></td>
+                <td>Issue tracker</td><td><a href="https://github.com/mapstruct/mapstruct/issues">https://github.com/mapstruct/mapstruct/issues</a></td>
               </tr>
               <tr>
-                <td>Discussions</td><td>Join the <a href='https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users'>mapstruct-users</a> Google group</td>
+                <td>Discussions</td><td>Join the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> Google group</td>
               </tr>
               <tr>
-                <td>CI build</td><td><a href='https://mapstruct.ci.cloudbees.com'>https://mapstruct.ci.cloudbees.com</a></td>
+                <td>CI build</td><td><a href="https://mapstruct.ci.cloudbees.com">https://mapstruct.ci.cloudbees.com</a></td>
               </tr>
               <tr>
-                <td>This web site</td><td><a href='http://github.com/mapstruct/mapstruct.org'>http://github.com/mapstruct/mapstruct.org</a></td>
+                <td>This web site</td><td><a href="http://github.com/mapstruct/mapstruct.org">http://github.com/mapstruct/mapstruct.org</a></td>
               </tr>
             </tbody>
           </table>
-          <p>MapStruct follows the <em>Fork &amp; Pull</em> development approach. To get started just fork the <a href='http://github.com/mapstruct/mapstruct'>MapStruct repository</a> to your GitHub account and create a new topic branch for each change. Once you are done with your change, submit a <a href='https://help.github.com/articles/using-pull-requests'>pull request</a> against the MapStruct repo.</p>
+          
+          <p>MapStruct follows the <em>Fork &amp; Pull</em> development approach. To get started just fork the <a href="http://github.com/mapstruct/mapstruct">MapStruct repository</a> to your GitHub account and create a new topic branch for each change. Once you are done with your change, submit a <a href="https://help.github.com/articles/using-pull-requests">pull request</a> against the MapStruct repo.</p>
           
           <p>When doing changes, keep the following best practices in mind:</p>
           
           <ul>
-          <li>Provide test cases</li>
-          
-          <li>Update the <a href='mapstruct.org/documentation'>reference documentation</a> on <a href='mapstruct.org'>mapstruct.org</a> where required</li>
-          
-          <li>Discuss new features you&#8217;d like to implement at the <a href='https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users'>Google group</a> before getting started</li>
-          
-          <li>Create one pull request per feature</li>
-          
-          <li>Provide a meaningful history, e.g. squash intermediary commits before submitting a pull request</li>
-          
-          <li>Format your sources using the provided IntelliJ <a href='https://github.com/mapstruct/mapstruct/blob/master/etc/mapstruct.xml'>code style template</a>; If you use another IDE stick to the used style as much as possible</li>
+            <li>Provide test cases</li>
+            <li>Update the <a href="mapstruct.org/documentation">reference documentation</a> on <a href="mapstruct.org">mapstruct.org</a> where required</li>
+            <li>Discuss new features you'd like to implement at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">Google group</a> before getting started</li>
+            <li>Create one pull request per feature</li>
+            <li>Provide a meaningful history, e.g. squash intermediary commits before submitting a pull request</li>
+            <li>Format your sources using the provided IntelliJ <a href="https://github.com/mapstruct/mapstruct/blob/master/etc/mapstruct.xml">code style template</a>; If you use another IDE stick to the used style as much as possible</li>
           </ul>
           
-          <h3 id='updating_mapstructorg'>Updating mapstruct.org</h3>
+          <h3 id="updating-mapstructorg">Updating mapstruct.org</h3>
           
-          <p>This web site (<a href='http://mapstruct.org'>mapstruct.org/</a>) is created using the fantastic <a href='http://awestruct.org/'>awestruct</a> tool. To update the web site fork the <a href='http://github.com/mapstruct/mapstruct.org'>mapstruct.org repo</a> and create a pull request with your changes.</p>
+          <p>This web site (<a href="http://mapstruct.org">mapstruct.org/</a>) is created using the fantastic <a href="http://awestruct.org/">awestruct</a> tool. To update the web site fork the <a href="http://github.com/mapstruct/mapstruct.org">mapstruct.org repo</a> and create a pull request with your changes.</p>
           
-          <p>The individual pages are written in <a href='http://haml.info/'>Haml</a> and <a href='http://daringfireball.net/projects/markdown/'>Markdown</a> and converted into HTML by awestruct. Building the site requires Ruby 1.9.x to be installed on your system. You also need to install the gems <em>awestruct</em> and <em>maruku</em>:</p>
+          <p>The individual pages are written in <a href="http://haml.info/">Haml</a> and <a href="http://daringfireball.net/projects/markdown/">Markdown</a> and converted into HTML by awestruct. Building the site requires Ruby 1.9.x to be installed on your system. You also need to install the gems <em>awestruct</em> and <em>maruku</em>:</p>
           <pre class="prettyprint linenums">$ gem install awestruct&#x000A;$ gem install maruku</pre>
           <p>To build the web page run</p>
           <pre class="prettyprint linenums">awestruct -d</pre>
-          <p>The web site can then be acessed at <a href='http://localhost:4242'>http://localhost:4242</a>.</p>
+          <p>The web site can then be acessed at <a href="http://localhost:4242">http://localhost:4242</a>.</p>
           
-          <h3 id='license'>License</h3>
+          <h3 id="license">License</h3>
           
-          <p>MapStruct is distributed under the <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2.0</a>. By submitting a pull request you agree to license your work under that license and you affirm that your contribution doesn&#8217;t violate any rights of other parties.</p>
+          <p>MapStruct is distributed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>. By submitting a pull request you agree to license your work under that license and you affirm that your contribution doesn't violate any rights of other parties.</p>
         </div>
         <div class="span3" style="text-align: center;">
-          <a href='https://mapstruct.ci.cloudbees.com/'><img src='http://www.cloudbees.com/sites/default/files/Button-Built-on-CB-1.png' /></a>
-          <p><a href='https://mapstruct.ci.cloudbees.com/job/mapstruct-snapshot/'><img alt='Build Status' src='https://mapstruct.ci.cloudbees.com/job/mapstruct-snapshot/badge/icon' /></a></p>
+          <p><a href="https://mapstruct.ci.cloudbees.com/"><img src="http://www.cloudbees.com/sites/default/files/Button-Built-on-CB-1.png" /></a>
+          <a href="https://mapstruct.ci.cloudbees.com/job/mapstruct-snapshot/"><img src="https://mapstruct.ci.cloudbees.com/job/mapstruct-snapshot/badge/icon" alt="Build Status" /></a></p>
         </div>
       </div>
       <hr>
