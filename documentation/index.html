@@ -122,13 +122,13 @@
               </ul>
               
               <p>For Maven based projects add the following to your POM file in order to use MapStruct:</p>
-              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Alpha1&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.3&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
+              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Alpha2&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.3&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
               <h4 id="section-02-01">2.1 Configuration options</h4>
               <p>The MapStruct code generator can be configured using <em>annotation processor options</em>.</p>
               
               <p>When invoking javac directly, these options are passed to the compiler in the form <em>-Akey=value</em>. When using MapStruct via Maven, any processor options can be passed using an <code>options</code> element within the configuration of the Maven processor plug-in like this:</p>
-              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;plugin&gt;&#x000A;    &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;    &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;    &lt;configuration&gt;&#x000A;        &lt;processors&gt;&#x000A;            &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;        &lt;/processors&gt;&#x000A;        &lt;options&gt;&#x000A;            &lt;suppressGeneratorTimestamp&gt;true&lt;/suppressGeneratorTimestamp&gt;&#x000A;        &lt;/options&gt;&#x000A;        ...&#x000A;    &lt;/configuration&gt;&#x000A;    ...&#x000A;&lt;plugin&gt;&#x000A;...</pre>
-              <p>Currently the following options exist:</p>
+              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;plugin&gt;&#x000A;    &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;    &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;    &lt;configuration&gt;&#x000A;        &lt;processors&gt;&#x000A;            &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;        &lt;/processors&gt;&#x000A;        &lt;options&gt;&#x000A;            &lt;suppressGeneratorTimestamp&gt;true&lt;/suppressGeneratorTimestamp&gt;&#x000A;            &lt;defaultComponentModel&gt;cdi&lt;/defaultComponentModel&gt;&#x000A;        &lt;/options&gt;&#x000A;        ...&#x000A;    &lt;/configuration&gt;&#x000A;    ...&#x000A;&lt;plugin&gt;&#x000A;...</pre>
+              <p>The following options exist:</p>
               <table class="table">
                 <thead>
                   <tr>
@@ -141,7 +141,55 @@
                   <tr>
                     <td>suppressGeneratorTimestamp</td>
                     <td>Whether the creation of a time stamp in the generated mapper classes is suppressed or not</td>
-                    <td>false</td>
+                    <td>
+                      <p><code>false</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>defaultComponentModel</td>
+                    <td>
+                      <p>The name of the component model (see <a href="#section-04-2">section 4.2</a>) based on which mappers should be generated. Supported values are:</p>
+                      <ul>
+                        <li>
+                          <p><code>default</code>: the mapper uses no component model, instances are typically retrieved via <code>Mappers#getMapper(Class)</code></p>
+                        </li>
+                        <li>
+                          <p><code>cdi</code>: the generated mapper is an application-scoped CDI bean and can be retrieved via <code>@Inject</code></p>
+                        </li>
+                        <li>
+                          <p><code>spring</code>: the generated mapper is a singleton-scoped Spring bean and can be retrieved via <code>@Autowired</code></p>
+                        </li>
+                        <li>
+                          <p><code>jsr330</code>: the generated mapper is annotated with {@code @Named} and can be retrieved via <code>@Inject</code>, e.g. using Spring</p>
+                        </li>
+                      </ul>
+                      <p>If a component model is given for a specific mapper via <code>@Mapper#componentModel()</code>, the value from the annotation takes precedence.</p>
+                    </td>
+                    <td>
+                      <p><code>default</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>unmappedTargetPolicy</td>
+                    <td>
+                      <p>The default reporting policy to be applied in case an attribute of the target object of a mapping method is not populated with a source value.
+                      Supported values are:</p>
+                      <ul>
+                        <li>
+                          <p><code>ERROR</code>: any unmapped target property will cause the mapping code generation to fail</p>
+                        </li>
+                        <li>
+                          <p><code>WARN</code>: any unmapped target property will cause a warning at build time</p>
+                        </li>
+                        <li>
+                          <p><code>IGNORE</code>: unmapped target properties are ignored</p>
+                        </li>
+                      </ul>
+                      <p>If a policy is given for a specific mapper via <code>@Mapper#unmappedTargetPolicy()</code>, the value from the annotation takes precedence.</p>
+                    </td>
+                    <td>
+                      <p><code>WARN</code></p>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -150,6 +198,8 @@
           <div class="row">
             <div class="span9">
               <h3 id="section-03">3. Defining a mapper</h3>
+              <p>In this section you'll learn how to define a bean mapper with MapStruct and which options you have to do so.</p>
+              <h4 id="section-03-01">3.1 Basic mappings</h4>
               <p>To create a mapper simply define a Java interface with the required mapping method(s) and annotate it with the <code>org.mapstruct.Mapper</code> annotation:</p>
               <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    @Mappings({&#x000A;        @Mapping(source = &quot;make&quot;, target = &quot;manufacturer&quot;),&#x000A;        @Mapping(source = &quot;numberOfSeats&quot;, target = &quot;seatCount&quot;)&#x000A;    })&#x000A;    CarDto carToCarDto(Car car);&#x000A;&#x000A;    @Mapping(source = &quot;name&quot;, target = &quot;fullName&quot;)&#x000A;    PersonDto personToPersonDto(Person person);&#x000A;}</pre>
               <p>The <code>@Mapper</code> annotation causes the MapStruct code generator to create an implementation of the <code>CarMapper</code> interface during build-time.</p>
@@ -165,21 +215,42 @@
               <p>As the example shows the generated code takes into account any name mappings specified via <code>@Mapping</code>. If the type of a mapped attribute is different in source and target entity, MapStruct will either apply an automatic conversion (as e.g. for the <em>price</em> property, see also <a href="#section-05-01">Implicit type conversions</a>) or optionally invoke another mapping method (as e.g. for the <em>driver</em> property, see also <a href="#section-05-02">Mapping object references</a>).</p>
               
               <p>Collection-typed attributes with the same element type will be copied by creating a new instance of the target collection type containing the elements from the source property. For collection-typed attributes with different element types each element will mapped individually and added to the target collection (see <a href="#section-06">Mapping collections</a>).</p>
+              
+              <p>MapStruct takes all public properties of the source and target types into account. This includes properties declared on super-types.</p>
+              <h4 id="section-03-02">3.2 Mapping methods with several source parameters</h4>
+              <p>MapStruct also supports mapping methods with several source parameters. This is useful e.g. in order to combine several entities into one data transfer object. The following shows an example:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface AddressMapper {&#x000A;&#x000A;    @Mappings({&#x000A;        @Mapping(source = &quot;person.description&quot;, target = &quot;description&quot;),&#x000A;        @Mapping(source = &quot;houseNo&quot;, target = &quot;houseNumber&quot;)&#x000A;    })&#x000A;    DeliveryAddressDto personAndAddressToDeliveryAddressDto(Person person, Address address);&#x000A;}</pre>
+              <p>The shown mapping method takes two source parameters and returns a combined target object. As with single-parameter mapping methods properties are mapped by name.</p>
+              
+              <p>In case several source objects define a property with the same name, the source parameter from which to retrieve the property must be specified using the <code>@Mapping</code> annotation as shown for the <code>description</code> property in the example. An error will be raised when such an ambiguity is not resolved. For properties which only exist once in the given source objects it is optional to specify the source parameter's name as it can be determined automatically.</p>
+              <div class="alert alert-info">
+                <p><strong>Tip!</strong> Mapping methods with several source parameters will return <code>null</code> in case all the source parameters are <code>null</code>. Otherwise the target object will be instantiated and all properties from the provided parameters will be propagated.</p>
+              </div>
+              <h4 id="section-03-03">3.3 Updating existing bean instances</h4>
+              <p>In some cases you need mappings which don't create a new instance of the target type but instead update an existing instance of that type. This sort of mapping can be realized by adding a parameter for the target object and marking this parameter with <code>@MappingTarget</code>. The following shows an example:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    void updateCarFromDto(CarDto carDto, @MappingTarget Car car);&#x000A;}</pre>
+              <p>The generated code of the <code>updateCarFromDto</code> will upate the passed <code>Car</code> instance with the properties from the given <code>CarDto</code> object. There may be only one parameter marked as mapping target. Instead of <code>void</code> you also set the method's return type to the type of the target parameter, which will cause the generated implementation to update the passed mapping target and return it as well.</p>
             </div>
           </div>
           <div class="row">
             <div class="span9">
               <h3 id="section-04">4. Retrieving a mapper</h3>
-              <p>Mapper instances can be retrieved via the <code>org.mapstruct.Mappers</code> class. Just invoke the <code>getMapper()</code> method, passing the interface type of the mapper to return:</p>
+              <h4 id="section-04-01">4.1 The Mappers factory</h4>
+              <p>Mapper instances can be retrieved via the <code>org.mapstruct.factory.Mappers</code> class. Just invoke the <code>getMapper()</code> method, passing the interface type of the mapper to return:</p>
               <pre class="prettyprint lang-java linenums">CarMapper mapper = Mappers.getMapper( CarMapper.class );</pre>
               <p>By convention, a mapper interface should define a member called <code>INSTANCE</code> which holds a single instance of the mapper type:</p>
               <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarMapper INSTANCE = Mappers.getMapper( CarMapper.class );&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
               <p>This pattern makes it very easy for clients to use mapper objects without repeatedly instantiating new instances:</p>
               <pre class="prettyprint lang-java linenums">Car car = ...;&#x000A;CarDto dto = CarMapper.INSTANCE.carToCarDto( car );</pre>
               <p>Note that mappers generated by MapStruct are thread-safe and thus can safely be accessed from several threads at the same time.</p>
-              <div class="alert alert-info">
-                <p><strong>Tip!</strong> If you are working with a dependency injection solution such as CDI or Spring, you can also set up application/singleton scoped beans for your mapper objects, making them injectable into your application code. By default, the generated mapper classes have the same name as their interface, with the suffix <em>Impl</em> appended, e.g. <code>CarMapperImpl</code>.</p>
-              </div>
+              <h4 id="section-04-02">4.2 Using dependency injection</h4>
+              <p>If you're working with a dependency injection framework such as <a href="http://jcp.org/en/jsr/detail?id=346">CDI</a> (Contexts and Dependency Injection for Java<sup>TM</sup> EE) or the <a href="http://www.springsource.org/spring-framework">Spring Framework</a>, it is recommended to obtain mapper objects via dependency injection as well. For that purpose you can specify the component model which generated mapper classes should be based on either via <code>@Mapper#componentModel</code> or using a processor option as described in <a href="section-02-01">section</a>.</p>
+              
+              <p>Currently there is support for CDI and Spring (the later either via its custom annotations or using the JSR 330 annotations). See <a href="section-02-01">section</a> for the allowed values of the <code>componentModel</code> attribute which are the same as for the <code>defaultComponentModel</code> processor option. In both cases the required annotations will be added to the generated mapper implementations classes in order to make the same subject to dependency injection. The following shows an example using CDI:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper(componentModel = &quot;cdi&quot;)&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
+              <p>The generated mapper implementation will be marked with the <code>@ApplicationScoped</code> annotation and thus can be injected into fields, constructor arguments etc. using the <code>@Inject</code> annotation:</p>
+              <pre class="prettyprint lang-java linenums">@Inject&#x000A;private CarMapper mapper;</pre>
+              <p>A mapper which uses other mapper classes (see <a href="section-05-03">section</a>) will obtain these mappers using the configured component model. So if <code>CarMapper</code> from the previous example was using another mapper, this other mapper would have to be an injectable CDI bean as well.</p>
             </div>
           </div>
           <div class="row">
@@ -200,13 +271,12 @@
                   <p>Between all Java primitive data types and their corresponding wrapper types, e.g. between <code>int</code> and <code>Integer</code>, <code>boolean</code> and <code>Boolean</code> etc. The generated code is <code>null</code> aware, i.e. when converting a wrapper type into the corresponding primitive type a <code>null</code> check will performed.</p>
                 </li>
                 <li>
-                  <p>Between all Java primitive number types and the wrapper types, e.g. between <code>int</code> and <code>long</code> or <code>byte</code> and <code>Integer</code>.
-              &lt;p markdown="1"&gt;
-                <span class="label label-warning">Warning</span><span>&nbsp;Converting from larger data types to smaller ones (e.g. from <code>long</code> to <code>int</code>) can cause a value or precision loss. It <a href="https://github.com/mapstruct/mapstruct/issues/5">is planned</a> to provide an option for raising a warning in such cases in a future MapStruct version.</span></p>
+                  <p>Between all Java primitive number types and the wrapper types, e.g. between <code>int</code> and <code>long</code> or <code>byte</code> and <code>Integer</code>.</p>
                 </li>
               </ul>
-              <p>&lt;/p&gt;</p>
-              
+              <div class="alert alert-warn">
+                <p><strong>Note!</strong> Converting from larger data types to smaller ones (e.g. from <code>long</code> to <code>int</code>) can cause a value or precision loss. There <a href="https://github.com/mapstruct/mapstruct/issues/5">will be</a> an option for raising a warning in such cases in a future MapStruct version.</p>
+              </div>
               <ul>
                 <li>
                   <p>Between all Java primitive types (including their wrappers) and <code>String</code>, e.g. between <code>int</code> and <code>String</code> or <code>Boolean</code> and <code>String</code>.</p>
@@ -214,9 +284,14 @@
                 <li>
                   <p>Between <code>enum</code> types and <code>String</code>.</p>
                 </li>
+                <li>
+                  <p>Between big number types (<code>java.math.BigInteger</code>, <code>java.math.BigDecimal</code>) and Java primitive types (including their wrappers) as well as String</p>
+                </li>
+                <li>
+                  <p>Between <code>java.util.Date</code> and <code>String</code>. A format string as understood by <code>java.text.SimpleDateFormat</code> can be specified via the <code>dateFormat</code> option as this:</p>
+                </li>
               </ul>
-              
-              <p>More automatic conversions <a href="https://github.com/mapstruct/mapstruct/issues/26">will be</a> provided soon, e.g. for types such as <code>Date</code>, <code>Calendar</code> or <code>BigInteger</code>.</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;  @Mapping(source = &quot;manufacturingDate&quot;, dateFormat = &quot;dd.MM.yyyy&quot;)&#x000A;  CarDto carToCarDto(Car car);&#x000A;&#x000A;  @IterableMapping(dateFormat = &quot;dd.MM.yyyy&quot;)&#x000A;  List&lt;String&gt; stringListToDateList(List&lt;Date&gt; dates);&#x000A;}</pre>
               <h4 id="section-05-02">5.2 Mapping object references</h4>
               <p>Typically an object has not only primitive attributes but also references other objects. E.g. the <code>Car</code> class could contain a reference to a <code>Person</code> object (representing the car's driver) which should be mapped to a <code>PersonDto</code> object referenced by the <code>CarDto</code> class.</p>
               
@@ -239,22 +314,128 @@
               <p>For instance the <code>Car</code> class might contain an attribute <code>manufacturingDate</code> while the corresponding DTO attribute is of type String. In order to map this attribute, you could implement a mapper class like this:</p>
               <pre class="prettyprint lang-java linenums">public class DateMapper {&#x000A;&#x000A;    public String asString(Date date) {&#x000A;        return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )&#x000A;            .format( date ) : null;&#x000A;    }&#x000A;&#x000A;    public Date asDate(String date) {&#x000A;        try {&#x000A;            return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )&#x000A;                .parse( date ) : null;&#x000A;        }&#x000A;        catch ( ParseException e ) {&#x000A;            throw new RuntimeException( e );&#x000A;        }&#x000A;    }&#x000A;}</pre>
               <p>In the <code>@Mapper</code> annotation at the <code>CarMapper</code> interface reference the <code>DateMapper</code> class like this:</p>
-              <pre class="prettyprint lang-java linenums">@Mapper(uses=DateMapper.class)&#x000A;public class CarMapperMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
+              <pre class="prettyprint lang-java linenums">@Mapper(uses=DateMapper.class)&#x000A;public class CarMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
               <p>When generating code for the implementation of the <code>carToCarDto()</code> method, MapStruct will look for a method which maps a <code>Date</code> object into a String, find it on the <code>DateMapper</code> class and generate an invocation of <code>asString()</code> for mapping the <code>manufacturingDate</code> attribute.</p>
               
-              <p>Note that hand-written classes to be used by MapStruct generated mappers must declare a public no-args constructor in order to be instantiable by MapStruct.</p>
+              <p>Generated mappers retrieve referenced mappers using the component model configured for them. If e.g. CDI was used as component model for <code>CarMapper</code>, <code>DateMapper</code> would have to be a CDI bean as well. When using the default component model, any hand-written mapper classes to be referenced by MapStruct generated mappers must declare a public no-args constructor in order to be instantiable.</p>
             </div>
           </div>
           <div class="row">
             <div class="span9">
               <h3 id="section-06">6. Mapping collections</h3>
-              <p>In general, the mapping of collections (<code>List</code>, <code>Set</code> etc.) is done in the same way as mapping bean types, i.e. by defining mapping methods with the required source and target types in a mapper interface.</p>
+              <p>The mapping of collection types (<code>List</code>, <code>Set</code> etc.) is done in the same way as mapping bean types, i.e. by defining mapping methods with the required source and target types in a mapper interface. MapStruct supports a wide range of iterable types from the <a href="http://docs.oracle.com/javase/tutorial/collections/intro/index.html">Java Collection Framework</a>.</p>
               
-              <p>The following shows an example:</p>
-              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    List&lt;CarDto&gt; carsToCarDtos(List&lt;Car&gt; cars);&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
-              <p>The generated implementation of the <code>carsToCarDtos()</code> method invokes the <code>carToCarDto()</code> method for each contained element and adds it to the target collection as shown in the following:</p>
-              <pre class="prettyprint lang-java linenums">//GENERATED CODE&#x000A;@Override&#x000A;public List&lt;CarDto&gt; carsToCarDtos(List&lt;Car&gt; cars) {&#x000A;    if ( cars == null ) {&#x000A;        return null;&#x000A;    }&#x000A;&#x000A;    List&lt;CarDto&gt; list = new ArrayList&lt;CarDto&gt;();&#x000A;&#x000A;    for ( Car car : cars ) {&#x000A;        list.add( carToCarDto( car ) );&#x000A;    }&#x000A;&#x000A;    return list;&#x000A;}</pre>
-              <p>Note that MapStruct will for a collection mapping method with matching parameter and return type, when mapping a collection-typed attribute of a bean (e.g. <code>Car#passengers</code>).</p>
+              <p>The generated code will contain a loop which iterates over the source collection, converts each element and puts it into the target collection. If a mapping method for the collection element types is found in the given mapper or the mapper it uses, this method is invoked to perform the element conversion. Alternatively, if an implicit conversion for the source and target element types exists, this conversion routine will be invoked. The following shows an example:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    Set&lt;String&gt; integerSetToStringSet(Set&lt;Integer&gt; integers);&#x000A;&#x000A;    List&lt;CarDto&gt; carsToCarDtos(List&lt;Car&gt; cars);&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
+              <p>The generated implementation of the <code>integerSetToStringSet</code> performs the conversion from <code>Integer</code> to <code>String</code> for each element, while the generated <code>carsToCarDtos()</code> method invokes the <code>carToCarDto()</code> method for each contained element as shown in the following:</p>
+              <pre class="prettyprint lang-java linenums">//GENERATED CODE&#x000A;@Override&#x000A;public Set&lt;String&gt; integerSetToStringSet(Set&lt;Integer&gt; integers) {&#x000A;    if ( integers == null ) {&#x000A;        return null;&#x000A;    }&#x000A;&#x000A;    Set&lt;String&gt; set = new HashSet&lt;String&gt;();&#x000A;&#x000A;    for ( Integer integer : integers ) {&#x000A;        set.add( String.valueOf( integer ) );&#x000A;    }&#x000A;&#x000A;    return set;&#x000A;}&#x000A;&#x000A;@Override&#x000A;public List&lt;CarDto&gt; carsToCarDtos(List&lt;Car&gt; cars) {&#x000A;    if ( cars == null ) {&#x000A;        return null;&#x000A;    }&#x000A;&#x000A;    List&lt;CarDto&gt; list = new ArrayList&lt;CarDto&gt;();&#x000A;&#x000A;    for ( Car car : cars ) {&#x000A;        list.add( carToCarDto( car ) );&#x000A;    }&#x000A;&#x000A;    return list;&#x000A;}</pre>
+              <p>Note that MapStruct will look for a collection mapping method with matching parameter and return type, when mapping a collection-typed attribute of a bean, e.g. from <code>Car#passengers</code> (of type <code>List&lt;Person&gt;</code>) to <code>CarDto#passengers</code> (of type <code>List&lt;PersonDto&gt;</code>).</p>
+              <div class="alert alert-warn">
+                <p><strong>Note!</strong> It is not allowed to declare mapping methods with an iterable source and a non-iterable target or the other way around. An error will be raised when detecting this situation.</p>
+              </div>
+              <p>Also map-based mapping methods are supported. The following shows an example:</p>
+              <pre class="prettyprint lang-java linenums">public interface SourceTargetMapper {&#x000A;&#x000A;    @MapMapping(valueDateFormat = &quot;dd.MM.yyyy&quot;)&#x000A;    Map&lt;String, String&gt; longDateMapToStringStringMap(Map&lt;Long, Date&gt; source);&#x000A;}</pre>
+              <p>Similar to iterable mappings, the generated code will iterate through the source map, convert each value and key (either by means of an implicit conversion or by invoking another mapping method) and put them into the target map:</p>
+              <pre class="prettyprint lang-java linenums">//GENERATED CODE&#x000A;@Override&#x000A;public Map&lt;Long, Date&gt; stringStringMapToLongDateMap(Map&lt;String, String&gt; source) {&#x000A;    if ( source == null ) {&#x000A;        return null;&#x000A;    }&#x000A;&#x000A;    Map&lt;Long, Date&gt; map = new HashMap&lt;Long, Date&gt;();&#x000A;&#x000A;    for ( Map.Entry&lt;String, String&gt; entry : source.entrySet() ) {&#x000A;&#x000A;        Long key = Long.parseLong( entry.getKey() );&#x000A;        Date value;&#x000A;        try {&#x000A;            value = new SimpleDateFormat( &quot;dd.MM.yyyy&quot; ).parse( entry.getValue() );&#x000A;        }&#x000A;        catch( ParseException e ) {&#x000A;            throw new RuntimeException( e );&#x000A;        }&#x000A;&#x000A;        map.put( key, value );&#x000A;    }&#x000A;&#x000A;    return map;&#x000A;}</pre>
+              <p>When an iterable or map mapping method declares an interface type as return type, one of its implementation types will be instantiated in the generated code. The following table shows the supported interface types and their corresponding implementation types as instantiated in the generated code:</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Interface type</th>
+                    <th>Implementation type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p><code>Iterable</code></p>
+                    </td>
+                    <td>
+                      <p><code>ArrayList</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>Collection</code></p>
+                    </td>
+                    <td>
+                      <p><code>ArrayList</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>List</code></p>
+                    </td>
+                    <td>
+                      <p><code>ArrayList</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>Set</code></p>
+                    </td>
+                    <td>
+                      <p><code>HashSet</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>SortedSet</code></p>
+                    </td>
+                    <td>
+                      <p><code>TreeSet</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>NavigableSet</code></p>
+                    </td>
+                    <td>
+                      <p><code>TreeSet</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>Map</code></p>
+                    </td>
+                    <td>
+                      <p><code>HashMap</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>SortedMap</code></p>
+                    </td>
+                    <td>
+                      <p><code>TreeMap</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>NavigableMap</code></p>
+                    </td>
+                    <td>
+                      <p><code>TreeMap</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>ConcurrentMap</code></p>
+                    </td>
+                    <td>
+                      <p><code>ConcurrentHashMap</code></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>ConcurrentNavigableMap</code></p>
+                    </td>
+                    <td>
+                      <p><code>ConcurrentSkipListMap</code></p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="row">
