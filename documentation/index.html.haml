@@ -334,7 +334,9 @@ layout: base
               }
 
         :markdown
-          The generated code of the `updateCarFromDto` will upate the passed `Car` instance with the properties from the given `CarDto` object. There may be only one parameter marked as mapping target. Instead of `void` you also set the method's return type to the type of the target parameter, which will cause the generated implementation to update the passed mapping target and return it as well.
+          The generated code of the `updateCarFromDto()` method will upate the passed `Car` instance with the properties from the given `CarDto` object. There may be only one parameter marked as mapping target. Instead of `void` you may also set the method's return type to the type of the target parameter, which will cause the generated implementation to update the passed mapping target and return it as well. This allows for fluent invocations of mapping methods.
+
+          Collection- or map-typed properties of the target bean to be updated will be cleared and then populated with the values from the corresponding source collection or map.
 
     .row
       .span9
@@ -435,7 +437,11 @@ layout: base
 
           * Between big number types (`java.math.BigInteger`, `java.math.BigDecimal`) and Java primitive types (including their wrappers) as well as String
 
-          * Between `java.util.Date` and `String`. A format string as understood by `java.text.SimpleDateFormat` can be specified via the `dateFormat` option as this:
+          * Between `JAXBElement<T>` and `T`, `List<JAXBElement<T>>` and `List<T>`
+
+          * Between `java.util.Calendar`/`java.util.Date` and JAXB's `XMLGregorianCalendar`
+
+          * Between `java.util.Date`/`XMLGregorianCalendar` and `String`. A format string as understood by `java.text.SimpleDateFormat` can be specified via the `dateFormat` option as this:
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -587,9 +593,28 @@ layout: base
         :markdown
           Note that MapStruct will look for a collection mapping method with matching parameter and return type, when mapping a collection-typed attribute of a bean, e.g. from `Car#passengers` (of type `List<Person>`) to `CarDto#passengers` (of type `List<PersonDto>`).
 
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              //GENERATED CODE
+              carDto.setPassengers( personsToPersonDtos( car.getPassengers() ) );
+              ...
+
+        :markdown
+          Some frameworks and libraries only expose JavaBeans getters but no setters for collection-typed properties. Types generated from an XML schema using JAXB adhere to this pattern by default. In this case the generated code for mapping such a property invokes its getter and adds all the mapped elements:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              //GENERATED CODE
+              carDto.getPassengers().addAll( personsToPersonDtos( car.getPassengers() ) );
+              ...
+
         .alert.alert-warn
           :markdown
             **Note!** It is not allowed to declare mapping methods with an iterable source and a non-iterable target or the other way around. An error will be raised when detecting this situation.
+
+        %h4#section-06-01 6.1 Mapping maps
 
         :markdown
           Also map-based mapping methods are supported. The following shows an example:
@@ -634,6 +659,8 @@ layout: base
 
                   return map;
               }
+
+        %h4#section-06-02 6.2 Implementation types used for collection mappings
 
         :markdown
           When an iterable or map mapping method declares an interface type as return type, one of its implementation types will be instantiated in the generated code. The following table shows the supported interface types and their corresponding implementation types as instantiated in the generated code:
@@ -724,7 +751,78 @@ layout: base
 
     .row
       .span9
-        %h3#section-07 7. Reverse mappings
+        %h3#section-07 7. Mapping enum types
+
+        :markdown
+          MapStruct supports the generation of methods which map one Java enum type into another.
+
+          By default, each constant from the source enum is mapped to a constant with the same name in the target enum type. If required, a constant from the source enum may be mapped to a constant with another name with help of the `@Mapping` annotation. Several constants from the source enum can be mapped to the same constant in the target type.
+
+          The following shows an example:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper
+              public interface OrderMapper {
+
+                  OrderMapper INSTANCE = Mappers.getMapper( OrderMapper.class );
+
+                  @Mappings({
+                      @Mapping(source = "EXTRA", target = "SPECIAL"),
+                      @Mapping(source = "STANDARD", target = "DEFAULT"),
+                      @Mapping(source = "NORMAL", target = "DEFAULT")
+                  })
+                  ExternalOrderType orderTypeToExternalOrderType(OrderType orderType);
+              }
+
+        :markdown
+          Note that an error will be raised by MapStruct in case a constant of the source enum type does not have a corresponding constant with the same name in the target type and also is not mapped to another constant via `@Mapping`. This ensures that all constants are mapped in a safe and predictable manner.
+
+    .row
+      .span9
+        %h3#section-08 8. Object factories
+
+        :markdown
+          By default, the generated code for mapping one bean type into another will call the default constructor to instantiate the target type.
+
+          Alternatively you can plug in custom object factories which will be invoked to obtain instances of the target type. One use case for this is JAXB which creates `ObjectFactory` classes for obtaining new instances of schema types.
+
+          To do make use of custom factories register them via `@Mapper#uses()` as described in [section 5.3](#section-05-3). When creating the target object of a bean mapping, MapStruct will look for a parameterless method which returns the required target type and invoke this method instead of calling the default constructor:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper(uses=ObjectFactory.class) // ObjectFactory provides a method createCar()
+              public interface CarMapper {
+
+                  OrderMapper INSTANCE = Mappers.getMapper( CarMapper.class );
+
+                  Car carEntityToCarDto(CarEntity carEntity);
+              }
+
+              //GENERATED CODE
+              public class CarMapperImpl implements CarMapper {
+
+                  private final ObjectFactory objectFactory = new ObjectFactory();
+
+                  @Override
+                  public Car carEntityToCarDto(CarEntity carEntity) {
+                      if ( carEntity == null ) {
+                          return null;
+                      }
+
+                      Car car = objectFactory.createCar();
+
+                      //map properties...
+
+                      return car;
+                  }
+              }
+
+    .row
+      .span9
+        %h3#section-09 9. Reverse mappings
 
         :markdown
           In some cases bi-directional mappings are required, e.g. from entity to DTO and from DTO to entity. For this purpose, simply declare a method with the required parameter and return type on the mapping interface which also declares the forward mapping method:
@@ -761,7 +859,11 @@ layout: base
         %li
           %a{ :href=>"#section-06" } Mapping collections
         %li
-          %a{ :href=>"#section-07" } Reverse mappings
+          %a{ :href=>"#section-07" } Mapping enum types
+        %li
+          %a{ :href=>"#section-08" } Object factories
+        %li
+          %a{ :href=>"#section-09" } Reverse mappings
 
     :javascript
       (function(jQuery){
