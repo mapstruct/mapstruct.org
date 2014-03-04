@@ -531,6 +531,17 @@ layout: base
 
           Generated mappers retrieve referenced mappers using the component model configured for them. If e.g. CDI was used as component model for `CarMapper`, `DateMapper` would have to be a CDI bean as well. When using the default component model, any hand-written mapper classes to be referenced by MapStruct generated mappers must declare a public no-args constructor in order to be instantiable.
 
+        %h4#section-05-04 5.4 Mapping method resolution
+
+        :markdown
+          When mapping a property from one type to another, MapStruct looks for the most specific method which maps the source type into the target type. The method may either be declared on the same mapper interface or on another mapper which is registered via `@Mapper#uses()`. The same applies for factory methods (see [section 8](#section-08)).
+
+          The algorithm for finding a mapping or factory method resembles Java's method resolution algorithm as much as possible. In particular, methods with a more specific source type will take precedence (e.g. if there are two methods, one which maps the searched source type, and another one which maps a super-type of the same). In case more than one most-specific method is found, an error will be raised.
+
+        .alert.alert-info
+          :markdown
+            **Tip!** When working with JAXB, e.g. when converting a `String` to a corresponding `JAXBElement<String>`, MapStruct will take the `scope` and `name` attributes of `@XmlElementDecl` annotations into account when looking for a mapping method. This makes sure that the created `JAXBElement` instances will have the right QNAME value. You can find a test which maps JAXB objects [here](https://github.com/mapstruct/mapstruct/blob/1.0.0.Beta1/integrationtest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java).
+
     .row
       .span9
         %h3#section-06 6. Mapping collections
