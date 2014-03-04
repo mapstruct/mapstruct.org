@@ -822,7 +822,62 @@ layout: base
 
     .row
       .span9
-        %h3#section-09 9. Reverse mappings
+        %h3#section-09 09. Customizing mappings using decorators
+
+        :markdown
+          In certain cases it may be required to customize a generated mapping method, e.g. to set an additional property in the target object which can't be set by a generated method implementation. MapStruct supports this requirement using decorators.
+
+        .alert.alert-warn
+          :markdown
+            **Note!** Decorators are an experimental feature as of the 1.0.0.Beta1 release. They are only supported for the default component model, not when working with the CDI or Spring models.
+
+        :markdown
+          To apply a decorator to a mapper class specify it using the `@DecoratedWith` annotation:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper
+              @DecoratedWith(PersonMapperDecorator.class)
+              public interface PersonMapper {
+
+                  PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );
+
+                  PersonDto personToPersonDto(Person person);
+
+                  AddressDto addressToAddressDto(Address address);
+              }
+
+        :markdown
+          The decorator must be a sub-type of the decorated mapper type. You can make it an abstract class which allows to only implement those methods of the mapper interface which you want to customize. All non-implemented methods will be generated using the default generation routine.
+
+          The `PersonMapperDecorator` shown below customizes the `personToPersonDto()`. It sets an additional attribute which is not present in the source type of the mapping. The `addressToAddressDto()` method is not customized.
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              public abstract class PersonMapperDecorator implements PersonMapper {
+
+                  private final PersonMapper delegate;
+
+                  public PersonMapperDecorator(PersonMapper delegate) {
+                      this.delegate = delegate;
+                  }
+
+                  @Override
+                  public PersonDto personToPersonDto(Person person) {
+                      PersonDto dto = delegate.personToPersonDto( person );
+                      dto.setFullName( person.getFirstName() + " " + person.getLastName() );
+                      return dto;
+                  }
+              }
+
+        :markdown
+          As shown in the example, you can optionally inject a delegate with the generated default implementations and use this delegate in your customized decorator methods. To do so, define a constructor with a single parameter which accepts the type of the decorated mapper.
+
+    .row
+      .span9
+        %h3#section-10 10. Reverse mappings
 
         :markdown
           In some cases bi-directional mappings are required, e.g. from entity to DTO and from DTO to entity. For this purpose, simply declare a method with the required parameter and return type on the mapping interface which also declares the forward mapping method:
@@ -863,7 +918,9 @@ layout: base
         %li
           %a{ :href=>"#section-08" } Object factories
         %li
-          %a{ :href=>"#section-09" } Reverse mappings
+          %a{ :href=>"#section-09" } Decorators
+        %li
+          %a{ :href=>"#section-10" } Reverse mappings
 
     :javascript
       (function(jQuery){
