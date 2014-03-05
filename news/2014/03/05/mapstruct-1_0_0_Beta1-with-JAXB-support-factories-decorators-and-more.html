@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more - MapStruct
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <script src="http://mapstruct.org/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-scrollspy.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-affix.js" type="text/javascript"></script>
+    <link href="http://mapstruct.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.ie.css" rel="stylesheet" type="text/css">
+    <![endif]-->
+    <link href="http://mapstruct.org/stylesheets/prettify.css" rel="stylesheet" type="text/css">
+    <script src="http://mapstruct.org/javascripts/prettify.js" type="text/javascript"></script>
+    <script>
+      (function(jQuery){
+        jQuery( document ).ready( function() {
+          prettyPrint();
+        } );
+      }(jQuery))
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="hidden-phone pull-right" style="padding-top: 11px; margin-right: 120px;">
+        <div class="g-plusone" data-size="medium"></div>
+        <script>
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+      </div>
+      <div class="hidden-phone github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+          <a href="https://github.com/mapstruct/mapstruct">Fork me on GitHub</a>
+        </div>
+      </div>
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">MapStruct</a>
+          <ul class="nav">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/news">News</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/documentation">Documentation</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/download">Download</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/getting-help">Getting help</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/contributing">Development</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="post-header">
+            <h1>
+              MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more
+            </h1>
+            <h5>
+              Gunnar Morling, 05 March 2014, Tags:
+              <a href="/news/tags/release/">
+                release
+              </a>
+              <a href="/news/tags/news/">
+                news
+              </a>
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          
+          <p>The MapStruct team is very happy to announce the release of MapStruct 1.0.0.Beta1.</p>
+          
+          <p>One core part of the new release is comprehensive support for mapping JAXB types with <code>JAXBElement</code> and <code>XmlGregorianCalendar</code> attributes. It's possible now to plug in custom factories for creating objects, which also supports the JAXB use case as we'll see in a minute. Further new features are the support for creating mappers from abstract classes (instead of interfaces) and decorators for customizing the behavior of mapping methods.</p>
+          
+          <p>The JARs should be synched to Maven Central soon. The coordinates are:</p>
+          
+          <ul>
+            <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct&#124;1.0.0.Beta1&#124;jar">org.mapstruct:mapstruct:1.0.0.Beta1</a> for the annotation JAR and </li>
+            <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-processor&#124;1.0.0.Beta1&#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Beta1</a> for the annotation processor.</li>
+          </ul>
+          
+          <p>Alternatively you can download a <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta1/">distribution bundle</a> which contains everything required.</p>
+          
+          <p>Before diving into some of the new features, let me say a huge thank you to <a href="https://github.com/sjaakd/">Sjaak Derksen</a> and <a href="https://github.com/agudian">Andreas Gudian</a> who heavily contributed to this release. That's much appreciated! Also a big thanks to everyone else who opened feature requests or joined the discussion.</p>
+          
+          <h3 id="jaxb-support">JAXB support</h3>
+          
+          <p>When working with SOAP or REST based web services it's a common requirement to map between the internal model of the application an JAXB types used in the web service layer. MapStruct facilitates this use case by providing out-of-the-box support for the following type conversions:</p>
+          
+          <ul>
+            <li><code>java.util.Date</code> &lt;&gt; <code>XMLGregorianCalendar</code></li>
+            <li><code>String</code> &lt;&gt; <code>XMLGregorianCalendar</code>, optionally applying a format pattern</li>
+            <li><code>JAXBElement&lt;T&gt;</code> &lt;&gt; <code>&lt;T&gt;</code>, e.g. <code>JAXBElement&lt;Integer&gt;</code> &lt;&gt; <code>&lt;Integer&gt;</code></li>
+          </ul>
+          
+          <p>If you generate JAXB types from an XML schema using <a href="https://jaxb.java.net/2.2.4/docs/xjc.html">xjc</a>, you'll typically obtain one or more <code>ObjectFactory</code> classes with methods for instantiating <code>JAXBElement</code>s. You can plug in these factories via the <code>uses()</code> attribute of the <code>@Mapper</code> annotation:</p>
+          
+          <pre class="prettyprint linenums">&#x000A;@Mapper(uses = ObjectFactory.class)&#x000A;public interface OrderMapper {&#x000A;&#x000A;    Order orderEntityToExternalOrder(OrderEntity orderEntity);&#x000A;}</pre>
+          
+          <p>Here, the generated implementation of the <code>orderEntityToExternalOrder()</code> will invoke the corresponding methods of the factory class when populating the attributes of the target object. When selecting a method, MapStruct will also take the <code>@XmlElementDecl</code> annotation and its <code>name</code> and <code>scope</code> attributes into account. That way it is ensured that the resulting <code>JAXBElement</code> attributes have the right QNAME.</p>
+          
+          <h3 id="custom-object-factories-and-generic-mapping-methods">Custom object factories and generic mapping methods</h3>
+          
+          <p>It's now possible to plug in custom factories for the instantiation of objects. MapStruct considers any method with a return type but no parameters as factory method. If such a method is present for a given mapping target type, the value will be obtained by invoking that method instead of instantiating the target type via <code>new</code>.</p>
+          
+          <p>Both, mapping and factory methods can optionally receive the expected target type through a specifically marked parameter. This allows for powerful generic mapping methods, e.g. for loading referenced entities when mapping from a DTO (data transfer object) model to an entity model. The following shows an example:</p>
+          
+          <pre class="prettyprint linenums">&#x000A;public class OrderDto {&#x000A;&#x000A;    private long customerId;&#x000A;    // getters, setters...&#x000A;}&#x000A;&#x000A;public class OrderEntity {&#x000A;&#x000A;    private CustomerEntity customer;&#x000A;    // getters, setters...&#x000A;}&#x000A;&#x000A;// A manually implemented repository for loading entities&#x000A;public class CustomerRepository {&#x000A;&#x000A;    public &lt;T&gt; T loadById(long id, @TargetType Class&lt;T&gt; entityType) {&#x000A;        // load entity by id...&#x000A;    }&#x000A;}&#x000A;&#x000A;@Mapper(uses = CustomerRepository.class)&#x000A;public interface OrderMapper {&#x000A;&#x000A;    @Mapping(source = "customerId", target = "customer")&#x000A;    OrderEntity orderDtoToOrderEntity(OrderDto orderDto);&#x000A;}</pre>
+          
+          <p>When generating an implementation of the <code>orderDtoToOrderEntity()</code> method, MapStruct will apply the hand-written <code>loadById()</code> method of the repository class to map the customer id in <code>OrderDto</code> to the corresponding customer entity referenced by the resulting order entity. By annotating a parameter with <code>@TargetType</code>, you advice MapStruct to pass the expected target type via that parameter. This type can then be used for instance to load the right entity via JPA/Hibernate.</p>
+          
+          <h3 id="customizing-mapping-logic-using-decorators">Customizing mapping logic using decorators</h3>
+          
+          <p>You can now utilize the <a href="https://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a> to customize generated mapping routines. A common use case is to set additional attributes in the target object of a mapping. E.g. let's assume you want to customize the behavior of the <code>personToPersonDto()</code> method of the following mapper:</p>
+          
+          <pre class="prettyprint linenums">&#x000A;@Mapper&#x000A;@DecoratedWith(PersonMapperDecorator.class)&#x000A;public interface PersonMapper {&#x000A;&#x000A;    PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );&#x000A;&#x000A;    PersonDto personToPersonDto(Person person);&#x000A;&#x000A;    AddressDto addressToAddressDto(Address address);&#x000A;}</pre>
+          
+          <p>The decorator must be a sub-type of the mapper type must and needs to be registered using the <code>@DecoratedWith</code> annotation. It's often useful to declare it as an abstract class which allows to implement only those methods which you want to customize:</p>
+          
+          <pre class="prettyprint linenums">&#x000A;public abstract class PersonMapperDecorator implements PersonMapper {&#x000A;&#x000A;    private final PersonMapper delegate;&#x000A;&#x000A;    public PersonMapperDecorator(PersonMapper delegate) {&#x000A;        this.delegate = delegate;&#x000A;    }&#x000A;&#x000A;    @Override&#x000A;    public PersonDto personToPersonDto(Person person) {&#x000A;        PersonDto dto = delegate.personToPersonDto( person );&#x000A;        dto.setFullName( person.getFirstName() + " " + person.getLastName() );&#x000A;        return dto;&#x000A;    }&#x000A;}</pre>
+          
+          <p>As shown in the example, you can optionally declare a constructor which receives a delegate with the generated mapper implementation. This delegate can be used in the decorator methods to invoke the default mapping routine and then amend the result object. All methods not implemented by the decorator class will just be routed through to the delegate.</p>
+          
+          <p>Note that the delegate feature is experimental as of this release and may change in future versions. Also it's subject to some limitations for the time being, e.g. only a single decorator can be applied (a decorator chain will be possible in the future) and it is only supported for the default component model but not when using the CDI and Spring component models.</p>
+          
+          <h3 id="what-else-is-in-it">What else is in it?</h3>
+          
+          <p>The Beta1 release comes with some more features which you may find helpful.</p>
+          
+          <p>You can now generate mappers from abstract classes (instead of interfaces) which is useful if you want to provide some manually implemented mapping methods. MapStruct also can generate now mapping methods between different <a href="/documentation/#section-07">enum types</a>. The complete change log is available <a href="https://github.com/mapstruct/mapstruct/issues?milestone=3&amp;state=closed">here</a>. Be sure to check out the <a href="/documentation">reference documentation</a> to learn more about all the new functionality.</p>
+          
+          <p>As always any feedback is highly welcome. Just add a comment below or join the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a> and your pull request on GitHub is always welcome. The <a href="/contributing">development guide</a> has also been updated and provides all the info you need to get started with hacking on MapStruct.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <a href="/news/2013/11/28/mapstruct-1_0_0_Alpha2-has-landed.html">Previous</a>
+        </div>
+        <div class="span4" style="text-align: center;">
+          <a href="http://mapstruct.org/news">All news</a>
+        </div>
+        <div class="span4" style="text-align: right;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <hr>
+          
+                      <div id="disqus_thread"></div>
+                      <script type="text/javascript">
+                      var disqus_shortname = 'mapstruct';
+                      var disqus_url = "http://mapstruct.org/news/2014/03/05/mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more.html";
+                      var disqus_developer = null;
+                      var disqus_identifier = "5fb8151866c23d9ee28e6bfb001908b2ea702ef1";
+                      (function() {
+                        var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                        dsq.src = "http://mapstruct.disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                      })();
+                      </script>
+                      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=mapstruct">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Gunnar Morling 2014</p>
+      </footer>
+    </div>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount','UA-41136939-1']);
+    _gaq.push(['_gat._anonymizeIp']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </body>
+</html>
