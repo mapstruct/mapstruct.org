@@ -531,7 +531,66 @@ layout: base
 
           Generated mappers retrieve referenced mappers using the component model configured for them. If e.g. CDI was used as component model for `CarMapper`, `DateMapper` would have to be a CDI bean as well. When using the default component model, any hand-written mapper classes to be referenced by MapStruct generated mappers must declare a public no-args constructor in order to be instantiable.
 
-        %h4#section-05-04 5.4 Mapping method resolution
+        %h4#section-05-04 5.4 Passing the mapping target type to custom mappers
+
+        :markdown
+          When having a custom mapper hooked into the generated mapper with `@Mapper.uses()`, an additional parameter of type `Class` (or a super-type of it) can be defined in the custom mapping method in order to perform general mapping tasks for specific target object types. That attribute must be annotated with `@TargetType` for MapStruct to generate calls that pass the `Class` instance representing the corresponding bean property type.
+
+          For instance, the CarDto could have a property `owner` of type `Reference` that contains the primary key of a `Person` entity. You could now create a generic custom mapper that resolves any `Reference` objects to their managed JPA entity instances.
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @ApplicationScoped // CDI component model
+              public class ReferenceMapper {
+
+                  @PersistenceContext
+                  private EntityManager entityManager;
+
+                  public <T extends BaseEntity> T resolve(Reference reference, @TargetType Class<T> entityClass) {
+                      return reference != null ? entityManager.find( entityClass, reference.getPk() ) : null;
+                  }
+
+                  public Reference toReference(BaseEntity entity) {
+                      return entity != null ? new Reference( entity.getPk() ) : null;
+                  }
+              }
+
+              @Mapper(componentModel = "cdi", uses = ReferenceMapper.class )
+              public interface CarMapper {
+
+                  Car carDtoToCar(CarDto carDto);
+              }
+
+        :markdown
+          MapStruct will then generate something like this:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              //GENERATED CODE
+              @ApplicationScoped
+              public class CarMapperImpl implements CarMapper {
+
+                  @Inject
+                  private ReferenceMapper referenceMapper;
+
+                  @Override
+                  public Car carDtoToCar(CarDto carDto) {
+                      if ( carDto == null ) {
+                          return null;
+                      }
+
+                      Car car = new Car();
+
+                      car.setOwner( referenceMapper.resolve( carDto.getOwner(), Owner.class ) );
+                      // ...
+
+                      return car;
+                  }
+              }
+
+        %h4#section-05-05 5.5 Mapping method resolution
 
         :markdown
           When mapping a property from one type to another, MapStruct looks for the most specific method which maps the source type into the target type. The method may either be declared on the same mapper interface or on another mapper which is registered via `@Mapper#uses()`. The same applies for factory methods (see [section 8](#section-08)).
@@ -799,31 +858,62 @@ layout: base
 
           Alternatively you can plug in custom object factories which will be invoked to obtain instances of the target type. One use case for this is JAXB which creates `ObjectFactory` classes for obtaining new instances of schema types.
 
-          To do make use of custom factories register them via `@Mapper#uses()` as described in [section 5.3](#section-05-3). When creating the target object of a bean mapping, MapStruct will look for a parameterless method which returns the required target type and invoke this method instead of calling the default constructor:
+          To do make use of custom factories register them via `@Mapper#uses()` as described in [section 5.3](#section-05-3). When creating the target object of a bean mapping, MapStruct will look for a parameterless method, or a method with only one `@TargetType` parameter that returns the required target type and invoke this method instead of calling the default constructor:
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
-              @Mapper(uses=ObjectFactory.class) // ObjectFactory provides a method createCar()
+              public class DtoFactory {
+
+                   public CarDto createCarDto() {
+                       return // ... custom factory logic
+                   }
+              }
+
+              public class EntityFactory {
+
+                   public <T extends BaseEntity> T createEntity(@TargetType Class<T> entityClass) {
+                       return // ... custom factory logic
+                   }
+              }
+            
+              @Mapper(uses= { DtoFactory.class, EntityFactory.class } )
               public interface CarMapper {
 
                   OrderMapper INSTANCE = Mappers.getMapper( CarMapper.class );
 
-                  Car carEntityToCarDto(CarEntity carEntity);
+                  CarDto carToCarDto(Car car);
+
+                  Car carDtoToCar(CarDto carDto);
               }
 
               //GENERATED CODE
               public class CarMapperImpl implements CarMapper {
 
-                  private final ObjectFactory objectFactory = new ObjectFactory();
+                  private final DtoFactory dtoFactory = new DtoFactory();
+
+                  private final EntityFactory entityFactory = new EntityFactory();
 
                   @Override
-                  public Car carEntityToCarDto(CarEntity carEntity) {
-                      if ( carEntity == null ) {
+                  public CarDto carToCarDto(Car car) {
+                      if ( car == null ) {
                           return null;
                       }
 
-                      Car car = objectFactory.createCar();
+                      CarDto carDto = dtoFactory.createCarDto();
+
+                      //map properties...
+
+                      return carDto;
+                  }
+
+                  @Override
+                  public Car carDtoToCar(CarDto carDto) {
+                      if ( carDto == null ) {
+                          return null;
+                      }
+
+                      Car car = entityFactory.createEntity( Car.class );
 
                       //map properties...
 
@@ -833,7 +923,7 @@ layout: base
 
     .row
       .span9
-        %h3#section-09 09. Customizing mappings using decorators
+        %h3#section-09 9. Customizing mappings using decorators
 
         :markdown
           In certain cases it may be required to customize a generated mapping method, e.g. to set an additional property in the target object which can't be set by a generated method implementation. MapStruct supports this requirement using decorators.
