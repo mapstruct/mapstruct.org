@@ -534,9 +534,9 @@ layout: base
         %h4#section-05-04 5.4 Passing the mapping target type to custom mappers
 
         :markdown
-          When having a custom mapper hooked into the generated mapper with `@Mapper.uses()`, an additional parameter of type `Class` (or a super-type of it) can be defined in the custom mapping method in order to perform general mapping tasks for specific target object types. That attribute must be annotated with `@TargetType` for MapStruct to generate calls that pass the `Class` instance representing the corresponding bean property type.
+          When having a custom mapper hooked into the generated mapper with `@Mapper#uses()`, an additional parameter of type `Class` (or a super-type of it) can be defined in the custom mapping method in order to perform general mapping tasks for specific target object types. That attribute must be annotated with `@TargetType` for MapStruct to generate calls that pass the `Class` instance representing the corresponding property type of the target bean.
 
-          For instance, the CarDto could have a property `owner` of type `Reference` that contains the primary key of a `Person` entity. You could now create a generic custom mapper that resolves any `Reference` objects to their managed JPA entity instances.
+          For instance, the `CarDto` could have a property `owner` of type `Reference` that contains the primary key of a `Person` entity. You could now create a generic custom mapper that resolves any `Reference` objects to their corresponding managed JPA entity instances.
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
