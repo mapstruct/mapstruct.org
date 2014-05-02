@@ -84,12 +84,32 @@ layout: base
       If you have any questions don't hesitate [to ask](https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users), we here to help!
 
     %h3#section-04 4. Updating mapstruct.org
-
+	
     :markdown
       This web site ([mapstruct.org/](http://mapstruct.org)) is created using the fantastic [awestruct](http://awestruct.org/) tool. To update the web site fork the [mapstruct.org repo](http://github.com/mapstruct/mapstruct.org) and create a pull request with your changes.
 
       The individual pages are written in [Haml](http://haml.info/) and [Markdown](http://daringfireball.net/projects/markdown/) and converted into HTML by awestruct. Building the site requires Ruby 1.9.x to be installed on your system. You also need to install the gems _awestruct_ and _maruku_:
 
+    %h3#section-05 5. IDE integration
+
+    %h4 5.1 IntelliJ IDEA 
+
+    :markdown
+      After you´ve cloned mapstruct you can import it by selecting "File -> Import Module ..." and then selecting the top level aggregator _pom.xml_ file located in the root folder. IDEA then will load mapstruct, resolve all dependencies and compile the source.
+
+      You might face an error on IDEAs Message tab saying
+
+      <img src="/images/idea-processor-error.png" style="padding-bottom: 3px;"/>
+
+      If so, open the preferences window, navigate to Compiler -> Annotation processor and untick checkbox "Enable annotation processing" at "Annotation profile for mapstruct-integrationtest".
+
+      <img src="/images/idea-annotation-conf.png" style="padding-bottom: 3px;"/>
+
+       You should now be able to rebuild mapstruct.
+       
+       For running mapstruct unit tests from IDEA open the "Run/Debug Configurations" preferences, expand "Default" on the left side and navigate to "JUnit". There choose $MODULE_DIR$ as the working directory and you should now be able to run JUnit tests from IDEA.
+       
+       <img src="/images/idea-unittest-conf.png" style="padding-bottom: 3px;"/>
     %pre.prettyprint.linenums
       = preserve do
         :escaped
@@ -107,7 +127,7 @@ layout: base
     :markdown
       The web site can then be acessed at [http://localhost:4242](http://localhost:4242).
 
-    %h3#section-05 5. License
+    %h3#section-06 6. License
 
     :markdown
       MapStruct is distributed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html). By submitting a pull request you agree to license your work under that license and you affirm that your contribution doesn't violate any rights of other parties.
@@ -125,7 +145,9 @@ layout: base
         %li
           %a{ :href=>"#section-04" } Updating mapstruct.org
         %li
-          %a{ :href=>"#section-05" } License
+          %a{ :href=>"#section-05" } IDE integration
+        %li
+          %a{ :href=>"#section-06" } License
 
       %span{ :style=>"text-align: center"}
         :markdown
