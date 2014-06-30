@@ -17,13 +17,17 @@ layout: base
 
       <table class="table">
         <tr>
-          <td width="20%"><img src="http://www.gravatar.com/avatar/cbe8a9133ef3337eb267252a06f649bf?s=100" /></td><td><b>Andreas Gudian</b></td>
-        </tr>
-        <tr>
           <td width="20%"><img src="http://www.gravatar.com/avatar/8e25c0ca4bf25113bd9c0ccc5d118164?s=100" /></td>
           <td>
             <p><b>Gunnar Morling</b> is the original author of MapStruct and leads the project.</p>
             <p>He is a long-time Java developer and open-source committer. He is part of the <a href="www.hibernate.org">Hibernate</a> team at <a href="www.redhat.com">Red Hat</a>, where he works on Hibernate OGM, Validator and Search. You can follow him on <a href="https://plus.google.com/+GunnarMorling/">Google+</a> and <a href="https://twitter.com/GunnarMorling">Twitter</a> or check out his <a href="http://www.gunnarmorling.de/">blog</a>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td width="20%"><img src="http://www.gravatar.com/avatar/cbe8a9133ef3337eb267252a06f649bf?s=100" /></td>
+          <td>
+            <p><b>Andreas Gudian</b> was the first committer to join Gunnar in his efforts.</p>
+            <p>He is an experienced developer and architect for enterprise Java applications, where MapStruct can make a real difference. Andreas contributes to various open source projects and is also committer at the Apache Maven project, maintaining the <a href="http://maven.apache.org/surefire/maven-surefire-plugin/">Surefire</a> plugin.</p>
           </td>
         </tr>
         <tr>
@@ -88,13 +92,7 @@ layout: base
     :markdown
       This web site ([mapstruct.org/](http://mapstruct.org)) is created using the fantastic [awestruct](http://awestruct.org/) tool. To update the web site fork the [mapstruct.org repo](http://github.com/mapstruct/mapstruct.org) and create a pull request with your changes.
 
-      The individual pages are written in [Haml](http://haml.info/) and [Markdown](http://daringfireball.net/projects/markdown/) and converted into HTML by awestruct. Building the site requires Ruby 1.9.x to be installed on your system. You also need to install the gems _awestruct_ and _maruku_:
-
-    %pre.prettyprint.linenums
-      = preserve do
-        :escaped
-          $ gem install awestruct
-          $ gem install maruku
+      The individual pages are written in [Haml](http://haml.info/) and [Markdown](http://daringfireball.net/projects/markdown/) and converted into HTML by awestruct. Building the site requires Ruby 1.9.x to be installed on your system.
 
     :markdown
       To build the web page run
@@ -102,10 +100,10 @@ layout: base
     %pre.prettyprint.linenums
       = preserve do
         :escaped
-          awestruct -d
+          rake clean preview
 
     :markdown
-      The web site can then be acessed at [http://localhost:4242](http://localhost:4242).
+      The web site can then be acessed at [http://localhost:9009](http://localhost:9009). Changes to the source files can be viewed in the browser simply be refreshing the page.
 
     %h3#section-05 5. License
 
