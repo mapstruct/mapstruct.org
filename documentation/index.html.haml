@@ -729,12 +729,14 @@ layout: base
 
                   return map;
               }
-			  
+
         :markdown
-          Mapstruct has a `CollectionMappingStrategy`, with the possible values: `ACCESSOR_ONLY`, `SETTER_PREFERRED` and `ADDER_PREFERRED`. In case `ACCESSOR_ONLY` is selected, then Mapstruct will (only) consider `setters. **Note!**: In general, in absence of a suitable `accessor -` a `getter method` is selected by Mapstruct for accessing the target object. 
-          
-          The option `ACCESSOR_ONLY` will select a `setter` to access the target object when present and generate code for an `adder` method in absence of a `setter`. An `adder` method is typically used in case of generated entities to add a single entity to an underlying collection and establish a parent-child relation between parent - the bean on which the adder is invoked - and child property of the bean accessed by the `adder`. Mapstruct will try to make a match between the generic parameter type of the underlying collection. When conflicts occur, the plural `setter` / `getter` name is converted to singular and will be used to make the match based on name. 
-          
+          MapStruct has a `CollectionMappingStrategy`, with the possible values: `ACCESSOR_ONLY`, `SETTER_PREFERRED` and `ADDER_PREFERRED`.
+
+          In case `ACCESSOR_ONLY` is selected, then MapStruct will (only) consider `setters`. **Note!**: In general, in absence of a suitable accessor, a `getter` method is selected by MapStruct for accessing the target object.
+
+          The option `SETTER_PREFERRED` will select a `setter` to access the target object when present and generate code for an `adder` method in absence of a `setter`. An `adder` method is typically used in case of generated entities to add a single entity to an underlying collection and establish a parent-child relation between parent - the bean on which the adder is invoked - and child property of the bean accessed by the `adder`. MapStruct will try to make a match between the generic parameter type of the underlying collection. When conflicts occur, the plural `setter` / `getter` name is converted to singular and will be used to make the match based on name.
+
           Finally, the option `ADDER_PREFERRED` will select an `adder` method in preference over a `setter`.
 
         %h4#section-06-02 6.2 Implementation types used for collection mappings
@@ -1004,13 +1006,13 @@ layout: base
 
         :markdown
           Here the `carDtoToCar()` method is the reverse mapping method for `carToCarDto()`. Note that any attribute mappings only have to be specified at one of the two methods and will be applied to the corresponding reverse mapping method as well.
-		  
+
     .row
       .span9
         %h3#section-11 11. Exceptions
 
         :markdown
-          Calling applications may require handling of exceptions when calling a mapping method. These exceptions could be thrown by hand-written logic and by the generated built-in mapping methods or type-conversions of Mapstruct. When the calling application requires handling of exceptions, a throws clause can be defined in the mapping method:
+          Calling applications may require handling of exceptions when calling a mapping method. These exceptions could be thrown by hand-written logic and by the generated built-in mapping methods or type-conversions of MapStruct. When the calling application requires handling of exceptions, a throws clause can be defined in the mapping method:
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1023,7 +1025,7 @@ layout: base
 
         :markdown
           The hand written logic might look like this:
-          
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
@@ -1042,10 +1044,10 @@ layout: base
                       return GEAR[gear];
                   }
               }
-              
+
         :markdown
-          Mapstruct now, wraps the `FatalException` in a `try-catch` block and rethrows an unchecked `RuntimeException`. Mapstruct delegates handling of the `GearException` to the application logic because its defined as throws clause in the `carToCarDto` method:
-          
+          MapStruct now, wraps the `FatalException` in a `try-catch` block and rethrows an unchecked `RuntimeException`. MapStruct delegates handling of the `GearException` to the application logic because it is defined as throws clause in the `carToCarDto` method:
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
@@ -1068,15 +1070,15 @@ layout: base
 
 
         :markdown
-          Some **notes** on null checks. Mapstruct does provide null checking only when required: when applying type-conversions or constructing a new type by invoking its constructor. This means that the user is responsible in hand-written code for returning valid non-null objects. Also null objects can be handed to hand-written code, since Mapstruct does not want to make assumptions on the meaning assigned by the user to a null object. Hand-written code has to deal with this.
-			
+          Some **notes** on null checks. MapStruct does provide null checking only when required: when applying type-conversions or constructing a new type by invoking its constructor. This means that the user is responsible in hand-written code for returning valid non-null objects. Also null objects can be handed to hand-written code, since MapStruct does not want to make assumptions on the meaning assigned by the user to a null object. Hand-written code has to deal with this.
+
     .row
       .span9
-        %h3#section-12 12. Constants             
+        %h3#section-12 12. Constants
 
         :markdown
-          Mapstruct supports the usage of constants. A `Mapping` from a constant should not include a reference to a source property. Constants are subjected to type conversion and invoked other mapping methods.
-          
+          MapStruct supports the usage of constants. A `Mapping` from a constant should not include a reference to a source property. Constants are subjected to type conversion and other invoked mapping methods.
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
@@ -1086,69 +1088,75 @@ layout: base
                    SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );
 
                    @Mappings( {
-                       @Mapping( target = "stringConstant", constant = "stringConstant"),
+                       @Mapping( target = "stringConstant", constant = "Constant Value"),
                        @Mapping( target = "integerConstant", constant = "14"),
                        @Mapping( target = "longWrapperConstant", constant = "3001"),
                        @Mapping( target = "dateConstant", dateFormat = "dd-MM-yyyy", constant = "09-01-2014"),
-                       @Mapping( target = "nameConstants", constant = "jack-jill-tom" )
+                       @Mapping( target = "stringListConstants", constant = "jack-jill-tom" )
                    } )
                    Target sourceToTarget(Source s);
-                   }      
+                   }
                }
-               
+
         :markdown
-          In the example above, the `"stringConstant"` is inserted as is in the target property `stringConstant`. The value `"3001"` is type-converted to the `Long` (wrapper) class of target property `longWrapperConstant`. Do not forget to apply date formatting on date properties. The constant `"jack-jill-tom"` demonstrates how the hand-written class `StringListMapper` is invoked to map the dash-separated list into a `list`.
+          In the example above, the String `"Constant Value"` is set as is to the target property `stringConstant`. The value `"3001"` is type-converted to the `Long` (wrapper) class of target property `longWrapperConstant`. Date properties also require a date format. The constant `"jack-jill-tom"` demonstrates how the hand-written class `StringListMapper` is invoked to map the dash-separated list into a `List<String>`.
 
     .row
       .span9
-        %h3#section-13 13. Expressions             
+        %h3#section-13 13. Expressions
 
         :markdown
-          By means of Expressions it is possible to include constructs from a number of languages. Currently on Java is supported as language. This feature is useful to invoke constructors. The entire target object is available to the user. Care should be taken to insert valid Java code: the IDE will not warn against wrong constructs and show up during compilation. The example below demonstrates how 2 source properties can be mapped to one target:
-          
-          
+          By means of Expressions it will be possible to include constructs from a number of languages.
+
+          Currently only Java is supported as language. This feature is useful to invoke constructors. The entire target object is available to the user. Care should be taken to insert only valid Java code: MapStruct will not validate the expression at generation-time, and errors will show up only in the generated classes during compilation.
+
+          The example below demonstrates how two source properties can be mapped to one target:
+
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
               @Mapper
               public interface SourceTargetMapper {
 
-
                   SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );
 
-                  @Mapping(target = "timeAndFormat", expression = "java( new org.mapstruct.TimeAndFormat( s.getTime(), s.getFormat() ) )")
+                  @Mapping(target = "timeAndFormat",
+                       expression = "java( new org.sample.TimeAndFormat( s.getTime(), s.getFormat() ) )")
                   Target sourceToTarget(Source s);
               }
-              
+
         :markdown
-          The example demonstrates how the source properties `time` and `format` are composed into one target property `TimeAndFormat`. Please note that the fully qualified package name is specified because Mapstruct does not take care of the import of the `TimeAndFormat` class (unless its used otherwise explicitely in the `SourceTargetMapper`). 			  
-		
+          The example demonstrates how the source properties `time` and `format` are composed into one target property `TimeAndFormat`. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the `TimeAndFormat` class (unless its used otherwise explicitely in the `SourceTargetMapper`).
+
     .row
       .span9
-        %h3#section-14 14. Shared configuration   
-        
+        %h3#section-14 14. Shared configuration
+
         :markdown
-          Mapstruct offers the possibility to define a shared configuration by pointing out a central class taking care of this annotated with `@MapperConfig`. The general philosophy is that this annotation can have the same attributes as the `@Mapper` annotation but that the `@Mapper` annotation overrides the `@MapperConfig`:
-		  
-        %pre.prettyprint.lang-java.linenums
-          = preserve do
-            :escaped          
-              @MapperConfig(uses = { CustomMapperViaMapperConfig.class }, unmappedTargetPolicy = ReportingPolicy.ERROR )
-              public class CentralConfig {
-              }
-                          
-        :markdown
-          Mapping methods in `CustomMapperViaMapper.class` take precedence over mapping methods in `CustomMapperViaMapperConfig.class`.          
-          
+          MapStruct offers the possibility to define a shared configuration by pointing out a central class annotated with `@MapperConfig`. For a mapper to use the shared configuration, the configuration class needs to be defined in the `@Mapper#config` property.
+
+          The general philosophy is that the `@MapperConfig` annotation can have the same attributes as the `@Mapper` annotation. Attributes specified in `@Mapper` take precedence over the attributes specified in the referenced configuration class carrying the `@MapperConfig` annotation. List properties such as `uses` are simply combined:
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
-              @Mapper(uses = { CustomMapperViaMapper.class }, config = CentralConfig.class )
+              @MapperConfig(uses = { CustomMapperViaMapperConfig.class }, unmappedTargetPolicy = ReportingPolicy.ERROR )
+              public class CentralConfig {
+              }
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper(config = CentralConfig.class, uses = { CustomMapperViaMapper.class } )
+              // Effective configuration:
+              //    @Mapper(uses = { CustomMapperViaMapper.class, CustomMapperViaMapperConfig.class },
+              //         unmappedTargetPolicy = ReportingPolicy.ERROR )
               public interface SourceTargetMapper {
                 ...
-              }     
-                      
-		                         
+              }
+
+
   .span3
     #toc{ :"data-offset-top"=>"0", :"data-spy"=>"affix" }
       %h5 Contents
