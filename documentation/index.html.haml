@@ -729,15 +729,62 @@ layout: base
 
                   return map;
               }
-
+              
         :markdown
           MapStruct has a `CollectionMappingStrategy`, with the possible values: `ACCESSOR_ONLY`, `SETTER_PREFERRED` and `ADDER_PREFERRED`.
+          
+          In the table below, the dash `-` indicates a property name. Next, the trailing `s` indicates the plural form. The table explains the options and how they are apply to the presence/absense of a `set-s`, `add-` and / or `get-s` method on the target object: 
 
-          In case `ACCESSOR_ONLY` is selected, then MapStruct will (only) consider `setters`. **Note!**: In general, in absence of a suitable accessor, a `getter` method is selected by MapStruct for accessing the target object.
+          
+        %table.table
+          %thead
+            %tr
+              %th Option
+              %th Only target set-s Available
+              %th Only target add- Available
+              %th Both set-s / add- Available
+              %th No set-s / add- Available
+              %th 
+                :markdown
+                  Existing Target
+                  (`@TargetType`)
+          %tbody
+            %tr
+              %td
+                :markdown
+                  `ACCESSOR_ONLY`
+              %td set-s
+              %td get-s
+              %td set-s
+              %td get-s
+              %td get-s
+            %tr
+              %td 
+                :markdown
+                  `SETTER_PREFERRED`
+              %td set-s
+              %td add-
+              %td set-s
+              %td get-s
+              %td get-s
+            %tr
+              %td 
+                :markdown
+                  `ADDER_PREFERRED`
+              %td set-s
+              %td add-
+              %td add-
+              %td get-s
+              %td get-s                  
 
-          The option `SETTER_PREFERRED` will select a `setter` to access the target object when present and generate code for an `adder` method in absence of a `setter`. An `adder` method is typically used in case of generated entities to add a single entity to an underlying collection and establish a parent-child relation between parent - the bean on which the adder is invoked - and child property of the bean accessed by the `adder`. MapStruct will try to make a match between the generic parameter type of the underlying collection. When conflicts occur, the plural `setter` / `getter` name is converted to singular and will be used to make the match based on name.
-
-          Finally, the option `ADDER_PREFERRED` will select an `adder` method in preference over a `setter`.
+        :markdown
+          Some background\: An `adder` method is typically used in case of [generated (JPA) entities](http://www.eclipse.org/webtools/dali/), to add a single element (entity) to an underlying collection. Invoking the adder establishes a parent-child relation between parent - the bean (entity) on which the adder is invoked - and its child(ren), the elements (entities) in the collection. To find the appropriate `adder`, MapStruct will try to make a match between the generic parameter type of the underlying collection and the single argument of a candidate `adder`. When there are more candidates, the plural `setter` / `getter` name is converted to singular and will be used in addition to make a match.
+          
+          The option `DEFAULT` should not be used explicitely. It is used to distinguish between an explicit user desire to override the default in a `@MapperConfig` from the implicit Mapstruct choice in a `@Mapper`. The option `DEFAULT` is synonymous to `ACCESSOR_ONLY`.
+          
+        .alert.alert-info
+          :markdown
+            **Tip!** When working with an `adder` method and JPA entities, Mapstruct assumes that the target collections are initialized with a collection implementation (e.g. an `ArrayList`). You can use factories to create a new target entity with intialized collections in stead of Mapstruct creating the target entity by its constructor.
 
         %h4#section-06-02 6.2 Implementation types used for collection mappings
 
