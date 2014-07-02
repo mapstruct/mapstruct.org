@@ -2,9 +2,148 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2014-03-05T23:29:24+01:00</updated>
+  <updated>2014-07-02T20:17:55+02:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
+  <entry>
+    <id>http://mapstruct.org/news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html</id>
+    <title>Support for Java 8, JodaTime and more: MapStruct 1.0.0.Beta2 released</title>
+    <updated>2014-07-02T20:17:55+02:00</updated>
+    <published>2014-07-02T00:00:00+00:00</published>
+    <link href="http://mapstruct.org/news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html" rel="alternate" type="text/html" />
+    <author>
+      <name>Gunnar Morling</name>
+    </author>
+    <category term="release"></category>
+    <category term="news"></category>
+    <summary>
+
+      It's my great pleasure to announce the release of MapStruct 1.0.0.Beta2.
+
+      Amongst the new features is initial support for Java 8, built-in mappings for the types of the Joda-Time date and time API, flexible mapping customization via inline Java expressions and much more.
+
+      Distribution bundles (ZIP, TAR.GZ) are available on SourceForge. Alternatively, you can obtain the dependencies from Maven Central. The GAV coordinates are:
+
+
+        org.mapstruct:mapstruct:1.0.0.Beta2 for the annotation JAR, to be used with Java &lt;= 7
+        org.mapstruct:mapstruct-jdk8:1.0.0.Beta2 for the annotation JAR, to be used with Java &gt;= 8
+        org.mapstruct:mapstruct-processor:1.0.0.Beta2 for the annotation processor.
+
+
+      Java 8
+
+      MapStruct now leverages the repeating annotation...
+    </summary>
+    <content type="html">
+
+      &lt;p&gt;It's my great pleasure to announce the release of MapStruct 1.0.0.Beta2.&lt;/p&gt;
+
+      &lt;p&gt;Amongst the new features is initial support for Java 8, built-in mappings for the types of the &lt;a href=&quot;http://www.joda.org/joda-time/&quot;&gt;Joda-Time&lt;/a&gt; date and time API, flexible mapping customization via inline Java expressions and much more.&lt;/p&gt;
+
+      &lt;p&gt;Distribution bundles (ZIP, TAR.GZ) are available on &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta2/&quot;&gt;SourceForge&lt;/a&gt;. Alternatively, you can obtain the dependencies from Maven Central. The GAV coordinates are:&lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;
+      &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.0.0.Beta2%7Cjar&quot;&gt;org.mapstruct:mapstruct:1.0.0.Beta2&lt;/a&gt; for the annotation JAR, to be used with Java &amp;lt;= 7&lt;/li&gt;
+        &lt;li&gt;
+      &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.0.0.Beta2%7Cjar&quot;&gt;org.mapstruct:mapstruct-jdk8:1.0.0.Beta2&lt;/a&gt; for the annotation JAR, to be used with Java &amp;gt;= 8&lt;/li&gt;
+        &lt;li&gt;
+      &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.Beta2%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.0.0.Beta2&lt;/a&gt; for the annotation processor.&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;h3 id=&quot;java-8&quot;&gt;Java 8&lt;/h3&gt;
+
+      &lt;p&gt;MapStruct now leverages the &lt;a href=&quot;http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html&quot;&gt;repeating annotation&lt;/a&gt; feature introduced with Java 8. This allows to specify several &lt;code&gt;@Mapping&lt;/code&gt; annotations on one and the same method in a very concise way:&lt;/p&gt;
+
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      @Mapper
+      public interface AnimalMapper {
+
+          @Mapping(source = &quot;weightInPounds&quot;, target = &quot;weight&quot;)
+          @Mapping(source = &quot;heightInCentimetres&quot;, target = &quot;height&quot;)
+          AnimalDto animalToAnimalDto(Animal animal);
+      }&lt;/pre&gt;
+
+      &lt;p&gt;To make use of this feature be sure to include the right version of the annotation JAR (&lt;em&gt;org.mapstruct:mapstruct-jdk8:1.0.0.Beta2&lt;/em&gt;), as only this version allows to specify several &lt;code&gt;@Mapping&lt;/code&gt; annotations without wrapping them in &lt;code&gt;@Mappings&lt;/code&gt; (apart from this, both versions of the annotation JAR are exactly the same).&lt;/p&gt;
+
+      &lt;h3 id=&quot;joda-time-support&quot;&gt;Joda-Time support&lt;/h3&gt;
+
+      &lt;p&gt;When using the Joda-Time API in your project you'll be glad to hear that MapStruct supports mappings of the Joda types now. More specifically, mappings between the following types are provided out-of-the-box:&lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;
+      &lt;code&gt;org.joda.time.DateTime&lt;/code&gt;, &lt;code&gt;org.joda.time.LocalDateTime&lt;/code&gt; and &lt;code&gt;org.joda.time.LocalDate&lt;/code&gt; &amp;lt;&amp;gt; &lt;code&gt;java.util.Date&lt;/code&gt;
+      &lt;/li&gt;
+        &lt;li&gt;
+      &lt;code&gt;org.joda.time.DateTime&lt;/code&gt; &amp;lt;&amp;gt; &lt;code&gt;java.util.Calendar&lt;/code&gt;
+      &lt;/li&gt;
+        &lt;li&gt;
+      &lt;code&gt;org.joda.time.DateTime&lt;/code&gt;, &lt;code&gt;org.joda.time.LocalDateTime&lt;/code&gt;, &lt;code&gt;org.joda.time.LocalDate&lt;/code&gt; and &lt;code&gt;org.joda.time.LocalTime&lt;/code&gt; &amp;lt;&amp;gt; &lt;code&gt;String&lt;/code&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;p&gt;If you use these types in your mapped models, MapStruct will automatically generated the required mapping routines without any further configuration. &lt;code&gt;@Mapping#dateFormat()&lt;/code&gt; can be used when converting from or to `String to specify the expected date format.&lt;/p&gt;
+
+      &lt;p&gt;Note that for the following release &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/121&quot;&gt;we plan&lt;/a&gt; to also cover the new Java 8 time and date types which will be useful when mapping between models using the old types such as &lt;code&gt;java.util.Date&lt;/code&gt; and the new ones.&lt;/p&gt;
+
+      &lt;h3 id=&quot;constants-and-inline-java-expressions&quot;&gt;Constants and inline Java expressions&lt;/h3&gt;
+
+      &lt;p&gt;The &lt;code&gt;@Mapping&lt;/code&gt; annotation has been enriched with several new useful attributes. Via &lt;code&gt;constant()&lt;/code&gt; you can set an attribute in the target object of a mapping to a fixed value:&lt;/p&gt;
+
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      @Mapping(target = &quot;weightUnit&quot;, constant=&quot;cm&quot;)
+      AnimalDto animalToAnimalDto(Animal animal);&lt;/pre&gt;
+
+      &lt;p&gt;If the specified target property is not a String, the given value will be converted by applying one of the available conversions described in the &lt;a href=&quot;http://mapstruct.org/documentation/#section-05&quot;&gt;reference documentation&lt;/a&gt;. That way you can e.g. specify constants for numeric or date attributes (optionally applying a given date format).&lt;/p&gt;
+
+      &lt;p&gt;Sometimes it is not sufficient to map a single source property to a corresponding target property, but more flexible mappings are required. For such cases it is now possible to specify custom mapping expressions via the &lt;code&gt;expression()&lt;/code&gt; attribute. The following shows an example:&lt;/p&gt;
+
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      @Mapping(target = &quot;fullName&quot;, expression = &quot;java(visitor.getFirstName() + \&quot; \&quot; + visitor.getLastName())&quot;)
+      VisitorDto visitorToVisitorDto(Visitor visitor);&lt;/pre&gt;
+
+      &lt;p&gt;Here a Java expression in the form &lt;code&gt;java(&amp;lt;EXPRESSION&amp;gt;)&lt;/code&gt;is used to set an attribute in the target object based on the value of two properties from the source object. The given expression is transferred as is into the generated mapping method, so you'll get feedback about the correctness of the expression during compilation.&lt;/p&gt;
+
+      &lt;p&gt;While &lt;a href=&quot;http://mapstruct.org/documentation/#section-05-03&quot;&gt;custom mappers&lt;/a&gt; and &lt;a href=&quot;http://mapstruct.org/documentation/#section-09&quot;&gt;decorators&lt;/a&gt; should still be the preferred way for implementing more complex custom mappings, such inline expressions are a very useful utility in many cases. E.g. you also could invoke a constructor to instantiate a specific property type.&lt;/p&gt;
+
+      &lt;p&gt;Besides Java-based expressions &lt;a href=&quot;(https://github.com/mapstruct/mapstruct/issues/244)&quot;&gt;we plan&lt;/a&gt; to support a more concise expression language in a future release. E.g. the mapping from the previous example could be declared as follows using the &lt;a href=&quot;https://jcp.org/en/jsr/detail?id=341&quot;&gt;Unified Expression Language&lt;/a&gt;:&lt;/p&gt;
+
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      @Mapping(target = &quot;fullName&quot;, expression = &quot;uel(visitor.firstName + ' ' + visitor.lastName)&quot;)
+      VisitorDto visitorToVisitorDto(Visitor visitor);&lt;/pre&gt;
+
+      &lt;p&gt;The idea here is to translate the given EL expression at generation time into a corresponding Java fragment. This would allow to leverage the expressive power of expression languages without adding any runtime dependencies to the generated code. At this point, this is just a vague idea, so any input or help with such feature is highly welcome.&lt;/p&gt;
+
+      &lt;h3 id=&quot;sharing-mapper-configurations&quot;&gt;Sharing mapper configurations&lt;/h3&gt;
+
+      &lt;p&gt;In larger projects it can be useful to share the same configuration between several mapper classes, e.g. for the component model to be used (CDI, Spring, etc.). That's now possible via the &lt;code&gt;@MapperConfig&lt;/code&gt; annotation. This annotation can be given on a central configuration class and defines a template for the different mapping settings:&lt;/p&gt;
+
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      @MapperConfig(
+          uses = { DateMapper.class, UnitsOfMeasurementMapper.class },
+          unmappedTargetPolicy = ReportingPolicy.ERROR,
+          componentModel = &quot;cdi&quot;
+      )
+      public class MapperConfiguration {}&lt;/pre&gt;
+
+      &lt;p&gt;Specific mappers can then refer to this configuration source, thus inheriting its settings while allowing to override single settings if required:&lt;/p&gt;
+
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      @Mapper()
+          config = MapperConfiguration.class,
+          unmappedTargetPolicy = ReportingPolicy.IGNORE
+      )
+      public class AnimalMapper {}&lt;/pre&gt;
+
+      &lt;h3 id=&quot;what-else-is-in-it&quot;&gt;What else is in it?&lt;/h3&gt;
+
+      &lt;p&gt;Other useful features in the Beta2 release include support for &quot;adder methods&quot; (see &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/207&quot;&gt;issues #207&lt;/a&gt;) and the possibility to ignore specific properties during the mapping (see &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/72&quot;&gt;issue #72&lt;/a&gt;). In addition quite a few bugs have been fixed; Check out the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues?milestone=4&amp;amp;state=closed&quot;&gt;change log&lt;/a&gt; for a complete list of all issues.&lt;/p&gt;
+
+      &lt;p&gt;Your feedback is more than welcome, just add a comment below or join the &lt;a href=&quot;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&quot;&gt;mapstruct-users&lt;/a&gt; group. Bugs and feature requests can be reported in the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues&quot;&gt;issue tracker&lt;/a&gt;. If you'd like to hack on MapStruct yourself, check out the &lt;a href=&quot;http://mapstruct.org/contributing&quot;&gt;development guide&lt;/a&gt;.&lt;/p&gt;
+
+      &lt;p&gt;Finally, I'd like to say a massive thank you to &lt;a href=&quot;https://github.com/sjaakd/&quot;&gt;Sjaak Derksen&lt;/a&gt;, &lt;a href=&quot;https://github.com/agudian&quot;&gt;Andreas Gudian&lt;/a&gt;, &lt;a href=&quot;https://github.com/timoe&quot;&gt;Timo Eckhardt&lt;/a&gt; and &lt;a href=&quot;https://github.com/chschu&quot;&gt;Christian Schuster&lt;/a&gt; who all put huge efforts into this release. You guys rock!&lt;/p&gt;
+    </content>
+  </entry>
   <entry>
     <id>http://mapstruct.org/news/2014/03/05/mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more.html</id>
     <title>MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more</title>

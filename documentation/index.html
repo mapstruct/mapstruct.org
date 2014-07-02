@@ -114,15 +114,15 @@
               <h3 id="section-02">2. Set up</h3>
               <p>MapStruct is a Java annotation processor based on <a href="jcp.org/en/jsr/detail?id=269">JSR 269</a> and as such can be used within command line builds (javac, Ant, Maven etc.) as well as from within your IDE.</p>
               
-              <p>It comprises two artifacts:</p>
+              <p>It comprises the following artifacts:</p>
               
               <ul>
-                <li><em>org.mapstruct:mapstruct</em>: contains the required annotations such as <code>@Mapping</code></li>
+                <li><em>org.mapstruct:mapstruct</em>: contains the required annotations such as <code>@Mapping</code>; On Java 8 or later, use <em>org.mapstruct:mapstruct-jdk8</em> instead which takes advantage of language improvements introduced in Java 8</li>
                 <li><em>org.mapstruct:mapstruct-processor</em>: contains the annotation processor which generates mapper implementations</li>
               </ul>
               
               <p>For Maven based projects add the following to your POM file in order to use MapStruct:</p>
-              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Beta1&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.4&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
+              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Beta2&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct-jdk8&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.4&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
               <h4 id="section-02-01">2.1 Configuration options</h4>
               <p>The MapStruct code generator can be configured using <em>annotation processor options</em>.</p>
               
@@ -207,6 +207,9 @@
               <p>In the generated method implementations all readable properties from the source type (e.g. <code>Car</code>) will be copied ino the corresponding property in the target type (e.g. <code>CarDto</code>). If a property has a different name in the target entity, its name can be specified via the <code>@Mapping</code> annotation.</p>
               <div class="alert alert-info">
                 <p><strong>Tip!</strong> The property name as defined in the <a href="http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html">JavaBeans spefication</a> must be specified in the <code>@Mapping</code> annotation, e.g. <em>seatCount</em> for a property with the accessor methods <code>getSeatCount()</code> and <code>setSeatCount()</code>.</p>
+              </div>
+              <div class="alert alert-info">
+                <p><strong>Tip!</strong> When using Java 8 or later, you can omit the <code>@Mappings</code> wrapper annotation and directly specify several <code>@Mapping</code> annotations on one method.</p>
               </div>
               <p>To get a better understanding of what MapStruct does have a look at the following implementation of the <code>carToCarDto()</code> method as generated by MapStruct:</p>
               <pre class="prettyprint lang-java linenums">// GENERATED CODE&#x000A;public class CarMapperImpl implements CarMapper {&#x000A;&#x000A;    @Override&#x000A;    public CarDto carToCarDto(Car car) {&#x000A;        if ( car == null ) {&#x000A;            return null;&#x000A;        }&#x000A;&#x000A;        CarDto carDto = new CarDto();&#x000A;&#x000A;        if ( car.getFeatures() != null ) {&#x000A;            carDto.setFeatures( new ArrayList&lt;String&gt;( car.getFeatures() ) );&#x000A;        }&#x000A;        carDto.setManufacturer( car.getMake() );&#x000A;        carDto.setSeatCount( car.getNumberOfSeats() );&#x000A;        carDto.setDriver( personToPersonDto( car.getDriver() ) );&#x000A;        carDto.setPrice( String.valueOf( car.getPrice() ) );&#x000A;        if ( car.getCategory() != null ) {&#x000A;            carDto.setCategory( car.getCategory().toString() );&#x000A;        }&#x000A;&#x000A;        return carDto;&#x000A;    }&#x000A;&#x000A;    @Override&#x000A;    public PersonDto personToPersonDto(Person person) {&#x000A;        //...&#x000A;    }&#x000A;}</pre>
@@ -371,6 +374,62 @@
               <pre class="prettyprint lang-java linenums">public interface SourceTargetMapper {&#x000A;&#x000A;    @MapMapping(valueDateFormat = &quot;dd.MM.yyyy&quot;)&#x000A;    Map&lt;String, String&gt; longDateMapToStringStringMap(Map&lt;Long, Date&gt; source);&#x000A;}</pre>
               <p>Similar to iterable mappings, the generated code will iterate through the source map, convert each value and key (either by means of an implicit conversion or by invoking another mapping method) and put them into the target map:</p>
               <pre class="prettyprint lang-java linenums">//GENERATED CODE&#x000A;@Override&#x000A;public Map&lt;Long, Date&gt; stringStringMapToLongDateMap(Map&lt;String, String&gt; source) {&#x000A;    if ( source == null ) {&#x000A;        return null;&#x000A;    }&#x000A;&#x000A;    Map&lt;Long, Date&gt; map = new HashMap&lt;Long, Date&gt;();&#x000A;&#x000A;    for ( Map.Entry&lt;String, String&gt; entry : source.entrySet() ) {&#x000A;&#x000A;        Long key = Long.parseLong( entry.getKey() );&#x000A;        Date value;&#x000A;        try {&#x000A;            value = new SimpleDateFormat( &quot;dd.MM.yyyy&quot; ).parse( entry.getValue() );&#x000A;        }&#x000A;        catch( ParseException e ) {&#x000A;            throw new RuntimeException( e );&#x000A;        }&#x000A;&#x000A;        map.put( key, value );&#x000A;    }&#x000A;&#x000A;    return map;&#x000A;}</pre>
+              <p>MapStruct has a <code>CollectionMappingStrategy</code>, with the possible values: <code>ACCESSOR_ONLY</code>, <code>SETTER_PREFERRED</code> and <code>ADDER_PREFERRED</code>.</p>
+              
+              <p>In the table below, the dash <code>-</code> indicates a property name. Next, the trailing <code>s</code> indicates the plural form. The table explains the options and how they are apply to the presence/absense of a <code>set-s</code>, <code>add-</code> and / or <code>get-s</code> method on the target object: </p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Only target set-s Available</th>
+                    <th>Only target add- Available</th>
+                    <th>Both set-s / add- Available</th>
+                    <th>No set-s / add- Available</th>
+                    <th>
+                      <p>Existing Target
+                      (<code>@TargetType</code>)</p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p><code>ACCESSOR_ONLY</code></p>
+                    </td>
+                    <td>set-s</td>
+                    <td>get-s</td>
+                    <td>set-s</td>
+                    <td>get-s</td>
+                    <td>get-s</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>SETTER_PREFERRED</code></p>
+                    </td>
+                    <td>set-s</td>
+                    <td>add-</td>
+                    <td>set-s</td>
+                    <td>get-s</td>
+                    <td>get-s</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><code>ADDER_PREFERRED</code></p>
+                    </td>
+                    <td>set-s</td>
+                    <td>add-</td>
+                    <td>add-</td>
+                    <td>get-s</td>
+                    <td>get-s</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Some background: An <code>adder</code> method is typically used in case of <a href="http://www.eclipse.org/webtools/dali/">generated (JPA) entities</a>, to add a single element (entity) to an underlying collection. Invoking the adder establishes a parent-child relation between parent - the bean (entity) on which the adder is invoked - and its child(ren), the elements (entities) in the collection. To find the appropriate <code>adder</code>, MapStruct will try to make a match between the generic parameter type of the underlying collection and the single argument of a candidate <code>adder</code>. When there are more candidates, the plural <code>setter</code> / <code>getter</code> name is converted to singular and will be used in addition to make a match.</p>
+              
+              <p>The option <code>DEFAULT</code> should not be used explicitely. It is used to distinguish between an explicit user desire to override the default in a <code>@MapperConfig</code> from the implicit Mapstruct choice in a <code>@Mapper</code>. The option <code>DEFAULT</code> is synonymous to <code>ACCESSOR_ONLY</code>.</p>
+              <div class="alert alert-info">
+                <p><strong>Tip!</strong> When working with an <code>adder</code> method and JPA entities, Mapstruct assumes that the target collections are initialized with a collection implementation (e.g. an <code>ArrayList</code>). You can use factories to create a new target entity with intialized collections in stead of Mapstruct creating the target entity by its constructor.</p>
+              </div>
               <h4 id="section-06-02">6.2 Implementation types used for collection mappings</h4>
               <p>When an iterable or map mapping method declares an interface type as return type, one of its implementation types will be instantiated in the generated code. The following table shows the supported interface types and their corresponding implementation types as instantiated in the generated code:</p>
               <table class="table">
@@ -520,6 +579,48 @@
               <p>Here the <code>carDtoToCar()</code> method is the reverse mapping method for <code>carToCarDto()</code>. Note that any attribute mappings only have to be specified at one of the two methods and will be applied to the corresponding reverse mapping method as well.</p>
             </div>
           </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-11">11. Exceptions</h3>
+              <p>Calling applications may require handling of exceptions when calling a mapping method. These exceptions could be thrown by hand-written logic and by the generated built-in mapping methods or type-conversions of MapStruct. When the calling application requires handling of exceptions, a throws clause can be defined in the mapping method:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper(uses = HandWritten.class)&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car) throws GearException;&#x000A;}</pre>
+              <p>The hand written logic might look like this:</p>
+              <pre class="prettyprint lang-java linenums">public class HandWritten {&#x000A;&#x000A;    private static final String[] GEAR = {&quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;OVERDRIVE&quot;, &quot;REVERSE&quot;};&#x000A;&#x000A;    public String toGear(Integer gear) throws GearException, FatalException {&#x000A;        if ( gear == null ) {&#x000A;            throw new FatalException(&quot;null is not a valid gear&quot;);&#x000A;        }&#x000A;&#x000A;        if ( gear &lt; 0 &amp;&amp; gear &gt; GEAR.length ) {&#x000A;            throw new GearException(&quot;invalid gear&quot;);&#x000A;        }&#x000A;        return GEAR[gear];&#x000A;    }&#x000A;}</pre>
+              <p>MapStruct now, wraps the <code>FatalException</code> in a <code>try-catch</code> block and rethrows an unchecked <code>RuntimeException</code>. MapStruct delegates handling of the <code>GearException</code> to the application logic because it is defined as throws clause in the <code>carToCarDto</code> method:</p>
+              <pre class="prettyprint lang-java linenums">@Override&#x000A;public CarDto carToCarDto(Car car) throws GearException {&#x000A;    if ( car == null ) {&#x000A;        return null;&#x000A;    }&#x000A;&#x000A;    CarDto carDto = new CarDto();&#x000A;    try {&#x000A;        carDto.setGear( handWritten.toGear( car.getGear() ) );&#x000A;    }&#x000A;    catch ( FatalException e ) {&#x000A;        throw new RuntimeException( e );&#x000A;    }&#x000A;&#x000A;    return carDto;&#x000A;}</pre>
+              <p>Some <strong>notes</strong> on null checks. MapStruct does provide null checking only when required: when applying type-conversions or constructing a new type by invoking its constructor. This means that the user is responsible in hand-written code for returning valid non-null objects. Also null objects can be handed to hand-written code, since MapStruct does not want to make assumptions on the meaning assigned by the user to a null object. Hand-written code has to deal with this.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-12">12. Constants</h3>
+              <p>MapStruct supports the usage of constants. Constants are subject to type conversion either via built-in conversions or the invocation of other mapping methods. A mapping with a constant must not include a reference to a source property. The following examples shows some mappings using constants:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper(uses = StringListMapper.class)&#x000A; public interface SourceTargetMapper {&#x000A;&#x000A;     SourceTargetMapper INSTANCE = Mappers.getMapper(&#x000A;         SourceTargetMapper.class&#x000A;     );&#x000A;&#x000A;     @Mappings( {&#x000A;         @Mapping( target = &quot;stringConstant&quot;, constant = &quot;Constant Value&quot;),&#x000A;         @Mapping( target = &quot;integerConstant&quot;, constant = &quot;14&quot;),&#x000A;         @Mapping( target = &quot;longWrapperConstant&quot;, constant = &quot;3001&quot;),&#x000A;         @Mapping(&#x000A;             target = &quot;dateConstant&quot;,&#x000A;             dateFormat = &quot;dd-MM-yyyy&quot;,&#x000A;             constant = &quot;09-01-2014&quot;&#x000A;         ),&#x000A;         @Mapping( target = &quot;stringListConstants&quot;, constant = &quot;jack-jill-tom&quot; )&#x000A;     } )&#x000A;     Target sourceToTarget(Source s);&#x000A;     }&#x000A; }</pre>
+              <p>The String <code>"Constant Value"</code> is set as is to the target property <code>stringConstant</code>. The value <code>"3001"</code> is type-converted to the <code>Long</code> (wrapper) class of target property <code>longWrapperConstant</code>. Date properties also require a date format. The constant <code>"jack-jill-tom"</code> demonstrates how the hand-written class <code>StringListMapper</code> is invoked to map the dash-separated list into a <code>List&lt;String&gt;</code>.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-13">13. Expressions</h3>
+              <p>By means of Expressions it will be possible to include constructs from a number of languages.</p>
+              
+              <p>Currently only Java is supported as language. This feature is e.g. useful to invoke constructors. The entire source object is available for usage in the expression. Care should be taken to insert only valid Java code: MapStruct will not validate the expression at generation-time, but errors will show up in the generated classes during compilation.</p>
+              
+              <p>The example below demonstrates how two source properties can be mapped to one target:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface SourceTargetMapper {&#x000A;&#x000A;    SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );&#x000A;&#x000A;    @Mapping(target = &quot;timeAndFormat&quot;,&#x000A;         expression = &quot;java( new org.sample.TimeAndFormat( s.getTime(), s.getFormat() ) )&quot;)&#x000A;    Target sourceToTarget(Source s);&#x000A;}</pre>
+              <p>The example demonstrates how the source properties <code>time</code> and <code>format</code> are composed into one target property <code>TimeAndFormat</code>. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the <code>TimeAndFormat</code> class (unless its used otherwise explicitly in the <code>SourceTargetMapper</code>).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-14">14. Shared configurations</h3>
+              <p>MapStruct offers the possibility to define a shared configuration by pointing to a central class annotated with <code>@MapperConfig</code>. For a mapper to use the shared configuration, the configuration class needs to be defined in the <code>@Mapper#config</code> property.</p>
+              
+              <p>The <code>@MapperConfig</code> annotation has the same attributes as the <code>@Mapper</code> annotation. Any attributes not given via <code>@Mapper</code> will be inherited from the shared configuration. Attributes specified in <code>@Mapper</code> take precedence over the attributes specified via the referenced configuration class. List properties such as <code>uses</code> are simply combined:</p>
+              <pre class="prettyprint lang-java linenums">@MapperConfig(&#x000A;    uses = CustomMapperViaMapperConfig.class,&#x000A;    unmappedTargetPolicy = ReportingPolicy.ERROR&#x000A;)&#x000A;public class CentralConfig {&#x000A;}</pre>
+              <pre class="prettyprint lang-java linenums">@Mapper(config = CentralConfig.class, uses = { CustomMapperViaMapper.class } )&#x000A;// Effective configuration:&#x000A;// @Mapper(&#x000A;//     uses = { CustomMapperViaMapper.class, CustomMapperViaMapperConfig.class },&#x000A;//     unmappedTargetPolicy = ReportingPolicy.ERROR&#x000A;// )&#x000A;public interface SourceTargetMapper {&#x000A;  ...&#x000A;}</pre>
+            </div>
+          </div>
         </div>
         <div class="span3">
           <div data-offset-top="0" data-spy="affix" id="toc">
@@ -554,6 +655,18 @@
               </li>
               <li>
                 <a href="#section-10">Reverse mappings</a>
+              </li>
+              <li>
+                <a href="#section-11">Exceptions</a>
+              </li>
+              <li>
+                <a href="#section-12">Constants</a>
+              </li>
+              <li>
+                <a href="#section-13">Expressions</a>
+              </li>
+              <li>
+                <a href="#section-14">Shared configurations</a>
               </li>
             </ol>
           </div>
