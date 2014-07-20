@@ -8,7 +8,7 @@ disqus_generate_id: true
 
 profiles:
   development:
-    base_url: http://localhost:4242
+    base_url: http://localhost:9009
     disqus_developer: true
   production:
     base_url: http://mapstruct.org
