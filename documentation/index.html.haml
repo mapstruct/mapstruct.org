@@ -1199,7 +1199,22 @@ layout: base
               }
 
         :markdown
-          The example demonstrates how the source properties `time` and `format` are composed into one target property `TimeAndFormat`. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the `TimeAndFormat` class (unless its used otherwise explicitly in the `SourceTargetMapper`).
+          The example demonstrates how the source properties `time` and `format` are composed into one target property `TimeAndFormat`. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the `TimeAndFormat` class (unless its used otherwise explicitly in the `SourceTargetMapper`). This can be resolved by defining `imports` on the `@Mapper` annotation.
+          
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              imports org.sample.TimeAndFormat;
+              
+              @Mapper( imports = TimeAndFormat.class )
+              public interface SourceTargetMapper {
+
+                  SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );
+
+                  @Mapping(target = "timeAndFormat",
+                       expression = "java( new TimeAndFormat( s.getTime(), s.getFormat() ) )")
+                  Target sourceToTarget(Source s);
+              }                        
 
     .row
       .span9
