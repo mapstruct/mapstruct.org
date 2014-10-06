@@ -91,8 +91,26 @@ layout: base
 
       If you have any questions don't hesitate [to ask](https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users), we here to help!
 
-    %h3#section-04 4. Updating mapstruct.org
-	
+    %h3#section-04 4. Debugging the annotation processor
+
+    :markdown
+      The most straight-forward way to debug the MapStruct annotation processor is to use your IDE and debug one of the JUnit tests in the processor module. The processor is then executed with the same JDK that you use the run the tests with.
+
+      But there are subtle differences in the way different compilers implement the annotation processor API, so you might come to a point where you need to debug a specific problem with a certain compiler. The MapStruct integration tests run different smaller Maven projects with different compilers, by using compiler implementations pulled in as dependencies to the maven-compiler-plugin, and by [Maven Toolchains](http://maven.apache.org/guides/mini/guide-using-toolchains.html) (see [etc/toolchains-example.xml](https://github.com/mapstruct/mapstruct/blob/master/etc/toolchains-example.xml) for a template to modify and put into your local ```~/.m2``` directory).
+
+      To debug an integration test, pass ```-DprocessorIntegrationTest.debug=true``` to the test process. A test case that uses Maven Toolchains (currently ```oracle_java_6``` and ```oracle_java_7```) will wait for a remote debugger to attach on port ```8000```. The other tests will launch ```mvnDebug``` internally, which by default also lets the Maven process wait on port ```8000``` for a remote debugger.
+
+      If you like to launch the test with maven, use a command such as the following to focus on a single test case:
+
+    %pre.prettyprint.linenums
+      = preserve do
+        :escaped
+          mvn test -Dtest=<TestClass>#<TestCase> -DprocessorIntegrationTest.debug=true
+
+          mvn test -Dtest=SimpleTest#oracle_java_6 -DprocessorIntegrationTest.debug=true
+
+    %h3#section-05 5. Updating mapstruct.org
+
     :markdown
       This web site ([mapstruct.org/](http://mapstruct.org)) is created using the fantastic [awestruct](http://awestruct.org/) tool. To update the web site fork the [mapstruct.org repo](http://github.com/mapstruct/mapstruct.org) and create a pull request with your changes.
 
@@ -109,9 +127,9 @@ layout: base
     :markdown
       The web site can then be acessed at [http://localhost:9009](http://localhost:9009). Changes to the source files can be viewed in the browser simply be refreshing the page.
 
-    %h3#section-05 5. Building MapStruct within an IDE
+    %h3#section-06 6. Building MapStruct within an IDE
 
-    %h4 5.1 IntelliJ IDEA 
+    %h4 6.1 IntelliJ IDEA
 
     :markdown
       After you´ve cloned mapstruct you can import it by selecting "File -> Import Module ..." and then selecting the top level aggregator _pom.xml_ file located in the root folder. IDEA then will load mapstruct, resolve all dependencies and compile the source.
@@ -130,7 +148,7 @@ layout: base
 
        <img src="/images/idea-unittest-conf.png" style="padding-bottom: 3px;"/>
 
-    %h3#section-06 6. License
+    %h3#section-07 7. License
 
     :markdown
       MapStruct is distributed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html). By submitting a pull request you agree to license your work under that license and you affirm that your contribution doesn't violate any rights of other parties.
