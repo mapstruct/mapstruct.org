@@ -1248,6 +1248,119 @@ layout: base
                 ...
               }
 
+    .row
+      .span9
+        %h3#section-15 15. Qualifiers
+
+        :markdown
+            In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior. MapStruct has a handy mechanism to deal with such situations: `@Qualifier`. A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper, and can be referred to in a bean property mapping, iterable mapping or map mapping.  Multiple qualifiers can be ‘stuck onto’ a method and mapping. 
+
+            So, lets say there is a hand-written method to map titles with a `String` return type and `String` argument amongst many other referenced mappers with the same `String` return type  - `String` argument signature:
+            
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              public class Titles {
+
+                  public String translateTitleEG(String title) {
+                      // some mapping logic
+                  }
+                  
+                  public String translateTitleGE(String title) {
+                      // some mapping logic
+                  }
+              }  
+
+        :markdown
+            And a mapper using this handwritten mapper, in which source and target have a property 'title' that should be mapped:
+            
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper( uses = Titles.class )
+              public interface MovieMapper {
+
+                   GermanRelease toGerman( OriginalRelease movies );
+
+              }
+              
+
+
+        :markdown
+             Without the use of qualifiers, this would result in an ambiguous mapping method error, because 2 qualifying methods are found (`translateTitleEG`, `translateTitleGE`) and MapStruct would not have a hint which one to choose.
+        
+             Enter the qualifier approach:
+             
+                          
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Qualifier
+              @Target(ElementType.TYPE)
+              @Retention(RetentionPolicy.SOURCE)
+              public @interface TitleTranslator {
+              }
+              
+        :markdown
+             And, some qualifiers to indicate which translator to use to map from source language to target language:
+             
+             
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Qualifier
+              @Target(ElementType.METHOD)
+              @Retention(RetentionPolicy.SOURCE)
+              public @interface EnglishToGerman {
+              }
+            
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Qualifier
+              @Target(ElementType.METHOD)
+              @Retention(RetentionPolicy.SOURCE)
+              public @interface GermanToEnglish {
+              }             
+
+        :markdown
+             Please take note of the retention `TitleTranslator` on class level, `EnglishToGerman`, `GermanToEnglish` on method level! 
+             
+             Then, using the qualifiers, the mapping could look like this:
+  
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper( uses = Titles.class )
+              public interface MovieMapper {
+
+                   @Mapping( target = "title", qualifiedBy = { TitleTranslator.class, EnglishToGerman.class } )
+                   GermanRelease toGerman( OriginalRelease movies );
+
+              }           
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @TitleTranslator
+              public class Titles {
+
+                  @EnglishToGerman
+                  public String translateTitleEG(String title) {
+                      // some mapping logic
+                  }
+                  
+                  @GermanToEnglish                  
+                  public String translateTitleGE(String title) {
+                      // some mapping logic
+                  }
+              } 
+
+  
+
 
   .span3
     #toc{ :"data-offset-top"=>"0", :"data-spy"=>"affix" }
@@ -1281,6 +1394,8 @@ layout: base
           %a{ :href=>"#section-13" } Expressions
         %li
           %a{ :href=>"#section-14" } Shared configurations
+        %li
+          %a{ :href=>"#section-15" } Qualifiers
     :javascript
       (function(jQuery){
         jQuery( document ).ready( function() {
