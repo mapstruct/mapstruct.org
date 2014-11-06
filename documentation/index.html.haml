@@ -1056,7 +1056,9 @@ layout: base
         %h3#section-10 10. Reverse mappings
 
         :markdown
-          In some cases bi-directional mappings are required, e.g. from entity to DTO and from DTO to entity. For this purpose, simply declare a method with the required parameter and return type on the mapping interface which also declares the forward mapping method:
+          In some cases bi-directional mappings are required, e.g. from entity to DTO and from DTO to entity. For this purpose, simply declare a method with the required parameter and return type on the mapping interface which also declares the forward mapping method.
+          
+          Use the `@InheritInverseConfiguration` to indicate that this method is marked as reverse mapping.
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1065,13 +1067,20 @@ layout: base
               public interface CarMapper {
 
                   @Mapping(source = "numberOfSeats", target = "seatCount")
-                  CarDto carToCarDto(Car car);
+                  CarDto forward(Car car);
 
-                  Car carDtoToCar(CarDto carDto);
+                  @InheritInverseConfiguration
+                  Car reverse(CarDto carDto);
               }
 
         :markdown
-          Here the `carDtoToCar()` method is the reverse mapping method for `carToCarDto()`. Note that any attribute mappings only have to be specified at one of the two methods and will be applied to the corresponding reverse mapping method as well.
+          Here the `reverse()` method is the reverse mapping method for `forward()`. Note that any attribute mappings only have to be specified at one of the two methods and will be applied to the corresponding reverse mapping method as well. They are automatically reversed and copied to to the method with the `@InheritInverseConfiguration` annotation. 
+          
+          The `@InheritInverseConfiguration` acts - so to say - as a 'template'. Specific properties in this 'template' can (optionally) be overriden by  `ignore`, an `expression` or a `constant` in the mapping, like this: `@Mapping(target = "numberOfSeats", ignore=true). 
+          
+          If multiple forward methods qualify, the method can be made explicit by the `name` property like this: `@InheritInverseConfiguration(name = "forward")`.
+          
+          Nested properties are excluded from reverse mapping.
 
     .row
       .span9
