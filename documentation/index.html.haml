@@ -310,7 +310,7 @@ layout: base
 
                   @Mappings({
                       @Mapping(source = "person.description", target = "description"),
-                      @Mapping(source = "houseNo", target = "houseNumber")
+                      @Mapping(source = "address.houseNo", target = "houseNumber")
                   })
                   DeliveryAddressDto personAndAddressToDeliveryAddressDto(Person person, Address address);
               }
@@ -320,11 +320,43 @@ layout: base
 
           In case several source objects define a property with the same name, the source parameter from which to retrieve the property must be specified using the `@Mapping` annotation as shown for the `description` property in the example. An error will be raised when such an ambiguity is not resolved. For properties which only exist once in the given source objects it is optional to specify the source parameter's name as it can be determined automatically.
 
+        .alert.alert-warn
+          :markdown
+            **Note!** Specifying the parameter in which the property resides is mandatory when using the `@Mapping` annotation.
+          
+          
         .alert.alert-info
           :markdown
             **Tip!** Mapping methods with several source parameters will return `null` in case all the source parameters are `null`. Otherwise the target object will be instantiated and all properties from the provided parameters will be propagated.
 
-        %h4#section-03-04 3.4 Updating existing bean instances
+        %h4#section-03-04 3.4 Nested mappings
+        :markdown
+          MapStruct will handle nested mappings, by means of the `.` notation:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mappings({
+                  @Mapping(target = "chartName", source = "chart.name"),
+                  @Mapping(target = "title", source = "song.title"),
+                  @Mapping(target = "artistName", source = "song.artist.name"),
+                  @Mapping(target = "recordedAt", source = "song.artist.label.studio.name"),
+                  @Mapping(target = "city", source = "song.artist.label.studio.city"),
+                  @Mapping(target = "position", source = "position")
+              })
+              ChartEntry map(Chart chart, Song song, Integer position);
+ 
+        :markdown
+          Note: the parameter name (`chart`, `song`, `position`) is required, since there are several source parameters in the mapping. If there's only one source parameter, the parameter name can be ommited.
+          
+          MapStruct will perform a null check on each nested property in the source.
+                    
+        .alert.alert-info
+          :markdown
+            **Tip!** Also non java bean source parameters (like the `java.lang.Integer`) can be mapped in this fashion.
+
+
+        %h4#section-03-05 3.5 Updating existing bean instances
         :markdown
           In some cases you need mappings which don't create a new instance of the target type but instead update an existing instance of that type. This sort of mapping can be realized by adding a parameter for the target object and marking this parameter with `@MappingTarget`. The following shows an example:
 
