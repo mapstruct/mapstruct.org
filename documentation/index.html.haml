@@ -1112,7 +1112,7 @@ layout: base
           
           If multiple forward methods qualify, the method can be made explicit by the `name` property like this: `@InheritInverseConfiguration(name = "forward")`.
           
-          Nested properties are excluded from reverse mapping.
+          Nested properties are excluded (silently ignored) from reverse mapping. The same holds true for expressions and constants. Reverse mapping will take place automatically when the source property name and target property name are identical. Otherwise, `@Mapping` should specify both the  target name and source name. In all cases, a suitable mapping method needs to be in place for the reverse mapping.
 
     .row
       .span9
