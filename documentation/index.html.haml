@@ -49,7 +49,7 @@ layout: base
             :escaped
               ...
               <properties>
-                  <org.mapstruct.version>1.0.0.Beta2</org.mapstruct.version>
+                  <org.mapstruct.version>1.0.0.Beta3</org.mapstruct.version>
               </properties>
               ...
               <dependencies>
@@ -1099,20 +1099,20 @@ layout: base
               public interface CarMapper {
 
                   @Mapping(source = "numberOfSeats", target = "seatCount")
-                  CarDto forward(Car car);
+                  CarDto carToDto(Car car);
 
                   @InheritInverseConfiguration
-                  Car reverse(CarDto carDto);
+                  Car carDtoToCar(CarDto carDto);
               }
 
         :markdown
-          Here the `reverse()` method is the reverse mapping method for `forward()`. Note that any attribute mappings only have to be specified at one of the two methods and will be applied to the corresponding reverse mapping method as well. They are automatically reversed and copied to to the method with the `@InheritInverseConfiguration` annotation. 
-          
-          The `@InheritInverseConfiguration` acts - so to say - as a 'template'. Specific properties in this 'template' can (optionally) be overriden by  `ignore`, an `expression` or a `constant` in the mapping, like this: `@Mapping(target = "numberOfSeats", ignore=true). 
-          
-          If multiple forward methods qualify, the method can be made explicit by the `name` property like this: `@InheritInverseConfiguration(name = "forward")`.
-          
-          Nested properties are excluded (silently ignored) from reverse mapping. The same holds true for expressions and constants. Reverse mapping will take place automatically when the source property name and target property name are identical. Otherwise, `@Mapping` should specify both the  target name and source name. In all cases, a suitable mapping method needs to be in place for the reverse mapping.
+          Here the `carDtoToCar()` method is the reverse mapping method for `carToDto()`. Note that any attribute mappings from `carToDto()` will be applied to the corresponding reverse mapping method as well. They are automatically reversed and copied to the method with the `@InheritInverseConfiguration` annotation. 
+
+          Specific mappings from the inversed method can (optionally) be overridden by  `ignore`, `expression` or `constant` in the mapping, e.g. like this: `@Mapping(target = "numberOfSeats", ignore=true)`. 
+
+          If multiple forward methods qualify as per their source and target types, the method from which to inherit the configuration from can be specified using the `name` property like this: `@InheritInverseConfiguration(name = "carToDto")`.
+
+          Nested properties are excluded (silently ignored) from reverse mapping. The same holds true for expressions and constants. Reverse mapping will take place automatically when the source property name and target property name are identical. Otherwise, `@Mapping` should specify both the target name and source name. In all cases, a suitable mapping method needs to be in place for the reverse mapping.
 
     .row
       .span9
