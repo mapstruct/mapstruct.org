@@ -104,7 +104,11 @@
               </td>
             </tr>
             <tr>
-              <td width="20%"><img src="http://www.gravatar.com/avatar/4c7e9da6e878e628c51fdd267a9dd7a9?s=100" /></td><td><b>Sjaak Derksen</b></td>
+              <td width="20%"><img src="http://www.gravatar.com/avatar/4c7e9da6e878e628c51fdd267a9dd7a9?s=100" /></td>
+              <td>
+                 <p><b>Sjaak Derksen</b>, enthusiastic first-hour user of MapStruct</p>
+                 <p>He has well over 15 years of experience in Java / JEE development as architect, technical lead, developer and tester in the domain of Telecommunications. Sjaak started working more recently on spatial subsurface data interchange (e.g. Inspire, GML) were he believes MapStruct can be a true asset, reducing the amount of repetitive, error-prone work.</p>
+             </td>
             </tr>
           </table>
           <h3 id="section-02">2. Contributing</h3>
@@ -155,15 +159,24 @@
           <p>To get yourself acquainted with the code base, you could start by taking a look at the docs of <a href="https://mapstruct.ci.cloudbees.com/job/mapstruct-javadoc/javadoc/index.html?org/mapstruct/ap/MappingProcessor.html">MappingProcessor</a> which give a high-level overview of the general architecture. Then check out the <a href="https://mapstruct.ci.cloudbees.com/job/mapstruct-javadoc/javadoc/index.html?org/mapstruct/ap/model/package-summary.html">org.mapstruct.ap.model</a> and <a href="https://mapstruct.ci.cloudbees.com/job/mapstruct-javadoc/javadoc/index.html?org/mapstruct/ap/processor/package-summary.html">org.mapstruct.ap.processor</a> packages.</p>
           
           <p>If you have any questions don't hesitate <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">to ask</a>, we here to help!</p>
-          <h3 id="section-04">4. Updating mapstruct.org</h3>
+          <h3 id="section-04">4. Debugging the annotation processor</h3>
+          <p>The most straight-forward way to debug the MapStruct annotation processor is to use your IDE and debug one of the JUnit tests in the processor module. The processor is then executed with the same JDK that you use the run the tests with.</p>
+          
+          <p>But there are subtle differences in the way different compilers implement the annotation processor API, so you might come to a point where you need to debug a specific problem with a certain compiler. The MapStruct integration tests run different smaller Maven projects with different compilers, by using compiler implementations pulled in as dependencies to the maven-compiler-plugin, and by <a href="http://maven.apache.org/guides/mini/guide-using-toolchains.html">Maven Toolchains</a> (see <a href="https://github.com/mapstruct/mapstruct/blob/master/etc/toolchains-example.xml">etc/toolchains-example.xml</a> for a template to modify and put into your local <code>~/.m2</code> directory).</p>
+          
+          <p>To debug an integration test, pass <code>-DprocessorIntegrationTest.debug=true</code> to the test process. A test case that uses Maven Toolchains (currently <code>oracle_java_6</code> and <code>oracle_java_7</code>) will wait for a remote debugger to attach on port <code>8000</code>. The other tests will launch <code>mvnDebug</code> internally, which by default also lets the Maven process wait on port <code>8000</code> for a remote debugger.</p>
+          
+          <p>If you like to launch the test with maven, use a command such as the following to focus on a single test case:</p>
+          <pre class="prettyprint linenums">mvn test -Dtest=&lt;TestClass&gt;#&lt;TestCase&gt; -DprocessorIntegrationTest.debug=true&#x000A;&#x000A;mvn test -Dtest=SimpleTest#oracle_java_6 -DprocessorIntegrationTest.debug=true</pre>
+          <h3 id="section-05">5. Updating mapstruct.org</h3>
           <p>This web site (<a href="http://mapstruct.org">mapstruct.org/</a>) is created using the fantastic <a href="http://awestruct.org/">awestruct</a> tool. To update the web site fork the <a href="http://github.com/mapstruct/mapstruct.org">mapstruct.org repo</a> and create a pull request with your changes.</p>
           
           <p>The individual pages are written in <a href="http://haml.info/">Haml</a> and <a href="http://daringfireball.net/projects/markdown/">Markdown</a> and converted into HTML by awestruct. Building the site requires Ruby 1.9.x to be installed on your system.</p>
           <p>To build the web page run</p>
           <pre class="prettyprint linenums">rake clean preview</pre>
           <p>The web site can then be acessed at <a href="http://localhost:9009">http://localhost:9009</a>. Changes to the source files can be viewed in the browser simply be refreshing the page.</p>
-          <h3 id="section-05">5. Building MapStruct within an IDE</h3>
-          <h4>5.1 IntelliJ IDEA</h4>
+          <h3 id="section-06">6. Building MapStruct within an IDE</h3>
+          <h4>6.1 IntelliJ IDEA</h4>
           <p>After you´ve cloned mapstruct you can import it by selecting "File -&gt; Import Module …" and then selecting the top level aggregator <em>pom.xml</em> file located in the root folder. IDEA then will load mapstruct, resolve all dependencies and compile the source.</p>
           
           <p>You might face an error on IDEAs Message tab saying</p>
@@ -179,7 +192,7 @@
           <p>For running mapstruct unit tests from IDEA open the "Run/Debug Configurations" preferences, expand "Default" on the left side and navigate to "JUnit". There choose $MODULE_DIR$ as the working directory and you should now be able to run JUnit tests from IDEA.</p>
           
           <p><img src="/images/idea-unittest-conf.png" style="padding-bottom: 3px;" /></p>
-          <h3 id="section-06">6. License</h3>
+          <h3 id="section-07">7. License</h3>
           <p>MapStruct is distributed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>. By submitting a pull request you agree to license your work under that license and you affirm that your contribution doesn't violate any rights of other parties.</p>
         </div>
         <div class="span3">

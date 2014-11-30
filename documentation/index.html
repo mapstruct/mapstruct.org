@@ -122,12 +122,12 @@
               </ul>
               
               <p>For Maven based projects add the following to your POM file in order to use MapStruct:</p>
-              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Beta2&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct-jdk8&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.4&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
+              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Beta3&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct-jdk8&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.4&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
               <h4 id="section-02-01">2.1 Configuration options</h4>
               <p>The MapStruct code generator can be configured using <em>annotation processor options</em>.</p>
               
               <p>When invoking javac directly, these options are passed to the compiler in the form <em>-Akey=value</em>. When using MapStruct via Maven, any processor options can be passed using an <code>options</code> element within the configuration of the Maven processor plug-in like this:</p>
-              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;plugin&gt;&#x000A;    &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;    &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;    &lt;configuration&gt;&#x000A;        &lt;processors&gt;&#x000A;            &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;        &lt;/processors&gt;&#x000A;        &lt;options&gt;&#x000A;            &lt;suppressGeneratorTimestamp&gt;true&lt;/suppressGeneratorTimestamp&gt;&#x000A;            &lt;defaultComponentModel&gt;cdi&lt;/defaultComponentModel&gt;&#x000A;        &lt;/options&gt;&#x000A;        ...&#x000A;    &lt;/configuration&gt;&#x000A;    ...&#x000A;&lt;plugin&gt;&#x000A;...</pre>
+              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;plugin&gt;&#x000A;    &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;    &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;    &lt;configuration&gt;&#x000A;        &lt;processors&gt;&#x000A;            &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;        &lt;/processors&gt;&#x000A;        &lt;options&gt;&#x000A;            &lt;mapstruct.suppressGeneratorTimestamp&gt;true&lt;/mapstruct.suppressGeneratorTimestamp&gt;&#x000A;            &lt;mapstruct.defaultComponentModel&gt;cdi&lt;/mapstruct.defaultComponentModel&gt;&#x000A;        &lt;/options&gt;&#x000A;        ...&#x000A;    &lt;/configuration&gt;&#x000A;    ...&#x000A;&lt;plugin&gt;&#x000A;...</pre>
               <p>The following options exist:</p>
               <table class="table">
                 <thead>
@@ -139,14 +139,14 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>suppressGeneratorTimestamp</td>
+                    <td>mapstruct.suppressGeneratorTimestamp</td>
                     <td>Whether the creation of a time stamp in the generated mapper classes is suppressed or not</td>
                     <td>
                       <p><code>false</code></p>
                     </td>
                   </tr>
                   <tr>
-                    <td>defaultComponentModel</td>
+                    <td>mapstruct.defaultComponentModel</td>
                     <td>
                       <p>The name of the component model (see <a href="#section-04-2">section 4.2</a>) based on which mappers should be generated. Supported values are:</p>
                       <ul>
@@ -170,7 +170,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>unmappedTargetPolicy</td>
+                    <td>mapstruct.unmappedTargetPolicy</td>
                     <td>
                       <p>The default reporting policy to be applied in case an attribute of the target object of a mapping method is not populated with a source value.
                       Supported values are:</p>
@@ -230,14 +230,26 @@
               <p>MapStruct will generate a sub-class of <code>CarMapper</code> with an implementation of the <code>carToCarDto()</code> method as it is declared abstract. The generated code in <code>carToCarDto()</code> will invoke the manually implemented <code>personToPersonDto()</code> method when mapping the <code>driver</code> attribute.</p>
               <h4 id="section-03-03">3.3 Mapping methods with several source parameters</h4>
               <p>MapStruct also supports mapping methods with several source parameters. This is useful e.g. in order to combine several entities into one data transfer object. The following shows an example:</p>
-              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface AddressMapper {&#x000A;&#x000A;    @Mappings({&#x000A;        @Mapping(source = &quot;person.description&quot;, target = &quot;description&quot;),&#x000A;        @Mapping(source = &quot;houseNo&quot;, target = &quot;houseNumber&quot;)&#x000A;    })&#x000A;    DeliveryAddressDto personAndAddressToDeliveryAddressDto(Person person, Address address);&#x000A;}</pre>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface AddressMapper {&#x000A;&#x000A;    @Mappings({&#x000A;        @Mapping(source = &quot;person.description&quot;, target = &quot;description&quot;),&#x000A;        @Mapping(source = &quot;address.houseNo&quot;, target = &quot;houseNumber&quot;)&#x000A;    })&#x000A;    DeliveryAddressDto personAndAddressToDeliveryAddressDto(Person person, Address address);&#x000A;}</pre>
               <p>The shown mapping method takes two source parameters and returns a combined target object. As with single-parameter mapping methods properties are mapped by name.</p>
               
               <p>In case several source objects define a property with the same name, the source parameter from which to retrieve the property must be specified using the <code>@Mapping</code> annotation as shown for the <code>description</code> property in the example. An error will be raised when such an ambiguity is not resolved. For properties which only exist once in the given source objects it is optional to specify the source parameter's name as it can be determined automatically.</p>
+              <div class="alert alert-warn">
+                <p><strong>Note!</strong> Specifying the parameter in which the property resides is mandatory when using the <code>@Mapping</code> annotation.</p>
+              </div>
               <div class="alert alert-info">
                 <p><strong>Tip!</strong> Mapping methods with several source parameters will return <code>null</code> in case all the source parameters are <code>null</code>. Otherwise the target object will be instantiated and all properties from the provided parameters will be propagated.</p>
               </div>
-              <h4 id="section-03-04">3.4 Updating existing bean instances</h4>
+              <h4 id="section-03-04">3.4 Nested mappings</h4>
+              <p>MapStruct will handle nested mappings, by means of the <code>.</code> notation:</p>
+              <pre class="prettyprint lang-java linenums">@Mappings({&#x000A;    @Mapping(target = &quot;chartName&quot;, source = &quot;chart.name&quot;),&#x000A;    @Mapping(target = &quot;title&quot;, source = &quot;song.title&quot;),&#x000A;    @Mapping(target = &quot;artistName&quot;, source = &quot;song.artist.name&quot;),&#x000A;    @Mapping(target = &quot;recordedAt&quot;, source = &quot;song.artist.label.studio.name&quot;),&#x000A;    @Mapping(target = &quot;city&quot;, source = &quot;song.artist.label.studio.city&quot;),&#x000A;    @Mapping(target = &quot;position&quot;, source = &quot;position&quot;)&#x000A;})&#x000A;ChartEntry map(Chart chart, Song song, Integer position);</pre>
+              <p>Note: the parameter name (<code>chart</code>, <code>song</code>, <code>position</code>) is required, since there are several source parameters in the mapping. If there's only one source parameter, the parameter name can be ommited.</p>
+              
+              <p>MapStruct will perform a null check on each nested property in the source.</p>
+              <div class="alert alert-info">
+                <p><strong>Tip!</strong> Also non java bean source parameters (like the <code>java.lang.Integer</code>) can be mapped in this fashion.</p>
+              </div>
+              <h4 id="section-03-05">3.5 Updating existing bean instances</h4>
               <p>In some cases you need mappings which don't create a new instance of the target type but instead update an existing instance of that type. This sort of mapping can be realized by adding a parameter for the target object and marking this parameter with <code>@MappingTarget</code>. The following shows an example:</p>
               <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    void updateCarFromDto(CarDto carDto, @MappingTarget Car car);&#x000A;}</pre>
               <p>The generated code of the <code>updateCarFromDto()</code> method will upate the passed <code>Car</code> instance with the properties from the given <code>CarDto</code> object. There may be only one parameter marked as mapping target. Instead of <code>void</code> you may also set the method's return type to the type of the target parameter, which will cause the generated implementation to update the passed mapping target and return it as well. This allows for fluent invocations of mapping methods.</p>
@@ -259,7 +271,7 @@
               <h4 id="section-04-02">4.2 Using dependency injection</h4>
               <p>If you're working with a dependency injection framework such as <a href="http://jcp.org/en/jsr/detail?id=346">CDI</a> (Contexts and Dependency Injection for Java<sup>TM</sup> EE) or the <a href="http://www.springsource.org/spring-framework">Spring Framework</a>, it is recommended to obtain mapper objects via dependency injection as well. For that purpose you can specify the component model which generated mapper classes should be based on either via <code>@Mapper#componentModel</code> or using a processor option as described in <a href="section-02-01">section</a>.</p>
               
-              <p>Currently there is support for CDI and Spring (the later either via its custom annotations or using the JSR 330 annotations). See <a href="section-02-01">section</a> for the allowed values of the <code>componentModel</code> attribute which are the same as for the <code>defaultComponentModel</code> processor option. In both cases the required annotations will be added to the generated mapper implementations classes in order to make the same subject to dependency injection. The following shows an example using CDI:</p>
+              <p>Currently there is support for CDI and Spring (the later either via its custom annotations or using the JSR 330 annotations). See <a href="section-02-01">section</a> for the allowed values of the <code>componentModel</code> attribute which are the same as for the <code>mapstruct.defaultComponentModel</code> processor option. In both cases the required annotations will be added to the generated mapper implementations classes in order to make the same subject to dependency injection. The following shows an example using CDI:</p>
               <pre class="prettyprint lang-java linenums">@Mapper(componentModel = &quot;cdi&quot;)&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarDto carToCarDto(Car car);&#x000A;}</pre>
               <p>The generated mapper implementation will be marked with the <code>@ApplicationScoped</code> annotation and thus can be injected into fields, constructor arguments etc. using the <code>@Inject</code> annotation:</p>
               <pre class="prettyprint lang-java linenums">@Inject&#x000A;private CarMapper mapper;</pre>
@@ -311,6 +323,29 @@
                 </li>
               </ul>
               <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;  @Mapping(source = &quot;manufacturingDate&quot;, dateFormat = &quot;dd.MM.yyyy&quot;)&#x000A;  CarDto carToCarDto(Car car);&#x000A;&#x000A;  @IterableMapping(dateFormat = &quot;dd.MM.yyyy&quot;)&#x000A;  List&lt;String&gt; stringListToDateList(List&lt;Date&gt; dates);&#x000A;}</pre>
+              <ul>
+                <li>
+                  <p>Between Jodas <code>org.joda.time.DateTime</code>, <code>org.joda.time.LocalDateTime</code>, <code>org.joda.time.LocalDate</code>, <code>org.joda.time.LocalTime</code> and <code>String</code>. A format string as understood by <code>java.text.SimpleDateFormat</code> can be specified via the <code>dateFormat</code> option (see above).</p>
+                </li>
+                <li>
+                  <p>Between Jodas <code>org.joda.time.DateTime</code> and <code>java.util.Calendar</code>.</p>
+                </li>
+                <li>
+                  <p>Between Jodas <code>org.joda.time.LocalDateTime</code>, <code>org.joda.time.LocalDate</code> and <code>java.util.Date</code>.</p>
+                </li>
+                <li>
+                  <p>Between <code>java.time.ZonedDateTime</code>, <code>java.time.LocalDateTime</code>, <code>java.time.LocalDate</code>, <code>java.time.LocalTime</code> from Java 8 Date-Time package and <code>String</code>. A format string as understood by <code>java.text.SimpleDateFormat</code> can be specified via the <code>dateFormat</code> option (see above).</p>
+                </li>
+                <li>
+                  <p>Between <code>java.time.ZonedDateTime</code> from Java 8 Date-Time package and <code>java.util.Date</code> where, when mapping a <code>ZonedDateTime</code> from a given <code>Date</code>, systems default timezone is used. </p>
+                </li>
+                <li>
+                  <p>Between <code>java.time.LocalDateTime</code> from Java 8 Date-Time package and <code>java.util.Date</code> where. When converting a <code>LocalDateTime</code> from a given <code>Date</code>, systems default timezone is used. When mapping a <code>Date</code> to a <code>LocalDateTime</code> UTC is used as the timzone.</p>
+                </li>
+                <li>
+                  <p>Between <code>java.time.ZonedDateTime</code> from Java 8 Date-Time package and <code>java.util.Calendar</code>. </p>
+                </li>
+              </ul>
               <h4 id="section-05-02">5.2 Mapping object references</h4>
               <p>Typically an object has not only primitive attributes but also references other objects. E.g. the <code>Car</code> class could contain a reference to a <code>Person</code> object (representing the car's driver) which should be mapped to a <code>PersonDto</code> object referenced by the <code>CarDto</code> class.</p>
               
@@ -574,9 +609,17 @@
           <div class="row">
             <div class="span9">
               <h3 id="section-10">10. Reverse mappings</h3>
-              <p>In some cases bi-directional mappings are required, e.g. from entity to DTO and from DTO to entity. For this purpose, simply declare a method with the required parameter and return type on the mapping interface which also declares the forward mapping method:</p>
-              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    @Mapping(source = &quot;numberOfSeats&quot;, target = &quot;seatCount&quot;)&#x000A;    CarDto carToCarDto(Car car);&#x000A;&#x000A;    Car carDtoToCar(CarDto carDto);&#x000A;}</pre>
-              <p>Here the <code>carDtoToCar()</code> method is the reverse mapping method for <code>carToCarDto()</code>. Note that any attribute mappings only have to be specified at one of the two methods and will be applied to the corresponding reverse mapping method as well.</p>
+              <p>In some cases bi-directional mappings are required, e.g. from entity to DTO and from DTO to entity. For this purpose, simply declare a method with the required parameter and return type on the mapping interface which also declares the forward mapping method.</p>
+              
+              <p>Use the <code>@InheritInverseConfiguration</code> to indicate that this method is marked as reverse mapping.</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    @Mapping(source = &quot;numberOfSeats&quot;, target = &quot;seatCount&quot;)&#x000A;    CarDto carToDto(Car car);&#x000A;&#x000A;    @InheritInverseConfiguration&#x000A;    Car carDtoToCar(CarDto carDto);&#x000A;}</pre>
+              <p>Here the <code>carDtoToCar()</code> method is the reverse mapping method for <code>carToDto()</code>. Note that any attribute mappings from <code>carToDto()</code> will be applied to the corresponding reverse mapping method as well. They are automatically reversed and copied to the method with the <code>@InheritInverseConfiguration</code> annotation. </p>
+              
+              <p>Specific mappings from the inversed method can (optionally) be overridden by  <code>ignore</code>, <code>expression</code> or <code>constant</code> in the mapping, e.g. like this: <code>@Mapping(target = "numberOfSeats", ignore=true)</code>. </p>
+              
+              <p>If multiple forward methods qualify as per their source and target types, the method from which to inherit the configuration from can be specified using the <code>name</code> property like this: <code>@InheritInverseConfiguration(name = "carToDto")</code>.</p>
+              
+              <p>Nested properties are excluded (silently ignored) from reverse mapping. The same holds true for expressions and constants. Reverse mapping will take place automatically when the source property name and target property name are identical. Otherwise, <code>@Mapping</code> should specify both the target name and source name. In all cases, a suitable mapping method needs to be in place for the reverse mapping.</p>
             </div>
           </div>
           <div class="row">
@@ -608,7 +651,8 @@
               
               <p>The example below demonstrates how two source properties can be mapped to one target:</p>
               <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public interface SourceTargetMapper {&#x000A;&#x000A;    SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );&#x000A;&#x000A;    @Mapping(target = &quot;timeAndFormat&quot;,&#x000A;         expression = &quot;java( new org.sample.TimeAndFormat( s.getTime(), s.getFormat() ) )&quot;)&#x000A;    Target sourceToTarget(Source s);&#x000A;}</pre>
-              <p>The example demonstrates how the source properties <code>time</code> and <code>format</code> are composed into one target property <code>TimeAndFormat</code>. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the <code>TimeAndFormat</code> class (unless its used otherwise explicitly in the <code>SourceTargetMapper</code>).</p>
+              <p>The example demonstrates how the source properties <code>time</code> and <code>format</code> are composed into one target property <code>TimeAndFormat</code>. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the <code>TimeAndFormat</code> class (unless its used otherwise explicitly in the <code>SourceTargetMapper</code>). This can be resolved by defining <code>imports</code> on the <code>@Mapper</code> annotation.</p>
+              <pre class="prettyprint lang-java linenums">imports org.sample.TimeAndFormat;&#x000A;&#x000A;@Mapper( imports = TimeAndFormat.class )&#x000A;public interface SourceTargetMapper {&#x000A;&#x000A;    SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );&#x000A;&#x000A;    @Mapping(target = &quot;timeAndFormat&quot;,&#x000A;         expression = &quot;java( new TimeAndFormat( s.getTime(), s.getFormat() ) )&quot;)&#x000A;    Target sourceToTarget(Source s);&#x000A;}</pre>
             </div>
           </div>
           <div class="row">
@@ -619,6 +663,32 @@
               <p>The <code>@MapperConfig</code> annotation has the same attributes as the <code>@Mapper</code> annotation. Any attributes not given via <code>@Mapper</code> will be inherited from the shared configuration. Attributes specified in <code>@Mapper</code> take precedence over the attributes specified via the referenced configuration class. List properties such as <code>uses</code> are simply combined:</p>
               <pre class="prettyprint lang-java linenums">@MapperConfig(&#x000A;    uses = CustomMapperViaMapperConfig.class,&#x000A;    unmappedTargetPolicy = ReportingPolicy.ERROR&#x000A;)&#x000A;public class CentralConfig {&#x000A;}</pre>
               <pre class="prettyprint lang-java linenums">@Mapper(config = CentralConfig.class, uses = { CustomMapperViaMapper.class } )&#x000A;// Effective configuration:&#x000A;// @Mapper(&#x000A;//     uses = { CustomMapperViaMapper.class, CustomMapperViaMapperConfig.class },&#x000A;//     unmappedTargetPolicy = ReportingPolicy.ERROR&#x000A;// )&#x000A;public interface SourceTargetMapper {&#x000A;  ...&#x000A;}</pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-15">15. Qualifiers</h3>
+              <p>In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior. MapStruct has a handy mechanism to deal with such situations: <code>@Qualifier</code>. A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper, and can be referred to in a bean property mapping, iterable mapping or map mapping.  Multiple qualifiers can be ‘stuck onto’ a method and mapping. </p>
+              
+              <p>So, lets say there is a hand-written method to map titles with a <code>String</code> return type and <code>String</code> argument amongst many other referenced mappers with the same <code>String</code> return type  - <code>String</code> argument signature:</p>
+              <pre class="prettyprint lang-java linenums">public class Titles {&#x000A;&#x000A;    public String translateTitleEG(String title) {&#x000A;        // some mapping logic&#x000A;    }&#x000A;    &#x000A;    public String translateTitleGE(String title) {&#x000A;        // some mapping logic&#x000A;    }&#x000A;}</pre>
+              <p>And a mapper using this handwritten mapper, in which source and target have a property 'title' that should be mapped:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper( uses = Titles.class )&#x000A;public interface MovieMapper {&#x000A;&#x000A;     GermanRelease toGerman( OriginalRelease movies );&#x000A;&#x000A;}</pre>
+              <p>Without the use of qualifiers, this would result in an ambiguous mapping method error, because 2 qualifying methods are found (<code>translateTitleEG</code>, <code>translateTitleGE</code>) and MapStruct would not have a hint which one to choose.</p>
+              
+              <p>Enter the qualifier approach:</p>
+              <pre class="prettyprint lang-java linenums">@Qualifier&#x000A;@Target(ElementType.TYPE)&#x000A;@Retention(RetentionPolicy.SOURCE)&#x000A;public @interface TitleTranslator {&#x000A;}</pre>
+              <p>And, some qualifiers to indicate which translator to use to map from source language to target language:</p>
+              <pre class="prettyprint lang-java linenums">@Qualifier&#x000A;@Target(ElementType.METHOD)&#x000A;@Retention(RetentionPolicy.SOURCE)&#x000A;public @interface EnglishToGerman {&#x000A;}</pre>
+              <pre class="prettyprint lang-java linenums">@Qualifier&#x000A;@Target(ElementType.METHOD)&#x000A;@Retention(RetentionPolicy.SOURCE)&#x000A;public @interface GermanToEnglish {&#x000A;}</pre>
+              <p>Please take note of the retention <code>TitleTranslator</code> on class level, <code>EnglishToGerman</code>, <code>GermanToEnglish</code> on method level! </p>
+              
+              <p>Then, using the qualifiers, the mapping could look like this:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper( uses = Titles.class )&#x000A;public interface MovieMapper {&#x000A;&#x000A;     @Mapping( target = &quot;title&quot;, qualifiedBy = { TitleTranslator.class, EnglishToGerman.class } )&#x000A;     GermanRelease toGerman( OriginalRelease movies );&#x000A;&#x000A;}</pre>
+              <pre class="prettyprint lang-java linenums">@TitleTranslator&#x000A;public class Titles {&#x000A;&#x000A;    @EnglishToGerman&#x000A;    public String translateTitleEG(String title) {&#x000A;        // some mapping logic&#x000A;    }&#x000A;    &#x000A;    @GermanToEnglish                  &#x000A;    public String translateTitleGE(String title) {&#x000A;        // some mapping logic&#x000A;    }&#x000A;}</pre>
+              <div class="alert alert-warn">
+                <p><strong>Note!</strong> A class / method annotated with a qualifier will not qualify anymore for mappings that do not have the <code>qualifiedBy</code> element.  </p>
+              </div>
             </div>
           </div>
         </div>
@@ -667,6 +737,9 @@
               </li>
               <li>
                 <a href="#section-14">Shared configurations</a>
+              </li>
+              <li>
+                <a href="#section-15">Qualifiers</a>
               </li>
             </ol>
           </div>
