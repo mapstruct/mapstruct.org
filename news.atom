@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2014-11-30T21:46:04+01:00</updated>
+  <updated>2014-12-02T22:24:15+01:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://mapstruct.org/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html</id>
     <title>MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more</title>
-    <updated>2014-11-30T21:46:04+01:00</updated>
+    <updated>2014-12-02T22:24:15+01:00</updated>
     <published>2014-11-30T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html" rel="alternate" type="text/html" />
     <author>
@@ -94,7 +94,7 @@
 
       &lt;pre class=&quot;prettyprint linenums&quot;&gt;
       @Qualifier
-      @Target(ElementType.TYPE) @Retention(RetentionPolicy.SOURCE)
+      @Target(ElementType.METHOD)
       public @interface ShortDate {}&lt;/pre&gt;
 
       &lt;p&gt;Tag mapping methods using such qualifiers like so:&lt;/p&gt;
