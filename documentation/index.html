@@ -687,8 +687,26 @@
               <pre class="prettyprint lang-java linenums">@Mapper( uses = Titles.class )&#x000A;public interface MovieMapper {&#x000A;&#x000A;     @Mapping( target = &quot;title&quot;, qualifiedBy = { TitleTranslator.class, EnglishToGerman.class } )&#x000A;     GermanRelease toGerman( OriginalRelease movies );&#x000A;&#x000A;}</pre>
               <pre class="prettyprint lang-java linenums">@TitleTranslator&#x000A;public class Titles {&#x000A;&#x000A;    @EnglishToGerman&#x000A;    public String translateTitleEG(String title) {&#x000A;        // some mapping logic&#x000A;    }&#x000A;    &#x000A;    @GermanToEnglish                  &#x000A;    public String translateTitleGE(String title) {&#x000A;        // some mapping logic&#x000A;    }&#x000A;}</pre>
               <div class="alert alert-warn">
-                <p><strong>Note!</strong> A class / method annotated with a qualifier will not qualify anymore for mappings that do not have the <code>qualifiedBy</code> element.  </p>
+                <p><strong>Note!</strong> A class / method annotated with a qualifier will not qualify anymore for mappings that do not have the <code>qualifiedBy</code> element.</p>
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-16">16. Controlling mapping result</h3>
+              <p>MapStruct offers control over the object to create when the source (argument) equals <code>null</code>. By default <code>null</code> will be returned. However, by means of the <code>NullValueMapping</code> annotation on mapping method level or the <code>nullValueMappingStrategy</code> element on <code>@Mapping</code> or <code>@MappingConfig</code> level this default outcome can be altered. There is one additional possibility: <code>RETURN_DEFAULT</code>. This means the following for:</p>
+              <ul>
+                <li>
+                  <p><code>bean mappings</code>: an 'empty' target bean will be returned, with the exception of constants and expressions, they will be populated when present.</p>
+                </li>
+                <li>
+                  <p><code>list</code>: an empty iterable will be returned.</p>
+                </li>
+                <li>
+                  <p><code>map</code>: an empty map will be returned.</p>
+                </li>
+              </ul>
+              <p>The strategy works in a hierarchical fashion, similar to the <code>CollectionMappingStrategy</code> explained earlier. An <code>@NullValueMapping</code> annotation on mapping method level will override the <code>@Mapping#nullValueMappingStrategy</code>. Just as the <code>@Mapping#nullValueMappingStrategy</code> will override the <code>@MappingConfig#nullValueMappingStrategy</code>.</p>
             </div>
           </div>
         </div>
@@ -740,6 +758,9 @@
               </li>
               <li>
                 <a href="#section-15">Qualifiers</a>
+              </li>
+              <li>
+                <a href="#section-16">Controlling mapping result</a>
               </li>
             </ol>
           </div>
