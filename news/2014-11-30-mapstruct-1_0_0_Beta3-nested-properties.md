@@ -75,7 +75,7 @@ In previous releases you'd have gotten an error during generation, as both metho
 
 <pre class="prettyprint linenums">
 @Qualifier
-@Target(ElementType.TYPE) @Retention(RetentionPolicy.SOURCE)
+@Target(ElementType.METHOD)
 public @interface ShortDate {}
 </pre>
 
