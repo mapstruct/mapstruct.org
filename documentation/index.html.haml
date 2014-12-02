@@ -1402,8 +1402,33 @@ layout: base
 
         .alert.alert-warn
           :markdown
-            **Note!** A class / method annotated with a qualifier will not qualify anymore for mappings that do not have the `qualifiedBy` element.  
+            **Note!** A class / method annotated with a qualifier will not qualify anymore for mappings that do not have the `qualifiedBy` element.
 
+
+    .row
+      .span9
+        %h3#section-16 16. Controlling mapping result
+
+        :markdown
+          MapStruct offers control over the object to create when the source (argument) equals `null`. By default `null` will be returned. However, by means of the `NullValueMapping` annotation on mapping method level or the `nullValueMappingStrategy` element on `@Mapping` or `@MappingConfig` level this default outcome can be altered. There is one additional possibility: `RETURN_DEFAULT`. This means the following for:
+
+        %ul
+          %li
+
+            :markdown
+              `bean mappings`: an 'empty' target bean will be returned, with the exception of constants and expressions, they will be populated when present.
+          %li
+
+            :markdown
+              `list`: an empty iterable will be returned.
+
+          %li
+
+            :markdown
+              `map`: an empty map will be returned.
+
+        :markdown
+          The strategy works in a hierarchical fashion, similar to the `CollectionMappingStrategy` explained earlier. An `@NullValueMapping` annotation on mapping method level will override the `@Mapping#nullValueMappingStrategy`. Just as the `@Mapping#nullValueMappingStrategy` will override the `@MappingConfig#nullValueMappingStrategy`.
 
   .span3
     #toc{ :"data-offset-top"=>"0", :"data-spy"=>"affix" }
@@ -1439,6 +1464,8 @@ layout: base
           %a{ :href=>"#section-14" } Shared configurations
         %li
           %a{ :href=>"#section-15" } Qualifiers
+        %li
+          %a{ :href=>"#section-16" } Controlling mapping result
     :javascript
       (function(jQuery){
         jQuery( document ).ready( function() {
