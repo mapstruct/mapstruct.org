@@ -1291,7 +1291,7 @@ layout: base
 
     .row
       .span9
-        %h3#section-15 15. Qualifiers
+        %h3#section-15 15. Selection based on Qualifiers
 
         :markdown
             In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior. MapStruct has a handy mechanism to deal with such situations: `@Qualifier`. A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper, and can be referred to in a bean property mapping, iterable mapping or map mapping.  Multiple qualifiers can be ‘stuck onto’ a method and mapping. 
@@ -1404,10 +1404,53 @@ layout: base
           :markdown
             **Note!** A class / method annotated with a qualifier will not qualify anymore for mappings that do not have the `qualifiedBy` element.
 
+        .alert.alert-info
+          :markdown
+            **Tip!** The same mechanism is also present on bean mappings: `@BeanMapping#qualifiedBy`: it selects the factory method marked with the indicated qualifier.
 
     .row
       .span9
-        %h3#section-16 16. Controlling mapping result
+        %h3#section-16 16. Determining the result type
+        
+        :markdown
+            When result types have an inheritance relation, selecting either mapping method (`@Mapping`) or a factory method (`@BeanMapping`) can becomes ambigious. Suppose an Apple and a Banana, which is are both specializations of Fruit. 
+            
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper( uses = FruitFactory.class )
+              public interface FruitMapper {
+
+                  @BeanMapping( resultType = Apple.class )
+                  Fruit map( FruitDto source );
+
+              }            
+                        
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              public class FruitFactory {
+              
+                  public Apple createApple() {
+                      return new Apple( "Apple" );
+                  }
+              
+                  public Banana createBanana() {
+                      return new Banana( "Banana" );
+                  }
+              }            
+            
+        :markdown
+            So, which `Fruit` must be factorized in the mapping method `Fruit map(FruitDto source);`? A `Banana` or an `Apple`? Here's were the `@BeanMapping#resultType` comes in handy. It controls the factory method to select, or in absence of a factory method, the return type to create.
+
+        .alert.alert-info
+          :markdown
+            **Tip!** The same mechanism is also present on mapping: `@Mapping#resultType` and works like you expect it would: it selects the mapping method with the desired result type when present.
+        
+    .row
+      .span9
+        %h3#section-17 17. Controlling mapping result
 
         :markdown
           MapStruct offers control over the object to create when the source (argument) equals `null`. By default `null` will be returned. However, by means of the `NullValueMapping` annotation on mapping method level or the `nullValueMappingStrategy` element on `@Mapping` or `@MappingConfig` level this default outcome can be altered. There is one additional possibility: `RETURN_DEFAULT`. This means the following for:
@@ -1463,9 +1506,11 @@ layout: base
         %li
           %a{ :href=>"#section-14" } Shared configurations
         %li
-          %a{ :href=>"#section-15" } Qualifiers
+          %a{ :href=>"#section-15" } Selection based on Qualifiers
         %li
-          %a{ :href=>"#section-16" } Controlling mapping result
+          %a{ :href=>"#section-16" } Selection based on result type
+        %li
+          %a{ :href=>"#section-17" } Controlling mapping result
     :javascript
       (function(jQuery){
         jQuery( document ).ready( function() {
