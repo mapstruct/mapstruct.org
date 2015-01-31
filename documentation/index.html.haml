@@ -1446,7 +1446,11 @@ layout: base
 
         .alert.alert-info
           :markdown
-            **Tip!** The same mechanism is also present on mapping: `@Mapping#resultType` and works like you expect it would: it selects the mapping method with the desired result type when present.
+            **Tip!** The same mechanism is present on mapping: `@Mapping#resultType` and works like you expect it would: it selects the mapping method with the desired result type when present.
+
+        .alert.alert-info
+          :markdown
+            **Tip!** The mechanism is also present on iterable mapping and map mapping. `@IterableMapping#elementTargetType` is used to select the mapping method with the desired element in the resulting `Iterable`. For the `@MapMapping` a similar purpose is served by means of `#MapMapping#keyTargetType` and `MapMapping#valueTargetType`. 
         
     .row
       .span9
