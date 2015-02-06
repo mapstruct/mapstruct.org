@@ -133,16 +133,32 @@ layout: base
               %th Default
           %tbody
             %tr
-              %td mapstruct.suppressGeneratorTimestamp
-              %td Whether the creation of a time stamp in the generated mapper classes is suppressed or not
+              %td 
+                :markdown
+                  `mapstruct.suppressGeneratorTimestamp`
+              %td 
+                :markdown 
+                  If set to `true`, the creation of a time stamp in the `@Generated` annotation in the generated mapper classes is suppressed.
               %td
                 :markdown
                   `false`
             %tr
-              %td mapstruct.defaultComponentModel
+              %td 
+                :markdown
+                  `mapstruct.suppressGeneratorVersionInfoComment`
+              %td
+                :markdown 
+                  If set to `true`, the creation of the `comment` attribute in the `@Generated` annotation in the generated mapper classes is suppressed. The comment contains information about the version of MapStruct and about the compiler used for the annotation processing.
               %td
                 :markdown
-                  The name of the component model (see [section 4.2](#section-04-2)) based on which mappers should be generated. Supported values are:
+                  `false`
+            %tr
+              %td 
+                :markdown
+                  `mapstruct.defaultComponentModel`
+              %td
+                :markdown
+                  The name of the component model (see [section 4.2](#section-04-02)) based on which mappers should be generated. Supported values are:
 
                 %ul
                   %li
@@ -165,7 +181,9 @@ layout: base
                   `default`
 
             %tr
-              %td mapstruct.unmappedTargetPolicy
+              %td 
+                :markdown
+                  `mapstruct.unmappedTargetPolicy`
               %td
                 :markdown
                   The default reporting policy to be applied in case an attribute of the target object of a mapping method is not populated with a source value.
@@ -187,6 +205,7 @@ layout: base
               %td
                 :markdown
                   `WARN`
+
 
     .row
       .span9
