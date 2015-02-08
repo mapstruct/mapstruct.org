@@ -505,7 +505,9 @@ layout: base
 
           * Between `java.time.LocalDateTime` from Java 8 Date-Time package and `java.util.Date` where. When converting a `LocalDateTime` from a given `Date`, systems default timezone is used. When mapping a `Date` to a `LocalDateTime` UTC is used as the timzone.
 
-          * Between `java.time.ZonedDateTime` from Java 8 Date-Time package and `java.util.Calendar`. 
+          * Between `java.time.ZonedDateTime` from Java 8 Date-Time package and `java.util.Calendar`.
+
+          * When converting from a `String`, omitting `Mapping#dateFormat` results in using the default pattern and date format symbols for the default locale. An exception to this rule is `XmlGregorianCalendar` which results in parsing the `String` according to [XML Schema 1.0 Part 2, Section 3.2.[7-14].1, Lexical Representation](http://www.w3.org/TR/xmlschema-2/#dateTime-order).
 
         %h4#section-05-02 5.2 Mapping object references
 
