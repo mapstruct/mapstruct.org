@@ -435,9 +435,9 @@ layout: base
         %h4#section-04-02 4.2 Using dependency injection
 
         :markdown
-          If you're working with a dependency injection framework such as [CDI](http://jcp.org/en/jsr/detail?id=346) (Contexts and Dependency Injection for Java<sup>TM</sup> EE) or the [Spring Framework](http://www.springsource.org/spring-framework), it is recommended to obtain mapper objects via dependency injection as well. For that purpose you can specify the component model which generated mapper classes should be based on either via `@Mapper#componentModel` or using a processor option as described in [section](section-02-01).
+          If you're working with a dependency injection framework such as [CDI](http://jcp.org/en/jsr/detail?id=346) (Contexts and Dependency Injection for Java<sup>TM</sup> EE) or the [Spring Framework](http://www.springsource.org/spring-framework), it is recommended to obtain mapper objects via dependency injection as well. For that purpose you can specify the component model which generated mapper classes should be based on either via `@Mapper#componentModel` or using a processor option as described in [section 2.1](#section-02-01).
 
-          Currently there is support for CDI and Spring (the later either via its custom annotations or using the JSR 330 annotations). See [section](section-02-01) for the allowed values of the `componentModel` attribute which are the same as for the `mapstruct.defaultComponentModel` processor option. In both cases the required annotations will be added to the generated mapper implementations classes in order to make the same subject to dependency injection. The following shows an example using CDI:
+          Currently there is support for CDI and Spring (the later either via its custom annotations or using the JSR 330 annotations). See [section 2.1](#section-02-01) for the allowed values of the `componentModel` attribute which are the same as for the `mapstruct.defaultComponentModel` processor option. In both cases the required annotations will be added to the generated mapper implementations classes in order to make the same subject to dependency injection. The following shows an example using CDI:
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -458,7 +458,7 @@ layout: base
               private CarMapper mapper;
 
         :markdown
-          A mapper which uses other mapper classes (see [section](section-05-03)) will obtain these mappers using the configured component model. So if `CarMapper` from the previous example was using another mapper, this other mapper would have to be an injectable CDI bean as well.
+          A mapper which uses other mapper classes (see [section 5.3](#section-05-03)) will obtain these mappers using the configured component model. So if `CarMapper` from the previous example was using another mapper, this other mapper would have to be an injectable CDI bean as well.
 
     .row
       .span9
@@ -1051,93 +1051,7 @@ layout: base
 
     .row
       .span9
-        %h3#section-09 9. Customizing mappings using decorators
-
-        :markdown
-          In certain cases it may be required to customize a generated mapping method, e.g. to set an additional property in the target object which can't be set by a generated method implementation. MapStruct supports this requirement using decorators.
-
-        .alert.alert-warn
-          :markdown
-            **Note!** Decorators are an experimental feature as of the 1.0.0.Beta1 release. They are only supported for the default component model, not when working with the CDI or Spring models.
-
-        :markdown
-          To apply a decorator to a mapper class specify it using the `@DecoratedWith` annotation:
-
-        %pre.prettyprint.lang-java.linenums
-          = preserve do
-            :escaped
-              @Mapper
-              @DecoratedWith(PersonMapperDecorator.class)
-              public interface PersonMapper {
-
-                  PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );
-
-                  PersonDto personToPersonDto(Person person);
-
-                  AddressDto addressToAddressDto(Address address);
-              }
-
-        :markdown
-          The decorator must be a sub-type of the decorated mapper type. You can make it an abstract class which allows to only implement those methods of the mapper interface which you want to customize. All non-implemented methods will be generated using the default generation routine.
-
-          The `PersonMapperDecorator` shown below customizes the `personToPersonDto()`. It sets an additional attribute which is not present in the source type of the mapping. The `addressToAddressDto()` method is not customized.
-
-        %pre.prettyprint.lang-java.linenums
-          = preserve do
-            :escaped
-              public abstract class PersonMapperDecorator implements PersonMapper {
-
-                  private final PersonMapper delegate;
-
-                  public PersonMapperDecorator(PersonMapper delegate) {
-                      this.delegate = delegate;
-                  }
-
-                  @Override
-                  public PersonDto personToPersonDto(Person person) {
-                      PersonDto dto = delegate.personToPersonDto( person );
-                      dto.setFullName( person.getFirstName() + " " + person.getLastName() );
-                      return dto;
-                  }
-              }
-
-        :markdown
-          As shown in the example, you can optionally inject a delegate with the generated default implementations and use this delegate in your customized decorator methods. To do so, define a constructor with a single parameter which accepts the type of the decorated mapper.
-
-    .row
-      .span9
-        %h3#section-10 10. Reverse mappings
-
-        :markdown
-          In some cases bi-directional mappings are required, e.g. from entity to DTO and from DTO to entity. For this purpose, simply declare a method with the required parameter and return type on the mapping interface which also declares the forward mapping method.
-          
-          Use the `@InheritInverseConfiguration` to indicate that this method is marked as reverse mapping.
-
-        %pre.prettyprint.lang-java.linenums
-          = preserve do
-            :escaped
-              @Mapper
-              public interface CarMapper {
-
-                  @Mapping(source = "numberOfSeats", target = "seatCount")
-                  CarDto carToDto(Car car);
-
-                  @InheritInverseConfiguration
-                  Car carDtoToCar(CarDto carDto);
-              }
-
-        :markdown
-          Here the `carDtoToCar()` method is the reverse mapping method for `carToDto()`. Note that any attribute mappings from `carToDto()` will be applied to the corresponding reverse mapping method as well. They are automatically reversed and copied to the method with the `@InheritInverseConfiguration` annotation. 
-
-          Specific mappings from the inversed method can (optionally) be overridden by  `ignore`, `expression` or `constant` in the mapping, e.g. like this: `@Mapping(target = "numberOfSeats", ignore=true)`. 
-
-          If multiple forward methods qualify as per their source and target types, the method from which to inherit the configuration from can be specified using the `name` property like this: `@InheritInverseConfiguration(name = "carToDto")`.
-
-          Nested properties are excluded (silently ignored) from reverse mapping. The same holds true for expressions and constants. Reverse mapping will take place automatically when the source property name and target property name are identical. Otherwise, `@Mapping` should specify both the target name and source name. In all cases, a suitable mapping method needs to be in place for the reverse mapping.
-
-    .row
-      .span9
-        %h3#section-11 11. Exceptions
+        %h3#section-09 9. Exceptions
 
         :markdown
           Calling applications may require handling of exceptions when calling a mapping method. These exceptions could be thrown by hand-written logic and by the generated built-in mapping methods or type-conversions of MapStruct. When the calling application requires handling of exceptions, a throws clause can be defined in the mapping method:
@@ -1202,7 +1116,7 @@ layout: base
 
     .row
       .span9
-        %h3#section-12 12. Constants
+        %h3#section-10 10. Constants
 
         :markdown
           MapStruct supports the usage of constants. Constants are subject to type conversion either via built-in conversions or the invocation of other mapping methods. A mapping with a constant must not include a reference to a source property. The following examples shows some mappings using constants:
@@ -1237,7 +1151,7 @@ layout: base
 
     .row
       .span9
-        %h3#section-13 13. Expressions
+        %h3#section-11 11. Expressions
 
         :markdown
           By means of Expressions it will be possible to include constructs from a number of languages.
@@ -1280,39 +1194,7 @@ layout: base
 
     .row
       .span9
-        %h3#section-14 14. Shared configurations
-
-        :markdown
-          MapStruct offers the possibility to define a shared configuration by pointing to a central class annotated with `@MapperConfig`. For a mapper to use the shared configuration, the configuration class needs to be defined in the `@Mapper#config` property.
-
-          The `@MapperConfig` annotation has the same attributes as the `@Mapper` annotation. Any attributes not given via `@Mapper` will be inherited from the shared configuration. Attributes specified in `@Mapper` take precedence over the attributes specified via the referenced configuration class. List properties such as `uses` are simply combined:
-
-        %pre.prettyprint.lang-java.linenums
-          = preserve do
-            :escaped
-              @MapperConfig(
-                  uses = CustomMapperViaMapperConfig.class,
-                  unmappedTargetPolicy = ReportingPolicy.ERROR
-              )
-              public class CentralConfig {
-              }
-
-        %pre.prettyprint.lang-java.linenums
-          = preserve do
-            :escaped
-              @Mapper(config = CentralConfig.class, uses = { CustomMapperViaMapper.class } )
-              // Effective configuration:
-              // @Mapper(
-              //     uses = { CustomMapperViaMapper.class, CustomMapperViaMapperConfig.class },
-              //     unmappedTargetPolicy = ReportingPolicy.ERROR
-              // )
-              public interface SourceTargetMapper {
-                ...
-              }
-
-    .row
-      .span9
-        %h3#section-15 15. Selection based on Qualifiers
+        %h3#section-12 12. Selection based on Qualifiers
 
         :markdown
             In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior. MapStruct has a handy mechanism to deal with such situations: `@Qualifier`. A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper, and can be referred to in a bean property mapping, iterable mapping or map mapping.  Multiple qualifiers can be ‘stuck onto’ a method and mapping. 
@@ -1347,8 +1229,6 @@ layout: base
                    GermanRelease toGerman( OriginalRelease movies );
 
               }
-              
-
 
         :markdown
              Without the use of qualifiers, this would result in an ambiguous mapping method error, because 2 qualifying methods are found (`translateTitleEG`, `translateTitleGE`) and MapStruct would not have a hint which one to choose.
@@ -1431,7 +1311,7 @@ layout: base
 
     .row
       .span9
-        %h3#section-16 16. Determining the result type
+        %h3#section-13 13. Determining the result type
         
         :markdown
             When result types have an inheritance relation, selecting either mapping method (`@Mapping`) or a factory method (`@BeanMapping`) can becomes ambigious. Suppose an Apple and a Banana, which is are both specializations of Fruit. 
@@ -1472,31 +1352,152 @@ layout: base
         .alert.alert-info
           :markdown
             **Tip!** The mechanism is also present on iterable mapping and map mapping. `@IterableMapping#elementTargetType` is used to select the mapping method with the desired element in the resulting `Iterable`. For the `@MapMapping` a similar purpose is served by means of `#MapMapping#keyTargetType` and `MapMapping#valueTargetType`. 
-        
+
     .row
       .span9
-        %h3#section-17 17. Controlling mapping result
+        %h3#section-14 14. Reverse mappings
 
         :markdown
-          MapStruct offers control over the object to create when the source (argument) equals `null`. By default `null` will be returned. However, by means of the `NullValueMapping` annotation on mapping method level or the `nullValueMappingStrategy` element on `@Mapping` or `@MappingConfig` level this default outcome can be altered. There is one additional possibility: `RETURN_DEFAULT`. This means the following for:
+          In some cases bi-directional mappings are required, e.g. from entity to DTO and from DTO to entity. For this purpose, simply declare a method with the required parameter and return type on the mapping interface which also declares the forward mapping method.
+          
+          Use the `@InheritInverseConfiguration` to indicate that this method is marked as reverse mapping.
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper
+              public interface CarMapper {
+
+                  @Mapping(source = "numberOfSeats", target = "seatCount")
+                  CarDto carToDto(Car car);
+
+                  @InheritInverseConfiguration
+                  Car carDtoToCar(CarDto carDto);
+              }
+
+        :markdown
+          Here the `carDtoToCar()` method is the reverse mapping method for `carToDto()`. Note that any attribute mappings from `carToDto()` will be applied to the corresponding reverse mapping method as well. They are automatically reversed and copied to the method with the `@InheritInverseConfiguration` annotation. 
+
+          Specific mappings from the inversed method can (optionally) be overridden by  `ignore`, `expression` or `constant` in the mapping, e.g. like this: `@Mapping(target = "numberOfSeats", ignore=true)`. 
+
+          If multiple forward methods qualify as per their source and target types, the method from which to inherit the configuration from can be specified using the `name` property like this: `@InheritInverseConfiguration(name = "carToDto")`.
+
+          Nested properties are excluded (silently ignored) from reverse mapping. The same holds true for expressions and constants. Reverse mapping will take place automatically when the source property name and target property name are identical. Otherwise, `@Mapping` should specify both the target name and source name. In all cases, a suitable mapping method needs to be in place for the reverse mapping.
+
+    .row
+      .span9
+        %h3#section-15 15. Shared configurations
+
+        :markdown
+          MapStruct offers the possibility to define a shared configuration by pointing to a central class annotated with `@MapperConfig`. For a mapper to use the shared configuration, the configuration class needs to be defined in the `@Mapper#config` property.
+
+          The `@MapperConfig` annotation has the same attributes as the `@Mapper` annotation. Any attributes not given via `@Mapper` will be inherited from the shared configuration. Attributes specified in `@Mapper` take precedence over the attributes specified via the referenced configuration class. List properties such as `uses` are simply combined:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @MapperConfig(
+                  uses = CustomMapperViaMapperConfig.class,
+                  unmappedTargetPolicy = ReportingPolicy.ERROR
+              )
+              public class CentralConfig {
+              }
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper(config = CentralConfig.class, uses = { CustomMapperViaMapper.class } )
+              // Effective configuration:
+              // @Mapper(
+              //     uses = { CustomMapperViaMapper.class, CustomMapperViaMapperConfig.class },
+              //     unmappedTargetPolicy = ReportingPolicy.ERROR
+              // )
+              public interface SourceTargetMapper {
+                ...
+              }
+
+    .row
+      .span9
+        %h3#section-16 16. Controlling mapping result for 'null' arguments
+
+        :markdown
+          MapStruct offers control over the object to create when the source (argument) equals `null`. By default `null` will be returned.
+
+          However, by means of the `@NullValueMapping` annotation on mapping method level or the `nullValueMappingStrategy` element on `@Mapping` or `@MappingConfig` level this default outcome can be altered by specifying the strategy `RETURN_DEFAULT`. This means the following for:
 
         %ul
           %li
-
             :markdown
-              `bean mappings`: an 'empty' target bean will be returned, with the exception of constants and expressions, they will be populated when present.
+              *Bean mappings*: an 'empty' target bean will be returned, with the exception of constants and expressions, they will be populated when present.
           %li
-
             :markdown
-              `list`: an empty iterable will be returned.
+              *Primitives*: the default values for primitives will be returned, e.g. `false` for `boolean` or `0` for `int`.
 
           %li
-
             :markdown
-              `map`: an empty map will be returned.
+              *Iterables / Arrays*: an empty iterable will be returned.
+
+          %li
+            :markdown
+              *Maps*: an empty map will be returned.
 
         :markdown
-          The strategy works in a hierarchical fashion, similar to the `CollectionMappingStrategy` explained earlier. An `@NullValueMapping` annotation on mapping method level will override the `@Mapping#nullValueMappingStrategy`. Just as the `@Mapping#nullValueMappingStrategy` will override the `@MappingConfig#nullValueMappingStrategy`.
+          The strategy works in a hierarchical fashion. A `@NullValueMapping` annotation on mapping method level will override the `@Mapping#nullValueMappingStrategy`, and the `@Mapping#nullValueMappingStrategy` will override the `@MappingConfig#nullValueMappingStrategy`.
+
+    .row
+      .span9
+        %h3#section-17 17. Customizing mappings using decorators
+
+        :markdown
+          In certain cases it may be required to customize a generated mapping method, e.g. to set an additional property in the target object which can't be set by a generated method implementation. MapStruct supports this requirement using decorators.
+
+        .alert.alert-warn
+          :markdown
+            **Note!** Decorators are an experimental feature as of the 1.0.0.Beta1 release. They are only supported for the default component model, not when working with the CDI or Spring models.
+
+        :markdown
+          To apply a decorator to a mapper class specify it using the `@DecoratedWith` annotation:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper
+              @DecoratedWith(PersonMapperDecorator.class)
+              public interface PersonMapper {
+
+                  PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );
+
+                  PersonDto personToPersonDto(Person person);
+
+                  AddressDto addressToAddressDto(Address address);
+              }
+
+        :markdown
+          The decorator must be a sub-type of the decorated mapper type. You can make it an abstract class which allows to only implement those methods of the mapper interface which you want to customize. All non-implemented methods will be generated using the default generation routine.
+
+          The `PersonMapperDecorator` shown below customizes the `personToPersonDto()`. It sets an additional attribute which is not present in the source type of the mapping. The `addressToAddressDto()` method is not customized.
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              public abstract class PersonMapperDecorator implements PersonMapper {
+
+                  private final PersonMapper delegate;
+
+                  public PersonMapperDecorator(PersonMapper delegate) {
+                      this.delegate = delegate;
+                  }
+
+                  @Override
+                  public PersonDto personToPersonDto(Person person) {
+                      PersonDto dto = delegate.personToPersonDto( person );
+                      dto.setFullName( person.getFirstName() + " " + person.getLastName() );
+                      return dto;
+                  }
+              }
+
+        :markdown
+          As shown in the example, you can optionally inject a delegate with the generated default implementations and use this delegate in your customized decorator methods. To do so, define a constructor with a single parameter which accepts the type of the decorated mapper.
 
   .span3
     #toc{ :"data-offset-top"=>"0", :"data-spy"=>"affix" }
@@ -1519,23 +1520,23 @@ layout: base
         %li
           %a{ :href=>"#section-08" } Object factories
         %li
-          %a{ :href=>"#section-09" } Decorators
+          %a{ :href=>"#section-09" } Exceptions
         %li
-          %a{ :href=>"#section-10" } Reverse mappings
+          %a{ :href=>"#section-10" } Constants
         %li
-          %a{ :href=>"#section-11" } Exceptions
+          %a{ :href=>"#section-11" } Expressions
         %li
-          %a{ :href=>"#section-12" } Constants
+          %a{ :href=>"#section-12" } Selection based on Qualifiers
         %li
-          %a{ :href=>"#section-13" } Expressions
+          %a{ :href=>"#section-13" } Determining the result type
         %li
-          %a{ :href=>"#section-14" } Shared configurations
+          %a{ :href=>"#section-14" } Reverse mappings
         %li
-          %a{ :href=>"#section-15" } Selection based on Qualifiers
+          %a{ :href=>"#section-15" } Shared configurations
         %li
-          %a{ :href=>"#section-16" } Selection based on result type
+          %a{ :href=>"#section-16" } Controlling mapping result for 'null' arguments
         %li
-          %a{ :href=>"#section-17" } Controlling mapping result
+          %a{ :href=>"#section-17" } Decorators
     :javascript
       (function(jQuery){
         jQuery( document ).ready( function() {
