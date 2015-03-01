@@ -1358,9 +1358,9 @@ layout: base
         %h3#section-null-source 14. Controlling mapping result for 'null' arguments
 
         :markdown
-          MapStruct offers control over the object to create when the source (argument) equals `null`. By default `null` will be returned.
+          MapStruct offers control over the object to create when the source argument of the mapping method equals `null`. By default `null` will be returned.
 
-          However, by means of the `@NullValueMapping` annotation on mapping method level or the `nullValueMappingStrategy` element on `@Mapper` or `@MappingConfig` level this default outcome can be altered by specifying the strategy `RETURN_DEFAULT`. This means the following for:
+          However, by specifying `nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT` on `@BeanMapping`, `@IterableMapping`, `@MapMapping`, or globally on `@Mapper` or `@MappingConfig`, the mapping result can be altered to return empty *default* values. This means for:
 
         %ul
           %li
@@ -1379,7 +1379,7 @@ layout: base
               *Maps*: an empty map will be returned.
 
         :markdown
-          The strategy works in a hierarchical fashion. A `@NullValueMapping` annotation on mapping method level will override the `@Mapper#nullValueMappingStrategy`, and the `@Mapper#nullValueMappingStrategy` will override the `@MappingConfig#nullValueMappingStrategy`.
+          The strategy works in a hierarchical fashion. Setting `nullValueMappingStrategy` on mapping method level will override `@Mapper#nullValueMappingStrategy`, and `@Mapper#nullValueMappingStrategy` will override `@MappingConfig#nullValueMappingStrategy`.
 
     .row
       .span9
