@@ -133,27 +133,27 @@ layout: base
               %th Default
           %tbody
             %tr
-              %td 
+              %td
                 :markdown
                   `mapstruct.suppressGeneratorTimestamp`
-              %td 
-                :markdown 
+              %td
+                :markdown
                   If set to `true`, the creation of a time stamp in the `@Generated` annotation in the generated mapper classes is suppressed.
               %td
                 :markdown
                   `false`
             %tr
-              %td 
+              %td
                 :markdown
                   `mapstruct.suppressGeneratorVersionInfoComment`
               %td
-                :markdown 
+                :markdown
                   If set to `true`, the creation of the `comment` attribute in the `@Generated` annotation in the generated mapper classes is suppressed. The comment contains information about the version of MapStruct and about the compiler used for the annotation processing.
               %td
                 :markdown
                   `false`
             %tr
-              %td 
+              %td
                 :markdown
                   `mapstruct.defaultComponentModel`
               %td
@@ -181,7 +181,7 @@ layout: base
                   `default`
 
             %tr
-              %td 
+              %td
                 :markdown
                   `mapstruct.unmappedTargetPolicy`
               %td
@@ -342,8 +342,8 @@ layout: base
         .alert.alert-warn
           :markdown
             **Note!** Specifying the parameter in which the property resides is mandatory when using the `@Mapping` annotation.
-          
-          
+
+
         .alert.alert-info
           :markdown
             **Tip!** Mapping methods with several source parameters will return `null` in case all the source parameters are `null`. Otherwise the target object will be instantiated and all properties from the provided parameters will be propagated.
@@ -364,12 +364,12 @@ layout: base
                   @Mapping(target = "position", source = "position")
               })
               ChartEntry map(Chart chart, Song song, Integer position);
- 
+
         :markdown
           Note: the parameter name (`chart`, `song`, `position`) is required, since there are several source parameters in the mapping. If there's only one source parameter, the parameter name can be ommited.
-          
+
           MapStruct will perform a null check on each nested property in the source.
-                    
+
         .alert.alert-info
           :markdown
             **Tip!** Also non java bean source parameters (like the `java.lang.Integer`) can be mapped in this fashion.
@@ -520,7 +520,7 @@ layout: base
 
           * Between `java.time.ZonedDateTime`, `java.time.LocalDateTime`, `java.time.LocalDate`, `java.time.LocalTime` from Java 8 Date-Time package and `String`. A format string as understood by `java.text.SimpleDateFormat` can be specified via the `dateFormat` option (see above).
 
-          * Between `java.time.ZonedDateTime` from Java 8 Date-Time package and `java.util.Date` where, when mapping a `ZonedDateTime` from a given `Date`, systems default timezone is used. 
+          * Between `java.time.ZonedDateTime` from Java 8 Date-Time package and `java.util.Date` where, when mapping a `ZonedDateTime` from a given `Date`, systems default timezone is used.
 
           * Between `java.time.LocalDateTime` from Java 8 Date-Time package and `java.util.Date` where. When converting a `LocalDateTime` from a given `Date`, systems default timezone is used. When mapping a `Date` to a `LocalDateTime` UTC is used as the timzone.
 
@@ -801,13 +801,13 @@ layout: base
 
                   return map;
               }
-              
+
         :markdown
           MapStruct has a `CollectionMappingStrategy`, with the possible values: `ACCESSOR_ONLY`, `SETTER_PREFERRED` and `ADDER_PREFERRED`.
-          
-          In the table below, the dash `-` indicates a property name. Next, the trailing `s` indicates the plural form. The table explains the options and how they are apply to the presence/absense of a `set-s`, `add-` and / or `get-s` method on the target object: 
 
-          
+          In the table below, the dash `-` indicates a property name. Next, the trailing `s` indicates the plural form. The table explains the options and how they are apply to the presence/absense of a `set-s`, `add-` and / or `get-s` method on the target object:
+
+
         %table.table
           %thead
             %tr
@@ -816,7 +816,7 @@ layout: base
               %th Only target add- Available
               %th Both set-s / add- Available
               %th No set-s / add- Available
-              %th 
+              %th
                 :markdown
                   Existing Target
                   (`@TargetType`)
@@ -831,7 +831,7 @@ layout: base
               %td get-s
               %td get-s
             %tr
-              %td 
+              %td
                 :markdown
                   `SETTER_PREFERRED`
               %td set-s
@@ -840,20 +840,20 @@ layout: base
               %td get-s
               %td get-s
             %tr
-              %td 
+              %td
                 :markdown
                   `ADDER_PREFERRED`
               %td set-s
               %td add-
               %td add-
               %td get-s
-              %td get-s                  
+              %td get-s
 
         :markdown
           Some background\: An `adder` method is typically used in case of [generated (JPA) entities](http://www.eclipse.org/webtools/dali/), to add a single element (entity) to an underlying collection. Invoking the adder establishes a parent-child relation between parent - the bean (entity) on which the adder is invoked - and its child(ren), the elements (entities) in the collection. To find the appropriate `adder`, MapStruct will try to make a match between the generic parameter type of the underlying collection and the single argument of a candidate `adder`. When there are more candidates, the plural `setter` / `getter` name is converted to singular and will be used in addition to make a match.
-          
+
           The option `DEFAULT` should not be used explicitely. It is used to distinguish between an explicit user desire to override the default in a `@MapperConfig` from the implicit Mapstruct choice in a `@Mapper`. The option `DEFAULT` is synonymous to `ACCESSOR_ONLY`.
-          
+
         .alert.alert-info
           :markdown
             **Tip!** When working with an `adder` method and JPA entities, Mapstruct assumes that the target collections are initialized with a collection implementation (e.g. an `ArrayList`). You can use factories to create a new target entity with intialized collections in stead of Mapstruct creating the target entity by its constructor.
@@ -1176,12 +1176,12 @@ layout: base
 
         :markdown
           The example demonstrates how the source properties `time` and `format` are composed into one target property `TimeAndFormat`. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the `TimeAndFormat` class (unless its used otherwise explicitly in the `SourceTargetMapper`). This can be resolved by defining `imports` on the `@Mapper` annotation.
-          
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
               imports org.sample.TimeAndFormat;
-              
+
               @Mapper( imports = TimeAndFormat.class )
               public interface SourceTargetMapper {
 
@@ -1190,17 +1190,17 @@ layout: base
                   @Mapping(target = "timeAndFormat",
                        expression = "java( new TimeAndFormat( s.getTime(), s.getFormat() ) )")
                   Target sourceToTarget(Source s);
-              }                        
+              }
 
     .row
       .span9
         %h3#section-qualifiers 12. Selection based on Qualifiers
 
         :markdown
-            In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior. MapStruct has a handy mechanism to deal with such situations: `@Qualifier`. A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper, and can be referred to in a bean property mapping, iterable mapping or map mapping.  Multiple qualifiers can be ‘stuck onto’ a method and mapping. 
+            In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior. MapStruct has a handy mechanism to deal with such situations: `@Qualifier`. A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper, and can be referred to in a bean property mapping, iterable mapping or map mapping.  Multiple qualifiers can be ‘stuck onto’ a method and mapping.
 
             So, lets say there is a hand-written method to map titles with a `String` return type and `String` argument amongst many other referenced mappers with the same `String` return type  - `String` argument signature:
-            
+
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1210,15 +1210,15 @@ layout: base
                   public String translateTitleEG(String title) {
                       // some mapping logic
                   }
-                  
+
                   public String translateTitleGE(String title) {
                       // some mapping logic
                   }
-              }  
+              }
 
         :markdown
             And a mapper using this handwritten mapper, in which source and target have a property 'title' that should be mapped:
-            
+
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1232,10 +1232,10 @@ layout: base
 
         :markdown
              Without the use of qualifiers, this would result in an ambiguous mapping method error, because 2 qualifying methods are found (`translateTitleEG`, `translateTitleGE`) and MapStruct would not have a hint which one to choose.
-        
+
              Enter the qualifier approach:
-             
-                          
+
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
@@ -1244,11 +1244,11 @@ layout: base
               @Retention(RetentionPolicy.SOURCE)
               public @interface TitleTranslator {
               }
-              
+
         :markdown
              And, some qualifiers to indicate which translator to use to map from source language to target language:
-             
-             
+
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
@@ -1257,7 +1257,7 @@ layout: base
               @Retention(RetentionPolicy.SOURCE)
               public @interface EnglishToGerman {
               }
-            
+
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1266,13 +1266,13 @@ layout: base
               @Target(ElementType.METHOD)
               @Retention(RetentionPolicy.SOURCE)
               public @interface GermanToEnglish {
-              }             
+              }
 
         :markdown
-             Please take note of the retention `TitleTranslator` on class level, `EnglishToGerman`, `GermanToEnglish` on method level! 
-             
+             Please take note of the retention `TitleTranslator` on class level, `EnglishToGerman`, `GermanToEnglish` on method level!
+
              Then, using the qualifiers, the mapping could look like this:
-  
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
@@ -1282,7 +1282,7 @@ layout: base
                    @Mapping( target = "title", qualifiedBy = { TitleTranslator.class, EnglishToGerman.class } )
                    GermanRelease toGerman( OriginalRelease movies );
 
-              }           
+              }
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1294,12 +1294,12 @@ layout: base
                   public String translateTitleEG(String title) {
                       // some mapping logic
                   }
-                  
-                  @GermanToEnglish                  
+
+                  @GermanToEnglish
                   public String translateTitleGE(String title) {
                       // some mapping logic
                   }
-              } 
+              }
 
         .alert.alert-warn
           :markdown
@@ -1312,10 +1312,10 @@ layout: base
     .row
       .span9
         %h3#section-resulttype 13. Determining the result type
-        
+
         :markdown
-            When result types have an inheritance relation, selecting either mapping method (`@Mapping`) or a factory method (`@BeanMapping`) can becomes ambigious. Suppose an Apple and a Banana, which is are both specializations of Fruit. 
-            
+            When result types have an inheritance relation, selecting either mapping method (`@Mapping`) or a factory method (`@BeanMapping`) can becomes ambigious. Suppose an Apple and a Banana, which is are both specializations of Fruit.
+
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1326,22 +1326,22 @@ layout: base
                   @BeanMapping( resultType = Apple.class )
                   Fruit map( FruitDto source );
 
-              }            
-                        
+              }
+
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
               public class FruitFactory {
-              
+
                   public Apple createApple() {
                       return new Apple( "Apple" );
                   }
-              
+
                   public Banana createBanana() {
                       return new Banana( "Banana" );
                   }
-              }            
-            
+              }
+
         :markdown
             So, which `Fruit` must be factorized in the mapping method `Fruit map(FruitDto source);`? A `Banana` or an `Apple`? Here's were the `@BeanMapping#resultType` comes in handy. It controls the factory method to select, or in absence of a factory method, the return type to create.
 
@@ -1351,7 +1351,7 @@ layout: base
 
         .alert.alert-info
           :markdown
-            **Tip!** The mechanism is also present on iterable mapping and map mapping. `@IterableMapping#elementTargetType` is used to select the mapping method with the desired element in the resulting `Iterable`. For the `@MapMapping` a similar purpose is served by means of `#MapMapping#keyTargetType` and `MapMapping#valueTargetType`. 
+            **Tip!** The mechanism is also present on iterable mapping and map mapping. `@IterableMapping#elementTargetType` is used to select the mapping method with the desired element in the resulting `Iterable`. For the `@MapMapping` a similar purpose is served by means of `#MapMapping#keyTargetType` and `MapMapping#valueTargetType`.
 
     .row
       .span9
@@ -1433,7 +1433,7 @@ layout: base
               }
 
         :markdown
-          Here the `carDtoToCar()` method is the reverse mapping method for `carToDto()`. Note that any attribute mappings from `carToDto()` will be applied to the corresponding reverse mapping method as well. They are automatically reversed and copied to the method with the `@InheritInverseConfiguration` annotation. 
+          Here the `carDtoToCar()` method is the reverse mapping method for `carToDto()`. Note that any attribute mappings from `carToDto()` will be applied to the corresponding reverse mapping method as well. They are automatically reversed and copied to the method with the `@InheritInverseConfiguration` annotation.
 
           Specific mappings from the inversed method can (optionally) be overridden by  `ignore`, `expression` or `constant` in the mapping, e.g. like this: `@Mapping(target = "numberOfSeats", ignore=true)`.
 
@@ -1476,6 +1476,47 @@ layout: base
               public interface SourceTargetMapper {
                 ...
               }
+
+        :markdown
+          The interface holding the `@MapperConfig` annotation may also declare *prototypes* of mapping methods that can be used to inherit method-level mapping annotations from. Such prototype methods are not meant to be implemented or used as part of the mapper API.
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @MapperConfig(
+                  uses = CustomMapperViaMapperConfig.class,
+                  unmappedTargetPolicy = ReportingPolicy.ERROR,
+                  mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_FROM_CONFIG
+              )
+              public interface CentralConfig {
+
+                  // Not intended to be generated, but to carry inheritable mapping annotations:
+                  @Mapping(target = "primaryKey", source = "technicalKey")
+                  BaseEntity anyDtoToEntity(BaseDto dto);
+              }
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper(config = CentralConfig.class, uses = { CustomMapperViaMapper.class } )
+              public interface SourceTargetMapper {
+
+                  @Mapping(target = "numberOfSeats", source = "seatCount")
+                  // additionally inherited from CentralConfig, because Car extends BaseEntity and CarDto extends BaseDto:
+                  // @Mapping(target = "primaryKey", source = "technicalKey")
+                  Car toCar(CarDto car)
+              }
+
+        :markdown
+          The attributes `@Mapper#mappingInheritanceStrategy()` / `@MapperConfig#mappingInheritanceStrategy()` configure when the method-level mapping configuration annotations are inherited from prototype methods in the interface to methods in the mapper:
+
+        %ul
+          %li
+            :markdown
+              `EXPLICIT` (default): the configuration will only be inherited, if the target mapping method is annotated with `@InheritConfiguration` and the source and target types are assignable to the corresponding types of the prototype method, all as described in [section 'Mapping configuration inheritance'](#section-inherit-config).
+          %li
+            :markdown
+              `AUTO_INHERIT_FROM_CONFIG`: the configuration will be inherited automatically, if the source and target types of the target mapping method are assignable to the corresponding types of the prototype method. If multiple prototype methods match, the ambiguity must be resolved using `@InheritConfiguration(name = ..)`.
 
     .row
       .span9
