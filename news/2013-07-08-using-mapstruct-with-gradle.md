@@ -30,7 +30,7 @@ sourceCompatibility = rootProject.javaLanguageLevel
 
 It's a good idea to declare a property which holds the language level. That way it can be referenced later on where required. We also define a property which specifies the target directory for the generated mapper classes.
 
-The next step is to add the MapStruct annotation module (_org.mapstruct:mapstruct:&lt;VERSION&gt;_) as compilation dependency and to declare a separate [dependency configuration](http://www.gradle.org/docs/current/userguide/dependency_management.html#sub:configurations) which contains the MapStruct processor module (_org.mapstruct:mapstruct-processor:&lt;VERSION&gt;_):
+The next step is to add the MapStruct annotation module (<em>org.mapstruct:mapstruct:&lt;VERSION&gt;</em>) as compilation dependency and to declare a separate [dependency configuration](http://www.gradle.org/docs/current/userguide/dependency_management.html#sub:configurations) which contains the MapStruct processor module (<em>org.mapstruct:mapstruct-processor:&lt;VERSION&gt;</em>):
     
 <pre class="prettyprint linenums">
 configurations {
@@ -109,7 +109,7 @@ git clone https://github.com/mapstruct/mapstruct-examples.git
 You can then build the example by running
 
 <pre class="prettyprint lang-sh linenums">
-cd mapstruct-on-gradle && ./gradlew build
+cd mapstruct-on-gradle &amp;&amp; ./gradlew build
 </pre>
 
 The project comes with the [Gradle Wrapper](http://www.gradle.org/docs/current/userguide/userguide_single.html#gradle_wrapper), a small utility which retrieves the right Gradle version upon the first build. So it is not required to install Gradle separately.

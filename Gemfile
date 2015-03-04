@@ -1,5 +1,6 @@
 # A sample Gemfile
 source "https://rubygems.org"
+ruby '1.9.3'
 
 gem 'awestruct', '~> 0.5.0'
 gem 'rb-inotify', '~> 0.9.0'
@@ -12,4 +13,3 @@ gem 'sass-rails', '>= 3.2'
 gem 'uglifier'
 gem 'listen', '1.3.1'
 gem 'win32-open3-19', :platforms => :mingw, :git => "https://github.com/matschaffer/win32-open3-19.git"
-

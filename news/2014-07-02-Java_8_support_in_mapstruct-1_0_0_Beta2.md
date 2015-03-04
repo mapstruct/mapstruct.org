@@ -39,7 +39,7 @@ When using the Joda-Time API in your project you'll be glad to hear that MapStru
 * `org.joda.time.DateTime` <> `java.util.Calendar`
 * `org.joda.time.DateTime`, `org.joda.time.LocalDateTime`, `org.joda.time.LocalDate` and `org.joda.time.LocalTime` <> `String`
 
-If you use these types in your mapped models, MapStruct will automatically generated the required mapping routines without any further configuration. `@Mapping#dateFormat()` can be used when converting from or to `String to specify the expected date format.
+If you use these types in your mapped models, MapStruct will automatically generated the required mapping routines without any further configuration. `@Mapping#dateFormat()` can be used when converting from or to `String` to specify the expected date format.
 
 Note that for the following release [we plan](https://github.com/mapstruct/mapstruct/issues/121) to also cover the new Java 8 time and date types which will be useful when mapping between models using the old types such as `java.util.Date` and the new ones.
 
