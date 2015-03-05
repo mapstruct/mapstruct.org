@@ -118,6 +118,23 @@
           <h2>News</h2>
           <div class="post">
             <h3>
+              Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released
+            </h3>
+            <h5>
+              Gunnar Morling, 05 March 2015
+            </h5>
+            <p>
+              
+              The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!
+              
+              The new release provides support for mapping arrays of Java beans, re-use of mapping configurations via a brand-new inheritance mechanism and...
+            </p>
+            <p>
+              <a href="/news/2015/03/05/arrays-configuration-inheritance-mapstruct-1_0_0_Beta4.html">Read complete post &raquo;</a>
+            </p>
+          </div>
+          <div class="post">
+            <h3>
               MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more
             </h3>
             <h5>
@@ -125,7 +142,7 @@
             </h5>
             <p>
               
-              I'm delighted to announce the release of MapStruct 1.0.0.Beta3.
+              I’m delighted to announce the release of MapStruct 1.0.0.Beta3.
               
               This version brings the long awaited support for mapping nested source properties, built-in mappings for Java 8 date/time types, fine-grained selection of...
             </p>
@@ -142,29 +159,12 @@
             </h5>
             <p>
               
-              It's my great pleasure to announce the release of MapStruct 1.0.0.Beta2.
+              It’s my great pleasure to announce the release of MapStruct 1.0.0.Beta2.
               
               Amongst the new features is initial support for Java 8, built-in mappings for the types of the Joda-Time date and...
             </p>
             <p>
               <a href="/news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html">Read complete post &raquo;</a>
-            </p>
-          </div>
-          <div class="post">
-            <h3>
-              MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more
-            </h3>
-            <h5>
-              Gunnar Morling, 05 March 2014
-            </h5>
-            <p>
-              
-              The MapStruct team is very happy to announce the release of MapStruct 1.0.0.Beta1.
-              
-              One core part of the new release is comprehensive support for mapping JAXB types with JAXBElement and XmlGregorianCalendar...
-            </p>
-            <p>
-              <a href="/news/2014/03/05/mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more.html">Read complete post &raquo;</a>
             </p>
           </div>
           <p class="links">
@@ -185,9 +185,10 @@
       <div class="row">
         <div class="span4">
           <p>
+            
             <p>The following shows how map two objects using MapStruct.</p>
             
-            <p>Let's assume we have a class representing cars (e.g. a JPA entity) and an accompanying data transfer object (DTO).</p>
+            <p>Let’s assume we have a class representing cars (e.g. a JPA entity) and an accompanying data transfer object (DTO).</p>
             
             <p>Both types are rather similar, only the seat count attributes have different names and the type attribute is of a special enum type in the <code>Car</code> class but is a plain string in the DTO.</p>
           </p>
@@ -231,6 +232,7 @@
       </div>
       <div class="row">
         <div class="span4">
+          
           <p>To generate a mapper for creating a <code>CarDto</code> object out of a <code>Car</code> object, a mapper interface needs to be defined:</p>
         </div>
         <div class="span8">
@@ -256,19 +258,22 @@
       </div>
       <div class="row">
         <div class="span4">
-          <p>The <code>@Mapper</code> annotation <span class="badge badge-info">1</span> marks the interface as mapping interface and lets the MapStruct processor kick in during compilation.</p>
           
-          <p>The actual mapping method <span class="badge badge-info">2</span> expects the source object as parameter and returns the target object. Its name can be freely chosen.</p>
+          <p>The <code>@Mapper</code> annotation <span class='badge badge-info'>1</span> marks the interface as mapping interface and lets the MapStruct processor kick in during compilation.</p>
+          
+          <p>The actual mapping method <span class='badge badge-info'>2</span> expects the source object as parameter and returns the target object. Its name can be freely chosen.</p>
         </div>
         <div class="span4">
+          
           <p>For attributes with different names in source and target object, the <code>@Mapping</code> annotation can be used to configure the names.</p>
           
           <p>Where required and possible a type conversion will be executed for attributes with different types in source and target, e.g. the <code>type</code> attribute will be converted from the enumeration type into a string.</p>
         </div>
         <div class="span4">
+          
           <p>Of course there can be multiple mapping methods in one interface, for all of which an implementation will be generated by MapStruct.</p>
           
-          <p>An instance of the interface implementation can be retrieved from the <code>Mappers</code> class. By convention, the interface declares a member <code>INSTANCE</code> <span class="badge badge-info">3</span>, providing clients access to the mapper implementation.</p>
+          <p>An instance of the interface implementation can be retrieved from the <code>Mappers</code> class. By convention, the interface declares a member <code>INSTANCE</code> <span class='badge badge-info'>3</span>, providing clients access to the mapper implementation.</p>
         </div>
       </div>
       <div class="row">
@@ -310,14 +315,15 @@
       </div>
       <div class="row">
         <div class="span12">
+          
           <p>You like what you see? Then check out the <a href="http://mapstruct.org/documentation">reference documentation</a> to learn how to get started with MapStruct and which advanced features there are. In case you need help or want to propose a new feature just drop by on the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group.</p>
           
-          <p>You want to contribute to the development of MapStruct? That's great, <a href="http://mapstruct.org/contributing">this page</a> has all the information you need.</p>
+          <p>You want to contribute to the development of MapStruct? That’s great, <a href="http://mapstruct.org/contributing">this page</a> has all the information you need.</p>
         </div>
       </div>
       <hr>
       <footer>
-        <p>&copy; Gunnar Morling 2014</p>
+        <p>&copy; Gunnar Morling 2015</p>
       </footer>
     </div>
     <script type="text/javascript">

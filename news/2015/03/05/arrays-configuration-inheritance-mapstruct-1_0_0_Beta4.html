@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released - MapStruct
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <script src="http://mapstruct.org/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-scrollspy.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-affix.js" type="text/javascript"></script>
+    <link href="http://mapstruct.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.ie.css" rel="stylesheet" type="text/css">
+    <![endif]-->
+    <link href="http://mapstruct.org/stylesheets/prettify.css" rel="stylesheet" type="text/css">
+    <script src="http://mapstruct.org/javascripts/prettify.js" type="text/javascript"></script>
+    <script>
+      (function(jQuery){
+        jQuery( document ).ready( function() {
+          prettyPrint();
+        } );
+      }(jQuery))
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="hidden-phone pull-right" style="padding-top: 11px; margin-right: 120px;">
+        <div class="g-plusone" data-size="medium"></div>
+        <script>
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+      </div>
+      <div class="hidden-phone github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+          <a href="https://github.com/mapstruct/mapstruct">Fork me on GitHub</a>
+        </div>
+      </div>
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">MapStruct</a>
+          <ul class="nav">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/news">News</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/documentation">Documentation</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/download">Download</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/getting-help">Getting help</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/contributing">Development</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="post-header">
+            <h1>
+              Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released
+            </h1>
+            <h5>
+              Gunnar Morling, 05 March 2015, Tags:
+              <a href="/news/tags/release/">
+                release
+              </a>
+              <a href="/news/tags/news/">
+                news
+              </a>
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          
+          <p>The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!</p>
+          
+          <p>The new release provides support for mapping arrays of Java beans, re-use of mapping configurations via a brand-new inheritance mechanism and ordered setter invocations on the target side. We also fixed quite a few bugs. You can find the complete list of 48 issues in the <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.Beta4">change log</a>. When upgrading from a previous Beta release, please check out the <a href="https://github.com/mapstruct/mapstruct/wiki/Migration-notes">migration notes</a> for changes which may affect existing applications.</p>
+          
+          <p>One thing I’m especially excited about is the new MapStruct Eclipse plug-in which will give you an even better experience when using MapStruct within the Eclipse IDE. You’ll find out more below.</p>
+          
+          <p>This release has been a true team effort; Many, many thanks to <a href="https://github.com/sjaakd/">Sjaak Derksen</a>, <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/timoe">Timo Eckhardt</a>, <a href="https://github.com/eforest">Ewald Volkert</a>, <a href="https://github.com/chschu">Christian Schuster</a>, <a href="https://github.com/shasait">Sebastian Hasait</a> and <a href="https://github.com/dilipkrish">Dilip Krishnan</a> who all worked on the Beta4 release.</p>
+          
+          <h3 id="array_mappings">Array mappings</h3>
+          
+          <p>While MapStruct has had support for mapping collections (<code>List</code>, <code>Set</code> etc.) of primitive and Java bean types for a long time, this was not the case for arrays. This is finally possible, so you can now declare mapping methods such as the following:</p>
+          <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface CustomerMapper {&#x000A;&#x000A;    CustomerDto[] customersToDtos(Customer[] customers);&#x000A;&#x000A;    CustomerDto customerToDto(Customer customer);&#x000A;}</pre>
+          <p>As known from collection mapping methods, the generated <code>customersToDtos()</code> implementation will invoke the <code>customerToDto()</code> method for mapping the individual array elements. Similar to collection mapping methods, you can use the <code>@IterableMapping</code> annotation for applying specific configuration options:</p>
+          <pre class='prettyprint linenums'>&#x000A;@IterableMapping(dateFormat = "dd.MM.yyyy")&#x000A;String[] dateArrayToStringArray(Date[] dates);</pre>
+          <p>If needed, you also can map between collections and arrays:</p>
+          <pre class='prettyprint linenums'>&#x000A;CustomerDto[] customersToDtos(List&lt;Customer&gt; customers);</pre>
+          <h3 id="configuration_inheritance">Configuration inheritance</h3>
+          
+          <p>With help of the new <code>@InheritConfiguration</code> annotation you can advice MapStruct to apply the configuration from one mapping method to another.</p>
+          
+          <p>This comes in handy for instance when having a “normal” mapping method and an update method for the same types. Instead of configuring both methods individually, you can let one method inherit the configuration from the other:</p>
+          <pre class='prettyprint linenums'>&#x000A;@Mapping(target="lastName", source="surName")&#x000A;@Mapping(target="accountNumber", source="customerNumber")&#x000A;Customer customerDtoToCustomer(CustomerDto customerDto);&#x000A;&#x000A;@InheritConfiguration&#x000A;void updateCustomerFromDto(CustomerDto dto, @MappingTarget customer);</pre>
+          <p>The <code>@InheritConfiguration</code> annotation will let the <code>updateCustomerFromDto()</code> inherit all the mappings from <code>customerDtoToCustomer()</code>. The selection of the template method is done by matching source and target types, but you could explicitly specify a method as configuration source if needed.</p>
+          
+          <p>Configuration inheritance is particularly useful when working with complex type hierarchies. You can define a configuration for the base types of the source and target models and let specific mapping methods inherit this configuration. But what if a base type is abstract? Naturally, MapStruct cannot generate an implementation of a method whose return type is an abstract one.</p>
+          
+          <p>This can be resolved by declaring a “prototype method” within a <a href="/documentation/#section-shared-config">configuration class</a> referenced by the mapper:</p>
+          <pre class='prettyprint linenums'>&#x000A;@Mapper(config=BaseMappings.class)&#x000A;public interface CustomerMapper {&#x000A;&#x000A;    @InheritConfiguration(name="anyDtoToEntity")&#x000A;    CustomerDto customerToDto(Customer customer);&#x000A;}</pre><pre class='prettyprint linenums'>&#x000A;@MapperConfig&#x000A;public interface BaseMappings {&#x000A;&#x000A;    // no implementation will be generated, it only serves as configuration source&#x000A;    @Mapping(target = "primaryKey", source = "id")&#x000A;    BaseDto anyEntityToDto(BaseEntity entity);&#x000A;}</pre>
+          <p>Methods declared within configuration classes such as <code>BaseMappings</code> are not usable as mapping methods themselves (no implementation will be generated for them). They solely serve as configuration source. In the example the <code>customerToDto()</code> method would inherit the configuration given at <code>anyEntityToDto()</code>.</p>
+          
+          <p>Note that you optionally can have prototype configurations automatically be applied to methods with compatbile source and target types. You can find the details in the <a href="/documentation/#section-inherit-config">reference documentation</a>.</p>
+          
+          <h3 id="ordered_setter_invocations">Ordered setter invocations</h3>
+          
+          <p>Sometimes it is required to invoke the setters of the target bean in a specific order, e.g. if one setter depends on the value of other properties of the same bean. For that purpose there is a new attribute on the <code>@Mapping</code> annotation, <code>dependsOn()</code>. The following shows an example:</p>
+          <pre class='prettyprint linenums'>&#x000A;@Mapping(target = "givenName", source = "firstName")&#x000A;@Mapping(target = "middleName", dependsOn = "givenName")&#x000A;@Mapping(target = "lastName", dependsOn = "middleName")&#x000A;AddressDto addressToDto(Address address);</pre>
+          <p>This configuration makes sure that the generated implementation of <code>addressToDto()</code> first calls <code>setGivenName()</code>, then <code>setMiddleName()</code> and finally <code>setLastName()</code>. A single property can also depend on several other ones:</p>
+          <pre class='prettyprint linenums'>&#x000A;@Mapping(target = "lastName", dependsOn = { "firstName", "middleName"})&#x000A;AddressDto addressToDto(Address address);</pre>
+          <p>This would ensure that <code>setLastName()</code> is invoked after <code>setGivenName()</code> and <code>setMiddleName()</code>, but no guarantee is given for the order of these two.</p>
+          
+          <h3 id="mapstruct_eclipse_plugin">MapStruct Eclipse plug-in</h3>
+          
+          <p>Being a JSR 269 annotation processor, MapStruct is meant to run equally well within command line builds (plain javac, Mavent etc.) as well as IDEs. Indeed the annotation processor works nicely for instance in Eclipse, generating mappers upon save, showing error markers next to the affected elements etc.</p>
+          
+          <p>Still there are some advanced features which cannot be provided by an annotation processor, e.g. auto-completion for annotation attributes, refactoring support, navigation to referenced elements and more. This is where the <a href="https://github.com/mapstruct/mapstruct-eclipse/">MapStruct Eclipse plug-in</a> comes in.</p>
+          
+          <p>Developed by my good friend <a href="https://github.com/larswetzer">Lars Wetzer</a>, it aims at providing an even better experience when using MapStruct within Eclipse. The plug-in is still at a very early stage, currently it provides auto-completion for <code>@Mapping#source()</code> and <code>target()</code>. The following shows a screenshot:</p>
+          <div style='text-align:center'>
+              <img src='/images/mapstruct-eclipse-plugin.png' style='padding-bottom: 3px;' />
+          </div>
+          <p>More functionality will be coming soon. You can find the list of features planned for the plug-in <a href="https://github.com/mapstruct/mapstruct-eclipse/issues">here</a>. There is no official release of the plug-in yet. But if you feel adventurous, you can install the latest nightly build from the <a href="https://mapstruct.ci.cloudbees.com/job/mapstruct-eclipse/lastSuccessfulBuild/artifact/org.mapstruct.eclipse.repository/target/repository/">update site</a> at our CI server.</p>
+          
+          <h3 id="download">Download</h3>
+          
+          <p>If you work with Maven, Gradle or another dependency management tool, use the following GAV coordinates to obtain the MapStruct artifacts from Maven Central:</p>
+          
+          <ul>
+          <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct&#124;1.0.0.Beta4&#124;jar">org.mapstruct:mapstruct:1.0.0.Beta4</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-jdk8&#124;1.0.0.Beta4&#124;jar">org.mapstruct:mapstruct-jdk8:1.0.0.Beta4</a> (for usage with Java &gt;= 8)</li>
+          
+          <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-processor&#124;1.0.0.Beta4&#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Beta4</a> for the annotation processor.</li>
+          </ul>
+          
+          <p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta4/">SourceForge</a>.</p>
+          
+          <p>The Beta4 contains almost all the features we envisioned for the 1.0 release. We’ll now focus on bug-fixing and addressing some more minor edge cases. The CR1 (candidate release) should be out in four to six weeks from now, followed by 1.0 Final after four more weeks from there.</p>
+          
+          <p>Finally, some useful links:</p>
+          
+          <ul>
+          <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
+          
+          <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+          
+          <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+          
+          <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <a href="/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html">Previous</a>
+        </div>
+        <div class="span4" style="text-align: center;">
+          <a href="http://mapstruct.org/news">All news</a>
+        </div>
+        <div class="span4" style="text-align: right;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <hr>
+          
+                      <div id="disqus_thread"></div>
+                      <script type="text/javascript">
+                      var disqus_shortname = 'mapstruct';
+                      var disqus_url = "http://mapstruct.org/news/2015/03/05/arrays-configuration-inheritance-mapstruct-1_0_0_Beta4.html";
+                      var disqus_developer = null;
+                      var disqus_identifier = "4d90e8a6a0d31eaa49298c4e8c823e5332c9690d";
+                      (function() {
+                        var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                        dsq.src = "http://mapstruct.disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                      })();
+                      </script>
+                      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=mapstruct">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Gunnar Morling 2015</p>
+      </footer>
+    </div>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount','UA-41136939-1']);
+    _gaq.push(['_gat._anonymizeIp']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </body>
+</html>
