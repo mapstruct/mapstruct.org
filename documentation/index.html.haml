@@ -1573,6 +1573,92 @@ layout: base
         :markdown
           As shown in the example, you can optionally inject a delegate with the generated default implementations and use this delegate in your customized decorator methods. To do so, define a constructor with a single parameter which accepts the type of the decorated mapper.
 
+    .row
+      .span9
+        %h3#section-before-after 18. Customizing mappings using BeforeMapping/AfterMapping methods
+
+        :markdown
+          Decorators may not always fit the needs when it comes to customizing mappers. For example, if you need to perform the customization not only for a few selected methods, but for all methods that map specific super-types: in that case, you can use *callback methods* that are invoked before the mapping starts or after the mapping finished.
+
+          Callback methods can be implemented in the abstract mapper itself or in a type reference in `Mapper#uses`.
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Mapper
+              public abstract class VehicleMapper {
+
+                  @BeforeMapping
+                  protected void flushEntity(AbstractVehicle vehicle) {
+                      // I would call my entity manager's flush() method here to make sure my entity
+                      // is populated with the right @Version before I let it map into the DTO
+                  }
+
+                  @AfterMapping
+                  protected void fillTank(AbstractVehicle vehicle, @MappingTarget AbstractVehicleDto result) {
+                      result.fuelUp( new Fuel( vehicle.getTankCapacity(), vehicle.getFuelType() ) );
+                  }
+
+                  public abstract CarDto toCarDto(Car car);
+              }
+
+              // Generates something like this:
+              public class VehicleMapperImpl extends VehicleMapper {
+
+                  public CarDto toCarDto(Car car) {
+                      flushEntity( car );
+
+                      if ( car == null ) {
+                          return null;
+                      }
+                      // ...
+
+                      fillTank( car, carDto );
+
+                      return carDto;
+                  }
+              }
+
+        :markdown
+          Only methods with return type `void` may be annotated with `@BeforeMapping` or `@AfterMapping`. The methods may or may not have parameters.
+
+          If the `@BeforeMapping` / `@AfterMapping` method has parameters, the method invocation is only generated if all parameters can be *assigned* by the source or target parameters of the mapping method:
+
+        %ul
+          %li
+            :markdown
+              A parameter annotated with `@MappingTarget` is populated with the target instance of the mapping.
+          %li
+            :markdown
+              A parameter annotated with `@TargetType` is populated with the target type of the mapping.
+          %li
+            :markdown
+              Any other parameter is populated with a source parameter of the mapping, whereas each source parameter is used once at most.
+
+        :markdown
+          All before/after-mapping methods that *can* be applied to a mapping method *will* be used. [Qualifiers](#section-qualifiers) can be used to further control which methods may be chosen and which not. For that, the qualifier annotation needs to be applied to the before/after-method and referenced in `BeanMapping#qualifiedBy` or `IterableMapping#qualifiedBy`.
+
+          The order in which the selected methods are applied is roughly determined by their location of definition (although you should consider it a *code smell* if you need to rely on their order):
+
+        %ul
+          %li
+            :markdown
+              The order of methods within one type can not be guaranteed, as it depends on the compiler and the processing environment implementation.
+          %li
+            :markdown
+              Methods declared in one type are used after methods declared in their super-type.
+          %li
+            :markdown
+              Methods implemented in the mapper itself are used before methods from types referenced in `Mapper#uses`.
+          %li
+            :markdown
+              Types referenced in `Mapper#uses` are searched for before/after-mapping methods in the order specified in the annotation.
+
+        .alert.alert-warn
+          :markdown
+            **Note!** `@BeforeMapping` and `@AfterMapping` are considered experimental as of the 1.0.0.CR1 release. Details in the selection of before/after mapping methods that are applicable for a mapping method or the order in which they are called might still be changed.
+
+
   .span3
     #toc{ :"data-offset-top"=>"0", :"data-spy"=>"affix" }
       %h5 Contents
@@ -1611,6 +1697,8 @@ layout: base
           %a{ :href=>"#section-shared-config" } Shared configurations
         %li
           %a{ :href=>"#section-decorators" } Decorators
+        %li
+          %a{ :href=>"#section-before-after" } BeforeMapping / AfterMapping
     :javascript
       (function(jQuery){
         jQuery( document ).ready( function() {
