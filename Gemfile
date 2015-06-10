@@ -1,6 +1,6 @@
 # A sample Gemfile
 source "https://rubygems.org"
-ruby '1.9.3'
+ruby '2.1.4'
 
 gem 'awestruct', '~> 0.5.0'
 gem 'rb-inotify', '~> 0.9.0'
