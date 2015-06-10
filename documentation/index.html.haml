@@ -1525,9 +1525,9 @@ layout: base
         :markdown
           In certain cases it may be required to customize a generated mapping method, e.g. to set an additional property in the target object which can't be set by a generated method implementation. MapStruct supports this requirement using decorators.
 
-        .alert.alert-warn
+        .alert.alert-info
           :markdown
-            **Note!** Decorators are an experimental feature as of the 1.0.0.Beta1 release. They are only supported for the default component model, not when working with the CDI or Spring models.
+            MapStruct decorators should only be used with the default and the Spring component model. When working with the CDI component model, CDI decorators can be used as is with MapStruct mappers.
 
         :markdown
           To apply a decorator to a mapper class specify it using the `@DecoratedWith` annotation:
