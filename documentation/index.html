@@ -128,7 +128,7 @@
               </ul>
               
               <p>For Maven based projects add the following to your POM file in order to use MapStruct:</p>
-              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.Beta3&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct-jdk8&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.4&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
+              <pre class="prettyprint lang-xml linenums">...&#x000A;&lt;properties&gt;&#x000A;    &lt;org.mapstruct.version&gt;1.0.0.CR1&lt;/org.mapstruct.version&gt;&#x000A;&lt;/properties&gt;&#x000A;...&#x000A;&lt;dependencies&gt;&#x000A;    &lt;dependency&gt;&#x000A;        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;        &lt;artifactId&gt;mapstruct-jdk8&lt;/artifactId&gt;&#x000A;        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;    &lt;/dependency&gt;&#x000A;&lt;/dependencies&gt;&#x000A;...&#x000A;&lt;build&gt;&#x000A;    &lt;plugins&gt;&#x000A;        &lt;plugin&gt;&#x000A;            &lt;groupId&gt;org.bsc.maven&lt;/groupId&gt;&#x000A;            &lt;artifactId&gt;maven-processor-plugin&lt;/artifactId&gt;&#x000A;            &lt;version&gt;2.2.4&lt;/version&gt;&#x000A;            &lt;configuration&gt;&#x000A;                &lt;defaultOutputDirectory&gt;&#x000A;                    ${project.build.directory}/generated-sources&#x000A;                &lt;/defaultOutputDirectory&gt;&#x000A;                &lt;processors&gt;&#x000A;                    &lt;processor&gt;org.mapstruct.ap.MappingProcessor&lt;/processor&gt;&#x000A;                &lt;/processors&gt;&#x000A;            &lt;/configuration&gt;&#x000A;            &lt;executions&gt;&#x000A;                &lt;execution&gt;&#x000A;                    &lt;id&gt;process&lt;/id&gt;&#x000A;                    &lt;phase&gt;generate-sources&lt;/phase&gt;&#x000A;                    &lt;goals&gt;&#x000A;                        &lt;goal&gt;process&lt;/goal&gt;&#x000A;                    &lt;/goals&gt;&#x000A;                &lt;/execution&gt;&#x000A;            &lt;/executions&gt;&#x000A;            &lt;dependencies&gt;&#x000A;                &lt;dependency&gt;&#x000A;                    &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;&#x000A;                    &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;&#x000A;                    &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;&#x000A;                &lt;/dependency&gt;&#x000A;            &lt;/dependencies&gt;&#x000A;        &lt;/plugin&gt;&#x000A;    &lt;/plugins&gt;&#x000A;&lt;/build&gt;</pre>
               <h4 id="section-setup-01">2.1 Configuration options</h4>
               
               <p>The MapStruct code generator can be configured using <em>annotation processor options</em>.</p>
@@ -926,9 +926,9 @@
               <h3 id="section-decorators">17. Customizing mappings using decorators</h3>
               
               <p>In certain cases it may be required to customize a generated mapping method, e.g. to set an additional property in the target object which can’t be set by a generated method implementation. MapStruct supports this requirement using decorators.</p>
-              <div class="alert alert-warn">
+              <div class="alert alert-info">
                 
-                <p><strong>Note!</strong> Decorators are an experimental feature as of the 1.0.0.Beta1 release. They are only supported for the default component model, not when working with the CDI or Spring models.</p>
+                <p>MapStruct decorators should only be used with the default and the Spring component model. When working with the CDI component model, CDI decorators can be used as is with MapStruct mappers.</p>
               </div>
               
               <p>To apply a decorator to a mapper class specify it using the <code>@DecoratedWith</code> annotation:</p>
@@ -940,6 +940,60 @@
               <pre class="prettyprint lang-java linenums">public abstract class PersonMapperDecorator implements PersonMapper {&#x000A;&#x000A;    private final PersonMapper delegate;&#x000A;&#x000A;    public PersonMapperDecorator(PersonMapper delegate) {&#x000A;        this.delegate = delegate;&#x000A;    }&#x000A;&#x000A;    @Override&#x000A;    public PersonDto personToPersonDto(Person person) {&#x000A;        PersonDto dto = delegate.personToPersonDto( person );&#x000A;        dto.setFullName( person.getFirstName() + &quot; &quot; + person.getLastName() );&#x000A;        return dto;&#x000A;    }&#x000A;}</pre>
               
               <p>As shown in the example, you can optionally inject a delegate with the generated default implementations and use this delegate in your customized decorator methods. To do so, define a constructor with a single parameter which accepts the type of the decorated mapper.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span9">
+              <h3 id="section-before-after">18. Customizing mappings using BeforeMapping/AfterMapping methods</h3>
+              
+              <p>Decorators may not always fit the needs when it comes to customizing mappers. For example, if you need to perform the customization not only for a few selected methods, but for all methods that map specific super-types: in that case, you can use <em>callback methods</em> that are invoked before the mapping starts or after the mapping finished.</p>
+              
+              <p>Callback methods can be implemented in the abstract mapper itself or in a type reference in <code>Mapper#uses</code>.</p>
+              <pre class="prettyprint lang-java linenums">@Mapper&#x000A;public abstract class VehicleMapper {&#x000A;&#x000A;    @BeforeMapping&#x000A;    protected void flushEntity(AbstractVehicle vehicle) {&#x000A;        // I would call my entity manager's flush() method here to make sure my entity&#x000A;        // is populated with the right @Version before I let it map into the DTO&#x000A;    }&#x000A;&#x000A;    @AfterMapping&#x000A;    protected void fillTank(AbstractVehicle vehicle, @MappingTarget AbstractVehicleDto result) {&#x000A;        result.fuelUp( new Fuel( vehicle.getTankCapacity(), vehicle.getFuelType() ) );&#x000A;    }&#x000A;&#x000A;    public abstract CarDto toCarDto(Car car);&#x000A;}&#x000A;&#x000A;// Generates something like this:&#x000A;public class VehicleMapperImpl extends VehicleMapper {&#x000A;&#x000A;    public CarDto toCarDto(Car car) {&#x000A;        flushEntity( car );&#x000A;&#x000A;        if ( car == null ) {&#x000A;            return null;&#x000A;        }&#x000A;        // ...&#x000A;&#x000A;        fillTank( car, carDto );&#x000A;&#x000A;        return carDto;&#x000A;    }&#x000A;}</pre>
+              
+              <p>Only methods with return type <code>void</code> may be annotated with <code>@BeforeMapping</code> or <code>@AfterMapping</code>. The methods may or may not have parameters.</p>
+              
+              <p>If the <code>@BeforeMapping</code> / <code>@AfterMapping</code> method has parameters, the method invocation is only generated if all parameters can be <em>assigned</em> by the source or target parameters of the mapping method:</p>
+              <ul>
+                <li>
+                  
+                  <p>A parameter annotated with <code>@MappingTarget</code> is populated with the target instance of the mapping.</p>
+                </li>
+                <li>
+                  
+                  <p>A parameter annotated with <code>@TargetType</code> is populated with the target type of the mapping.</p>
+                </li>
+                <li>
+                  
+                  <p>Any other parameter is populated with a source parameter of the mapping, whereas each source parameter is used once at most.</p>
+                </li>
+              </ul>
+              
+              <p>All before/after-mapping methods that <em>can</em> be applied to a mapping method <em>will</em> be used. <a href="#section-qualifiers">Qualifiers</a> can be used to further control which methods may be chosen and which not. For that, the qualifier annotation needs to be applied to the before/after-method and referenced in <code>BeanMapping#qualifiedBy</code> or <code>IterableMapping#qualifiedBy</code>.</p>
+              
+              <p>The order in which the selected methods are applied is roughly determined by their location of definition (although you should consider it a <em>code smell</em> if you need to rely on their order):</p>
+              <ul>
+                <li>
+                  
+                  <p>The order of methods within one type can not be guaranteed, as it depends on the compiler and the processing environment implementation.</p>
+                </li>
+                <li>
+                  
+                  <p>Methods declared in one type are used after methods declared in their super-type.</p>
+                </li>
+                <li>
+                  
+                  <p>Methods implemented in the mapper itself are used before methods from types referenced in <code>Mapper#uses</code>.</p>
+                </li>
+                <li>
+                  
+                  <p>Types referenced in <code>Mapper#uses</code> are searched for before/after-mapping methods in the order specified in the annotation.</p>
+                </li>
+              </ul>
+              <div class="alert alert-warn">
+                
+                <p><strong>Note!</strong> <code>@BeforeMapping</code> and <code>@AfterMapping</code> are considered experimental as of the 1.0.0.CR1 release. Details in the selection of before/after mapping methods that are applicable for a mapping method or the order in which they are called might still be changed.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -997,6 +1051,9 @@
               </li>
               <li>
                 <a href="#section-decorators">Decorators</a>
+              </li>
+              <li>
+                <a href="#section-before-after">BeforeMapping / AfterMapping</a>
               </li>
             </ol>
           </div>
