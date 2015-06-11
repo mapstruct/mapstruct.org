@@ -127,7 +127,7 @@ Before and after mapping callback methods are a quite powerful mechanism to impl
 
 ### What's next?
 
-With CR 1 out, MapStruct 1.0 Final is getting in sight! Based on bugs reported against CR1, we may either do another CR in two or three weeks or go straight to the Final. Stay tuned!
+With CR 1 out, MapStruct 1.0 Final is getting in sight! Based on the number of bugs reported against CR1, we may either do another CR in two or three weeks or go straight to the Final. In parallel work on the MapStruct [Eclipse plug-in](https://github.com/mapstruct/mapstruct-eclipse) continues. We plan to do a first Alpha release of that very soon. Stay tuned!
 
 Finally, some useful links:
 
