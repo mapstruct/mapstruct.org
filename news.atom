@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2015-06-11T08:21:23+02:00</updated>
+  <updated>2015-08-11T15:35:30+02:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://mapstruct.org/news/2015/06/11/mapstruct-1_0_0_CR1-has-landed.html</id>
     <title>MapStruct 1.0.0.CR1 has landed</title>
-    <updated>2015-06-11T08:21:23+02:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2015-06-11T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2015/06/11/mapstruct-1_0_0_CR1-has-landed.html" rel="alternate" type="text/html" />
     <author>
@@ -50,9 +50,7 @@
       &lt;li&gt;The decorator feature can now also be used with Spring&lt;/li&gt;
       
       &lt;li&gt;Support for before- and after-mapping lifecycle hooks&lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;The complete list of 24 closed issues can be found in the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.CR1&quot;&gt;change log&lt;/a&gt;.&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;The complete list of 24 closed issues can be found in the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.CR1&quot;&gt;change log&lt;/a&gt;.&lt;/p&gt;
       
       &lt;p&gt;A big thank you to everyone contributing to this release: &lt;a href=&quot;https://github.com/sjaakd/&quot;&gt;Sjaak Derksen&lt;/a&gt;, &lt;a href=&quot;https://github.com/agudian&quot;&gt;Andreas Gudian&lt;/a&gt;, &lt;a href=&quot;https://github.com/chschu&quot;&gt;Christian Schuster&lt;/a&gt;, &lt;a href=&quot;https://github.com/ps-powa&quot;&gt;Paul Strugnell&lt;/a&gt; and &lt;a href=&quot;https://github.com/sonata82&quot;&gt;Remko Plantenga&lt;/a&gt;!&lt;/p&gt;
       
@@ -66,9 +64,7 @@
       
       &lt;li&gt;
       &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.CR1%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.0.0.CR1&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.CR1/&quot;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.CR1/&quot;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
       
       &lt;h3 id=&quot;spi_for_property_accessor_discovery&quot;&gt;SPI for property accessor discovery&lt;/h3&gt;
       
@@ -176,7 +172,7 @@
   <entry>
     <id>http://mapstruct.org/news/2015/03/05/arrays-configuration-inheritance-mapstruct-1_0_0_Beta4.html</id>
     <title>Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released</title>
-    <updated>2015-03-05T23:18:00+01:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2015-03-05T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2015/03/05/arrays-configuration-inheritance-mapstruct-1_0_0_Beta4.html" rel="alternate" type="text/html" />
     <author>
@@ -291,9 +287,7 @@
       
       &lt;li&gt;
       &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.Beta4%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.0.0.Beta4&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta4/&quot;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta4/&quot;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
       
       &lt;p&gt;The Beta4 contains almost all the features we envisioned for the 1.0 release. We’ll now focus on bug-fixing and addressing some more minor edge cases. The CR1 (candidate release) should be out in four to six weeks from now, followed by 1.0 Final after four more weeks from there.&lt;/p&gt;
       
@@ -315,7 +309,7 @@
   <entry>
     <id>http://mapstruct.org/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html</id>
     <title>MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more</title>
-    <updated>2014-12-02T22:24:15+01:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2014-11-30T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html" rel="alternate" type="text/html" />
     <author>
@@ -442,9 +436,7 @@
       
       &lt;li&gt;
       &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.Beta3%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.0.0.Beta3&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;The Beta3 release is planned to be the last beta, next will be CR1 (candidate release).&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;The Beta3 release is planned to be the last beta, next will be CR1 (candidate release).&lt;/p&gt;
       
       &lt;p&gt;Anything you’d like to propose for inclusion in the 1.0 Final release? Then let us know by commenting below or posting to the &lt;a href=&quot;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&quot;&gt;mapstruct-users&lt;/a&gt; group. Bugs and feature requests can be reported in the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues&quot;&gt;issue tracker&lt;/a&gt;. And if you’d like to hack on MapStruct yourself, check out the &lt;a href=&quot;http://mapstruct.org/contributing&quot;&gt;development guide&lt;/a&gt;.&lt;/p&gt;
     </content>
@@ -452,7 +444,7 @@
   <entry>
     <id>http://mapstruct.org/news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html</id>
     <title>Support for Java 8, JodaTime and more: MapStruct 1.0.0.Beta2 released</title>
-    <updated>2014-07-02T20:17:55+02:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2014-07-02T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html" rel="alternate" type="text/html" />
     <author>
@@ -497,9 +489,7 @@
       
       &lt;li&gt;
       &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.Beta2%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.0.0.Beta2&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;h3 id=&quot;java_8&quot;&gt;Java 8&lt;/h3&gt;
+      &lt;/ul&gt;&lt;h3 id=&quot;java_8&quot;&gt;Java 8&lt;/h3&gt;
       
       &lt;p&gt;MapStruct now leverages the &lt;a href=&quot;http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html&quot;&gt;repeating annotation&lt;/a&gt; feature introduced with Java 8. This allows to specify several &lt;code&gt;@Mapping&lt;/code&gt; annotations on one and the same method in a very concise way:&lt;/p&gt;
       &lt;pre class=&quot;prettyprint linenums&quot;&gt;
@@ -528,9 +518,7 @@
       &lt;li&gt;
       &lt;code&gt;org.joda.time.DateTime&lt;/code&gt;, &lt;code&gt;org.joda.time.LocalDateTime&lt;/code&gt;, &lt;code&gt;org.joda.time.LocalDate&lt;/code&gt; and &lt;code&gt;org.joda.time.LocalTime&lt;/code&gt; &amp;lt;&amp;gt; &lt;code&gt;String&lt;/code&gt;
       &lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;If you use these types in your mapped models, MapStruct will automatically generated the required mapping routines without any further configuration. &lt;code&gt;@Mapping#dateFormat()&lt;/code&gt; can be used when converting from or to &lt;code&gt;String&lt;/code&gt; to specify the expected date format.&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;If you use these types in your mapped models, MapStruct will automatically generated the required mapping routines without any further configuration. &lt;code&gt;@Mapping#dateFormat()&lt;/code&gt; can be used when converting from or to &lt;code&gt;String&lt;/code&gt; to specify the expected date format.&lt;/p&gt;
       
       &lt;p&gt;Note that for the following release &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/121&quot;&gt;we plan&lt;/a&gt; to also cover the new Java 8 time and date types which will be useful when mapping between models using the old types such as &lt;code&gt;java.util.Date&lt;/code&gt; and the new ones.&lt;/p&gt;
       
@@ -585,7 +573,7 @@
   <entry>
     <id>http://mapstruct.org/news/2014/03/05/mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more.html</id>
     <title>MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more</title>
-    <updated>2014-03-05T23:29:24+01:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2014-03-05T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2014/03/05/mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more.html" rel="alternate" type="text/html" />
     <author>
@@ -623,9 +611,7 @@
       
       &lt;li&gt;
       &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.Beta1%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.0.0.Beta1&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;Alternatively you can download a &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta1/&quot;&gt;distribution bundle&lt;/a&gt; which contains everything required.&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;Alternatively you can download a &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta1/&quot;&gt;distribution bundle&lt;/a&gt; which contains everything required.&lt;/p&gt;
       
       &lt;p&gt;Before diving into some of the new features, let me say a huge thank you to &lt;a href=&quot;https://github.com/sjaakd/&quot;&gt;Sjaak Derksen&lt;/a&gt; and &lt;a href=&quot;https://github.com/agudian&quot;&gt;Andreas Gudian&lt;/a&gt; who heavily contributed to this release. That’s much appreciated! Also a big thanks to everyone else who opened feature requests or joined the discussion.&lt;/p&gt;
       
@@ -644,9 +630,7 @@
       &lt;li&gt;
       &lt;code&gt;JAXBElement&amp;lt;T&amp;gt;&lt;/code&gt; &amp;lt;&amp;gt; &lt;code&gt;&amp;lt;T&amp;gt;&lt;/code&gt;, e.g. &lt;code&gt;JAXBElement&amp;lt;Integer&amp;gt;&lt;/code&gt; &amp;lt;&amp;gt; &lt;code&gt;&amp;lt;Integer&amp;gt;&lt;/code&gt;
       &lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;If you generate JAXB types from an XML schema using &lt;a href=&quot;https://jaxb.java.net/2.2.4/docs/xjc.html&quot;&gt;xjc&lt;/a&gt;, you’ll typically obtain one or more &lt;code&gt;ObjectFactory&lt;/code&gt; classes with methods for instantiating &lt;code&gt;JAXBElement&lt;/code&gt;s. You can plug in these factories via the &lt;code&gt;uses()&lt;/code&gt; attribute of the &lt;code&gt;@Mapper&lt;/code&gt; annotation:&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;If you generate JAXB types from an XML schema using &lt;a href=&quot;https://jaxb.java.net/2.2.4/docs/xjc.html&quot;&gt;xjc&lt;/a&gt;, you’ll typically obtain one or more &lt;code&gt;ObjectFactory&lt;/code&gt; classes with methods for instantiating &lt;code&gt;JAXBElement&lt;/code&gt;s. You can plug in these factories via the &lt;code&gt;uses()&lt;/code&gt; attribute of the &lt;code&gt;@Mapper&lt;/code&gt; annotation:&lt;/p&gt;
       &lt;pre class=&quot;prettyprint linenums&quot;&gt;
       @Mapper(uses = ObjectFactory.class)
       public interface OrderMapper {
@@ -720,7 +704,6 @@
               return dto;
           }
       }&lt;/pre&gt;
-
       &lt;p&gt;As shown in the example, you can optionally declare a constructor which receives a delegate with the generated mapper implementation. This delegate can be used in the decorator methods to invoke the default mapping routine and then amend the result object. All methods not implemented by the decorator class will just be routed through to the delegate.&lt;/p&gt;
       
       &lt;p&gt;Note that the delegate feature is experimental as of this release and may change in future versions. Also it’s subject to some limitations for the time being, e.g. only a single decorator can be applied (a decorator chain will be possible in the future) and it is only supported for the default component model but not when using the CDI and Spring component models.&lt;/p&gt;
@@ -737,7 +720,7 @@
   <entry>
     <id>http://mapstruct.org/news/2013/11/28/mapstruct-1_0_0_Alpha2-has-landed.html</id>
     <title>MapStruct 1.0.0.Alpha2 has landed!</title>
-    <updated>2014-03-05T23:29:24+01:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2013-11-28T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/11/28/mapstruct-1_0_0_Alpha2-has-landed.html" rel="alternate" type="text/html" />
     <author>
@@ -773,9 +756,7 @@
       
       &lt;li&gt;
       &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.Alpha2%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.0.0.Alpha2&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;Alternatively you can get a &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.Alpha2/&quot;&gt;distribution bundle&lt;/a&gt; from SourceForge.&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;Alternatively you can get a &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.Alpha2/&quot;&gt;distribution bundle&lt;/a&gt; from SourceForge.&lt;/p&gt;
       
       &lt;p&gt;Beside several new mapping features (e.g. combining several sources into one target object) the release provides integration with CDI and Spring to make the retrieval of mapper objects more comfortable. We’ve added several new implicit data type conversions and there is now also support for converting &lt;code&gt;Map&lt;/code&gt; objects.&lt;/p&gt;
       
@@ -860,7 +841,7 @@
   <entry>
     <id>http://mapstruct.org/news/2013/07/08/using-mapstruct-with-gradle.html</id>
     <title>Using MapStruct with Gradle</title>
-    <updated>2014-03-05T23:29:24+01:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2013-07-08T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/07/08/using-mapstruct-with-gradle.html" rel="alternate" type="text/html" />
     <author>
@@ -973,7 +954,7 @@
   <entry>
     <id>http://mapstruct.org/news/2013/06/03/announcing-mapstruct.html</id>
     <title>Announcing MapStruct</title>
-    <updated>2014-03-05T23:29:24+01:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2013-06-03T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/06/03/announcing-mapstruct.html" rel="alternate" type="text/html" />
     <author>
@@ -1051,9 +1032,7 @@
       
       &lt;li&gt;the object referenced by the &lt;code&gt;driver&lt;/code&gt; attribute is once of type &lt;code&gt;Person&lt;/code&gt; (another entity) and once of type &lt;code&gt;PersonDto&lt;/code&gt;
       &lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;Now let’s see how to generate a mapper for these objects. To do so, just define a plain Java interface which declares a method for each required mapping:&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;Now let’s see how to generate a mapper for these objects. To do so, just define a plain Java interface which declares a method for each required mapping:&lt;/p&gt;
       &lt;pre class=&quot;prettyprint linenums&quot;&gt;
       @Mapper
       public interface CarMapper {
@@ -1125,9 +1104,7 @@
       
       &lt;li&gt;
       &lt;em&gt;org.mapstruct:mapstruct-processor:1.0.0.Alpha1&lt;/em&gt; for the annotation processor module.&lt;/li&gt;
-      &lt;/ul&gt;
-      
-      &lt;p&gt;Check out the &lt;a href=&quot;http://mapstruct.org/documentation&quot;&gt;reference documentation&lt;/a&gt; to learn about all the ins and outs of MapStruct, including features such as collection mappings, reverse mappings or making use of hand-written mapping methods.&lt;/p&gt;
+      &lt;/ul&gt;&lt;p&gt;Check out the &lt;a href=&quot;http://mapstruct.org/documentation&quot;&gt;reference documentation&lt;/a&gt; to learn about all the ins and outs of MapStruct, including features such as collection mappings, reverse mappings or making use of hand-written mapping methods.&lt;/p&gt;
       
       &lt;p&gt;If you’re are stuck, come and join the MapStruct &lt;a href=&quot;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&quot;&gt;google-group&lt;/a&gt; and ask your questions there. This is also the right place to discuss any feature requests or other suggestions. And should you find a bug, please file a report in our &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues&quot;&gt;issue tracker&lt;/a&gt;.&lt;/p&gt;
       
@@ -1145,7 +1122,7 @@
   <entry>
     <id>http://mapstruct.org/news/2013/05/22/website-live.html</id>
     <title>mapstruct.org has landed!</title>
-    <updated>2014-03-05T23:29:24+01:00</updated>
+    <updated>2015-08-11T15:35:30+02:00</updated>
     <published>2013-05-22T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/05/22/website-live.html" rel="alternate" type="text/html" />
     <author>
