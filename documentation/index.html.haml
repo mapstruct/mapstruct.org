@@ -1116,10 +1116,12 @@ layout: base
 
     .row
       .span9
-        %h3#section-constants 10. Constants
+        %h3#section-constants 10. Default values and constants
 
         :markdown
-          MapStruct supports the usage of constants. Constants are subject to type conversion either via built-in conversions or the invocation of other mapping methods. A mapping with a constant must not include a reference to a source property. The following examples shows some mappings using constants:
+          Default values can be specified to set a predefined value to a target property if the corresponding source property is `null`. Constants can be specified to set such a predefined value in any case. Default values and constants are specified as String values and are subject to type conversion either via built-in conversions or the invocation of other mapping methods in order to match the type required by the target property.
+
+          A mapping with a constant must not include a reference to a source property. The following examples shows some mappings using default values and constants:
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1127,26 +1129,22 @@ layout: base
                @Mapper(uses = StringListMapper.class)
                public interface SourceTargetMapper {
 
-                   SourceTargetMapper INSTANCE = Mappers.getMapper(
-                       SourceTargetMapper.class
-                   );
+                   SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );
 
                    @Mappings( {
-                       @Mapping( target = "stringConstant", constant = "Constant Value"),
-                       @Mapping( target = "integerConstant", constant = "14"),
-                       @Mapping( target = "longWrapperConstant", constant = "3001"),
-                       @Mapping(
-                           target = "dateConstant",
-                           dateFormat = "dd-MM-yyyy",
-                           constant = "09-01-2014"
-                       ),
-                       @Mapping( target = "stringListConstants", constant = "jack-jill-tom" )
+                       @Mapping(target = "stringProperty", source = "stringProp", defaultValue = "undefined"),
+                       @Mapping(target = "longProperty", defaultValue = "-1"),
+                       @Mapping(target = "stringConstant", constant = "Constant Value"),
+                       @Mapping(target = "integerConstant", constant = "14"),
+                       @Mapping(target = "longWrapperConstant", constant = "3001"),
+                       @Mapping(target = "dateConstant", dateFormat = "dd-MM-yyyy", constant = "09-01-2014"),
+                       @Mapping(target = "stringListConstants", constant = "jack-jill-tom")
                    } )
                    Target sourceToTarget(Source s);
-                   }
                }
 
         :markdown
+          If `s.getStringProp() == null`, then the target property `stringProperty` will be set to `"undefined"` instead of applying the value from `s.getStringProp()`. If `s.getLongProp() == null`, then the target property `longProperty` will be set to `-1`.
           The String `"Constant Value"` is set as is to the target property `stringConstant`. The value `"3001"` is type-converted to the `Long` (wrapper) class of target property `longWrapperConstant`. Date properties also require a date format. The constant `"jack-jill-tom"` demonstrates how the hand-written class `StringListMapper` is invoked to map the dash-separated list into a `List<String>`.
 
     .row
@@ -1682,7 +1680,7 @@ layout: base
         %li
           %a{ :href=>"#section-exceptions" } Exceptions
         %li
-          %a{ :href=>"#section-constants" } Constants
+          %a{ :href=>"#section-constants" } Default values and constants
         %li
           %a{ :href=>"#section-expressions" } Expressions
         %li
