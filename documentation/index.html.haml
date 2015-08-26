@@ -1525,10 +1525,10 @@ layout: base
 
         .alert.alert-info
           :markdown
-            MapStruct decorators should only be used with the default and the Spring component model. When working with the CDI component model, CDI decorators can be used as is with MapStruct mappers.
+            When working with the component model `cdi`, use [CDI decorators](https://docs.jboss.org/cdi/spec/1.0/html/decorators.html) with MapStruct mappers instead of the `@DecoratedWith` annotation described here.
 
         :markdown
-          To apply a decorator to a mapper class specify it using the `@DecoratedWith` annotation:
+          To apply a decorator to a mapper class, specify it using the `@DecoratedWith` annotation.
 
         %pre.prettyprint.lang-java.linenums
           = preserve do
@@ -1545,7 +1545,7 @@ layout: base
               }
 
         :markdown
-          The decorator must be a sub-type of the decorated mapper type. You can make it an abstract class which allows to only implement those methods of the mapper interface which you want to customize. All non-implemented methods will be generated using the default generation routine.
+          The decorator must be a sub-type of the decorated mapper type. You can make it an abstract class which allows to only implement those methods of the mapper interface which you want to customize. For all non-implemented methods, a simple delegation to the original mapper will be generated using the default generation routine.
 
           The `PersonMapperDecorator` shown below customizes the `personToPersonDto()`. It sets an additional attribute which is not present in the source type of the mapping. The `addressToAddressDto()` method is not customized.
 
@@ -1569,7 +1569,80 @@ layout: base
               }
 
         :markdown
-          As shown in the example, you can optionally inject a delegate with the generated default implementations and use this delegate in your customized decorator methods. To do so, define a constructor with a single parameter which accepts the type of the decorated mapper.
+          The example shows how you can optionally inject a delegate with the generated default implementation and use this delegate in your customized decorator methods.
+
+          For a mapper with `componentModel = "default"`, define a constructor with a single parameter which accepts the type of the decorated mapper.
+
+          When working with the component models `spring` or `jsr330`, this needs to be handled differently.
+
+        %h4#section-decorators-01 17.1 Decorators with Spring component model
+
+        :markdown
+          When using `@DecoratedWith` on a mapper with component model `spring`, the generated implementation of the original mapper is annotated with the Spring annotation `@Qualifier("delegate")`. To autowire that bean in your decorator, add that qualifier annotation as well:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              public abstract class PersonMapperDecorator implements PersonMapper {
+
+                   @Autowired
+                   @Qualifier("delegate")
+                   private PersonMapper delegate;
+
+                   @Override
+                   public PersonDto personToPersonDto(Person person) {
+                       PersonDto dto = delegate.personToPersonDto( person );
+                       dto.setName( person.getFirstName() + " " + person.getLastName() );
+
+                       return dto;
+                   }
+               }
+
+        :markdown
+          The generated class that extends the decorator is annotated with Spring's `@Primary` annotation. To autowire the decorated mapper in the application, nothing special needs to be done:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Autowired
+              private PersonMapper personMapper; // injects the decorator, with the injected original mapper
+
+        %h4#section-decorators-02 17.2 Decorators with JSR 330 component model
+
+        :markdown
+          JSR 330 doesn't specify qualifiers and only allows to specifically name the beans. Hence, the generated implementation of the original mapper is annotated with `@Named("fully-qualified-name-of-generated-implementation")` (please note that when using a decorator, the class name of the mapper implementation ends with an underscore). To inject that bean in your decorator, add the same annotation to the delegate field (e.g. by copy/pasting it from the generated class):
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              public abstract class PersonMapperDecorator implements PersonMapper {
+             
+                  @Inject
+                  @Named("org.examples.PersonMapperImpl_")
+                  private PersonMapper delegate;
+             
+                  @Override
+                  public PersonDto personToPersonDto(Person person) {
+                      PersonDto dto = delegate.personToPersonDto( person );
+                      dto.setName( person.getFirstName() + " " + person.getLastName() );
+             
+                      return dto;
+                  }
+              }
+
+        :markdown
+          Unlike with the other component models, the usage site must be aware if a mapper is decorated or not, as for decorated mappers, the parameterless `@Named` annotation must be added to select the decorator to be injected:
+
+        %pre.prettyprint.lang-java.linenums
+          = preserve do
+            :escaped
+              @Inject
+              @Named
+              private PersonMapper personMapper; // injects the decorator, with the injected original mapper
+
+        .alert.alert-warn
+          :markdown
+            **Note!** `@DecoratedWith` in combination with component model `jsr330` is considered experimental as of the 1.0.0.CR2 release. The way the original mapper is referenced in the decorator or the way the decorated mapper is injected in the application code might still change.
 
     .row
       .span9
