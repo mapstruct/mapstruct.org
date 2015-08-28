@@ -752,12 +752,14 @@
           </div>
           <div class="row">
             <div class="span9">
-              <h3 id="section-constants">10. Constants</h3>
+              <h3 id="section-constants">10. Default values and constants</h3>
               
-              <p>MapStruct supports the usage of constants. Constants are subject to type conversion either via built-in conversions or the invocation of other mapping methods. A mapping with a constant must not include a reference to a source property. The following examples shows some mappings using constants:</p>
-              <pre class="prettyprint lang-java linenums">@Mapper(uses = StringListMapper.class)&#x000A; public interface SourceTargetMapper {&#x000A;&#x000A;     SourceTargetMapper INSTANCE = Mappers.getMapper(&#x000A;         SourceTargetMapper.class&#x000A;     );&#x000A;&#x000A;     @Mappings( {&#x000A;         @Mapping( target = &quot;stringConstant&quot;, constant = &quot;Constant Value&quot;),&#x000A;         @Mapping( target = &quot;integerConstant&quot;, constant = &quot;14&quot;),&#x000A;         @Mapping( target = &quot;longWrapperConstant&quot;, constant = &quot;3001&quot;),&#x000A;         @Mapping(&#x000A;             target = &quot;dateConstant&quot;,&#x000A;             dateFormat = &quot;dd-MM-yyyy&quot;,&#x000A;             constant = &quot;09-01-2014&quot;&#x000A;         ),&#x000A;         @Mapping( target = &quot;stringListConstants&quot;, constant = &quot;jack-jill-tom&quot; )&#x000A;     } )&#x000A;     Target sourceToTarget(Source s);&#x000A;     }&#x000A; }</pre>
+              <p>Default values can be specified to set a predefined value to a target property if the corresponding source property is <code>null</code>. Constants can be specified to set such a predefined value in any case. Default values and constants are specified as String values and are subject to type conversion either via built-in conversions or the invocation of other mapping methods in order to match the type required by the target property.</p>
               
-              <p>The String <code>&quot;Constant Value&quot;</code> is set as is to the target property <code>stringConstant</code>. The value <code>&quot;3001&quot;</code> is type-converted to the <code>Long</code> (wrapper) class of target property <code>longWrapperConstant</code>. Date properties also require a date format. The constant <code>&quot;jack-jill-tom&quot;</code> demonstrates how the hand-written class <code>StringListMapper</code> is invoked to map the dash-separated list into a <code>List&lt;String&gt;</code>.</p>
+              <p>A mapping with a constant must not include a reference to a source property. The following examples shows some mappings using default values and constants:</p>
+              <pre class="prettyprint lang-java linenums">@Mapper(uses = StringListMapper.class)&#x000A; public interface SourceTargetMapper {&#x000A;&#x000A;     SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );&#x000A;&#x000A;     @Mappings( {&#x000A;         @Mapping(target = &quot;stringProperty&quot;, source = &quot;stringProp&quot;, defaultValue = &quot;undefined&quot;),&#x000A;         @Mapping(target = &quot;longProperty&quot;, defaultValue = &quot;-1&quot;),&#x000A;         @Mapping(target = &quot;stringConstant&quot;, constant = &quot;Constant Value&quot;),&#x000A;         @Mapping(target = &quot;integerConstant&quot;, constant = &quot;14&quot;),&#x000A;         @Mapping(target = &quot;longWrapperConstant&quot;, constant = &quot;3001&quot;),&#x000A;         @Mapping(target = &quot;dateConstant&quot;, dateFormat = &quot;dd-MM-yyyy&quot;, constant = &quot;09-01-2014&quot;),&#x000A;         @Mapping(target = &quot;stringListConstants&quot;, constant = &quot;jack-jill-tom&quot;)&#x000A;     } )&#x000A;     Target sourceToTarget(Source s);&#x000A; }</pre>
+              
+              <p>If <code>s.getStringProp() == null</code>, then the target property <code>stringProperty</code> will be set to <code>&quot;undefined&quot;</code> instead of applying the value from <code>s.getStringProp()</code>. If <code>s.getLongProp() == null</code>, then the target property <code>longProperty</code> will be set to <code>-1</code>. The String <code>&quot;Constant Value&quot;</code> is set as is to the target property <code>stringConstant</code>. The value <code>&quot;3001&quot;</code> is type-converted to the <code>Long</code> (wrapper) class of target property <code>longWrapperConstant</code>. Date properties also require a date format. The constant <code>&quot;jack-jill-tom&quot;</code> demonstrates how the hand-written class <code>StringListMapper</code> is invoked to map the dash-separated list into a <code>List&lt;String&gt;</code>.</p>
             </div>
           </div>
           <div class="row">
@@ -929,18 +931,40 @@
               <p>In certain cases it may be required to customize a generated mapping method, e.g. to set an additional property in the target object which can’t be set by a generated method implementation. MapStruct supports this requirement using decorators.</p>
               <div class="alert alert-info">
                 
-                <p>MapStruct decorators should only be used with the default and the Spring component model. When working with the CDI component model, CDI decorators can be used as is with MapStruct mappers.</p>
+                <p>When working with the component model <code>cdi</code>, use <a href="https://docs.jboss.org/cdi/spec/1.0/html/decorators.html">CDI decorators</a> with MapStruct mappers instead of the <code>@DecoratedWith</code> annotation described here.</p>
               </div>
               
-              <p>To apply a decorator to a mapper class specify it using the <code>@DecoratedWith</code> annotation:</p>
+              <p>To apply a decorator to a mapper class, specify it using the <code>@DecoratedWith</code> annotation.</p>
               <pre class="prettyprint lang-java linenums">@Mapper&#x000A;@DecoratedWith(PersonMapperDecorator.class)&#x000A;public interface PersonMapper {&#x000A;&#x000A;    PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );&#x000A;&#x000A;    PersonDto personToPersonDto(Person person);&#x000A;&#x000A;    AddressDto addressToAddressDto(Address address);&#x000A;}</pre>
               
-              <p>The decorator must be a sub-type of the decorated mapper type. You can make it an abstract class which allows to only implement those methods of the mapper interface which you want to customize. All non-implemented methods will be generated using the default generation routine.</p>
+              <p>The decorator must be a sub-type of the decorated mapper type. You can make it an abstract class which allows to only implement those methods of the mapper interface which you want to customize. For all non-implemented methods, a simple delegation to the original mapper will be generated using the default generation routine.</p>
               
               <p>The <code>PersonMapperDecorator</code> shown below customizes the <code>personToPersonDto()</code>. It sets an additional attribute which is not present in the source type of the mapping. The <code>addressToAddressDto()</code> method is not customized.</p>
               <pre class="prettyprint lang-java linenums">public abstract class PersonMapperDecorator implements PersonMapper {&#x000A;&#x000A;    private final PersonMapper delegate;&#x000A;&#x000A;    public PersonMapperDecorator(PersonMapper delegate) {&#x000A;        this.delegate = delegate;&#x000A;    }&#x000A;&#x000A;    @Override&#x000A;    public PersonDto personToPersonDto(Person person) {&#x000A;        PersonDto dto = delegate.personToPersonDto( person );&#x000A;        dto.setFullName( person.getFirstName() + &quot; &quot; + person.getLastName() );&#x000A;        return dto;&#x000A;    }&#x000A;}</pre>
               
-              <p>As shown in the example, you can optionally inject a delegate with the generated default implementations and use this delegate in your customized decorator methods. To do so, define a constructor with a single parameter which accepts the type of the decorated mapper.</p>
+              <p>The example shows how you can optionally inject a delegate with the generated default implementation and use this delegate in your customized decorator methods.</p>
+              
+              <p>For a mapper with <code>componentModel = &quot;default&quot;</code>, define a constructor with a single parameter which accepts the type of the decorated mapper.</p>
+              
+              <p>When working with the component models <code>spring</code> or <code>jsr330</code>, this needs to be handled differently.</p>
+              <h4 id="section-decorators-01">17.1 Decorators with Spring component model</h4>
+              
+              <p>When using <code>@DecoratedWith</code> on a mapper with component model <code>spring</code>, the generated implementation of the original mapper is annotated with the Spring annotation <code>@Qualifier(&quot;delegate&quot;)</code>. To autowire that bean in your decorator, add that qualifier annotation as well:</p>
+              <pre class="prettyprint lang-java linenums">public abstract class PersonMapperDecorator implements PersonMapper {&#x000A;&#x000A;     @Autowired&#x000A;     @Qualifier(&quot;delegate&quot;)&#x000A;     private PersonMapper delegate;&#x000A;&#x000A;     @Override&#x000A;     public PersonDto personToPersonDto(Person person) {&#x000A;         PersonDto dto = delegate.personToPersonDto( person );&#x000A;         dto.setName( person.getFirstName() + &quot; &quot; + person.getLastName() );&#x000A;&#x000A;         return dto;&#x000A;     }&#x000A; }</pre>
+              
+              <p>The generated class that extends the decorator is annotated with Spring’s <code>@Primary</code> annotation. To autowire the decorated mapper in the application, nothing special needs to be done:</p>
+              <pre class="prettyprint lang-java linenums">@Autowired&#x000A;private PersonMapper personMapper; // injects the decorator, with the injected original mapper</pre>
+              <h4 id="section-decorators-02">17.2 Decorators with JSR 330 component model</h4>
+              
+              <p>JSR 330 doesn’t specify qualifiers and only allows to specifically name the beans. Hence, the generated implementation of the original mapper is annotated with <code>@Named(&quot;fully-qualified-name-of-generated-implementation&quot;)</code> (please note that when using a decorator, the class name of the mapper implementation ends with an underscore). To inject that bean in your decorator, add the same annotation to the delegate field (e.g. by copy/pasting it from the generated class):</p>
+              <pre class="prettyprint lang-java linenums">public abstract class PersonMapperDecorator implements PersonMapper {&#x000A;&#x000A;    @Inject&#x000A;    @Named(&quot;org.examples.PersonMapperImpl_&quot;)&#x000A;    private PersonMapper delegate;&#x000A;&#x000A;    @Override&#x000A;    public PersonDto personToPersonDto(Person person) {&#x000A;        PersonDto dto = delegate.personToPersonDto( person );&#x000A;        dto.setName( person.getFirstName() + &quot; &quot; + person.getLastName() );&#x000A;&#x000A;        return dto;&#x000A;    }&#x000A;}</pre>
+              
+              <p>Unlike with the other component models, the usage site must be aware if a mapper is decorated or not, as for decorated mappers, the parameterless <code>@Named</code> annotation must be added to select the decorator to be injected:</p>
+              <pre class="prettyprint lang-java linenums">@Inject&#x000A;@Named&#x000A;private PersonMapper personMapper; // injects the decorator, with the injected original mapper</pre>
+              <div class="alert alert-warn">
+                
+                <p><strong>Note!</strong> <code>@DecoratedWith</code> in combination with component model <code>jsr330</code> is considered experimental as of the 1.0.0.CR2 release. The way the original mapper is referenced in the decorator or the way the decorated mapper is injected in the application code might still change.</p>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -1030,7 +1054,7 @@
                 <a href="#section-exceptions">Exceptions</a>
               </li>
               <li>
-                <a href="#section-constants">Constants</a>
+                <a href="#section-constants">Default values and constants</a>
               </li>
               <li>
                 <a href="#section-expressions">Expressions</a>

@@ -2,9 +2,119 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2015-08-11T15:35:30+02:00</updated>
+  <updated>2015-08-28T08:11:48+02:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
+  <entry>
+    <id>http://mapstruct.org/news/2015/08/27/mapstruct-1_0_0_CR2-released.html</id>
+    <title>MapStruct 1.0.0.CR2 released</title>
+    <updated>2015-08-28T08:11:48+02:00</updated>
+    <published>2015-08-27T00:00:00+00:00</published>
+    <link href="http://mapstruct.org/news/2015/08/27/mapstruct-1_0_0_CR2-released.html" rel="alternate" type="text/html" />
+    <author>
+      <name>Andreas Gudian</name>
+    </author>
+    <category term="release"></category>
+    <category term="news"></category>
+    <summary>
+      
+      It is my pleasure to announce the second candidate release of MapStruct 1.0!
+      
+      With this release, we’re fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a final. Highlights of this release are:
+      
+      
+      Configure package and class name for the generated mapper implementations.
+      
+      Define default values for target properties in case the source property is null.
+      
+      The decorator feature now fully works with Spring and JSR 330 and the...
+    </summary>
+    <content type="html">
+      
+      &lt;p&gt;It is my pleasure to announce the second candidate release of MapStruct 1.0!&lt;/p&gt;
+      
+      &lt;p&gt;With this release, we’re fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a &lt;em&gt;final&lt;/em&gt;. Highlights of this release are:&lt;/p&gt;
+      
+      &lt;ul&gt;
+      &lt;li&gt;Configure package and class name for the generated mapper implementations.&lt;/li&gt;
+      
+      &lt;li&gt;Define default values for target properties in case the source property is &lt;code&gt;null&lt;/code&gt;.&lt;/li&gt;
+      
+      &lt;li&gt;The decorator feature now fully works with Spring and JSR 330 and the documentation has been clarified on how to use decorators with all our supported component models (CDI, Spring, JSR 330, default).&lt;/li&gt;
+      &lt;/ul&gt;
+      
+      &lt;p&gt;The complete list of 19 closed issues can be found in the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.CR2&quot;&gt;change log&lt;/a&gt;.&lt;/p&gt;
+      
+      &lt;p&gt;The MapStruct team calls out a big &lt;em&gt;Thank you!&lt;/em&gt; to everyone contributing to this release: &lt;a href=&quot;https://github.com/vgt-tomek&quot;&gt;Tomek Gubala&lt;/a&gt;, &lt;a href=&quot;https://github.com/bedla&quot;&gt;Ivo Smid&lt;/a&gt;, &lt;a href=&quot;https://github.com/luxmeter&quot;&gt;Mustafa Caylak&lt;/a&gt;, and &lt;a href=&quot;https://github.com/ggtools&quot;&gt;Christophe Labouisse&lt;/a&gt;!&lt;/p&gt;
+      
+      &lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
+      
+      &lt;p&gt;To fetch MapStruct 1.0.0.CR2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
+      
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.0.0.CR2%7Cjar&quot;&gt;org.mapstruct:mapstruct:1.0.0.CR2&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.0.0.CR2%7Cjar&quot;&gt;org.mapstruct:mapstruct-jdk8:1.0.0.CR2&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
+      
+      &lt;li&gt;
+      &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.CR2%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.0.0.CR2&lt;/a&gt; for the annotation processor.&lt;/li&gt;
+      &lt;/ul&gt;
+      
+      &lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.0.0.CR2/&quot;&gt;SourceForge&lt;/a&gt; or from &lt;a href=&quot;https://bintray.com/mapstruct/bundles/mapstruct-dist/1.0.0.CR2/&quot;&gt;BinTray&lt;/a&gt;.&lt;/p&gt;
+      
+      &lt;h3 id=&quot;configure_package_and_class_name_for_the_generated_mapper_implementations&quot;&gt;Configure package and class name for the generated mapper implementations&lt;/h3&gt;
+      
+      &lt;p&gt;By default, MapStruct generates the mapper implementation with the class name suffix “Impl” in the same package as the declared mapper interface or abstract class.&lt;/p&gt;
+      
+      &lt;p&gt;If a project follows different naming conventions, package-dependency rules or simply a ambiguity needs to be resolved, the package name and the class name of the generated implementation can be configured:&lt;/p&gt;
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      package com.examples.mappers;
+      
+      ...
+      
+      @Mapper(implementationPackage = &quot;&amp;lt;PACKAGE_NAME&amp;gt;.internal&quot;, implementationClass = &quot;MapStruct&amp;lt;CLASS_NAME&amp;gt;Impl&quot;)
+      public interface PersonMapper {
+          PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );
+      
+          PersonDto toPersonDto(Person person);
+      }&lt;/pre&gt;
+      &lt;p&gt;In the example above, the mapper implementation would be generated to the package &lt;code&gt;com.examples.mappers.internal&lt;/code&gt; with the class name &lt;code&gt;MapStructPersonMapperImpl&lt;/code&gt;. As you might have already guessed, the strings &lt;code&gt;&amp;lt;PACKAGE_NAME&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;CLASS_NAME&amp;gt;&lt;/code&gt; are replaced with the package name and the class name of the mapper interface or abstract class for which the implementation is generated.&lt;/p&gt;
+      
+      &lt;p&gt;These options are also available in the annotation &lt;code&gt;@MapperConfig&lt;/code&gt;, so you can configure this once for all mappers that use the same &lt;a href=&quot;http://mapstruct.org/documentation/#section-shared-config&quot;&gt;@MapperConfig&lt;/a&gt; type.&lt;/p&gt;
+      
+      &lt;p&gt;If you are using the component model &lt;code&gt;default&lt;/code&gt; (i.e. &lt;code&gt;Mappers.get(...)&lt;/code&gt;) to obtain your mapper instances, the generator will create an SPI file in &lt;em&gt;META-INF/services/&lt;/em&gt; for each mapper with a customized naming pattern. The implementation of &lt;code&gt;Mappers&lt;/code&gt; finds those implementation classes using the &lt;code&gt;ServiceLoader&lt;/code&gt; API.&lt;/p&gt;
+      
+      &lt;h3 id=&quot;default_values_for_target_properties_in_case_the_source_property_is_null&quot;&gt;Default values for target properties in case the source property is null&lt;/h3&gt;
+      
+      &lt;p&gt;Default values can be specified to set a predefined value to a target property if the corresponding source property is &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
+      &lt;pre class=&quot;prettyprint linenums&quot;&gt;
+      @Mapper
+      public interface PersonMapper {
+         @Mapping(target = &quot;middleName&quot;, defaultValue = &quot;&quot;),
+         PersonDto toPersonDto(Person person);
+      }&lt;/pre&gt;
+      &lt;p&gt;The implementation that is generated for the example above would set the property &lt;code&gt;middleName&lt;/code&gt; in the result object to the empty String &lt;code&gt;&quot;&quot;&lt;/code&gt; in case &lt;code&gt;person.getMiddleName() == null&lt;/code&gt;. If the target property for which the default assignment shall be done is not of type &lt;code&gt;String&lt;/code&gt;, the usual type conversion / type mapping mechanism is applied.&lt;/p&gt;
+      
+      &lt;h3 id=&quot;whats_next&quot;&gt;What’s next?&lt;/h3&gt;
+      
+      &lt;p&gt;With CR2 out, we want to release MapStruct 1.0 Final as soon as possible. We won’t add any new features or large refactorings for 1.0 and will allow only bugfixes. Based on the number of bugs reported against CR2, we should be ready to build the Final within the next couple of weeks.&lt;/p&gt;
+      
+      &lt;p&gt;In the mean time, you’re invited to try out the MapStruct &lt;a href=&quot;https://github.com/mapstruct/mapstruct-eclipse&quot;&gt;Eclipse plug-in&lt;/a&gt;. Although it’s in an early stage, it already contains some handy content-assists (e.g. for &lt;code&gt;source&lt;/code&gt; and &lt;code&gt;target&lt;/code&gt; property names in the &lt;code&gt;@Mapping&lt;/code&gt; annotation) and quick-fixes for some common mapping errors detected by MapStruct.&lt;/p&gt;
+      
+      &lt;p&gt;Any feedback is welcome, just post a comment below or get in touch through the following channels:&lt;/p&gt;
+      
+      &lt;ul&gt;
+      &lt;li&gt;Get help at the &lt;a href=&quot;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&quot;&gt;mapstruct-users&lt;/a&gt; group&lt;/li&gt;
+      
+      &lt;li&gt;Report bugs and feature requests via the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues&quot;&gt;issue tracker&lt;/a&gt;
+      &lt;/li&gt;
+      
+      &lt;li&gt;Follow &lt;a href=&quot;https://twitter.com/GetMapStruct&quot;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
+      
+      &lt;li&gt;Follow MapStruct on &lt;a href=&quot;https://plus.google.com/u/0/118070742567787866481/posts&quot;&gt;Google+&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+    </content>
+  </entry>
   <entry>
     <id>http://mapstruct.org/news/2015/06/11/mapstruct-1_0_0_CR1-has-landed.html</id>
     <title>MapStruct 1.0.0.CR1 has landed</title>

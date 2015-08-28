@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      MapStruct 1.0.0.CR2 released - MapStruct
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <script src="http://mapstruct.org/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-scrollspy.js" type="text/javascript"></script>
+    <script src="http://mapstruct.org/javascripts/bootstrap-affix.js" type="text/javascript"></script>
+    <link href="http://mapstruct.org/stylesheets/styles.css" rel="stylesheet" type="text/css">
+    <link href="http://mapstruct.org/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.css" rel="stylesheet" type="text/css">
+    <!--[if IE]>
+      <link href="http://mapstruct.org/stylesheets/gh-fork-ribbon.ie.css" rel="stylesheet" type="text/css">
+    <![endif]-->
+    <link href="http://mapstruct.org/stylesheets/prettify.css" rel="stylesheet" type="text/css">
+    <script src="http://mapstruct.org/javascripts/prettify.js" type="text/javascript"></script>
+    <script>
+      (function(jQuery){
+        jQuery( document ).ready( function() {
+          prettyPrint();
+        } );
+      }(jQuery))
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="hidden-phone pull-right" style="padding-top: 11px; margin-right: 120px;">
+        <div class="g-plusone" data-size="medium"></div>
+        <script>
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+      </div>
+      <div class="hidden-phone github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+          <a href="https://github.com/mapstruct/mapstruct">Fork me on GitHub</a>
+        </div>
+      </div>
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">MapStruct</a>
+          <ul class="nav">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/news">News</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/documentation">Documentation</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/download">Download</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/getting-help">Getting help</a>
+            </li>
+            <li>
+              <a href="http://mapstruct.org/contributing">Development</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="post-header">
+            <h1>
+              MapStruct 1.0.0.CR2 released
+            </h1>
+            <h5>
+              Andreas Gudian, 27 August 2015, Tags:
+              <a href="/news/tags/release/">
+                release
+              </a>
+              <a href="/news/tags/news/">
+                news
+              </a>
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          
+          <p>It is my pleasure to announce the second candidate release of MapStruct 1.0!</p>
+          
+          <p>With this release, we’re fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a <em>final</em>. Highlights of this release are:</p>
+          
+          <ul>
+          <li>Configure package and class name for the generated mapper implementations.</li>
+          
+          <li>Define default values for target properties in case the source property is <code>null</code>.</li>
+          
+          <li>The decorator feature now fully works with Spring and JSR 330 and the documentation has been clarified on how to use decorators with all our supported component models (CDI, Spring, JSR 330, default).</li>
+          </ul>
+          
+          <p>The complete list of 19 closed issues can be found in the <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.CR2">change log</a>.</p>
+          
+          <p>The MapStruct team calls out a big <em>Thank you!</em> to everyone contributing to this release: <a href="https://github.com/vgt-tomek">Tomek Gubala</a>, <a href="https://github.com/bedla">Ivo Smid</a>, <a href="https://github.com/luxmeter">Mustafa Caylak</a>, and <a href="https://github.com/ggtools">Christophe Labouisse</a>!</p>
+          
+          <h3 id="download">Download</h3>
+          
+          <p>To fetch MapStruct 1.0.0.CR2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:</p>
+          
+          <ul>
+          <li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.0.0.CR2|jar">org.mapstruct:mapstruct:1.0.0.CR2</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.0.0.CR2|jar">org.mapstruct:mapstruct-jdk8:1.0.0.CR2</a> (for usage with Java &gt;= 8)</li>
+          
+          <li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.0.0.CR2|jar">org.mapstruct:mapstruct-processor:1.0.0.CR2</a> for the annotation processor.</li>
+          </ul>
+          
+          <p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.CR2/">SourceForge</a> or from <a href="https://bintray.com/mapstruct/bundles/mapstruct-dist/1.0.0.CR2/">BinTray</a>.</p>
+          
+          <h3 id="configure_package_and_class_name_for_the_generated_mapper_implementations">Configure package and class name for the generated mapper implementations</h3>
+          
+          <p>By default, MapStruct generates the mapper implementation with the class name suffix “Impl” in the same package as the declared mapper interface or abstract class.</p>
+          
+          <p>If a project follows different naming conventions, package-dependency rules or simply a ambiguity needs to be resolved, the package name and the class name of the generated implementation can be configured:</p>
+          <pre class='prettyprint linenums'>&#x000A;package com.examples.mappers;&#x000A;&#x000A;...&#x000A;&#x000A;@Mapper(implementationPackage = "&lt;PACKAGE_NAME&gt;.internal", implementationClass = "MapStruct&lt;CLASS_NAME&gt;Impl")&#x000A;public interface PersonMapper {&#x000A;    PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );&#x000A;&#x000A;    PersonDto toPersonDto(Person person);&#x000A;}</pre>
+          <p>In the example above, the mapper implementation would be generated to the package <code>com.examples.mappers.internal</code> with the class name <code>MapStructPersonMapperImpl</code>. As you might have already guessed, the strings <code>&lt;PACKAGE_NAME&gt;</code> and <code>&lt;CLASS_NAME&gt;</code> are replaced with the package name and the class name of the mapper interface or abstract class for which the implementation is generated.</p>
+          
+          <p>These options are also available in the annotation <code>@MapperConfig</code>, so you can configure this once for all mappers that use the same <a href="http://mapstruct.org/documentation/#section-shared-config">@MapperConfig</a> type.</p>
+          
+          <p>If you are using the component model <code>default</code> (i.e. <code>Mappers.get(...)</code>) to obtain your mapper instances, the generator will create an SPI file in <em>META-INF/services/</em> for each mapper with a customized naming pattern. The implementation of <code>Mappers</code> finds those implementation classes using the <code>ServiceLoader</code> API.</p>
+          
+          <h3 id="default_values_for_target_properties_in_case_the_source_property_is_null">Default values for target properties in case the source property is null</h3>
+          
+          <p>Default values can be specified to set a predefined value to a target property if the corresponding source property is <code>null</code>.</p>
+          <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface PersonMapper {&#x000A;   @Mapping(target = "middleName", defaultValue = ""),&#x000A;   PersonDto toPersonDto(Person person);&#x000A;}</pre>
+          <p>The implementation that is generated for the example above would set the property <code>middleName</code> in the result object to the empty String <code>&quot;&quot;</code> in case <code>person.getMiddleName() == null</code>. If the target property for which the default assignment shall be done is not of type <code>String</code>, the usual type conversion / type mapping mechanism is applied.</p>
+          
+          <h3 id="whats_next">What’s next?</h3>
+          
+          <p>With CR2 out, we want to release MapStruct 1.0 Final as soon as possible. We won’t add any new features or large refactorings for 1.0 and will allow only bugfixes. Based on the number of bugs reported against CR2, we should be ready to build the Final within the next couple of weeks.</p>
+          
+          <p>In the mean time, you’re invited to try out the MapStruct <a href="https://github.com/mapstruct/mapstruct-eclipse">Eclipse plug-in</a>. Although it’s in an early stage, it already contains some handy content-assists (e.g. for <code>source</code> and <code>target</code> property names in the <code>@Mapping</code> annotation) and quick-fixes for some common mapping errors detected by MapStruct.</p>
+          
+          <p>Any feedback is welcome, just post a comment below or get in touch through the following channels:</p>
+          
+          <ul>
+          <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
+          
+          <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+          
+          <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+          
+          <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <a href="/news/2015/06/11/mapstruct-1_0_0_CR1-has-landed.html">Previous</a>
+        </div>
+        <div class="span4" style="text-align: center;">
+          <a href="http://mapstruct.org/news">All news</a>
+        </div>
+        <div class="span4" style="text-align: right;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <hr>
+          
+                      <div id="disqus_thread"></div>
+                      <script type="text/javascript">
+                      var disqus_shortname = 'mapstruct';
+                      var disqus_url = "http://mapstruct.org/news/2015/08/27/mapstruct-1_0_0_CR2-released.html";
+                      var disqus_developer = null;
+                      var disqus_identifier = "07fbc1f4ab5c4b91e6d3ac7d35901a399edb1787";
+                      (function() {
+                        var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+                        dsq.src = "http://mapstruct.disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+                      })();
+                      </script>
+                      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=mapstruct">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Gunnar Morling 2015</p>
+      </footer>
+    </div>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount','UA-41136939-1']);
+    _gaq.push(['_gat._anonymizeIp']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </body>
+</html>
