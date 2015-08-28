@@ -7,7 +7,7 @@ tags: [release, news]
 
 It is my pleasure to announce the second candidate release of MapStruct 1.0!
 
-With this release, we're fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we want to include in our 1.0 release, so we decided to build this second candidate release before calling it a _final_. Highlights of this release are:
+With this release, we're fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a _final_. Highlights of this release are:
 
 * Configure package and class name for the generated mapper implementations.
 * Define default values for target properties in case the source property is `null`.
@@ -24,7 +24,7 @@ To fetch MapStruct 1.0.0.CR2 via Maven, Gradle or similar dependency management 
 * [org.mapstruct:mapstruct:1.0.0.CR2](http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.0.0.CR2|jar) for the annotation JAR (to be used with Java <= 7) or [org.mapstruct:mapstruct-jdk8:1.0.0.CR2](http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.0.0.CR2|jar) (for usage with Java >= 8)
 * [org.mapstruct:mapstruct-processor:1.0.0.CR2](http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.0.0.CR2|jar) for the annotation processor.
 
-Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from [SourceForge](http://sourceforge.net/projects/mapstruct/files/1.0.0.CR2/) or from [BinTray](https://bintray.com/artifact/download/mapstruct/bundles/).
+Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from [SourceForge](http://sourceforge.net/projects/mapstruct/files/1.0.0.CR2/) or from [BinTray](https://bintray.com/mapstruct/bundles/mapstruct-dist/1.0.0.CR2/).
 
 ### Configure package and class name for the generated mapper implementations
 
@@ -33,11 +33,11 @@ By default, MapStruct generates the mapper implementation with the class name su
 If a project follows different naming conventions, package-dependency rules or simply a ambiguity needs to be resolved, the package name and the class name of the generated implementation can be configured:
 
 <pre class="prettyprint linenums">
-package org.mapstruct.examples.mappers;
+package com.examples.mappers;
 
 ...
 
-@Mapper(implementationPackage = "&lt;PACKAGE_NAME&gt;.generated", implementationClass = "MapStruct&lt;CLASS_NAME&gt;Impl")
+@Mapper(implementationPackage = "&lt;PACKAGE_NAME&gt;.internal", implementationClass = "MapStruct&lt;CLASS_NAME&gt;Impl")
 public interface PersonMapper {
     PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );
 
@@ -45,11 +45,11 @@ public interface PersonMapper {
 }
 </pre>
 
-In the example above, the mapper implementation would be generated to the package `org.mapstruct.examples.mappers.generated` with the class name `MapStructPersonMapperImpl`. As you might have already guessed, the strings `<PACKAGE_NAME>` and `<CLASS_NAME>` are replaced with the package name and the class name of the mapper interface or abstract class for which the implementation is generated.
+In the example above, the mapper implementation would be generated to the package `com.examples.mappers.internal` with the class name `MapStructPersonMapperImpl`. As you might have already guessed, the strings `<PACKAGE_NAME>` and `<CLASS_NAME>` are replaced with the package name and the class name of the mapper interface or abstract class for which the implementation is generated.
 
-These options are also available in the annotation `@MapperConfig`, so you can configure this once for all mappers that use the same [`@Mapper#config`](http://mapstruct.org/documentation/#section-shared-config) type.
+These options are also available in the annotation `@MapperConfig`, so you can configure this once for all mappers that use the same [@MapperConfig](http://mapstruct.org/documentation/#section-shared-config) type.
 
-If you are using the component model `default` (i.e. `Mappers.get(..)`) to obtain your mapper instances, the generator will create an SPI file in _META-INF/services/_ for each mapper with a customized naming pattern. The implementation of `Mappers` finds those implementation classes using the `ServiceLoader` API.
+If you are using the component model `default` (i.e. `Mappers.get(...)`) to obtain your mapper instances, the generator will create an SPI file in _META-INF/services/_ for each mapper with a customized naming pattern. The implementation of `Mappers` finds those implementation classes using the `ServiceLoader` API.
 
 ### Default values for target properties in case the source property is null
 
@@ -69,9 +69,9 @@ The implementation that is generated for the example above would set the propert
 
 With CR2 out, we want to release MapStruct 1.0 Final as soon as possible. We won't add any new features or large refactorings for 1.0 and will allow only bugfixes. Based on the number of bugs reported against CR2, we should be ready to build the Final within the next couple of weeks.
 
-In the mean time, you're invited to try out the MapStruct [Eclipse plug-in](https://github.com/mapstruct/mapstruct-eclipse). Altough it's in an early stage, it already contains some handy content-assists (e.g. for `source` and `target` property names in the `@Mapping` annotation) and quick-fixes for some common errors and warnings created by MapStruct.
+In the mean time, you're invited to try out the MapStruct [Eclipse plug-in](https://github.com/mapstruct/mapstruct-eclipse). Although it's in an early stage, it already contains some handy content-assists (e.g. for `source` and `target` property names in the `@Mapping` annotation) and quick-fixes for some common mapping errors detected by MapStruct.
 
-Finally, some useful links:
+Any feedback is welcome, just post a comment below or get in touch through the following channels:
 
 * Get help at the [mapstruct-users](https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users) group
 * Report bugs and feature requests via the [issue tracker](https://github.com/mapstruct/mapstruct/issues)
