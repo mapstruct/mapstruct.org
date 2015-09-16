@@ -1195,7 +1195,7 @@ layout: base
         %h3#section-qualifiers 12. Selection based on Qualifiers
 
         :markdown
-            In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior. MapStruct has a handy mechanism to deal with such situations: `@Qualifier`. A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper, and can be referred to in a bean property mapping, iterable mapping or map mapping.  Multiple qualifiers can be ‘stuck onto’ a method and mapping.
+            In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior. MapStruct has a handy mechanism to deal with such situations: `@Qualifier` (`org.mapstruct.Qualifier`). A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper, and can be referred to in a bean property mapping, iterable mapping or map mapping.  Multiple qualifiers can be ‘stuck onto’ a method and mapping.
 
             So, lets say there is a hand-written method to map titles with a `String` return type and `String` argument amongst many other referenced mappers with the same `String` return type  - `String` argument signature:
 
@@ -1237,6 +1237,8 @@ layout: base
         %pre.prettyprint.lang-java.linenums
           = preserve do
             :escaped
+              import org.mapstruct.Qualifier;
+              
               @Qualifier
               @Target(ElementType.TYPE)
               @Retention(RetentionPolicy.SOURCE)
