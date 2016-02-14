@@ -14,6 +14,6 @@ The guide is provided in two formats now: [HTML](/documentation/1.0/reference/ht
 
 In addition, you also can find the [API JavaDoc](/documentation/1.0/api/index.html) online now.
 
-The main [documentation page](/documention) page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.
+The main [documentation page](/documentation) page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.
 
 Enjoy!
