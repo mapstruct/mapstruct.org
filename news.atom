@@ -2,9 +2,42 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2015-11-26T10:51:17+01:00</updated>
+  <updated>2016-02-15T00:00:02+01:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
+  <entry>
+    <id>http://mapstruct.org/news/2016/02/14/reference-guide-brushed-up.html</id>
+    <title>Reference Guide brushed up and converted to AsciiDoc</title>
+    <updated>2016-02-15T00:00:02+01:00</updated>
+    <published>2016-02-14T00:00:00+00:00</published>
+    <link href="http://mapstruct.org/news/2016/02/14/reference-guide-brushed-up.html" rel="alternate" type="text/html" />
+    <author>
+      <name>Gunnar Morling</name>
+    </author>
+    <category term="news"></category>
+    <summary>
+      
+      While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time. To name just one issue, readability wasn’t great on smaller screen sizes.
+      
+      All that’s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic AsciiDoctor tool.
+      
+      The guide is provided in two formats now: HTML and as PDF. The actual contents is largely unchanged, but we moved some sections around in order to reduce the number of chapters to a...
+    </summary>
+    <content type="html">
+      
+      &lt;p&gt;While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time. To name just one issue, readability wasn’t great on smaller screen sizes.&lt;/p&gt;
+      
+      &lt;p&gt;All that’s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic &lt;a href=&quot;http://asciidoctor.org/&quot;&gt;AsciiDoctor&lt;/a&gt; tool.&lt;/p&gt;
+      
+      &lt;p&gt;The guide is provided in two formats now: &lt;a href=&quot;http://mapstruct.org/documentation/1.0/reference/html/index.html&quot;&gt;HTML&lt;/a&gt; and as &lt;a href=&quot;http://mapstruct.org/documentation/1.0/reference/pdf/mapstruct-reference-guide.pdf&quot;&gt;PDF&lt;/a&gt;. The actual contents is largely unchanged, but we moved some sections around in order to reduce the number of chapters to a more digestable level. It’s high on our agenda to rewrite some parts of the guide which aren’t perfect yet, which should be much lesser of a burden now thanks to AsciiDoc.&lt;/p&gt;
+      
+      &lt;p&gt;In addition, you also can find the &lt;a href=&quot;http://localhost:9009/documentation/1.0/api/index.html&quot;&gt;API JavaDoc&lt;/a&gt; online now.&lt;/p&gt;
+      
+      &lt;p&gt;The main &lt;a href=&quot;http://mapstruct.org/documentation&quot;&gt;documentation page&lt;/a&gt; page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.&lt;/p&gt;
+      
+      &lt;p&gt;Enjoy!&lt;/p&gt;
+    </content>
+  </entry>
   <entry>
     <id>http://mapstruct.org/news/2015/11/25/mapstruct-1_0_Final-released.html</id>
     <title>MapStruct 1.0 Final released</title>
