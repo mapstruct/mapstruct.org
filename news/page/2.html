@@ -87,6 +87,94 @@
         <div class="span12">
           <div class="post">
             <h3>
+              <a href="/news/2015/03/05/arrays-configuration-inheritance-mapstruct-1_0_0_Beta4.html">Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released</a>
+            </h3>
+            <h5>
+              Gunnar Morling, 05 March 2015
+            </h5>
+            <div>
+              
+              <p>The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!</p>
+              
+              <p>The new release provides support for mapping arrays of Java beans, re-use of mapping configurations via a brand-new inheritance mechanism and ordered setter invocations on the target side. We also fixed quite a few bugs. You can find the complete list of 48 issues in the <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.Beta4">change log</a>. When upgrading from a previous Beta release, please check out the <a href="https://github.com/mapstruct/mapstruct/wiki/Migration-notes">migration notes</a> for changes which may affect existing applications.</p>
+              
+              <p>One thing I’m especially excited about is the new MapStruct Eclipse plug-in which will give you an even better experience when using MapStruct within the Eclipse IDE. You’ll find out more below.</p>
+              
+              <p>This release has been a true team effort; Many, many thanks to <a href="https://github.com/sjaakd/">Sjaak Derksen</a>, <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/timoe">Timo Eckhardt</a>, <a href="https://github.com/eforest">Ewald Volkert</a>, <a href="https://github.com/chschu">Christian Schuster</a>, <a href="https://github.com/shasait">Sebastian Hasait</a> and <a href="https://github.com/dilipkrish">Dilip Krishnan</a> who all worked on the Beta4 release.</p>
+              
+              <h3 id="array_mappings">Array mappings</h3>
+              
+              <p>While MapStruct has had support for mapping collections (<code>List</code>, <code>Set</code> etc.) of primitive and Java bean types for a long time, this was not the case for arrays. This is finally possible, so you can now declare mapping methods such as the following:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface CustomerMapper {&#x000A;&#x000A;    CustomerDto[] customersToDtos(Customer[] customers);&#x000A;&#x000A;    CustomerDto customerToDto(Customer customer);&#x000A;}</pre>
+              <p>As known from collection mapping methods, the generated <code>customersToDtos()</code> implementation will invoke the <code>customerToDto()</code> method for mapping the individual array elements. Similar to collection mapping methods, you can use the <code>@IterableMapping</code> annotation for applying specific configuration options:</p>
+              <pre class='prettyprint linenums'>&#x000A;@IterableMapping(dateFormat = "dd.MM.yyyy")&#x000A;String[] dateArrayToStringArray(Date[] dates);</pre>
+              <p>If needed, you also can map between collections and arrays:</p>
+              <pre class='prettyprint linenums'>&#x000A;CustomerDto[] customersToDtos(List&lt;Customer&gt; customers);</pre>
+              <h3 id="configuration_inheritance">Configuration inheritance</h3>
+              
+              <p>With help of the new <code>@InheritConfiguration</code> annotation you can advice MapStruct to apply the configuration from one mapping method to another.</p>
+              
+              <p>This comes in handy for instance when having a “normal” mapping method and an update method for the same types. Instead of configuring both methods individually, you can let one method inherit the configuration from the other:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapping(target="lastName", source="surName")&#x000A;@Mapping(target="accountNumber", source="customerNumber")&#x000A;Customer customerDtoToCustomer(CustomerDto customerDto);&#x000A;&#x000A;@InheritConfiguration&#x000A;void updateCustomerFromDto(CustomerDto dto, @MappingTarget customer);</pre>
+              <p>The <code>@InheritConfiguration</code> annotation will let the <code>updateCustomerFromDto()</code> inherit all the mappings from <code>customerDtoToCustomer()</code>. The selection of the template method is done by matching source and target types, but you could explicitly specify a method as configuration source if needed.</p>
+              
+              <p>Configuration inheritance is particularly useful when working with complex type hierarchies. You can define a configuration for the base types of the source and target models and let specific mapping methods inherit this configuration. But what if a base type is abstract? Naturally, MapStruct cannot generate an implementation of a method whose return type is an abstract one.</p>
+              
+              <p>This can be resolved by declaring a “prototype method” within a <a href="/documentation/#section-shared-config">configuration class</a> referenced by the mapper:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper(config=BaseMappings.class)&#x000A;public interface CustomerMapper {&#x000A;&#x000A;    @InheritConfiguration(name="anyDtoToEntity")&#x000A;    CustomerDto customerToDto(Customer customer);&#x000A;}</pre><pre class='prettyprint linenums'>&#x000A;@MapperConfig&#x000A;public interface BaseMappings {&#x000A;&#x000A;    // no implementation will be generated, it only serves as configuration source&#x000A;    @Mapping(target = "primaryKey", source = "id")&#x000A;    BaseDto anyEntityToDto(BaseEntity entity);&#x000A;}</pre>
+              <p>Methods declared within configuration classes such as <code>BaseMappings</code> are not usable as mapping methods themselves (no implementation will be generated for them). They solely serve as configuration source. In the example the <code>customerToDto()</code> method would inherit the configuration given at <code>anyEntityToDto()</code>.</p>
+              
+              <p>Note that you optionally can have prototype configurations automatically be applied to methods with compatbile source and target types. You can find the details in the <a href="/documentation/#section-inherit-config">reference documentation</a>.</p>
+              
+              <h3 id="ordered_setter_invocations">Ordered setter invocations</h3>
+              
+              <p>Sometimes it is required to invoke the setters of the target bean in a specific order, e.g. if one setter depends on the value of other properties of the same bean. For that purpose there is a new attribute on the <code>@Mapping</code> annotation, <code>dependsOn()</code>. The following shows an example:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapping(target = "givenName", source = "firstName")&#x000A;@Mapping(target = "middleName", dependsOn = "givenName")&#x000A;@Mapping(target = "lastName", dependsOn = "middleName")&#x000A;AddressDto addressToDto(Address address);</pre>
+              <p>This configuration makes sure that the generated implementation of <code>addressToDto()</code> first calls <code>setGivenName()</code>, then <code>setMiddleName()</code> and finally <code>setLastName()</code>. A single property can also depend on several other ones:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapping(target = "lastName", dependsOn = { "firstName", "middleName"})&#x000A;AddressDto addressToDto(Address address);</pre>
+              <p>This would ensure that <code>setLastName()</code> is invoked after <code>setGivenName()</code> and <code>setMiddleName()</code>, but no guarantee is given for the order of these two.</p>
+              
+              <h3 id="mapstruct_eclipse_plugin">MapStruct Eclipse plug-in</h3>
+              
+              <p>Being a JSR 269 annotation processor, MapStruct is meant to run equally well within command line builds (plain javac, Mavent etc.) as well as IDEs. Indeed the annotation processor works nicely for instance in Eclipse, generating mappers upon save, showing error markers next to the affected elements etc.</p>
+              
+              <p>Still there are some advanced features which cannot be provided by an annotation processor, e.g. auto-completion for annotation attributes, refactoring support, navigation to referenced elements and more. This is where the <a href="https://github.com/mapstruct/mapstruct-eclipse/">MapStruct Eclipse plug-in</a> comes in.</p>
+              
+              <p>Developed by my good friend <a href="https://github.com/larswetzer">Lars Wetzer</a>, it aims at providing an even better experience when using MapStruct within Eclipse. The plug-in is still at a very early stage, currently it provides auto-completion for <code>@Mapping#source()</code> and <code>target()</code>. The following shows a screenshot:</p>
+              <div style='text-align:center'>
+                  <img src='/images/mapstruct-eclipse-plugin.png' style='padding-bottom: 3px;' />
+              </div>
+              <p>More functionality will be coming soon. You can find the list of features planned for the plug-in <a href="https://github.com/mapstruct/mapstruct-eclipse/issues">here</a>. There is no official release of the plug-in yet. But if you feel adventurous, you can install the latest nightly build from the <a href="https://mapstruct.ci.cloudbees.com/job/mapstruct-eclipse/lastSuccessfulBuild/artifact/org.mapstruct.eclipse.repository/target/repository/">update site</a> at our CI server.</p>
+              
+              <h3 id="download">Download</h3>
+              
+              <p>If you work with Maven, Gradle or another dependency management tool, use the following GAV coordinates to obtain the MapStruct artifacts from Maven Central:</p>
+              
+              <ul>
+              <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct&#124;1.0.0.Beta4&#124;jar">org.mapstruct:mapstruct:1.0.0.Beta4</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-jdk8&#124;1.0.0.Beta4&#124;jar">org.mapstruct:mapstruct-jdk8:1.0.0.Beta4</a> (for usage with Java &gt;= 8)</li>
+              
+              <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-processor&#124;1.0.0.Beta4&#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Beta4</a> for the annotation processor.</li>
+              </ul>
+              
+              <p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta4/">SourceForge</a>.</p>
+              
+              <p>The Beta4 contains almost all the features we envisioned for the 1.0 release. We’ll now focus on bug-fixing and addressing some more minor edge cases. The CR1 (candidate release) should be out in four to six weeks from now, followed by 1.0 Final after four more weeks from there.</p>
+              
+              <p>Finally, some useful links:</p>
+              
+              <ul>
+              <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
+              
+              <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+              
+              <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+              
+              <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="post">
+            <h3>
               <a href="/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html">MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more</a>
             </h3>
             <h5>
@@ -369,56 +457,6 @@
               <p>If you have any kind of feedback please make sure to let us know. Either post a comment here or open a discussion in the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a> and your pull request on GitHub is highly welcome! The <a href="/contributing">contribution guide</a> has all the info you need to get started with hacking on MapStruct.</p>
               
               <p>Many thanks to <a href="https://github.com/agudian">Andreas Gudian</a> and <a href="https://github.com/kryger">Lukasz Kryger</a> who contributed to this release, that’s awesome!</p>
-            </div>
-          </div>
-          <div class="post">
-            <h3>
-              <a href="/news/2013/07/08/using-mapstruct-with-gradle.html">Using MapStruct with Gradle</a>
-            </h3>
-            <h5>
-              Gunnar Morling, 08 July 2013
-            </h5>
-            <div>
-              
-              <p>You work with <a href="http://www.gradle.org/">Gradle</a> to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.</p>
-              
-              <h3 id="background">Background</h3>
-              
-              <p>MapStruct is implemented in form of an annotation processor as specified by <a href="http://jcp.org/en/jsr/detail?id=269">JSR 269</a>. Annotation processors are plugged into the Java compiler and can inspect the sources during compilation as well as create new sources as it is done by MapStruct. JSR 269 processors can be integrated into basically any form of Java build as long as you work with Java 6 or later.</p>
-              
-              <p>One way of using an annotation processor is to put its JAR onto the compilation classpath where it will be picked up automatically by the Java compiler. This approach works, but it has the advantage that it exposes the processor and its classes to the compiled application which thus  accidentially or not  could import types from the processor.</p>
-              
-              <p>This sort of issue can be avoided by setting up the processor separately. When working with <code>javac</code> directly, the <a href="http://docs.oracle.com/javase/7/docs/technotes/tools/solaris/javac.html#options">processorpath</a> option can be used for this purpose, while for Maven projects the <a href="http://code.google.com/p/maven-annotation-plugin/">maven-annotation-plugin</a> is the recommended way to integrate annotation processors.</p>
-              
-              <h3 id="set_up_mapstruct_in_your_gradle_build">Set up MapStruct in your Gradle build</h3>
-              
-              <p>To integrate MapStruct into a Gradle build, first make sure you use the Java 6 language level by adding the following to the <em>build.gradle</em> file of your project:</p>
-              <pre class='prettyprint linenums'>&#x000A;ext {&#x000A;    javaLanguageLevel = '1.6'&#x000A;    generatedMapperSourcesDir = "${buildDir}/generated-src/mapstruct/main"&#x000A;}&#x000A;&#x000A;sourceCompatibility = rootProject.javaLanguageLevel</pre>
-              <p>It’s a good idea to declare a property which holds the language level. That way it can be referenced later on where required. We also define a property which specifies the target directory for the generated mapper classes.</p>
-              
-              <p>The next step is to add the MapStruct annotation module (<em>org.mapstruct:mapstruct:&lt;VERSION&gt;</em>) as compilation dependency and to declare a separate <a href="http://www.gradle.org/docs/current/userguide/dependency_management.html#sub:configurations">dependency configuration</a> which contains the MapStruct processor module (<em>org.mapstruct:mapstruct-processor:&lt;VERSION&gt;</em>):</p>
-              <pre class='prettyprint linenums'>&#x000A;configurations {&#x000A;    mapstruct&#x000A;}&#x000A;&#x000A;dependencies {&#x000A;    compile( 'org.mapstruct:mapstruct:&lt;VERSION&gt;' )&#x000A;    mapstruct( 'org.mapstruct:mapstruct-processor:&lt;VERSION&gt;' )&#x000A;}</pre>
-              <p>The separate dependency configuration makes sure that the classes from the processor aren’t visible to the compiled application. To make the generated sources available for the actual compilation step add the previously configured path to the main <a href="http://www.gradle.org/docs/current/userguide/java_plugin.html#N11D51">source set</a> like this:</p>
-              <pre class='prettyprint linenums'>&#x000A;sourceSets.main {&#x000A;    ext.originalJavaSrcDirs = java.srcDirs&#x000A;    java.srcDir "${generatedMapperSourcesDir}"&#x000A;}</pre>
-              <p>We also store the original source directories in a property in order to reference them later on. Now it’s time to set up a task for the invocation of the annotation processor. To do so, declare a task of the type <a href="http://www.gradle.org/docs/current/dsl/org.gradle.api.tasks.compile.JavaCompile.html">JavaCompile</a> like this:</p>
-              <pre class='prettyprint linenums'>&#x000A;task generateMainMapperClasses(type: JavaCompile) {&#x000A;    ext.aptDumpDir = file( "${buildDir}/tmp/apt/mapstruct" )&#x000A;    destinationDir = aptDumpDir&#x000A;&#x000A;    classpath = compileJava.classpath + configurations.mapstruct&#x000A;    source = sourceSets.main.originalJavaSrcDirs&#x000A;    ext.sourceDestDir = file ( "$generatedMapperSourcesDir" )&#x000A;&#x000A;    options.define(&#x000A;        compilerArgs: [&#x000A;            "-nowarn",&#x000A;            "-proc:only",&#x000A;            "-encoding", "UTF-8",&#x000A;            "-processor", "org.mapstruct.ap.MappingProcessor",&#x000A;            "-s", sourceDestDir.absolutePath,&#x000A;            "-source", rootProject.javaLanguageLevel,&#x000A;            "-target", rootProject.javaLanguageLevel,&#x000A;        ]&#x000A;    );&#x000A;&#x000A;    inputs.dir source&#x000A;    outputs.dir generatedMapperSourcesDir;&#x000A;    doFirst {&#x000A;         sourceDestDir.mkdirs()&#x000A;    }&#x000A;    doLast {&#x000A;        aptDumpDir.delete()&#x000A;    }&#x000A;}</pre>
-              <p>The task’s classpath comprises both, the actual compilation classpath as well as the <code>mapstruct</code> configuration set up before. As source path the previously stored source directories are used.</p>
-              
-              <p>The options passed to the compile task should be rather self-explanatory. Note that by passing <code>-proc:only</code>, the task will only invoke the given processor but perform no compilation (that will be done by the default compilation step later on).</p>
-              
-              <p>By declaring the <code>inputs</code> and <code>outputs</code> of the task we make sure Gradle’s <a href="http://www.gradle.org/docs/current/userguide/more_about_tasks.html#sec:up_to_date_checks">incremental build</a> functionality is leveraged. That way Gradle will skip the task when running the build a second time and the generated output files still are up to date.</p>
-              
-              <p>Finally you need to make sure that the generation of mapper types happens before the compilation of all sources. This can be achieved by declaring the following dependency:</p>
-              <pre class='prettyprint linenums'>&#x000A;compileJava.dependsOn generateMainMapperClasses</pre>
-              <h3 id="give_it_a_shot">Give it a shot</h3>
-              
-              <p>You can find the complete <a href="https://github.com/mapstruct/mapstruct-examples/blob/master/mapstruct-on-gradle/build.gradle">build.gradle</a> file on GitHub. It is part of an example project which generates a simple mapper class and executes some tests against it. To clone the example project just execute</p>
-              <pre class='prettyprint lang-sh linenums'>&#x000A;git clone https://github.com/mapstruct/mapstruct-examples.git</pre>
-              <p>You can then build the example by running</p>
-              <pre class='prettyprint lang-sh linenums'>&#x000A;cd mapstruct-on-gradle &amp;&amp; ./gradlew build</pre>
-              <p>The project comes with the <a href="http://www.gradle.org/docs/current/userguide/userguide_single.html#gradle_wrapper">Gradle Wrapper</a>, a small utility which retrieves the right Gradle version upon the first build. So it is not required to install Gradle separately.</p>
-              
-              <p>In case you have questions, ideas or any other kind of feedback just add a comment to this post or leave a message in the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group.</p>
             </div>
           </div>
         </div>
