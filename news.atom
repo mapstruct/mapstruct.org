@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2016-03-16T22:29:46+01:00</updated>
+  <updated>2016-03-18T08:12:46+01:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://mapstruct.org/news/2016/03/16/mapstruct-1_1_0_Beta1-released.html</id>
     <title>MapStruct 1.1.0.Beta1 released</title>
-    <updated>2016-03-16T22:29:46+01:00</updated>
+    <updated>2016-03-18T08:12:46+01:00</updated>
     <published>2016-03-16T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2016/03/16/mapstruct-1_1_0_Beta1-released.html" rel="alternate" type="text/html" />
     <author>
@@ -18,28 +18,30 @@
     <category term="news"></category>
     <summary>
       
-      It has been five months since the release the first final version of MapStruct. We’ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.
+      It has been four months since the release of the first final version of MapStruct. We’ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.
       
       Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we’ve also added some improvements and prepared for new features:
       
       
-      The new annotation @ValueMapping is introduced to be used for enum mappings. Previously, you would have used @Mapping for this, but we found a separate annotation makes...
+      The new annotation @ValueMapping is introduced to be used for enum mappings. Previously, you would have used @Mapping for this, but we found a separate annotation...
     </summary>
     <content type="html">
       
-      &lt;p&gt;It has been five months since the release the first final version of MapStruct. We’ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.&lt;/p&gt;
+      &lt;p&gt;It has been four months since the release of the first final version of MapStruct. We’ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.&lt;/p&gt;
       
       &lt;p&gt;Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we’ve also added some improvements and prepared for new features:&lt;/p&gt;
       
       &lt;ul&gt;
-      &lt;li&gt;The new annotation &lt;code&gt;@ValueMapping&lt;/code&gt; is introduced to be used for &lt;code&gt;enum&lt;/code&gt; mappings. Previously, you would have used &lt;code&gt;@Mapping&lt;/code&gt; for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of &lt;code&gt;@Mapping&lt;/code&gt; for &lt;code&gt;enum&lt;/code&gt; mappings now triggers a &lt;em&gt;deprecation warning&lt;/em&gt; and ask you to use &lt;code&gt;@ValueMapping&lt;/code&gt; instead.&lt;/li&gt;
+      &lt;li&gt;The new annotation &lt;code&gt;@ValueMapping&lt;/code&gt; is introduced to be used for &lt;code&gt;enum&lt;/code&gt; mappings. Previously, you would have used &lt;code&gt;@Mapping&lt;/code&gt; for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of &lt;code&gt;@Mapping&lt;/code&gt; for &lt;code&gt;enum&lt;/code&gt; mappings now triggers a &lt;em&gt;deprecation warning&lt;/em&gt; and asks you to use &lt;code&gt;@ValueMapping&lt;/code&gt; instead.&lt;/li&gt;
       
       &lt;li&gt;The new annotation &lt;code&gt;@Named&lt;/code&gt; is a predefined &lt;code&gt;@Qualifier&lt;/code&gt; that can be used when creating a custom qualifier annotation seems too inconvenient.&lt;/li&gt;
       
       &lt;li&gt;Handling of types with generically typed properties has been improved, so that you can now declare something like &lt;code&gt;SearchResult&amp;lt;VesselDto&amp;gt; vesselSearchResultToDto(SearchResult&amp;lt;Vessel&amp;gt; vessel)&lt;/code&gt;.&lt;/li&gt;
       
       &lt;li&gt;The preferred way of configuring the annotation processor in Maven projects has been updated to leverage the latest &lt;code&gt;maven-compiler-plugin&lt;/code&gt; version’s &lt;code&gt;annotationProcessorPaths&lt;/code&gt; option, which makes the configuration a bit more smooth. &lt;a href=&quot;http://mapstruct.org/documentation/1.1/reference/html/index.html#setup&quot;&gt;Check the updated documentation&lt;/a&gt;.&lt;/li&gt;
-      &lt;/ul&gt;&lt;p&gt;The complete list of 24 closed issues can be found in the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta1&quot;&gt;change log&lt;/a&gt;.&lt;/p&gt;
+      &lt;/ul&gt;
+      
+      &lt;p&gt;The complete list of 24 closed issues can be found in the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta1&quot;&gt;change log&lt;/a&gt;.&lt;/p&gt;
       
       &lt;p&gt;The MapStruct team calls out a big &lt;em&gt;Thank you!&lt;/em&gt; to everyone contributing to this release: &lt;a href=&quot;https://github.com/grandmasterpixel&quot;&gt;Vincent Alexander Beelte&lt;/a&gt;, &lt;a href=&quot;https://github.com/greuelpirat&quot;&gt;Oliver Ehrenmüller&lt;/a&gt;, and &lt;a href=&quot;https://github.com/samwright&quot;&gt;Samuel Wright&lt;/a&gt;!&lt;/p&gt;
       
@@ -103,7 +105,7 @@
       
       &lt;p&gt;In addition, you also can find the &lt;a href=&quot;http://mapstruct.org/documentation/1.0/api/index.html&quot;&gt;API JavaDoc&lt;/a&gt; online now.&lt;/p&gt;
       
-      &lt;p&gt;The main &lt;a href=&quot;http://mapstruct.org/documention&quot;&gt;documentation page&lt;/a&gt; page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.&lt;/p&gt;
+      &lt;p&gt;The main &lt;a href=&quot;http://mapstruct.org/documentation&quot;&gt;documentation page&lt;/a&gt; page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.&lt;/p&gt;
       
       &lt;p&gt;Enjoy!&lt;/p&gt;
     </content>
