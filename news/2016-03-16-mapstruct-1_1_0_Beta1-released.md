@@ -5,11 +5,11 @@ layout: news
 tags: [release, news]
 ---
 
-It has been five months since the release the first final version of MapStruct. We've received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.
+It has been four months since the release of the first final version of MapStruct. We've received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.
 
 Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we've also added some improvements and prepared for new features:
 
-* The new annotation `@ValueMapping` is introduced to be used for `enum` mappings. Previously, you would have used `@Mapping` for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of `@Mapping` for `enum` mappings now triggers a _deprecation warning_ and ask you to use `@ValueMapping` instead.
+* The new annotation `@ValueMapping` is introduced to be used for `enum` mappings. Previously, you would have used `@Mapping` for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of `@Mapping` for `enum` mappings now triggers a _deprecation warning_ and asks you to use `@ValueMapping` instead.
 * The new annotation `@Named` is a predefined `@Qualifier` that can be used when creating a custom qualifier annotation seems too inconvenient.
 * Handling of types with generically typed properties has been improved, so that you can now declare something like `SearchResult<VesselDto> vesselSearchResultToDto(SearchResult<Vessel> vessel)`.
 * The preferred way of configuring the annotation processor in Maven projects has been updated to leverage the latest `maven-compiler-plugin` version's `annotationProcessorPaths` option, which makes the configuration a bit more smooth. [Check the updated documentation](/documentation/1.1/reference/html/index.html#setup). 
