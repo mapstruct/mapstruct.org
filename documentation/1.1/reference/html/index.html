@@ -2710,13 +2710,13 @@ carDto.getPassengers().addAll( personsToPersonDtos( car.getPassengers() ) );
 mapping method will throw an IllegalStateException if for some reason an unrecognized source value occurs.</p>
 </div>
 <div class="paragraph">
-<p>MapStruct also has a mechanism for mapping any remaining (unspecified) mappings to a default. This can be used only once in a set of value mappings. It comes in two flavors: <code>&lt;ANY_REMAINING&gt;</code> and <code>&lt;ANY_UNMATCHED&gt;</code>.</p>
+<p>MapStruct also has a mechanism for mapping any remaining (unspecified) mappings to a default. This can be used only once in a set of value mappings. It comes in two flavors: <code>&lt;ANY_REMAINING&gt;</code> and <code>&lt;ANY_UNMAPPED&gt;</code>.</p>
 </div>
 <div class="paragraph">
 <p>In case of source <code>&lt;ANY_REMAINING&gt;</code> MapStruct will continue to map a source enum constant to a target enum constant with the same name. The remainder of the source enum constants will be mapped to the target specified in the <code>@ValueMapping</code> with <code>&lt;ANY_REMAINING&gt;</code> source.</p>
 </div>
 <div class="paragraph">
-<p>MapStruct will <strong>not</strong> attempt such name based mapping for <code>&lt;ANY_UNMATCHED&gt;</code> and directly apply the target specified in the <code>@ValueMapping</code> with <code>&lt;ANY_UNMATCHED&gt;</code> source to the remainder.</p>
+<p>MapStruct will <strong>not</strong> attempt such name based mapping for <code>&lt;ANY_UNMAPPED&gt;</code> and directly apply the target specified in the <code>@ValueMapping</code> with <code>&lt;ANY_UNMAPPED&gt;</code> source to the remainder.</p>
 </div>
 <div class="paragraph">
 <p>MapStruct is able to handle <code>null</code> sources and <code>null</code> targets by means of the <code>&lt;NULL&gt;</code> keyword.</p>
