@@ -11,13 +11,13 @@ MapStruct 1.1.0.Beta2 introduces a number of popular requested features, like so
 
 Today we release MapStruct 1.1.0.Beta2, containing fixes for most of the user-reported bugs:
 
-* OSGI-enabled jars.
+* Mapping of nested target properties.
+* Support of using `hasXYZ` presence checker methods instead of `null` checks on the source side of bean mappings. The presence checker naming convention can be overidden by providing a custom SPI implementation.
 * Extended support of `java.text.NumberFormat` for Number types to String mapping.
-* Support of presence checkers on the source side of bean mappings, For instance calling the default presence checker `hasXYZ` prior mapping. The presence checker can be overidden.
-* Mapping nested target properties.
-* Solving an Eclipse Neon MapStruct compilation issue.
+* Provide OSGI-enabled jars.
+* Fix a compatibility issue with Eclipse Neon.
 
-The complete list of 12 closed issues can be found in the [change log](https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta2).
+The complete list of closed issues can be found in the [change log](https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta2).
 
 The MapStruct teams thanks: [Sean Huang](https://github.com/seanjob), and [Ciaran Liedeman](https://github.com/cliedeman) for their contribution! 
 
