@@ -87,6 +87,74 @@
         <div class="span12">
           <div class="post">
             <h3>
+              <a href="/news/2013/11/28/mapstruct-1_0_0_Alpha2-has-landed.html">MapStruct 1.0.0.Alpha2 has landed!</a>
+            </h3>
+            <h5>
+              Gunnar Morling, 28 November 2013
+            </h5>
+            <div>
+              
+              <p>It is my great pleasure to announce the release of MapStruct 1.0.0.Alpha2.</p>
+              
+              <p>This took us a bit longer than expected, but the new release offers quite a few exciting new features we hope you’ll enjoy. The JARs have already been synched to Maven Central. The coordinates are:</p>
+              
+              <ul>
+              <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct&#124;1.0.0.Alpha2&#124;jar">org.mapstruct:mapstruct:1.0.0.Alpha2</a> for the annotation JAR and</li>
+              
+              <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-processor&#124;1.0.0.Alpha2&#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Alpha2</a> for the annotation processor.</li>
+              </ul>
+              
+              <p>Alternatively you can get a <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Alpha2/">distribution bundle</a> from SourceForge.</p>
+              
+              <p>Beside several new mapping features (e.g. combining several sources into one target object) the release provides integration with CDI and Spring to make the retrieval of mapper objects more comfortable. We’ve added several new implicit data type conversions and there is now also support for converting <code>Map</code> objects.</p>
+              
+              <p>Let’s have a closer look at some of the additions.</p>
+              
+              <h3 id="advanced_mapping_features">Advanced mapping features</h3>
+              
+              <p>When working with data transfer objects (DTO) to pass data from the backend to the client, it is common to have one DTO which transports the data from several entities. For this purpose MapStruct supports now mapping methods with several source methods. The following shows an example:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface OrderMapper {&#x000A;&#x000A;    @Mappings({&#x000A;        @Mapping(source = "order.name", target = "name"),&#x000A;        @Mapping(source = "houseNo", target = "houseNumber")&#x000A;    })&#x000A;    OrderDto orderAndAddressToOrderDto(Order order, Address deliveryAddress);&#x000A;}</pre>
+              <p>As for single parameter methods all attributes are mapped by name from the source objects to the target object, performing a type conversion if required. In case a property with the same name exists in more than one source object, the source parameter from which to retrieve the property must be specified using the <code>@Mapping</code> annotation as shown for the <code>name</code> property.</p>
+              
+              <p>One of the core principles in MapStruct is type-safety. Therefore an error will be raised at generation time when such an ambiguity is not resolved. Note that when mapping a property which only exists once in the source objects to another target property name, it is optional to specify the source parameter’s name.</p>
+              
+              <p>Also related to type-safety and correctness of generated mappings is the new option to raise an error in case an attribute of the mapping target is not populated, as this typically indicates an oversight or configuration error. By default a compiler warning is created in this case. To change this e.g. into a compile error instead, the <code>unmappedTargetPolicy</code> property can be used like this:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper(unmappedTargetPolicy=ERROR)&#x000A;public interface OrderMapper {&#x000A;    &#x000A;    //...&#x000A;}</pre>
+              <p>In some cases it is required to update an existing object with the properties from a given source object instead of instantiating a new target object. This use case can be addressed with help of the <code>@MappingTarget</code> annotation which denotes one method parameter as the target of the mapping like this:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface OrderMapper {&#x000A;&#x000A;    void updateOrderEntityFromDto(OrderDto dto, @MappingTarget Order order);&#x000A;}</pre>
+              <p>Instead of instantiating a new <code>Order</code> object, the generated implementation of <code>updateOrderEntityFromDto()</code> method will update the given order instance with the attributes from the passed <code>OrderDto</code>.</p>
+              
+              <h3 id="more_implicit_type_conversions">More implicit type conversions</h3>
+              
+              <p>Several new implicit type conversions have been added for the case that the source and target type of a mapped property differ. <code>BigDecimal</code> and <code>BigInteger</code> can now automatically be converted into other numeric types as well as into <code>String</code>. You can finde a list of all supported conversions in the <a href="http://localhost:4242/documentation/#section-05-01">reference documentation</a>.</p>
+              
+              <p>Please beware of a possible value or precision loss when performing such conversions from larger to smaller numeric types. It <a href="https://github.com/mapstruct/mapstruct/issues/5">is planned</a> for the next milestone to optionally raise a warning in this case.</p>
+              
+              <p>It is now also possible to convert <code>Date</code> into <code>String</code> and vice versa. For that purpose a new parameter has been added to the <code>@Mapping</code> annotation which allows to specify a format string as interpreted by <code>SimpleDateFormat</code>:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface OrderMapper {&#x000A;&#x000A;    @Mapping(source="orderDate", dateFormat="dd.MM.yyyy HH:mm:ss")&#x000A;    OrderDto orderToOrderDto(Order order);&#x000A;}</pre>
+              <h3 id="integration_with_cdi_and_spring">Integration with CDI and Spring</h3>
+              
+              <p>The recommended way for obtaining mapper instances in the 1.0.0.Alpha1 release was to use the <code>Mappers</code> factory.</p>
+              
+              <p>Alternatively it is now also possible to work with dependency injection. To make this possible, MapStruct can generate mappers which are CDI or Spring beans, based on which flavor of DI you prefer. In the following example MapStruct is adviced to make the generated mapper implementation a CDI bean by specifying “cdi” via the <code>componentModel</code> attribute in the <code>@Mapper</code> annotation:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper(componentModel="cdi")&#x000A;public interface OrderMapper {&#x000A;&#x000A;    //...&#x000A;}</pre>
+              <p>This allows to obtain an order mapper simply via <code>@Inject</code> (provided you have CDI enabled within your application):</p>
+              <pre class='prettyprint linenums'>&#x000A;@Inject&#x000A;private OrderMapper orderMapper;&#x000A;}</pre>
+              <p>Note that all other mappers a generated mapper class references are also obtained via the configured component model. So if you e.g. hook in hand-written mapper classes via <code>@Mapper#uses()</code> make sure that these mappers are compliant with the chosen component model, e.g. are CDI beans themselves. Refer to the documentation which <a href="/documentation/#section-04-02">describes</a> all the specifics in detail.</p>
+              
+              <p>On a related note, if you prefer to work with the <code>Mappers</code> factory as before, you’ll have to adapt your imports because this class has been moved to the new package <code>org.mapstruct.factory</code>.</p>
+              
+              <h3 id="further_info">Further info</h3>
+              
+              <p>This concludes our tour through the new features in MapStruct 1.0.0.Alpha2. You can find the complete list of addressed issues in the <a href="https://github.com/mapstruct/mapstruct/issues?milestone=2&state=closed">change log</a> on GitHub. The <a href="/documentation">reference documentation</a> has been updated to cover all new functionality.</p>
+              
+              <p>If you have any kind of feedback please make sure to let us know. Either post a comment here or open a discussion in the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a> and your pull request on GitHub is highly welcome! The <a href="/contributing">contribution guide</a> has all the info you need to get started with hacking on MapStruct.</p>
+              
+              <p>Many thanks to <a href="https://github.com/agudian">Andreas Gudian</a> and <a href="https://github.com/kryger">Lukasz Kryger</a> who contributed to this release, that’s awesome!</p>
+            </div>
+          </div>
+          <div class="post">
+            <h3>
               <a href="/news/2013/07/08/using-mapstruct-with-gradle.html">Using MapStruct with Gradle</a>
             </h3>
             <h5>
