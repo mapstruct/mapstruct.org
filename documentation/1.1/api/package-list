@@ -8,11 +8,9 @@ org.mapstruct.ap.internal.model.dependency
 org.mapstruct.ap.internal.model.source
 org.mapstruct.ap.internal.model.source.builtin
 org.mapstruct.ap.internal.model.source.selector
-org.mapstruct.ap.internal.naming
 org.mapstruct.ap.internal.option
 org.mapstruct.ap.internal.processor
 org.mapstruct.ap.internal.processor.creation
-org.mapstruct.ap.internal.services
 org.mapstruct.ap.internal.util
 org.mapstruct.ap.internal.util.workarounds
 org.mapstruct.ap.internal.version
