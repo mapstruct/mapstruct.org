@@ -15,7 +15,7 @@ layout: base
         :escaped
             ...
             <properties>
-                <org.mapstruct.version>1.1.0.Beta2</org.mapstruct.version>
+                <org.mapstruct.version>#{site.mapstruct_latest_version}</org.mapstruct.version>
             </properties>
             ...
             <dependencies>
@@ -46,3 +46,21 @@ layout: base
                     </plugin>
                 </plugins>
             </build>
+
+      :markdown
+        With Gradle, you add something along the following lines to your _build.gradle_:
+
+    %pre.prettyprint.lang-gradle.linenums
+      = preserve do
+        :escaped          
+            plugins {
+                ...
+                id 'net.ltgt.apt' version '0.8'
+            }
+            dependencies {
+                ...
+                compile 'org.mapstruct:mapstruct:#{site.mapstruct_latest_version}' // OR use this with Java 8 and beyond: org.mapstruct:mapstruct-jdk8:...
+
+                apt 'org.mapstruct:mapstruct-processor:#{site.mapstruct_latest_version}'
+            }
+            ...
