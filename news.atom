@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2016-09-07T21:57:36+02:00</updated>
+  <updated>2016-09-07T22:30:44+02:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://mapstruct.org/news/2016/09/07/mapstruct-1_1_0_CR1.html</id>
     <title>MapStruct 1.1.0.CR1 released</title>
-    <updated>2016-09-07T21:57:36+02:00</updated>
+    <updated>2016-09-07T22:30:44+02:00</updated>
     <published>2016-09-07T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2016/09/07/mapstruct-1_1_0_CR1.html" rel="alternate" type="text/html" />
     <author>
@@ -66,6 +66,10 @@
       
       &lt;p&gt;Our intent is to release 1.1.0.Final in two weeks from now. We’re having some small enhancements and bug fixes planned for that.&lt;/p&gt;
       
+      &lt;h3 id=&quot;one_more_thing&quot;&gt;One more thing&lt;/h3&gt;
+      
+      &lt;p&gt;MapStruct has been nominated for an award in the category “Most innovative contribution to the Java ecosystem” on &lt;a href=&quot;https://jaxlondon.com/jax-awards/&quot;&gt;JAX London&lt;/a&gt; – in case you’d like to cast a vote for your favourite bean mapping generator.&lt;/p&gt;
+      
       &lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
       
       &lt;p&gt;To fetch MapStruct 1.1.0.CR1 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
@@ -95,7 +99,7 @@
   <entry>
     <id>http://mapstruct.org/news/2016/07/22/mapstruct-1_1_0_Beta2-released.html</id>
     <title>MapStruct 1.1.0.Beta2 released</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2016-07-22T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2016/07/22/mapstruct-1_1_0_Beta2-released.html" rel="alternate" type="text/html" />
     <author>
@@ -173,7 +177,7 @@
   <entry>
     <id>http://mapstruct.org/news/2016/03/16/mapstruct-1_1_0_Beta1-released.html</id>
     <title>MapStruct 1.1.0.Beta1 released</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2016-03-16T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2016/03/16/mapstruct-1_1_0_Beta1-released.html" rel="alternate" type="text/html" />
     <author>
@@ -243,7 +247,7 @@
   <entry>
     <id>http://mapstruct.org/news/2016/02/14/reference-guide-brushed-up.html</id>
     <title>Reference Guide brushed up and converted to AsciiDoc</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2016-02-14T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2016/02/14/reference-guide-brushed-up.html" rel="alternate" type="text/html" />
     <author>
@@ -276,7 +280,7 @@
   <entry>
     <id>http://mapstruct.org/news/2015/11/25/mapstruct-1_0_Final-released.html</id>
     <title>MapStruct 1.0 Final released</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2015-11-25T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2015/11/25/mapstruct-1_0_Final-released.html" rel="alternate" type="text/html" />
     <author>
@@ -364,7 +368,7 @@
   <entry>
     <id>http://mapstruct.org/news/2015/08/27/mapstruct-1_0_0_CR2-released.html</id>
     <title>MapStruct 1.0.0.CR2 released</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2015-08-27T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2015/08/27/mapstruct-1_0_0_CR2-released.html" rel="alternate" type="text/html" />
     <author>
@@ -470,7 +474,7 @@
   <entry>
     <id>http://mapstruct.org/news/2015/06/11/mapstruct-1_0_0_CR1-has-landed.html</id>
     <title>MapStruct 1.0.0.CR1 has landed</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2015-06-11T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2015/06/11/mapstruct-1_0_0_CR1-has-landed.html" rel="alternate" type="text/html" />
     <author>
@@ -634,7 +638,7 @@
   <entry>
     <id>http://mapstruct.org/news/2015/03/05/arrays-configuration-inheritance-mapstruct-1_0_0_Beta4.html</id>
     <title>Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2015-03-05T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2015/03/05/arrays-configuration-inheritance-mapstruct-1_0_0_Beta4.html" rel="alternate" type="text/html" />
     <author>
@@ -771,7 +775,7 @@
   <entry>
     <id>http://mapstruct.org/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html</id>
     <title>MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2014-11-30T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html" rel="alternate" type="text/html" />
     <author>
@@ -906,7 +910,7 @@
   <entry>
     <id>http://mapstruct.org/news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html</id>
     <title>Support for Java 8, JodaTime and more: MapStruct 1.0.0.Beta2 released</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2014-07-02T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html" rel="alternate" type="text/html" />
     <author>
@@ -1035,7 +1039,7 @@
   <entry>
     <id>http://mapstruct.org/news/2014/03/05/mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more.html</id>
     <title>MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2014-03-05T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2014/03/05/mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more.html" rel="alternate" type="text/html" />
     <author>
@@ -1182,7 +1186,7 @@
   <entry>
     <id>http://mapstruct.org/news/2013/11/28/mapstruct-1_0_0_Alpha2-has-landed.html</id>
     <title>MapStruct 1.0.0.Alpha2 has landed!</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2013-11-28T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/11/28/mapstruct-1_0_0_Alpha2-has-landed.html" rel="alternate" type="text/html" />
     <author>
@@ -1303,7 +1307,7 @@
   <entry>
     <id>http://mapstruct.org/news/2013/07/08/using-mapstruct-with-gradle.html</id>
     <title>Using MapStruct with Gradle</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2013-07-08T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/07/08/using-mapstruct-with-gradle.html" rel="alternate" type="text/html" />
     <author>
@@ -1416,7 +1420,7 @@
   <entry>
     <id>http://mapstruct.org/news/2013/06/03/announcing-mapstruct.html</id>
     <title>Announcing MapStruct</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2013-06-03T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/06/03/announcing-mapstruct.html" rel="alternate" type="text/html" />
     <author>
@@ -1584,7 +1588,7 @@
   <entry>
     <id>http://mapstruct.org/news/2013/05/22/website-live.html</id>
     <title>mapstruct.org has landed!</title>
-    <updated>2016-09-07T20:43:44+02:00</updated>
+    <updated>2016-09-07T22:26:33+02:00</updated>
     <published>2013-05-22T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2013/05/22/website-live.html" rel="alternate" type="text/html" />
     <author>
