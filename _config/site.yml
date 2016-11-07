@@ -6,8 +6,8 @@ google_analytics_anonymize: true
 disqus: mapstruct
 disqus_generate_id: true
 
-mapstruct_latest_version: 1.1.0.CR1
-mapstruct_latest_date: September 7th 2016
+mapstruct_latest_version: 1.1.0.CR2
+mapstruct_latest_date: November 7th 2016
 
 profiles:
   development:
