@@ -2,9 +2,76 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2016-09-07T22:30:44+02:00</updated>
+  <updated>2016-11-08T08:58:22+01:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
+  <entry>
+    <id>http://mapstruct.org/news/2016/11/08/mapstruct-1_1_0_CR2-is-out.html</id>
+    <title>MapStruct 1.1.0.CR2 is out</title>
+    <updated>2016-11-08T08:58:22+01:00</updated>
+    <published>2016-11-08T00:00:00+00:00</published>
+    <link href="http://mapstruct.org/news/2016/11/08/mapstruct-1_1_0_CR2-is-out.html" rel="alternate" type="text/html" />
+    <author>
+      <name>Gunnar Morling</name>
+    </author>
+    <category term="release"></category>
+    <category term="news"></category>
+    <summary>
+      
+      It’s my pleasure to announce the second candidate release of MapStruct 1.1!
+      
+      This release fixes several bugs discovered in the first CR but also adds some new built-in conversions around date/time types (e.g. from/to the java.sql.* types and between java.time.LocalDate and java.util.Date). Normally, we wouldn’t add new functionality during the CR phase, but as these conversions have been contributed by community members (kudos to you!), we thought it’d be nice to put them into a release as soon as possible.
+      
+      Please check out the change log for the complete list of closed issues. Also take a look at the migration notes as...
+    </summary>
+    <content type="html">
+      
+      &lt;p&gt;It’s my pleasure to announce the second candidate release of MapStruct 1.1!&lt;/p&gt;
+      
+      &lt;p&gt;This release fixes several bugs discovered in the first CR but also adds some new built-in conversions around date/time types (e.g. from/to the &lt;code&gt;java.sql.*&lt;/code&gt; types and between &lt;code&gt;java.time.LocalDate&lt;/code&gt; and &lt;code&gt;java.util.Date&lt;/code&gt;). Normally, we wouldn’t add new functionality during the CR phase, but as these conversions have been contributed by community members (kudos to you!), we thought it’d be nice to put them into a release as soon as possible.&lt;/p&gt;
+      
+      &lt;p&gt;Please check out the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.CR2&quot;&gt;change log&lt;/a&gt; for the complete list of closed issues. Also take a look at the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/wiki/Migration-notes#110cr2&quot;&gt;migration notes&lt;/a&gt; as there has been a slight behavioral change related to nested source properties requiring conversion and the null checks in the generated code. We strongly recommend testing against MapStruct 1.1.0.CR2 to everyone. If you find any further bugs when using the CR in your project, please report them to our &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues&quot;&gt;issue tracker&lt;/a&gt; as soon as possible.&lt;/p&gt;
+      
+      &lt;p&gt;Many thanks to all the bug reporters and everyone contributing to the CR2 release, be it with code or documentation: &lt;a href=&quot;https://github.com/filiphr&quot;&gt;Filip Hrisafov&lt;/a&gt;, &lt;a href=&quot;https://github.com/osthus-sm&quot;&gt;Stefan May&lt;/a&gt;, &lt;a href=&quot;https://github.com/pjlarson&quot;&gt;Peter Larson&lt;/a&gt;, &lt;a href=&quot;https://github.com/streetturtle&quot;&gt;Pavel Makhov&lt;/a&gt;, &lt;a href=&quot;https://github.com/xCASx&quot;&gt;Maxim Kolesnikov&lt;/a&gt; and &lt;a href=&quot;https://github.com/dgruntz&quot;&gt;Dominik Gruntz&lt;/a&gt;. You guys rock!&lt;/p&gt;
+      
+      &lt;h3 id=&quot;whats_next&quot;&gt;What’s next?&lt;/h3&gt;
+      
+      &lt;p&gt;Unless any further issues arise, we’ve planned to do the 1.1 Final release by the end of next week.&lt;/p&gt;
+      
+      &lt;p&gt;After that we’d like to come to MapStruct 1.2 rather quickly. The &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues?q=is%3Aissue+is%3Aopen+label%3Afeature&quot;&gt;backlog&lt;/a&gt; is filled and there are already some pull requests for new features waiting to be merged. So you can look forward to support of &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/557&quot;&gt;field based mappings&lt;/a&gt;, support for &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues/73&quot;&gt;immutable beans&lt;/a&gt; on the target side by using non-default constructors and some more.&lt;/p&gt;
+      
+      &lt;p&gt;The 1.2 release can be expected to be much more focused in scope than 1.1. We’ve felt that it took a bit too long to get from 1.0 to 1.1, one reason being that we kept on adding new features during the Beta phase which got a bit in the way of finalizing the release. From 1.2 onwards, we’ll keep the number of new features per release lower which should allow us to release more often and get the features already done into your hands more quickly. “Release early, release often” as they say!&lt;/p&gt;
+      
+      &lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
+      
+      &lt;p&gt;To fetch MapStruct 1.1.0.CR2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
+      
+      &lt;ul&gt;
+      &lt;li&gt;
+      &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.1.0.CR2%7Cjar&quot;&gt;org.mapstruct:mapstruct:1.1.0.CR2&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.1.0.CR2%7Cjar&quot;&gt;org.mapstruct:mapstruct-jdk8:1.1.0.CR2&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
+      
+      &lt;li&gt;
+      &lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.1.0.CR2%7Cjar&quot;&gt;org.mapstruct:mapstruct-processor:1.1.0.CR2&lt;/a&gt; for the annotation processor.&lt;/li&gt;
+      &lt;/ul&gt;
+      
+      &lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&quot;http://sourceforge.net/projects/mapstruct/files/1.1.0.CR2/&quot;&gt;SourceForge&lt;/a&gt; or &lt;a href=&quot;https://bintray.com/mapstruct/bundles/mapstruct-dist/1.1.0.CR2&quot;&gt;BinTray&lt;/a&gt;.&lt;/p&gt;
+      
+      &lt;h3 id=&quot;links&quot;&gt;Links&lt;/h3&gt;
+      
+      &lt;ul&gt;
+      &lt;li&gt;Get help at the &lt;a href=&quot;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&quot;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&quot;https://gitter.im/mapstruct/mapstruct-users&quot;&gt;Gitter room&lt;/a&gt;
+      &lt;/li&gt;
+      
+      &lt;li&gt;Report bugs and feature requests via the &lt;a href=&quot;https://github.com/mapstruct/mapstruct/issues&quot;&gt;issue tracker&lt;/a&gt;
+      &lt;/li&gt;
+      
+      &lt;li&gt;Follow &lt;a href=&quot;https://twitter.com/GetMapStruct&quot;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
+      
+      &lt;li&gt;Follow MapStruct on &lt;a href=&quot;https://plus.google.com/u/0/118070742567787866481/posts&quot;&gt;Google+&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;/ul&gt;
+    </content>
+  </entry>
   <entry>
     <id>http://mapstruct.org/news/2016/09/07/mapstruct-1_1_0_CR1.html</id>
     <title>MapStruct 1.1.0.CR1 released</title>
