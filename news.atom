@@ -2,13 +2,13 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
   <id>http://mapstruct.org/</id>
   <title>MapStruct News</title>
-  <updated>2016-11-22T22:54:45+01:00</updated>
+  <updated>2016-11-22T23:13:43+01:00</updated>
   <link href="http://mapstruct.org/news.atom" rel="self" type="application/atom+xml" />
   <link href="http://mapstruct.org/" rel="alternate" type="text/html" />
   <entry>
     <id>http://mapstruct.org/news/2016/11/22/mapstruct-1_1_0_Final-seen-in-the-wild.html</id>
     <title>MapStruct 1.1.0.Final seen in the wild!</title>
-    <updated>2016-11-22T22:54:45+01:00</updated>
+    <updated>2016-11-22T23:13:43+01:00</updated>
     <published>2016-11-22T00:00:00+00:00</published>
     <link href="http://mapstruct.org/news/2016/11/22/mapstruct-1_1_0_Final-seen-in-the-wild.html" rel="alternate" type="text/html" />
     <author>
@@ -50,7 +50,7 @@
       
       &lt;li&gt;Support for custom &lt;code&gt;hasXyz()&lt;/code&gt; methods to check the presence of source properties instead of null checks&lt;/li&gt;
       
-      &lt;li&gt;Extended support of &lt;code&gt;java.text.NumberFormat&lt;/code&gt; for Number types to String mapping.&lt;/li&gt;
+      &lt;li&gt;Extended support of &lt;code&gt;java.text.NumberFormat&lt;/code&gt; for Number types to String mapping&lt;/li&gt;
       
       &lt;li&gt;OSGi support&lt;/li&gt;
       
@@ -63,7 +63,7 @@
       
       &lt;p&gt;The following people have sent in code changes for MapStruct 1.1: &lt;a href=&quot;https://github.com/grandmasterpixel&quot;&gt;Vincent Alexander Beelte&lt;/a&gt;, &lt;a href=&quot;https://github.com/greuelpirat&quot;&gt;Oliver Ehrenmüller&lt;/a&gt;, &lt;a href=&quot;https://github.com/dgruntz&quot;&gt;Dominik Gruntz&lt;/a&gt;, &lt;a href=&quot;https://github.com/filiphr&quot;&gt;Filip Hrisafov&lt;/a&gt;, &lt;a href=&quot;https://github.com/seanjob&quot;&gt;Sean Huang&lt;/a&gt;, &lt;a href=&quot;https://github.com/tisoft&quot;&gt;Markus Heberling&lt;/a&gt;, &lt;a href=&quot;https://github.com/xCASx&quot;&gt;Maxim Kolesnikov&lt;/a&gt;, &lt;a href=&quot;https://github.com/pjlarson&quot;&gt;Peter Larson&lt;/a&gt;, &lt;a href=&quot;https://github.com/cliedeman&quot;&gt;Ciaran Liedeman&lt;/a&gt;, &lt;a href=&quot;https://github.com/streetturtle&quot;&gt;Pavel Makhov&lt;/a&gt;, &lt;a href=&quot;https://github.com/osthus-sm&quot;&gt;Stefan May&lt;/a&gt;, &lt;a href=&quot;https://github.com/samwright&quot;&gt;Samuel Wright&lt;/a&gt; as well as MapStruct old-timers and dear fellows &lt;a href=&quot;https://github.com/agudian&quot;&gt;Andreas Gudian&lt;/a&gt; and &lt;a href=&quot;https://github.com/sjaakd&quot;&gt;Sjaak Derksen&lt;/a&gt;. Kudos to you, your efforts and hard work are highly appreciated!&lt;/p&gt;
       
-      &lt;p&gt;Also let me use the opportunity and introduce Filip Hrisafov to you, the latest committer to the project. He has been very busy with hacking on MapStruct lately, first by adding some more built-in conversions around date and time times, and now working on the long-awaited support for field based mappings. Welcome aboard, Filip!&lt;/p&gt;
+      &lt;p&gt;Also let me use the opportunity and introduce Filip Hrisafov to you, the latest committer to the project. He has been very busy with hacking on MapStruct lately, first by adding some more built-in conversions around date and time types, and now working on the long-awaited support for field based mappings. Welcome aboard, Filip!&lt;/p&gt;
       
       &lt;h3 id=&quot;some_stats&quot;&gt;Some stats&lt;/h3&gt;
       
