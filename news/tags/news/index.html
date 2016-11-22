@@ -87,6 +87,86 @@
         <div class="span12">
           <div class="post">
             <h3>
+              <a href="/news/2016/11/22/mapstruct-1_1_0_Final-seen-in-the-wild.html">MapStruct 1.1.0.Final seen in the wild!</a>
+            </h3>
+            <h5>
+              Gunnar Morling, 22 November 2016
+            </h5>
+            <div>
+              
+              <p>I’m more than thrilled to report that MapStruct 1.1 Final has been spotted in the wild! We grew that puppy for almost one year since the announcement of <a href="/news/2015/11/25/mapstruct-1_0_Final-released.html">MapStruct 1.0</a>, so it was about time to let it go and put a final release into your hands.</p>
+              
+              <p>Besides a plethora of bug fixes the 1.1 release adds many new features which should be very welcome to users of MapStruct 1.0:</p>
+              
+              <ul>
+              <li>Nested target properties</li>
+              
+              <li><code>@ValueMapping</code> annotation for enum mappings</li>
+              
+              <li><code>@Named</code> annotation for simple string based mapping qualifiers</li>
+              
+              <li>Support for custom <code>hasXyz()</code> methods to check the presence of source properties instead of null checks</li>
+              
+              <li>Extended support of <code>java.text.NumberFormat</code> for Number types to String mapping.</li>
+              
+              <li>OSGi support</li>
+              
+              <li>New built-in conversions around date/time type</li>
+              </ul>
+              
+              <p>This list is by no means exhaustive. Check out the individual announcements for the <a href="/news/2016/03/16/mapstruct-1_1_0_Beta1-released.html">Beta1</a>, <a href="/news/2016/07/22/mapstruct-1_1_0_Beta2-released.htmll">Beta2</a>, <a href="/news/2016/09/07/mapstruct-1_1_0_CR1.html">CR1</a> and <a href="/news/2016/11/08/mapstruct-1_1_0_CR2-is-out.html">CR2</a> releases for all the details. Also be sure to take a look at the <a href="https://github.com/mapstruct/mapstruct/wiki/Migration-notes">migration notes</a> to learn more about some issues to consider when migrating from MapStruct 1.0 to 1.1.</p>
+              
+              <p>MapStruct would be nowhere without its steadily growing community of users and contributors. So let me say a big thank you to everyone involved, be it through reporting bugs, starting discussions on the mailing list and of course helping out with contributions on the code base itself.</p>
+              
+              <p>The following people have sent in code changes for MapStruct 1.1: <a href="https://github.com/grandmasterpixel">Vincent Alexander Beelte</a>, <a href="https://github.com/greuelpirat">Oliver Ehrenmüller</a>, <a href="https://github.com/dgruntz">Dominik Gruntz</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a>, <a href="https://github.com/seanjob">Sean Huang</a>, <a href="https://github.com/tisoft">Markus Heberling</a>, <a href="https://github.com/xCASx">Maxim Kolesnikov</a>, <a href="https://github.com/pjlarson">Peter Larson</a>, <a href="https://github.com/cliedeman">Ciaran Liedeman</a>, <a href="https://github.com/streetturtle">Pavel Makhov</a>, <a href="https://github.com/osthus-sm">Stefan May</a>, <a href="https://github.com/samwright">Samuel Wright</a> as well as MapStruct old-timers and dear fellows <a href="https://github.com/agudian">Andreas Gudian</a> and <a href="https://github.com/sjaakd">Sjaak Derksen</a>. Kudos to you, your efforts and hard work are highly appreciated!</p>
+              
+              <p>Also let me use the opportunity and introduce Filip Hrisafov to you, the latest committer to the project. He has been very busy with hacking on MapStruct lately, first by adding some more built-in conversions around date and time times, and now working on the long-awaited support for field based mappings. Welcome aboard, Filip!</p>
+              
+              <h3 id="some_stats">Some stats</h3>
+              
+              <p>Speaking of numbers and stats, not only the number of contributors grew, also adoption numbers steadily increased over the course of the last year. We see more and more discussions in our <a href="https://groups.google.com/forum/#!forum/mapstruct-users">Google group</a> and increasing numbers of <a href="http://stackoverflow.com/questions/tagged/mapstruct">MapStruct-related questions</a> on Stack Overflow as well as <a href="http://www.timqian.com/star-history/#mapstruct/mapstruct">star gazers</a> on GitHub.</p>
+              
+              <p>Most impressive though are the download numbers we get from the Maven Central repo. As an example here are the numbers for the <em>org.mapstruct:mapstruct</em> artifact:</p>
+              <div style='text-align:center'>
+                  <img src='/images/downloads_2016.png' style='padding-bottom: 3px;' />
+              </div>
+              <p>The downloads grew by factor 5 from about 10,000 in November 2015 to about 50,000 in the last month. It’s just great to see that MapStruct is that useful for so many users out there!</p>
+              
+              <h3 id="whats_next">What’s next?</h3>
+              
+              <p>Finally let’s take a look at what to expect from MapStruct in the next time. As already discussed in the <a href="/news/2016/11/08/mapstruct-1_1_0_CR2-is-out.html">CR 2 announcement</a>, we’d like to get out MapStruct 1.2 much quicker than 1.1, so you can expect it in much less than one year from now :)</p>
+              
+              <p>Two features planned for 1.2 are the aforementioned <a href="https://github.com/mapstruct/mapstruct/issues/557">field based mappings</a> and support for <a href="https://github.com/mapstruct/mapstruct/issues/73">immutable beans</a> on the target side by leveraging non-default constructors. Also take a look at the <a href="https://github.com/mapstruct/mapstruct/issues?q=is%3Aissue+is%3Aopen+label%3Afeature">backlog</a>. If there is anything in there you’d like to see addressed rather sooner than later, let us know by commenting or voting.</p>
+              
+              <p>Our general idea is to keep the number of new features per release a bit lower and in turn do more frequent releases, living up to the “Release early, release often” principle.</p>
+              
+              <h3 id="download">Download</h3>
+              
+              <p>Use these GAV coordinates with Maven, Gradle or similar dependency management tools:</p>
+              
+              <ul>
+              <li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.Final|jar">org.mapstruct:mapstruct:1.1.0.Final</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.Final|jar">org.mapstruct:mapstruct-jdk8:1.1.0.Final</a> (for usage with Java &gt;= 8)</li>
+              
+              <li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.Final|jar">org.mapstruct:mapstruct-processor:1.1.0.Final</a> for the annotation processor.</li>
+              </ul>
+              
+              <p>Alternatively, you can obtain distribution bundles containing the binaries, source and documentation from <a href="http://sourceforge.net/projects/mapstruct/files/1.1.0.Final/">SourceForge</a> or <a href="https://bintray.com/mapstruct/bundles/mapstruct-dist/1.1.0.Final">BinTray</a>.</p>
+              
+              <h3 id="links">Links</h3>
+              
+              <ul>
+              <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
+              
+              <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+              
+              <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+              
+              <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="post">
+            <h3>
               <a href="/news/2016/11/08/mapstruct-1_1_0_CR2-is-out.html">MapStruct 1.1.0.CR2 is out</a>
             </h3>
             <h5>
@@ -317,28 +397,6 @@
               </ul>
               
               <p>Happy Mapping!</p>
-            </div>
-          </div>
-          <div class="post">
-            <h3>
-              <a href="/news/2016/02/14/reference-guide-brushed-up.html">Reference Guide brushed up and converted to AsciiDoc</a>
-            </h3>
-            <h5>
-              Gunnar Morling, 14 February 2016
-            </h5>
-            <div>
-              
-              <p>While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time. To name just one issue, readability wasn’t great on smaller screen sizes.</p>
-              
-              <p>All that’s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic <a href="http://asciidoctor.org/">AsciiDoctor</a> tool.</p>
-              
-              <p>The guide is provided in two formats now: <a href="/documentation/1.0/reference/html/index.html">HTML</a> and as <a href="/documentation/1.0/reference/pdf/mapstruct-reference-guide.pdf">PDF</a>. The actual contents is largely unchanged, but we moved some sections around in order to reduce the number of chapters to a more digestable level. It’s high on our agenda to rewrite some parts of the guide which aren’t perfect yet, which should be much lesser of a burden now thanks to AsciiDoc.</p>
-              
-              <p>In addition, you also can find the <a href="/documentation/1.0/api/index.html">API JavaDoc</a> online now.</p>
-              
-              <p>The main <a href="/documentation">documentation page</a> page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.</p>
-              
-              <p>Enjoy!</p>
             </div>
           </div>
         </div>

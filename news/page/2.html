@@ -87,6 +87,28 @@
         <div class="span12">
           <div class="post">
             <h3>
+              <a href="/news/2016/02/14/reference-guide-brushed-up.html">Reference Guide brushed up and converted to AsciiDoc</a>
+            </h3>
+            <h5>
+              Gunnar Morling, 14 February 2016
+            </h5>
+            <div>
+              
+              <p>While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time. To name just one issue, readability wasn’t great on smaller screen sizes.</p>
+              
+              <p>All that’s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic <a href="http://asciidoctor.org/">AsciiDoctor</a> tool.</p>
+              
+              <p>The guide is provided in two formats now: <a href="/documentation/1.0/reference/html/index.html">HTML</a> and as <a href="/documentation/1.0/reference/pdf/mapstruct-reference-guide.pdf">PDF</a>. The actual contents is largely unchanged, but we moved some sections around in order to reduce the number of chapters to a more digestable level. It’s high on our agenda to rewrite some parts of the guide which aren’t perfect yet, which should be much lesser of a burden now thanks to AsciiDoc.</p>
+              
+              <p>In addition, you also can find the <a href="/documentation/1.0/api/index.html">API JavaDoc</a> online now.</p>
+              
+              <p>The main <a href="/documentation">documentation page</a> page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.</p>
+              
+              <p>Enjoy!</p>
+            </div>
+          </div>
+          <div class="post">
+            <h3>
               <a href="/news/2015/11/25/mapstruct-1_0_Final-released.html">MapStruct 1.0 Final released</a>
             </h3>
             <h5>
@@ -395,80 +417,6 @@
               
               <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
               </ul>
-            </div>
-          </div>
-          <div class="post">
-            <h3>
-              <a href="/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html">MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more</a>
-            </h3>
-            <h5>
-              Gunnar Morling, 30 November 2014
-            </h5>
-            <div>
-              
-              <p>I’m delighted to announce the release of MapStruct 1.0.0.Beta3.</p>
-              
-              <p>This version brings the long awaited support for mapping nested source properties, built-in mappings for Java 8 date/time types, fine-grained selection of mapping methods via qualifiers and much more. You can find the complete list of a whopping 46 closed issues <a href="https://github.com/mapstruct/mapstruct/issues?page=2&q=milestone%3A1.0.0.Beta3+is%3Aclosed">here</a>.</p>
-              
-              <p>Note that existing applications using MapStruct need to adapt to some changes we had to do in order to iron out some glitches from the previous beta releases. These changes are described in more detail at the end of this post.</p>
-              
-              <p>Before diving into the details, let me say a huge thank you to <a href="https://github.com/sjaakd/">Sjaak Derksen</a>, <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/timoe">Timo Eckhardt</a> and <a href="https://github.com/chschu">Christian Schuster</a>! Again you guys went far beyond what anyone could have hoped for; this release would not have been possible without you.</p>
-              
-              <h3 id="mapping_nested_properties">Mapping nested properties</h3>
-              
-              <p>One of the most wished-for features in MapStruct was to map attributes from nested elements of a source object (tree) into target objects. That’s finally possible now, using simple “dot paths”, just as you’d expect it:</p>
-              <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface CustomerMapper {&#x000A;&#x000A;    @Mapping(source = "address.firstName", target = "firstName")&#x000A;    @Mapping(source = "address.lastName", target = "lastName")&#x000A;    CustomerDto customerToDto(Customer customer);&#x000A;}</pre>
-              <p>This mapping method will map the <code>firstName</code> and <code>lastName</code> attributes from the <code>Address</code> object referenced by the mapped <code>Customer</code> object to the <code>firstName</code> and <code>lastName</code> properties of the target object.</p>
-              
-              <p>Of course you also can refer to properties nested deeper in the hierarchy, e.g. <code>address.city.name</code>. That’s a great way to flatten and select parts of complex hierarchies e.g. for view objects returned to a client.</p>
-              
-              <h3 id="improved_builtin_mappings">Improved built-in mappings</h3>
-              
-              <p>There is now built-in support for the Java 8 time and date types (JSR 310). That means properties of types such as <code>java.time.ZonedDateTime</code> or <code>java.time.LocalDateTime</code> will automatically be mapped to <code>String</code>s as well as the legacy date types <code>java.util.Calendar</code> and <code>java.util.Date</code>. Also <code>java.util.Calendar</code> will automatically mapped to <code>String</code> and <code>java.util.Date</code>.</p>
-              
-              <p>Refer to the <a href="/documentation/#section-05">documentation</a> for the list of all built-in mappings.</p>
-              
-              <p>Another improvement relates to the mapping of collection-typed properties. Let’s assume the <code>Order</code> class from the previous example had a <code>List&lt;OrderLine&gt;</code> which should be mapped to a list of DTOs in the target object. So far you would have been required to declare a method such as the following on the mapper interface:</p>
-              <pre class='prettyprint linenums'>&#x000A;List&lt;OrderLineDto&gt; orderLinesToOrderLineDtos(Iterable&lt;OrderLine&gt; orderLines);</pre>
-              <p>That’s not necessary any longer, it will now be added automatically as a private method to the generated mapper class if required.</p>
-              
-              <h3 id="qualifiers">Qualifiers</h3>
-              
-              <p>Qualifiers provide a way to resolve ambiguities in case several mapping methods are suitable to map a given bean property. E.g. let’s assume you’d have two methods for mapping <code>Date</code>s into <code>String</code>s in a manually implemented mapper class:</p>
-              <pre class='prettyprint linenums'>&#x000A;public class DateMapper {&#x000A;&#x000A;    // returns e.g. 2014-30-11&#x000A;    String dateToString(Date date) { ... }&#x000A;&#x000A;    // returns e.g. 2014-30-11 18:16&#x000A;    String dateToStringWithTime(Date date) { ... }&#x000A;}</pre>
-              <p>That mapper is used by MapStruct-generated mapper:</p>
-              <pre class='prettyprint linenums'>&#x000A;@Mapper(uses=DateMapper.class)&#x000A;public class OrderMapper {&#x000A;&#x000A;    // Order#date of type Date, OrderDto#date of type String&#x000A;    OrderDto orderToOrderDto(Order order);&#x000A;}</pre>
-              <p>In previous releases you’d have gotten an error during generation, as both methods from <code>DateMapper</code> are suitable to map the <code>date</code> property. You can now use qualifiers to resolve that ambiguity and specify which method should be used. To do so, define a simple qualifier annotation type:</p>
-              <pre class='prettyprint linenums'>&#x000A;@Qualifier&#x000A;@Target(ElementType.METHOD)&#x000A;public @interface ShortDate {}</pre>
-              <p>Tag mapping methods using such qualifiers like so:</p>
-              <pre class='prettyprint linenums'>&#x000A;public class DateMapper {&#x000A;&#x000A;    @ShortDate&#x000A;    String dateToString(Date date) { ... }&#x000A;&#x000A;    @LongDate&#x000A;    String dateToStringWithTime(Date date) { ... }&#x000A;}</pre>
-              <p>And specify a qualifier via <code>@Mapping</code> for the concerned property:</p>
-              <pre class='prettyprint linenums'>&#x000A;@Mapper(uses=DateMapper.class)&#x000A;public class OrderMapper {&#x000A;&#x000A;    @Mapping(target="date", qualifiedBy = ShortDate.class)&#x000A;    OrderDto orderToOrderDto(Order order);&#x000A;}</pre>
-              <p>This will make sure that the <code>dateToString()</code> method will be invoked to map the order date property. If required, you also could specify several qualifiers via <code>qualifiedBy()</code>.</p>
-              
-              <h3 id="migration_notes">Migration notes</h3>
-              
-              <p>For the sake of increased consistency and better usability, we had to do some changes which may require existing applications which already use MapStruct to be adapted. Most prominently, <a href="/documentation/#section-10">reverse mapping methods</a> must now be explicitly marked as such using the new <code>@InheritInverseConfiguration</code> annotation:</p>
-              <pre class='prettyprint linenums'>&#x000A;@Mapper(uses=DateMapper.class)&#x000A;public class OrderMapper {&#x000A;&#x000A;    OrderDto orderToOrderDto(Order order);&#x000A;&#x000A;    @InheritInverseConfiguration&#x000A;    Order orderDtoToOrder(OrderDto order);&#x000A;}</pre>
-              <p>That annotation makes it explicit which one is the reverse mapping method and thus should inherit the configuration from its counterpart. You still can add further mappings to the reverse method in order to amend or override the inherited mappings. <code>@InheritInverseConfiguration</code> can also be used to specify the name of the method to inherit from in case several methods qualify as per their source and target types.</p>
-              
-              <p>Another change affects the existing <a href="http://localhost:9009/documentation/#section-02-01">processor options</a>. In order to avoid conflicts with other annotation processors, these options must now be given using the “mapstruct.” prefix, e.g. “mapstruct.suppressGeneratorTimestamp”.</p>
-              
-              <p>We have created a <a href="https://github.com/mapstruct/mapstruct/wiki/Migration-notes">wiki page</a> where we’ll collect all incompatible changes for future releases. Of course we’ll try hard to avoid this sort of changes whenever possible.</p>
-              
-              <h3 id="how_do_i_get_it">How do I get it?</h3>
-              
-              <p>You can fetch distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta3/">SourceForge</a>. Alternatively, you can obtain the dependencies from Maven Central. The GAV coordinates are:</p>
-              
-              <ul>
-              <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct&#124;1.0.0.Beta3&#124;jar">org.mapstruct:mapstruct:1.0.0.Beta3</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-jdk8&#124;1.0.0.Beta3&#124;jar">org.mapstruct:mapstruct-jdk8:1.0.0.Beta3</a> (for usage with Java &gt;= 8)</li>
-              
-              <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-processor&#124;1.0.0.Beta3&#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Beta3</a> for the annotation processor.</li>
-              </ul>
-              
-              <p>The Beta3 release is planned to be the last beta, next will be CR1 (candidate release).</p>
-              
-              <p>Anything you’d like to propose for inclusion in the 1.0 Final release? Then let us know by commenting below or posting to the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a>. And if you’d like to hack on MapStruct yourself, check out the <a href="/contributing">development guide</a>.</p>
             </div>
           </div>
         </div>

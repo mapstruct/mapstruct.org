@@ -87,6 +87,80 @@
         <div class="span12">
           <div class="post">
             <h3>
+              <a href="/news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html">MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more</a>
+            </h3>
+            <h5>
+              Gunnar Morling, 30 November 2014
+            </h5>
+            <div>
+              
+              <p>I’m delighted to announce the release of MapStruct 1.0.0.Beta3.</p>
+              
+              <p>This version brings the long awaited support for mapping nested source properties, built-in mappings for Java 8 date/time types, fine-grained selection of mapping methods via qualifiers and much more. You can find the complete list of a whopping 46 closed issues <a href="https://github.com/mapstruct/mapstruct/issues?page=2&q=milestone%3A1.0.0.Beta3+is%3Aclosed">here</a>.</p>
+              
+              <p>Note that existing applications using MapStruct need to adapt to some changes we had to do in order to iron out some glitches from the previous beta releases. These changes are described in more detail at the end of this post.</p>
+              
+              <p>Before diving into the details, let me say a huge thank you to <a href="https://github.com/sjaakd/">Sjaak Derksen</a>, <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/timoe">Timo Eckhardt</a> and <a href="https://github.com/chschu">Christian Schuster</a>! Again you guys went far beyond what anyone could have hoped for; this release would not have been possible without you.</p>
+              
+              <h3 id="mapping_nested_properties">Mapping nested properties</h3>
+              
+              <p>One of the most wished-for features in MapStruct was to map attributes from nested elements of a source object (tree) into target objects. That’s finally possible now, using simple “dot paths”, just as you’d expect it:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface CustomerMapper {&#x000A;&#x000A;    @Mapping(source = "address.firstName", target = "firstName")&#x000A;    @Mapping(source = "address.lastName", target = "lastName")&#x000A;    CustomerDto customerToDto(Customer customer);&#x000A;}</pre>
+              <p>This mapping method will map the <code>firstName</code> and <code>lastName</code> attributes from the <code>Address</code> object referenced by the mapped <code>Customer</code> object to the <code>firstName</code> and <code>lastName</code> properties of the target object.</p>
+              
+              <p>Of course you also can refer to properties nested deeper in the hierarchy, e.g. <code>address.city.name</code>. That’s a great way to flatten and select parts of complex hierarchies e.g. for view objects returned to a client.</p>
+              
+              <h3 id="improved_builtin_mappings">Improved built-in mappings</h3>
+              
+              <p>There is now built-in support for the Java 8 time and date types (JSR 310). That means properties of types such as <code>java.time.ZonedDateTime</code> or <code>java.time.LocalDateTime</code> will automatically be mapped to <code>String</code>s as well as the legacy date types <code>java.util.Calendar</code> and <code>java.util.Date</code>. Also <code>java.util.Calendar</code> will automatically mapped to <code>String</code> and <code>java.util.Date</code>.</p>
+              
+              <p>Refer to the <a href="/documentation/#section-05">documentation</a> for the list of all built-in mappings.</p>
+              
+              <p>Another improvement relates to the mapping of collection-typed properties. Let’s assume the <code>Order</code> class from the previous example had a <code>List&lt;OrderLine&gt;</code> which should be mapped to a list of DTOs in the target object. So far you would have been required to declare a method such as the following on the mapper interface:</p>
+              <pre class='prettyprint linenums'>&#x000A;List&lt;OrderLineDto&gt; orderLinesToOrderLineDtos(Iterable&lt;OrderLine&gt; orderLines);</pre>
+              <p>That’s not necessary any longer, it will now be added automatically as a private method to the generated mapper class if required.</p>
+              
+              <h3 id="qualifiers">Qualifiers</h3>
+              
+              <p>Qualifiers provide a way to resolve ambiguities in case several mapping methods are suitable to map a given bean property. E.g. let’s assume you’d have two methods for mapping <code>Date</code>s into <code>String</code>s in a manually implemented mapper class:</p>
+              <pre class='prettyprint linenums'>&#x000A;public class DateMapper {&#x000A;&#x000A;    // returns e.g. 2014-30-11&#x000A;    String dateToString(Date date) { ... }&#x000A;&#x000A;    // returns e.g. 2014-30-11 18:16&#x000A;    String dateToStringWithTime(Date date) { ... }&#x000A;}</pre>
+              <p>That mapper is used by MapStruct-generated mapper:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper(uses=DateMapper.class)&#x000A;public class OrderMapper {&#x000A;&#x000A;    // Order#date of type Date, OrderDto#date of type String&#x000A;    OrderDto orderToOrderDto(Order order);&#x000A;}</pre>
+              <p>In previous releases you’d have gotten an error during generation, as both methods from <code>DateMapper</code> are suitable to map the <code>date</code> property. You can now use qualifiers to resolve that ambiguity and specify which method should be used. To do so, define a simple qualifier annotation type:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Qualifier&#x000A;@Target(ElementType.METHOD)&#x000A;public @interface ShortDate {}</pre>
+              <p>Tag mapping methods using such qualifiers like so:</p>
+              <pre class='prettyprint linenums'>&#x000A;public class DateMapper {&#x000A;&#x000A;    @ShortDate&#x000A;    String dateToString(Date date) { ... }&#x000A;&#x000A;    @LongDate&#x000A;    String dateToStringWithTime(Date date) { ... }&#x000A;}</pre>
+              <p>And specify a qualifier via <code>@Mapping</code> for the concerned property:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper(uses=DateMapper.class)&#x000A;public class OrderMapper {&#x000A;&#x000A;    @Mapping(target="date", qualifiedBy = ShortDate.class)&#x000A;    OrderDto orderToOrderDto(Order order);&#x000A;}</pre>
+              <p>This will make sure that the <code>dateToString()</code> method will be invoked to map the order date property. If required, you also could specify several qualifiers via <code>qualifiedBy()</code>.</p>
+              
+              <h3 id="migration_notes">Migration notes</h3>
+              
+              <p>For the sake of increased consistency and better usability, we had to do some changes which may require existing applications which already use MapStruct to be adapted. Most prominently, <a href="/documentation/#section-10">reverse mapping methods</a> must now be explicitly marked as such using the new <code>@InheritInverseConfiguration</code> annotation:</p>
+              <pre class='prettyprint linenums'>&#x000A;@Mapper(uses=DateMapper.class)&#x000A;public class OrderMapper {&#x000A;&#x000A;    OrderDto orderToOrderDto(Order order);&#x000A;&#x000A;    @InheritInverseConfiguration&#x000A;    Order orderDtoToOrder(OrderDto order);&#x000A;}</pre>
+              <p>That annotation makes it explicit which one is the reverse mapping method and thus should inherit the configuration from its counterpart. You still can add further mappings to the reverse method in order to amend or override the inherited mappings. <code>@InheritInverseConfiguration</code> can also be used to specify the name of the method to inherit from in case several methods qualify as per their source and target types.</p>
+              
+              <p>Another change affects the existing <a href="http://localhost:9009/documentation/#section-02-01">processor options</a>. In order to avoid conflicts with other annotation processors, these options must now be given using the “mapstruct.” prefix, e.g. “mapstruct.suppressGeneratorTimestamp”.</p>
+              
+              <p>We have created a <a href="https://github.com/mapstruct/mapstruct/wiki/Migration-notes">wiki page</a> where we’ll collect all incompatible changes for future releases. Of course we’ll try hard to avoid this sort of changes whenever possible.</p>
+              
+              <h3 id="how_do_i_get_it">How do I get it?</h3>
+              
+              <p>You can fetch distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta3/">SourceForge</a>. Alternatively, you can obtain the dependencies from Maven Central. The GAV coordinates are:</p>
+              
+              <ul>
+              <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct&#124;1.0.0.Beta3&#124;jar">org.mapstruct:mapstruct:1.0.0.Beta3</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-jdk8&#124;1.0.0.Beta3&#124;jar">org.mapstruct:mapstruct-jdk8:1.0.0.Beta3</a> (for usage with Java &gt;= 8)</li>
+              
+              <li><a href="http://search.maven.org/#artifactdetails&#124;org.mapstruct&#124;mapstruct-processor&#124;1.0.0.Beta3&#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Beta3</a> for the annotation processor.</li>
+              </ul>
+              
+              <p>The Beta3 release is planned to be the last beta, next will be CR1 (candidate release).</p>
+              
+              <p>Anything you’d like to propose for inclusion in the 1.0 Final release? Then let us know by commenting below or posting to the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a>. And if you’d like to hack on MapStruct yourself, check out the <a href="/contributing">development guide</a>.</p>
+            </div>
+          </div>
+          <div class="post">
+            <h3>
               <a href="/news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html">Support for Java 8, JodaTime and more: MapStruct 1.0.0.Beta2 released</a>
             </h3>
             <h5>
@@ -345,96 +419,6 @@
               <p>The project comes with the <a href="http://www.gradle.org/docs/current/userguide/userguide_single.html#gradle_wrapper">Gradle Wrapper</a>, a small utility which retrieves the right Gradle version upon the first build. So it is not required to install Gradle separately.</p>
               
               <p>In case you have questions, ideas or any other kind of feedback just add a comment to this post or leave a message in the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group.</p>
-            </div>
-          </div>
-          <div class="post">
-            <h3>
-              <a href="/news/2013/06/03/announcing-mapstruct.html">Announcing MapStruct</a>
-            </h3>
-            <h5>
-              Gunnar Morling, 03 June 2013
-            </h5>
-            <div>
-              
-              <p>It is my pleasure to announce the first release of the MapStruct project!</p>
-              
-              <p>MapStruct is a code generator which simplifies the implementation of mappings between Java bean types by generating mapping code at compile time, following a convention-over-configuration approach.</p>
-              
-              <h3 id="the_problem">The problem</h3>
-              
-              <p>In multi-layered applications there is often the need to map between objects from diffent models.</p>
-              
-              <p>Examples include the conversion from JPA entities into data transfer or view objects and the mapping between the internal model of an application and external-facing representations such as the types of a web service facade.</p>
-              
-              <p>Writing the required mapping code from hand can be an error-prone and tedious task. MapStruct aims at simplifying this work by automating it as much as possible.</p>
-              
-              <h3 id="the_solution">The solution</h3>
-              
-              <p>MapStruct is an annotation processor which is plugged into the Java compiler and generates mapping code at build time.</p>
-              
-              <p>Unlike reflection-based mapping solutions, the mapping code generated by MapStruct uses plain method invocations for propagating values from the source to the target model and thus is fast, type-safe and easy to understand. This approach also allows for fast developer feedback; for instance you will get an error report at build time if two entities or attributes can’t be mapped.</p>
-              
-              <h3 id="some_code_please">Some code, please</h3>
-              
-              <p>It’s time to have a look at some code. Let’s assume there as an entity <code>Car</code> and an accompanying data transfer object.</p>
-              <pre class='prettyprint linenums'>&#x000A;public class Car {&#x000A;&#x000A;    private String make;&#x000A;    private int numberOfSeats;&#x000A;    private Date manufacturingDate;&#x000A;    private Person driver;&#x000A;    private Category category; //an enum; SEDAN, CONVERTIBLE etc.&#x000A;&#x000A;    //constructor, getters, setters etc.&#x000A;}</pre><pre class='prettyprint linenums'>&#x000A;public class CarDto {&#x000A;&#x000A;    private String make;&#x000A;    private int seatCount;&#x000A;    private Date manufacturingYear;&#x000A;    private PersonDto driver;&#x000A;    private String category;&#x000A;&#x000A;    //constructor, getters, setters etc.&#x000A;}</pre>
-              <p>Both types are structure-wise quite similar, with only a few differences:</p>
-              
-              <ul>
-              <li>the attribute representing the number of seats is named <code>numberOfSeats</code> in the entity but <code>seatCount</code> in the DTO</li>
-              
-              <li>the attribute representing the manufacturing year is once named <code>manufacturingDate</code> and once <code>manufacturingYear</code></li>
-              
-              <li>the <code>category</code> attribute is an enum in the entity but a string in the DTO</li>
-              
-              <li>the object referenced by the <code>driver</code> attribute is once of type <code>Person</code> (another entity) and once of type <code>PersonDto</code></li>
-              </ul>
-              
-              <p>Now let’s see how to generate a mapper for these objects. To do so, just define a plain Java interface which declares a method for each required mapping:</p>
-              <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    @Mappings({&#x000A;        @Mapping(source = "numberOfSeats", target = "seatCount"),&#x000A;        @Mapping(source = "manufacturingDate", target = "manufacturingYear")&#x000A;    })&#x000A;    CarDto carToCarDto(Car car);&#x000A;&#x000A;    PersonDto personToPersonDto(Person person);&#x000A;}</pre>
-              <p>The <code>@Mapper</code> annotation marks the interface as mapping interface and lets the MapStruct processor kick in during compilation (see the <a href="http://mapstruct.org/documentation/#section-02">reference documentation</a> to learn how to hook the processor into your build). You can have several mapper interfaces as per your requirements, e.g. one per application module.</p>
-              
-              <p>Each mapping methods expects the source object as parameter and returns the target object. The names can be freely chosen. For attributes with different names in source and target object, the <code>@Mapping</code> annotation can be used to configure the names.</p>
-              
-              <p>When mapping attributes with different types in source and target bean, MapStruct will first look whether another mapping method for these types exists. So for instance the implementation of the <code>carToCarDto()</code> method will invoke <code>personToPersonDto()</code> to convert the referenced driver from <code>Person</code> to <code>PersonDto</code>.</p>
-              
-              <p>If no mapping method for the required types exist, an automatic conversion will be applied if possible; e.g. the <code>category</code> attribute will be converted from the enumeration type into a string. There are many type conversions built into MapStruct by default but you also can easily implement custom mapping methods if required. Refer to <a href="http://mapstruct.org/documentation/#section-05">Data type conversions</a> for the details.</p>
-              
-              <p>To obtain an instance of a mapper the method <code>Mappers#getMapper()</code> can be used. By convention, each mapper interface defines a member named <code>INSTANCE</code> holding an instance of the mapper type:</p>
-              <pre class='prettyprint linenums'>&#x000A;@Mapper&#x000A;public interface CarMapper {&#x000A;&#x000A;    CarMapper INSTANCE = Mappers.getMapper( CarMapper.class );&#x000A;&#x000A;    //...&#x000A;}</pre>
-              <p>In the future it will also <a href="https://github.com/mapstruct/mapstruct/issues/32">be possible</a> to obtain mapper objects using dependency injection containers such as CDI or Spring.</p>
-              
-              <p>Finally let’s have a look at how the mapper is used to convert a <code>Car</code> object into a <code>CarDto</code>:</p>
-              <pre class='prettyprint linenums'>&#x000A;@Test&#x000A;public void shouldMapAttributeByName() {&#x000A;    //given&#x000A;    Car car = new Car(&#x000A;        "Morris",&#x000A;        2,&#x000A;        new GregorianCalendar( 1980, 0, 1 ).getTime(),&#x000A;        new Person( "Bob" ),&#x000A;        Category.SEDAN&#x000A;    );&#x000A;&#x000A;    //when&#x000A;    CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );&#x000A;&#x000A;    //then&#x000A;    assertThat( carDto ).isNotNull();&#x000A;    assertThat( carDto.getMake() ).isEqualTo( "Morris" );&#x000A;    assertThat( carDto.getSeatCount() ).isEqualTo( 2 );&#x000A;    assertThat( carDto.getManufacturingYear() ).isEqualTo( new GregorianCalendar( 1980, 0, 1 ).getTime() );&#x000A;    assertThat( carDto.getDriver().getName() ).isEqualTo( "Bob" );&#x000A;    assertThat( carDto.getCategory() ).isEqualTo( "SEDAN" );&#x000A;}</pre>
-              <p>Note that a dedicated mapper interface centered around the types of your application makes mappings type-safe, so unlike with a generic mapping API you can’t accidentally map e.g. a <code>Car</code> into a <code>PersonDto</code>.</p>
-              
-              <p>The test also shows that the implementation of the <code>carToCarDto()</code> method handles the property name mappings (e.g. <code>numberOfSeats</code> vs. <code>seatCount</code>) as well as type conversions (for the <code>driver</code> and <code>category</code> attributes).</p>
-              
-              <h3 id="trying_it_out_youself">Trying it out youself</h3>
-              
-              <p>You want to give MapStruct a try? That’s great! You can download the distribution containing source and binaries from <a href="http://sourceforge.net/projects/mapstruct/files/">SourceForge</a>. MapStruct is released under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>.</p>
-              
-              <p>If you’re using Maven or a similar dependency manager, you also can obtain MapStruct from Maven Central. The GAV coordinates are</p>
-              
-              <ul>
-              <li><em>org.mapstruct:mapstruct:1.0.0.Alpha1</em> for the core module containing the annotations and</li>
-              
-              <li><em>org.mapstruct:mapstruct-processor:1.0.0.Alpha1</em> for the annotation processor module.</li>
-              </ul>
-              
-              <p>Check out the <a href="http://mapstruct.org/documentation">reference documentation</a> to learn about all the ins and outs of MapStruct, including features such as collection mappings, reverse mappings or making use of hand-written mapping methods.</p>
-              
-              <p>If you’re are stuck, come and join the MapStruct <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">google-group</a> and ask your questions there. This is also the right place to discuss any feature requests or other suggestions. And should you find a bug, please file a report in our <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a>.</p>
-              
-              <h3 id="whats_next">What’s next?</h3>
-              
-              <p>MapStruct is just in its beginnings. Today’s Alpha1 release is the first of a series of preview releases towards 1.0.0.Final.</p>
-              
-              <p>If you have any feedback on MapStruct in general or certain features in particular make sure to let us know either by commenting here or by posting to the Google group.</p>
-              
-              <p>On the roadmap for the next releases are improved support for <a href="https://github.com/mapstruct/mapstruct/issues/4">collection mappings</a>, mappings <a href="https://github.com/mapstruct/mapstruct/issues/31">several source objects</a> into one target object and mapping into immutable objects via constructor invocations.</p>
-              
-              <p>You like MapStruct and want to contribute? That’s awesome! MapStruct is in a very early stage and your participation can make a big difference. <a href="http://github.com/mapstruct/mapstruct">The sources</a> are hosted on GitHub, and <a href="http://mapstruct.org/documentation/#section-05">Contributing</a> has all the infos to get you started with hacking on MapStruct. Many thanks to <a href="https://github.com/agudian">Andreas</a> who stepped up and contributed to the Alpha1 release!</p>
             </div>
           </div>
         </div>
