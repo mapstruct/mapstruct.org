@@ -1,0 +1,37 @@
+{{ $currentPageNumber := .Paginator.PageNumber }}
+
+<div>
+    <ul class="uk-pagination">
+        {{ if .Paginator.HasPrev }}
+        <li>
+            <a href="{{ .Paginator.Prev.URL }}"><i class="uk-icon-angle-double-left"></i></a>
+        </li>
+        {{ else }}
+        <li class="uk-disabled">
+            <span><i class="uk-icon-angle-double-left"></i></span>
+        </li>
+        {{ end }}
+
+        {{ range .Paginator.Pagers }}
+            {{ if eq $currentPageNumber .PageNumber }}
+        <li class="uk-active">
+            <span>{{ .PageNumber }}</span>
+        </li>
+            {{ else }}
+        <li>
+            <a href="{{ .URL }}">{{ .PageNumber }}</a>
+        </li>
+            {{ end }}
+        {{ end }}
+
+        {{ if .Paginator.HasNext }}
+        <li>
+            <a href="{{ .Paginator.Next.URL }}"><i class="uk-icon-angle-double-right"></i></a>
+        </li>
+        {{ else }}
+        <li class="uk-disabled">
+            <span><i class="uk-icon-angle-double-right"></i></span>
+        </li>
+        {{ end }}
+    </ul>
+</div>

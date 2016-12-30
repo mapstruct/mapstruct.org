@@ -1,0 +1,36 @@
+theme = "mapstruct"
+languageCode = "en-us"
+baseurl = "http://mapstruct.org/"
+title = "MapStruct"
+paginate = 5
+pluralizeListTitles = false
+
+[[menu.main]]
+name = "News"
+weight = 100
+url = "/news/"
+
+[[menu.main]]
+name = "Documentation"
+weight = 200
+
+[[menu.main]]
+name = "Community"
+weight = 300
+
+[[menu.main]]
+name = "Development"
+weight = 400
+
+
+[[menu.main]]
+name = "Examples"
+post = "<i class='fa fa-external-link'></i>"
+weight = 250
+parent = "Documentation"
+identifier = "examples"
+url = "https://github.com/mapstruct/mapstruct-examples"
+
+[Params]
+stableVersion = "1.1.0.Final"
+numberOfLatestPosts = 7

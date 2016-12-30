@@ -1,0 +1,83 @@
+.fa-external-link {
+  vertical-align: middle;
+}
+
+h1.uk-article-title {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.article-date.uk-article-meta {
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.article-author.uk-article-meta {
+    margin-top: 5px;
+}
+
+.uk-article + .uk-article {
+    border-top: 0px;
+}
+
+.uk-nav-sub > li > a {
+    padding-left: 0px;
+}
+
+@media (min-width: 768px) {
+    .main-contents {
+        border-left: 1px solid #ddd;
+    }
+}
+
+.uk-navbar {
+    background: #f7f7f7 linear-gradient(to bottom, #f2a854, #e68417) repeat scroll 0 0 border-box;
+}
+
+.uk-navbar-nav > li > a {
+    color: #eee;
+    text-shadow: 0 0px 0 #fff;
+}
+
+.uk-navbar-brand {
+    color: #eee;
+    text-shadow: 0 0px 0 #fff;
+}
+
+.uk-navbar-nav > li.uk-active > a {
+    color: #fff;
+    background-color : rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+    border-width: 0 0 3px;
+    border-left-color: rgba(0, 0, 0, 0.0);
+    border-top-color: rgba(0, 0, 0, 0.0);
+    border-right-color: rgba(0, 0, 0, 0.0);
+    border-bottom-color: rgba(0, 0, 0, 0.3);
+    padding-top: 1px;
+}
+
+.hero {
+    background:#F5F5F5;
+    padding: 60px;
+}
+
+.uk-text-large {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 26px;
+    color: #555;
+}
+
+:not(pre) > code {
+    color: #555555;
+    font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+    font-size: 13px;
+}
+
+.uk-article.article-compact + .uk-article.article-compact {
+    margin-top: 0px;
+}
+
+.uk-article.article-compact > .uk-h3 {
+    margin: 0 0 5px;
+}

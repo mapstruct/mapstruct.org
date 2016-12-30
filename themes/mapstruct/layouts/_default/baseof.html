@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ .Title }} &ndash; {{ .Site.Title }}</title>
+        <link rel="stylesheet" href="/css/uikit.gradient.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script src="/js/components/sticky.min.js"></script>
+        <script src="/js/components/switcher.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+    </head>
+
+    <body onload="prettyPrint()">
+        {{/* main menu */}}
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand uk-hidden-small" href="/">MapStruct</a>
+            {{ $currentPage := . }}
+            <ul class="uk-navbar-nav">
+            {{ range .Site.Menus.main }}
+                <li {{if or ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.Title .Name) }}class="uk-active"{{ end }}>
+                {{/* if this item has sub-items, link to first sub-item */}}
+                {{ if .HasChildren }}
+                    {{ $currentItem := . }}
+                    {{ range $index, $elmt := .Children }}
+                        {{if not $index}}
+                            <a href="{{$elmt.URL}}">{{ $currentItem.Name }}</a>
+                        {{end}}
+                    {{end}}
+                {{else}}
+                    {{ if ne .Name "Index" }}
+                        <a href="{{.URL}}">{{ .Name }}</a>
+                    {{end}}
+                {{end}}
+                </li>
+            {{end}}
+            </ul>
+        </nav>
+
+        <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+            {{ block "main" . }}
+            {{ end }}
+            <hr/>
+            <div>© Gunnar Morling 2016</div>
+        </div>
+    </body>
+</html>
