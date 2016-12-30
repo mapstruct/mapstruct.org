@@ -1,9 +1,10 @@
 theme = "mapstruct"
 languageCode = "en-us"
-baseurl = "http://mapstruct.org/"
+baseurl = "https://mapstruct.github.io/mapstruct.org.new/"
 title = "MapStruct"
 paginate = 5
 pluralizeListTitles = false
+canonifyURLs = true
 
 [[menu.main]]
 name = "News"
