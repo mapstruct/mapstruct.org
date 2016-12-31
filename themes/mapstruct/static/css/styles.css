@@ -81,3 +81,48 @@ h1.uk-article-title {
 .uk-article.article-compact > .uk-h3 {
     margin: 0 0 5px;
 }
+
+
+a, .uk-link {
+    color: #3d92c9;
+}
+
+.uk-nav-side > li.uk-active > a {
+    background: #6d0303 none repeat scroll 0 0;
+}
+
+html {
+    position: relative;
+    background: hsl(50, 100%, 99%);
+    min-height: 100%;
+    font: 14px/20px 'Lato',"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+body {
+    margin: 0 0 150px; /* bottom = footer height */
+}
+
+.ms-footer {
+    text-align: center;
+    font-size: 10px;
+    position: absolute;
+    background: #303030;
+    color: #bbb;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+}
+
+.ms-subnav-footer {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.ms-link-footer {
+    color: #bbb;
+}
+
+a:hover.ms-link-footer {
+    color: #777;
+}
