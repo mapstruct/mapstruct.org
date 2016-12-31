@@ -24,7 +24,25 @@
             {{ $currentPage := . }}
             <ul class="uk-navbar-nav">
             {{ range .Site.Menus.main }}
-                <li {{if or ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.Title .Name) }}class="uk-active"{{ end }}>
+                {{ $.Scratch.Set "active" false }}
+
+                <!-- regular page> -->
+                {{ if $currentPage.HasMenuCurrent "main" . }}
+                    {{ $.Scratch.Set "active" true }}
+                {{ end }}
+
+                <!-- section page (which apparently has no menu) -->
+                {{ if eq $currentPage.Title .Name }}
+                    {{ $.Scratch.Set "active" true }}
+                {{ end }}
+
+                <!-- a single news post; they don't have a menu -->
+                {{ if eq $currentPage.IsNode false }}
+                    {{ if and ( eq "News" .Name ) ( in $currentPage.Path "news" ) }}
+                    {{ $.Scratch.Set "active" true }}
+                    {{ end }}
+                {{ end }}
+                <li {{if eq ($.Scratch.Get "active") true}}class="uk-active"{{ end }}>
                 {{/* if this item has sub-items, link to first sub-item */}}
                 {{ if .HasChildren }}
                     {{ $currentItem := . }}
