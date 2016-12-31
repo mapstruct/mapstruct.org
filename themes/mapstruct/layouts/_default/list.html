@@ -1,21 +1,17 @@
 {{ define "main" }}
-<div class="uk-grid">
+    <h1>{{ .Title }}</h1>
+    <dl>
+    {{ range .Data.Pages.ByWeight }}
+        <dt>{{ .Title }}</dt>
+        <dd>
+            {{ if .Params.teaser }}
+            <p>{{ .Params.teaser }}<br/>
+            {{ end }}
+            <a href="{{ .Permalink }}">More...</a></p></dt>
+    {{ end }}
+    </dl>
+{{ end }}
 
-    <div class="uk-width-medium-3-4 uk-push-1-4 main-contents">
-        <h1>{{ .Title }}</h1>
-        <dl>
-        {{ range .Data.Pages.ByWeight }}
-            <dt>{{ .Title }}</dt>
-            <dd>
-                {{ if .Params.teaser }}
-                <p>{{ .Params.teaser }}<br/>
-                {{ end }}
-                <a href="{{ .Permalink }}">More...</a></p></dt>
-        {{ end }}
-        </dl>
-    </div>
-    <div class="uk-width-medium-1-4 uk-pull-3-4">
-        {{ partial "section_menu.html" . }}
-    </div>
-</div>
+{{ define "aside" }}
+    {{ partial "section_menu.html" . }}
 {{ end }}

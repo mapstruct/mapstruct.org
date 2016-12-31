@@ -1,72 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ .Title }} &ndash; {{ .Site.Title }}</title>
-        <link rel="stylesheet" href="/css/uikit.gradient.css" />
-        <link rel="stylesheet" href="/css/prettify.css" />
-        <link rel="stylesheet" href="/css/font-awesome.css" />
-        <link rel="stylesheet" href="/css/styles.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
-        <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src="/js/uikit.min.js"></script>
-        <script src="/js/components/sticky.min.js"></script>
-        <script src="/js/components/switcher.min.js"></script>
-        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
-    </head>
+{{ partial "header.html" . }}
 
-    <body onload="prettyPrint()">
-        {{/* main menu */}}
-        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
-            <a class="uk-navbar-brand uk-hidden-small" href="/">MapStruct</a>
-            {{ $currentPage := . }}
-            <ul class="uk-navbar-nav">
-            {{ range .Site.Menus.main }}
-                <li {{if or ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.Title .Name) }}class="uk-active"{{ end }}>
-                {{/* if this item has sub-items, link to first sub-item */}}
-                {{ if .HasChildren }}
-                    {{ $currentItem := . }}
-                    {{ range $index, $elmt := .Children }}
-                        {{if not $index}}
-                            <a href="{{$elmt.URL}}">{{ $currentItem.Name }}</a>
-                        {{end}}
-                    {{end}}
-                {{else}}
-                    {{ if ne .Name "Index" }}
-                        <a href="{{.URL}}">{{ .Name }}</a>
-                    {{end}}
-                {{end}}
-                </li>
-            {{end}}
-            </ul>
-        </nav>
-
-        <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class=" ms-aside">
+            {{ block "aside" . }}
+            {{ end }}
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
             {{ block "main" . }}
             {{ end }}
         </div>
+    </div>
+</div>
 
-        <div class="ms-footer">
-            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
-                <div class="uk-vertical-align-middle uk-width-1-1">
-                    <div class="uk-grid-small" >
-                        <div class="uk-width-1-1 ">
-                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
-                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
-                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
-                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="uk-grid">
-                        <div class="uk-width-1-1 ms-subnav-footer">
-                            © Gunnar Morling 2016
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+{{ partial "footer.html" . }}

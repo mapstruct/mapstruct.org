@@ -1,15 +1,11 @@
 {{ define "main" }}
-<div class="uk-grid">
-    <div class="uk-width-medium-3-4 uk-push-1-4 main-contents">
-        {{ $paginator := .Paginate (where .Site.Pages "Type" "news") }}
-        {{ range $paginator.Pages }}
-            {{ partial "news_summary.html" . }}
-        {{ end }}
-        {{ partial "pagination.html" . }}
-    </div>
+    {{ $paginator := .Paginate (where .Site.Pages "Type" "news") }}
+    {{ range $paginator.Pages }}
+        {{ partial "news_summary.html" . }}
+    {{ end }}
+    {{ partial "pagination.html" . }}
+{{ end }}
 
-    <div class="uk-width-medium-1-4 uk-pull-3-4">
-        {{ partial "latest_posts.html" . }}
-    </div>
-</div>
+{{ define "aside" }}
+    {{ partial "latest_posts.html" . }}
 {{ end }}
