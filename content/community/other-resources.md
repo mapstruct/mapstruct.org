@@ -1,6 +1,6 @@
 +++
-date = "2016-02-14T16:11:58+05:30"
-draft = true
+date = "2016-12-31T13:22:54+01:00"
+draft = false
 title = "Other Resources on the Web"
 weight = 200
 teaser = "Pointers to articles on MapStruct on the internet"

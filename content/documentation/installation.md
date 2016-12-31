@@ -1,6 +1,6 @@
 +++
-date = "2016-02-14T16:11:58+05:30"
-draft = true
+date = "2016-12-31T13:23:04+01:00"
+draft = false
 title = "Installation"
 weight = 100
 teaser = "How to download and set it up with different build tools"

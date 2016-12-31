@@ -1,6 +1,6 @@
 +++
-date = "2016-02-14T16:11:58+05:30"
-draft = true
+date = "2016-12-31T13:23:09+01:00"
+draft = false
 title = "Reference Guide"
 weight = 200
 teaser = "The reference documentation and API docs for the current stable and previous versions of MapStruct."

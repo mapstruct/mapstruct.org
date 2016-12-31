@@ -1,6 +1,6 @@
 +++
-date = "2016-02-14T16:11:58+05:30"
-draft = true
+date = "2016-12-31T13:24:00+01:00"
+draft = false
 title = "Building MapStruct within an IDE"
 weight = 600
 teaser = "Describes how to build MapStruct with your IDE"

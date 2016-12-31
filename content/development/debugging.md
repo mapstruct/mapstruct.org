@@ -1,6 +1,6 @@
 +++
-date = "2016-02-14T16:11:58+05:30"
-draft = true
+date = "2016-12-31T13:23:56+01:00"
+draft = false
 title = "Debugging"
 weight = 500
 teaser = "Debugging the annotation processor"
