@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://mapstruct.org/</loc>
+    <lastmod>2016-11-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/</loc>
+    <lastmod>2016-11-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/</loc>
+    <lastmod>2016-11-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/</loc>
+    <lastmod>2016-09-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/</loc>
+    <lastmod>2016-07-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/</loc>
+    <lastmod>2016-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/</loc>
+    <lastmod>2016-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/</loc>
+    <lastmod>2015-11-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/</loc>
+    <lastmod>2015-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/</loc>
+    <lastmod>2015-06-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/</loc>
+    <lastmod>2015-03-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_Beta3-nested-properties/</loc>
+    <lastmod>2014-11-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2014-07-02-Java_8_support_in_mapstruct-1_0_0_Beta2/</loc>
+    <lastmod>2014-07-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2014-03-05-mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more/</loc>
+    <lastmod>2014-03-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_Alpha2-has-landed/</loc>
+    <lastmod>2013-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2013-07-08-using-mapstruct-with-gradle/</loc>
+    <lastmod>2013-07-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2013-06-03-announcing-mapstruct/</loc>
+    <lastmod>2013-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2013-05-22-website-live/</loc>
+    <lastmod>2013-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/contributing/</loc>
+    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/documentation/installation/</loc>
+    <lastmod>2016-12-31T13:23:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/community/getting-help/</loc>
+    <lastmod>2016-12-31T13:22:16+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/documentation/reference-guide/</loc>
+    <lastmod>2016-12-31T13:23:09+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/community/other-resources/</loc>
+    <lastmod>2016-12-31T13:22:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/team/</loc>
+    <lastmod>2016-02-14T16:11:58+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/technical-documentation/</loc>
+    <lastmod>2016-12-31T13:23:50+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/debugging/</loc>
+    <lastmod>2016-12-31T13:23:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/ide-build/</loc>
+    <lastmod>2016-12-31T13:24:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/license/</loc>
+    <lastmod>2016-12-31T13:24:06+01:00</lastmod>
+  </url>
+  
+</urlset>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Contributing &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script src="/js/components/sticky.min.js"></script>
+        <script src="/js/components/switcher.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-41136939-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    </head>
+
+    <body onload="prettyPrint()">
+        
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-navbar-brand uk-hidden-small" href="/">MapStruct</a>
+            
+            <ul class="uk-navbar-nav">
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                        <a href="/news/">News</a>
+                    
+                
+                </li>
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                    
+                        
+                            <a href="/documentation/installation/">Documentation</a>
+                        
+                    
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                    
+                        
+                            <a href="/community/getting-help/">Community</a>
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+                
+
+                
+                
+                    
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li class="uk-active">
+                
+                
+                    
+                    
+                        
+                            <a href="/development/contributing/">Development</a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+            </ul>
+            <div class="uk-navbar-flip uk-navbar-content uk-hidden-small">
+                <a class="github-button" href="https://github.com/mapstruct/mapstruct" data-icon="octicon-star" data-count-href="/mapstruct/mapstruct/stargazers" data-count-api="/repos/mapstruct/mapstruct#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mapstruct/mapstruct on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/mapstruct/mapstruct/fork" data-icon="octicon-repo-forked" data-count-href="/mapstruct/mapstruct/network" data-count-api="/repos/mapstruct/mapstruct#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork mapstruct/mapstruct on GitHub">Fork</a>
+            </div>
+        </nav>
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <aside>
+    <div id="sidebar">
+        <ul class="uk-nav uk-nav-side">
+        
+        
+            
+        
+            
+                
+            
+        
+            
+                
+            
+        
+            
+                
+            <li class="uk-nav-header">Development</li>
+
+                    
+            <li class="uk-active">
+                <a href="/development/contributing/"> Contributing </a>
+            </li>
+                    
+            <li>
+                <a href="/development/team/"> Team </a>
+            </li>
+                    
+            <li>
+                <a href="/development/technical-documentation/"> Technical Documentation </a>
+            </li>
+                    
+            <li>
+                <a href="/development/debugging/"> Debugging </a>
+            </li>
+                    
+            <li>
+                <a href="/development/ide-build/"> Building MapStruct within an IDE </a>
+            </li>
+                    
+            <li>
+                <a href="/development/license/"> License </a>
+            </li>
+                    
+                
+            
+        
+        </ul>
+    </div>
+</aside>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+    <h1>Contributing</h1>
+    <div><p>You love MapStruct but miss a certain feature? You found a bug and want to report it, or even better, fix it yourself? That&rsquo;s great! MapStruct is all open source and your help is highly appreciated.</p>
+
+<table class="uk-table">
+<thead>
+  <tr>
+    <th>What</th><th>Where</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td width="20%">Source code</td><td><a href="https://github.com/mapstruct/mapstruct">https://github.com/mapstruct/mapstruct</a></td>
+  </tr>
+  <tr>
+    <td width="20%">Issue tracker</td><td><a href="https://github.com/mapstruct/mapstruct/issues">https://github.com/mapstruct/mapstruct/issues</a></td>
+  </tr>
+  <tr>
+    <td width="20%">Discussions</td><td>Join the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> Google group</td>
+  </tr>
+  <tr>
+    <td width="20%">CI build</td><td><a href="https://mapstruct.ci.cloudbees.com">https://mapstruct.ci.cloudbees.com</a></td>
+  </tr>
+  <tr>
+    <td width="20%">This web site</td><td><a href="https://github.com/mapstruct/mapstruct.org">https://github.com/mapstruct/mapstruct.org</a></td>
+  </tr>
+</tbody>
+</table>
+
+<p>MapStruct follows the <em>Fork &amp; Pull</em> development approach. To get started just fork the <a href="http://github.com/mapstruct/mapstruct">MapStruct repository</a> to your GitHub account and create a new topic branch for each change. Once you are done with your change, submit a <a href="https://help.github.com/articles/using-pull-requests">pull request</a> against the MapStruct repo.</p>
+
+<p>When doing changes, keep the following best practices in mind:</p>
+
+<ul>
+<li>Provide test cases</li>
+<li>Update the <a href="mapstruct.org/documentation">reference documentation</a> on <a href="mapstruct.org">mapstruct.org</a> where required</li>
+<li>Discuss new features you&rsquo;d like to implement at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">Google group</a> before getting started</li>
+<li>Create one pull request per feature</li>
+<li>Provide a meaningful history, e.g. squash intermediary commits before submitting a pull request</li>
+<li>Start your commit messages with &ldquo;#&lt;issue no&gt;&rdquo;, e.g. &ldquo;#123 Adding new mapping feature&rdquo;</li>
+<li>Have git automatically manage line endings as described <a href="https://help.github.com/articles/dealing-with-line-endings">here</a></li>
+<li>Format your sources using the provided IntelliJ <a href="https://github.com/mapstruct/mapstruct/blob/master/etc/mapstruct.xml">code style template</a>. Eclipse users can import the <a href="https://github.com/mapstruct/mapstruct/blob/master/etc/eclipse-formatter-config.xml">Eclipse code formatter settings</a> - it&rsquo;s close enough, but configure the Save Actions to only format edited lines. If you use another IDE stick to the used style as much as possible.</li>
+</ul>
+</div>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © Gunnar Morling 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

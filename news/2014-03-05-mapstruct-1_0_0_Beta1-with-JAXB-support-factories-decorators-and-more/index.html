@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script src="/js/components/sticky.min.js"></script>
+        <script src="/js/components/switcher.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-41136939-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    </head>
+
+    <body onload="prettyPrint()">
+        
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-navbar-brand uk-hidden-small" href="/">MapStruct</a>
+            
+            <ul class="uk-navbar-nav">
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                    
+                    
+                
+                <li class="uk-active">
+                
+                
+                    
+                        <a href="/news/">News</a>
+                    
+                
+                </li>
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                    
+                        
+                            <a href="/documentation/installation/">Documentation</a>
+                        
+                    
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                    
+                        
+                            <a href="/community/getting-help/">Community</a>
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                    
+                        
+                            <a href="/development/contributing/">Development</a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+            </ul>
+            <div class="uk-navbar-flip uk-navbar-content uk-hidden-small">
+                <a class="github-button" href="https://github.com/mapstruct/mapstruct" data-icon="octicon-star" data-count-href="/mapstruct/mapstruct/stargazers" data-count-api="/repos/mapstruct/mapstruct#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mapstruct/mapstruct on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/mapstruct/mapstruct/fork" data-icon="octicon-repo-forked" data-count-href="/mapstruct/mapstruct/network" data-count-api="/repos/mapstruct/mapstruct#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork mapstruct/mapstruct on GitHub">Fork</a>
+            </div>
+        </nav>
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    
+    <li><a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/">MapStruct 1.1.0.Final seen in the wild!</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/">MapStruct 1.1.0.CR2 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/">MapStruct 1.1.0.CR1 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/">MapStruct 1.1.0.Beta2 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/">MapStruct 1.1.0.Beta1 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/">Reference Guide brushed up and converted to AsciiDoc</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/">MapStruct 1.0 Final released</a></li>
+    
+</ul>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<article>
+    <p class="uk-article-meta ms-article-date">
+    <time>March 05, 2014</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2014-03-05-mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more/">MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+    <div>
+        
+
+<p>The MapStruct team is very happy to announce the release of MapStruct 1.0.0.Beta1.</p>
+
+<p>One core part of the new release is comprehensive support for mapping JAXB types with <code>JAXBElement</code> and <code>XmlGregorianCalendar</code> attributes. It&rsquo;s possible now to plug in custom factories for creating objects, which also supports the JAXB use case as we&rsquo;ll see in a minute. Further new features are the support for creating mappers from abstract classes (instead of interfaces) and decorators for customizing the behavior of mapping methods.</p>
+
+<p>The JARs should be synched to Maven Central soon. The coordinates are:</p>
+
+<ul>
+<li><a href="http://search.maven.org/#artifactdetails&amp;#124;org.mapstruct&amp;#124;mapstruct&amp;#124;1.0.0.Beta1&amp;#124;jar">org.mapstruct:mapstruct:1.0.0.Beta1</a> for the annotation JAR and</li>
+<li><a href="http://search.maven.org/#artifactdetails&amp;#124;org.mapstruct&amp;#124;mapstruct-processor&amp;#124;1.0.0.Beta1&amp;#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Beta1</a> for the annotation processor.</li>
+</ul>
+
+<p>Alternatively you can download a <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta1/">distribution bundle</a> which contains everything required.</p>
+
+<p>Before diving into some of the new features, let me say a huge thank you to <a href="https://github.com/sjaakd/">Sjaak Derksen</a> and <a href="https://github.com/agudian">Andreas Gudian</a> who heavily contributed to this release. That&rsquo;s much appreciated! Also a big thanks to everyone else who opened feature requests or joined the discussion.</p>
+
+<h3 id="jaxb-support">JAXB support</h3>
+
+<p>When working with SOAP or REST based web services it&rsquo;s a common requirement to map between the internal model of the application an JAXB types used in the web service layer. MapStruct facilitates this use case by providing out-of-the-box support for the following type conversions:</p>
+
+<ul>
+<li><code>java.util.Date</code> &lt;&gt; <code>XMLGregorianCalendar</code></li>
+<li><code>String</code> &lt;&gt; <code>XMLGregorianCalendar</code>, optionally applying a format pattern</li>
+<li><code>JAXBElement&lt;T&gt;</code> &lt;&gt; <code>&lt;T&gt;</code>, e.g. <code>JAXBElement&lt;Integer&gt;</code> &lt;&gt; <code>&lt;Integer&gt;</code></li>
+</ul>
+
+<p>If you generate JAXB types from an XML schema using <a href="https://jaxb.java.net/2.2.4/docs/xjc.html">xjc</a>, you&rsquo;ll typically obtain one or more <code>ObjectFactory</code> classes with methods for instantiating <code>JAXBElement</code>s. You can plug in these factories via the <code>uses()</code> attribute of the <code>@Mapper</code> annotation:</p>
+
+<pre class="prettyprint linenums">
+@Mapper(uses = ObjectFactory.class)
+public interface OrderMapper {
+
+    Order orderEntityToExternalOrder(OrderEntity orderEntity);
+}
+</pre>
+
+<p>Here, the generated implementation of the <code>orderEntityToExternalOrder()</code> will invoke the corresponding methods of the factory class when populating the attributes of the target object. When selecting a method, MapStruct will also take the <code>@XmlElementDecl</code> annotation and its <code>name</code> and <code>scope</code> attributes into account. That way it is ensured that the resulting <code>JAXBElement</code> attributes have the right QNAME.</p>
+
+<h3 id="custom-object-factories-and-generic-mapping-methods">Custom object factories and generic mapping methods</h3>
+
+<p>It&rsquo;s now possible to plug in custom factories for the instantiation of objects. MapStruct considers any method with a return type but no parameters as factory method. If such a method is present for a given mapping target type, the value will be obtained by invoking that method instead of instantiating the target type via <code>new</code>.</p>
+
+<p>Both, mapping and factory methods can optionally receive the expected target type through a specifically marked parameter. This allows for powerful generic mapping methods, e.g. for loading referenced entities when mapping from a DTO (data transfer object) model to an entity model. The following shows an example:</p>
+
+<pre class="prettyprint linenums">
+public class OrderDto {
+
+    private long customerId;
+    // getters, setters...
+}
+
+public class OrderEntity {
+
+    private CustomerEntity customer;
+    // getters, setters...
+}
+
+// A manually implemented repository for loading entities
+public class CustomerRepository {
+
+    public &lt;T&gt; T loadById(long id, @TargetType Class&lt;T&gt; entityType) {
+        // load entity by id...
+    }
+}
+
+@Mapper(uses = CustomerRepository.class)
+public interface OrderMapper {
+
+    @Mapping(source = "customerId", target = "customer")
+    OrderEntity orderDtoToOrderEntity(OrderDto orderDto);
+}
+</pre>
+
+<p>When generating an implementation of the <code>orderDtoToOrderEntity()</code> method, MapStruct will apply the hand-written <code>loadById()</code> method of the repository class to map the customer id in <code>OrderDto</code> to the corresponding customer entity referenced by the resulting order entity. By annotating a parameter with <code>@TargetType</code>, you advice MapStruct to pass the expected target type via that parameter. This type can then be used for instance to load the right entity via JPA/Hibernate.</p>
+
+<h3 id="customizing-mapping-logic-using-decorators">Customizing mapping logic using decorators</h3>
+
+<p>You can now utilize the <a href="https://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a> to customize generated mapping routines. A common use case is to set additional attributes in the target object of a mapping. E.g. let&rsquo;s assume you want to customize the behavior of the <code>personToPersonDto()</code> method of the following mapper:</p>
+
+<pre class="prettyprint linenums">
+@Mapper
+@DecoratedWith(PersonMapperDecorator.class)
+public interface PersonMapper {
+
+    PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );
+
+    PersonDto personToPersonDto(Person person);
+
+    AddressDto addressToAddressDto(Address address);
+}
+</pre>
+
+<p>The decorator must be a sub-type of the mapper type must and needs to be registered using the <code>@DecoratedWith</code> annotation. It&rsquo;s often useful to declare it as an abstract class which allows to implement only those methods which you want to customize:</p>
+
+<pre class="prettyprint linenums">
+public abstract class PersonMapperDecorator implements PersonMapper {
+
+    private final PersonMapper delegate;
+
+    public PersonMapperDecorator(PersonMapper delegate) {
+        this.delegate = delegate;
+    }
+
+    @Override
+    public PersonDto personToPersonDto(Person person) {
+        PersonDto dto = delegate.personToPersonDto( person );
+        dto.setFullName( person.getFirstName() + " " + person.getLastName() );
+        return dto;
+    }
+}
+</pre>
+
+<p>As shown in the example, you can optionally declare a constructor which receives a delegate with the generated mapper implementation. This delegate can be used in the decorator methods to invoke the default mapping routine and then amend the result object. All methods not implemented by the decorator class will just be routed through to the delegate.</p>
+
+<p>Note that the delegate feature is experimental as of this release and may change in future versions. Also it&rsquo;s subject to some limitations for the time being, e.g. only a single decorator can be applied (a decorator chain will be possible in the future) and it is only supported for the default component model but not when using the CDI and Spring component models.</p>
+
+<h3 id="what-else-is-in-it">What else is in it?</h3>
+
+<p>The Beta1 release comes with some more features which you may find helpful.</p>
+
+<p>You can now generate mappers from abstract classes (instead of interfaces) which is useful if you want to provide some manually implemented mapping methods. MapStruct also can generate now mapping methods between different <a href="/documentation/#section-07">enum types</a>. The complete change log is available <a href="https://github.com/mapstruct/mapstruct/issues?milestone=3&amp;state=closed">here</a>. Be sure to check out the <a href="/documentation">reference documentation</a> to learn more about all the new functionality.</p>
+
+<p>As always any feedback is highly welcome. Just add a comment below or join the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a> and your pull request on GitHub is always welcome. The <a href="/contributing">development guide</a> has also been updated and provides all the info you need to get started with hacking on MapStruct.</p>
+
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            
+            <li>
+                <a href="/news/2014-07-02-Java_8_support_in_mapstruct-1_0_0_Beta2/" title="Support for Java 8, JodaTime and more: MapStruct 1.0.0.Beta2 released"><i class="uk-icon-angle-double-left"></i></a>
+            </li>
+            
+            
+            <li>
+                <a href="/news/2013-11-28-mapstruct-1_0_0_Alpha2-has-landed/" title="MapStruct 1.0.0.Alpha2 has landed!"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'mapstruct';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+</article>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © Gunnar Morling 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

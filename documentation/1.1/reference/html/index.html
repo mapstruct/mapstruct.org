@@ -3767,7 +3767,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 </div>
 </div>
 <div class="paragraph">
-<p>The example above declares a mapping method <code>carDtoToCar()</code> with a configuration to define how the property <code>numberOfSeats</code> in the type <code>Car</code> shall be mapped. The update method that performs the mapping on an existing instance of <code>Car</code> needs the same configuration to successfully map all properties. Declaring <code>@InheritConfiguration</code> on the method lets MapStruct search for inheritance candidates to apply the annotations of the method that is inherited from.</p>
+<p>The example above declares a mapping method <code>carToDto()</code> with a configuration to define how the property <code>numberOfSeats</code> in the type <code>Car</code> shall be mapped. The update method that performs the mapping on an existing instance of <code>Car</code> needs the same configuration to successfully map all properties. Declaring <code>@InheritConfiguration</code> on the method lets MapStruct search for inheritance candidates to apply the annotations of the method that is inherited from.</p>
 </div>
 <div class="paragraph">
 <p>One method <strong>A</strong> can inherit the configuration from another method <strong>B</strong> if all types of <strong>A</strong> (source types and result type) are assignable to the corresponding types of <strong>B</strong>.</p>
@@ -3833,7 +3833,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>Methods that are considered for inverse inheritance need to be defined in the current mapper, a super class/interface.</p>
 </div>
 <div class="paragraph">
-<p>If multiple methods qualify, the method from which to inherit the configuration needs to be specified using the <code>name</code> property like this: <code>@InheritInverseConfiguration(name = "carToDto")</code>.</p>
+<p>If multiple methods qualify, the method from which to inherit the configuration from needs to be specified using the <code>name</code> property like this: <code>@InheritInverseConfiguration(name = "carToDto")</code>.</p>
 </div>
 <div class="paragraph">
 <p>Expressions and constants are excluded (silently ignored). Reverse mapping of nested source properties is experimental as of the 1.1.0.Beta2. Reverse mapping will take place automatically when the source property name and target property name are identical. Otherwise, <code>@Mapping</code> should specify both the target name and source name. In all cases, a suitable mapping method needs to be in place for the reverse mapping.</p>

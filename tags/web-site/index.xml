@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MapStruct</title>
+    <link>http://mapstruct.org/tags/web-site/index.xml</link>
+    <description>Recent content on MapStruct</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://mapstruct.org/tags/web-site/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mapstruct.org has landed!</title>
+      <link>http://mapstruct.org/news/2013-05-22-website-live/</link>
+      <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2013-05-22-website-live/</guid>
+      <description>&lt;p&gt;MapStruct has now its own web site, &lt;a href=&#34;http://mapstruct.org&#34;&gt;mapstruct.org&lt;/a&gt;!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

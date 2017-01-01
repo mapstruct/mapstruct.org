@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Installation &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script src="/js/components/sticky.min.js"></script>
+        <script src="/js/components/switcher.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-41136939-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    </head>
+
+    <body onload="prettyPrint()">
+        
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-navbar-brand uk-hidden-small" href="/">MapStruct</a>
+            
+            <ul class="uk-navbar-nav">
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                        <a href="/news/">News</a>
+                    
+                
+                </li>
+            
+                
+
+                
+                
+                    
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li class="uk-active">
+                
+                
+                    
+                    
+                        
+                            <a href="/documentation/installation/">Documentation</a>
+                        
+                    
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                    
+                        
+                            <a href="/community/getting-help/">Community</a>
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+                
+
+                
+                
+
+                
+                
+
+                
+                
+                    
+                
+                <li >
+                
+                
+                    
+                    
+                        
+                            <a href="/development/contributing/">Development</a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                
+                </li>
+            
+            </ul>
+            <div class="uk-navbar-flip uk-navbar-content uk-hidden-small">
+                <a class="github-button" href="https://github.com/mapstruct/mapstruct" data-icon="octicon-star" data-count-href="/mapstruct/mapstruct/stargazers" data-count-api="/repos/mapstruct/mapstruct#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mapstruct/mapstruct on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/mapstruct/mapstruct/fork" data-icon="octicon-repo-forked" data-count-href="/mapstruct/mapstruct/network" data-count-api="/repos/mapstruct/mapstruct#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork mapstruct/mapstruct on GitHub">Fork</a>
+            </div>
+        </nav>
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <aside>
+    <div id="sidebar">
+        <ul class="uk-nav uk-nav-side">
+        
+        
+            
+        
+            
+                
+            <li class="uk-nav-header">Documentation</li>
+
+                    
+            <li class="uk-active">
+                <a href="/documentation/installation/"> Installation </a>
+            </li>
+                    
+            <li>
+                <a href="/documentation/reference-guide/"> Reference Guide </a>
+            </li>
+                    
+            <li>
+                <a href="https://github.com/mapstruct/mapstruct-examples"> Examples <i class='fa fa-external-link'></i></a>
+            </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+            
+                
+            
+        
+        </ul>
+    </div>
+</aside>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+    <h1>Installation</h1>
+    <div>
+
+<h2 id="distribution-bundle">Distribution Bundle</h2>
+
+<p>You can obtain a distribution bundle containing the MapStruct binaries, source code and API documentation from <a href="http://sourceforge.net/projects/mapstruct/files/">SourceForge</a>.</p>
+
+<h2 id="maven">Maven</h2>
+
+<p>If you&rsquo;re using Maven to build your project add the following to your <em>pom.xml</em> to use MapStruct:</p>
+
+<pre class="prettyprint linenums lang-xml">...
+&lt;properties&gt;
+    &lt;org.mapstruct.version&gt;1.1.0.Final&lt;/org.mapstruct.version&gt;
+&lt;/properties&gt;
+...
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;
+        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt; &lt;!-- use mapstruct-jdk8 for Java 8 or higher --&gt;
+        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+...
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;version&gt;3.5.1&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.6&lt;/source&gt; &lt;!-- or higher, depending on your project --&gt;
+                &lt;target&gt;1.6&lt;/target&gt; &lt;!-- or higher, depending on your project --&gt;
+                &lt;annotationProcessorPaths&gt;
+                    &lt;path&gt;
+                        &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;
+                        &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;
+                        &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;
+                    &lt;/path&gt;
+                &lt;/annotationProcessorPaths&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+
+<h2 id="gradle">Gradle</h2>
+
+<p>With Gradle, you add something along the following lines to your <em>build.gradle</em>:</p>
+
+<p><pre class="prettyprint linenums lang-groovy">plugins {
+    ...
+    id &#39;net.ltgt.apt&#39; version &#39;0.8&#39;
+}
+dependencies {
+    ...
+    compile &#39;org.mapstruct:mapstruct:1.1.0.Final&#39;
+
+    // OR use this with Java 8 and beyond
+    compile &#39;org.mapstruct:mapstruct-jdk8:1.1.0.Final&#39;
+
+    apt &#39;org.mapstruct:mapstruct-processor:1.1.0.Final&#39;
+}
+</code></pre>
+</p>
+
+<h2 id="ant">Ant</h2>
+
+<p>tbd.</p>
+</div>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © Gunnar Morling 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
