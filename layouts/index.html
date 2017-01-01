@@ -19,19 +19,19 @@
         </div>
     </div>
     <div class="uk-grid">
-        <div class="uk-width-medium-1-3 uk-row-first">
+        <div class="uk-width-medium-1-3 uk-row-first uk-grid-margin">
             <h2 class="uk-h3">What is it?</h2>
             <p>MapStruct is a code generator that greatly simplifies the implementation of mappings between Java bean types based on a convention over configuration approach.</p>
             <p>The generated mapping code uses plain method invocations and thus is fast, type-safe and easy to understand.</p>
         </div>
 
-        <div class="uk-width-medium-1-3">
+        <div class="uk-width-medium-1-3 uk-grid-margin">
             <h2 class="uk-h3">Why?</h2>
             <p>Multi-layered applications often require to map between different object models (e.g. entities and DTOs). Writing such mapping code is a tedious and error-prone task. MapStruct aims at simplifying this work by automating it as much as possible.</p>
             <p>In contrast to other mapping frameworks MapStruct generates bean mappings at compile-time which ensures a high performance, allows for fast developer feedback and thorough error checking.</p>
         </div>
 
-        <div class="uk-width-medium-1-3">
+        <div class="uk-width-medium-1-3 uk-grid-margin">
             <h2 class="uk-h3">How?</h2>
             <p>MapStruct is an annotation processor which is plugged into the Java compiler and can be used in command-line builds (Maven, Gradle etc.) as well as from within your preferred IDE.</p>
             <p>MapStruct uses sensible defaults but steps out of your way when it comes to configuring or implementing special behavior.</p>
@@ -74,23 +74,22 @@
                         <li>
                             <pre class="prettyprint linenums">public class Car {
 
-        private String make;
-        private int numberOfSeats;
-        private CarType type;
+    private String make;
+    private int numberOfSeats;
+    private CarType type;
 
-        //constructor, getters, setters etc.
-    }
-    </pre>
+    //constructor, getters, setters etc.
+}</pre>
                         </li>
                         <li>
                             <pre class="prettyprint linenums">public class CarDto {
 
-        private String make;
-        private int seatCount;
-        private String type;
+    private String make;
+    private int seatCount;
+    private String type;
 
-        //constructor, getters, setters etc.
-    }</pre>
+    //constructor, getters, setters etc.
+}</pre>
                         </li>
                     </ul>
                 </div>
@@ -160,19 +159,19 @@
                     <ul id="listing-3" class="uk-switcher uk-margin">
                         <li>
                             <pre class="prettyprint linenums">@Test
-    public void shouldMapCarToDto() {
-        //given
-        Car car = new Car( "Morris", 5, CarType.SEDAN );
- 
-        //when
-        CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );
- 
-        //then
-        assertThat( carDto ).isNotNull();
-        assertThat( carDto.getMake() ).isEqualTo( "Morris" );
-        assertThat( carDto.getSeatCount() ).isEqualTo( 5 );
-        assertThat( carDto.getType() ).isEqualTo( "SEDAN" );
-    }</pre>
+public void shouldMapCarToDto() {
+    //given
+    Car car = new Car( "Morris", 5, CarType.SEDAN );
+
+    //when
+    CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );
+
+    //then
+    assertThat( carDto ).isNotNull();
+    assertThat( carDto.getMake() ).isEqualTo( "Morris" );
+    assertThat( carDto.getSeatCount() ).isEqualTo( 5 );
+    assertThat( carDto.getType() ).isEqualTo( "SEDAN" );
+}</pre>
                         </li>
                     </ul>
                 </div>
