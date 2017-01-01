@@ -4,6 +4,9 @@ draft = false
 title = "Getting Help"
 weight = 100
 teaser = "How to get help for MapStruct-related problems"
+aliases = [
+    "/getting-help/"
+]
 [menu]
 [menu.main]
 parent = "Community"

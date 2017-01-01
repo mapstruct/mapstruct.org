@@ -4,7 +4,9 @@ draft = false
 title = "Installation"
 weight = 100
 teaser = "How to download and set it up with different build tools"
-
+aliases = [
+    "/download/"
+]
 [menu]
 [menu.main]
 parent = "Documentation"

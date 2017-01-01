@@ -4,6 +4,9 @@ draft = false
 title = "Contributing"
 weight = 100
 teaser = "How to contribute to the MapStruct project"
+aliases = [
+    "/contributing/"
+]
 [menu]
 [menu.main]
 parent = "Development"
