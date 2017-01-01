@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            {{ block "aside" . }}
+            {{ end }}
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            {{ block "main" . }}
+            {{ end }}
+        </div>
+    </div>
+</div>
+
+{{ partial "footer.html" . }}

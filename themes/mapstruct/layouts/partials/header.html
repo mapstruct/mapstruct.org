@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ .Title }} &ndash; {{ .Site.Title }}</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script src="/js/components/sticky.min.js"></script>
+        <script src="/js/components/switcher.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        {{ template "_internal/google_analytics.html" . }}
+    </head>
+
+    <body onload="prettyPrint()">
+        {{/* main menu */}}
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-navbar-brand uk-hidden-small" href="/">MapStruct</a>
+            {{ $currentPage := . }}
+            <ul class="uk-navbar-nav">
+            {{ range .Site.Menus.main }}
+                {{ $.Scratch.Set "active" false }}
+
+                <!-- regular page> -->
+                {{ if $currentPage.HasMenuCurrent "main" . }}
+                    {{ $.Scratch.Set "active" true }}
+                {{ end }}
+
+                <!-- section page (which apparently has no menu) -->
+                {{ if eq $currentPage.Title .Name }}
+                    {{ $.Scratch.Set "active" true }}
+                {{ end }}
+
+                <!-- a single news post; they don't have a menu -->
+                {{ if eq $currentPage.IsNode false }}
+                    {{ if and ( eq "News" .Name ) ( in $currentPage.Path "news" ) }}
+                    {{ $.Scratch.Set "active" true }}
+                    {{ end }}
+                {{ end }}
+                <li {{if eq ($.Scratch.Get "active") true}}class="uk-active"{{ end }}>
+                {{/* if this item has sub-items, link to first sub-item */}}
+                {{ if .HasChildren }}
+                    {{ $currentItem := . }}
+                    {{ range $index, $elmt := .Children }}
+                        {{if not $index}}
+                            <a href="{{$elmt.URL}}">{{ $currentItem.Name }}</a>
+                        {{end}}
+                    {{end}}
+                {{else}}
+                    {{ if ne .Name "Index" }}
+                        <a href="{{.URL}}">{{ .Name }}</a>
+                    {{end}}
+                {{end}}
+                </li>
+            {{end}}
+            </ul>
+            <div class="uk-navbar-flip uk-navbar-content uk-hidden-small">
+                <a class="github-button" href="https://github.com/mapstruct/mapstruct" data-icon="octicon-star" data-count-href="/mapstruct/mapstruct/stargazers" data-count-api="/repos/mapstruct/mapstruct#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mapstruct/mapstruct on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/mapstruct/mapstruct/fork" data-icon="octicon-repo-forked" data-count-href="/mapstruct/mapstruct/network" data-count-api="/repos/mapstruct/mapstruct#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork mapstruct/mapstruct on GitHub">Fork</a>
+            </div>
+        </nav>

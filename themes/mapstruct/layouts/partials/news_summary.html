@@ -1,0 +1,13 @@
+<article class="uk-article">
+    {{ partial "news_header.html" . }}
+
+    <div>
+        {{ .Summary }}
+    </div>
+
+    <div>
+        {{ if .Truncated }}
+            <a href="{{ .Permalink }}">Read more...</a>
+        {{ end }}
+    </div>
+</article>

@@ -1,0 +1,39 @@
+{{ define "main" }}
+<article>
+    {{ partial "news_header.html" . }}
+    <div>
+        {{ .Content }}
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            {{ if .NextInSection }}
+            <li>
+                <a href="{{ .NextInSection.URL }}" title="{{ .NextInSection.LinkTitle }}"><i class="uk-icon-angle-double-left"></i></a>
+            </li>
+            {{ else }}
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
+            </li>
+            {{end}}
+            {{ if .PrevInSection }}
+            <li>
+                <a href="{{ .PrevInSection.URL }}" title="{{ .PrevInSection.LinkTitle }}"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            {{ else }}
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-right"></i></span>
+            </li>
+            {{end}}
+
+        </ul>
+    </div>
+
+    <div>
+        {{ partial "disqus.html" . }}
+    </div>
+</article>
+{{ end }}
+
+{{ define "aside" }}
+    {{ partial "latest_posts.html" . }}
+{{ end }}

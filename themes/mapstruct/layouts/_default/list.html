@@ -1,0 +1,17 @@
+{{ define "main" }}
+    <h1>{{ .Title }}</h1>
+    <dl>
+    {{ range .Data.Pages.ByWeight }}
+        <dt>{{ .Title }}</dt>
+        <dd>
+            {{ if .Params.teaser }}
+            <p>{{ .Params.teaser }}<br/>
+            {{ end }}
+            <a href="{{ .Permalink }}">More...</a></p></dt>
+    {{ end }}
+    </dl>
+{{ end }}
+
+{{ define "aside" }}
+    {{ partial "section_menu.html" . }}
+{{ end }}

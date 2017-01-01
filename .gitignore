@@ -1,9 +1,2 @@
-/.awestruct/
-/.sass-cache/
-
-/_site/
-/_tmp/
-
-Gemfile.lock
-
 .DS_Store
+public

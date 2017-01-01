@@ -1,0 +1,11 @@
+{{ define "main" }}
+    {{ $paginator := .Paginate (where .Site.Pages "Type" "news") }}
+    {{ range $paginator.Pages }}
+        {{ partial "news_summary.html" . }}
+    {{ end }}
+    {{ partial "pagination.html" . }}
+{{ end }}
+
+{{ define "aside" }}
+    {{ partial "latest_posts.html" . }}
+{{ end }}

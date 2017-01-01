@@ -1,0 +1,5 @@
+name = "Andreas Gudian"
+order = 2
+gravatar = "cbe8a9133ef3337eb267252a06f649bf"
+intro = "**Andreas Gudian** was the first committer to join Gunnar in his efforts."
+description = "He is an experienced developer and architect for enterprise Java applications, where MapStruct can make a real difference. Andreas contributes to various open source projects and is also committer at the Apache Maven project, maintaining the [Surefire](http://maven.apache.org/surefire/maven-surefire-plugin/)."

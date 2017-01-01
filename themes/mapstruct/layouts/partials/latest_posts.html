@@ -1,0 +1,8 @@
+<ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    {{ range first .Site.Params.numberOfLatestPosts (where .Site.Pages "Type" "news") }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+</ul>

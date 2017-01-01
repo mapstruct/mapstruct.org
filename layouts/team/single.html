@@ -1,0 +1,19 @@
+{{ define "main" }}
+    <h1>{{ .Title }}</h1>
+    <div>{{ .Content }}</div>
+    {{ range sort $.Site.Data.team "order" "asc" }}
+    <div class="uk-grid">
+        <div class="uk-width-1-5">
+            <img src="http://www.gravatar.com/avatar/{{ .gravatar }}?s=100" />
+        </div>
+        <div class="uk-width-4-5">
+            <p>{{ .intro  | markdownify }}</p>
+            <p>{{ .description | markdownify }}</p>
+        </div>
+    </div>
+    {{ end }}
+{{ end }}
+
+{{ define "aside" }}
+    {{ partial "section_menu.html" . }}
+{{ end }}
