@@ -1,4 +1,13 @@
-{{ define "main" }}
-<h1>Oh no!</h1>
-<div>Seems you were looking for something which isn't there. Well, at least it's not here.</div>
-{{ end }}
+{{ partial "header.html" . }}
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-1">
+            <h1>Oh no!</h1>
+            <div>Seems you were looking for something which isn't there. Well, at least it's not here.</div>
+            <div>Maybe visiting the <a href="/">home page</a> brightens your mood. Or, if you came here by clicking on an outdated link, either file <a href="https://github.com/mapstruct/mapstruct.org/issues">a bug report</a> or submit a pull request for fixing the issue yoursef.</div>
+        </div>
+    </div>
+</div>
+
+{{ partial "footer.html" . }}
