@@ -74,6 +74,7 @@ h1.uk-article-title {
 .uk-navbar-nav > li > a {
     color: #eee;
     text-shadow: 0 0px 0 #fff;
+    border-width: 0px;
 }
 
 .uk-navbar-brand {
@@ -81,16 +82,50 @@ h1.uk-article-title {
     text-shadow: 0 0px 0 #fff;
 }
 
+.uk-navbar-nav > li > a {
+    color: hsl(50, 100%, 99%);
+}
+
 .uk-navbar-nav > li.uk-active > a {
-    color: #fff;
-    background-color : rgba(0, 0, 0, 0.08);
+    color: hsl(50, 100%, 99%);
+    background-color : rgba(190, 85, 11, 0.4);
     box-shadow: none;
-    border-width: 0 0 3px;
+    border-bottom-width: 3px;
     border-left-color: rgba(0, 0, 0, 0.0);
     border-top-color: rgba(0, 0, 0, 0.0);
     border-right-color: rgba(0, 0, 0, 0.0);
-    border-bottom-color: rgba(0, 0, 0, 0.3);
+    border-bottom-color: rgba(127, 0, 2, 1.0);
+}
+
+.uk-navbar-nav > li > a:hover {
+    color: #e9e9e9;
+    background-color : rgba(190, 85, 11, 0.15);
+    box-shadow: none;
+    border-bottom-width: 3px;
+    border-left-color: rgba(0, 0, 0, 0.0);
+    border-top-color: rgba(0, 0, 0, 0.0);
+    border-right-color: rgba(0, 0, 0, 0.0);
+    border-bottom-color: rgba(127, 0, 2, 1.0);
+}
+
+.uk-navbar-nav > li.uk-active > a:hover {
+    color: hsl(50, 100%, 99%);
+    background-color : rgba(190, 85, 11, 0.3);
+    box-shadow: none;
+    border-bottom-width: 3px;
+    border-left-color: rgba(0, 0, 0, 0.0);
+    border-top-color: rgba(0, 0, 0, 0.0);
+    border-right-color: rgba(0, 0, 0, 0.0);
+    border-bottom-color: rgba(127, 0, 2, 1.0);
+}
+
+.uk-navbar-brand.ms-navbar-brand {
     padding-top: 1px;
+    color: hsl(50, 100%, 99%);
+}
+
+a:hover.uk-navbar-brand {
+    color: #e9e9e9;
 }
 
 .uk-text-large {
@@ -120,7 +155,7 @@ a, .uk-link {
 }
 
 .uk-nav-side > li.uk-active > a {
-    background: #6d0303 none repeat scroll 0 0;
+    background: #81000b none repeat scroll 0 0;
 }
 
 html {
