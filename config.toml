@@ -6,6 +6,7 @@ paginate = 5
 pluralizeListTitles = false
 canonifyURLs = true
 disqusShortname = "mapstruct"
+#googleAnalytics = "UA-41136939-1"
 
 [[menu.main]]
 name = "News"
