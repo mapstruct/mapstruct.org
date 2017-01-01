@@ -7,12 +7,12 @@ h1.uk-article-title {
   margin-bottom: 5px;
 }
 
-.article-date.uk-article-meta {
+.ms-article-date.uk-article-meta {
     margin-bottom: 5px;
     border-bottom: 1px solid #ddd;
 }
 
-.article-author.uk-article-meta {
+.ms-article-author.uk-article-meta {
     margin-top: 5px;
 }
 
@@ -28,6 +28,15 @@ h1.uk-article-title {
     .ms-main {
         border-left: 1px solid #ddd;
     }
+
+    .ms-hero {
+        background:#eaeaea;
+        padding: 60px;
+    }
+
+    .ms-hero-logo-container {
+        height: 120px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -35,9 +44,27 @@ h1.uk-article-title {
         border-bottom: 1px solid #ddd;
         padding-bottom: 15px;
     }
+
     .ms-main {
         margin-top: 15px;
     }
+
+    .ms-hero {
+        background:#eaeaea;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .ms-hero-logo-container {
+        height: 80px;
+    }
+}
+
+.ms-hero-logo-container img {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .uk-navbar {
@@ -64,11 +91,6 @@ h1.uk-article-title {
     border-right-color: rgba(0, 0, 0, 0.0);
     border-bottom-color: rgba(0, 0, 0, 0.3);
     padding-top: 1px;
-}
-
-.hero {
-    background:#F5F5F5;
-    padding: 60px;
 }
 
 .uk-text-large {

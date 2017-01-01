@@ -1,10 +1,10 @@
-<p class="uk-article-meta article-date">
+<p class="uk-article-meta ms-article-date">
     <time>{{ .Date.Format "January 02, 2006" }}</time>
 </p>
 
 <h1 class="uk-article-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
 
-<p class="uk-article-meta article-author">
+<p class="uk-article-meta ms-article-author">
     By <b>{{ .Params.author }}</b> under {{ range .Params.tags }}
     <span class="uk-badge">
     <!-- <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> -->
