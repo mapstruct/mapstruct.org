@@ -3,6 +3,8 @@ title: "MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more
 author: Gunnar Morling
 date: "2014-11-30"
 tags: [release, news]
+aliases:
+    - /news/2014/11/30/mapstruct-1_0_0_Beta3-nested-properties.html
 ---
 
 I'm delighted to announce the release of MapStruct 1.0.0.Beta3.

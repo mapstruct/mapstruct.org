@@ -3,6 +3,8 @@ title: "MapStruct 1.0 Final released"
 author: Gunnar Morling
 date: "2015-11-25"
 tags: [release, news]
+aliases:
+    - /news/2015/11/25/mapstruct-1_0_Final-released.html
 ---
 
 It's with great pleasure and excitement that I announce the final release of MapStruct 1.0!

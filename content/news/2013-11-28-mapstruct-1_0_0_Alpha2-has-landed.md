@@ -3,6 +3,8 @@ title: MapStruct 1.0.0.Alpha2 has landed!
 author: Gunnar Morling
 date: "2013-11-28"
 tags: [release, news]
+aliases:
+    - /news/2013/11/28/mapstruct-1_0_0_Alpha2-has-landed.html
 ---
 
 It is my great pleasure to announce the release of MapStruct 1.0.0.Alpha2.

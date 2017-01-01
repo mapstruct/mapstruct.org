@@ -3,6 +3,8 @@ title: "Support for Java 8, JodaTime and more: MapStruct 1.0.0.Beta2 released"
 author: Gunnar Morling
 date: "2014-07-02"
 tags: [release, news]
+aliases:
+    - /news/2014/07/02/Java_8_support_in_mapstruct-1_0_0_Beta2.html
 ---
 
 It's my great pleasure to announce the release of MapStruct 1.0.0.Beta2.

@@ -3,6 +3,8 @@ title: MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorat
 author: Gunnar Morling
 date: "2014-03-05"
 tags: [release, news]
+aliases:
+    - /news/2014/03/05/mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more.html
 ---
 
 The MapStruct team is very happy to announce the release of MapStruct 1.0.0.Beta1.

@@ -3,6 +3,8 @@ title: Using MapStruct with Gradle
 author: Gunnar Morling
 date: "2013-07-08"
 tags: [how-to, build, gradle]
+aliases:
+    - /news/2013/07/08/using-mapstruct-with-gradle.html
 ---
 
 You work with [Gradle](http://www.gradle.org/) to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.

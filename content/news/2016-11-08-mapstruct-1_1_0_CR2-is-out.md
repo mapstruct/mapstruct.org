@@ -3,6 +3,8 @@ title: "MapStruct 1.1.0.CR2 is out"
 author: Gunnar Morling
 date: "2016-11-08"
 tags: [release, news]
+aliases:
+    - /news/2016/11/08/mapstruct-1_1_0_CR2-is-out.html
 ---
 
 It's my pleasure to announce the second candidate release of MapStruct 1.1!

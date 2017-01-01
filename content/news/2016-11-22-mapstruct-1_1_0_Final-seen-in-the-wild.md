@@ -3,6 +3,8 @@ title: "MapStruct 1.1.0.Final seen in the wild!"
 author: Gunnar Morling
 date: "2016-11-22"
 tags: [release, news]
+aliases:
+    - /news/2016/11/22/mapstruct-1_1_0_Final-seen-in-the-wild.html
 ---
 
 I'm more than thrilled to report that MapStruct 1.1 Final has been spotted in the wild!

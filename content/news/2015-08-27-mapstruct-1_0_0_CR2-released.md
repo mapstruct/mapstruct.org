@@ -3,6 +3,8 @@ title: "MapStruct 1.0.0.CR2 released"
 author: Andreas Gudian
 date: "2015-08-27"
 tags: [release, news]
+aliases:
+    - /news/2015/08/27/mapstruct-1_0_0_CR2-released.html
 ---
 
 It is my pleasure to announce the second candidate release of MapStruct 1.0!

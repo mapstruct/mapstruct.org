@@ -3,6 +3,8 @@ title: "MapStruct 1.1.0.Beta1 released"
 author: Andreas Gudian
 date: "2016-03-16"
 tags: [release, news]
+aliases:
+    - /news/2016/03/16/mapstruct-1_1_0_Beta1-released.html
 ---
 
 It has been four months since the release of the first final version of MapStruct. We've received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.

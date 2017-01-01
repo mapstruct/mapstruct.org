@@ -3,6 +3,8 @@ title: Announcing MapStruct
 author: Gunnar Morling
 date: "2013-06-03"
 tags: [release, feedback]
+aliases:
+    - /news/2013/06/03/announcing-mapstruct.html
 ---
 
 It is my pleasure to announce the first release of the MapStruct project!

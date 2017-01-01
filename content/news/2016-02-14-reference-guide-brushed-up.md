@@ -3,6 +3,8 @@ title: "Reference Guide brushed up and converted to AsciiDoc"
 author: Gunnar Morling
 date: "2016-02-14"
 tags: [news]
+aliases:
+    - /news/2016/02/14/reference-guide-brushed-up.html
 ---
 
 While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time.

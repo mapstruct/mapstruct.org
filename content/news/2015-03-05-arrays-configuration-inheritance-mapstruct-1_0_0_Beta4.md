@@ -3,6 +3,8 @@ title: "Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 release
 author: Gunnar Morling
 date: "2015-03-05"
 tags: [release, news]
+aliases:
+    - /news/2015/03/05/arrays-configuration-inheritance-mapstruct-1_0_0_Beta4.html
 ---
 
 The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!

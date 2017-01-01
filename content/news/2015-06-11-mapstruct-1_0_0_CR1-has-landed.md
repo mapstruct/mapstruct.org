@@ -3,6 +3,8 @@ title: "MapStruct 1.0.0.CR1 has landed"
 author: Gunnar Morling
 date: "2015-06-11"
 tags: [release, news]
+aliases:
+    - /news/2015/06/11/mapstruct-1_0_0_CR1-has-landed.html
 ---
 
 I am very happy to announce the first candidate release of MapStruct 1.0!

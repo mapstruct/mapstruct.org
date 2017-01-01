@@ -3,6 +3,8 @@ title: "MapStruct 1.1.0.Beta2 released"
 author: Sjaak Derksen
 date: "2016-07-22"
 tags: [release, news]
+aliases:
+    - /news/2016/07/22/mapstruct-1_1_0_Beta2-released.html
 ---
 
 It has been a while since the latest release of MapStruct. Via our mailing list, issue list and other channels we have received valuable feedback. We have tried to incorporate some of that feedback into a number of new features.
