@@ -1,6 +1,6 @@
 +++
 date = "2016-02-14T16:11:58+05:30"
-draft = true
+draft = false
 title = "Team"
 type = "team"
 weight = 200
