@@ -5,6 +5,7 @@ title = "MapStruct"
 paginate = 5
 pluralizeListTitles = false
 canonifyURLs = true
+disqusShortname = "mapstruct"
 
 [[menu.main]]
 name = "News"
