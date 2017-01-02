@@ -193,3 +193,7 @@ body {
 a:hover.ms-link-footer {
     color: #777;
 }
+
+em {
+    color: #444;
+}
