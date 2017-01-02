@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MapStruct 1.1.0.Beta2 released &ndash; MapStruct</title>
+        <title>New Year, new Website! &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -188,82 +188,41 @@ ga('send', 'pageview');
             
 <article>
     <p class="uk-article-meta ms-article-date">
-    <time>July 22, 2016</time>
+    <time>January 02, 2017</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/">MapStruct 1.1.0.Beta2 released</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-01-02-new-year-new-website/">New Year, new Website!</a></h1>
 
 <p class="uk-article-meta ms-article-author">
-    By <b>Sjaak Derksen</b> under 
+    By <b>Gunnar Morling</b> under 
     <span class="uk-badge">
     
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
+        web-site
     </span>
     
 </p>
 
     <div>
-        <p>It has been a while since the latest release of MapStruct. Via our mailing list, issue list and other channels we have received valuable feedback. We have tried to incorporate some of that feedback into a number of new features.</p>
+        <p>The MapStruct team wishes a Happy New Year to all our users out there!</p>
 
-<p>MapStruct 1.1.0.Beta2 introduces a number of popular requested features, like source presence check and nested target properties.</p>
+<p>To start the new year fresh, we&rsquo;ve given some love to our website. While its looks only slightly changed, its inner workings have been overhauled from ground up. It&rsquo;s driven by <a href="https://gohugo.io/">Hugo</a> now, a static website generator written in Go which is very popular these days.</p>
 
 <p></p>
 
-<p>Today we release MapStruct 1.1.0.Beta2, containing fixes for most of the user-reported bugs:</p>
+<p>It is much easier now for us to put new contents onto the website (everything is written in Markdown now), the tool chain is easier to set up (Hugo is a single binary to be installed) and the web site build is much faster. Long story short, it&rsquo;s much more fun to work with the website now. If you are curious about the details, refer to the description of the <a href="/development/updating-mapstructorg/">website build</a>. Just as MapStruct itself this website is open-source, so pull requests are always welcome!</p>
 
-<ul>
-<li>Mapping of nested target properties.</li>
-<li>Support of using <code>hasXYZ</code> presence checker methods instead of <code>null</code> checks on the source side of bean mappings. The presence checker naming convention can be overidden by providing a custom SPI implementation.</li>
-<li>Extended support of <code>java.text.NumberFormat</code> for Number types to String mapping.</li>
-<li>Provide OSGI-enabled jars.</li>
-<li>Fix a compatibility issue with Eclipse Neon.</li>
-</ul>
-
-<p>The complete list of closed issues can be found in the <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta2">change log</a>.</p>
-
-<p>The MapStruct teams thanks: <a href="https://github.com/seanjob">Sean Huang</a>, and <a href="https://github.com/cliedeman">Ciaran Liedeman</a> for their contribution!</p>
-
-<h3 id="what-s-next">What&rsquo;s next?</h3>
-
-<p>We hope to release 1.1.0.CR1 in a short while (after the summer holidays).</p>
-
-<p>Please also checkout our examples <a href="https://github.com/mapstruct/mapstruct-examples">GitHub examples repository</a>. It is still small but the intention is to make this a repository of typical mapping problems and how to solve them with MapStruct. Contributing good examples is appriciated.</p>
-
-<h3 id="download">Download</h3>
-
-<p>To fetch MapStruct 1.1.0.Beta2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:</p>
-
-<ul>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.Beta2|jar">org.mapstruct:mapstruct:1.1.0.Beta2</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.Beta2|jar">org.mapstruct:mapstruct-jdk8:1.1.0.Beta2</a> (for usage with Java &gt;= 8)</li>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.Beta2|jar">org.mapstruct:mapstruct-processor:1.1.0.Beta2</a> for the annotation processor.</li>
-</ul>
-
-<p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.1.0.Beta2/">SourceForge</a>.</p>
-
-<ul>
-<li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
-<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
-<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
-<li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
-</ul>
-
-<p>We hope that you&rsquo;ll find the new features valuable.</p>
+<p>For users of the site nothing much changes. We&rsquo;ve set up redirects for all old URLs. Should we&rsquo;ve missed any, please file a bug report against the website&rsquo;s <a href="https://github.com/mapstruct/mapstruct.org/issues">source repo</a>. The only exception is the URL of the news feed (which is RSS based now). As we cannot set up a proper 301 redirect on GitHub Pages, please point your feed reader to the new <a href="/news/index.xml">feed URL</a>.</p>
     </div>
     <div>
         <ul class="uk-pagination">
             
-            <li>
-                <a href="/news/2016-09-07-mapstruct-1_1_0_CR1/" title="MapStruct 1.1.0.CR1 released"><i class="uk-icon-angle-double-left"></i></a>
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
             </li>
             
             
             <li>
-                <a href="/news/2016-03-16-mapstruct-1_1_0_Beta1-released/" title="MapStruct 1.1.0.Beta1 released"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/" title="MapStruct 1.1.0.Final seen in the wild!"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 
