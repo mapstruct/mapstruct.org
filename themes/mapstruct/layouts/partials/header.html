@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ .Title }} &ndash; {{ .Site.Title }}</title>
+        <title>{{ .Title }} &ndash; {{ if eq .Title .Site.Title }}{{ .Site.Params.tagLine }}{{ else }}{{ .Site.Title }}{{ end }}</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
