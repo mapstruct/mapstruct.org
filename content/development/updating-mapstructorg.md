@@ -98,4 +98,5 @@ git commit -a -m "Some website change"
 
 # deploy
 git push upstream gh-pages
+git push upstream master
 {{< /prettify >}}

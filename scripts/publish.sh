@@ -1,7 +1,7 @@
 if [[ $(git status -s) ]]
 then
     echo "The working directory is dirty. Please commit any pending changes."
-    exit
+    exit 1;
 fi
 
 git rev-parse --verify gh-pages
@@ -9,7 +9,7 @@ if [[ $? -ne 0 ]]
 then
     echo "Branch 'gh-pages' does not exist in the local repository. Please create it by running the following command:"
     echo "git fetch upstream && git branch --track gh-pages upstream/gh-pages"
-    exit;
+    exit 1;
 fi
 
 
