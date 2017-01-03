@@ -197,3 +197,10 @@ a:hover.ms-link-footer {
 em {
     color: #444;
 }
+
+.ms-edit-on-github {
+    padding-top: 5px;
+    padding-left: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+}
