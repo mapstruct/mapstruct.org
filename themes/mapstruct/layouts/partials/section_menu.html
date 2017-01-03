@@ -1,20 +1,20 @@
 <aside>
     <div id="sidebar">
         <ul class="uk-nav uk-nav-side">
-        {{ $currentPage := . }}
-        {{ range .Site.Menus.main }}
-            {{ if .HasChildren }}
-                {{if or ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.Title .Name) }}
+        {{ $currentPage := . -}}
+        {{- range .Site.Menus.main -}}
+            {{- if .HasChildren -}}
+                {{- if or ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.Title .Name) }}
             <li class="uk-nav-header">{{ .Name }}</li>
 
                     {{ range .Children }}
             <li{{if $currentPage.IsMenuCurrent "main" . }} class="uk-active"{{end}}>
                 <a href="{{.URL}}">{{ .Pre}} {{ .Name }} {{ .Post}}</a>
             </li>
-                    {{ end }}
-                {{end}}
-            {{end}}
-        {{end}}
+                    {{ end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end }}
         </ul>
     </div>
 </aside>

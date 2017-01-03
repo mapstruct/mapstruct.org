@@ -24,40 +24,40 @@
             <a class="uk-navbar-brand ms-navbar-brand" href="/">MapStruct</a>
             {{ $currentPage := . }}
             <ul class="uk-navbar-nav">
-            {{ range .Site.Menus.main }}
-                {{ $.Scratch.Set "active" false }}
+            {{- range .Site.Menus.main -}}
+                {{- $.Scratch.Set "active" false -}}
 
                 <!-- regular page> -->
-                {{ if $currentPage.HasMenuCurrent "main" . }}
-                    {{ $.Scratch.Set "active" true }}
-                {{ end }}
+                {{- if $currentPage.HasMenuCurrent "main" . -}}
+                    {{- $.Scratch.Set "active" true -}}
+                {{- end -}}
 
                 <!-- section page (which apparently has no menu) -->
-                {{ if eq $currentPage.Title .Name }}
-                    {{ $.Scratch.Set "active" true }}
-                {{ end }}
+                {{- if eq $currentPage.Title .Name -}}
+                    {{- $.Scratch.Set "active" true -}}
+                {{- end -}}
 
                 <!-- a single news post; they don't have a menu -->
-                {{ if eq $currentPage.IsNode false }}
-                    {{ if and ( eq "News" .Name ) ( in $currentPage.Path "news" ) }}
-                    {{ $.Scratch.Set "active" true }}
-                    {{ end }}
-                {{ end }}
+                {{- if eq $currentPage.IsNode false -}}
+                    {{- if and ( eq "News" .Name ) ( in $currentPage.Path "news" ) -}}
+                    {{- $.Scratch.Set "active" true -}}
+                    {{- end -}}
+                {{- end }}
                 <li {{if eq ($.Scratch.Get "active") true}}class="uk-active"{{ end }}>
-                {{/* if this item has sub-items, link to first sub-item */}}
-                {{ if .HasChildren }}
-                    {{ $currentItem := . }}
-                    {{ range $index, $elmt := .Children }}
-                        {{if not $index}}
+                <!-- if this item has sub-items, link to first sub-item -->
+                {{- if .HasChildren -}}
+                    {{- $currentItem := . -}}
+                    {{- range $index, $elmt := .Children -}}
+                        {{- if not $index }}
                             <a href="{{$elmt.URL}}">{{ $currentItem.Name }}</a>
-                        {{end}}
-                    {{end}}
-                {{else}}
-                    {{ if ne .Name "Index" }}
+                        {{ end -}}
+                    {{- end -}}
+                {{- else -}}
+                    {{- if ne .Name "Index" }}
                         <a href="{{.URL}}">{{ .Name }}</a>
-                    {{end}}
-                {{end}}
+                    {{ end -}}
+                {{- end }}
                 </li>
-            {{end}}
+            {{ end }}
             </ul>
         </nav>
