@@ -4,20 +4,14 @@ then
     exit 1;
 fi
 
-git rev-parse --verify gh-pages
-if [[ $? -ne 0 ]]
-then
-    echo "Branch 'gh-pages' does not exist in the local repository. Please create it by running the following command:"
-    echo "git fetch upstream && git branch --track gh-pages upstream/gh-pages"
-    exit 1;
-fi
-
-
 echo "Deleting old publication"
 rm -rf public
 mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
 
-git clone .git --branch gh-pages public
+echo "Checking out gh-pages branch into public"
+git worktree add -B gh-pages public upstream/gh-pages
 
 echo "Generating site"
 hugo
@@ -28,4 +22,4 @@ rm public/community/index.xml
 rm public/development/index.xml
 
 echo "Updating gh-pages branch"
-cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)" && git push origin gh-pages
+cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)"
