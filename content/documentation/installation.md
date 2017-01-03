@@ -16,7 +16,7 @@ parent = "Documentation"
 
 You can obtain a distribution bundle containing the MapStruct binaries, source code and API documentation from [SourceForge](http://sourceforge.net/projects/mapstruct/files/).
 
-## Maven
+## Apache Maven
 
 If you're using Maven to build your project add the following to your _pom.xml_ to use MapStruct:
 
@@ -74,6 +74,22 @@ dependencies {
 }
 {{< /prettify >}}
 
-## Ant
+You can find a complete example in the [mapstruct-examples](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-on-gradle) project on GitHub.
 
-tbd.
+## Apache Ant
+
+Add the `javac` task configured as follows to your _build.xml_ file in order to enable MapStruct in your Ant-based project. Adjust the paths as required for your project layout.
+
+{{< prettify xml >}}
+...
+<javac
+    srcdir="src/main/java"
+    destdir="target/classes"
+    classpath="path/to/mapstruct-jdk8-{{% stableversion %}}.jar">
+    <compilerarg line="-processorpath path/to/mapstruct-processor-{{% stableversion %}}.jar"/>
+    <compilerarg line="-s target/generated-sources"/>
+</javac>
+...
+{{< /prettify >}}
+
+You can find a complete example in the [mapstruct-examples](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-on-ant) project on GitHub.
