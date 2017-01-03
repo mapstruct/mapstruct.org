@@ -89,11 +89,10 @@ A typical editing process will look like this (assuming you start on the master 
 # update local branches
 git fetch upstream
 git merge upstream/master
-git checkout gh-pages && git merge upstream/gh-pages && git checkout master
 
 # do your changes...
 
-# commit, re-generate and update gh-pages
+# commit; then re-generate and update gh-pages
 git commit -a -m "Some website change"
 ./scripts/publish.sh
 
