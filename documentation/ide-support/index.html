@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Gradle &ndash; MapStruct</title>
+        <title>IDE Support &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -45,6 +45,8 @@ ga('send', 'pageview');
 
                 
                 
+                    
+                
                 <li >
                 
                 
@@ -58,13 +60,17 @@ ga('send', 'pageview');
 
                 
                 
+                    
+                
 
                 
                 
 
                 
                 
-                <li >
+                    
+                
+                <li class="uk-active">
                 
                 
                     
@@ -92,6 +98,8 @@ ga('send', 'pageview');
 
                 
                 
+                    
+                
                 <li >
                 
                 
@@ -115,6 +123,8 @@ ga('send', 'pageview');
                 
 
                 
+                
+                    
                 
                 <li >
                 
@@ -157,6 +167,26 @@ ga('send', 'pageview');
         
             
                 
+            <li class="uk-nav-header">Documentation</li>
+
+                    
+            <li>
+                <a href="/documentation/installation/"> Installation </a>
+            </li>
+                    
+            <li>
+                <a href="/documentation/reference-guide/"> Reference Guide </a>
+            </li>
+                    
+            <li class="uk-active">
+                <a href="/documentation/ide-support/"> IDE Support </a>
+            </li>
+                    
+            <li>
+                <a href="https://github.com/mapstruct/mapstruct-examples"> Examples <i class='fa fa-external-link'></i></a>
+            </li>
+                    
+                
             
         
             
@@ -176,15 +206,73 @@ ga('send', 'pageview');
         </div>
         <div class="uk-width-medium-3-4 ms-main">
             
-    <h1>Gradle</h1>
-    <dl>
-    
-        <dt>Using MapStruct with Gradle</dt>
-        <dd>
-            
-            <a href="http://mapstruct.org/news/2013-07-08-using-mapstruct-with-gradle/">More...</a></p></dt>
-    
-    </dl>
+    <h1>IDE Support</h1>
+    <div>
+
+<p>One of the big advantages of MapStruct is the early feedback on problems with the mapping configuration. To fully leverage this in your IDE, make sure the annotation processor runs with each compilation.</p>
+
+<h2 id="eclipse">Eclipse</h2>
+
+<h3 id="maven-integration">Maven Integration</h3>
+
+<p>If your work with a Maven project, then make sure you have the latest version of the <a href="https://marketplace.eclipse.org/content/m2e-apt">m2e-apt</a> plugin installed, which picks up and applies the annotation processor settings automatically.</p>
+
+<p>For best results, add the following to the <code>pom.xml</code>:</p>
+
+<pre class="prettyprint linenums lang-">
+&lt;properties&gt;
+  &lt;!-- automatically run annotation processors within the incremental compilation --&gt;
+  &lt;m2e.apt.activation&gt;jdt_apt&lt;/m2e.apt.activation&gt;
+&lt;/properties&gt;
+</code></pre>
+
+
+<h3 id="editing-support">Editing Support</h3>
+
+<p>For Eclipse, we are also working on a Plugin that adds <em>Code Completion</em> (e.g. for property names) and <em>Quick Fixes</em> for common use cases:</p>
+
+<h4 id="completion-for-properties-and-enum-constants">Completion for Properties and Enum Constants</h4>
+
+<div style="text-align:center">
+    <img src="/images/eclipse/still-completion-1.png" alt="Code completion for properties and enum constants"/>
+</div>
+
+<h4 id="quick-fix-to-ignore-an-unmapped-property">Quick Fix to Ignore an Unmapped Property</h4>
+
+<div style="text-align:center">
+    <img src="/images/eclipse/still-quickfix-1.png" alt="Quick Fix to ignore an unmapped property"/>
+</div>
+
+<h4 id="installation">Installation</h4>
+
+<p>Drag the following icon into your running Eclipse workspace:
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2844337" class="drag" title="Drag to your running Eclipse workspace."><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace." /></a>.</p>
+
+<p>Alternatively, you can obtain the MapStruct Eclipse Plugin from the <a href="https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin">Eclipse Marketplace</a>.
+For more information and for installing the latest Snapshot version, visit the <a href="https://github.com/mapstruct/mapstruct-eclipse">plugins GitHub project</a>.</p>
+
+<h2 id="intellij-idea">IntelliJ IDEA</h2>
+
+<p>Depending on how you configured the annotation processor in your Maven or Gradle project, IntelliJ may or may not pick it up automatically. You might need to make sure of it yourself in the project configuration.</p>
+
+<h3 id="maven-integration-1">Maven Integration</h3>
+
+<p>For example, if you use the way of Maven configuration that is proposed in our documentation using <code>annotationProcessorPaths</code> in the maven-compiler-plugin, then you need to configure IntelliJ manually until the feature request <a href="https://youtrack.jetbrains.com/issue/IDEA-150621">IDEA-150621</a> is implemented. An alternative is to add the <code>mapstruct-processor</code> as a project dependency with <code>&lt;optional&gt;true&lt;/optional&gt;</code> in your <code>pom.xml</code>, which should then be picked up automatically again.</p>
+
+<h3 id="editing-support-1">Editing Support</h3>
+
+<p>As for the editing support of MapStruct mappers, there is an open feature request in the IntelliJ backlog: <a href="https://youtrack.jetbrains.com/issue/IDEABKL-7174">MapStruct support</a>. Perhaps some additional votes help there. Or better yet, if you want to start with it, we&rsquo;d probably join you in your efforts.</p>
+
+<h2 id="netbeans">NetBeans</h2>
+
+<h3 id="maven-integration-2">Maven Integration</h3>
+
+<p>If you use a Maven project, then there&rsquo;s nothing more to do. NetBeans uses Maven to compile your sources, which includes the invocation of the annotation processor.</p>
+
+<h3 id="editing-support-2">Editing Support</h3>
+
+<p>There are no plans of special editing support for MapStruct mappers in NetBeans that we know of, yet. But we&rsquo;d love to see one!</p>
+</div>
 
         </div>
     </div>
