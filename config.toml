@@ -29,7 +29,7 @@ weight = 400
 [[menu.main]]
 name = "Examples"
 post = "<i class='fa fa-external-link'></i>"
-weight = 250
+weight = 900
 parent = "Documentation"
 identifier = "examples"
 url = "https://github.com/mapstruct/mapstruct-examples"
