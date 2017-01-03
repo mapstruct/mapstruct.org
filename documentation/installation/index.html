@@ -213,7 +213,7 @@ ga('send', 'pageview');
 
 <p>You can obtain a distribution bundle containing the MapStruct binaries, source code and API documentation from <a href="http://sourceforge.net/projects/mapstruct/files/">SourceForge</a>.</p>
 
-<h2 id="maven">Maven</h2>
+<h2 id="apache-maven">Apache Maven</h2>
 
 <p>If you&rsquo;re using Maven to build your project add the following to your <em>pom.xml</em> to use MapStruct:</p>
 
@@ -273,9 +273,26 @@ dependencies {
 </code></pre>
 </p>
 
-<h2 id="ant">Ant</h2>
+<p>You can find a complete example in the <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-on-gradle">mapstruct-examples</a> project on GitHub.</p>
 
-<p>tbd.</p>
+<h2 id="apache-ant">Apache Ant</h2>
+
+<p>Add the <code>javac</code> task configured as follows to your <em>build.xml</em> file in order to enable MapStruct in your Ant-based project. Adjust the paths as required for your project layout.</p>
+
+<pre class="prettyprint linenums lang-xml">
+...
+&lt;javac
+    srcdir=&#34;src/main/java&#34;
+    destdir=&#34;target/classes&#34;
+    classpath=&#34;path/to/mapstruct-jdk8-1.1.0.Final.jar&#34;&gt;
+    &lt;compilerarg line=&#34;-processorpath path/to/mapstruct-processor-1.1.0.Final.jar&#34;/&gt;
+    &lt;compilerarg line=&#34;-s target/generated-sources&#34;/&gt;
+&lt;/javac&gt;
+...
+</code></pre>
+
+
+<p>You can find a complete example in the <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-on-ant">mapstruct-examples</a> project on GitHub.</p>
 </div>
 
         </div>
