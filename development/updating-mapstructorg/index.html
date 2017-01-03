@@ -234,7 +234,8 @@ brew update &amp;&amp; brew install hugo
 </code></pre>
 
 
-<p>Then check out the web site&rsquo;s source code and assign the name &ldquo;upstream&rdquo; to the remote repository by running:</p>
+<p>Make sure that you are using Git 2.5 or later due the worktree feature used for publication (see below).
+Check out the web site&rsquo;s source code and assign the name &ldquo;upstream&rdquo; to the remote repository by running:</p>
 
 <pre class="prettyprint linenums lang-">
 git clone git@github.com:mapstruct/mapstruct.org.git
@@ -297,7 +298,7 @@ And then the remainder of the post.
 
 <p>To make publication as smooth as possible, the script <em>scripts/publish.sh</em> is taking care of the regeneration. It removes any existing contents from <em>public</em>, calls <code>hugo</code> and afterwards removes some generated files which are not needed.</p>
 
-<p>For synchronizing <em>public</em> with the local &ldquo;gh-pages&rdquo; branch the script clones the repo into <em>public</em>, commits the generated files into the &ldquo;gh-pages&rdquo; branch of that clone and pushes it back to the &ldquo;gh-pages&rdquo; branch of the local repo. You then only need to push that branch to upstream.</p>
+<p>For synchronizing <em>public</em> with the local &ldquo;gh-pages&rdquo; branch the script creates a git worktree with the &ldquo;gh-pages&rdquo; branch in <em>public</em> and commits the generated files into the &ldquo;gh-pages&rdquo; branch. You then only need to push that branch to upstream.</p>
 
 <p>A typical editing process will look like this (assuming you start on the master directory):</p>
 
