@@ -141,11 +141,11 @@ a:hover.uk-navbar-brand {
     font-size: 13px;
 }
 
-.uk-article.article-compact + .uk-article.article-compact {
+.uk-article.ms-article-compact + .uk-article.ms-article-compact {
     margin-top: 0px;
 }
 
-.uk-article.article-compact > .uk-h3 {
+.uk-article.ms-article-compact > .uk-h3 {
     margin: 0 0 5px;
 }
 
