@@ -18,12 +18,12 @@ If your work with a Maven project, then make sure you have the latest version of
 
 For best results, add the following to the `pom.xml`:
 
-```xml
+{{< prettify >}}
 <properties>
   <!-- automatically run annotation processors within the incremental compilation -->
   <m2e.apt.activation>jdt_apt</m2e.apt.activation>
 </properties>
-```
+{{< /prettify >}}
 
 ### Editing Support
 
@@ -32,20 +32,21 @@ For Eclipse, we are also working on a Plugin that adds *Code Completion* (e.g. f
 #### Completion for Properties and Enum Constants
 
 <div style="text-align:center">
-    <img src="/images/eclipse/still-completion-1.png" alt="Code completion for properties and enum constants" style="padding-bottom: 3px;"/>
+    <img src="/images/eclipse/still-completion-1.png" alt="Code completion for properties and enum constants"/>
 </div>
 
 #### Quick Fix to Ignore an Unmapped Property
 
 <div style="text-align:center">
-    <img src="/images/eclipse/still-quickfix-1.png" alt="Quick Fix to ignore an unmapped property" style="padding-bottom: 3px;"/>
+    <img src="/images/eclipse/still-quickfix-1.png" alt="Quick Fix to ignore an unmapped property"/>
 </div>
 
 #### Installation
 
-Drag into your running Eclipse workspace: 
-<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2844337" class="drag" title="Drag to your running Eclipse workspace."><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace." /></a> - or search for the MapStruct Eclipse Plugin within the Eclipse Marketplace client.
+Drag the following icon into your running Eclipse workspace:
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2844337" class="drag" title="Drag to your running Eclipse workspace."><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace." /></a>.
 
+Alternatively, you can obtain the MapStruct Eclipse Plugin from the [Eclipse Marketplace](https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin).
 For more information and for installing the latest Snapshot version, visit the [plugins GitHub project](https://github.com/mapstruct/mapstruct-eclipse).
 
 ## IntelliJ IDEA
