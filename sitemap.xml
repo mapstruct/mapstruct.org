@@ -2,8 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://mapstruct.org/</loc>
-    <lastmod>2017-01-02T00:00:00+00:00</lastmod>
+    <loc>http://mapstruct.org/development/contributing/</loc>
+    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/documentation/installation/</loc>
+    <lastmod>2016-12-31T13:23:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/community/getting-help/</loc>
+    <lastmod>2016-12-31T13:22:16+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/documentation/reference-guide/</loc>
+    <lastmod>2016-12-31T13:23:09+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/community/other-resources/</loc>
+    <lastmod>2016-12-31T13:22:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/team/</loc>
+    <lastmod>2016-02-14T16:11:58+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/technical-documentation/</loc>
+    <lastmod>2016-12-31T13:23:50+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/debugging/</loc>
+    <lastmod>2016-12-31T13:23:56+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/updating-mapstructorg/</loc>
+    <lastmod>2016-02-14T16:11:58+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/ide-build/</loc>
+    <lastmod>2016-12-31T13:24:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/development/license/</loc>
+    <lastmod>2016-12-31T13:24:06+01:00</lastmod>
   </url>
   
   <url>
@@ -97,58 +147,80 @@
   </url>
   
   <url>
-    <loc>http://mapstruct.org/development/contributing/</loc>
-    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
+    <loc>http://mapstruct.org/tags/build/</loc>
+    <lastmod>2013-07-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/documentation/installation/</loc>
-    <lastmod>2016-12-31T13:23:04+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/community/getting-help/</loc>
+    <loc>http://mapstruct.org/community/</loc>
     <lastmod>2016-12-31T13:22:16+01:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/documentation/reference-guide/</loc>
-    <lastmod>2016-12-31T13:23:09+01:00</lastmod>
+    <loc>http://mapstruct.org/development/</loc>
+    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/community/other-resources/</loc>
-    <lastmod>2016-12-31T13:22:54+01:00</lastmod>
+    <loc>http://mapstruct.org/documentation/</loc>
+    <lastmod>2016-12-31T13:23:04+01:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/development/team/</loc>
-    <lastmod>2016-02-14T16:11:58+05:30</lastmod>
+    <loc>http://mapstruct.org/tags/feedback/</loc>
+    <lastmod>2013-06-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/development/technical-documentation/</loc>
-    <lastmod>2016-12-31T13:23:50+01:00</lastmod>
+    <loc>http://mapstruct.org/tags/gradle/</loc>
+    <lastmod>2013-07-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/development/debugging/</loc>
-    <lastmod>2016-12-31T13:23:56+01:00</lastmod>
+    <loc>http://mapstruct.org/tags/how-to/</loc>
+    <lastmod>2013-07-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/development/updating-mapstructorg/</loc>
-    <lastmod>2016-02-14T16:11:58+05:30</lastmod>
+    <loc>http://mapstruct.org/</loc>
+    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/development/ide-build/</loc>
-    <lastmod>2016-12-31T13:24:00+01:00</lastmod>
+    <loc>http://mapstruct.org/tags/news/</loc>
+    <lastmod>2016-11-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/development/license/</loc>
-    <lastmod>2016-12-31T13:24:06+01:00</lastmod>
+    <loc>http://mapstruct.org/news/</loc>
+    <lastmod>2017-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/release/</loc>
+    <lastmod>2016-11-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/web-site/</loc>
+    <lastmod>2017-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

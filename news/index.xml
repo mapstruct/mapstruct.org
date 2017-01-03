@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>News-rss on MapStruct</title>
+    <title>News on MapStruct</title>
     <link>http://mapstruct.org/news/index.xml</link>
-    <description>Recent content in News-rss on MapStruct</description>
+    <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 02 Jan 2017 00:00:00 +0000</lastBuildDate>
