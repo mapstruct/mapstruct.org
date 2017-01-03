@@ -306,11 +306,10 @@ And then the remainder of the post.
 # update local branches
 git fetch upstream
 git merge upstream/master
-git checkout gh-pages &amp;&amp; git merge upstream/gh-pages &amp;&amp; git checkout master
 
 # do your changes...
 
-# commit, re-generate and update gh-pages
+# commit; then re-generate and update gh-pages
 git commit -a -m &#34;Some website change&#34;
 ./scripts/publish.sh
 
