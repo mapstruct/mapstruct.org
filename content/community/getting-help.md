@@ -12,7 +12,7 @@ aliases = [
 parent = "Community"
 +++
 
-You'are using MapStruct and ran into a problem?
+You are using MapStruct and ran into a problem?
 
 First check out the [reference guide](/documentation). If that doesn't help answering your question you may join the MapStruct [Google group](https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users) or hop by the MapStruct [Gitter room](https://gitter.im/mapstruct/mapstruct-users). We also monitor the [mapstruct](http://stackoverflow.com/questions/tagged/mapstruct) tag on StackOverflow.
 
