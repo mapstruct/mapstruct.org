@@ -41,7 +41,6 @@ h1.uk-article-title {
 
 @media (max-width: 768px) {
     .ms-aside {
-        border-bottom: 1px solid #ddd;
         padding-bottom: 15px;
     }
 

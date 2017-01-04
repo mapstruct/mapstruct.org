@@ -134,7 +134,7 @@ ga('send', 'pageview');
 
 <pre class="prettyprint linenums lang-">
 brew update &amp;&amp; brew install hugo
-</code></pre>
+</pre>
 
 
 <p>Make sure that you are using Git 2.5 or later due the worktree feature used for publication (see below).
@@ -143,14 +143,14 @@ Check out the web site&rsquo;s source code and assign the name &ldquo;upstream&r
 <pre class="prettyprint linenums lang-">
 git clone git@github.com:mapstruct/mapstruct.org.git
 git remote rename origin upstream
-</code></pre>
+</pre>
 
 
 <p>Set up a tracking branch for the &ldquo;gh-pages&rdquo; branch:</p>
 
 <pre class="prettyprint linenums lang-">
 git fetch upstream &amp;&amp; git branch --track gh-pages upstream/gh-pages
-</code></pre>
+</pre>
 
 
 <h2 id="local-preview">Local preview</h2>
@@ -159,7 +159,7 @@ git fetch upstream &amp;&amp; git branch --track gh-pages upstream/gh-pages
 
 <pre class="prettyprint linenums lang-">
 hugo server --buildDrafts
-</code></pre>
+</pre>
 
 
 <p>The server injects some magic JavaScript which enables auto-reload of rendered pages in the browser as the source files are edited.</p>
@@ -174,7 +174,7 @@ title: &#34;My blog post&#34;
 draft: true
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-</code></pre>
+</pre>
 
 
 <p>For news posts a short summary is shown on the home page and the news landing page. Add the &ldquo;more&rdquo; comment to your posts after the part of the post that should be shown in the summary, e.g. an introductory first paragraph:</p>
@@ -188,7 +188,7 @@ Two or three sentences as a teaser.
 &lt;!--more--&gt;
 
 And then the remainder of the post.
-</code></pre>
+</pre>
 
 
 <h2 id="adding-an-entry-to-the-team-page">Adding an entry to the team page</h2>
@@ -219,7 +219,7 @@ git commit -a -m &#34;Some website change&#34;
 # deploy
 git push upstream gh-pages
 git push upstream master
-</code></pre>
+</pre>
 
 </div>
 
