@@ -110,8 +110,17 @@ ga('send', 'pageview');
         </div>
         <div class="uk-width-medium-3-4 ms-main">
             
-    <h1>Debugging</h1>
-    <div><p>The most straight-forward way to debug the MapStruct annotation processor is to use your IDE and debug one of the JUnit tests in the processor module. The processor is then executed with the same JDK that you use the run the tests with.</p>
+<div>
+    <div class="uk-flex uk-flex-space-between">
+        <div>
+            <h1>Debugging</h1>
+        </div>
+        <div class="uk-hidden-small uk-float-right ms-edit-on-github">
+            <a href="https://github.com/mapstruct/mapstruct.org/tree/master/content/development%5cdebugging.md" title="Open the source of this page on GitHub" target="_blank">Edit on GitHub</a>
+        </div>
+    </div>
+</div>
+<div><p>The most straight-forward way to debug the MapStruct annotation processor is to use your IDE and debug one of the JUnit tests in the processor module. The processor is then executed with the same JDK that you use the run the tests with.</p>
 
 <p>But there are subtle differences in the way different compilers implement the annotation processor API, so you might come to a point where you need to debug a specific problem with a certain compiler. The MapStruct integration tests run different smaller Maven projects with different compilers, by using compiler implementations pulled in as dependencies to the maven-compiler-plugin, and by <a href="http://maven.apache.org/guides/mini/guide-using-toolchains.html">Maven Toolchains</a> (see <a href="https://github.com/mapstruct/mapstruct/blob/master/etc/toolchains-example.xml">etc/toolchains-example.xml</a> for a template to modify and put into your local <code>~/.m2</code> directory).</p>
 

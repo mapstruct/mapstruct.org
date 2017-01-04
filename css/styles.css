@@ -41,6 +41,7 @@ h1.uk-article-title {
 
 @media (max-width: 768px) {
     .ms-aside {
+        border-bottom: 1px solid #ddd;
         padding-bottom: 15px;
     }
 
@@ -195,4 +196,11 @@ a:hover.ms-link-footer {
 
 em {
     color: #444;
+}
+
+.ms-edit-on-github {
+    padding-top: 5px;
+    padding-left: 20px;
+    font-size: 13px;
+    white-space: nowrap;
 }
