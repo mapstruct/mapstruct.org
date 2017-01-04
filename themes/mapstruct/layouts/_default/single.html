@@ -5,7 +5,7 @@
             <h1>{{ .Title }}</h1>
         </div>
         <div class="uk-hidden-small uk-float-right ms-edit-on-github">
-            <a href="{{ .Site.Params.contentSourceUrl }}{{ .File.Path }}" title="Open the source of this page on GitHub" target="_blank">Edit on GitHub</a>
+            <a href="{{ .Site.Params.contentSourceUrl }}{{ replace .File.Path "\\" "/" }}" title="Open the source of this page on GitHub" target="_blank">Edit on GitHub</a>
         </div>
     </div>
 </div>
