@@ -11,7 +11,11 @@ parent = "Community"
 
 ## Blog posts
 
-* [Bean Mapping mit MapStruct](http://javabarista.blogspot.de/2015/04/bean-mapping-mit-mapstruct.html); Introduction to MapStruct (German);
+* [MapStruct: Transferring data from one bean to another](https://www.javacodegeeks.com/2016/12/mapstruct-transferring-data-one-bean-another.html)
+* [Quick Guide to MapStruct](http://www.baeldung.com/mapstruct)
+* [Object mapping magic with MapStruct](https://amsterdam.luminis.eu/2016/05/31/object-mapping-magic-with-mapstruct/)
+* [Bean Mapping mit MapStruct](http://javabarista.blogspot.de/2015/04/bean-mapping-mit-mapstruct.html); Introduction to MapStruct (German)
+* [Mapping Dozer vs MapStruct](http://mariusz.wyszomierski.pl/en/mapping-dozer-vs-mapstruct/)
 * [mapstruct - Java bean mappings](http://tux2323.blogspot.de/2014/03/mapstruct-java-bean-mappings.html); First 3rd party post on MapStruct ever :)
 * [MapStruct](https://samerabdelkafi.wordpress.com/2015/10/18/mapstruct/); Introductory post on MapStruct with code examples
 * [Don’t get lost, take the map! – DTO survival code](http://blog.goyello.com/2015/08/11/take-the-map-dto-survival-code/); DTO mapping with MapStruct
