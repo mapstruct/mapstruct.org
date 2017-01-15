@@ -12,7 +12,7 @@ weight = 500
 
 Unlike most other bean mapping tools, MapStruct doesn't work at runtime but is a compile-time code generator.
 
-Generating mapping code at build time as many advantages:
+Generating mapping code at build time has many advantages:
 
 * Early feedback about erroneous or incomplete mappings, in command line builds as well as within your IDE
 * Excellent performance, as no reflection or byte code generation at runtime is needed;
