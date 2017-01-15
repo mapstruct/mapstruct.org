@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Frequently Asked Questions (FAQ) &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-41136939-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    </head>
+
+    <body>
+        
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-navbar-brand" href="/">MapStruct</a>
+            
+            <ul class="uk-navbar-nav">
+                <li >
+                
+                        <a href="/news/">News</a>
+                    
+                </li>
+            
+                <li >
+                
+                            <a href="/documentation/installation/">Documentation</a>
+                        
+                </li>
+            
+                <li >
+                
+                            <a href="/community/getting-help/">Community</a>
+                        
+                </li>
+            
+                <li >
+                
+                            <a href="/development/contributing/">Development</a>
+                        
+                </li>
+            
+                <li >
+                
+                        <a href="/faq/">FAQ</a>
+                    
+                </li>
+            
+            </ul>
+        </nav>
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+<ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">FAQ</li>
+</ul>
+
+
+
+    <ul class="uk-nav uk-nav-sub">
+    
+        <li>
+            <a href="#how-is-mapstruct-different-from-other-bean-mapping-tools">
+                How is MapStruct different from other bean mapping tools?
+            </a>
+        </li>
+    
+        <li>
+            <a href="#can-i-use-mapstruct-within-eclipse">
+                Can I use MapStruct within Eclipse?
+            </a>
+        </li>
+    
+        <li>
+            <a href="#can-i-use-mapstruct-together-with-project-lombok">
+                Can I use MapStruct together with Project Lombok?
+            </a>
+        </li>
+    
+    </ul>
+
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<div>
+    <div class="uk-flex uk-flex-space-between">
+        <div>
+            <h1>Frequently Asked Questions (FAQ)</h1>
+        </div>
+        <div class="uk-hidden-small uk-float-right ms-edit-on-github">
+            <a href="https://github.com/mapstruct/mapstruct.org/tree/master/content/faq/_index.md" title="Open the source of this page on GitHub" target="_blank"><i class="fa fa-github"></i> Edit on GitHub</a>
+        </div>
+    </div>
+</div>
+<div>
+<h2 id="how-is-mapstruct-different-from-other-bean-mapping-tools">
+  How is MapStruct different from other bean mapping tools?
+</h2>
+<div>
+  <p>Unlike most other bean mapping tools, MapStruct doesn&rsquo;t work at runtime but is a compile-time code generator.</p>
+
+<p>Generating mapping code at build time as many advantages:</p>
+
+<ul>
+<li>Early feedback about erroneous or incomplete mappings, in command line builds as well as within your IDE</li>
+<li>Excellent performance, as no reflection or byte code generation at runtime is needed;
+the generated code contains plain method invocations, just as if the mapper was hand-written</li>
+<li>No runtime dependencies, making MapStruct a great solution for Android applications</li>
+<li>The generated code is easy to understand (and debug, if ever needed)</li>
+<li>The optional <a href="http://mapstruct.org/documentation/ide-support/#eclipse">Eclipse plug-in</a> assists you when writing mappings, e.g. by auto-completion</li>
+</ul>
+
+</div>
+
+
+<p><h2 id="can-i-use-mapstruct-within-eclipse">
+  Can I use MapStruct within Eclipse?
+</h2>
+<div>
+  <p>Yes.</p>
+
+<p>Check out the <a href="http://mapstruct.org/documentation/ide-support/#eclipse">set-up instructions</a> for Eclipse.
+There is also a work-in-progress <a href="https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin#group-metrics-tab">Eclipse plug-in</a>
+which facilitates the definition of mapper interfaces with auto-completion and some quick fixes.</p>
+
+</div>
+</p>
+
+<p><h2 id="can-i-use-mapstruct-together-with-project-lombok">
+  Can I use MapStruct together with Project Lombok?
+</h2>
+<div>
+  <p>Yes, but currently not within a single compilation unit.</p>
+
+<p><a href="https://projectlombok.org/">Project Lombok</a> is an annotation processor that (amongst other things) adds getters and setters to the AST (abstract syntax tree) of   compiled bean classes.
+But AST modifications are not foreseen by Java annotation processing API, so other processors such as MapStruct are not aware of the getters/setters added by Lombok.
+Therefore these bean properties will not be considered in the mapping code generated by MapStruct.</p>
+
+<p>The solution is to put the JavaBeans to be amended by Lombok and the mapper interfaces
+to be processed by MapStruct into two separate modules of your project.
+Then Lombok will run in the compilation of the first module, causing the bean classes to be complete when MapStruct runs during the compilation of the second module.</p>
+
+<p>A complete example can be found <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-lombok">here</a>.</p>
+
+<p>Efforts are underway to allow the usage of MapStruct and Lombok within a single compilation unit, too.
+Refer to issue <a href="https://github.com/mapstruct/mapstruct/issues/510">#510</a> for the details.</p>
+
+</div>
+</p>
+
+</div>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://groups.google.com/forum/#!forum/mapstruct-users">Google Group</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © Gunnar Morling 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+
