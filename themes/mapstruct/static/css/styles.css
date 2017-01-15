@@ -61,12 +61,12 @@ h1.uk-article-title {
     }
 }
 
-@media (min-width: 650px) {
+@media (min-width: 600px) {
   .ms-visible-small {
     display: none !important;
   }
 }
-@media (max-width: 649px) {
+@media (max-width: 599px) {
   .ms-hidden-small {
     display: none !important;
   }
