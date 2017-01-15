@@ -4,7 +4,7 @@
         {{ $currentPage := . -}}
         {{- range .Site.Menus.main -}}
             {{- if .HasChildren -}}
-                {{- if or ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.Title .Name) }}
+                {{- if or ($currentPage.HasMenuCurrent "main" .) (eq $currentPage.LinkTitle .Name) }}
             <li class="uk-nav-header">{{ .Name }}</li>
 
                     {{ range .Children }}
