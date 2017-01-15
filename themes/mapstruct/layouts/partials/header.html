@@ -57,20 +57,20 @@
         {{- $.Scratch.Set "active" true -}}
         {{- end -}}
     {{- end }}
-    <li {{if eq ($.Scratch.Get "active") true}}class="uk-active"{{ end }}>
+    <li{{if eq ($.Scratch.Get "active") true}} class="uk-active"{{ end }}>
     <!-- if this item has sub-items, link to first sub-item -->
     {{- if .HasChildren -}}
         {{- $currentItem := . -}}
         {{- range $index, $elmt := .Children -}}
-            {{- if not $index }}
+            {{- if not $index -}}
                 <a href="{{$elmt.URL}}">{{ $currentItem.Name }}</a>
-            {{ end -}}
+            {{- end -}}
         {{- end -}}
     {{- else -}}
-        {{- if ne .Name "Index" }}
+        {{- if ne .Name "Index" -}}
             <a href="{{.URL}}">{{ .Name }}</a>
-        {{ end -}}
+        {{- end -}}
     {{- end }}
     </li>
-{{ end }}
+{{ end -}}
 {{end}}
