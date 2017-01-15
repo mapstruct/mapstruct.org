@@ -19,45 +19,58 @@
     </head>
 
     <body>
-        {{/* main menu */}}
         <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
-            <a class="uk-navbar-brand ms-navbar-brand" href="/">MapStruct</a>
-            {{ $currentPage := . }}
-            <ul class="uk-navbar-nav">
-            {{- range .Site.Menus.main -}}
-                {{- $.Scratch.Set "active" false -}}
-
-                <!-- regular page> -->
-                {{- if $currentPage.HasMenuCurrent "main" . -}}
-                    {{- $.Scratch.Set "active" true -}}
-                {{- end -}}
-
-                <!-- section page (which apparently has no menu) -->
-                {{- if eq $currentPage.LinkTitle .Name -}}
-                    {{- $.Scratch.Set "active" true -}}
-                {{- end -}}
-
-                <!-- a single news post; they don't have a menu -->
-                {{- if eq $currentPage.IsNode false -}}
-                    {{- if and ( eq "News" .Name ) ( in $currentPage.Path "news" ) -}}
-                    {{- $.Scratch.Set "active" true -}}
-                    {{- end -}}
-                {{- end }}
-                <li {{if eq ($.Scratch.Get "active") true}}class="uk-active"{{ end }}>
-                <!-- if this item has sub-items, link to first sub-item -->
-                {{- if .HasChildren -}}
-                    {{- $currentItem := . -}}
-                    {{- range $index, $elmt := .Children -}}
-                        {{- if not $index }}
-                            <a href="{{$elmt.URL}}">{{ $currentItem.Name }}</a>
-                        {{ end -}}
-                    {{- end -}}
-                {{- else -}}
-                    {{- if ne .Name "Index" }}
-                        <a href="{{.URL}}">{{ .Name }}</a>
-                    {{ end -}}
-                {{- end }}
-                </li>
-            {{ end }}
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            {{template "main-menu-items" . }}
             </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
         </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                {{template "main-menu-items" . }}
+                </ul>
+            </div>
+        </div>
+
+{{define "main-menu-items"}}
+{{ $currentPage := . }}
+{{- range .Site.Menus.main -}}
+    {{- $.Scratch.Set "active" false -}}
+
+    <!-- regular page> -->
+    {{- if $currentPage.HasMenuCurrent "main" . -}}
+        {{- $.Scratch.Set "active" true -}}
+    {{- end -}}
+
+    <!-- section page (which apparently has no menu) -->
+    {{- if eq $currentPage.LinkTitle .Name -}}
+        {{- $.Scratch.Set "active" true -}}
+    {{- end -}}
+
+    <!-- a single news post; they don't have a menu -->
+    {{- if eq $currentPage.IsNode false -}}
+        {{- if and ( eq "News" .Name ) ( in $currentPage.Path "news" ) -}}
+        {{- $.Scratch.Set "active" true -}}
+        {{- end -}}
+    {{- end }}
+    <li {{if eq ($.Scratch.Get "active") true}}class="uk-active"{{ end }}>
+    <!-- if this item has sub-items, link to first sub-item -->
+    {{- if .HasChildren -}}
+        {{- $currentItem := . -}}
+        {{- range $index, $elmt := .Children -}}
+            {{- if not $index }}
+                <a href="{{$elmt.URL}}">{{ $currentItem.Name }}</a>
+            {{ end -}}
+        {{- end -}}
+    {{- else -}}
+        {{- if ne .Name "Index" }}
+            <a href="{{.URL}}">{{ .Name }}</a>
+        {{ end -}}
+    {{- end }}
+    </li>
+{{ end }}
+{{end}}
