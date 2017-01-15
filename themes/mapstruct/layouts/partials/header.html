@@ -33,7 +33,7 @@
                 {{- end -}}
 
                 <!-- section page (which apparently has no menu) -->
-                {{- if eq $currentPage.Title .Name -}}
+                {{- if eq $currentPage.LinkTitle .Name -}}
                     {{- $.Scratch.Set "active" true -}}
                 {{- end -}}
 
