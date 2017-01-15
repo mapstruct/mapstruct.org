@@ -39,7 +39,7 @@ h1.uk-article-title {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .ms-aside {
         padding-bottom: 15px;
     }
@@ -59,6 +59,17 @@ h1.uk-article-title {
     .ms-hero-logo-container {
         height: 80px;
     }
+}
+
+@media (min-width: 650px) {
+  .ms-visible-small {
+    display: none !important;
+  }
+}
+@media (max-width: 649px) {
+  .ms-hidden-small {
+    display: none !important;
+  }
 }
 
 .ms-hero-logo-container img {
