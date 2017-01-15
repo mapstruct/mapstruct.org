@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div>
+    <div class="uk-flex uk-flex-space-between">
+        <div>
+            <h1>{{ .Title }}</h1>
+        </div>
+        <div class="uk-hidden-small uk-float-right ms-edit-on-github">
+            {{ partial "edit_on_github.html" . }}
+        </div>
+    </div>
+</div>
+<div>
+{{ .Content }}
+</div>
+{{ end }}
+
+{{ define "aside" }}
+{{ partial "faq_toc.html" . }}
+{{ end }}

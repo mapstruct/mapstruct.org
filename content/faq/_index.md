@@ -3,12 +3,9 @@ date = "2016-12-31T13:23:04+01:00"
 draft = false
 title = "Frequently Asked Questions (FAQ)"
 linkTitle = "FAQ"
-weight = 400
-type = "faq"
-teaser = "Frequently asked questions (FAQ)"
+weight = 500
 [menu]
 [menu.main]
-parent = "Documentation"
 +++
 
 {{% faq_question "How is MapStruct different from other bean mapping tools?" %}}

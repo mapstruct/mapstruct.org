@@ -1,0 +1,16 @@
+<ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">FAQ</li>
+</ul>
+{{ $headers := findRE "<h2.*?>(.|\n)*?</h2>" .Content }}
+
+{{ if ge (len $headers) 1 }}
+    <ul class="uk-nav uk-nav-sub">
+    {{ range $headers }}
+        <li>
+            <a href="#{{ . | plainify | urlize }}">
+                {{ . | plainify }}
+            </a>
+        </li>
+    {{ end }}
+    </ul>
+{{ end }}
