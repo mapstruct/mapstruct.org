@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>License &ndash; MapStruct</title>
+        <title>Frequently Asked Questions (FAQ) &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -40,7 +40,7 @@ ga('send', 'pageview');
                     
                 </li>
             
-                <li >
+                <li class="uk-active">
                 
                             <a href="/documentation/installation/">Documentation</a>
                         
@@ -52,7 +52,7 @@ ga('send', 'pageview');
                         
                 </li>
             
-                <li class="uk-active">
+                <li >
                 
                             <a href="/development/contributing/">Development</a>
                         
@@ -70,35 +70,27 @@ ga('send', 'pageview');
     <div id="sidebar">
         <ul class="uk-nav uk-nav-side">
         
-            <li class="uk-nav-header">Development</li>
+            <li class="uk-nav-header">Documentation</li>
 
                     
             <li>
-                <a href="/development/contributing/"> Contributing </a>
+                <a href="/documentation/installation/"> Installation </a>
             </li>
                     
             <li>
-                <a href="/development/team/"> Team </a>
+                <a href="/documentation/reference-guide/"> Reference Guide </a>
             </li>
                     
             <li>
-                <a href="/development/technical-documentation/"> Technical Documentation </a>
-            </li>
-                    
-            <li>
-                <a href="/development/debugging/"> Debugging </a>
-            </li>
-                    
-            <li>
-                <a href="/development/updating-mapstructorg/"> Updating mapstruct.org </a>
-            </li>
-                    
-            <li>
-                <a href="/development/ide-setup/"> IDE Set-Up </a>
+                <a href="/documentation/ide-support/"> IDE Support </a>
             </li>
                     
             <li class="uk-active">
-                <a href="/development/license/"> License </a>
+                <a href="/documentation/faq/"> FAQ </a>
+            </li>
+                    
+            <li>
+                <a href="https://github.com/mapstruct/mapstruct-examples"> Examples <i class='fa fa-external-link'></i></a>
             </li>
                     
         </ul>
@@ -113,14 +105,96 @@ ga('send', 'pageview');
 <div>
     <div class="uk-flex uk-flex-space-between">
         <div>
-            <h1>License</h1>
+            <h1>Frequently Asked Questions (FAQ)</h1>
         </div>
         <div class="uk-hidden-small uk-float-right ms-edit-on-github">
-            <a href="https://github.com/mapstruct/mapstruct.org/tree/master/content/development/license.md" title="Open the source of this page on GitHub" target="_blank"><i class="fa fa-github"></i> Edit on GitHub</a>
+            <a href="https://github.com/mapstruct/mapstruct.org/tree/master/content/documentation/faq.md" title="Open the source of this page on GitHub" target="_blank"><i class="fa fa-github"></i> Edit on GitHub</a>
         </div>
     </div>
 </div>
-<div><p>MapStruct is distributed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>. By submitting a pull request you agree to license your work under that license and you affirm that your contribution doesn&rsquo;t violate any rights of other parties.</p>
+<div>
+  
+
+  
+      <ul>
+      
+          <li>
+              <a href="#how-is-mapstruct-different-from-other-bean-mapping-tools">
+                  How is MapStruct different from other bean mapping tools? 
+              </a>
+          </li>
+      
+          <li>
+              <a href="#can-i-use-mapstruct-within-eclipse">
+                  Can I use MapStruct within Eclipse? 
+              </a>
+          </li>
+      
+          <li>
+              <a href="#can-i-use-mapstruct-together-with-project-lombok">
+                  Can I use MapStruct together with Project Lombok? 
+              </a>
+          </li>
+      
+    </ul>
+  
+</div>
+<div>
+  <h2 id="how-is-mapstruct-different-from-other-bean-mapping-tools">
+  How is MapStruct different from other bean mapping tools?
+</h2>
+<div>
+  <p>Unlike most other bean mapping tools, MapStruct doesn&rsquo;t work at runtime but is a compile-time code generator.</p>
+
+<p>Generating mapping code at build time as many advantages:</p>
+
+<ul>
+<li>Early feedback about erroneous or incomplete mappings, in command line builds as well as within your IDE</li>
+<li>Excellent performance, as no reflection or byte code generation at runtime is needed;
+the generated code contains plain method invocations, just as if the mapper was hand-written</li>
+<li>No runtime dependencies, making MapStruct a great solution for Android applications</li>
+<li>The generated code is easy to understand (and debug, if ever needed)</li>
+<li>The optional <a href="http://mapstruct.org/documentation/ide-support/#eclipse">Eclipse plug-in</a> assists you when writing mappings, e.g. by auto-completion</li>
+</ul>
+
+</div>
+
+
+<p><h2 id="can-i-use-mapstruct-within-eclipse">
+  Can I use MapStruct within Eclipse?
+</h2>
+<div>
+  <p>Yes.</p>
+
+<p>Check out the <a href="http://mapstruct.org/documentation/ide-support/#eclipse">set-up instructions</a> for Eclipse.
+There is also a work-in-progress <a href="https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin#group-metrics-tab">Eclipse plug-in</a>
+which facilitates the definition of mapper interfaces with auto-completion and some quick fixes.</p>
+
+</div>
+</p>
+
+<p><h2 id="can-i-use-mapstruct-together-with-project-lombok">
+  Can I use MapStruct together with Project Lombok?
+</h2>
+<div>
+  <p>Yes, but currently not within a single compilation unit.</p>
+
+<p><a href="https://projectlombok.org/">Project Lombok</a> is an annotation processor that (amongst other things) adds getters and setters to the AST (abstract syntax tree) of   compiled bean classes.
+But AST modifications are not foreseen by Java annotation processing API, so other processors such as MapStruct are not aware of the getters/setters added by Lombok.
+Therefore these bean properties will not be considered in the mapping code generated by MapStruct.</p>
+
+<p>The solution is to put the JavaBeans to be amended by Lombok and the mapper interfaces
+to be processed by MapStruct into two separate modules of your project.
+Then Lombok will run in the compilation of the first module, causing the bean classes to be complete when MapStruct runs during the compilation of the second module.</p>
+
+<p>A complete example can be found <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-lombok">here</a>.</p>
+
+<p>Efforts are underway to allow the usage of MapStruct and Lombok within a single compilation unit, too.
+Refer to issue <a href="https://github.com/mapstruct/mapstruct/issues/510">#510</a> for the details.</p>
+
+</div>
+</p>
+
 </div>
 
         </div>

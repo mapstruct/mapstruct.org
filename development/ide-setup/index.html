@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>License &ndash; MapStruct</title>
+        <title>Building MapStruct within an IDE &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -93,11 +93,11 @@ ga('send', 'pageview');
                 <a href="/development/updating-mapstructorg/"> Updating mapstruct.org </a>
             </li>
                     
-            <li>
+            <li class="uk-active">
                 <a href="/development/ide-setup/"> IDE Set-Up </a>
             </li>
                     
-            <li class="uk-active">
+            <li>
                 <a href="/development/license/"> License </a>
             </li>
                     
@@ -113,14 +113,32 @@ ga('send', 'pageview');
 <div>
     <div class="uk-flex uk-flex-space-between">
         <div>
-            <h1>License</h1>
+            <h1>Building MapStruct within an IDE</h1>
         </div>
         <div class="uk-hidden-small uk-float-right ms-edit-on-github">
-            <a href="https://github.com/mapstruct/mapstruct.org/tree/master/content/development/license.md" title="Open the source of this page on GitHub" target="_blank"><i class="fa fa-github"></i> Edit on GitHub</a>
+            <a href="https://github.com/mapstruct/mapstruct.org/tree/master/content/development/ide-setup.md" title="Open the source of this page on GitHub" target="_blank"><i class="fa fa-github"></i> Edit on GitHub</a>
         </div>
     </div>
 </div>
-<div><p>MapStruct is distributed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>. By submitting a pull request you agree to license your work under that license and you affirm that your contribution doesn&rsquo;t violate any rights of other parties.</p>
+<div>
+
+<h2 id="intellij-idea">IntelliJ IDEA</h2>
+
+<p>After you&rsquo;ve cloned  you can import it by selecting &ldquo;File -&gt; Import Module &hellip;&rdquo; and then selecting the top level aggregator <em>pom.xml</em> file located in the root folder. IDEA then will load MapStruct, resolve all dependencies and compile the source.</p>
+
+<p>You might face an error on IDEAs Message tab saying</p>
+
+<p><img src="/images/idea-processor-error.png" style="padding-bottom: 3px;"/></p>
+
+<p>If so, open the preferences window, navigate to Compiler -&gt; Annotation processor and untick checkbox &ldquo;Enable annotation processing&rdquo; at &ldquo;Annotation profile for mapstruct-integrationtest&rdquo;.</p>
+
+<p><img src="/images/idea-annotation-conf.png" style="padding-bottom: 3px;"/></p>
+
+<p>You should now be able to rebuild MapStruct.</p>
+
+<p>For running MapStruct unit tests from IDEA open the &ldquo;Run/Debug Configurations&rdquo; preferences, expand &ldquo;Default&rdquo; on the left side and navigate to &ldquo;JUnit&rdquo;. There choose $MODULE_DIR$ as the working directory and you should now be able to run JUnit tests from IDEA.</p>
+
+<p><img src="/images/idea-unittest-conf.png" style="padding-bottom: 3px;"/></p>
 </div>
 
         </div>
