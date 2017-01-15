@@ -1,0 +1,34 @@
+{{ define "main" }}
+<div>
+    <div class="uk-flex uk-flex-space-between">
+        <div>
+            <h1>{{ .Title }}</h1>
+        </div>
+        <div class="uk-hidden-small uk-float-right ms-edit-on-github">
+            {{ partial "edit_on_github.html" . }}
+        </div>
+    </div>
+</div>
+<div>
+  {{ $headers := findRE "<h2.*?>(.|\n)*?</h2>" .Content }}
+
+  {{ if ge (len $headers) 1 }}
+      <ul>
+      {{ range $headers }}
+          <li>
+              <a href="#{{ . | plainify | urlize }}">
+                  {{ . | plainify }}
+              </a>
+          </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</div>
+<div>
+  {{ .Content }}
+</div>
+{{ end }}
+
+{{ define "aside" }}
+    {{ partial "section_menu.html" . }}
+{{ end }}

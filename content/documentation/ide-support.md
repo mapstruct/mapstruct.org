@@ -51,11 +51,11 @@ For more information and for installing the latest Snapshot version, visit the [
 
 ## IntelliJ IDEA
 
-Depending on how you configured the annotation processor in your Maven or Gradle project, IntelliJ may or may not pick it up automatically. You might need to make sure of it yourself in the project configuration. 
+Depending on how you configured the annotation processor in your Maven or Gradle project, IntelliJ may or may not pick it up automatically. You might need to make sure of it yourself in the project configuration.
 
 ### Maven Integration
 
-For example, if you use the way of Maven configuration that is proposed in our documentation using `annotationProcessorPaths` in the maven-compiler-plugin, then you need to configure IntelliJ manually until the feature request [IDEA-150621](https://youtrack.jetbrains.com/issue/IDEA-150621) is implemented. An alternative is to add the `mapstruct-processor` as a project dependency with `<optional>true</optional>` in your `pom.xml`, which should then be picked up automatically again. 
+For example, if you use the way of Maven configuration that is proposed in our documentation using `annotationProcessorPaths` in the maven-compiler-plugin, then you need to configure IntelliJ manually until the feature request [IDEA-150621](https://youtrack.jetbrains.com/issue/IDEA-150621) is implemented. An alternative is to add the `mapstruct-processor` as a project dependency with `<optional>true</optional>` in your `pom.xml`, which should then be picked up automatically again.
 
 ### Editing Support
 
