@@ -2,7 +2,7 @@
 <article class="uk-article">
     {{ partial "news_header.html" . }}
     <div>
-        {{ .Content }}
+        <div>{{ .Content | replaceRE "(<h[2-5].*?id=\")(.*?)(\".*?>)(.*?)(</h[2-5]>)" "$1$2$3<a class=\"ms-header-link\" href=\"#$2\"><i class=\"fa fa-link\"></i></a>$4$5" | safeHTML}}</div>
     </div>
     <div>
         <ul class="uk-pagination">

@@ -214,3 +214,24 @@ em {
     font-size: 13px;
     white-space: nowrap;
 }
+
+.ms-header-link {
+  color: #999;
+  font-size: 0.7em;
+  margin-left: -1.2em;
+  padding-top: 1px;
+  padding-right: 6px;
+  position: absolute;
+  opacity: 0;
+}
+
+.ms-header-link:hover {
+  color: #555;
+}
+
+h2:hover .ms-header-link,
+h3:hover .ms-header-link,
+h4:hover .ms-header-link,
+h5:hover .ms-header-link {
+  opacity: 1;
+}
