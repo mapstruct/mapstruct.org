@@ -236,3 +236,14 @@ h4:hover .ms-header-link,
 h5:hover .ms-header-link {
   opacity: 1;
 }
+
+.uk-badge {
+  background: #3d92c9 linear-gradient(to bottom, #74b0d8, #3d92c9) repeat scroll 0 0 border-box;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: -2px;
+  margin-left: 3px;
+  border-radius: 2px;
+}
