@@ -144,7 +144,7 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        
+        <div>
 
 <p>It is my great pleasure to announce the release of MapStruct 1.0.0.Alpha2.</p>
 
@@ -161,7 +161,7 @@ ga('send', 'pageview');
 
 <p>Let&rsquo;s have a closer look at some of the additions.</p>
 
-<h3 id="advanced-mapping-features">Advanced mapping features</h3>
+<h3 id="advanced-mapping-features"><a class="ms-header-link" href="#advanced-mapping-features"><i class="fa fa-link"></i></a>Advanced mapping features</h3>
 
 <p>When working with data transfer objects (DTO) to pass data from the backend to the client, it is common to have one DTO which transports the data from several entities. For this purpose MapStruct supports now mapping methods with several source methods. The following shows an example:</p>
 
@@ -203,7 +203,7 @@ public interface OrderMapper {
 
 <p>Instead of instantiating a new <code>Order</code> object, the generated implementation of <code>updateOrderEntityFromDto()</code> method will update the given order instance with the attributes from the passed <code>OrderDto</code>.</p>
 
-<h3 id="more-implicit-type-conversions">More implicit type conversions</h3>
+<h3 id="more-implicit-type-conversions"><a class="ms-header-link" href="#more-implicit-type-conversions"><i class="fa fa-link"></i></a>More implicit type conversions</h3>
 
 <p>Several new implicit type conversions have been added for the case that the source and target type of a mapped property differ. <code>BigDecimal</code> and <code>BigInteger</code> can now automatically be converted into other numeric types as well as into <code>String</code>. You can finde a list of all supported conversions in the <a href="http://localhost:4242/documentation/#section-05-01">reference documentation</a>.</p>
 
@@ -220,7 +220,7 @@ public interface OrderMapper {
 }
 </pre>
 
-<h3 id="integration-with-cdi-and-spring">Integration with CDI and Spring</h3>
+<h3 id="integration-with-cdi-and-spring"><a class="ms-header-link" href="#integration-with-cdi-and-spring"><i class="fa fa-link"></i></a>Integration with CDI and Spring</h3>
 
 <p>The recommended way for obtaining mapper instances in the 1.0.0.Alpha1 release was to use the <code>Mappers</code> factory.</p>
 
@@ -246,14 +246,14 @@ private OrderMapper orderMapper;
 
 <p>On a related note, if you prefer to work with the <code>Mappers</code> factory as before, you&rsquo;ll have to adapt your imports because this class has been moved to the new package <code>org.mapstruct.factory</code>.</p>
 
-<h3 id="further-info">Further info</h3>
+<h3 id="further-info"><a class="ms-header-link" href="#further-info"><i class="fa fa-link"></i></a>Further info</h3>
 
 <p>This concludes our tour through the new features in MapStruct 1.0.0.Alpha2. You can find the complete list of addressed issues in the <a href="https://github.com/mapstruct/mapstruct/issues?milestone=2&amp;state=closed">change log</a> on GitHub. The <a href="/documentation">reference documentation</a> has been updated to cover all new functionality.</p>
 
 <p>If you have any kind of feedback please make sure to let us know. Either post a comment here or open a discussion in the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a> and your pull request on GitHub is highly welcome! The <a href="/contributing">contribution guide</a> has all the info you need to get started with hacking on MapStruct.</p>
 
 <p>Many thanks to <a href="https://github.com/agudian">Andreas Gudian</a> and <a href="https://github.com/kryger">Lukasz Kryger</a> who contributed to this release, that&rsquo;s awesome!</p>
-
+</div>
     </div>
     <div>
         <ul class="uk-pagination">

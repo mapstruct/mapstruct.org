@@ -144,7 +144,7 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        
+        <div>
 
 <p>It&rsquo;s my great pleasure to announce the release of MapStruct 1.0.0.Beta2.</p>
 
@@ -158,7 +158,7 @@ ga('send', 'pageview');
 <li><a href="http://search.maven.org/#artifactdetails&amp;#124;org.mapstruct&amp;#124;mapstruct-processor&amp;#124;1.0.0.Beta2&amp;#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Beta2</a> for the annotation processor.</li>
 </ul>
 
-<h3 id="java-8">Java 8</h3>
+<h3 id="java-8"><a class="ms-header-link" href="#java-8"><i class="fa fa-link"></i></a>Java 8</h3>
 
 <p>MapStruct now leverages the <a href="http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html">repeating annotation</a> feature introduced with Java 8. This allows to specify several <code>@Mapping</code> annotations on one and the same method in a very concise way:</p>
 
@@ -174,7 +174,7 @@ public interface AnimalMapper {
 
 <p>To make use of this feature be sure to include the right version of the annotation JAR (<em>org.mapstruct:mapstruct-jdk8:1.0.0.Beta2</em>), as only this version allows to specify several <code>@Mapping</code> annotations without wrapping them in <code>@Mappings</code> (apart from this, both versions of the annotation JAR are exactly the same).</p>
 
-<h3 id="joda-time-support">Joda-Time support</h3>
+<h3 id="joda-time-support"><a class="ms-header-link" href="#joda-time-support"><i class="fa fa-link"></i></a>Joda-Time support</h3>
 
 <p>When using the Joda-Time API in your project you&rsquo;ll be glad to hear that MapStruct supports mappings of the Joda types now. More specifically, mappings between the following types are provided out-of-the-box:</p>
 
@@ -188,7 +188,7 @@ public interface AnimalMapper {
 
 <p>Note that for the following release <a href="https://github.com/mapstruct/mapstruct/issues/121">we plan</a> to also cover the new Java 8 time and date types which will be useful when mapping between models using the old types such as <code>java.util.Date</code> and the new ones.</p>
 
-<h3 id="constants-and-inline-java-expressions">Constants and inline Java expressions</h3>
+<h3 id="constants-and-inline-java-expressions"><a class="ms-header-link" href="#constants-and-inline-java-expressions"><i class="fa fa-link"></i></a>Constants and inline Java expressions</h3>
 
 <p>The <code>@Mapping</code> annotation has been enriched with several new useful attributes. Via <code>constant()</code> you can set an attribute in the target object of a mapping to a fixed value:</p>
 
@@ -219,7 +219,7 @@ VisitorDto visitorToVisitorDto(Visitor visitor);
 
 <p>The idea here is to translate the given EL expression at generation time into a corresponding Java fragment. This would allow to leverage the expressive power of expression languages without adding any runtime dependencies to the generated code. At this point, this is just a vague idea, so any input or help with such feature is highly welcome.</p>
 
-<h3 id="sharing-mapper-configurations">Sharing mapper configurations</h3>
+<h3 id="sharing-mapper-configurations"><a class="ms-header-link" href="#sharing-mapper-configurations"><i class="fa fa-link"></i></a>Sharing mapper configurations</h3>
 
 <p>In larger projects it can be useful to share the same configuration between several mapper classes, e.g. for the component model to be used (CDI, Spring, etc.). That&rsquo;s now possible via the <code>@MapperConfig</code> annotation. This annotation can be given on a central configuration class and defines a template for the different mapping settings:</p>
 
@@ -243,14 +243,14 @@ public class MapperConfiguration {}
 public class AnimalMapper {}
 </pre>
 
-<h3 id="what-else-is-in-it">What else is in it?</h3>
+<h3 id="what-else-is-in-it"><a class="ms-header-link" href="#what-else-is-in-it"><i class="fa fa-link"></i></a>What else is in it?</h3>
 
 <p>Other useful features in the Beta2 release include support for &ldquo;adder methods&rdquo; (see <a href="https://github.com/mapstruct/mapstruct/issues/207">issues #207</a>) and the possibility to ignore specific properties during the mapping (see <a href="https://github.com/mapstruct/mapstruct/issues/72">issue #72</a>). In addition quite a few bugs have been fixed; Check out the <a href="https://github.com/mapstruct/mapstruct/issues?milestone=4&amp;state=closed">change log</a> for a complete list of all issues.</p>
 
 <p>Your feedback is more than welcome, just add a comment below or join the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a>. If you&rsquo;d like to hack on MapStruct yourself, check out the <a href="/contributing">development guide</a>.</p>
 
 <p>Finally, I&rsquo;d like to say a massive thank you to <a href="https://github.com/sjaakd/">Sjaak Derksen</a>, <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/timoe">Timo Eckhardt</a> and <a href="https://github.com/chschu">Christian Schuster</a> who all put huge efforts into this release. You guys rock!</p>
-
+</div>
     </div>
     <div>
         <ul class="uk-pagination">

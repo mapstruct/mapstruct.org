@@ -149,11 +149,11 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        
+        <div>
 
 <p>You work with <a href="http://www.gradle.org/">Gradle</a> to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.</p>
 
-<h3 id="background">Background</h3>
+<h3 id="background"><a class="ms-header-link" href="#background"><i class="fa fa-link"></i></a>Background</h3>
 
 <p>MapStruct is implemented in form of an annotation processor as specified by <a href="http://jcp.org/en/jsr/detail?id=269">JSR 269</a>. Annotation processors are plugged into the Java compiler and can inspect the sources during compilation as well as create new sources as it is done by MapStruct. JSR 269 processors can be integrated into basically any form of Java build as long as you work with Java 6 or later.</p>
 
@@ -161,7 +161,7 @@ ga('send', 'pageview');
 
 <p>This sort of issue can be avoided by setting up the processor separately. When working with <code>javac</code> directly, the <a href="http://docs.oracle.com/javase/7/docs/technotes/tools/solaris/javac.html#options">processorpath</a> option can be used for this purpose, while for Maven projects the <a href="http://code.google.com/p/maven-annotation-plugin/">maven-annotation-plugin</a> is the recommended way to integrate annotation processors.</p>
 
-<h3 id="set-up-mapstruct-in-your-gradle-build">Set up MapStruct in your Gradle build</h3>
+<h3 id="set-up-mapstruct-in-your-gradle-build"><a class="ms-header-link" href="#set-up-mapstruct-in-your-gradle-build"><i class="fa fa-link"></i></a>Set up MapStruct in your Gradle build</h3>
 
 <p>To integrate MapStruct into a Gradle build, first make sure you use the Java 6 language level by adding the following to the <em>build.gradle</em> file of your project:</p>
 
@@ -244,7 +244,7 @@ task generateMainMapperClasses(type: JavaCompile) {
 compileJava.dependsOn generateMainMapperClasses
 </pre>
 
-<h3 id="give-it-a-shot">Give it a shot</h3>
+<h3 id="give-it-a-shot"><a class="ms-header-link" href="#give-it-a-shot"><i class="fa fa-link"></i></a>Give it a shot</h3>
 
 <p>You can find the complete <a href="https://github.com/mapstruct/mapstruct-examples/blob/master/mapstruct-on-gradle/build.gradle">build.gradle</a> file on GitHub. It is part of an example project which generates a simple mapper class and executes some tests against it. To clone the example project just execute</p>
 
@@ -261,7 +261,7 @@ cd mapstruct-on-gradle &amp;&amp; ./gradlew build
 <p>The project comes with the <a href="http://www.gradle.org/docs/current/userguide/userguide_single.html#gradle_wrapper">Gradle Wrapper</a>, a small utility which retrieves the right Gradle version upon the first build. So it is not required to install Gradle separately.</p>
 
 <p>In case you have questions, ideas or any other kind of feedback just add a comment to this post or leave a message in the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group.</p>
-
+</div>
     </div>
     <div>
         <ul class="uk-pagination">

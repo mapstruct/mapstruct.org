@@ -144,7 +144,7 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        
+        <div>
 
 <p>I&rsquo;m delighted to announce the release of MapStruct 1.0.0.Beta3.</p>
 
@@ -154,7 +154,7 @@ ga('send', 'pageview');
 
 <p>Before diving into the details, let me say a huge thank you to <a href="https://github.com/sjaakd/">Sjaak Derksen</a>, <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/timoe">Timo Eckhardt</a> and <a href="https://github.com/chschu">Christian Schuster</a>! Again you guys went far beyond what anyone could have hoped for; this release would not have been possible without you.</p>
 
-<h3 id="mapping-nested-properties">Mapping nested properties</h3>
+<h3 id="mapping-nested-properties"><a class="ms-header-link" href="#mapping-nested-properties"><i class="fa fa-link"></i></a>Mapping nested properties</h3>
 
 <p>One of the most wished-for features in MapStruct was to map attributes from nested elements of a source object (tree) into target objects. That&rsquo;s finally possible now, using simple &ldquo;dot paths&rdquo;, just as you&rsquo;d expect it:</p>
 
@@ -172,7 +172,7 @@ public interface CustomerMapper {
 
 <p>Of course you also can refer to properties nested deeper in the hierarchy, e.g. <code>address.city.name</code>. That&rsquo;s a great way to flatten and select parts of complex hierarchies e.g. for view objects returned to a client.</p>
 
-<h3 id="improved-built-in-mappings">Improved built-in mappings</h3>
+<h3 id="improved-built-in-mappings"><a class="ms-header-link" href="#improved-built-in-mappings"><i class="fa fa-link"></i></a>Improved built-in mappings</h3>
 
 <p>There is now built-in support for the Java 8 time and date types (JSR 310). That means properties of types such as <code>java.time.ZonedDateTime</code> or <code>java.time.LocalDateTime</code> will automatically be mapped to <code>String</code>s as well as the legacy date types <code>java.util.Calendar</code> and <code>java.util.Date</code>. Also <code>java.util.Calendar</code> will automatically mapped to <code>String</code> and <code>java.util.Date</code>.</p>
 
@@ -186,7 +186,7 @@ List&lt;OrderLineDto&gt; orderLinesToOrderLineDtos(Iterable&lt;OrderLine&gt; ord
 
 <p>That&rsquo;s not necessary any longer, it will now be added automatically as a private method to the generated mapper class if required.</p>
 
-<h3 id="qualifiers">Qualifiers</h3>
+<h3 id="qualifiers"><a class="ms-header-link" href="#qualifiers"><i class="fa fa-link"></i></a>Qualifiers</h3>
 
 <p>Qualifiers provide a way to resolve ambiguities in case several mapping methods are suitable to map a given bean property. E.g. let&rsquo;s assume you&rsquo;d have two methods for mapping <code>Date</code>s into <code>String</code>s in a manually implemented mapper class:</p>
 
@@ -246,7 +246,7 @@ public class OrderMapper {
 
 <p>This will make sure that the <code>dateToString()</code> method will be invoked to map the order date property. If required, you also could specify several qualifiers via <code>qualifiedBy()</code>.</p>
 
-<h3 id="migration-notes">Migration notes</h3>
+<h3 id="migration-notes"><a class="ms-header-link" href="#migration-notes"><i class="fa fa-link"></i></a>Migration notes</h3>
 
 <p>For the sake of increased consistency and better usability, we had to do some changes which may require existing applications which already use MapStruct to be adapted. Most prominently, <a href="/documentation/#section-10">reverse mapping methods</a> must now be explicitly marked as such using the new <code>@InheritInverseConfiguration</code> annotation:</p>
 
@@ -267,7 +267,7 @@ public class OrderMapper {
 
 <p>We have created a <a href="https://github.com/mapstruct/mapstruct/wiki/Migration-notes">wiki page</a> where we&rsquo;ll collect all incompatible changes for future releases. Of course we&rsquo;ll try hard to avoid this sort of changes whenever possible.</p>
 
-<h3 id="how-do-i-get-it">How do I get it?</h3>
+<h3 id="how-do-i-get-it"><a class="ms-header-link" href="#how-do-i-get-it"><i class="fa fa-link"></i></a>How do I get it?</h3>
 
 <p>You can fetch distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta3/">SourceForge</a>. Alternatively, you can obtain the dependencies from Maven Central. The GAV coordinates are:</p>
 
@@ -279,7 +279,7 @@ public class OrderMapper {
 <p>The Beta3 release is planned to be the last beta, next will be CR1 (candidate release).</p>
 
 <p>Anything you&rsquo;d like to propose for inclusion in the 1.0 Final release? Then let us know by commenting below or posting to the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a>. And if you&rsquo;d like to hack on MapStruct yourself, check out the <a href="/contributing">development guide</a>.</p>
-
+</div>
     </div>
     <div>
         <ul class="uk-pagination">

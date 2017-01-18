@@ -144,7 +144,7 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        
+        <div>
 
 <p>It is my pleasure to announce the second candidate release of MapStruct 1.0!</p>
 
@@ -160,7 +160,7 @@ ga('send', 'pageview');
 
 <p>The MapStruct team calls out a big <em>Thank you!</em> to everyone contributing to this release: <a href="https://github.com/vgt-tomek">Tomek Gubala</a>, <a href="https://github.com/bedla">Ivo Smid</a>, <a href="https://github.com/luxmeter">Mustafa Caylak</a>, and <a href="https://github.com/ggtools">Christophe Labouisse</a>!</p>
 
-<h3 id="download">Download</h3>
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
 
 <p>To fetch MapStruct 1.0.0.CR2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:</p>
 
@@ -171,7 +171,7 @@ ga('send', 'pageview');
 
 <p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.CR2/">SourceForge</a> or from <a href="https://bintray.com/mapstruct/bundles/mapstruct-dist/1.0.0.CR2/">BinTray</a>.</p>
 
-<h3 id="configure-package-and-class-name-for-the-generated-mapper-implementations">Configure package and class name for the generated mapper implementations</h3>
+<h3 id="configure-package-and-class-name-for-the-generated-mapper-implementations"><a class="ms-header-link" href="#configure-package-and-class-name-for-the-generated-mapper-implementations"><i class="fa fa-link"></i></a>Configure package and class name for the generated mapper implementations</h3>
 
 <p>By default, MapStruct generates the mapper implementation with the class name suffix &ldquo;Impl&rdquo; in the same package as the declared mapper interface or abstract class.</p>
 
@@ -196,7 +196,7 @@ public interface PersonMapper {
 
 <p>If you are using the component model <code>default</code> (i.e. <code>Mappers.get(...)</code>) to obtain your mapper instances, the generator will create an SPI file in <em>META-INF/services/</em> for each mapper with a customized naming pattern. The implementation of <code>Mappers</code> finds those implementation classes using the <code>ServiceLoader</code> API.</p>
 
-<h3 id="default-values-for-target-properties-in-case-the-source-property-is-null">Default values for target properties in case the source property is null</h3>
+<h3 id="default-values-for-target-properties-in-case-the-source-property-is-null"><a class="ms-header-link" href="#default-values-for-target-properties-in-case-the-source-property-is-null"><i class="fa fa-link"></i></a>Default values for target properties in case the source property is null</h3>
 
 <p>Default values can be specified to set a predefined value to a target property if the corresponding source property is <code>null</code>.</p>
 
@@ -210,7 +210,7 @@ public interface PersonMapper {
 
 <p>The implementation that is generated for the example above would set the property <code>middleName</code> in the result object to the empty String <code>&quot;&quot;</code> in case <code>person.getMiddleName() == null</code>. If the target property for which the default assignment shall be done is not of type <code>String</code>, the usual type conversion / type mapping mechanism is applied.</p>
 
-<h3 id="what-s-next">What&rsquo;s next?</h3>
+<h3 id="what-s-next"><a class="ms-header-link" href="#what-s-next"><i class="fa fa-link"></i></a>What&rsquo;s next?</h3>
 
 <p>With CR2 out, we want to release MapStruct 1.0 Final as soon as possible. We won&rsquo;t add any new features or large refactorings for 1.0 and will allow only bugfixes. Based on the number of bugs reported against CR2, we should be ready to build the Final within the next couple of weeks.</p>
 
@@ -224,7 +224,7 @@ public interface PersonMapper {
 <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
 <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
 </ul>
-
+</div>
     </div>
     <div>
         <ul class="uk-pagination">

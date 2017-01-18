@@ -144,7 +144,7 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        
+        <div>
 
 <p>The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!</p>
 
@@ -154,7 +154,7 @@ ga('send', 'pageview');
 
 <p>This release has been a true team effort; Many, many thanks to <a href="https://github.com/sjaakd/">Sjaak Derksen</a>, <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/timoe">Timo Eckhardt</a>, <a href="https://github.com/eforest">Ewald Volkert</a>, <a href="https://github.com/chschu">Christian Schuster</a>, <a href="https://github.com/shasait">Sebastian Hasait</a> and <a href="https://github.com/dilipkrish">Dilip Krishnan</a> who all worked on the Beta4 release.</p>
 
-<h3 id="array-mappings">Array mappings</h3>
+<h3 id="array-mappings"><a class="ms-header-link" href="#array-mappings"><i class="fa fa-link"></i></a>Array mappings</h3>
 
 <p>While MapStruct has had support for mapping collections (<code>List</code>, <code>Set</code> etc.) of primitive and Java bean types for a long time, this was not the case for arrays. This is finally possible, so you can now declare mapping methods such as the following:</p>
 
@@ -181,7 +181,7 @@ String[] dateArrayToStringArray(Date[] dates);
 CustomerDto[] customersToDtos(List&lt;Customer&gt; customers);
 </pre>
 
-<h3 id="configuration-inheritance">Configuration inheritance</h3>
+<h3 id="configuration-inheritance"><a class="ms-header-link" href="#configuration-inheritance"><i class="fa fa-link"></i></a>Configuration inheritance</h3>
 
 <p>With help of the new <code>@InheritConfiguration</code> annotation you can advice MapStruct to apply the configuration from one mapping method to another.</p>
 
@@ -225,7 +225,7 @@ public interface BaseMappings {
 
 <p>Note that you optionally can have prototype configurations automatically be applied to methods with compatbile source and target types. You can find the details in the <a href="/documentation/#section-inherit-config">reference documentation</a>.</p>
 
-<h3 id="ordered-setter-invocations">Ordered setter invocations</h3>
+<h3 id="ordered-setter-invocations"><a class="ms-header-link" href="#ordered-setter-invocations"><i class="fa fa-link"></i></a>Ordered setter invocations</h3>
 
 <p>Sometimes it is required to invoke the setters of the target bean in a specific order, e.g. if one setter depends on the value of other properties of the same bean. For that purpose there is a new attribute on the <code>@Mapping</code> annotation, <code>dependsOn()</code>. The following shows an example:</p>
 
@@ -245,7 +245,7 @@ AddressDto addressToDto(Address address);
 
 <p>This would ensure that <code>setLastName()</code> is invoked after <code>setGivenName()</code> and <code>setMiddleName()</code>, but no guarantee is given for the order of these two.</p>
 
-<h3 id="mapstruct-eclipse-plug-in">MapStruct Eclipse plug-in</h3>
+<h3 id="mapstruct-eclipse-plug-in"><a class="ms-header-link" href="#mapstruct-eclipse-plug-in"><i class="fa fa-link"></i></a>MapStruct Eclipse plug-in</h3>
 
 <p>Being a JSR 269 annotation processor, MapStruct is meant to run equally well within command line builds (plain javac, Mavent etc.) as well as IDEs. Indeed the annotation processor works nicely for instance in Eclipse, generating mappers upon save, showing error markers next to the affected elements etc.</p>
 
@@ -259,7 +259,7 @@ AddressDto addressToDto(Address address);
 
 <p>More functionality will be coming soon. You can find the list of features planned for the plug-in <a href="https://github.com/mapstruct/mapstruct-eclipse/issues">here</a>. There is no official release of the plug-in yet. But if you feel adventurous, you can install the latest nightly build from the <a href="https://mapstruct.ci.cloudbees.com/job/mapstruct-eclipse/lastSuccessfulBuild/artifact/org.mapstruct.eclipse.repository/target/repository/">update site</a> at our CI server.</p>
 
-<h3 id="download">Download</h3>
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
 
 <p>If you work with Maven, Gradle or another dependency management tool, use the following GAV coordinates to obtain the MapStruct artifacts from Maven Central:</p>
 
@@ -280,7 +280,7 @@ AddressDto addressToDto(Address address);
 <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
 <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
 </ul>
-
+</div>
     </div>
     <div>
         <ul class="uk-pagination">

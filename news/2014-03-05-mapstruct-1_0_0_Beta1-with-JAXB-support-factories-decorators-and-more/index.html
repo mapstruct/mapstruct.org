@@ -144,7 +144,7 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        
+        <div>
 
 <p>The MapStruct team is very happy to announce the release of MapStruct 1.0.0.Beta1.</p>
 
@@ -161,7 +161,7 @@ ga('send', 'pageview');
 
 <p>Before diving into some of the new features, let me say a huge thank you to <a href="https://github.com/sjaakd/">Sjaak Derksen</a> and <a href="https://github.com/agudian">Andreas Gudian</a> who heavily contributed to this release. That&rsquo;s much appreciated! Also a big thanks to everyone else who opened feature requests or joined the discussion.</p>
 
-<h3 id="jaxb-support">JAXB support</h3>
+<h3 id="jaxb-support"><a class="ms-header-link" href="#jaxb-support"><i class="fa fa-link"></i></a>JAXB support</h3>
 
 <p>When working with SOAP or REST based web services it&rsquo;s a common requirement to map between the internal model of the application an JAXB types used in the web service layer. MapStruct facilitates this use case by providing out-of-the-box support for the following type conversions:</p>
 
@@ -183,7 +183,7 @@ public interface OrderMapper {
 
 <p>Here, the generated implementation of the <code>orderEntityToExternalOrder()</code> will invoke the corresponding methods of the factory class when populating the attributes of the target object. When selecting a method, MapStruct will also take the <code>@XmlElementDecl</code> annotation and its <code>name</code> and <code>scope</code> attributes into account. That way it is ensured that the resulting <code>JAXBElement</code> attributes have the right QNAME.</p>
 
-<h3 id="custom-object-factories-and-generic-mapping-methods">Custom object factories and generic mapping methods</h3>
+<h3 id="custom-object-factories-and-generic-mapping-methods"><a class="ms-header-link" href="#custom-object-factories-and-generic-mapping-methods"><i class="fa fa-link"></i></a>Custom object factories and generic mapping methods</h3>
 
 <p>It&rsquo;s now possible to plug in custom factories for the instantiation of objects. MapStruct considers any method with a return type but no parameters as factory method. If such a method is present for a given mapping target type, the value will be obtained by invoking that method instead of instantiating the target type via <code>new</code>.</p>
 
@@ -220,7 +220,7 @@ public interface OrderMapper {
 
 <p>When generating an implementation of the <code>orderDtoToOrderEntity()</code> method, MapStruct will apply the hand-written <code>loadById()</code> method of the repository class to map the customer id in <code>OrderDto</code> to the corresponding customer entity referenced by the resulting order entity. By annotating a parameter with <code>@TargetType</code>, you advice MapStruct to pass the expected target type via that parameter. This type can then be used for instance to load the right entity via JPA/Hibernate.</p>
 
-<h3 id="customizing-mapping-logic-using-decorators">Customizing mapping logic using decorators</h3>
+<h3 id="customizing-mapping-logic-using-decorators"><a class="ms-header-link" href="#customizing-mapping-logic-using-decorators"><i class="fa fa-link"></i></a>Customizing mapping logic using decorators</h3>
 
 <p>You can now utilize the <a href="https://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a> to customize generated mapping routines. A common use case is to set additional attributes in the target object of a mapping. E.g. let&rsquo;s assume you want to customize the behavior of the <code>personToPersonDto()</code> method of the following mapper:</p>
 
@@ -261,14 +261,14 @@ public abstract class PersonMapperDecorator implements PersonMapper {
 
 <p>Note that the delegate feature is experimental as of this release and may change in future versions. Also it&rsquo;s subject to some limitations for the time being, e.g. only a single decorator can be applied (a decorator chain will be possible in the future) and it is only supported for the default component model but not when using the CDI and Spring component models.</p>
 
-<h3 id="what-else-is-in-it">What else is in it?</h3>
+<h3 id="what-else-is-in-it"><a class="ms-header-link" href="#what-else-is-in-it"><i class="fa fa-link"></i></a>What else is in it?</h3>
 
 <p>The Beta1 release comes with some more features which you may find helpful.</p>
 
 <p>You can now generate mappers from abstract classes (instead of interfaces) which is useful if you want to provide some manually implemented mapping methods. MapStruct also can generate now mapping methods between different <a href="/documentation/#section-07">enum types</a>. The complete change log is available <a href="https://github.com/mapstruct/mapstruct/issues?milestone=3&amp;state=closed">here</a>. Be sure to check out the <a href="/documentation">reference documentation</a> to learn more about all the new functionality.</p>
 
 <p>As always any feedback is highly welcome. Just add a comment below or join the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a> and your pull request on GitHub is always welcome. The <a href="/contributing">development guide</a> has also been updated and provides all the info you need to get started with hacking on MapStruct.</p>
-
+</div>
     </div>
     <div>
         <ul class="uk-pagination">
