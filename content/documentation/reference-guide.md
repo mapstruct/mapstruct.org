@@ -12,8 +12,8 @@ parent = "Documentation"
 
 **1.1.0.Final** (November 18th 2016)
 
-* Reference guide: [HTML](/documentation/1.1/reference/html/index.html) | [PDF](/documentation/1.1/reference/pdf/mapstruct-reference-guide.pdf)
-* API documentation: [JavaDoc](/documentation/1.1/api/index.html)
+* Reference guide: [HTML](/documentation/stable/reference/html/index.html) | [PDF](/documentation/stable/reference/pdf/mapstruct-reference-guide.pdf)
+* API documentation: [JavaDoc](/documentation/stable/api/index.html)
 * [Migration notes](https://github.com/mapstruct/mapstruct/wiki/Migration-notes#110final)
 
 **1.0.0.Final** (November 25th 2015)
