@@ -49,10 +49,13 @@ DESTINATION_STABLE_VERSION="public/documentation/stable"
 echo "Copying the stable documentation from ${STABLE_VERSION_FOLDER} to ${DESTINATION_STABLE_VERSION}"
 cp -r ${STABLE_VERSION_FOLDER} ${DESTINATION_STABLE_VERSION}
 
-echo "Add noindex meta tag to all HTML (backups will be created) files in public/documentation/[0-9]*"
-find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html" -exec sed -i.bak "s/<\/head>/<meta name=\"robots\" content=\"noindex\" \/><\/head>/" {} +
-echo "removing all the backups that were created for the previous command"
-find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html.bak" -delete
+# As discussed in https://github.com/mapstruct/mapstruct.org/pull/45, we shouldn't add the noindex tag;
+# I'm leaving this here as a template for adding the analytics snippet
+
+# echo "Add noindex meta tag to all HTML (backups will be created) files in public/documentation/[0-9]*"
+# find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html" -exec sed -i.bak "s/<\/head>/<meta name=\"robots\" content=\"noindex\" \/><\/head>/" {} +
+# echo "removing all the backups that were created for the previous command"
+# find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html.bak" -delete
 
 echo "Updating gh-pages branch"
 cd public && git add --all && git commit -m "Publishing to gh-pages. Using stable version folder ${STABLE_VERSION_FOLDER}. (publish.sh)"
