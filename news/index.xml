@@ -51,7 +51,9 @@ Thanks a lot everyone for all your hard work!&lt;/p&gt;
 Other annotation processors such as MapStruct then wouldn&amp;rsquo;t know about the elements added by Lombok (e.g. getters and setters for the &lt;code&gt;@Data&lt;/code&gt; annotation).&lt;/p&gt;
 
 &lt;p&gt;To cut a long story short, thanks to a very productive collaboration with the Lombok team this could be resolved.
-MapStruct will now wait until Lombok has done all its amendments before generating mapper classes for Lombok-enhanced beans.
+MapStruct will now wait until Lombok has done all its amendments before generating mapper classes for Lombok-enhanced beans.&lt;/p&gt;
+
+&lt;p&gt;You can find a small example project for using MapStruct together with Lombok &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-lombok&#34;&gt;here&lt;/a&gt;.
 Note that Lombok 1.16.14 or newer is required.&lt;/p&gt;
 
 &lt;h3 id=&#34;java-8-stream-support&#34;&gt;Java 8 stream support&lt;/h3&gt;
