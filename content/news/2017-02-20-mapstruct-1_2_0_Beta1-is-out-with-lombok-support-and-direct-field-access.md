@@ -13,7 +13,9 @@ The new release comes with a whole lot of new functionality, e.g.:
 * Support for Java 8 streams
 * Mappings based on public fields (i.e. you can write DTOs without getters and setters)
 * Automatic creation of sub-mapping methods
-* Mapping methods can take "pass-through" context parameters, e.g. for passing a locale to custom mapping methods
+* Mapping methods can take "pass-through" context parameters, addressing different use cases like
+ * Passing a locale, timezone or similar to custom mapping methods
+ * Keeping track of processed nodes in circular object graphs
 * Target bean factory methods can access a mapping's source parameter(s)
 
 <!--more-->
