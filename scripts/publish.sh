@@ -19,6 +19,22 @@ then
     exit 1;
 fi
 
+DEV_VERSION=`grep -e devVersion config.toml | sed 's/devVersion = "\([0-9]*\.[0-9]*\).*"/\1/'`
+
+if [[ -z $DEV_VERSION ]]
+then
+    echo "Could not extract the dev version from the config.toml"
+    exit 1;
+fi
+
+DEV_VERSION_FOLDER="static/documentation/${DEV_VERSION}"
+if [[ ! -d ${DEV_VERSION_FOLDER} ]]
+then
+    echo "The folder with the dev version: ${DEV_VERSION_FOLDER} could not be found. Please provide a valid version"
+    exit 1;
+fi
+
+
 if [[ $(git status -s) ]]
 then
     echo "The working directory is dirty. Please commit any pending changes."
@@ -48,6 +64,10 @@ rm public/development/index.xml
 DESTINATION_STABLE_VERSION="public/documentation/stable"
 echo "Copying the stable documentation from ${STABLE_VERSION_FOLDER} to ${DESTINATION_STABLE_VERSION}"
 cp -r ${STABLE_VERSION_FOLDER} ${DESTINATION_STABLE_VERSION}
+
+DESTINATION_DEV_VERSION="public/documentation/dev"
+echo "Copying the dev documentation from ${DEV_VERSION_FOLDER} to ${DESTINATION_DEV_VERSION}"
+cp -r ${DEV_VERSION_FOLDER} ${DESTINATION_DEV_VERSION}
 
 # As discussed in https://github.com/mapstruct/mapstruct.org/pull/45, we shouldn't add the noindex tag;
 # I'm leaving this here as a template for adding the analytics snippet
