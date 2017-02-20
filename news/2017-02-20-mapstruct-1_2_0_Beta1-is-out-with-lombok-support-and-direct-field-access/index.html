@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-41136939-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    </head>
+
+    <body>
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            
+
+    <li class="uk-active">
+    <a href="/news/">News</a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/">FAQ</a>
+    </li>
+
+            </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
+        </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                
+
+    <li class="uk-active">
+    <a href="/news/">News</a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/">FAQ</a>
+    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    
+    <li><a href="http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/">Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2017-01-02-new-year-new-website/">New Year, new Website!</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/">MapStruct 1.1.0.Final seen in the wild!</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/">MapStruct 1.1.0.CR2 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/">MapStruct 1.1.0.CR1 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/">MapStruct 1.1.0.Beta2 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/">MapStruct 1.1.0.Beta1 released</a></li>
+    
+</ul>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<article class="uk-article">
+    <p class="uk-article-meta ms-article-date">
+    <time>February 20, 2017</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/">Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+    <div>
+        <div><p>It&rsquo; my pleasure to announce the first Beta release of MapStruct 1.2.</p>
+
+<p>The new release comes with a whole lot of new functionality, e.g.:</p>
+
+<ul>
+<li>MapStruct can now be used together with Project Lombok</li>
+<li>Support for Java 8 streams</li>
+<li>Mappings based on public fields (i.e. you can write DTOs without getters and setters)</li>
+<li>Automatic creation of sub-mapping methods</li>
+<li>Mapping methods can take &ldquo;pass-through&rdquo; context parameters, addressing different use cases like
+
+<ul>
+<li>Passing a locale, timezone or similar to custom mapping methods</li>
+<li>Keeping track of processed nodes in circular object graphs</li>
+</ul></li>
+<li>Target bean factory methods can access a mapping&rsquo;s source parameter(s)</li>
+</ul>
+
+<p></p>
+
+<p>Altogether, not less than <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.2.0.Beta1">44 issues</a> were fixed for this release.</p>
+
+<p>This would not have been possible without our fantastic community of contributors:
+<a href="https://github.com/navpil">Dmytro Polovinkin</a>, <a href="https://github.com/xCASx">Maxim Kolesnikov</a>, <a href="https://github.com/pascalgn">Pascal Grün</a>, <a href="https://github.com/remmeier">Remo Meier</a>, as well as seasoned MapStruct hackers <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a> and <a href="https://github.com/sjaakd">Sjaak Derksen</a>.
+Thanks a lot everyone for all your hard work!</p>
+
+<p>Enough of the pep talk, let&rsquo;s take a closer look at some of the new features!</p>
+
+<h3 id="using-mapstruct-together-with-project-lombok"><a class="ms-header-link" href="#using-mapstruct-together-with-project-lombok"><i class="fa fa-link"></i></a>Using MapStruct together with Project Lombok</h3>
+
+<p>Being able to use MapStruct together with <a href="https://projectlombok.org/">Project Lombok</a> within a single compilation unit has been a long-awaited and <a href="https://github.com/mapstruct/mapstruct/issues/510">intensely debated</a> feature request.</p>
+
+<p>The challenge here was that Lombok actually <em>alters</em> the AST of the compiled classes (something which has never been foreseen by the <a href="https://www.jcp.org/en/jsr/detail?id=269">annotation processing</a> infrastructure).
+Other annotation processors such as MapStruct then wouldn&rsquo;t know about the elements added by Lombok (e.g. getters and setters for the <code>@Data</code> annotation).</p>
+
+<p>To cut a long story short, thanks to a very productive collaboration with the Lombok team this could be resolved.
+MapStruct will now wait until Lombok has done all its amendments before generating mapper classes for Lombok-enhanced beans.
+Note that Lombok 1.16.14 or newer is required.</p>
+
+<h3 id="java-8-stream-support"><a class="ms-header-link" href="#java-8-stream-support"><i class="fa fa-link"></i></a>Java 8 stream support</h3>
+
+<p>Java 8&rsquo;s <code>Stream</code> type can <a href="https://github.com/mapstruct/mapstruct/issues/962">be used</a> now as source and target of mapping methods:</p>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface OrderMapper {
+
+    Set&lt;OrderDto&gt; ordersToOrderDtos(Stream&lt;Order&gt; orders);
+
+    OrderDto orderToOrderDto(Order order);
+}
+</pre>
+
+
+<p>If the &ldquo;element type&rdquo; differs between source and target stream/collection (<code>Order</code> vs. <code>OrderDto</code>),
+<code>Stream#map()</code> will be used to call the right element mapping method (<code>orderToOrderDto()</code>) in the generated code.</p>
+
+<h3 id="mappings-using-direct-field-access"><a class="ms-header-link" href="#mappings-using-direct-field-access"><i class="fa fa-link"></i></a>Mappings using direct field access</h3>
+
+<p>Traditionally MapStruct relied on the JavaBeans convention and called getter and setter methods for propagating property values from source to target.
+Sometimes writing all the getters and setters may be a bit cumbersome, though, e.g. when it comes to &ldquo;dumb&rdquo; DTOs which should just hold a couple of property values.</p>
+
+<p>Using public fields is perfectly fine in such case, which is why direct field access is <a href="https://github.com/mapstruct/mapstruct/issues/557">supported by MapStruct now</a>.
+I.e. if your source or target beans do not define getters or setters for the properties but declare public fields,
+the generated code will directly access the fields.
+Note that no reflection will be used, i.e. we won&rsquo;t make private fields accessible.</p>
+
+<p>You can find a small example demonstrating field-based mapping <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-field-mapping/">here</a>.</p>
+
+<h3 id="automatic-creation-of-sub-mapping-methods"><a class="ms-header-link" href="#automatic-creation-of-sub-mapping-methods"><i class="fa fa-link"></i></a>Automatic creation of sub-mapping methods</h3>
+
+<p>MapStruct 1.2 will automatically create methods for nested mappings if possible.
+E.g. consider the following entities and corresponding DTOs:</p>
+
+<pre class="prettyprint linenums lang-java">
+public class Order {
+    public Customer customer;
+}
+
+public class Customer {
+    public String custName;
+}
+</pre>
+
+
+<pre class="prettyprint linenums lang-java">
+public class OrderDto {
+    public CustomerDto customer;
+}
+
+public class CustomerDto {
+    public String name;
+}
+</pre>
+
+
+<p>In MapStruct 1.1 you were required to provide two dedicated mapping methods, one for orders and one for customers:</p>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public class OrderMapper {
+
+    OrderDto orderToDto(Order order);
+
+    @Mapping(target = &#34;name&#34;, source = &#34;custName&#34;)
+    CustomerDto customerToDto(Customer customer);
+}
+</pre>
+
+
+<p>If you have object graphs on source and target side that are structurally equal (i.e. for each object on the source side there is a corresponding object on the target side) but only differ in property names or (non-bean) property types,
+having to define mapping methods for all the source-target object pairs can be quite a bit of work.</p>
+
+<p>MapStruct 1.2 can therefore automatically create nested mapping methods:</p>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public class OrderMapper {
+
+    @Mapping(target = &#34;customer.name&#34;, source = &#34;customer.custName&#34;)
+    OrderDto orderToDto(Order order);
+}
+</pre>
+
+
+<p>When detecting that there is no explicit method for mapping <code>Customer</code> to <code>CustomerDto</code>,
+MapStruct will generate such method, applying the <code>@Mapping</code> configuration given on the <code>orderToDto()</code> method.</p>
+
+<p>This feature can save you quite some work if you are mapping large graphs.
+The implementation may still have some rough edges, so please give it a try and let us know if you see unexpected mapping code being generated.</p>
+
+<p>A more complex example for the auto-mapping feature can be found <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-nested-bean-mappings">here</a>.</p>
+
+<h3 id="pass-through-context-parameters"><a class="ms-header-link" href="#pass-through-context-parameters"><i class="fa fa-link"></i></a>&ldquo;Pass-through&rdquo; context parameters</h3>
+
+<p>Sometimes there is the need to pass some specific contextual information through generated mapping methods down to hand-written methods.
+That is supported using the new <code>@Context</code> annotation now.
+An example for this is passing the locale or timezone of the current user:</p>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public abstract class OrderMapper {
+
+    public abstract CarDto carToCarDto(Car car, @Context Locale userLocale);
+
+    protected OwnerManualDto translateOwnerManual(OwnerManual ownerManual, @Context Locale locale) {
+        // manually implemented logic to translate the OwnerManual with the given Locale
+    }
+}
+</pre>
+
+
+<p>What you use as context type is fully transparent to MapStruct,
+any parameters annotated with <code>@Context</code> will essentially be ignored apart from being passed along the call stack of mapping methods.</p>
+
+<p>Context parameters can also be used with mapping lifecycle methods (<code>@BeforeMapping</code>/<code>@AfterMapping</code>),
+which is super-useful for mapping object graphs that contain cycles.
+Check out <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-mapping-with-cycles">this project</a> in the MapStruct examples repository
+which shows how to keep track of nodes that already have been mapped and re-use their mapped counterparts when visiting them another time in a cyclic tree.</p>
+
+<h3 id="more-powerful-target-bean-factories"><a class="ms-header-link" href="#more-powerful-target-bean-factories"><i class="fa fa-link"></i></a>More powerful target bean factories</h3>
+
+<p>Factory methods for instantiating the target type of bean mapping methods got much more powerful as they can receive the source parameter(s) of the mapping method now.
+This can be used for instance to load an entity through JPA from the database when mapping DTOs back to entities:</p>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper(uses=ReferenceMapper.class, componentModel=&#34;cdi&#34;)
+public interface CarMapper {
+      Car carDtoToCar(CarDto car);
+}
+
+@ApplicationScoped
+public class ReferenceMapper {
+
+    @PersistenceContext
+    private EntityManager em;
+
+    @ObjectFactory
+    public &lt;T extends AbstractEntity&gt; T resolve(AbstractDto sourceDto, @TargetType Class&lt;T&gt; type) {
+        T entity = em.find( type, sourceDto.getId() );
+        return entity != null ? entity : type.newInstance();
+    }
+}
+</pre>
+
+
+<p>Factory methods which should receive the mapping source parameters must be annotated with <code>@ObjectFactory</code> so MapStruct can distinguish them from regular mapping methods.</p>
+
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+
+<p>This concludes our tour through MapStruct 1.2 Beta1.
+If you&rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:</p>
+
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.Beta1|jar">org.mapstruct:mapstruct-jdk8:1.2.0.Beta1</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.Beta1|jar">org.mapstruct:mapstruct:1.2.0.Beta1</a> (for earlier Java versions)</li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.Beta1|jar">org.mapstruct:mapstruct-processor:1.2.0.Beta1</a></li>
+</ul>
+
+<p>For those not using a dependency management tool such as Maven or Gradle, we also provide distribution bundles (ZIP, TAR.GZ) on <a href="http://sourceforge.net/projects/mapstruct/files/1.2.0.Beta1/">SourceForge</a>.</p>
+
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
+
+<ul>
+<li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+<li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
+</ul></div>
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
+            </li>
+            
+            
+            <li>
+                <a href="/news/2017-01-02-new-year-new-website/" title="New Year, new Website!"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'mapstruct';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+</article>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://groups.google.com/forum/#!forum/mapstruct-users">Google Group</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © Gunnar Morling 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+

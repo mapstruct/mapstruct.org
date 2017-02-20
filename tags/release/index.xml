@@ -9,6 +9,222 @@
     <atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out</title>
+      <link>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/</link>
+      <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/</guid>
+      <description>&lt;p&gt;It&amp;rsquo; my pleasure to announce the first Beta release of MapStruct 1.2.&lt;/p&gt;
+
+&lt;p&gt;The new release comes with a whole lot of new functionality, e.g.:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MapStruct can now be used together with Project Lombok&lt;/li&gt;
+&lt;li&gt;Support for Java 8 streams&lt;/li&gt;
+&lt;li&gt;Mappings based on public fields (i.e. you can write DTOs without getters and setters)&lt;/li&gt;
+&lt;li&gt;Automatic creation of sub-mapping methods&lt;/li&gt;
+&lt;li&gt;Mapping methods can take &amp;ldquo;pass-through&amp;rdquo; context parameters, addressing different use cases like
+
+&lt;ul&gt;
+&lt;li&gt;Passing a locale, timezone or similar to custom mapping methods&lt;/li&gt;
+&lt;li&gt;Keeping track of processed nodes in circular object graphs&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Target bean factory methods can access a mapping&amp;rsquo;s source parameter(s)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Altogether, not less than &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.2.0.Beta1&#34;&gt;44 issues&lt;/a&gt; were fixed for this release.&lt;/p&gt;
+
+&lt;p&gt;This would not have been possible without our fantastic community of contributors:
+&lt;a href=&#34;https://github.com/navpil&#34;&gt;Dmytro Polovinkin&lt;/a&gt;, &lt;a href=&#34;https://github.com/xCASx&#34;&gt;Maxim Kolesnikov&lt;/a&gt;, &lt;a href=&#34;https://github.com/pascalgn&#34;&gt;Pascal Grün&lt;/a&gt;, &lt;a href=&#34;https://github.com/remmeier&#34;&gt;Remo Meier&lt;/a&gt;, as well as seasoned MapStruct hackers &lt;a href=&#34;https://github.com/agudian&#34;&gt;Andreas Gudian&lt;/a&gt;, &lt;a href=&#34;https://github.com/filiphr&#34;&gt;Filip Hrisafov&lt;/a&gt; and &lt;a href=&#34;https://github.com/sjaakd&#34;&gt;Sjaak Derksen&lt;/a&gt;.
+Thanks a lot everyone for all your hard work!&lt;/p&gt;
+
+&lt;p&gt;Enough of the pep talk, let&amp;rsquo;s take a closer look at some of the new features!&lt;/p&gt;
+
+&lt;h3 id=&#34;using-mapstruct-together-with-project-lombok&#34;&gt;Using MapStruct together with Project Lombok&lt;/h3&gt;
+
+&lt;p&gt;Being able to use MapStruct together with &lt;a href=&#34;https://projectlombok.org/&#34;&gt;Project Lombok&lt;/a&gt; within a single compilation unit has been a long-awaited and &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/510&#34;&gt;intensely debated&lt;/a&gt; feature request.&lt;/p&gt;
+
+&lt;p&gt;The challenge here was that Lombok actually &lt;em&gt;alters&lt;/em&gt; the AST of the compiled classes (something which has never been foreseen by the &lt;a href=&#34;https://www.jcp.org/en/jsr/detail?id=269&#34;&gt;annotation processing&lt;/a&gt; infrastructure).
+Other annotation processors such as MapStruct then wouldn&amp;rsquo;t know about the elements added by Lombok (e.g. getters and setters for the &lt;code&gt;@Data&lt;/code&gt; annotation).&lt;/p&gt;
+
+&lt;p&gt;To cut a long story short, thanks to a very productive collaboration with the Lombok team this could be resolved.
+MapStruct will now wait until Lombok has done all its amendments before generating mapper classes for Lombok-enhanced beans.
+Note that Lombok 1.16.14 or newer is required.&lt;/p&gt;
+
+&lt;h3 id=&#34;java-8-stream-support&#34;&gt;Java 8 stream support&lt;/h3&gt;
+
+&lt;p&gt;Java 8&amp;rsquo;s &lt;code&gt;Stream&lt;/code&gt; type can &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/962&#34;&gt;be used&lt;/a&gt; now as source and target of mapping methods:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
+@Mapper
+public interface OrderMapper {
+
+    Set&amp;lt;OrderDto&amp;gt; ordersToOrderDtos(Stream&amp;lt;Order&amp;gt; orders);
+
+    OrderDto orderToOrderDto(Order order);
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;If the &amp;ldquo;element type&amp;rdquo; differs between source and target stream/collection (&lt;code&gt;Order&lt;/code&gt; vs. &lt;code&gt;OrderDto&lt;/code&gt;),
+&lt;code&gt;Stream#map()&lt;/code&gt; will be used to call the right element mapping method (&lt;code&gt;orderToOrderDto()&lt;/code&gt;) in the generated code.&lt;/p&gt;
+
+&lt;h3 id=&#34;mappings-using-direct-field-access&#34;&gt;Mappings using direct field access&lt;/h3&gt;
+
+&lt;p&gt;Traditionally MapStruct relied on the JavaBeans convention and called getter and setter methods for propagating property values from source to target.
+Sometimes writing all the getters and setters may be a bit cumbersome, though, e.g. when it comes to &amp;ldquo;dumb&amp;rdquo; DTOs which should just hold a couple of property values.&lt;/p&gt;
+
+&lt;p&gt;Using public fields is perfectly fine in such case, which is why direct field access is &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/557&#34;&gt;supported by MapStruct now&lt;/a&gt;.
+I.e. if your source or target beans do not define getters or setters for the properties but declare public fields,
+the generated code will directly access the fields.
+Note that no reflection will be used, i.e. we won&amp;rsquo;t make private fields accessible.&lt;/p&gt;
+
+&lt;p&gt;You can find a small example demonstrating field-based mapping &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-field-mapping/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;automatic-creation-of-sub-mapping-methods&#34;&gt;Automatic creation of sub-mapping methods&lt;/h3&gt;
+
+&lt;p&gt;MapStruct 1.2 will automatically create methods for nested mappings if possible.
+E.g. consider the following entities and corresponding DTOs:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
+public class Order {
+    public Customer customer;
+}
+
+public class Customer {
+    public String custName;
+}
+&lt;/pre&gt;
+
+
+&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
+public class OrderDto {
+    public CustomerDto customer;
+}
+
+public class CustomerDto {
+    public String name;
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;In MapStruct 1.1 you were required to provide two dedicated mapping methods, one for orders and one for customers:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
+@Mapper
+public class OrderMapper {
+
+    OrderDto orderToDto(Order order);
+
+    @Mapping(target = &amp;#34;name&amp;#34;, source = &amp;#34;custName&amp;#34;)
+    CustomerDto customerToDto(Customer customer);
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;If you have object graphs on source and target side that are structurally equal (i.e. for each object on the source side there is a corresponding object on the target side) but only differ in property names or (non-bean) property types,
+having to define mapping methods for all the source-target object pairs can be quite a bit of work.&lt;/p&gt;
+
+&lt;p&gt;MapStruct 1.2 can therefore automatically create nested mapping methods:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
+@Mapper
+public class OrderMapper {
+
+    @Mapping(target = &amp;#34;customer.name&amp;#34;, source = &amp;#34;customer.custName&amp;#34;)
+    OrderDto orderToDto(Order order);
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;When detecting that there is no explicit method for mapping &lt;code&gt;Customer&lt;/code&gt; to &lt;code&gt;CustomerDto&lt;/code&gt;,
+MapStruct will generate such method, applying the &lt;code&gt;@Mapping&lt;/code&gt; configuration given on the &lt;code&gt;orderToDto()&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;This feature can save you quite some work if you are mapping large graphs.
+The implementation may still have some rough edges, so please give it a try and let us know if you see unexpected mapping code being generated.&lt;/p&gt;
+
+&lt;p&gt;A more complex example for the auto-mapping feature can be found &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-nested-bean-mappings&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;pass-through-context-parameters&#34;&gt;&amp;ldquo;Pass-through&amp;rdquo; context parameters&lt;/h3&gt;
+
+&lt;p&gt;Sometimes there is the need to pass some specific contextual information through generated mapping methods down to hand-written methods.
+That is supported using the new &lt;code&gt;@Context&lt;/code&gt; annotation now.
+An example for this is passing the locale or timezone of the current user:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
+@Mapper
+public abstract class OrderMapper {
+
+    public abstract CarDto carToCarDto(Car car, @Context Locale userLocale);
+
+    protected OwnerManualDto translateOwnerManual(OwnerManual ownerManual, @Context Locale locale) {
+        // manually implemented logic to translate the OwnerManual with the given Locale
+    }
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;What you use as context type is fully transparent to MapStruct,
+any parameters annotated with &lt;code&gt;@Context&lt;/code&gt; will essentially be ignored apart from being passed along the call stack of mapping methods.&lt;/p&gt;
+
+&lt;p&gt;Context parameters can also be used with mapping lifecycle methods (&lt;code&gt;@BeforeMapping&lt;/code&gt;/&lt;code&gt;@AfterMapping&lt;/code&gt;),
+which is super-useful for mapping object graphs that contain cycles.
+Check out &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-mapping-with-cycles&#34;&gt;this project&lt;/a&gt; in the MapStruct examples repository
+which shows how to keep track of nodes that already have been mapped and re-use their mapped counterparts when visiting them another time in a cyclic tree.&lt;/p&gt;
+
+&lt;h3 id=&#34;more-powerful-target-bean-factories&#34;&gt;More powerful target bean factories&lt;/h3&gt;
+
+&lt;p&gt;Factory methods for instantiating the target type of bean mapping methods got much more powerful as they can receive the source parameter(s) of the mapping method now.
+This can be used for instance to load an entity through JPA from the database when mapping DTOs back to entities:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
+@Mapper(uses=ReferenceMapper.class, componentModel=&amp;#34;cdi&amp;#34;)
+public interface CarMapper {
+      Car carDtoToCar(CarDto car);
+}
+
+@ApplicationScoped
+public class ReferenceMapper {
+
+    @PersistenceContext
+    private EntityManager em;
+
+    @ObjectFactory
+    public &amp;lt;T extends AbstractEntity&amp;gt; T resolve(AbstractDto sourceDto, @TargetType Class&amp;lt;T&amp;gt; type) {
+        T entity = em.find( type, sourceDto.getId() );
+        return entity != null ? entity : type.newInstance();
+    }
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;Factory methods which should receive the mapping source parameters must be annotated with &lt;code&gt;@ObjectFactory&lt;/code&gt; so MapStruct can distinguish them from regular mapping methods.&lt;/p&gt;
+
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+
+&lt;p&gt;This concludes our tour through MapStruct 1.2 Beta1.
+If you&amp;rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Annotation JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.2.0.Beta1&lt;/a&gt; (for usage with Java &amp;gt;= 8) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct:1.2.0.Beta1&lt;/a&gt; (for earlier Java versions)&lt;/li&gt;
+&lt;li&gt;Annotation processor JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.2.0.Beta1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For those not using a dependency management tool such as Maven or Gradle, we also provide distribution bundles (ZIP, TAR.GZ) on &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.2.0.Beta1/&#34;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
+&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>MapStruct 1.1.0.Final seen in the wild!</title>
       <link>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/</link>
       <pubDate>Tue, 22 Nov 2016 00:00:00 +0000</pubDate>
