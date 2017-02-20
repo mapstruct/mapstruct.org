@@ -37,6 +37,8 @@ Other annotation processors such as MapStruct then wouldn't know about the eleme
 
 To cut a long story short, thanks to a very productive collaboration with the Lombok team this could be resolved.
 MapStruct will now wait until Lombok has done all its amendments before generating mapper classes for Lombok-enhanced beans.
+
+You can find a small example project for using MapStruct together with Lombok [here](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-lombok).
 Note that Lombok 1.16.14 or newer is required.
 
 ### Java 8 stream support
