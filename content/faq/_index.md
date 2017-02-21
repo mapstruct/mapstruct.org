@@ -47,3 +47,34 @@ to be processed by MapStruct into two separate modules of your project.
 Then Lombok will run in the compilation of the first module,
 causing the bean classes to be complete when MapStruct runs during the compilation of the second module.
 {{% /faq_question %}}
+
+{{% faq_question "Why do I get could not retrieve @Mapper annotation during compilation?" %}}
+This can happen if you are using [`mapstruct-jdk8`](http://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8) and 
+some dependency is using an older [`mapstruct`](http://mvnrepository.com/artifact/org.mapstruct/mapstruct). 
+To solve the problem fid the dependency that is using `mapstruct` and exclude it. 
+ 
+A known dependency that uses `mapstruct` and has this problem is [`springfox-swagger2`](http://mvnrepository.com/artifact/io.springfox/springfox-swagger2).
+
+For maven you need to exclude it like:
+```xml
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger2</artifactId>
+    <version>${swagger2.version}</version>
+    <exclusions>
+        <exclusion>
+            <artifactId>org.mapstruct</artifactId>
+            <groupId>mapstruct</groupId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
+
+For gradle you need to exclude it like:
+
+```groovy
+compile('io.springfox:springfox-swagger2:${swagger2Version}') {
+    exclude group: 'org.mapstruct', module: 'mapstruct'
+}
+```
+{{% /faq_question %}}
