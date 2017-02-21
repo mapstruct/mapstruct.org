@@ -47,3 +47,8 @@ to be processed by MapStruct into two separate modules of your project.
 Then Lombok will run in the compilation of the first module,
 causing the bean classes to be complete when MapStruct runs during the compilation of the second module.
 {{% /faq_question %}}
+
+{{% faq_question "Why does @Named not work?" %}}
+Checkout that you are actually using [`org.mapstruct.Named`](http://mapstruct.org/documentation/stable/api/org/mapstruct/Named.html)
+and  **not** `javax.inject.Named`.
+{{% /faq_question %}}
