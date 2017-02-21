@@ -5,6 +5,7 @@ DIR=$(dirname "$0")
 cd $DIR/..
 
 STABLE_VERSION=`grep -e stableVersion config.toml | sed 's/stableVersion = "\([0-9]*\.[0-9]*\).*"/\1/'`
+DEV_VERSION=`grep -e devVersion config.toml | sed 's/devVersion = "\([0-9]*\.[0-9]*\).*"/\1/'`
 
 if [[ -z $STABLE_VERSION ]]
 then
@@ -48,6 +49,15 @@ rm public/development/index.xml
 DESTINATION_STABLE_VERSION="public/documentation/stable"
 echo "Copying the stable documentation from ${STABLE_VERSION_FOLDER} to ${DESTINATION_STABLE_VERSION}"
 cp -r ${STABLE_VERSION_FOLDER} ${DESTINATION_STABLE_VERSION}
+
+DEV_VERSION_FOLDER="static/documentation/${DEV_VERSION}"
+if [[ -d ${DEV_VERSION_FOLDER} ]]
+then
+    DESTINATION_DEV_VERSION="public/documentation/dev"
+    echo "Copying the stable documentation from ${DEV_VERSION_FOLDER} to ${DESTINATION_DEV_VERSION}"
+    cp -r ${DEV_VERSION_FOLDER} ${DESTINATION_DEV_VERSION}
+
+fi
 
 # As discussed in https://github.com/mapstruct/mapstruct.org/pull/45, we shouldn't add the noindex tag;
 # I'm leaving this here as a template for adding the analytics snippet
