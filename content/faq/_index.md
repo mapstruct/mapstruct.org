@@ -49,19 +49,20 @@ causing the bean classes to be complete when MapStruct runs during the compilati
 {{% /faq_question %}}
 
 {{% faq_question "Why does @Named not work?" %}}
-Checkout that you are actually using [`org.mapstruct.Named`](http://mapstruct.org/documentation/stable/api/org/mapstruct/Named.html)
+Check out that you are actually using [`org.mapstruct.Named`](http://mapstruct.org/documentation/stable/api/org/mapstruct/Named.html)
 and  **not** `javax.inject.Named`.
 {{% /faq_question %}}
 
-{{% faq_question "Why do I get could not retrieve @Mapper annotation during compilation?" %}}
+{{% faq_question "Why do I get this error: Could not retrieve @Mapper annotation during compilation?" %}}
 This can happen if you are using [`mapstruct-jdk8`](http://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8) and
-some dependency is using an older version of [`mapstruct`](http://mvnrepository.com/artifact/org.mapstruct/mapstruct).
+some other dependency is using an older version of [`mapstruct`](http://mvnrepository.com/artifact/org.mapstruct/mapstruct).
 To solve the problem find the dependency that is using `mapstruct` and exclude it.
 
 A known dependency that uses `mapstruct` and has this problem is [`springfox-swagger2`](http://mvnrepository.com/artifact/io.springfox/springfox-swagger2).
 
 For Maven you need to exclude it like:
-```xml
+
+{{< prettify xml >}}
 <dependency>
     <groupId>io.springfox</groupId>
     <artifactId>springfox-swagger2</artifactId>
@@ -73,13 +74,14 @@ For Maven you need to exclude it like:
         </exclusion>
     </exclusions>
 </dependency>
-```
+{{< /prettify >}}
 
 For Gradle you need to exclude it like:
 
-```groovy
-compile('io.springfox:springfox-swagger2:${swagger2Version}') {
+{{< prettify groovy >}}
+compile('io.springfox:springfox-swagger2:${swagger2.version}') {
     exclude group: 'org.mapstruct', module: 'mapstruct'
 }
-```
+{{< /prettify >}}
+
 {{% /faq_question %}}
