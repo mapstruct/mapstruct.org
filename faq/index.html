@@ -122,6 +122,18 @@ ga('send', 'pageview');
             </a>
         </li>
     
+        <li>
+            <a href="#why-does-named-not-work">
+                Why does @Named not work?
+            </a>
+        </li>
+    
+        <li>
+            <a href="#why-do-i-get-this-error-could-not-retrieve-mapper-annotation-during-compilation">
+                Why do I get this error: Could not retrieve @Mapper annotation during compilation?
+            </a>
+        </li>
+    
     </ul>
 
 
@@ -186,6 +198,49 @@ the solution is to put the JavaBeans to be amended by Lombok and the mapper inte
 to be processed by MapStruct into two separate modules of your project.
 Then Lombok will run in the compilation of the first module,
 causing the bean classes to be complete when MapStruct runs during the compilation of the second module.</p>
+
+</div>
+</p>
+
+<p><h2 id="why-does-named-not-work"><a class="ms-header-link" href="#why-does-named-not-work"><i class="fa fa-link"></i></a>Why does @Named not work?</h2>
+<div>
+  <p>Check out that you are actually using <a href="http://mapstruct.org/documentation/stable/api/org/mapstruct/Named.html"><code>org.mapstruct.Named</code></a>
+and  <strong>not</strong> <code>javax.inject.Named</code>.</p>
+
+</div>
+</p>
+
+<p><h2 id="why-do-i-get-this-error-could-not-retrieve-mapper-annotation-during-compilation"><a class="ms-header-link" href="#why-do-i-get-this-error-could-not-retrieve-mapper-annotation-during-compilation"><i class="fa fa-link"></i></a>Why do I get this error: Could not retrieve @Mapper annotation during compilation?</h2>
+<div>
+  <p>This can happen if you are using <a href="http://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8"><code>mapstruct-jdk8</code></a> and
+some other dependency is using an older version of <a href="http://mvnrepository.com/artifact/org.mapstruct/mapstruct"><code>mapstruct</code></a>.
+To solve the problem find the dependency that is using <code>mapstruct</code> and exclude it.</p>
+
+<p>A known dependency that uses <code>mapstruct</code> and has this problem is <a href="http://mvnrepository.com/artifact/io.springfox/springfox-swagger2"><code>springfox-swagger2</code></a>.</p>
+
+<p>For Maven you need to exclude it like:</p>
+
+<pre class="prettyprint linenums lang-xml">
+&lt;dependency&gt;
+    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+    &lt;version&gt;${swagger2.version}&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;artifactId&gt;org.mapstruct&lt;/artifactId&gt;
+            &lt;groupId&gt;mapstruct&lt;/groupId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+</pre>
+
+<p>For Gradle you need to exclude it like:</p>
+
+<pre class="prettyprint linenums lang-groovy">
+compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
+    exclude group: &#39;org.mapstruct&#39;, module: &#39;mapstruct&#39;
+}
+</pre>
 
 </div>
 </p>
