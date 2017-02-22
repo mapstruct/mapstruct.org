@@ -34,6 +34,13 @@ then
     exit 1;
 fi
 
+GOOGLE_ANALYTICS_ID=`grep -e googleAnalytics config.toml | sed 's/googleAnalytics = "\(.*\)"/\1/'`
+
+if [[ -z $GOOGLE_ANALYTICS_ID ]]
+then
+    echo "Could not extract the Google Analytics ID from the config.toml"
+    exit 1;
+fi
 
 if [[ $(git status -s) ]]
 then
@@ -76,6 +83,10 @@ cp -r ${DEV_VERSION_FOLDER} ${DESTINATION_DEV_VERSION}
 # find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html" -exec sed -i.bak "s/<\/head>/<meta name=\"robots\" content=\"noindex\" \/><\/head>/" {} +
 # echo "removing all the backups that were created for the previous command"
 # find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html.bak" -delete
+
+echo "Inserting analytics snippet"
+find public/documentation -type f -regex "\(public/documentation/[0-9]\|${DESTINATION_STABLE_VERSION}/\|${DESTINATION_DEV_VERSION}/\).*" -name "*.html" -exec sed -i.bak -e '/^\s*<\/head>/ {' -e 'r scripts/analytics_snippet.txt' -e 'd' -e '}' {} +
+find public/documentation -type f -regex "\(public/documentation/[0-9]\|${DESTINATION_STABLE_VERSION}/\|${DESTINATION_DEV_VERSION}/\).*" -name "*.html.bak" -delete
 
 echo "Updating gh-pages branch"
 cd public && git add --all && git commit -m "Publishing to gh-pages. Using stable version folder ${STABLE_VERSION_FOLDER}. (publish.sh)"
