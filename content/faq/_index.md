@@ -69,8 +69,8 @@ For Maven you need to exclude it like:
     <version>${swagger2.version}</version>
     <exclusions>
         <exclusion>
-            <artifactId>org.mapstruct</artifactId>
-            <groupId>mapstruct</groupId>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
         </exclusion>
     </exclusions>
 </dependency>
