@@ -6,6 +6,8 @@ tags: [how-to, build, gradle]
 aliases:
     - /news/2013/07/08/using-mapstruct-with-gradle.html
 ---
+_Update Feb. 26, 2017: Since writing this post, usage of annotation processors with Gradle got much easier and the set-up described in the following isn't required anymore._
+_The [example project](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-on-gradle) on GitHub has been updated accordingly._
 
 You work with [Gradle](http://www.gradle.org/) to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.
 
@@ -33,7 +35,7 @@ sourceCompatibility = rootProject.javaLanguageLevel
 It's a good idea to declare a property which holds the language level. That way it can be referenced later on where required. We also define a property which specifies the target directory for the generated mapper classes.
 
 The next step is to add the MapStruct annotation module (<em>org.mapstruct:mapstruct:&lt;VERSION&gt;</em>) as compilation dependency and to declare a separate [dependency configuration](http://www.gradle.org/docs/current/userguide/dependency_management.html#sub:configurations) which contains the MapStruct processor module (<em>org.mapstruct:mapstruct-processor:&lt;VERSION&gt;</em>):
-    
+
 <pre class="prettyprint linenums">
 configurations {
     mapstruct
