@@ -34,7 +34,8 @@ then
     exit 1;
 fi
 
-GOOGLE_ANALYTICS_ID=`grep -e googleAnalytics config.toml | sed 's/googleAnalytics = "\(.*\)"/\1/'`
+GOOGLE_ANALYTICS_ID=`grep -e googleAnalytics config.toml | sed 's/googleAnalytics = "\(.*\)"/\1/' | sed 's/\-/\\-/g'`
+echo "Google Analytics Id: $GOOGLE_ANALYTICS_ID"
 
 if [[ -z $GOOGLE_ANALYTICS_ID ]]
 then
@@ -76,17 +77,19 @@ DESTINATION_DEV_VERSION="public/documentation/dev"
 echo "Copying the dev documentation from ${DEV_VERSION_FOLDER} to ${DESTINATION_DEV_VERSION}"
 cp -r ${DEV_VERSION_FOLDER} ${DESTINATION_DEV_VERSION}
 
-# As discussed in https://github.com/mapstruct/mapstruct.org/pull/45, we shouldn't add the noindex tag;
-# I'm leaving this here as a template for adding the analytics snippet
-
-# echo "Add noindex meta tag to all HTML (backups will be created) files in public/documentation/[0-9]*"
-# find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html" -exec sed -i.bak "s/<\/head>/<meta name=\"robots\" content=\"noindex\" \/><\/head>/" {} +
-# echo "removing all the backups that were created for the previous command"
-# find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html.bak" -delete
-
 echo "Inserting analytics snippet"
-find public/documentation -type f -regex "\(public/documentation/[0-9]\|${DESTINATION_STABLE_VERSION}/\|${DESTINATION_DEV_VERSION}/\).*" -name "*.html" -exec sed -i.bak -e '/^\s*<\/head>/ {' -e 'r scripts/analytics_snippet.txt' -e 'd' -e '}' {} +
-find public/documentation -type f -regex "\(public/documentation/[0-9]\|${DESTINATION_STABLE_VERSION}/\|${DESTINATION_DEV_VERSION}/\).*" -name "*.html.bak" -delete
+cp scripts/analytics_snippet.txt public
+sed -i.bak -e "s/%GOOGLE_ANALYTICS_ID%/$GOOGLE_ANALYTICS_ID/g" public/analytics_snippet.txt
+
+find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html" -exec sed -i.bak -e '/^\s*<\/head>/ {' -e 'r public/analytics_snippet.txt' -e 'd' -e '}' {} +
+find public/documentation -type f -regex "${DESTINATION_STABLE_VERSION}.*" -name "*.html" -exec sed -i.bak -e '/^\s*<\/head>/ {' -e 'r public/analytics_snippet.txt' -e 'd' -e '}' {} +
+find public/documentation -type f -regex "${DESTINATION_DEV_VERSION}.*" -name "*.html" -exec sed -i.bak -e '/^\s*<\/head>/ {' -e 'r public/analytics_snippet.txt' -e 'd' -e '}' {} +
+
+find public/documentation -type f -regex "public/documentation/[0-9].*" -name "*.html.bak" -delete
+find public/documentation -type f -regex "${DESTINATION_STABLE_VERSION}.*" -name "*.html.bak" -delete
+find public/documentation -type f -regex "${DESTINATION_DEV_VERSION}.*" -name "*.html.bak" -delete
+
+rm public/analytics_snippet.txt*
 
 echo "Updating gh-pages branch"
 cd public && git add --all && git commit -m "Publishing to gh-pages. Using stable version folder ${STABLE_VERSION_FOLDER}. (publish.sh)"
