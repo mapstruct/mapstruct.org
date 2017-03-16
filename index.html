@@ -136,6 +136,39 @@ ga('send', 'pageview');
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">MapStruct 1.2.0.Beta2 released</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>March 16, 2017</time>
+</p>
+
+
+    <div>
+        <p>Just shy of a month after the first Beta release of MapStruct 1.2, the team is happy to announce the second Beta, fixing a couple of bugs that sneaked in with the <a href="/news/2017-02-20-mapstruct-1_2_0_Beta2-is-out-with-lombok-support-and-direct-field-access/">many new features</a> offered by the new 1.2 release line.</p>
+
+<p>We fixed <a href="https://github.com/mapstruct/mapstruct/milestone/20?closed=1">16 issues</a>, most of them reported by users. The most infamous bugs reported and fixed are:</p>
+
+<ul>
+<li><a href="https://github.com/mapstruct/mapstruct/issues/1121">Some type conversions stopped working</a> under some circumstances due to an odd JDK behaviour that we didn&rsquo;t run into previously.</li>
+<li><a href="https://github.com/mapstruct/mapstruct/issues/1104">Unmapped target properties in name based mappings</a> resulted in an error instead of being reported as configured with <code>unmappedTargetPolicy</code>.</li>
+<li>A <a href="https://github.com/mapstruct/mapstruct/issues/1103">StackOverflowError</a> was thrown while automatically generating methods in a type structure with circles.</li>
+<li><a href="https://github.com/mapstruct/mapstruct/issues/1124"><code>@Context</code> parameters didn&rsquo;t play along with nested property mappings</a>.</li>
+</ul>
+
+<p>Plus, the newly introduced automapping feature now also <a href="https://github.com/mapstruct/mapstruct/issues/1102">creates Enum mapping methods</a>.</p>
+
+<p></p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -192,41 +225,6 @@ ga('send', 'pageview');
     <div>
         
             <a href="http://mapstruct.org/news/2017-01-02-new-year-new-website/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">MapStruct 1.1.0.Final seen in the wild!</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>November 22, 2016</time>
-</p>
-
-
-    <div>
-        <p>I&rsquo;m more than thrilled to report that MapStruct 1.1 Final has been spotted in the wild!
-We grew that puppy for almost one year since the announcement of <a href="/news/2015/11/25/mapstruct-1_0_Final-released.html">MapStruct 1.0</a>, so it was about time to let it go and put a final release into your hands.</p>
-
-<p>Besides a plethora of bug fixes the 1.1 release adds many new features which should be very welcome to users of MapStruct 1.0:</p>
-
-<ul>
-<li>Nested target properties</li>
-<li><code>@ValueMapping</code> annotation for enum mappings</li>
-<li><code>@Named</code> annotation for simple string based mapping qualifiers</li>
-<li>Support for custom <code>hasXyz()</code> methods to check the presence of source properties instead of null checks</li>
-<li>Extended support of <code>java.text.NumberFormat</code> for Number types to String mapping</li>
-<li>OSGi support</li>
-<li>New built-in conversions around date/time type</li>
-</ul>
-
-<p></p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/">Read more...</a>
         
     </div>
 </article>
