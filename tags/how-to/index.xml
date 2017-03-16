@@ -16,6 +16,9 @@
       <guid>http://mapstruct.org/news/2013-07-08-using-mapstruct-with-gradle/</guid>
       <description>
 
+&lt;p&gt;&lt;em&gt;Update Feb. 26, 2017: Since writing this post, usage of annotation processors with Gradle got much easier and the set-up described in the following isn&amp;rsquo;t required anymore.&lt;/em&gt;
+&lt;em&gt;The &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-on-gradle&#34;&gt;example project&lt;/a&gt; on GitHub has been updated accordingly.&lt;/em&gt;&lt;/p&gt;
+
 &lt;p&gt;You work with &lt;a href=&#34;http://www.gradle.org/&#34;&gt;Gradle&lt;/a&gt; to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.&lt;/p&gt;
 
 &lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
