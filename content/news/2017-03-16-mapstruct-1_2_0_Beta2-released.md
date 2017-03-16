@@ -18,7 +18,7 @@ Plus, the newly introduced automapping feature now also [creates Enum mapping me
 
 <!--more-->
 
-We were incredibly amazed by the amount and the quality of feedback we got on the last release in such a short time. So a big *Thank You* to [Harald Brabenetz](https://github.com/brabenetz), [Alexander Zhuravlev](https://github.com/zelark), [John Watson](https://github.com/johnwatsondev) [44past4](https://github.com/44past4), [Azork](https://github.com/Azork), [iersel](https://github.com/iersel), and [idkw](https://github.com/idkw) for your issue reports that contributed to the release!
+We were incredibly amazed by the amount and the quality of feedback we got on the last release in such a short time. So a big *Thank You* to [Harald Brabenetz](https://github.com/brabenetz), [Alexander Zhuravlev](https://github.com/zelark), [John Watson](https://github.com/johnwatsondev), [44past4](https://github.com/44past4), [Azork](https://github.com/Azork), [iersel](https://github.com/iersel), and [idkw](https://github.com/idkw) for your issue reports that contributed to the release!
 And after initially contributing the awesome automapping feature, [Dmytro Polovinkin](https://github.com/navpil) continued to help out improving it - many thanks to you as well, we really appreciate it!
 
 
