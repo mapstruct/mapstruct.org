@@ -14,7 +14,7 @@ parent = "Documentation"
 
 ## Distribution Bundle
 
-You can obtain a distribution bundle containing the MapStruct binaries, source code and API documentation from [SourceForge](http://sourceforge.net/projects/mapstruct/files/).
+You can obtain a distribution bundle containing the MapStruct binaries, source code and API documentation from [GitHub](https://github.com/mapstruct/mapstruct/releases).
 
 ## Apache Maven
 
