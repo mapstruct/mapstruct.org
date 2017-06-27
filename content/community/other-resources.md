@@ -24,6 +24,7 @@ parent = "Community"
 ## Presentations
 * [Machst Du noch Reflection oder annotierst Du schon? Bean-Mapping mit MapStruct](http://www.muchsoft.com/presentations/MATHEMA-Campus-2015-MapStruct.pdf); Slides from talk on MapStruct given at MATHEMA Campus 2015 (German)
 * [MapStruct - Der neue Stern am Bean-Mapping Himmel?!](https://www.inovex.de/fileadmin/files/Vortraege/2015/mapstruct-gerrit-brehmer-wjax-11-2015.pdf); Slides from talk on MapStruct given at W-JAX 2015 (German)
+* [Easy Bean Mappings with MapStruct 1.2](http://www.muchsoft.com/presentations/MapStruct-JDKIO-2017.pdf); Slides from talk on MapStruct given at jdk.io 2017
 
 ## Miscellaneous
 * [Using DTOs](http://jhipster.github.io/using_dtos.html); JHipster documentation on integrating MapStruct to map DTOs
