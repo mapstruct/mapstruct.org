@@ -36,7 +36,7 @@ url = "https://github.com/mapstruct/mapstruct-examples"
 
 [Params]
 stableVersion = "1.1.0.Final"
-devVersion = "1.2.0.Beta3"
+devVersion = "1.2.0.CR1"
 numberOfLatestPosts = 7
 tagLine = "Java bean mappings, the easy way!"
 contentSourceUrl = "https://github.com/mapstruct/mapstruct.org/tree/master/content/"
