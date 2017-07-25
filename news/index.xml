@@ -18,7 +18,7 @@
       <description>&lt;p&gt;I&amp;rsquo;m very happy to announce the first candidate release of MapStruct 1.2!&lt;/p&gt;
 
 &lt;p&gt;The CR1 release mostly provides bug fixes and other smaller improvements since the &lt;a href=&#34;http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/&#34;&gt;Beta 3&lt;/a&gt;,
-e.g. related to the handling of the &lt;code&gt;@ObjectFactory&lt;/code&gt; annotation (issues &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1131&#34;&gt;#1131&lt;/a&gt; and &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1242[issue 1242]&#34;&gt;#1242&lt;/a&gt;).
+e.g. related to the handling of the &lt;code&gt;@ObjectFactory&lt;/code&gt; annotation (issues &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1131&#34;&gt;#1131&lt;/a&gt; and &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1242&#34;&gt;#1242&lt;/a&gt;).
 Further fixes concern the handling of imports in the generated code (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1227&#34;&gt;#1227&lt;/a&gt;, &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/543&#34;&gt;#543&lt;/a&gt;) and the error reporting in case of incorrect mapper definitions (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1150&#34;&gt;#1150&lt;/a&gt;, &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1185&#34;&gt;#1185&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
