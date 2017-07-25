@@ -8,7 +8,7 @@ tags: [release, news]
 I'm very happy to announce the first candidate release of MapStruct 1.2!
 
 The CR1 release mostly provides bug fixes and other smaller improvements since the [Beta 3](http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/),
-e.g. related to the handling of the `@ObjectFactory` annotation (issues [#1131](https://github.com/mapstruct/mapstruct/issues/1131) and [#1242](https://github.com/mapstruct/mapstruct/issues/1242[issue 1242])).
+e.g. related to the handling of the `@ObjectFactory` annotation (issues [#1131](https://github.com/mapstruct/mapstruct/issues/1131) and [#1242](https://github.com/mapstruct/mapstruct/issues/1242)).
 Further fixes concern the handling of imports in the generated code ([#1227](https://github.com/mapstruct/mapstruct/issues/1227), [#543](https://github.com/mapstruct/mapstruct/issues/543)) and the error reporting in case of incorrect mapper definitions ([#1150](https://github.com/mapstruct/mapstruct/issues/1150), [#1185](https://github.com/mapstruct/mapstruct/issues/1185)).
 
 <!--more-->
