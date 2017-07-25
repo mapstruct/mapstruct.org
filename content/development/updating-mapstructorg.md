@@ -44,6 +44,7 @@ Hugo comes with a built-in server for previewing the web site locally. Start it 
 hugo server --buildDrafts
 {{< /prettify >}}
 
+The website can then be accessed at [http://localhost:1313/](http://localhost:1313/).
 The server injects some magic JavaScript which enables auto-reload of rendered pages in the browser as the source files are edited.
 
 ## Content authoring
