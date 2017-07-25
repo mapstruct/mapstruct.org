@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MapStruct 1.1.0.Beta2 released &ndash; MapStruct</title>
+        <title>MapStruct 1.2.0.CR1 released &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -124,13 +124,13 @@ ga('send', 'pageview');
             
 <article class="uk-article">
     <p class="uk-article-meta ms-article-date">
-    <time>July 22, 2016</time>
+    <time>July 25, 2017</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/">MapStruct 1.1.0.Beta2 released</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/">MapStruct 1.2.0.CR1 released</a></h1>
 
 <p class="uk-article-meta ms-article-author">
-    By <b>Sjaak Derksen</b> under 
+    By <b>Gunnar Morling</b> under 
     <span class="uk-badge">
     
         release
@@ -144,62 +144,64 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        <div><p>It has been a while since the latest release of MapStruct. Via our mailing list, issue list and other channels we have received valuable feedback. We have tried to incorporate some of that feedback into a number of new features.</p>
+        <div><p>I&rsquo;m very happy to announce the first candidate release of MapStruct 1.2!</p>
 
-<p>MapStruct 1.1.0.Beta2 introduces a number of popular requested features, like source presence check and nested target properties.</p>
+<p>The CR1 release mostly provides bug fixes and other smaller improvements since the <a href="http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/">Beta 3</a>,
+e.g. related to the handling of the <code>@ObjectFactory</code> annotation (issues <a href="https://github.com/mapstruct/mapstruct/issues/1131">#1131</a> and <a href="https://github.com/mapstruct/mapstruct/issues/1242[issue 1242]">#1242</a>).
+Further fixes concern the handling of imports in the generated code (<a href="https://github.com/mapstruct/mapstruct/issues/1227">#1227</a>, <a href="https://github.com/mapstruct/mapstruct/issues/543">#543</a>) and the error reporting in case of incorrect mapper definitions (<a href="https://github.com/mapstruct/mapstruct/issues/1150">#1150</a>, <a href="https://github.com/mapstruct/mapstruct/issues/1185">#1185</a>).</p>
 
 <p></p>
 
-<p>Today we release MapStruct 1.1.0.Beta2, containing fixes for most of the user-reported bugs:</p>
+<p>One useful improvement relates to the usage of MapStruct under Java 9: we have defined module names now which will take effect when using MapStruct as <em>automatic module</em> (<a href="https://github.com/mapstruct/mapstruct/issues/1224">#1224</a>).</p>
 
-<ul>
-<li>Mapping of nested target properties.</li>
-<li>Support of using <code>hasXYZ</code> presence checker methods instead of <code>null</code> checks on the source side of bean mappings. The presence checker naming convention can be overidden by providing a custom SPI implementation.</li>
-<li>Extended support of <code>java.text.NumberFormat</code> for Number types to String mapping.</li>
-<li>Provide OSGI-enabled jars.</li>
-<li>Fix a compatibility issue with Eclipse Neon.</li>
-</ul>
+<p>The module names are <code>org.mapstruct</code> for the annotation JARs (only one of them is to be used at a given time, so using the same name is fine) and <code>org.mapstruct.processor</code> for the processor JAR.
+This is done using the new JAR manifest header <code>Automatic-Module-Name</code> which is supported by recent Java 9 preview builds.</p>
 
-<p>The complete list of closed issues can be found in the <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta2">change log</a>.</p>
+<p>Overall, <a href="https://github.com/mapstruct/mapstruct/milestone/22?closed=1">21 issues</a> have been fixed with the CR1 release.
+Please see the <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.CR1">release notes</a> for more details on the issues fixed.</p>
 
-<p>The MapStruct teams thanks: <a href="https://github.com/seanjob">Sean Huang</a>, and <a href="https://github.com/cliedeman">Ciaran Liedeman</a> for their contribution!</p>
-
-<h3 id="what-s-next"><a class="ms-header-link" href="#what-s-next"><i class="fa fa-link"></i></a>What&rsquo;s next?</h3>
-
-<p>We hope to release 1.1.0.CR1 in a short while (after the summer holidays).</p>
-
-<p>Please also checkout our examples <a href="https://github.com/mapstruct/mapstruct-examples">GitHub examples repository</a>. It is still small but the intention is to make this a repository of typical mapping problems and how to solve them with MapStruct. Contributing good examples is appriciated.</p>
+<p>Kudos to everyone contributing to this release: <a href="https://github.com/shalugin">Aleksandr Shalugin</a>, <a href="https://github.com/cornzy">Cornelius Dirmeier</a>,
+<a href="https://github.com/xyzst">Darren Rambaud</a> and <a href="https://github.com/Tillerino">Tillerino</a> as well as long-term MapStruct afficionados <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a> and <a href="https://github.com/sjaakd">Sjaak Derksen</a>.</p>
 
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
 
-<p>To fetch MapStruct 1.1.0.Beta2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:</p>
+<p>You can find MapStruct 1.2 CR 1 in Maven Central under the following GAV coordinates:</p>
 
 <ul>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.Beta2|jar">org.mapstruct:mapstruct:1.1.0.Beta2</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.Beta2|jar">org.mapstruct:mapstruct-jdk8:1.1.0.Beta2</a> (for usage with Java &gt;= 8)</li>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.Beta2|jar">org.mapstruct:mapstruct-processor:1.1.0.Beta2</a> for the annotation processor.</li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.CR1|jar">org.mapstruct:mapstruct-jdk8:1.2.0.CR1</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.CR1|jar">org.mapstruct:mapstruct:1.2.0.CR1</a> (for earlier Java versions)</li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.CR1|jar">org.mapstruct:mapstruct-processor:1.2.0.CR1</a></li>
 </ul>
 
-<p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.1.0.Beta2/">SourceForge</a>.</p>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.CR1">from GitHub</a>.</p>
+
+<h3 id="next-steps"><a class="ms-header-link" href="#next-steps"><i class="fa fa-link"></i></a>Next steps</h3>
+
+<p>With this candidate release we believe that we&rsquo;re mostly ready for releasing MapStruct 1.2 Final.</p>
+
+<p>No further feature development is planned for 1.2 at this point.
+Depending on the number of bug reports popping up in the next few days and weeks, we&rsquo;ll either do another CR or go to 1.2 Final right away.
+The final release should be in your hands in late summer.</p>
+
+<p>Please give the candidate release a spin and let us know as soon as possible if you run into any trouble.
+To get in touch, post a comment below or use one the following channels:</p>
 
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
 <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
 <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
-</ul>
-
-<p>We hope that you&rsquo;ll find the new features valuable.</p></div>
+</ul></div>
     </div>
     <div>
         <ul class="uk-pagination">
             
-            <li>
-                <a href="/news/2016-09-07-mapstruct-1_1_0_CR1/" title="MapStruct 1.1.0.CR1 released"><i class="uk-icon-angle-double-left"></i></a>
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
             </li>
             
             
             <li>
-                <a href="/news/2016-03-16-mapstruct-1_1_0_Beta1-released/" title="MapStruct 1.1.0.Beta1 released"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/" title="MapStruct 1.2.0.Beta3 is out"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 
