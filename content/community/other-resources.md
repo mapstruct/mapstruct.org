@@ -11,6 +11,7 @@ parent = "Community"
 
 ## Blog posts
 
+* [Code generators: MapStruct 101](https://that-java-guy.blogspot.ch/2017/07/code-generators-mapstruct-101.html)
 * [MapStruct: Transferring data from one bean to another](https://www.javacodegeeks.com/2016/12/mapstruct-transferring-data-one-bean-another.html)
 * [Quick Guide to MapStruct](http://www.baeldung.com/mapstruct)
 * [Object mapping magic with MapStruct](https://amsterdam.luminis.eu/2016/05/31/object-mapping-magic-with-mapstruct/)
