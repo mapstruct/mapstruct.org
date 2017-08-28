@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.2.0.CR1 Reference Guide</title>
+<title>MapStruct 1.2.0.CR2 Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -512,10 +512,10 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.2.0.CR1 Reference Guide</h1>
+<h1>MapStruct 1.2.0.CR2 Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2017-07-15</span>
+<span id="revdate">2017-08-28</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -719,7 +719,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.2.0.CR1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.2.0.CR2<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -818,9 +818,9 @@ plugins {
 }
 dependencies {
     ...
-    compile <span class="string"><span class="delimiter">'</span><span class="content">org.mapstruct:mapstruct-jdk8:1.2.0.CR1</span><span class="delimiter">'</span></span>
+    compile <span class="string"><span class="delimiter">'</span><span class="content">org.mapstruct:mapstruct-jdk8:1.2.0.CR2</span><span class="delimiter">'</span></span>
 
-    apt <span class="string"><span class="delimiter">'</span><span class="content">org.mapstruct:mapstruct-processor:1.2.0.CR1</span><span class="delimiter">'</span></span>
+    apt <span class="string"><span class="delimiter">'</span><span class="content">org.mapstruct:mapstruct-processor:1.2.0.CR2</span><span class="delimiter">'</span></span>
 }
 ...</pre></td>
 </tr></table></code></pre>
@@ -857,8 +857,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-jdk8-1.2.0.CR1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.2.0.CR1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-jdk8-1.2.0.CR2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.2.0.CR2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -1146,7 +1146,7 @@ suppressGeneratorVersionInfoComment</code></p></td>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The property name as defined in the <a href="http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html">JavaBeans spefication</a> must be specified in the <code>@Mapping</code> annotation, e.g. <em>seatCount</em> for a property with the accessor methods <code>getSeatCount()</code> and <code>setSeatCount()</code>.</p>
+<p>The property name as defined in the <a href="http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html">JavaBeans specification</a> must be specified in the <code>@Mapping</code> annotation, e.g. <em>seatCount</em> for a property with the accessor methods <code>getSeatCount()</code> and <code>setSeatCount()</code>.</p>
 </div>
 </td>
 </tr>
@@ -1736,7 +1736,7 @@ CarDto dto = CarMapper.INSTANCE.carToCarDto( car );</pre></td>
 <p>If you&#8217;re working with a dependency injection framework such as <a href="http://jcp.org/en/jsr/detail?id=346">CDI</a> (Contexts and Dependency Injection for Java<sup>TM</sup> EE) or the <a href="http://www.springsource.org/spring-framework">Spring Framework</a>, it is recommended to obtain mapper objects via dependency injection as well. For that purpose you can specify the component model which generated mapper classes should be based on either via <code>@Mapper#componentModel</code> or using a processor option as described in <a href="#configuration-options">Configuration options</a>.</p>
 </div>
 <div class="paragraph">
-<p>Currently there is support for CDI and Spring (the later either via its custom annotations or using the JSR 330 annotations). See <a href="#configuration-options">Configuration options</a> for the allowed values of the <code>componentModel</code> attribute which are the same as for the <code>mapstruct.defaultComponentModel</code> processor option. In both cases the required annotations will be added to the generated mapper implementations classes in order to make the same subject to dependency injection. The following shows an example using CDI:</p>
+<p>Currently there is support for CDI and Spring (the latter either via its custom annotations or using the JSR 330 annotations). See <a href="#configuration-options">Configuration options</a> for the allowed values of the <code>componentModel</code> attribute which are the same as for the <code>mapstruct.defaultComponentModel</code> processor option. In both cases the required annotations will be added to the generated mapper implementations classes in order to make the same subject to dependency injection. The following shows an example using CDI:</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 18. A mapper using the CDI component model</div>
@@ -2218,6 +2218,21 @@ instead of re-configuring the same things on all of those upper methods.</p>
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In some cases the <code>ReportingPolicy</code> that is going to be used for the generated nested method would be <code>IGNORE</code>.
+This means that it is possible for MapStruct not to report unmapped target properties in nested mappings.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="invoking-other-mappers"><a class="anchor" href="#invoking-other-mappers"></a>5.4. Invoking other mappers</h3>
@@ -2517,7 +2532,7 @@ instead of re-configuring the same things on all of those upper methods.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.2.0.CR1/integrationtest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.2.0.CR2/integrationtest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -5623,7 +5638,7 @@ This JAR file needs to be added to the annotation processor classpath
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-07-15 10:21:48 +02:00
+Last updated 2017-08-28 20:22:56 +02:00
 </div>
 </div>
 </body>
