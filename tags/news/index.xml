@@ -2,73 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>News on MapStruct</title>
-    <link>http://mapstruct.org/tags/news/index.xml</link>
+    <link>http://mapstruct.org/tags/news/</link>
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Aug 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MapStruct 1.2.0.CR2 released</title>
+      <link>http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/</link>
+      <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m very happy to announce the second candidate release of MapStruct 1.2!&lt;/p&gt;
+
+&lt;p&gt;The CR2 release mostly provides bug fixes and other smaller improvements since the &lt;a href=&#34;http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_CR2-released/&#34;&gt;CR2&lt;/a&gt;,
+e.g. related to the handling of &lt;code&gt;mappingInheritanceStrategy&lt;/code&gt; (issue &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1255&#34;&gt;#1255&lt;/a&gt;).
+Further fixes concern the handling nested target properties (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1269&#34;&gt;#1269&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.2.0.CR1 released</title>
-      <link>http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/</link>
+      <link>http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_cr1-released/</link>
       <pubDate>Tue, 25 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/</guid>
+      <guid>http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_cr1-released/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m very happy to announce the first candidate release of MapStruct 1.2!&lt;/p&gt;
 
 &lt;p&gt;The CR1 release mostly provides bug fixes and other smaller improvements since the &lt;a href=&#34;http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/&#34;&gt;Beta 3&lt;/a&gt;,
-e.g. related to the handling of the &lt;code&gt;@ObjectFactory&lt;/code&gt; annotation (issues &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1131&#34;&gt;#1131&lt;/a&gt; and &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1242&#34;&gt;#1242&lt;/a&gt;).
+e.g. related to the handling of the &lt;code&gt;@ObjectFactory&lt;/code&gt; annotation (issues &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1131&#34;&gt;#1131&lt;/a&gt; and &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1242[issue 1242]&#34;&gt;#1242&lt;/a&gt;).
 Further fixes concern the handling of imports in the generated code (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1227&#34;&gt;#1227&lt;/a&gt;, &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/543&#34;&gt;#543&lt;/a&gt;) and the error reporting in case of incorrect mapper definitions (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1150&#34;&gt;#1150&lt;/a&gt;, &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1185&#34;&gt;#1185&lt;/a&gt;).&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;One useful improvement relates to the usage of MapStruct under Java 9: we have defined module names now which will take effect when using MapStruct as &lt;em&gt;automatic module&lt;/em&gt; (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1224&#34;&gt;#1224&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;The module names are &lt;code&gt;org.mapstruct&lt;/code&gt; for the annotation JARs (only one of them is to be used at a given time, so using the same name is fine) and &lt;code&gt;org.mapstruct.processor&lt;/code&gt; for the processor JAR.
-This is done using the new JAR manifest header &lt;code&gt;Automatic-Module-Name&lt;/code&gt; which is supported by recent Java 9 preview builds.&lt;/p&gt;
-
-&lt;p&gt;Overall, &lt;a href=&#34;https://github.com/mapstruct/mapstruct/milestone/22?closed=1&#34;&gt;21 issues&lt;/a&gt; have been fixed with the CR1 release.
-Please see the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.CR1&#34;&gt;release notes&lt;/a&gt; for more details on the issues fixed.&lt;/p&gt;
-
-&lt;p&gt;Kudos to everyone contributing to this release: &lt;a href=&#34;https://github.com/shalugin&#34;&gt;Aleksandr Shalugin&lt;/a&gt;, &lt;a href=&#34;https://github.com/cornzy&#34;&gt;Cornelius Dirmeier&lt;/a&gt;,
-&lt;a href=&#34;https://github.com/xyzst&#34;&gt;Darren Rambaud&lt;/a&gt; and &lt;a href=&#34;https://github.com/Tillerino&#34;&gt;Tillerino&lt;/a&gt; as well as long-term MapStruct afficionados &lt;a href=&#34;https://github.com/agudian&#34;&gt;Andreas Gudian&lt;/a&gt;, &lt;a href=&#34;https://github.com/filiphr&#34;&gt;Filip Hrisafov&lt;/a&gt; and &lt;a href=&#34;https://github.com/sjaakd&#34;&gt;Sjaak Derksen&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;You can find MapStruct 1.2 CR 1 in Maven Central under the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Annotation JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.2.0.CR1&lt;/a&gt; (for usage with Java &amp;gt;= 8) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct:1.2.0.CR1&lt;/a&gt; (for earlier Java versions)&lt;/li&gt;
-&lt;li&gt;Annotation processor JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.2.0.CR1&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - &lt;a href=&#34;https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.CR1&#34;&gt;from GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
-
-&lt;p&gt;With this candidate release we believe that we&amp;rsquo;re mostly ready for releasing MapStruct 1.2 Final.&lt;/p&gt;
-
-&lt;p&gt;No further feature development is planned for 1.2 at this point.
-Depending on the number of bug reports popping up in the next few days and weeks, we&amp;rsquo;ll either do another CR or go to 1.2 Final right away.
-The final release should be in your hands in late summer.&lt;/p&gt;
-
-&lt;p&gt;Please give the candidate release a spin and let us know as soon as possible if you run into any trouble.
-To get in touch, post a comment below or use one the following channels:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MapStruct 1.2.0.Beta3 is out</title>
-      <link>http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/</link>
+      <link>http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_beta3-is-out/</link>
       <pubDate>Fri, 02 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/</guid>
+      <guid>http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_beta3-is-out/</guid>
       <description>&lt;p&gt;The summer is nearly there, and so is MapStruct 1.2.
 Today it&amp;rsquo;s my pleasure to announce another release on our way to the Final: MapStruct 1.2 Beta 3!&lt;/p&gt;
 
@@ -85,52 +63,15 @@ Eventually, you also can &lt;a href=&#34;https://github.com/mapstruct/mapstruct/
 &lt;li&gt;Accessing a non-existent nested target property wasn&amp;rsquo;t handled gracefully (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1153&#34;&gt;#1153&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Another nice improvement related to the latter is that MapStruct &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/122&#34;&gt;will suggest&lt;/a&gt; the most-similar actual property name now when accidentally referring to a non-existing property.&lt;/p&gt;
-
-&lt;p&gt;Altogether this release fixes &lt;a href=&#34;https://github.com/mapstruct/mapstruct/milestone/21?closed=1&#34;&gt;15 issues&lt;/a&gt;.
-Please refer to the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.Beta3&#34;&gt;release notes&lt;/a&gt; for more details.&lt;/p&gt;
-
-&lt;p&gt;As always, a big thank you goes to everyone involved with the release, be it by filing bug reports or sending pull requests.
-Let me specifically mention &lt;a href=&#34;https://twitter.com/madfilip&#34;&gt;Filip Hrisafov&lt;/a&gt; though who contributed the majority of changes to this release and also performed the actual release. Thanks a lot for all your hard work, Filip, that&amp;rsquo;s much appreciated!&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;You can find MapStruct 1.2 Beta 3 in Maven Central under the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Annotation JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.Beta3|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.2.0.Beta3&lt;/a&gt; (for usage with Java &amp;gt;= 8) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.Beta3|jar&#34;&gt;org.mapstruct:mapstruct:1.2.0.Beta3&lt;/a&gt; (for earlier Java versions)&lt;/li&gt;
-&lt;li&gt;Annotation processor JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.Beta3|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.2.0.Beta3&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For those relying on the distribution bundles - containing all the JARs, documentation etc. - there&amp;rsquo;s a small change.
-As of this release, you can download the ZIP and TAR.GZ bundles directly &lt;a href=&#34;https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.Beta3&#34;&gt;from GitHub&lt;/a&gt;.
-We won&amp;rsquo;t upload any new releases to SourceForge anymore as we found the GitHub release functionality to be more user-friendly.&lt;/p&gt;
-
-&lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
-
-&lt;p&gt;Beta3 is planned to be the last Beta release for MapStruct 1.2.&lt;/p&gt;
-
-&lt;p&gt;So please give it a try and let us know as soon as possible if you run into any trouble.
-If no further critical bugs show up, we&amp;rsquo;ll do one CR (candidate release) in a few weeks, followed by the Final which should be in your hands in the summer.&lt;/p&gt;
-
-&lt;p&gt;To get in touch, post a comment below or use one the following channels:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MapStruct 1.2.0.Beta2 released</title>
-      <link>http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/</link>
+      <link>http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_beta2-released/</link>
       <pubDate>Thu, 16 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/</guid>
+      <guid>http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_beta2-released/</guid>
       <description>&lt;p&gt;Just shy of a month after the first Beta release of MapStruct 1.2, the team is happy to announce the second Beta, fixing a couple of bugs that sneaked in with the &lt;a href=&#34;http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta2-is-out-with-lombok-support-and-direct-field-access/&#34;&gt;many new features&lt;/a&gt; offered by the new 1.2 release line.&lt;/p&gt;
 
 &lt;p&gt;We fixed &lt;a href=&#34;https://github.com/mapstruct/mapstruct/milestone/20?closed=1&#34;&gt;16 issues&lt;/a&gt;, most of them reported by users. The most infamous bugs reported and fixed are:&lt;/p&gt;
@@ -144,40 +85,15 @@ If no further critical bugs show up, we&amp;rsquo;ll do one CR (candidate releas
 
 &lt;p&gt;Plus, the newly introduced automapping feature now also &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1102&#34;&gt;creates Enum mapping methods&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;We were incredibly amazed by the amount and the quality of feedback we got on the last release in such a short time. So a big &lt;em&gt;Thank You&lt;/em&gt; to &lt;a href=&#34;https://github.com/brabenetz&#34;&gt;Harald Brabenetz&lt;/a&gt;, &lt;a href=&#34;https://github.com/zelark&#34;&gt;Alexander Zhuravlev&lt;/a&gt;, &lt;a href=&#34;https://github.com/johnwatsondev&#34;&gt;John Watson&lt;/a&gt;, &lt;a href=&#34;https://github.com/44past4&#34;&gt;44past4&lt;/a&gt;, &lt;a href=&#34;https://github.com/Azork&#34;&gt;Azork&lt;/a&gt;, &lt;a href=&#34;https://github.com/iersel&#34;&gt;iersel&lt;/a&gt;, and &lt;a href=&#34;https://github.com/idkw&#34;&gt;idkw&lt;/a&gt; for your issue reports that contributed to the release!
-And after initially contributing the awesome automapping feature, &lt;a href=&#34;https://github.com/navpil&#34;&gt;Dmytro Polovinkin&lt;/a&gt; continued to help out improving it - many thanks to you as well, we really appreciate it!&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;Ready to try out the new release? Great! We need the feedback!&lt;/p&gt;
-
-&lt;p&gt;You find the new release from Maven Central using the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Annotation JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.Beta2|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.2.0.Beta2&lt;/a&gt; (for usage with Java &amp;gt;= 8) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.Beta2|jar&#34;&gt;org.mapstruct:mapstruct:1.2.0.Beta2&lt;/a&gt; (for earlier Java versions)&lt;/li&gt;
-&lt;li&gt;Annotation processor JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.Beta2|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.2.0.Beta2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For those not using a dependency management tool such as Maven or Gradle, we also provide distribution bundles (ZIP, TAR.GZ) on &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.2.0.Beta2/&#34;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out</title>
-      <link>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/</link>
+      <link>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_beta1-is-out-with-lombok-support-and-direct-field-access/</link>
       <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/</guid>
+      <guid>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_beta1-is-out-with-lombok-support-and-direct-field-access/</guid>
       <description>&lt;p&gt;It&amp;rsquo; my pleasure to announce the first Beta release of MapStruct 1.2.&lt;/p&gt;
 
 &lt;p&gt;The new release comes with a whole lot of new functionality, e.g.:&lt;/p&gt;
@@ -196,206 +112,15 @@ And after initially contributing the awesome automapping feature, &lt;a href=&#3
 &lt;li&gt;Target bean factory methods can access a mapping&amp;rsquo;s source parameter(s)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Altogether, not less than &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.2.0.Beta1&#34;&gt;44 issues&lt;/a&gt; were fixed for this release.&lt;/p&gt;
-
-&lt;p&gt;This would not have been possible without our fantastic community of contributors:
-&lt;a href=&#34;https://github.com/navpil&#34;&gt;Dmytro Polovinkin&lt;/a&gt;, &lt;a href=&#34;https://github.com/xCASx&#34;&gt;Maxim Kolesnikov&lt;/a&gt;, &lt;a href=&#34;https://github.com/pascalgn&#34;&gt;Pascal Grün&lt;/a&gt;, &lt;a href=&#34;https://github.com/remmeier&#34;&gt;Remo Meier&lt;/a&gt;, as well as seasoned MapStruct hackers &lt;a href=&#34;https://github.com/agudian&#34;&gt;Andreas Gudian&lt;/a&gt;, &lt;a href=&#34;https://github.com/filiphr&#34;&gt;Filip Hrisafov&lt;/a&gt; and &lt;a href=&#34;https://github.com/sjaakd&#34;&gt;Sjaak Derksen&lt;/a&gt;.
-Thanks a lot everyone for all your hard work!&lt;/p&gt;
-
-&lt;p&gt;Enough of the pep talk, let&amp;rsquo;s take a closer look at some of the new features!&lt;/p&gt;
-
-&lt;h3 id=&#34;using-mapstruct-together-with-project-lombok&#34;&gt;Using MapStruct together with Project Lombok&lt;/h3&gt;
-
-&lt;p&gt;Being able to use MapStruct together with &lt;a href=&#34;https://projectlombok.org/&#34;&gt;Project Lombok&lt;/a&gt; within a single compilation unit has been a long-awaited and &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/510&#34;&gt;intensely debated&lt;/a&gt; feature request.&lt;/p&gt;
-
-&lt;p&gt;The challenge here was that Lombok actually &lt;em&gt;alters&lt;/em&gt; the AST of the compiled classes (something which has never been foreseen by the &lt;a href=&#34;https://www.jcp.org/en/jsr/detail?id=269&#34;&gt;annotation processing&lt;/a&gt; infrastructure).
-Other annotation processors such as MapStruct then wouldn&amp;rsquo;t know about the elements added by Lombok (e.g. getters and setters for the &lt;code&gt;@Data&lt;/code&gt; annotation).&lt;/p&gt;
-
-&lt;p&gt;To cut a long story short, thanks to a very productive collaboration with the Lombok team this could be resolved.
-MapStruct will now wait until Lombok has done all its amendments before generating mapper classes for Lombok-enhanced beans.&lt;/p&gt;
-
-&lt;p&gt;You can find a small example project for using MapStruct together with Lombok &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-lombok&#34;&gt;here&lt;/a&gt;.
-Note that Lombok 1.16.14 or newer is required.&lt;/p&gt;
-
-&lt;h3 id=&#34;java-8-stream-support&#34;&gt;Java 8 stream support&lt;/h3&gt;
-
-&lt;p&gt;Java 8&amp;rsquo;s &lt;code&gt;Stream&lt;/code&gt; type can &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/962&#34;&gt;be used&lt;/a&gt; now as source and target of mapping methods:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
-@Mapper
-public interface OrderMapper {
-
-    Set&amp;lt;OrderDto&amp;gt; ordersToOrderDtos(Stream&amp;lt;Order&amp;gt; orders);
-
-    OrderDto orderToOrderDto(Order order);
-}
-&lt;/pre&gt;
-
-
-&lt;p&gt;If the &amp;ldquo;element type&amp;rdquo; differs between source and target stream/collection (&lt;code&gt;Order&lt;/code&gt; vs. &lt;code&gt;OrderDto&lt;/code&gt;),
-&lt;code&gt;Stream#map()&lt;/code&gt; will be used to call the right element mapping method (&lt;code&gt;orderToOrderDto()&lt;/code&gt;) in the generated code.&lt;/p&gt;
-
-&lt;h3 id=&#34;mappings-using-direct-field-access&#34;&gt;Mappings using direct field access&lt;/h3&gt;
-
-&lt;p&gt;Traditionally MapStruct relied on the JavaBeans convention and called getter and setter methods for propagating property values from source to target.
-Sometimes writing all the getters and setters may be a bit cumbersome, though, e.g. when it comes to &amp;ldquo;dumb&amp;rdquo; DTOs which should just hold a couple of property values.&lt;/p&gt;
-
-&lt;p&gt;Using public fields is perfectly fine in such case, which is why direct field access is &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/557&#34;&gt;supported by MapStruct now&lt;/a&gt;.
-I.e. if your source or target beans do not define getters or setters for the properties but declare public fields,
-the generated code will directly access the fields.
-Note that no reflection will be used, i.e. we won&amp;rsquo;t make private fields accessible.&lt;/p&gt;
-
-&lt;p&gt;You can find a small example demonstrating field-based mapping &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-field-mapping/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;automatic-creation-of-sub-mapping-methods&#34;&gt;Automatic creation of sub-mapping methods&lt;/h3&gt;
-
-&lt;p&gt;MapStruct 1.2 will automatically create methods for nested mappings if possible.
-E.g. consider the following entities and corresponding DTOs:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
-public class Order {
-    public Customer customer;
-}
-
-public class Customer {
-    public String custName;
-}
-&lt;/pre&gt;
-
-
-&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
-public class OrderDto {
-    public CustomerDto customer;
-}
-
-public class CustomerDto {
-    public String name;
-}
-&lt;/pre&gt;
-
-
-&lt;p&gt;In MapStruct 1.1 you were required to provide two dedicated mapping methods, one for orders and one for customers:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
-@Mapper
-public class OrderMapper {
-
-    OrderDto orderToDto(Order order);
-
-    @Mapping(target = &amp;#34;name&amp;#34;, source = &amp;#34;custName&amp;#34;)
-    CustomerDto customerToDto(Customer customer);
-}
-&lt;/pre&gt;
-
-
-&lt;p&gt;If you have object graphs on source and target side that are structurally equal (i.e. for each object on the source side there is a corresponding object on the target side) but only differ in property names or (non-bean) property types,
-having to define mapping methods for all the source-target object pairs can be quite a bit of work.&lt;/p&gt;
-
-&lt;p&gt;MapStruct 1.2 can therefore automatically create nested mapping methods:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
-@Mapper
-public class OrderMapper {
-
-    @Mapping(target = &amp;#34;customer.name&amp;#34;, source = &amp;#34;customer.custName&amp;#34;)
-    OrderDto orderToDto(Order order);
-}
-&lt;/pre&gt;
-
-
-&lt;p&gt;When detecting that there is no explicit method for mapping &lt;code&gt;Customer&lt;/code&gt; to &lt;code&gt;CustomerDto&lt;/code&gt;,
-MapStruct will generate such method, applying the &lt;code&gt;@Mapping&lt;/code&gt; configuration given on the &lt;code&gt;orderToDto()&lt;/code&gt; method.&lt;/p&gt;
-
-&lt;p&gt;This feature can save you quite some work if you are mapping large graphs.
-The implementation may still have some rough edges, so please give it a try and let us know if you see unexpected mapping code being generated.&lt;/p&gt;
-
-&lt;p&gt;A more complex example for the auto-mapping feature can be found &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-nested-bean-mappings&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;pass-through-context-parameters&#34;&gt;&amp;ldquo;Pass-through&amp;rdquo; context parameters&lt;/h3&gt;
-
-&lt;p&gt;Sometimes there is the need to pass some specific contextual information through generated mapping methods down to hand-written methods.
-That is supported using the new &lt;code&gt;@Context&lt;/code&gt; annotation now.
-An example for this is passing the locale or timezone of the current user:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
-@Mapper
-public abstract class OrderMapper {
-
-    public abstract CarDto carToCarDto(Car car, @Context Locale userLocale);
-
-    protected OwnerManualDto translateOwnerManual(OwnerManual ownerManual, @Context Locale locale) {
-        // manually implemented logic to translate the OwnerManual with the given Locale
-    }
-}
-&lt;/pre&gt;
-
-
-&lt;p&gt;What you use as context type is fully transparent to MapStruct,
-any parameters annotated with &lt;code&gt;@Context&lt;/code&gt; will essentially be ignored apart from being passed along the call stack of mapping methods.&lt;/p&gt;
-
-&lt;p&gt;Context parameters can also be used with mapping lifecycle methods (&lt;code&gt;@BeforeMapping&lt;/code&gt;/&lt;code&gt;@AfterMapping&lt;/code&gt;),
-which is super-useful for mapping object graphs that contain cycles.
-Check out &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-mapping-with-cycles&#34;&gt;this project&lt;/a&gt; in the MapStruct examples repository
-which shows how to keep track of nodes that already have been mapped and re-use their mapped counterparts when visiting them another time in a cyclic tree.&lt;/p&gt;
-
-&lt;h3 id=&#34;more-powerful-target-bean-factories&#34;&gt;More powerful target bean factories&lt;/h3&gt;
-
-&lt;p&gt;Factory methods for instantiating the target type of bean mapping methods got much more powerful as they can receive the source parameter(s) of the mapping method now.
-This can be used for instance to load an entity through JPA from the database when mapping DTOs back to entities:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums lang-java&#34;&gt;
-@Mapper(uses=ReferenceMapper.class, componentModel=&amp;#34;cdi&amp;#34;)
-public interface CarMapper {
-      Car carDtoToCar(CarDto car);
-}
-
-@ApplicationScoped
-public class ReferenceMapper {
-
-    @PersistenceContext
-    private EntityManager em;
-
-    @ObjectFactory
-    public &amp;lt;T extends AbstractEntity&amp;gt; T resolve(AbstractDto sourceDto, @TargetType Class&amp;lt;T&amp;gt; type) {
-        T entity = em.find( type, sourceDto.getId() );
-        return entity != null ? entity : type.newInstance();
-    }
-}
-&lt;/pre&gt;
-
-
-&lt;p&gt;Factory methods which should receive the mapping source parameters must be annotated with &lt;code&gt;@ObjectFactory&lt;/code&gt; so MapStruct can distinguish them from regular mapping methods.&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;This concludes our tour through MapStruct 1.2 Beta1.
-If you&amp;rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Annotation JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.2.0.Beta1&lt;/a&gt; (for usage with Java &amp;gt;= 8) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct:1.2.0.Beta1&lt;/a&gt; (for earlier Java versions)&lt;/li&gt;
-&lt;li&gt;Annotation processor JAR: &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.2.0.Beta1&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For those not using a dependency management tool such as Maven or Gradle, we also provide distribution bundles (ZIP, TAR.GZ) on &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.2.0.Beta1/&#34;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MapStruct 1.1.0.Final seen in the wild!</title>
-      <link>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/</link>
+      <link>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_final-seen-in-the-wild/</link>
       <pubDate>Tue, 22 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/</guid>
+      <guid>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_final-seen-in-the-wild/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m more than thrilled to report that MapStruct 1.1 Final has been spotted in the wild!
 We grew that puppy for almost one year since the announcement of &lt;a href=&#34;http://mapstruct.org/news/2015/11/25/mapstruct-1_0_Final-released.html&#34;&gt;MapStruct 1.0&lt;/a&gt;, so it was about time to let it go and put a final release into your hands.&lt;/p&gt;
 
@@ -411,129 +136,29 @@ We grew that puppy for almost one year since the announcement of &lt;a href=&#34
 &lt;li&gt;New built-in conversions around date/time type&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;This list is by no means exhaustive.
-Check out the individual announcements for the &lt;a href=&#34;http://mapstruct.org/news/2016/03/16/mapstruct-1_1_0_Beta1-released.html&#34;&gt;Beta1&lt;/a&gt;, &lt;a href=&#34;http://mapstruct.org/news/2016/07/22/mapstruct-1_1_0_Beta2-released.htmll&#34;&gt;Beta2&lt;/a&gt;, &lt;a href=&#34;http://mapstruct.org/news/2016/09/07/mapstruct-1_1_0_CR1.html&#34;&gt;CR1&lt;/a&gt; and &lt;a href=&#34;http://mapstruct.org/news/2016/11/08/mapstruct-1_1_0_CR2-is-out.html&#34;&gt;CR2&lt;/a&gt; releases for all the details.
-Also be sure to take a look at the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/wiki/Migration-notes&#34;&gt;migration notes&lt;/a&gt; to learn more about some issues to consider when migrating from MapStruct 1.0 to 1.1.&lt;/p&gt;
-
-&lt;p&gt;MapStruct would be nowhere without its steadily growing community of users and contributors.
-So let me say a big thank you to everyone involved, be it through reporting bugs, starting discussions on the mailing list and of course helping out with contributions on the code base itself.&lt;/p&gt;
-
-&lt;p&gt;The following people have sent in code changes for MapStruct 1.1: &lt;a href=&#34;https://github.com/grandmasterpixel&#34;&gt;Vincent Alexander Beelte&lt;/a&gt;, &lt;a href=&#34;https://github.com/greuelpirat&#34;&gt;Oliver Ehrenmüller&lt;/a&gt;, &lt;a href=&#34;https://github.com/dgruntz&#34;&gt;Dominik Gruntz&lt;/a&gt;, &lt;a href=&#34;https://github.com/filiphr&#34;&gt;Filip Hrisafov&lt;/a&gt;, &lt;a href=&#34;https://github.com/seanjob&#34;&gt;Sean Huang&lt;/a&gt;, &lt;a href=&#34;https://github.com/tisoft&#34;&gt;Markus Heberling&lt;/a&gt;, &lt;a href=&#34;https://github.com/xCASx&#34;&gt;Maxim Kolesnikov&lt;/a&gt;, &lt;a href=&#34;https://github.com/pjlarson&#34;&gt;Peter Larson&lt;/a&gt;, &lt;a href=&#34;https://github.com/cliedeman&#34;&gt;Ciaran Liedeman&lt;/a&gt;, &lt;a href=&#34;https://github.com/streetturtle&#34;&gt;Pavel Makhov&lt;/a&gt;, &lt;a href=&#34;https://github.com/osthus-sm&#34;&gt;Stefan May&lt;/a&gt;, &lt;a href=&#34;https://github.com/samwright&#34;&gt;Samuel Wright&lt;/a&gt; as well as MapStruct old-timers and dear fellows &lt;a href=&#34;https://github.com/agudian&#34;&gt;Andreas Gudian&lt;/a&gt; and &lt;a href=&#34;https://github.com/sjaakd&#34;&gt;Sjaak Derksen&lt;/a&gt;.
-Kudos to you, your efforts and hard work are highly appreciated!&lt;/p&gt;
-
-&lt;p&gt;Also let me use the opportunity and introduce Filip Hrisafov to you, the latest committer to the project.
-He has been very busy with hacking on MapStruct lately, first by adding some more built-in conversions around date and time types, and now working on the long-awaited support for field based mappings.
-Welcome aboard, Filip!&lt;/p&gt;
-
-&lt;h3 id=&#34;some-stats&#34;&gt;Some stats&lt;/h3&gt;
-
-&lt;p&gt;Speaking of numbers and stats, not only the number of contributors grew, also adoption numbers steadily increased over the course of the last year.
-We see more and more discussions in our &lt;a href=&#34;https://groups.google.com/forum/#!forum/mapstruct-users&#34;&gt;Google group&lt;/a&gt; and increasing numbers of &lt;a href=&#34;http://stackoverflow.com/questions/tagged/mapstruct&#34;&gt;MapStruct-related questions&lt;/a&gt; on Stack Overflow as well as &lt;a href=&#34;http://www.timqian.com/star-history/#mapstruct/mapstruct&#34;&gt;star gazers&lt;/a&gt; on GitHub.&lt;/p&gt;
-
-&lt;p&gt;Most impressive though are the download numbers we get from the Maven Central repo.
-As an example here are the numbers for the &lt;em&gt;org.mapstruct:mapstruct&lt;/em&gt; artifact:&lt;/p&gt;
-
-&lt;div style=&#34;text-align:center&#34;&gt;
-    &lt;img src=&#34;http://mapstruct.org/images/downloads_2016.png&#34; style=&#34;padding-bottom: 3px;&#34;/&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The downloads grew by factor 5 from about 10,000 in November 2015 to about 50,000 in the last month.
-It&amp;rsquo;s just great to see that MapStruct is that useful for so many users out there!&lt;/p&gt;
-
-&lt;h3 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next?&lt;/h3&gt;
-
-&lt;p&gt;Finally let&amp;rsquo;s take a look at what to expect from MapStruct in the next time.
-As already discussed in the &lt;a href=&#34;http://mapstruct.org/news/2016/11/08/mapstruct-1_1_0_CR2-is-out.html&#34;&gt;CR 2 announcement&lt;/a&gt;, we&amp;rsquo;d like to get out MapStruct 1.2 much quicker than 1.1, so you can expect it in much less than one year from now :)&lt;/p&gt;
-
-&lt;p&gt;Two features planned for 1.2 are the aforementioned &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/557&#34;&gt;field based mappings&lt;/a&gt; and support for &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/73&#34;&gt;immutable beans&lt;/a&gt; on the target side by leveraging non-default constructors.
-Also take a look at the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=is%3Aissue+is%3Aopen+label%3Afeature&#34;&gt;backlog&lt;/a&gt;.
-If there is anything in there you&amp;rsquo;d like to see addressed rather sooner than later, let us know by commenting or voting.&lt;/p&gt;
-
-&lt;p&gt;Our general idea is to keep the number of new features per release a bit lower and in turn do more frequent releases, living up to the &amp;ldquo;Release early, release often&amp;rdquo; principle.&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;Use these GAV coordinates with Maven, Gradle or similar dependency management tools:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.Final|jar&#34;&gt;org.mapstruct:mapstruct:1.1.0.Final&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.Final|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.1.0.Final&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.Final|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.1.0.Final&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can obtain distribution bundles containing the binaries, source and documentation from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.1.0.Final/&#34;&gt;SourceForge&lt;/a&gt; or &lt;a href=&#34;https://bintray.com/mapstruct/bundles/mapstruct-dist/1.1.0.Final&#34;&gt;BinTray&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;links&#34;&gt;Links&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MapStruct 1.1.0.CR2 is out</title>
-      <link>http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/</link>
+      <link>http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_cr2-is-out/</link>
       <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/</guid>
+      <guid>http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_cr2-is-out/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s my pleasure to announce the second candidate release of MapStruct 1.1!&lt;/p&gt;
 
 &lt;p&gt;This release fixes several bugs discovered in the first CR but also adds some new built-in conversions around date/time types (e.g. from/to the &lt;code&gt;java.sql.*&lt;/code&gt; types and between &lt;code&gt;java.time.LocalDate&lt;/code&gt; and &lt;code&gt;java.util.Date&lt;/code&gt;).
 Normally, we wouldn&amp;rsquo;t add new functionality during the CR phase, but as these conversions have been contributed by community members (kudos to you!), we thought it&amp;rsquo;d be nice to put them into a release as soon as possible.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Please check out the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.CR2&#34;&gt;change log&lt;/a&gt; for the complete list of closed issues.
-Also take a look at the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/wiki/Migration-notes#110cr2&#34;&gt;migration notes&lt;/a&gt; as there has been a slight behavioral change related to nested source properties requiring conversion and the null checks in the generated code.
-We strongly recommend testing against MapStruct 1.1.0.CR2 to everyone.
-If you find any further bugs when using the CR in your project, please report them to our &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt; as soon as possible.&lt;/p&gt;
-
-&lt;p&gt;Many thanks to all the bug reporters and everyone contributing to the CR2 release, be it with code or documentation: &lt;a href=&#34;https://github.com/filiphr&#34;&gt;Filip Hrisafov&lt;/a&gt;, &lt;a href=&#34;https://github.com/osthus-sm&#34;&gt;Stefan May&lt;/a&gt;, &lt;a href=&#34;https://github.com/pjlarson&#34;&gt;Peter Larson&lt;/a&gt;, &lt;a href=&#34;https://github.com/streetturtle&#34;&gt;Pavel Makhov&lt;/a&gt;, &lt;a href=&#34;https://github.com/xCASx&#34;&gt;Maxim Kolesnikov&lt;/a&gt; and &lt;a href=&#34;https://github.com/dgruntz&#34;&gt;Dominik Gruntz&lt;/a&gt;.
-You guys rock!&lt;/p&gt;
-
-&lt;h3 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next?&lt;/h3&gt;
-
-&lt;p&gt;Unless any further issues arise, we&amp;rsquo;ve planned to do the 1.1 Final release by the end of next week.&lt;/p&gt;
-
-&lt;p&gt;After that we&amp;rsquo;d like to come to MapStruct 1.2 rather quickly.
-The &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=is%3Aissue+is%3Aopen+label%3Afeature&#34;&gt;backlog&lt;/a&gt; is filled and there are already some pull requests for new features waiting to be merged.
-So you can look forward to support of &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/557&#34;&gt;field based mappings&lt;/a&gt;, support for &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/73&#34;&gt;immutable beans&lt;/a&gt; on the target side by using non-default constructors and some more.&lt;/p&gt;
-
-&lt;p&gt;The 1.2 release can be expected to be much more focused in scope than 1.1.
-We&amp;rsquo;ve felt that it took a bit too long to get from 1.0 to 1.1, one reason being that we kept on adding new features during the Beta phase which got a bit in the way of finalizing the release.
-From 1.2 onwards, we&amp;rsquo;ll keep the number of new features per release lower which should allow us to release more often and get the features already done into your hands more quickly. &amp;ldquo;Release early, release often&amp;rdquo; as they say!&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;To fetch MapStruct 1.1.0.CR2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.CR2|jar&#34;&gt;org.mapstruct:mapstruct:1.1.0.CR2&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.CR2|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.1.0.CR2&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.CR2|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.1.0.CR2&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.1.0.CR2/&#34;&gt;SourceForge&lt;/a&gt; or &lt;a href=&#34;https://bintray.com/mapstruct/bundles/mapstruct-dist/1.1.0.CR2&#34;&gt;BinTray&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;links&#34;&gt;Links&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MapStruct 1.1.0.CR1 released</title>
-      <link>http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/</link>
+      <link>http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_cr1/</link>
       <pubDate>Wed, 07 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/</guid>
+      <guid>http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_cr1/</guid>
       <description>&lt;p&gt;MapStruct 1.1.0.CR1 consolodates the functionality introduced in the preceeding MapStruct 1.1.0 Beta releases. A number of bugs were solved:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -546,100 +171,28 @@ From 1.2 onwards, we&amp;rsquo;ll keep the number of new features per release lo
 &lt;li&gt;Fixing an issue introduced 1.1.0.Beta2 that causes problems for the @MappingTarget in combination with @InheritInverseConfiguration&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;The list of closed issues can be found in the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.CR1&#34;&gt;change log&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Also, the documentation is improved on our AccessorNamingStrategy Service Provider Interface. An example has been added &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples&#34;&gt;Examples repository&lt;/a&gt; to support the documentation.&lt;/p&gt;
-
-&lt;p&gt;Thanks to: &lt;a href=&#34;https://github.com/tisoft&#34;&gt;Markus Heberling&lt;/a&gt;, and &lt;a href=&#34;https://github.com/filiphr&#34;&gt;Filip Hrisafov&lt;/a&gt; for their contribution!&lt;/p&gt;
-
-&lt;h3 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next?&lt;/h3&gt;
-
-&lt;p&gt;Our intent is to release 1.1.0.Final in two weeks from now. We&amp;rsquo;re having some small enhancements and bug fixes planned for that.&lt;/p&gt;
-
-&lt;h3 id=&#34;one-more-thing&#34;&gt;One more thing&lt;/h3&gt;
-
-&lt;p&gt;MapStruct has been nominated for an award in the category &amp;ldquo;Most innovative contribution to the Java ecosystem&amp;rdquo; on &lt;a href=&#34;https://jaxlondon.com/jax-awards/&#34;&gt;JAX London&lt;/a&gt; &amp;ndash; in case you&amp;rsquo;d like to cast a vote for your favourite bean mapping generator.&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;To fetch MapStruct 1.1.0.CR1 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct:1.1.0.CR1&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.1.0.CR1&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.1.0.CR1&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.1.0.CR1/&#34;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MapStruct 1.1.0.Beta2 released</title>
-      <link>http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/</link>
+      <link>http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_beta2-released/</link>
       <pubDate>Fri, 22 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/</guid>
+      <guid>http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_beta2-released/</guid>
       <description>&lt;p&gt;It has been a while since the latest release of MapStruct. Via our mailing list, issue list and other channels we have received valuable feedback. We have tried to incorporate some of that feedback into a number of new features.&lt;/p&gt;
 
 &lt;p&gt;MapStruct 1.1.0.Beta2 introduces a number of popular requested features, like source presence check and nested target properties.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Today we release MapStruct 1.1.0.Beta2, containing fixes for most of the user-reported bugs:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mapping of nested target properties.&lt;/li&gt;
-&lt;li&gt;Support of using &lt;code&gt;hasXYZ&lt;/code&gt; presence checker methods instead of &lt;code&gt;null&lt;/code&gt; checks on the source side of bean mappings. The presence checker naming convention can be overidden by providing a custom SPI implementation.&lt;/li&gt;
-&lt;li&gt;Extended support of &lt;code&gt;java.text.NumberFormat&lt;/code&gt; for Number types to String mapping.&lt;/li&gt;
-&lt;li&gt;Provide OSGI-enabled jars.&lt;/li&gt;
-&lt;li&gt;Fix a compatibility issue with Eclipse Neon.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The complete list of closed issues can be found in the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta2&#34;&gt;change log&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The MapStruct teams thanks: &lt;a href=&#34;https://github.com/seanjob&#34;&gt;Sean Huang&lt;/a&gt;, and &lt;a href=&#34;https://github.com/cliedeman&#34;&gt;Ciaran Liedeman&lt;/a&gt; for their contribution!&lt;/p&gt;
-
-&lt;h3 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next?&lt;/h3&gt;
-
-&lt;p&gt;We hope to release 1.1.0.CR1 in a short while (after the summer holidays).&lt;/p&gt;
-
-&lt;p&gt;Please also checkout our examples &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples&#34;&gt;GitHub examples repository&lt;/a&gt;. It is still small but the intention is to make this a repository of typical mapping problems and how to solve them with MapStruct. Contributing good examples is appriciated.&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;To fetch MapStruct 1.1.0.Beta2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.Beta2|jar&#34;&gt;org.mapstruct:mapstruct:1.1.0.Beta2&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.Beta2|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.1.0.Beta2&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.Beta2|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.1.0.Beta2&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.1.0.Beta2/&#34;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We hope that you&amp;rsquo;ll find the new features valuable.&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MapStruct 1.1.0.Beta1 released</title>
-      <link>http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/</link>
+      <link>http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_beta1-released/</link>
       <pubDate>Wed, 16 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/</guid>
+      <guid>http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_beta1-released/</guid>
       <description>&lt;p&gt;It has been four months since the release of the first final version of MapStruct. We&amp;rsquo;ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.&lt;/p&gt;
 
 &lt;p&gt;Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we&amp;rsquo;ve also added some improvements and prepared for new features:&lt;/p&gt;
@@ -651,37 +204,7 @@ From 1.2 onwards, we&amp;rsquo;ll keep the number of new features per release lo
 &lt;li&gt;The preferred way of configuring the annotation processor in Maven projects has been updated to leverage the latest &lt;code&gt;maven-compiler-plugin&lt;/code&gt; version&amp;rsquo;s &lt;code&gt;annotationProcessorPaths&lt;/code&gt; option, which makes the configuration a bit more smooth. &lt;a href=&#34;http://mapstruct.org/documentation/1.1/reference/html/index.html#setup&#34;&gt;Check the updated documentation&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;The complete list of 24 closed issues can be found in the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta1&#34;&gt;change log&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The MapStruct team calls out a big &lt;em&gt;Thank you!&lt;/em&gt; to everyone contributing to this release: &lt;a href=&#34;https://github.com/grandmasterpixel&#34;&gt;Vincent Alexander Beelte&lt;/a&gt;, &lt;a href=&#34;https://github.com/greuelpirat&#34;&gt;Oliver Ehrenmüller&lt;/a&gt;, and &lt;a href=&#34;https://github.com/samwright&#34;&gt;Samuel Wright&lt;/a&gt;!&lt;/p&gt;
-
-&lt;h3 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next?&lt;/h3&gt;
-
-&lt;p&gt;We plan the beta phase to be a short one, with a 1.1.0.CR1 release following in a couple of weeks.&lt;/p&gt;
-
-&lt;p&gt;In the mean time, you&amp;rsquo;re invited to try out the MapStruct &lt;a href=&#34;https://github.com/mapstruct/mapstruct-eclipse&#34;&gt;Eclipse plug-in&lt;/a&gt;. Although it&amp;rsquo;s in an early stage, it already contains some handy content-assists (e.g. for &lt;code&gt;source&lt;/code&gt; and &lt;code&gt;target&lt;/code&gt; property names in the &lt;code&gt;@Mapping&lt;/code&gt; annotation) and quick-fixes for some common mapping errors detected by MapStruct.&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;To fetch MapStruct 1.1.0.Beta1 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct:1.1.0.Beta1&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.1.0.Beta1&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.Beta1|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.1.0.Beta1&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.1.0.Beta1/&#34;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group or in our &lt;a href=&#34;https://gitter.im/mapstruct/mapstruct-users&#34;&gt;Gitter room&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Happy Mapping!&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -690,603 +213,96 @@ From 1.2 onwards, we&amp;rsquo;ll keep the number of new features per release lo
       <pubDate>Sun, 14 Feb 2016 00:00:00 +0000</pubDate>
       
       <guid>http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/</guid>
-      <description>&lt;p&gt;While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time.
-To name just one issue, readability wasn&amp;rsquo;t great on smaller screen sizes.&lt;/p&gt;
-
-&lt;p&gt;All that&amp;rsquo;s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic &lt;a href=&#34;http://asciidoctor.org/&#34;&gt;AsciiDoctor&lt;/a&gt; tool.&lt;/p&gt;
-
-&lt;p&gt;The guide is provided in two formats now: &lt;a href=&#34;http://mapstruct.org/documentation/stable/reference/html/&#34;&gt;HTML&lt;/a&gt; and as &lt;a href=&#34;http://mapstruct.org/documentation/stable/reference/pdf/mapstruct-reference-guide.pdf&#34;&gt;PDF&lt;/a&gt;. The actual contents is largely unchanged, but we moved some sections around in order to reduce the number of chapters to a more digestable level. It&amp;rsquo;s high on our agenda to rewrite some parts of the guide which aren&amp;rsquo;t perfect yet, which should be much lesser of a burden now thanks to AsciiDoc.&lt;/p&gt;
-
-&lt;p&gt;In addition, you also can find the &lt;a href=&#34;http://mapstruct.org/documentation/stable/api/&#34;&gt;API JavaDoc&lt;/a&gt; online now.&lt;/p&gt;
-
-&lt;p&gt;The main &lt;a href=&#34;http://mapstruct.org/documentation&#34;&gt;documentation page&lt;/a&gt; page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.&lt;/p&gt;
-
-&lt;p&gt;Enjoy!&lt;/p&gt;
-</description>
+      <description>While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time. To name just one issue, readability wasn&amp;rsquo;t great on smaller screen sizes.
+All that&amp;rsquo;s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic AsciiDoctor tool.
+The guide is provided in two formats now: HTML and as PDF.</description>
     </item>
     
     <item>
       <title>MapStruct 1.0 Final released</title>
-      <link>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/</link>
+      <link>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_final-released/</link>
       <pubDate>Wed, 25 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/</guid>
-      <description>
-
-&lt;p&gt;It&amp;rsquo;s with great pleasure and excitement that I announce the final release of MapStruct 1.0!&lt;/p&gt;
-
-&lt;p&gt;MapStruct is a source code generator for efficient, type-safe mappings between Java bean types, based on &lt;a href=&#34;http://mapstruct.org/documentation/#section-def-mapper&#34;&gt;annotated interface definitions&lt;/a&gt;. It works in your command line builds (e.g. via Maven or Gradle) as well as your favourite IDE. The advantages of this approach are manifold:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Great performance:&lt;/strong&gt; Plain method invocations only, no use of reflection&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Compile-time type safety:&lt;/strong&gt; Only objects and attributes actually mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Self-contained code:&lt;/strong&gt; no runtime dependencies&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Early validation and fast feedback:&lt;/strong&gt; Clear error-reports right at build time if mappings are not complete or incorrect&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Easy to debug:&lt;/strong&gt; You can inspect the generated mapping in your IDE&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you are new to MapStruct, I recommend you check out the &amp;ldquo;MapStruct in 2 minutes&amp;rdquo; section on the &lt;a href=&#34;http://mapstruct.org/&#34;&gt;homepage&lt;/a&gt; to see what MapStruct can do for you and how it works.&lt;/p&gt;
-
-&lt;h3 id=&#34;looking-back&#34;&gt;Looking back&amp;hellip;&lt;/h3&gt;
-
-&lt;p&gt;When I started the project over three years ago, I was quite fond of the idea of addressing the mapping issue with code generation, but I didn&amp;rsquo;t really expect much interest by others. But, the wonders of open source happened and people started to ask questions about the project on the mailing list, filed feature and pull requests, &lt;a href=&#34;http://tux2323.blogspot.de/2014/03/mapstruct-java-bean-mappings.html&#34;&gt;presented&lt;/a&gt; &lt;a href=&#34;http://blog.goyello.com/2015/08/11/take-the-map-dto-survival-code/&#34;&gt;MapStruct&lt;/a&gt; &lt;a href=&#34;http://www.frank-rahn.de/java-bean-mapper/&#34;&gt;in&lt;/a&gt; &lt;a href=&#34;http://javabarista.blogspot.de/2015/04/bean-mapping-mit-mapstruct.html&#34;&gt;blog&lt;/a&gt; &lt;a href=&#34;https://samerabdelkafi.wordpress.com/2015/10/18/mapstruct/&#34;&gt;posts&lt;/a&gt; and &lt;a href=&#34;http://www.muchsoft.com/presentations/MATHEMA-Campus-2015-MapStruct.pdf&#34;&gt;conference&lt;/a&gt; &lt;a href=&#34;http://de.slideshare.net/inovex/mapstruct-der-neue-stern-am-beanmapping-himmel&#34;&gt;talks&lt;/a&gt;, etc. Apparently, the project scratched an itch for many.&lt;/p&gt;
-
-&lt;p&gt;A small - yet very active - community grew.&lt;/p&gt;
-
-&lt;p&gt;Despite it&amp;rsquo;s pre-final status until today, MapStruct is very solid and stable and has been used successfully by lots of projects in a wide range of industries. The &lt;a href=&#34;http://jhipster.github.io/using_dtos.html&#34;&gt;recent integration&lt;/a&gt; into the JHipster stack greatly increased the project&amp;rsquo;s exposure and is a strong catalyst for further rising adoption. I can&amp;rsquo;t give you a list of Fortune 500 companies using it, but I bet some are :)&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s a whole bunch of awesome people who have made this a reality. The project wouldn&amp;rsquo;t be near where it is today without their great ideas and hard work. It was &lt;a href=&#34;https://twitter.com/AndreasGudian&#34;&gt;Andreas Gudian&lt;/a&gt; who confirmed me in the usefulness of the project, so we picked it up again together after my initial enthusiam had shortly been fading a bit. Not much later &lt;a href=&#34;https://twitter.com/sjaakderksen&#34;&gt;Sjaak Derksen&lt;/a&gt; arrived to the scene and right from the spot he helped with hacking on the toughest issues which Andreas and I had not felt like attacking.&lt;/p&gt;
-
-&lt;p&gt;In addition to these two fine guys many more have been contributing to the MapStruct code base over time in one way or the other: Christian Schuster, Christophe Labouisse, Dilip Krishnan, Ewald Volkert, Ivo Smid, Lars Wetzer, Lukasz Kryger, Michael Pardo, Mustafa Caylak, Paul Strugnell, Remko Plantenga, Sebastian Hasait, Stefan Rademacher, Timo Eckhardt, Tomek Gubala and anyone I may have forgotten.&lt;/p&gt;
-
-&lt;p&gt;A huge thank you to all of you! Special kudos go to Gerd Wütherich who designed the logo for project, which had been a missing piece for the final release for quite some time :)&lt;/p&gt;
-
-&lt;h3 id=&#34;and-forward&#34;&gt;&amp;hellip;and forward&lt;/h3&gt;
-
-&lt;p&gt;With MapStruct 1.0 through the door, it&amp;rsquo;s time to think about what&amp;rsquo;s coming next.&lt;/p&gt;
-
-&lt;p&gt;Based on user feedback, we&amp;rsquo;ve collected quite some ideas for a 1.1 release, be it support for custom bean constructors, direct field access or a small expression language for more concise and powerful inline mapping expressions. You input matters, so please raise your voice if you think something useful is missing from MapStruct.&lt;/p&gt;
-
-&lt;p&gt;Another focus of attention will be on the MapStruct &lt;a href=&#34;https://github.com/mapstruct/mapstruct-eclipse&#34;&gt;Eclipse plug-in&lt;/a&gt; which already is quite capable but should be even more so with the planned refactoring support, more quick fixes etc. Also we&amp;rsquo;ve planned to make it available through the Eclipse market place. Last but not least, we&amp;rsquo;ll spend some time on improving the project website - especially the &lt;a href=&#34;http://mapstruct.org/documentation&#34;&gt;documentation page&lt;/a&gt; - in order to make all the contents added over time accessible in a better way.&lt;/p&gt;
-
-&lt;p&gt;But in the meantime, enjoy the MapStruct 1.0.0.Final release!&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s already on &lt;a href=&#34;http://search.maven.org/#search|ga|1|g%3A%22org.mapstruct%22&#34;&gt;Maven Central&lt;/a&gt; and &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.0.0.Final/&#34;&gt;SourceForge&lt;/a&gt;. Functionally, the Final is the same as CR2, just &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.Final+is%3Aclosed&#34;&gt;some remaining bugs&lt;/a&gt; have been fixed. We&amp;rsquo;d love to be hearing from you, so if you have any ideas, questions or other feedback on MapStruct, please get in touch through the following channels and we&amp;rsquo;ll be glad to help:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Happy Mapping!&lt;/p&gt;
-</description>
+      <guid>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_final-released/</guid>
+      <description>It&amp;rsquo;s with great pleasure and excitement that I announce the final release of MapStruct 1.0!
+MapStruct is a source code generator for efficient, type-safe mappings between Java bean types, based on annotated interface definitions. It works in your command line builds (e.g. via Maven or Gradle) as well as your favourite IDE. The advantages of this approach are manifold:
+ Great performance: Plain method invocations only, no use of reflection Compile-time type safety: Only objects and attributes actually mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.</description>
     </item>
     
     <item>
       <title>MapStruct 1.0.0.CR2 released</title>
-      <link>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/</link>
+      <link>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_cr2-released/</link>
       <pubDate>Thu, 27 Aug 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/</guid>
-      <description>
-
-&lt;p&gt;It is my pleasure to announce the second candidate release of MapStruct 1.0!&lt;/p&gt;
-
-&lt;p&gt;With this release, we&amp;rsquo;re fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a &lt;em&gt;final&lt;/em&gt;. Highlights of this release are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Configure package and class name for the generated mapper implementations.&lt;/li&gt;
-&lt;li&gt;Define default values for target properties in case the source property is &lt;code&gt;null&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;The decorator feature now fully works with Spring and JSR 330 and the documentation has been clarified on how to use decorators with all our supported component models (CDI, Spring, JSR 330, default).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The complete list of 19 closed issues can be found in the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.CR2&#34;&gt;change log&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The MapStruct team calls out a big &lt;em&gt;Thank you!&lt;/em&gt; to everyone contributing to this release: &lt;a href=&#34;https://github.com/vgt-tomek&#34;&gt;Tomek Gubala&lt;/a&gt;, &lt;a href=&#34;https://github.com/bedla&#34;&gt;Ivo Smid&lt;/a&gt;, &lt;a href=&#34;https://github.com/luxmeter&#34;&gt;Mustafa Caylak&lt;/a&gt;, and &lt;a href=&#34;https://github.com/ggtools&#34;&gt;Christophe Labouisse&lt;/a&gt;!&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;To fetch MapStruct 1.0.0.CR2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.0.0.CR2|jar&#34;&gt;org.mapstruct:mapstruct:1.0.0.CR2&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.0.0.CR2|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.0.0.CR2&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.0.0.CR2|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.0.0.CR2&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.0.0.CR2/&#34;&gt;SourceForge&lt;/a&gt; or from &lt;a href=&#34;https://bintray.com/mapstruct/bundles/mapstruct-dist/1.0.0.CR2/&#34;&gt;BinTray&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;configure-package-and-class-name-for-the-generated-mapper-implementations&#34;&gt;Configure package and class name for the generated mapper implementations&lt;/h3&gt;
-
-&lt;p&gt;By default, MapStruct generates the mapper implementation with the class name suffix &amp;ldquo;Impl&amp;rdquo; in the same package as the declared mapper interface or abstract class.&lt;/p&gt;
-
-&lt;p&gt;If a project follows different naming conventions, package-dependency rules or simply a ambiguity needs to be resolved, the package name and the class name of the generated implementation can be configured:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-package com.examples.mappers;
-
-...
-
-@Mapper(implementationPackage = &#34;&amp;lt;PACKAGE_NAME&amp;gt;.internal&#34;, implementationClass = &#34;MapStruct&amp;lt;CLASS_NAME&amp;gt;Impl&#34;)
-public interface PersonMapper {
-    PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );
-
-    PersonDto toPersonDto(Person person);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;In the example above, the mapper implementation would be generated to the package &lt;code&gt;com.examples.mappers.internal&lt;/code&gt; with the class name &lt;code&gt;MapStructPersonMapperImpl&lt;/code&gt;. As you might have already guessed, the strings &lt;code&gt;&amp;lt;PACKAGE_NAME&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;CLASS_NAME&amp;gt;&lt;/code&gt; are replaced with the package name and the class name of the mapper interface or abstract class for which the implementation is generated.&lt;/p&gt;
-
-&lt;p&gt;These options are also available in the annotation &lt;code&gt;@MapperConfig&lt;/code&gt;, so you can configure this once for all mappers that use the same &lt;a href=&#34;http://mapstruct.org/documentation/#section-shared-config&#34;&gt;@MapperConfig&lt;/a&gt; type.&lt;/p&gt;
-
-&lt;p&gt;If you are using the component model &lt;code&gt;default&lt;/code&gt; (i.e. &lt;code&gt;Mappers.get(...)&lt;/code&gt;) to obtain your mapper instances, the generator will create an SPI file in &lt;em&gt;META-INF/services/&lt;/em&gt; for each mapper with a customized naming pattern. The implementation of &lt;code&gt;Mappers&lt;/code&gt; finds those implementation classes using the &lt;code&gt;ServiceLoader&lt;/code&gt; API.&lt;/p&gt;
-
-&lt;h3 id=&#34;default-values-for-target-properties-in-case-the-source-property-is-null&#34;&gt;Default values for target properties in case the source property is null&lt;/h3&gt;
-
-&lt;p&gt;Default values can be specified to set a predefined value to a target property if the corresponding source property is &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper
-public interface PersonMapper {
-   @Mapping(target = &#34;middleName&#34;, defaultValue = &#34;&#34;),
-   PersonDto toPersonDto(Person person);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;The implementation that is generated for the example above would set the property &lt;code&gt;middleName&lt;/code&gt; in the result object to the empty String &lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt; in case &lt;code&gt;person.getMiddleName() == null&lt;/code&gt;. If the target property for which the default assignment shall be done is not of type &lt;code&gt;String&lt;/code&gt;, the usual type conversion / type mapping mechanism is applied.&lt;/p&gt;
-
-&lt;h3 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next?&lt;/h3&gt;
-
-&lt;p&gt;With CR2 out, we want to release MapStruct 1.0 Final as soon as possible. We won&amp;rsquo;t add any new features or large refactorings for 1.0 and will allow only bugfixes. Based on the number of bugs reported against CR2, we should be ready to build the Final within the next couple of weeks.&lt;/p&gt;
-
-&lt;p&gt;In the mean time, you&amp;rsquo;re invited to try out the MapStruct &lt;a href=&#34;https://github.com/mapstruct/mapstruct-eclipse&#34;&gt;Eclipse plug-in&lt;/a&gt;. Although it&amp;rsquo;s in an early stage, it already contains some handy content-assists (e.g. for &lt;code&gt;source&lt;/code&gt; and &lt;code&gt;target&lt;/code&gt; property names in the &lt;code&gt;@Mapping&lt;/code&gt; annotation) and quick-fixes for some common mapping errors detected by MapStruct.&lt;/p&gt;
-
-&lt;p&gt;Any feedback is welcome, just post a comment below or get in touch through the following channels:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_cr2-released/</guid>
+      <description>It is my pleasure to announce the second candidate release of MapStruct 1.0!
+With this release, we&amp;rsquo;re fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a final. Highlights of this release are:
+ Configure package and class name for the generated mapper implementations.</description>
     </item>
     
     <item>
       <title>MapStruct 1.0.0.CR1 has landed</title>
-      <link>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/</link>
+      <link>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_cr1-has-landed/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/</guid>
-      <description>
-
-&lt;p&gt;I am very happy to announce the first candidate release of MapStruct 1.0!&lt;/p&gt;
-
-&lt;p&gt;As we are approach MapStruct 1.0, this release is primarily focused on ironing out remaining glitches and fixing bugs. But there are also some new features:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A new SPI for discovering property accessors not adhering to the JavaBeans convention&lt;/li&gt;
-&lt;li&gt;The decorator feature can now also be used with Spring&lt;/li&gt;
-&lt;li&gt;Support for before- and after-mapping lifecycle hooks&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The complete list of 24 closed issues can be found in the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.CR1&#34;&gt;change log&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;A big thank you to everyone contributing to this release: &lt;a href=&#34;https://github.com/sjaakd/&#34;&gt;Sjaak Derksen&lt;/a&gt;, &lt;a href=&#34;https://github.com/agudian&#34;&gt;Andreas Gudian&lt;/a&gt;, &lt;a href=&#34;https://github.com/chschu&#34;&gt;Christian Schuster&lt;/a&gt;, &lt;a href=&#34;https://github.com/ps-powa&#34;&gt;Paul Strugnell&lt;/a&gt; and &lt;a href=&#34;https://github.com/sonata82&#34;&gt;Remko Plantenga&lt;/a&gt;!&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;To fetch MapStruct 1.0.0.CR1 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.0.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct:1.0.0.CR1&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.0.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.0.0.CR1&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.0.0.CR1|jar&#34;&gt;org.mapstruct:mapstruct-processor:1.0.0.CR1&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.0.0.CR1/&#34;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;spi-for-property-accessor-discovery&#34;&gt;SPI for property accessor discovery&lt;/h3&gt;
-
-&lt;p&gt;By default, MapStruct expects property getters and setters adhering to the &lt;a href=&#34;http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html&#34;&gt;JavaBeans specification&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In some cases though models to be mapped derive from this convention. E.g. builder objects could expose property write accessors such as &lt;code&gt;withName()&lt;/code&gt; (instead of &lt;code&gt;setName()&lt;/code&gt;). O domain models could expose property read accessors just in the form of &lt;code&gt;name()&lt;/code&gt; (instead of &lt;code&gt;getName()&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;To make MapStruct work with such models, there is now an SPI (service provider interface) which makes the discovery of property accessors customizable. This SPI comes in the form of the following contract:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-public interface AccessorNamingStrategy {
-
-    /* MethodType may be GETTER, SETTER, ADDER or OTHER */
-    MethodType getMethodType(ExecutableElement method);
-
-    String getPropertyName(ExecutableElement getterOrSetterMethod);
-
-    String getElementName(ExecutableElement adderMethod);
-
-    String getCollectionGetterName(String property);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;The MapStruct engine will pass all candidate methods of mapping source and target types to this SPI in order to detect their property accessors. Once you have created an implementation of the contract based on your project&amp;rsquo;s specific property naming conventions (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/blob/master/integrationtest/src/test/resources/namingStrategyTest/strategy/src/main/java/org/mapstruct/itest/naming/CustomAccessorNamingStrategy.java&#34;&gt;an example&lt;/a&gt; can be found in our test suite), it needs to be registered through the Java &lt;a href=&#34;http://docs.oracle.com/javase/8/docs/api/index.html?java/util/ServiceLoader.html&#34;&gt;service loader&lt;/a&gt; mechanism. To do so, create the file &lt;em&gt;META-INF/services/org.mapstruct.ap.spi.AccessorNamingStrategy&lt;/em&gt; with the fully-qualified name of your implementation as contents:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-com.example.CustomAccessorNamingStrategy
-&lt;/pre&gt;
-
-&lt;p&gt;Note that in order to have MapStruct find your custom strategy, it must be added as dependency either to the project class path or to the factory path of the compilation.&lt;/p&gt;
-
-&lt;h3 id=&#34;improved-decorator-support&#34;&gt;Improved decorator support&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://mapstruct.org/documentation/#section-decorators&#34;&gt;Mapper decorators&lt;/a&gt; have been supported for the default component model since Beta1. As of CR1, they can be used now with the Spring component model, too (CDI has its own notion of decorators which can be used just as is with MapStruct mappers). To enable a decorator, add it via &lt;code&gt;@DecoratedWith&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper(componentModel = &#34;spring&#34;)
-@DecoratedWith( OrderMappingDecorator.class )
-public interface OrderMapper {
-
-    OrderDto orderToDto(Order order);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;The decorator is simply another Spring bean which implements the decorated type. It can have the generated mapper implementation injected using the &amp;ldquo;delegate&amp;rdquo; qualifier:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Component
-@Primary
-public class OrderMappingDecorator implements OrderMapper {
-
-    @Autowired
-    @Qualifier( &#34;delegate&#34; )
-    private OrderMapper delegate;
-
-    public OrderMappingDecorator() {
-    }
-
-    @Override
-    public OrderDto orderToDto(Order order) {
-        OrderDto dto = delegate.orderToDto( order );
-
-        // apply some additional custom mapping routine...
-
-        return dto;
-    }
-}
-&lt;/pre&gt;
-
-&lt;p&gt;By adding the &lt;code&gt;@Primary&lt;/code&gt; annotation to the decorator it is ensured that the decorated mapper can be obtained through dependency injection without the need for further qualification at injection points.&lt;/p&gt;
-
-&lt;h3 id=&#34;before-and-after-mapping-callbacks&#34;&gt;Before and after mapping callbacks&lt;/h3&gt;
-
-&lt;p&gt;Somewhat related to decorators is the new feature of before and after mapping &lt;a href=&#34;http://mapstruct.org/documentation#section-before-after&#34;&gt;callback methods&lt;/a&gt;. They are useful to implement generic before and after mapping logic for a wider range of source and target types. Whereas decorators are bound to a specific mapper contract, before and after mapping callbacks are bound to arbitrary source and target types.&lt;/p&gt;
-
-&lt;p&gt;The following gives an example:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper
-public abstract class VehicleMapper {
-
-    @BeforeMapping
-    protected void flushEntity(AbstractVehicle vehicle) {
-        // e.g. call EntityManager flush() to make sure the entity
-        // is populated with the right @Version before mapping it into the DTO
-    }
-
-    @AfterMapping
-    protected void fillTank(AbstractVehicle vehicle, @MappingTarget AbstractVehicleDto result) {
-        result.fuelUp( new Fuel( vehicle.getTankCapacity(), vehicle.getFuelType() ) );
-    }
-
-    public abstract CarDto toCarDto(Car car);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;All generated implementations of mapping methods with &lt;code&gt;AbstractVehicle&lt;/code&gt; or a sub-type as source-type (such as &lt;code&gt;toCarDto()&lt;/code&gt;) will invoke the method annotated with &lt;code&gt;@BeforeMapping&lt;/code&gt; at the beginning. Similarly, all methods mapping &lt;code&gt;AbstractVehicle&lt;/code&gt; or a sub-type into &lt;code&gt;AbstractVehicleDto&lt;/code&gt; or a sub-type will invoke the method annotated with &lt;code&gt;@AfterMapping&lt;/code&gt; at the end.&lt;/p&gt;
-
-&lt;p&gt;Before and after mapping callback methods are a quite powerful mechanism to implement cross-cutting concerns common to a larger group of mapping methods. Refer to the JavaDocs of &lt;code&gt;@BeforeMapping&lt;/code&gt; and &lt;code&gt;@AfterMapping&lt;/code&gt; to learn more, e.g. about ordering of several lifecycle methods etc. Note that before and after mapping callback methods are considered and experimental features as of MapStruct 1.0. Based on feedback from using this feature in practice we may fine-tune semantics in a subsequent release.&lt;/p&gt;
-
-&lt;h3 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next?&lt;/h3&gt;
-
-&lt;p&gt;With CR 1 out, MapStruct 1.0 Final is getting in sight! Based on the number of bugs reported against CR1, we may either do another CR in two or three weeks or go straight to the Final. In parallel work on the MapStruct &lt;a href=&#34;https://github.com/mapstruct/mapstruct-eclipse&#34;&gt;Eclipse plug-in&lt;/a&gt; continues. We plan to do a first Alpha release of that very soon. Stay tuned!&lt;/p&gt;
-
-&lt;p&gt;Finally, some useful links:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_cr1-has-landed/</guid>
+      <description>I am very happy to announce the first candidate release of MapStruct 1.0!
+As we are approach MapStruct 1.0, this release is primarily focused on ironing out remaining glitches and fixing bugs. But there are also some new features:
+ A new SPI for discovering property accessors not adhering to the JavaBeans convention The decorator feature can now also be used with Spring Support for before- and after-mapping lifecycle hooks  The complete list of 24 closed issues can be found in the change log.</description>
     </item>
     
     <item>
       <title>Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released</title>
-      <link>http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/</link>
+      <link>http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_beta4/</link>
       <pubDate>Thu, 05 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/</guid>
-      <description>
-
-&lt;p&gt;The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!&lt;/p&gt;
-
-&lt;p&gt;The new release provides support for mapping arrays of Java beans, re-use of mapping configurations via a brand-new inheritance mechanism and ordered setter invocations on the target side. We also fixed quite a few bugs. You can find the complete list of 48 issues in the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.Beta4&#34;&gt;change log&lt;/a&gt;. When upgrading from a previous Beta release, please check out the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/wiki/Migration-notes&#34;&gt;migration notes&lt;/a&gt; for changes which may affect existing applications.&lt;/p&gt;
-
-&lt;p&gt;One thing I&amp;rsquo;m especially excited about is the new MapStruct Eclipse plug-in which will give you an even better experience when using MapStruct within the Eclipse IDE. You&amp;rsquo;ll find out more below.&lt;/p&gt;
-
-&lt;p&gt;This release has been a true team effort; Many, many thanks to &lt;a href=&#34;https://github.com/sjaakd/&#34;&gt;Sjaak Derksen&lt;/a&gt;, &lt;a href=&#34;https://github.com/agudian&#34;&gt;Andreas Gudian&lt;/a&gt;, &lt;a href=&#34;https://github.com/timoe&#34;&gt;Timo Eckhardt&lt;/a&gt;, &lt;a href=&#34;https://github.com/eforest&#34;&gt;Ewald Volkert&lt;/a&gt;, &lt;a href=&#34;https://github.com/chschu&#34;&gt;Christian Schuster&lt;/a&gt;, &lt;a href=&#34;https://github.com/shasait&#34;&gt;Sebastian Hasait&lt;/a&gt; and &lt;a href=&#34;https://github.com/dilipkrish&#34;&gt;Dilip Krishnan&lt;/a&gt; who all worked on the Beta4 release.&lt;/p&gt;
-
-&lt;h3 id=&#34;array-mappings&#34;&gt;Array mappings&lt;/h3&gt;
-
-&lt;p&gt;While MapStruct has had support for mapping collections (&lt;code&gt;List&lt;/code&gt;, &lt;code&gt;Set&lt;/code&gt; etc.) of primitive and Java bean types for a long time, this was not the case for arrays. This is finally possible, so you can now declare mapping methods such as the following:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper
-public interface CustomerMapper {
-
-    CustomerDto[] customersToDtos(Customer[] customers);
-
-    CustomerDto customerToDto(Customer customer);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;As known from collection mapping methods, the generated &lt;code&gt;customersToDtos()&lt;/code&gt; implementation will invoke the &lt;code&gt;customerToDto()&lt;/code&gt; method for mapping the individual array elements. Similar to collection mapping methods, you can use the &lt;code&gt;@IterableMapping&lt;/code&gt; annotation for applying specific configuration options:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@IterableMapping(dateFormat = &#34;dd.MM.yyyy&#34;)
-String[] dateArrayToStringArray(Date[] dates);
-&lt;/pre&gt;
-
-&lt;p&gt;If needed, you also can map between collections and arrays:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-CustomerDto[] customersToDtos(List&amp;lt;Customer&amp;gt; customers);
-&lt;/pre&gt;
-
-&lt;h3 id=&#34;configuration-inheritance&#34;&gt;Configuration inheritance&lt;/h3&gt;
-
-&lt;p&gt;With help of the new &lt;code&gt;@InheritConfiguration&lt;/code&gt; annotation you can advice MapStruct to apply the configuration from one mapping method to another.&lt;/p&gt;
-
-&lt;p&gt;This comes in handy for instance when having a &amp;ldquo;normal&amp;rdquo; mapping method and an update method for the same types. Instead of configuring both methods individually, you can let one method inherit the configuration from the other:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapping(target=&#34;lastName&#34;, source=&#34;surName&#34;)
-@Mapping(target=&#34;accountNumber&#34;, source=&#34;customerNumber&#34;)
-Customer customerDtoToCustomer(CustomerDto customerDto);
-
-@InheritConfiguration
-void updateCustomerFromDto(CustomerDto dto, @MappingTarget customer);
-&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code&gt;@InheritConfiguration&lt;/code&gt; annotation will let the &lt;code&gt;updateCustomerFromDto()&lt;/code&gt; inherit all the mappings from &lt;code&gt;customerDtoToCustomer()&lt;/code&gt;. The selection of the template method is done by matching source and target types, but you could explicitly specify a method as configuration source if needed.&lt;/p&gt;
-
-&lt;p&gt;Configuration inheritance is particularly useful when working with complex type hierarchies. You can define a configuration for the base types of the source and target models and let specific mapping methods inherit this configuration. But what if a base type is abstract? Naturally, MapStruct cannot generate an implementation of a method whose return type is an abstract one.&lt;/p&gt;
-
-&lt;p&gt;This can be resolved by declaring a &amp;ldquo;prototype method&amp;rdquo; within a &lt;a href=&#34;http://mapstruct.org/documentation/#section-shared-config&#34;&gt;configuration class&lt;/a&gt; referenced by the mapper:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper(config=BaseMappings.class)
-public interface CustomerMapper {
-
-    @InheritConfiguration(name=&#34;anyDtoToEntity&#34;)
-    CustomerDto customerToDto(Customer customer);
-}
-&lt;/pre&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@MapperConfig
-public interface BaseMappings {
-
-    // no implementation will be generated, it only serves as configuration source
-    @Mapping(target = &#34;primaryKey&#34;, source = &#34;id&#34;)
-    BaseDto anyEntityToDto(BaseEntity entity);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;Methods declared within configuration classes such as &lt;code&gt;BaseMappings&lt;/code&gt; are not usable as mapping methods themselves (no implementation will be generated for them). They solely serve as configuration source. In the example the &lt;code&gt;customerToDto()&lt;/code&gt; method would inherit the configuration given at &lt;code&gt;anyEntityToDto()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note that you optionally can have prototype configurations automatically be applied to methods with compatbile source and target types. You can find the details in the &lt;a href=&#34;http://mapstruct.org/documentation/#section-inherit-config&#34;&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;ordered-setter-invocations&#34;&gt;Ordered setter invocations&lt;/h3&gt;
-
-&lt;p&gt;Sometimes it is required to invoke the setters of the target bean in a specific order, e.g. if one setter depends on the value of other properties of the same bean. For that purpose there is a new attribute on the &lt;code&gt;@Mapping&lt;/code&gt; annotation, &lt;code&gt;dependsOn()&lt;/code&gt;. The following shows an example:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapping(target = &#34;givenName&#34;, source = &#34;firstName&#34;)
-@Mapping(target = &#34;middleName&#34;, dependsOn = &#34;givenName&#34;)
-@Mapping(target = &#34;lastName&#34;, dependsOn = &#34;middleName&#34;)
-AddressDto addressToDto(Address address);
-&lt;/pre&gt;
-
-&lt;p&gt;This configuration makes sure that the generated implementation of &lt;code&gt;addressToDto()&lt;/code&gt; first calls &lt;code&gt;setGivenName()&lt;/code&gt;, then &lt;code&gt;setMiddleName()&lt;/code&gt; and finally &lt;code&gt;setLastName()&lt;/code&gt;. A single property can also depend on several other ones:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapping(target = &#34;lastName&#34;, dependsOn = { &#34;firstName&#34;, &#34;middleName&#34;})
-AddressDto addressToDto(Address address);
-&lt;/pre&gt;
-
-&lt;p&gt;This would ensure that &lt;code&gt;setLastName()&lt;/code&gt; is invoked after &lt;code&gt;setGivenName()&lt;/code&gt; and &lt;code&gt;setMiddleName()&lt;/code&gt;, but no guarantee is given for the order of these two.&lt;/p&gt;
-
-&lt;h3 id=&#34;mapstruct-eclipse-plug-in&#34;&gt;MapStruct Eclipse plug-in&lt;/h3&gt;
-
-&lt;p&gt;Being a JSR 269 annotation processor, MapStruct is meant to run equally well within command line builds (plain javac, Mavent etc.) as well as IDEs. Indeed the annotation processor works nicely for instance in Eclipse, generating mappers upon save, showing error markers next to the affected elements etc.&lt;/p&gt;
-
-&lt;p&gt;Still there are some advanced features which cannot be provided by an annotation processor, e.g. auto-completion for annotation attributes, refactoring support, navigation to referenced elements and more. This is where the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-eclipse/&#34;&gt;MapStruct Eclipse plug-in&lt;/a&gt; comes in.&lt;/p&gt;
-
-&lt;p&gt;Developed by my good friend &lt;a href=&#34;https://github.com/larswetzer&#34;&gt;Lars Wetzer&lt;/a&gt;, it aims at providing an even better experience when using MapStruct within Eclipse. The plug-in is still at a very early stage, currently it provides auto-completion for &lt;code&gt;@Mapping#source()&lt;/code&gt; and &lt;code&gt;target()&lt;/code&gt;. The following shows a screenshot:&lt;/p&gt;
-
-&lt;div style=&#34;text-align:center&#34;&gt;
-    &lt;img src=&#34;http://mapstruct.org/images/mapstruct-eclipse-plugin.png&#34; style=&#34;padding-bottom: 3px;&#34;/&gt;
-&lt;/div&gt;
-
-&lt;p&gt;More functionality will be coming soon. You can find the list of features planned for the plug-in &lt;a href=&#34;https://github.com/mapstruct/mapstruct-eclipse/issues&#34;&gt;here&lt;/a&gt;. There is no official release of the plug-in yet. But if you feel adventurous, you can install the latest nightly build from the &lt;a href=&#34;https://mapstruct.ci.cloudbees.com/job/mapstruct-eclipse/lastSuccessfulBuild/artifact/org.mapstruct.eclipse.repository/target/repository/&#34;&gt;update site&lt;/a&gt; at our CI server.&lt;/p&gt;
-
-&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;If you work with Maven, Gradle or another dependency management tool, use the following GAV coordinates to obtain the MapStruct artifacts from Maven Central:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails&amp;amp;#124;org.mapstruct&amp;amp;#124;mapstruct&amp;amp;#124;1.0.0.Beta4&amp;amp;#124;jar&#34;&gt;org.mapstruct:mapstruct:1.0.0.Beta4&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails&amp;amp;#124;org.mapstruct&amp;amp;#124;mapstruct-jdk8&amp;amp;#124;1.0.0.Beta4&amp;amp;#124;jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.0.0.Beta4&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails&amp;amp;#124;org.mapstruct&amp;amp;#124;mapstruct-processor&amp;amp;#124;1.0.0.Beta4&amp;amp;#124;jar&#34;&gt;org.mapstruct:mapstruct-processor:1.0.0.Beta4&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta4/&#34;&gt;SourceForge&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The Beta4 contains almost all the features we envisioned for the 1.0 release. We&amp;rsquo;ll now focus on bug-fixing and addressing some more minor edge cases. The CR1 (candidate release) should be out in four to six weeks from now, followed by 1.0 Final after four more weeks from there.&lt;/p&gt;
-
-&lt;p&gt;Finally, some useful links:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Get help at the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group&lt;/li&gt;
-&lt;li&gt;Report bugs and feature requests via the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Follow &lt;a href=&#34;https://twitter.com/GetMapStruct&#34;&gt;@GetMapStruct&lt;/a&gt; on Twitter&lt;/li&gt;
-&lt;li&gt;Follow MapStruct on &lt;a href=&#34;https://plus.google.com/u/0/118070742567787866481/posts&#34;&gt;Google+&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_beta4/</guid>
+      <description>The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!
+The new release provides support for mapping arrays of Java beans, re-use of mapping configurations via a brand-new inheritance mechanism and ordered setter invocations on the target side. We also fixed quite a few bugs. You can find the complete list of 48 issues in the change log. When upgrading from a previous Beta release, please check out the migration notes for changes which may affect existing applications.</description>
     </item>
     
     <item>
       <title>MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more</title>
-      <link>http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_Beta3-nested-properties/</link>
+      <link>http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_beta3-nested-properties/</link>
       <pubDate>Sun, 30 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_Beta3-nested-properties/</guid>
-      <description>
-
-&lt;p&gt;I&amp;rsquo;m delighted to announce the release of MapStruct 1.0.0.Beta3.&lt;/p&gt;
-
-&lt;p&gt;This version brings the long awaited support for mapping nested source properties, built-in mappings for Java 8 date/time types, fine-grained selection of mapping methods via qualifiers and much more. You can find the complete list of a whopping 46 closed issues &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues?page=2&amp;amp;q=milestone%3A1.0.0.Beta3+is%3Aclosed&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note that existing applications using MapStruct need to adapt to some changes we had to do in order to iron out some glitches from the previous beta releases. These changes are described in more detail at the end of this post.&lt;/p&gt;
-
-&lt;p&gt;Before diving into the details, let me say a huge thank you to &lt;a href=&#34;https://github.com/sjaakd/&#34;&gt;Sjaak Derksen&lt;/a&gt;, &lt;a href=&#34;https://github.com/agudian&#34;&gt;Andreas Gudian&lt;/a&gt;, &lt;a href=&#34;https://github.com/timoe&#34;&gt;Timo Eckhardt&lt;/a&gt; and &lt;a href=&#34;https://github.com/chschu&#34;&gt;Christian Schuster&lt;/a&gt;! Again you guys went far beyond what anyone could have hoped for; this release would not have been possible without you.&lt;/p&gt;
-
-&lt;h3 id=&#34;mapping-nested-properties&#34;&gt;Mapping nested properties&lt;/h3&gt;
-
-&lt;p&gt;One of the most wished-for features in MapStruct was to map attributes from nested elements of a source object (tree) into target objects. That&amp;rsquo;s finally possible now, using simple &amp;ldquo;dot paths&amp;rdquo;, just as you&amp;rsquo;d expect it:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper
-public interface CustomerMapper {
-
-    @Mapping(source = &#34;address.firstName&#34;, target = &#34;firstName&#34;)
-    @Mapping(source = &#34;address.lastName&#34;, target = &#34;lastName&#34;)
-    CustomerDto customerToDto(Customer customer);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;This mapping method will map the &lt;code&gt;firstName&lt;/code&gt; and &lt;code&gt;lastName&lt;/code&gt; attributes from the &lt;code&gt;Address&lt;/code&gt; object referenced by the mapped &lt;code&gt;Customer&lt;/code&gt; object to the &lt;code&gt;firstName&lt;/code&gt; and &lt;code&gt;lastName&lt;/code&gt; properties of the target object.&lt;/p&gt;
-
-&lt;p&gt;Of course you also can refer to properties nested deeper in the hierarchy, e.g. &lt;code&gt;address.city.name&lt;/code&gt;. That&amp;rsquo;s a great way to flatten and select parts of complex hierarchies e.g. for view objects returned to a client.&lt;/p&gt;
-
-&lt;h3 id=&#34;improved-built-in-mappings&#34;&gt;Improved built-in mappings&lt;/h3&gt;
-
-&lt;p&gt;There is now built-in support for the Java 8 time and date types (JSR 310). That means properties of types such as &lt;code&gt;java.time.ZonedDateTime&lt;/code&gt; or &lt;code&gt;java.time.LocalDateTime&lt;/code&gt; will automatically be mapped to &lt;code&gt;String&lt;/code&gt;s as well as the legacy date types &lt;code&gt;java.util.Calendar&lt;/code&gt; and &lt;code&gt;java.util.Date&lt;/code&gt;. Also &lt;code&gt;java.util.Calendar&lt;/code&gt; will automatically mapped to &lt;code&gt;String&lt;/code&gt; and &lt;code&gt;java.util.Date&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Refer to the &lt;a href=&#34;http://mapstruct.org/documentation/#section-05&#34;&gt;documentation&lt;/a&gt; for the list of all built-in mappings.&lt;/p&gt;
-
-&lt;p&gt;Another improvement relates to the mapping of collection-typed properties. Let&amp;rsquo;s assume the &lt;code&gt;Order&lt;/code&gt; class from the previous example had a &lt;code&gt;List&amp;lt;OrderLine&amp;gt;&lt;/code&gt; which should be mapped to a list of DTOs in the target object. So far you would have been required to declare a method such as the following on the mapper interface:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-List&amp;lt;OrderLineDto&amp;gt; orderLinesToOrderLineDtos(Iterable&amp;lt;OrderLine&amp;gt; orderLines);
-&lt;/pre&gt;
-
-&lt;p&gt;That&amp;rsquo;s not necessary any longer, it will now be added automatically as a private method to the generated mapper class if required.&lt;/p&gt;
-
-&lt;h3 id=&#34;qualifiers&#34;&gt;Qualifiers&lt;/h3&gt;
-
-&lt;p&gt;Qualifiers provide a way to resolve ambiguities in case several mapping methods are suitable to map a given bean property. E.g. let&amp;rsquo;s assume you&amp;rsquo;d have two methods for mapping &lt;code&gt;Date&lt;/code&gt;s into &lt;code&gt;String&lt;/code&gt;s in a manually implemented mapper class:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-public class DateMapper {
-
-    // returns e.g. 2014-30-11
-    String dateToString(Date date) { ... }
-
-    // returns e.g. 2014-30-11 18:16
-    String dateToStringWithTime(Date date) { ... }
-}
-&lt;/pre&gt;
-
-&lt;p&gt;That mapper is used by MapStruct-generated mapper:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper(uses=DateMapper.class)
-public class OrderMapper {
-
-    // Order#date of type Date, OrderDto#date of type String
-    OrderDto orderToOrderDto(Order order);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;In previous releases you&amp;rsquo;d have gotten an error during generation, as both methods from &lt;code&gt;DateMapper&lt;/code&gt; are suitable to map the &lt;code&gt;date&lt;/code&gt; property. You can now use qualifiers to resolve that ambiguity and specify which method should be used. To do so, define a simple qualifier annotation type:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Qualifier
-@Target(ElementType.METHOD)
-public @interface ShortDate {}
-&lt;/pre&gt;
-
-&lt;p&gt;Tag mapping methods using such qualifiers like so:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-public class DateMapper {
-
-    @ShortDate
-    String dateToString(Date date) { ... }
-
-    @LongDate
-    String dateToStringWithTime(Date date) { ... }
-}
-&lt;/pre&gt;
-
-&lt;p&gt;And specify a qualifier via &lt;code&gt;@Mapping&lt;/code&gt; for the concerned property:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper(uses=DateMapper.class)
-public class OrderMapper {
-
-    @Mapping(target=&#34;date&#34;, qualifiedBy = ShortDate.class)
-    OrderDto orderToOrderDto(Order order);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;This will make sure that the &lt;code&gt;dateToString()&lt;/code&gt; method will be invoked to map the order date property. If required, you also could specify several qualifiers via &lt;code&gt;qualifiedBy()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;migration-notes&#34;&gt;Migration notes&lt;/h3&gt;
-
-&lt;p&gt;For the sake of increased consistency and better usability, we had to do some changes which may require existing applications which already use MapStruct to be adapted. Most prominently, &lt;a href=&#34;http://mapstruct.org/documentation/#section-10&#34;&gt;reverse mapping methods&lt;/a&gt; must now be explicitly marked as such using the new &lt;code&gt;@InheritInverseConfiguration&lt;/code&gt; annotation:&lt;/p&gt;
-
-&lt;pre class=&#34;prettyprint linenums&#34;&gt;
-@Mapper(uses=DateMapper.class)
-public class OrderMapper {
-
-    OrderDto orderToOrderDto(Order order);
-
-    @InheritInverseConfiguration
-    Order orderDtoToOrder(OrderDto order);
-}
-&lt;/pre&gt;
-
-&lt;p&gt;That annotation makes it explicit which one is the reverse mapping method and thus should inherit the configuration from its counterpart. You still can add further mappings to the reverse method in order to amend or override the inherited mappings. &lt;code&gt;@InheritInverseConfiguration&lt;/code&gt; can also be used to specify the name of the method to inherit from in case several methods qualify as per their source and target types.&lt;/p&gt;
-
-&lt;p&gt;Another change affects the existing &lt;a href=&#34;http://localhost:9009/documentation/#section-02-01&#34;&gt;processor options&lt;/a&gt;. In order to avoid conflicts with other annotation processors, these options must now be given using the &amp;ldquo;mapstruct.&amp;rdquo; prefix, e.g. &amp;ldquo;mapstruct.suppressGeneratorTimestamp&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;We have created a &lt;a href=&#34;https://github.com/mapstruct/mapstruct/wiki/Migration-notes&#34;&gt;wiki page&lt;/a&gt; where we&amp;rsquo;ll collect all incompatible changes for future releases. Of course we&amp;rsquo;ll try hard to avoid this sort of changes whenever possible.&lt;/p&gt;
-
-&lt;h3 id=&#34;how-do-i-get-it&#34;&gt;How do I get it?&lt;/h3&gt;
-
-&lt;p&gt;You can fetch distribution bundles (ZIP, TAR.GZ) from &lt;a href=&#34;http://sourceforge.net/projects/mapstruct/files/1.0.0.Beta3/&#34;&gt;SourceForge&lt;/a&gt;. Alternatively, you can obtain the dependencies from Maven Central. The GAV coordinates are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails&amp;amp;#124;org.mapstruct&amp;amp;#124;mapstruct&amp;amp;#124;1.0.0.Beta3&amp;amp;#124;jar&#34;&gt;org.mapstruct:mapstruct:1.0.0.Beta3&lt;/a&gt; for the annotation JAR (to be used with Java &amp;lt;= 7) or &lt;a href=&#34;http://search.maven.org/#artifactdetails&amp;amp;#124;org.mapstruct&amp;amp;#124;mapstruct-jdk8&amp;amp;#124;1.0.0.Beta3&amp;amp;#124;jar&#34;&gt;org.mapstruct:mapstruct-jdk8:1.0.0.Beta3&lt;/a&gt; (for usage with Java &amp;gt;= 8)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://search.maven.org/#artifactdetails&amp;amp;#124;org.mapstruct&amp;amp;#124;mapstruct-processor&amp;amp;#124;1.0.0.Beta3&amp;amp;#124;jar&#34;&gt;org.mapstruct:mapstruct-processor:1.0.0.Beta3&lt;/a&gt; for the annotation processor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The Beta3 release is planned to be the last beta, next will be CR1 (candidate release).&lt;/p&gt;
-
-&lt;p&gt;Anything you&amp;rsquo;d like to propose for inclusion in the 1.0 Final release? Then let us know by commenting below or posting to the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group. Bugs and feature requests can be reported in the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues&#34;&gt;issue tracker&lt;/a&gt;. And if you&amp;rsquo;d like to hack on MapStruct yourself, check out the &lt;a href=&#34;http://mapstruct.org/contributing&#34;&gt;development guide&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <guid>http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_beta3-nested-properties/</guid>
+      <description>I&amp;rsquo;m delighted to announce the release of MapStruct 1.0.0.Beta3.
+This version brings the long awaited support for mapping nested source properties, built-in mappings for Java 8 date/time types, fine-grained selection of mapping methods via qualifiers and much more. You can find the complete list of a whopping 46 closed issues here.
+Note that existing applications using MapStruct need to adapt to some changes we had to do in order to iron out some glitches from the previous beta releases.</description>
+    </item>
+    
+    <item>
+      <title>Support for Java 8, JodaTime and more: MapStruct 1.0.0.Beta2 released</title>
+      <link>http://mapstruct.org/news/2014-07-02-java_8_support_in_mapstruct-1_0_0_beta2/</link>
+      <pubDate>Wed, 02 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2014-07-02-java_8_support_in_mapstruct-1_0_0_beta2/</guid>
+      <description>It&amp;rsquo;s my great pleasure to announce the release of MapStruct 1.0.0.Beta2.
+Amongst the new features is initial support for Java 8, built-in mappings for the types of the Joda-Time date and time API, flexible mapping customization via inline Java expressions and much more.
+Distribution bundles (ZIP, TAR.GZ) are available on SourceForge. Alternatively, you can obtain the dependencies from Maven Central. The GAV coordinates are:
+ org.mapstruct:mapstruct:1.0.0.Beta2 for the annotation JAR, to be used with Java &amp;lt;= 7 org.</description>
+    </item>
+    
+    <item>
+      <title>MapStruct 1.0.0.Beta1 is out with JAXB support, custom factories, decorators and more</title>
+      <link>http://mapstruct.org/news/2014-03-05-mapstruct-1_0_0_beta1-with-jaxb-support-factories-decorators-and-more/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2014-03-05-mapstruct-1_0_0_beta1-with-jaxb-support-factories-decorators-and-more/</guid>
+      <description>The MapStruct team is very happy to announce the release of MapStruct 1.0.0.Beta1.
+One core part of the new release is comprehensive support for mapping JAXB types with JAXBElement and XmlGregorianCalendar attributes. It&amp;rsquo;s possible now to plug in custom factories for creating objects, which also supports the JAXB use case as we&amp;rsquo;ll see in a minute. Further new features are the support for creating mappers from abstract classes (instead of interfaces) and decorators for customizing the behavior of mapping methods.</description>
+    </item>
+    
+    <item>
+      <title>MapStruct 1.0.0.Alpha2 has landed!</title>
+      <link>http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_alpha2-has-landed/</link>
+      <pubDate>Thu, 28 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_alpha2-has-landed/</guid>
+      <description>It is my great pleasure to announce the release of MapStruct 1.0.0.Alpha2.
+This took us a bit longer than expected, but the new release offers quite a few exciting new features we hope you&amp;rsquo;ll enjoy. The JARs have already been synched to Maven Central. The coordinates are:
+ org.mapstruct:mapstruct:1.0.0.Alpha2 for the annotation JAR and org.mapstruct:mapstruct-processor:1.0.0.Alpha2 for the annotation processor.  Alternatively you can get a distribution bundle from SourceForge.</description>
     </item>
     
   </channel>

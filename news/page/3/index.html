@@ -20,7 +20,7 @@
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-41136939-1', 'auto');
 ga('send', 'pageview');
@@ -101,19 +101,19 @@ ga('send', 'pageview');
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
-    <li><a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/">MapStruct 1.2.0.CR1 released</a></li>
+    <li><a href="http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/">MapStruct 1.2.0.CR2 released</a></li>
     
-    <li><a href="http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/">MapStruct 1.2.0.Beta3 is out</a></li>
+    <li><a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_cr1-released/">MapStruct 1.2.0.CR1 released</a></li>
     
-    <li><a href="http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/">MapStruct 1.2.0.Beta2 released</a></li>
+    <li><a href="http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_beta3-is-out/">MapStruct 1.2.0.Beta3 is out</a></li>
     
-    <li><a href="http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/">Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out</a></li>
+    <li><a href="http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_beta2-released/">MapStruct 1.2.0.Beta2 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_beta1-is-out-with-lombok-support-and-direct-field-access/">Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2017-01-02-new-year-new-website/">New Year, new Website!</a></li>
     
-    <li><a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/">MapStruct 1.1.0.Final seen in the wild!</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/">MapStruct 1.1.0.CR2 is out</a></li>
+    <li><a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_final-seen-in-the-wild/">MapStruct 1.1.0.Final seen in the wild!</a></li>
     
 </ul>
 
@@ -123,6 +123,51 @@ ga('send', 'pageview');
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>March 16, 2016</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_beta1-released/">MapStruct 1.1.0.Beta1 released</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Andreas Gudian</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>It has been four months since the release of the first final version of MapStruct. We&rsquo;ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.</p>
+
+<p>Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we&rsquo;ve also added some improvements and prepared for new features:</p>
+
+<ul>
+<li>The new annotation <code>@ValueMapping</code> is introduced to be used for <code>enum</code> mappings. Previously, you would have used <code>@Mapping</code> for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of <code>@Mapping</code> for <code>enum</code> mappings now triggers a <em>deprecation warning</em> and asks you to use <code>@ValueMapping</code> instead.</li>
+<li>The new annotation <code>@Named</code> is a predefined <code>@Qualifier</code> that can be used when creating a custom qualifier annotation seems too inconvenient.</li>
+<li>Handling of types with generically typed properties has been improved, so that you can now declare something like <code>SearchResult&lt;VesselDto&gt; vesselSearchResultToDto(SearchResult&lt;Vessel&gt; vessel)</code>.</li>
+<li>The preferred way of configuring the annotation processor in Maven projects has been updated to leverage the latest <code>maven-compiler-plugin</code> version&rsquo;s <code>annotationProcessorPaths</code> option, which makes the configuration a bit more smooth. <a href="/documentation/1.1/reference/html/index.html#setup">Check the updated documentation</a>.</li>
+</ul>
+
+<p></p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_beta1-released/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -160,7 +205,7 @@ The guide is provided in two formats now: HTML and as PDF.
     <time>November 25, 2015</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/">MapStruct 1.0 Final released</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_final-released/">MapStruct 1.0 Final released</a></h1>
 
 <p class="uk-article-meta ms-article-author">
     By <b>Gunnar Morling</b> under 
@@ -185,7 +230,7 @@ MapStruct is a source code generator for efficient, type-safe mappings between J
 
     <div>
         
-            <a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/">Read more...</a>
+            <a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_final-released/">Read more...</a>
         
     </div>
 </article>
@@ -196,7 +241,7 @@ MapStruct is a source code generator for efficient, type-safe mappings between J
     <time>August 27, 2015</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/">MapStruct 1.0.0.CR2 released</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_cr2-released/">MapStruct 1.0.0.CR2 released</a></h1>
 
 <p class="uk-article-meta ms-article-author">
     By <b>Andreas Gudian</b> under 
@@ -221,7 +266,7 @@ With this release, we&rsquo;re fixing several bugs that showed up after our firs
 
     <div>
         
-            <a href="http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/">Read more...</a>
+            <a href="http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_cr2-released/">Read more...</a>
         
     </div>
 </article>
@@ -232,7 +277,7 @@ With this release, we&rsquo;re fixing several bugs that showed up after our firs
     <time>June 11, 2015</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/">MapStruct 1.0.0.CR1 has landed</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_cr1-has-landed/">MapStruct 1.0.0.CR1 has landed</a></h1>
 
 <p class="uk-article-meta ms-article-author">
     By <b>Gunnar Morling</b> under 
@@ -257,42 +302,7 @@ As we are approach MapStruct 1.0, this release is primarily focused on ironing o
 
     <div>
         
-            <a href="http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>March 05, 2015</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/">Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!
-The new release provides support for mapping arrays of Java beans, re-use of mapping configurations via a brand-new inheritance mechanism and ordered setter invocations on the target side. We also fixed quite a few bugs. You can find the complete list of 48 issues in the change log. When upgrading from a previous Beta release, please check out the migration notes for changes which may affect existing applications.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/">Read more...</a>
+            <a href="http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_cr1-has-landed/">Read more...</a>
         
     </div>
 </article>

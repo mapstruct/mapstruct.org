@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://mapstruct.org/development/contributing/</loc>
@@ -18,7 +19,7 @@
   
   <url>
     <loc>http://mapstruct.org/documentation/reference-guide/</loc>
-    <lastmod>2017-03-16T22:23:09+01:00</lastmod>
+    <lastmod>2017-08-28T22:23:09+01:00</lastmod>
   </url>
   
   <url>
@@ -67,22 +68,27 @@
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/</loc>
+    <loc>http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/</loc>
+    <lastmod>2017-08-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_cr1-released/</loc>
     <lastmod>2017-07-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/</loc>
+    <loc>http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_beta3-is-out/</loc>
     <lastmod>2017-06-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/</loc>
+    <loc>http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_beta2-released/</loc>
     <lastmod>2017-03-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/</loc>
+    <loc>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_beta1-is-out-with-lombok-support-and-direct-field-access/</loc>
     <lastmod>2017-02-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -92,27 +98,27 @@
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/</loc>
+    <loc>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_final-seen-in-the-wild/</loc>
     <lastmod>2016-11-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/</loc>
+    <loc>http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_cr2-is-out/</loc>
     <lastmod>2016-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/</loc>
+    <loc>http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_cr1/</loc>
     <lastmod>2016-09-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/</loc>
+    <loc>http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_beta2-released/</loc>
     <lastmod>2016-07-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/</loc>
+    <loc>http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_beta1-released/</loc>
     <lastmod>2016-03-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -122,42 +128,42 @@
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/</loc>
+    <loc>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_final-released/</loc>
     <lastmod>2015-11-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/</loc>
+    <loc>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_cr2-released/</loc>
     <lastmod>2015-08-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/</loc>
+    <loc>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_cr1-has-landed/</loc>
     <lastmod>2015-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/</loc>
+    <loc>http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_beta4/</loc>
     <lastmod>2015-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_Beta3-nested-properties/</loc>
+    <loc>http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_beta3-nested-properties/</loc>
     <lastmod>2014-11-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2014-07-02-Java_8_support_in_mapstruct-1_0_0_Beta2/</loc>
+    <loc>http://mapstruct.org/news/2014-07-02-java_8_support_in_mapstruct-1_0_0_beta2/</loc>
     <lastmod>2014-07-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2014-03-05-mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more/</loc>
+    <loc>http://mapstruct.org/news/2014-03-05-mapstruct-1_0_0_beta1-with-jaxb-support-factories-decorators-and-more/</loc>
     <lastmod>2014-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_Alpha2-has-landed/</loc>
+    <loc>http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_alpha2-has-landed/</loc>
     <lastmod>2013-11-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -179,6 +185,11 @@
   <url>
     <loc>http://mapstruct.org/tags/build/</loc>
     <lastmod>2013-07-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/categories/</loc>
     <priority>0</priority>
   </url>
   
@@ -225,25 +236,26 @@
   </url>
   
   <url>
-    <loc>http://mapstruct.org/tags/news/</loc>
-    <lastmod>2017-07-25T00:00:00+00:00</lastmod>
+    <loc>http://mapstruct.org/news/</loc>
+    <lastmod>2017-08-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/</loc>
-    <lastmod>2017-07-25T00:00:00+00:00</lastmod>
+    <loc>http://mapstruct.org/tags/news/</loc>
+    <lastmod>2017-08-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/release/</loc>
-    <lastmod>2017-07-25T00:00:00+00:00</lastmod>
+    <lastmod>2017-08-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/</loc>
+    <lastmod>2013-07-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
