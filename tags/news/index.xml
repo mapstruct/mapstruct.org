@@ -19,7 +19,7 @@
       <guid>http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m very happy to announce the second candidate release of MapStruct 1.2!&lt;/p&gt;
 
-&lt;p&gt;The CR2 release mostly provides bug fixes and other smaller improvements since the &lt;a href=&#34;http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_CR2-released/&#34;&gt;CR2&lt;/a&gt;,
+&lt;p&gt;The CR2 release mostly provides bug fixes and other smaller improvements since the &lt;a href=&#34;http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_cr1-released/&#34;&gt;CR1&lt;/a&gt;,
 e.g. related to the handling of &lt;code&gt;mappingInheritanceStrategy&lt;/code&gt; (issue &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1255&#34;&gt;#1255&lt;/a&gt;).
 Further fixes concern the handling nested target properties (&lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/1269&#34;&gt;#1269&lt;/a&gt;).&lt;/p&gt;
 
