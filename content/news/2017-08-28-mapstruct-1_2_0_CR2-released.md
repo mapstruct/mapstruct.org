@@ -7,7 +7,7 @@ tags: [release, news]
 
 I'm very happy to announce the second candidate release of MapStruct 1.2!
 
-The CR2 release mostly provides bug fixes and other smaller improvements since the [CR2](http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_CR2-released/),
+The CR2 release mostly provides bug fixes and other smaller improvements since the [CR1](http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_cr1-released/),
 e.g. related to the handling of `mappingInheritanceStrategy` (issue [#1255](https://github.com/mapstruct/mapstruct/issues/1255)).
 Further fixes concern the handling nested target properties ([#1269](https://github.com/mapstruct/mapstruct/issues/1269)).
 
