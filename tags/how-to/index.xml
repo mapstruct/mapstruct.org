@@ -2,14 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>How To on MapStruct</title>
-    <link>http://mapstruct.org/tags/how-to/</link>
+    <link>http://mapstruct.org/tags/how-to/index.xml</link>
     <description>Recent content in How To on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jul 2013 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://mapstruct.org/tags/how-to/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="http://mapstruct.org/tags/how-to/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Using MapStruct with Gradle</title>
@@ -17,8 +14,122 @@
       <pubDate>Mon, 08 Jul 2013 00:00:00 +0000</pubDate>
       
       <guid>http://mapstruct.org/news/2013-07-08-using-mapstruct-with-gradle/</guid>
-      <description>Update Feb. 26, 2017: Since writing this post, usage of annotation processors with Gradle got much easier and the set-up described in the following isn&amp;rsquo;t required anymore. The example project on GitHub has been updated accordingly.
-You work with Gradle to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.</description>
+      <description>
+
+&lt;p&gt;&lt;em&gt;Update Feb. 26, 2017: Since writing this post, usage of annotation processors with Gradle got much easier and the set-up described in the following isn&amp;rsquo;t required anymore.&lt;/em&gt;
+&lt;em&gt;The &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-on-gradle&#34;&gt;example project&lt;/a&gt; on GitHub has been updated accordingly.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You work with &lt;a href=&#34;http://www.gradle.org/&#34;&gt;Gradle&lt;/a&gt; to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.&lt;/p&gt;
+
+&lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;MapStruct is implemented in form of an annotation processor as specified by &lt;a href=&#34;http://jcp.org/en/jsr/detail?id=269&#34;&gt;JSR 269&lt;/a&gt;. Annotation processors are plugged into the Java compiler and can inspect the sources during compilation as well as create new sources as it is done by MapStruct. JSR 269 processors can be integrated into basically any form of Java build as long as you work with Java 6 or later.&lt;/p&gt;
+
+&lt;p&gt;One way of using an annotation processor is to put its JAR onto the compilation classpath where it will be picked up automatically by the Java compiler. This approach works, but it has the advantage that it exposes the processor and its classes to the compiled application which thus &amp;#150; accidentially or not &amp;#150; could import types from the processor.&lt;/p&gt;
+
+&lt;p&gt;This sort of issue can be avoided by setting up the processor separately. When working with &lt;code&gt;javac&lt;/code&gt; directly, the &lt;a href=&#34;http://docs.oracle.com/javase/7/docs/technotes/tools/solaris/javac.html#options&#34;&gt;processorpath&lt;/a&gt; option can be used for this purpose, while for Maven projects the &lt;a href=&#34;http://code.google.com/p/maven-annotation-plugin/&#34;&gt;maven-annotation-plugin&lt;/a&gt; is the recommended way to integrate annotation processors.&lt;/p&gt;
+
+&lt;h3 id=&#34;set-up-mapstruct-in-your-gradle-build&#34;&gt;Set up MapStruct in your Gradle build&lt;/h3&gt;
+
+&lt;p&gt;To integrate MapStruct into a Gradle build, first make sure you use the Java 6 language level by adding the following to the &lt;em&gt;build.gradle&lt;/em&gt; file of your project:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;
+ext {
+    javaLanguageLevel = &#39;1.6&#39;
+    generatedMapperSourcesDir = &#34;${buildDir}/generated-src/mapstruct/main&#34;
+}
+
+sourceCompatibility = rootProject.javaLanguageLevel
+&lt;/pre&gt;
+
+&lt;p&gt;It&amp;rsquo;s a good idea to declare a property which holds the language level. That way it can be referenced later on where required. We also define a property which specifies the target directory for the generated mapper classes.&lt;/p&gt;
+
+&lt;p&gt;The next step is to add the MapStruct annotation module (&lt;em&gt;org.mapstruct:mapstruct:&amp;lt;VERSION&amp;gt;&lt;/em&gt;) as compilation dependency and to declare a separate &lt;a href=&#34;http://www.gradle.org/docs/current/userguide/dependency_management.html#sub:configurations&#34;&gt;dependency configuration&lt;/a&gt; which contains the MapStruct processor module (&lt;em&gt;org.mapstruct:mapstruct-processor:&amp;lt;VERSION&amp;gt;&lt;/em&gt;):&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;
+configurations {
+    mapstruct
+}
+
+dependencies {
+    compile( &#39;org.mapstruct:mapstruct:&amp;lt;VERSION&amp;gt;&#39; )
+    mapstruct( &#39;org.mapstruct:mapstruct-processor:&amp;lt;VERSION&amp;gt;&#39; )
+}
+&lt;/pre&gt;
+
+&lt;p&gt;The separate dependency configuration makes sure that the classes from the processor aren&amp;rsquo;t visible to the compiled application. To make the generated sources available for the actual compilation step add the previously configured path to the main &lt;a href=&#34;http://www.gradle.org/docs/current/userguide/java_plugin.html#N11D51&#34;&gt;source set&lt;/a&gt; like this:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;
+sourceSets.main {
+    ext.originalJavaSrcDirs = java.srcDirs
+    java.srcDir &#34;${generatedMapperSourcesDir}&#34;
+}
+&lt;/pre&gt;
+
+&lt;p&gt;We also store the original source directories in a property in order to reference them later on. Now it&amp;rsquo;s time to set up a task for the invocation of the annotation processor. To do so, declare a task of the type &lt;a href=&#34;http://www.gradle.org/docs/current/dsl/org.gradle.api.tasks.compile.JavaCompile.html&#34;&gt;JavaCompile&lt;/a&gt; like this:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;
+task generateMainMapperClasses(type: JavaCompile) {
+    ext.aptDumpDir = file( &#34;${buildDir}/tmp/apt/mapstruct&#34; )
+    destinationDir = aptDumpDir
+
+    classpath = compileJava.classpath + configurations.mapstruct
+    source = sourceSets.main.originalJavaSrcDirs
+    ext.sourceDestDir = file ( &#34;$generatedMapperSourcesDir&#34; )
+
+    options.define(
+        compilerArgs: [
+            &#34;-nowarn&#34;,
+            &#34;-proc:only&#34;,
+            &#34;-encoding&#34;, &#34;UTF-8&#34;,
+            &#34;-processor&#34;, &#34;org.mapstruct.ap.MappingProcessor&#34;,
+            &#34;-s&#34;, sourceDestDir.absolutePath,
+            &#34;-source&#34;, rootProject.javaLanguageLevel,
+            &#34;-target&#34;, rootProject.javaLanguageLevel,
+        ]
+    );
+
+    inputs.dir source
+    outputs.dir generatedMapperSourcesDir;
+    doFirst {
+         sourceDestDir.mkdirs()
+    }
+    doLast {
+        aptDumpDir.delete()
+    }
+}
+&lt;/pre&gt;
+
+&lt;p&gt;The task&amp;rsquo;s classpath comprises both, the actual compilation classpath as well as the &lt;code&gt;mapstruct&lt;/code&gt; configuration set up before. As source path the previously stored source directories are used.&lt;/p&gt;
+
+&lt;p&gt;The options passed to the compile task should be rather self-explanatory. Note that by passing &lt;code&gt;-proc:only&lt;/code&gt;, the task will only invoke the given processor but perform no compilation (that will be done by the default compilation step later on).&lt;/p&gt;
+
+&lt;p&gt;By declaring the &lt;code&gt;inputs&lt;/code&gt; and &lt;code&gt;outputs&lt;/code&gt; of the task we make sure Gradle&amp;rsquo;s &lt;a href=&#34;http://www.gradle.org/docs/current/userguide/more_about_tasks.html#sec:up_to_date_checks&#34;&gt;incremental build&lt;/a&gt; functionality is leveraged. That way Gradle will skip the task when running the build a second time and the generated output files still are up to date.&lt;/p&gt;
+
+&lt;p&gt;Finally you need to make sure that the generation of mapper types happens before the compilation of all sources. This can be achieved by declaring the following dependency:&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint linenums&#34;&gt;
+compileJava.dependsOn generateMainMapperClasses
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;give-it-a-shot&#34;&gt;Give it a shot&lt;/h3&gt;
+
+&lt;p&gt;You can find the complete &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/blob/master/mapstruct-on-gradle/build.gradle&#34;&gt;build.gradle&lt;/a&gt; file on GitHub. It is part of an example project which generates a simple mapper class and executes some tests against it. To clone the example project just execute&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint lang-sh linenums&#34;&gt;
+git clone https://github.com/mapstruct/mapstruct-examples.git
+&lt;/pre&gt;
+
+&lt;p&gt;You can then build the example by running&lt;/p&gt;
+
+&lt;pre class=&#34;prettyprint lang-sh linenums&#34;&gt;
+cd mapstruct-on-gradle &amp;amp;&amp;amp; ./gradlew build
+&lt;/pre&gt;
+
+&lt;p&gt;The project comes with the &lt;a href=&#34;http://www.gradle.org/docs/current/userguide/userguide_single.html#gradle_wrapper&#34;&gt;Gradle Wrapper&lt;/a&gt;, a small utility which retrieves the right Gradle version upon the first build. So it is not required to install Gradle separately.&lt;/p&gt;
+
+&lt;p&gt;In case you have questions, ideas or any other kind of feedback just add a comment to this post or leave a message in the &lt;a href=&#34;https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users&#34;&gt;mapstruct-users&lt;/a&gt; group.&lt;/p&gt;
+</description>
     </item>
     
   </channel>
