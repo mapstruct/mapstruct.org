@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MapStruct 1.2.0.CR2 released &ndash; MapStruct</title>
+        <title>MapStruct support for IntelliJ IDEA &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -124,10 +124,10 @@ ga('send', 'pageview');
             
 <article class="uk-article">
     <p class="uk-article-meta ms-article-date">
-    <time>August 28, 2017</time>
+    <time>September 19, 2017</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/">MapStruct 1.2.0.CR2 released</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-09-19-announcing-mapstruct-idea/">MapStruct support for IntelliJ IDEA</a></h1>
 
 <p class="uk-article-meta ms-article-author">
     By <b>Filip Hrisafov</b> under 
@@ -141,70 +141,87 @@ ga('send', 'pageview');
         news
     </span>
     
+    <span class="uk-badge">
+    
+        intellij
+    </span>
+    
+    <span class="uk-badge">
+    
+        ide
+    </span>
+    
 </p>
 
     <div>
-        <div><p>I&rsquo;m very happy to announce the second candidate release of MapStruct 1.2!</p>
+        <div><p>I am very happy to announce the first version of the MapStruct IntelliJ IDEA plugin.
+Now we have official support for 2 IDEs, Eclipse being the first IDE for which we had support from earlier (plugin <a href="https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin">here</a>).</p>
 
-<p>The CR2 release mostly provides bug fixes and other smaller improvements since the <a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/">CR1</a>,
-e.g. related to the handling of <code>mappingInheritanceStrategy</code> (issue <a href="https://github.com/mapstruct/mapstruct/issues/1255">#1255</a>).
-Further fixes concern the handling nested target properties (<a href="https://github.com/mapstruct/mapstruct/issues/1269">#1269</a>).</p>
+<p>With the power of IntelliJ you now get completions in <code>@Mapping</code> and <code>@ValueMapping</code> annotations (also for nested mappings ;)).
+Apart from that you also get support for: finding usages of methods directly within annotations,
+going to declarations from annotations, highlighting support within annotations and refactoring support.</p>
 
 <p></p>
 
-<p>The most notable change in the release is the extension of the <code>mappingInheritenceStrategy</code>.
-With the inclusion of <a href="https://github.com/mapstruct/mapstruct/issues/1065">#1065</a> in <code>1.2.0.Beta2</code> we added support inheritance of reverse methods from <code>@MapperConfig</code>.
-This inadvertently lead to <a href="https://github.com/mapstruct/mapstruct/issues/1255">#1255</a>. Therefore, now there are 4 strategies:</p>
+<p>Changing a property and it&rsquo;s getters / setters now leads to change of the source / target values accordingly.</p>
 
-<ul>
-<li><code>EXPLICIT</code> - Only inherits if explicitly stated (Same as before)</li>
-<li><code>AUTO_INHERIT_FROM_CONFIG</code> - Will automatically inherit <strong>only</strong> forward configuration (Behaviour is same as before)</li>
-<li><code>AUTO_INHERIT_REVERSE_FROM_CONFIG</code> - Will automatically inherit <strong>only</strong> reverse configuration (New strategy)</li>
-<li><code>AUTO_INHERIT_ALL_FROM_CONFIG</code> - Will automatically inherit <strong>both</strong> forward and reverse configuration (New Strategy)</li>
-</ul>
+<p>With this plugin we are bringing first class support for MapStruct within IntelliJ and addressing long lasting requests
+from users for the support (such as <a href="https://github.com/mapstruct/mapstruct/issues/520">mapstruct#520</a> and <a href="https://youtrack.jetbrains.com/issue/IDEABKL-7174">IDEANKL-7174</a>).</p>
 
-<p>Overall, <a href="https://github.com/mapstruct/mapstruct/milestone/19?closed=1">6 issues</a> have been fixed with the CR2 release.
-Please see the <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.CR2">release notes</a> for more details on the issues fixed.</p>
+<p>Some of the new features:</p>
 
-<p>Thanks to everyone contributing to this release: <a href="https://github.com/xyzst">Darren Rambaud</a> and the long-term MapStruct afficionados <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/gunnarmorling">Gunnar Morling</a> and <a href="https://github.com/sjaakd">Sjaak Derksen</a>.</p>
+<h4 id="completion-for-properties-and-enum-constants"><a class="ms-header-link" href="#completion-for-properties-and-enum-constants"><i class="fa fa-link"></i></a>Completion for Properties and Enum Constants</h4>
+
+<div style="text-align:left">
+    <img src="/images/idea/source-auto-complete.gif" alt="Code completion for source"/>
+</div>
+
+<h4 id="go-to-declaration-from-annotation"><a class="ms-header-link" href="#go-to-declaration-from-annotation"><i class="fa fa-link"></i></a>Go To Declaration from annotation</h4>
+
+<div style="text-align:center">
+    <img src="/images/idea/go-to-declaration-from-target.gif" alt="Go To Declaration"/>
+</div>
+
+<h4 id="find-usages"><a class="ms-header-link" href="#find-usages"><i class="fa fa-link"></i></a>Find Usages</h4>
+
+<div style="text-align:center">
+    <img src="/images/idea/find-usages-from-source-method.png" alt="Find usages from Source methods"/>
+</div>
+
+<p>I would also like to thank everyone in the <a href="https://gitter.im/IntelliJ-Plugin-Developers/Lobby">Plugin Developers gitter chat</a>
+and the people from Jetbrains for their help and guidance in developing this plugin :).</p>
 
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
 
-<p>You can find MapStruct 1.2 CR 2 in Maven Central under the following GAV coordinates:</p>
+<p>You can find the plugin in the Jetbrains Plugins repository <a href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support">here</a>.</p>
 
-<ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.CR2|jar">org.mapstruct:mapstruct-jdk8:1.2.0.CR2</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.CR2|jar">org.mapstruct:mapstruct:1.2.0.CR2</a> (for earlier Java versions)</li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.CR2|jar">org.mapstruct:mapstruct-processor:1.2.0.CR2</a></li>
-</ul>
-
-<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.CR2">from GitHub</a>.</p>
+<p>Alternatively, you can get ZIP <a href="https://github.com/mapstruct/mapstruct-idea/releases/tag/1.0.0">from GitHub</a>.</p>
 
 <h3 id="next-steps"><a class="ms-header-link" href="#next-steps"><i class="fa fa-link"></i></a>Next steps</h3>
 
-<p>With this candidate release we believe that we&rsquo;re ready for releasing MapStruct 1.2 Final.</p>
+<p>We would like to add support for Inspections and Quick Fixes for recommended usages of MapStruct.</p>
 
-<p>We are confident that the final release will be out in in few weeks.</p>
-
-<p>Please give the candidate release a spin and let us know as soon as possible if you run into any trouble.
+<p>Please try out the plugin and let us know what you think and what you would like to see in it.
 To get in touch, post a comment below or use one the following channels:</p>
 
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
-<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct-idea/issues">issue tracker</a></li>
 <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
 <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
+<li>Talk with us in our <a href="https://gitter.im/mapstruct/mapstruct-users">gitter room</a></li>
 </ul></div>
     </div>
     <div>
         <ul class="uk-pagination">
             
-            <li>
-                <a href="/news/2017-09-19-announcing-mapstruct-idea/" title="MapStruct support for IntelliJ IDEA"><i class="uk-icon-angle-double-left"></i></a>
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
             </li>
             
             
             <li>
-                <a href="/news/2017-07-25-mapstruct-1_2_0_CR1-released/" title="MapStruct 1.2.0.CR1 released"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="/news/2017-08-28-mapstruct-1_2_0_cr2-released/" title="MapStruct 1.2.0.CR2 released"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 
