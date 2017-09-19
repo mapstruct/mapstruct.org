@@ -38,13 +38,13 @@ from users for the support (such as &lt;a href=&#34;https://github.com/mapstruct
 
 &lt;h4 id=&#34;go-to-declaration-from-annotation&#34;&gt;Go To Declaration from annotation&lt;/h4&gt;
 
-&lt;div style=&#34;text-align:center&#34;&gt;
+&lt;div style=&#34;text-align:left&#34;&gt;
     &lt;img src=&#34;http://mapstruct.org/images/idea/go-to-declaration-from-target.gif&#34; alt=&#34;Go To Declaration&#34;/&gt;
 &lt;/div&gt;
 
 &lt;h4 id=&#34;find-usages&#34;&gt;Find Usages&lt;/h4&gt;
 
-&lt;div style=&#34;text-align:center&#34;&gt;
+&lt;div style=&#34;text-align:left&#34;&gt;
     &lt;img src=&#34;http://mapstruct.org/images/idea/find-usages-from-source-method.png&#34; alt=&#34;Find usages from Source methods&#34;/&gt;
 &lt;/div&gt;
 
