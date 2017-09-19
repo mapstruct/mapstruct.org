@@ -29,13 +29,13 @@ Some of the new features:
 
 #### Go To Declaration from annotation
 
-<div style="text-align:center">
+<div style="text-align:left">
     <img src="/images/idea/go-to-declaration-from-target.gif" alt="Go To Declaration"/>
 </div>
 
 #### Find Usages
 
-<div style="text-align:center">
+<div style="text-align:left">
     <img src="/images/idea/find-usages-from-source-method.png" alt="Find usages from Source methods"/>
 </div>
 
