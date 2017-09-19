@@ -17,7 +17,7 @@ going to declarations from annotations, highlighting support within annotations 
 Changing a property and it's getters / setters now leads to change of the source / target values accordingly.
 
 With this plugin we are bringing first class support for MapStruct within IntelliJ and addressing long lasting requests
-from users for the support (such as [mapstruct#520](https://github.com/mapstruct/mapstruct/issues/520) and [IDEANKL-7174](https://youtrack.jetbrains.com/issue/IDEABKL-7174)).
+from users for the support (such as [mapstruct#520](https://github.com/mapstruct/mapstruct/issues/520) and [IDEABKL-7174](https://youtrack.jetbrains.com/issue/IDEABKL-7174)).
 
 Some of the new features:
 
