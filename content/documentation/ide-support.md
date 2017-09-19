@@ -59,7 +59,26 @@ For example, if you use the way of Maven configuration that is proposed in our d
 
 ### Editing Support
 
-As for the editing support of MapStruct mappers, there is an open feature request in the IntelliJ backlog: [MapStruct support](https://youtrack.jetbrains.com/issue/IDEABKL-7174). Perhaps some additional votes help there. Or better yet, if you want to start with it, we'd probably join you in your efforts.
+There is an IntelliJ plugin for MapStruct support, that you can find in the Jetbrains plugins repository [here](https://plugins.jetbrains.com/plugin/10036-mapstruct-support).
+The plugin is open source and you can report bugs and feature requests [here](https://github.com/mapstruct/mapstruct-idea/issues) on GitHub.
+
+#### Completion for Properties and Enum Constants
+
+<div style="text-align:center">
+    <img src="/images/idea/source-auto-complete.gif" alt="Code completion for source"/>
+</div>
+
+#### Go To Declaration from annotation
+
+<div style="text-align:center">
+    <img src="/images/idea/go-to-declaration-from-target.gif" alt="Go To Declaration"/>
+</div>
+
+#### Find Usages
+
+<div style="text-align:center">
+    <img src="/images/idea/find-usages-from-source-method.png" alt="Find usages from Source methods"/>
+</div>
 
 ## NetBeans
 
