@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.2.0.CR2 Reference Guide</title>
+<title>MapStruct 1.2.0.Final Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -512,10 +512,10 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.2.0.CR2 Reference Guide</h1>
+<h1>MapStruct 1.2.0.Final Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2017-08-28</span>
+<span id="revdate">2017-10-17</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -646,7 +646,17 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 <p>Compile-time type safety: Only objects and attributes mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.</p>
 </li>
 <li>
-<p>Clear error-reports at build time, if entities or attributes can&#8217;t be mapped</p>
+<p>Clear error-reports at build time, if</p>
+<div class="ulist">
+<ul>
+<li>
+<p>mappings are incomplete (not all target properties are mapped)</p>
+</li>
+<li>
+<p>mappings are incorrect (cannot find a proper mapping method or type conversion)</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -719,7 +729,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.2.0.CR2<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.2.0.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -818,9 +828,9 @@ plugins {
 }
 dependencies {
     ...
-    compile <span class="string"><span class="delimiter">'</span><span class="content">org.mapstruct:mapstruct-jdk8:1.2.0.CR2</span><span class="delimiter">'</span></span>
+    compile <span class="string"><span class="delimiter">'</span><span class="content">org.mapstruct:mapstruct-jdk8:1.2.0.Final</span><span class="delimiter">'</span></span>
 
-    apt <span class="string"><span class="delimiter">'</span><span class="content">org.mapstruct:mapstruct-processor:1.2.0.CR2</span><span class="delimiter">'</span></span>
+    apt <span class="string"><span class="delimiter">'</span><span class="content">org.mapstruct:mapstruct-processor:1.2.0.Final</span><span class="delimiter">'</span></span>
 }
 ...</pre></td>
 </tr></table></code></pre>
@@ -857,8 +867,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-jdk8-1.2.0.CR2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.2.0.CR2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-jdk8-1.2.0.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.2.0.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -1069,7 +1079,7 @@ suppressGeneratorVersionInfoComment</code></p></td>
 <p>MapStruct can be used with Java 9, but as that Java version has not been finalized yet, support for it is experimental.</p>
 </div>
 <div class="paragraph">
-<p>A core theme of Java 9 is the modularization of the JDK. One effect of this that a specific module need to be enabled for a project in order to use the <code>javax.annotation.Generated</code> annotation. <code>@Generated</code> is added by MapStruct to generated mapper classes to tag them as generated code, stating the date of generation, the generator version etc.</p>
+<p>A core theme of Java 9 is the modularization of the JDK. One effect of this is that a specific module needs	to be enabled for a project in order to use the <code>javax.annotation.Generated</code> annotation. <code>@Generated</code> is added by MapStruct to generated mapper classes to tag them as generated code, stating the date of generation, the generator version etc.</p>
 </div>
 <div class="paragraph">
 <p>To allow usage of the <code>@Generated</code> annotation the module <em>java.annotations.common</em> must be enabled. When using Maven, this can be done like this:</p>
@@ -1533,7 +1543,7 @@ considered as a write accessor.</p>
 <p>Small example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 13. Examples classes for mapping</div>
+<div class="title">Example 13. Example classes for mapping</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2036,13 +2046,13 @@ CarDto dto = CarMapper.INSTANCE.carToCarDto( car );</pre></td>
 <p>If source and target attribute have the same type, the value will be simply copied from source to target. If the attribute is a collection (e.g. a <code>List</code>) a copy of the collection will be set into the target attribute.</p>
 </li>
 <li>
-<p>If source and target attribute type differ, check whether there is a another mapping method which has the type of the source attribute as parameter type and the type of the target attribute as return type. If such a method exists it will be invoked in the generated mapping implementation.</p>
+<p>If source and target attribute type differ, check whether there is another mapping method which has the type of the source attribute as parameter type and the type of the target attribute as return type. If such a method exists it will be invoked in the generated mapping implementation.</p>
 </li>
 <li>
 <p>If no such method exists MapStruct will look whether a built-in conversion for the source and target type of the attribute exists. If this is the case, the generated mapping code will apply this conversion.</p>
 </li>
 <li>
-<p>If no such method was found MapStruct will try to generate an automatic sub-mapping method that will do the mapping between the source and target attributes</p>
+<p>If no such method was found MapStruct will try to generate an automatic sub-mapping method that will do the mapping between the source and target attributes.</p>
 </li>
 <li>
 <p>If MapStruct could not create a name based mapping method an error will be raised at build time, indicating the non-mappable attribute and its path.</p>
@@ -2196,7 +2206,7 @@ Such is demonstrated in the next example:</p>
 <div class="paragraph">
 <p>Note what happens in <code>@Mapping(target="quality.document", source="quality.report")</code>.
 <code>DocumentDto</code> does not exist as such on the target side. It is mapped from <code>Report</code>.
-MapStruct continues to generate mapping code here. That mapping it self can be guided towards another name.
+MapStruct continues to generate mapping code here. That mapping itself can be guided towards another name.
 This even works for constants and expression. Which is shown in the final example: <code>@Mapping(target="quality.document.organisation.name", constant="NoIdeaInc")</code>.</p>
 </div>
 <div class="paragraph">
@@ -2532,7 +2542,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.2.0.CR2/integrationtest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.2.0.Final/integrationtest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -2542,14 +2552,14 @@ This means that it is possible for MapStruct not to report unmapped target prope
 <div class="sect2">
 <h3 id="selection-based-on-qualifiers"><a class="anchor" href="#selection-based-on-qualifiers"></a>5.8. Mapping method selection based on qualifiers</h3>
 <div class="paragraph">
-<p>In many occasions one requires mapping methods with the same method signature (appart from the name) that have different behavior.
+<p>In many occasions one requires mapping methods with the same method signature (apart from the name) that have different behavior.
 MapStruct has a handy mechanism to deal with such situations: <code>@Qualifier</code> (<code>org.mapstruct.Qualifier</code>).
 A ‘qualifier’ is a custom annotation that the user can write, ‘stick onto’ a mapping method which is included as used mapper
 and can be referred to in a bean property mapping, iterable mapping or map mapping.
 Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 </div>
 <div class="paragraph">
-<p>So, lets say there is a hand-written method to map titles with a <code>String</code> return type and <code>String</code> argument amongst many other referenced mappers with the same <code>String</code> return type  - <code>String</code> argument signature:</p>
+<p>So, let&#8217;s say there is a hand-written method to map titles with a <code>String</code> return type and <code>String</code> argument amongst many other referenced mappers with the same <code>String</code> return type  - <code>String</code> argument signature:</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 32. Several mapping methods with identical source and target types</div>
@@ -3157,7 +3167,7 @@ carDto.getPassengers().addAll( personsToPersonDtos( car.getPassengers() ) );
 <p>MapStruct has a <code>CollectionMappingStrategy</code>, with the possible values: <code>ACCESSOR_ONLY</code>, <code>SETTER_PREFERRED</code>, <code>ADDER_PREFERRED</code> and <code>TARGET_IMMUTABLE</code>.</p>
 </div>
 <div class="paragraph">
-<p>In the table below, the dash <code>-</code> indicates a property name. Next, the trailing <code>s</code> indicates the plural form. The table explains the options and how they are apply to the presence/absense of a <code>set-s</code>, <code>add-</code> and / or <code>get-s</code> method on the target object:</p>
+<p>In the table below, the dash <code>-</code> indicates a property name. Next, the trailing <code>s</code> indicates the plural form. The table explains the options and how they are applied to the presence/absense of a <code>set-s</code>, <code>add-</code> and / or <code>get-s</code> method on the target object:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 2. Collection mapping strategy options</caption>
@@ -3218,7 +3228,7 @@ carDto.getPassengers().addAll( personsToPersonDtos( car.getPassengers() ) );
 <p>Some background: An <code>adder</code> method is typically used in case of <a href="http://www.eclipse.org/webtools/dali/">generated (JPA) entities</a>, to add a single element (entity) to an underlying collection. Invoking the adder establishes a parent-child relation between parent - the bean (entity) on which the adder is invoked - and its child(ren), the elements (entities) in the collection. To find the appropriate <code>adder</code>, MapStruct will try to make a match between the generic parameter type of the underlying collection and the single argument of a candidate <code>adder</code>. When there are more candidates, the plural <code>setter</code> / <code>getter</code> name is converted to singular and will be used in addition to make a match.</p>
 </div>
 <div class="paragraph">
-<p>The option <code>DEFAULT</code> should not be used explicitely. It is used to distinguish between an explicit user desire to override the default in a <code>@MapperConfig</code> from the implicit Mapstruct choice in a <code>@Mapper</code>. The option <code>DEFAULT</code> is synonymous to <code>ACCESSOR_ONLY</code>.</p>
+<p>The option <code>DEFAULT</code> should not be used explicitly. It is used to distinguish between an explicit user desire to override the default in a <code>@MapperConfig</code> from the implicit Mapstruct choice in a <code>@Mapper</code>. The option <code>DEFAULT</code> is synonymous to <code>ACCESSOR_ONLY</code>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3228,7 +3238,7 @@ carDto.getPassengers().addAll( personsToPersonDtos( car.getPassengers() ) );
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with an <code>adder</code> method and JPA entities, Mapstruct assumes that the target collections are initialized with a collection implementation (e.g. an <code>ArrayList</code>). You can use factories to create a new target entity with intialized collections in stead of Mapstruct creating the target entity by its constructor.</p>
+<p>When working with an <code>adder</code> method and JPA entities, Mapstruct assumes that the target collections are initialized with a collection implementation (e.g. an <code>ArrayList</code>). You can use factories to create a new target entity with intialized collections instead of Mapstruct creating the target entity by its constructor.</p>
 </div>
 </td>
 </tr>
@@ -4018,7 +4028,7 @@ annotation is necessary to let MapStruct know that the given method is only a fa
 <p>Default values can be specified to set a predefined value to a target property if the corresponding source property is <code>null</code>. Constants can be specified to set such a predefined value in any case. Default values and constants are specified as String values and are subject to type conversion either via built-in conversions or the invocation of other mapping methods in order to match the type required by the target property.</p>
 </div>
 <div class="paragraph">
-<p>A mapping with a constant must not include a reference to a source property. The following examples shows some mappings using default values and constants:</p>
+<p>A mapping with a constant must not include a reference to a source property. The following example shows some mappings using default values and constants:</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 55. Mapping method with default values and constants</div>
@@ -4111,7 +4121,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 </div>
 </div>
 <div class="paragraph">
-<p>The example demonstrates how the source properties <code>time</code> and <code>format</code> are composed into one target property <code>TimeAndFormat</code>. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the <code>TimeAndFormat</code> class (unless its used otherwise explicitly in the <code>SourceTargetMapper</code>). This can be resolved by defining <code>imports</code> on the <code>@Mapper</code> annotation.</p>
+<p>The example demonstrates how the source properties <code>time</code> and <code>format</code> are composed into one target property <code>TimeAndFormat</code>. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the <code>TimeAndFormat</code> class (unless it&#8217;s used otherwise explicitly in the <code>SourceTargetMapper</code>). This can be resolved by defining <code>imports</code> on the <code>@Mapper</code> annotation.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 57. Declaring an import</div>
@@ -4151,7 +4161,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <div class="sect2">
 <h3 id="determining-result-type"><a class="anchor" href="#determining-result-type"></a>10.3. Determining the result type</h3>
 <div class="paragraph">
-<p>When result types have an inheritance relation, selecting either mapping method (<code>@Mapping</code>) or a factory method (<code>@BeanMapping</code>) can becomes ambigious. Suppose an Apple and a Banana, which is are both specializations of Fruit.</p>
+<p>When result types have an inheritance relation, selecting either mapping method (<code>@Mapping</code>) or a factory method (<code>@BeanMapping</code>) can become ambiguous. Suppose an Apple and a Banana, which are both specializations of Fruit.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 58. Specifying the result type of a bean mapping method</div>
@@ -4274,7 +4284,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <div class="ulist">
 <ul>
 <li>
-<p>direct setting of source value to target value when target is primitive and is source not.</p>
+<p>direct setting of source value to target value when target is primitive and source is not.</p>
 </li>
 <li>
 <p>applying type conversion and then:</p>
@@ -5462,7 +5472,7 @@ parameters and constructing a new target bean.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Fore more details: There&#8217;s the above example is present in our our examples repository (<a href="https://github.com/mapstruct/mapstruct-examples" class="bare">https://github.com/mapstruct/mapstruct-examples</a>).
+Fore more details: The example above is present in our examples repository (<a href="https://github.com/mapstruct/mapstruct-examples" class="bare">https://github.com/mapstruct/mapstruct-examples</a>).
 </td>
 </tr>
 </table>
@@ -5638,7 +5648,7 @@ This JAR file needs to be added to the annotation processor classpath
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-28 20:22:56 +02:00
+Last updated 2017-10-17 23:12:54 +02:00
 </div>
 </div>
 </body>
