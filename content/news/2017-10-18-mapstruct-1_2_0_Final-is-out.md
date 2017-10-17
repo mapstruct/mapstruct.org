@@ -3,7 +3,6 @@ title: "MapStruct 1.2.0.Final is out"
 author: Filip Hrisafov
 date: "2017-10-18"
 tags: [release, news]
-draft: true
 ---
 
 I'm very happy to announce the final version MapStruct 1.2!
