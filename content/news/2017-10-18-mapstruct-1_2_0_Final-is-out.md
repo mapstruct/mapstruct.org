@@ -47,9 +47,11 @@ In total 111 issues have been fixed between 1.1.0.Final and 1.2.0.Final releases
 There are already some PRs in the pipeline, some ready to be merged, some need some time for one of the most requested features for MapStruct.
 
 Two features planned for 1.3 are [builders support](https://github.com/mapstruct/mapstruct/issues/782) (also support for [AutoValue builders](https://github.com/mapstruct/mapstruct/issues/802)) and support for [constructor injection](https://github.com/mapstruct/mapstruct/issues/571) for the generated mappers.
+
 After that, it won't be too long until MapStruct 2.0.
-We've planned to go to a new major version rather soon, allowing us to get rid of some deprecated features and drop support for Java 6/7.
+We've planned to go to a new major version rather soon, allowing us to get rid of some deprecated features and drop support for Java 6 and 7.
 This will help us to keep the codebase maintainable and focus on exciting new mapping features.
+
 Also take a look at the [backlog](https://github.com/mapstruct/mapstruct/labels/feature).
 If there is anything in there you'd like to see addressed rather sooner than later, let us know by commenting or voting.
 
