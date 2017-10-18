@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MapStruct 1.2.0.Final is out &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-41136939-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    </head>
+
+    <body>
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            
+
+    <li class="uk-active">
+    <a href="/news/">News</a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/">FAQ</a>
+    </li>
+
+            </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
+        </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                
+
+    <li class="uk-active">
+    <a href="/news/">News</a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/">FAQ</a>
+    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    
+    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2017-09-19-announcing-mapstruct-idea/">MapStruct support for IntelliJ IDEA</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/">MapStruct 1.2.0.CR2 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/">MapStruct 1.2.0.CR1 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/">MapStruct 1.2.0.Beta3 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/">MapStruct 1.2.0.Beta2 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/">Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out</a></li>
+    
+</ul>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<article class="uk-article">
+    <p class="uk-article-meta ms-article-date">
+    <time>October 18, 2017</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Filip Hrisafov</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+    <div>
+        <div><p>I&rsquo;m very happy to announce the final version MapStruct 1.2!</p>
+
+<p>After less than a year from the <a href="/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild">1.1.0.Final</a> release, 3 Beta and 2 CR releases, MapStruct 1.2.0.Final is finally out :).</p>
+
+<p>Besides bug fixes, the 1.2 release brings some new interesting features:</p>
+
+<ul>
+<li>MapStruct can be used with Lombok out of the box</li>
+<li>Java 8 Stream support</li>
+<li>Mappings based on public fields</li>
+<li>Automatic creation of nested mapping methods</li>
+<li>Mapping methods can take &ldquo;pass-through&rdquo; context parameters, addressing different use cases like
+
+<ul>
+<li>Passing a locale, timezone or similar to custom mapping methods</li>
+<li>Keeping track of processed nodes in circular object graphs</li>
+</ul></li>
+<li>Target bean factory methods can access a mapping&rsquo;s source parameter(s)</li>
+<li>Nested target mappings have been reworked from the ground up</li>
+<li>Java 9 Compatibility</li>
+</ul>
+
+<p></p>
+
+<p>For more details checkout the individual release announcements for the
+<a href="/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access">Beta1</a>, <a href="/news/2017-03-16-mapstruct-1_2_0_Beta2-released">Beta2</a>, <a href="/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out">Beta3</a>,
+<a href="/news/2017-07-25-mapstruct-1_2_0_CR1-released">CR1</a> and <a href="/news/2017-08-28-mapstruct-1_2_0_cr2-released">CR2</a> releases.
+Also make sure to look at the <a href="https://github.com/mapstruct/mapstruct/wiki/Migration-notes">migration notes</a> (for Beta1 and Beta3) and the GitHub <a href="https://github.com/mapstruct/mapstruct/releases">release notes</a> for the rest of the releases.</p>
+
+<p>We would not have been here without the great support of our users and contributors.
+So let me say a big thank you to everyone involved, be it through reporting bugs, starting discussions on the mailing list and, of course, helping out with contributions on the code base itself.</p>
+
+<p>The following people have contributed to the MapStruct 1.2 release:
+<a href="https://github.com/navpil">Dmytro Polovinkin</a>, <a href="https://github.com/xCASx">Maxim Kolesnikov</a>, <a href="https://github.com/pascalgn">Pascal Grün</a>, <a href="https://github.com/remmeier">Remo Meier</a>, <a href="https://github.com/brabenetz">Harald Brabenetz</a>, <a href="https://github.com/zelark">Alexander Zhuravlev</a>, <a href="https://github.com/johnwatsondev">John Watson</a>, <a href="https://github.com/44past4">44past4</a>, <a href="https://github.com/Azork">Azork</a>, <a href="https://github.com/iersel">iersel</a>, <a href="https://github.com/idkw">idkw</a>,
+<a href="https://github.com/shalugin">Aleksandr Shalugin</a>, <a href="https://github.com/cornzy">Cornelius Dirmeier</a>, <a href="https://github.com/xyzst">Darren Rambaud</a>, <a href="https://github.com/Tillerino">Tillerino</a>, <a href="https://github.com/kevcodez">Kevin Grüneberg</a> and <a href="https://github.com/ecktoteckto">Thomas Eckl</a>
+as well as seasoned MapStruct hackers <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a>, <a href="https://github.com/sjaakd">Sjaak Derksen</a> and <a href="https://github.com/gunnarmorling">Gunnar Morling</a>.</p>
+
+<p>Big <em>Thank You</em> to all of you, your efforts and hard work are highly appreciated.</p>
+
+<p>In total 111 issues have been fixed between 1.1.0.Final and 1.2.0.Final releases.</p>
+
+<h3 id="what-s-next"><a class="ms-header-link" href="#what-s-next"><i class="fa fa-link"></i></a>What&rsquo;s next</h3>
+
+<p>There are already some PRs in the pipeline, some ready to be merged, some need some time for one of the most requested features for MapStruct.</p>
+
+<p>Two features planned for 1.3 are <a href="https://github.com/mapstruct/mapstruct/issues/782">builders support</a> (also support for <a href="https://github.com/mapstruct/mapstruct/issues/802">AutoValue builders</a>) and support for <a href="https://github.com/mapstruct/mapstruct/issues/571">constructor injection</a> for the generated mappers.
+After that, it won&rsquo;t be too long until MapStruct 2.0.
+We&rsquo;ve planned to go to a new major version rather soon, allowing us to get rid of some deprecated features and drop support for Java <sup>6</sup>&frasl;<sub>7</sub>.
+This will help us to keep the codebase maintainable and focus on exciting new mapping features.
+Also take a look at the <a href="https://github.com/mapstruct/mapstruct/labels/feature">backlog</a>.
+If there is anything in there you&rsquo;d like to see addressed rather sooner than later, let us know by commenting or voting.</p>
+
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+
+<p>You can find MapStruct 1.2.0.Final in Maven Central under the following GAV coordinates:</p>
+
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.Final|jar">org.mapstruct:mapstruct-jdk8:1.2.0.Final</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.Final|jar">org.mapstruct:mapstruct:1.2.0.Final</a> (for earlier Java versions)</li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.Final|jar">org.mapstruct:mapstruct-processor:1.2.0.Final</a></li>
+</ul>
+
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.Final">from GitHub</a>.</p>
+
+<h3 id="links"><a class="ms-header-link" href="#links"><i class="fa fa-link"></i></a>Links</h3>
+
+<p>To get in touch, post a comment below or use one the following channels:</p>
+
+<ul>
+<li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+<li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
+</ul></div>
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
+            </li>
+            
+            
+            <li>
+                <a href="/news/2017-09-19-announcing-mapstruct-idea/" title="MapStruct support for IntelliJ IDEA"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'mapstruct';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+</article>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://groups.google.com/forum/#!forum/mapstruct-users">Google Group</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © Gunnar Morling 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+
