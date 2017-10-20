@@ -60,13 +60,11 @@ as well as seasoned MapStruct hackers &lt;a href=&#34;https://github.com/agudian
 
 &lt;p&gt;There are already some PRs in the pipeline, some ready to be merged, some need some time for one of the most requested features for MapStruct.&lt;/p&gt;
 
-&lt;p&gt;Two features planned for 1.3 are &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/782&#34;&gt;builders support&lt;/a&gt; (also support for &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/802&#34;&gt;AutoValue builders&lt;/a&gt;) and support for &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/571&#34;&gt;constructor injection&lt;/a&gt; for the generated mappers.&lt;/p&gt;
-
-&lt;p&gt;After that, it won&amp;rsquo;t be too long until MapStruct 2.0.
-We&amp;rsquo;ve planned to go to a new major version rather soon, allowing us to get rid of some deprecated features and drop support for Java 6 and 7.
-This will help us to keep the codebase maintainable and focus on exciting new mapping features.&lt;/p&gt;
-
-&lt;p&gt;Also take a look at the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/labels/feature&#34;&gt;backlog&lt;/a&gt;.
+&lt;p&gt;Two features planned for 1.3 are &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/782&#34;&gt;builders support&lt;/a&gt; (also support for &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/802&#34;&gt;AutoValue builders&lt;/a&gt;) and support for &lt;a href=&#34;https://github.com/mapstruct/mapstruct/issues/571&#34;&gt;constructor injection&lt;/a&gt; for the generated mappers.
+After that, it won&amp;rsquo;t be too long until MapStruct 2.0.
+We&amp;rsquo;ve planned to go to a new major version rather soon, allowing us to get rid of some deprecated features and drop support for Java &lt;sup&gt;6&lt;/sup&gt;&amp;frasl;&lt;sub&gt;7&lt;/sub&gt;.
+This will help us to keep the codebase maintainable and focus on exciting new mapping features.
+Also take a look at the &lt;a href=&#34;https://github.com/mapstruct/mapstruct/labels/feature&#34;&gt;backlog&lt;/a&gt;.
 If there is anything in there you&amp;rsquo;d like to see addressed rather sooner than later, let us know by commenting or voting.&lt;/p&gt;
 
 &lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
