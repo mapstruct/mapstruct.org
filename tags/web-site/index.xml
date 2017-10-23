@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web Site on MapStruct</title>
-    <link>http://mapstruct.org/tags/web-site/index.xml</link>
+    <link>http://mapstruct.org/tags/web-site/</link>
     <description>Recent content in Web Site on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://mapstruct.org/tags/web-site/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://mapstruct.org/tags/web-site/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>New Year, new Website!</title>
@@ -18,11 +21,7 @@
 
 &lt;p&gt;To start the new year fresh, we&amp;rsquo;ve given some love to our website. While its looks only slightly changed, its inner workings have been overhauled from ground up. It&amp;rsquo;s driven by &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; now, a static website generator written in Go which is very popular these days.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;It is much easier now for us to put new contents onto the website (everything is written in Markdown now), the tool chain is easier to set up (Hugo is a single binary to be installed) and the web site build is much faster. Long story short, it&amp;rsquo;s much more fun to work with the website now. If you are curious about the details, refer to the description of the &lt;a href=&#34;http://mapstruct.org/development/updating-mapstructorg/&#34;&gt;website build&lt;/a&gt;. Just as MapStruct itself, this website is open-source, so pull requests are always welcome!&lt;/p&gt;
-
-&lt;p&gt;For users of the site nothing much changes. We&amp;rsquo;ve set up redirects for all old URLs. Should we&amp;rsquo;ve missed any, please let us know in the comments below or file a bug report against the website&amp;rsquo;s &lt;a href=&#34;https://github.com/mapstruct/mapstruct.org/issues&#34;&gt;source repo&lt;/a&gt;. The only exception is the URL of the news feed (which is RSS based now). As we cannot set up a proper 301 redirect on GitHub Pages, please point your feed reader to the new &lt;a href=&#34;http://mapstruct.org/news/index.xml&#34;&gt;feed URL&lt;/a&gt;.&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -31,8 +30,7 @@
       <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
       
       <guid>http://mapstruct.org/news/2013-05-22-website-live/</guid>
-      <description>&lt;p&gt;MapStruct has now its own web site, &lt;a href=&#34;http://mapstruct.org&#34;&gt;mapstruct.org&lt;/a&gt;!&lt;/p&gt;
-</description>
+      <description>MapStruct has now its own web site, mapstruct.org!</description>
     </item>
     
   </channel>
