@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>New Year, new Website! &ndash; MapStruct</title>
+        <title>Filip Hrisafov Taking Over as MapStruct Project Lead &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -124,41 +124,74 @@ ga('send', 'pageview');
             
 <article class="uk-article">
     <p class="uk-article-meta ms-article-date">
-    <time>January 02, 2017</time>
+    <time>March 18, 2018</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-01-02-new-year-new-website/">New Year, new Website!</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></h1>
 
 <p class="uk-article-meta ms-article-author">
     By <b>Gunnar Morling</b> under 
     <span class="uk-badge">
     
-        web-site
+        news
     </span>
     
 </p>
 
     <div>
-        <div><p>The MapStruct team wishes a Happy New Year to all our users out there!</p>
+        <div><p>It&rsquo;s with great happiness and excitement that I&rsquo;m announcing that <a href="https://twitter.com/filiphr">Filip Hrisafov</a> is taking over the role of MapStruct&rsquo;s project lead!</p>
 
-<p>To start the new year fresh, we&rsquo;ve given some love to our website. While its looks only slightly changed, its inner workings have been overhauled from ground up. It&rsquo;s driven by <a href="https://gohugo.io/">Hugo</a> now, a static website generator written in Go which is very popular these days.</p>
+<p>Really that&rsquo;s just manifesting the status quo of the last couple of months, during which Filip already was acting in that role effectively.
+As I&rsquo;ve been able to contribute less and less time towards MapStruct over the last year,
+it was about time to pass on the baton to a new lead,
+with many fresh ideas and a great level of enthusiasm.</p>
+
+<p>Filip joined the team in 2016, sending in <a href="https://github.com/mapstruct/mapstruct/pull/863">a patch</a> for improving our test suite.
+Since then, he became an invaluable member of the MapStruct community.
+He implemented several new features and stepped up to help with reviewing
+pull requests, providing help to new contributors, answering related questions on StackOverflow and even doing the last few releases of the project.</p>
+
+<p>Having had the pleasure of working with Filip over the last years, I&rsquo;m convinced that going forward he&rsquo;s the perfect person for leading the project.</p>
 
 <p></p>
 
-<p>It is much easier now for us to put new contents onto the website (everything is written in Markdown now), the tool chain is easier to set up (Hugo is a single binary to be installed) and the web site build is much faster. Long story short, it&rsquo;s much more fun to work with the website now. If you are curious about the details, refer to the description of the <a href="/development/updating-mapstructorg/">website build</a>. Just as MapStruct itself, this website is open-source, so pull requests are always welcome!</p>
+<h3 id="looking-back"><a class="ms-header-link" href="#looking-back"><i class="fa fa-link"></i></a>Looking Back</h3>
 
-<p>For users of the site nothing much changes. We&rsquo;ve set up redirects for all old URLs. Should we&rsquo;ve missed any, please let us know in the comments below or file a bug report against the website&rsquo;s <a href="https://github.com/mapstruct/mapstruct.org/issues">source repo</a>. The only exception is the URL of the news feed (which is RSS based now). As we cannot set up a proper 301 redirect on GitHub Pages, please point your feed reader to the new <a href="/news/index.xml">feed URL</a>.</p></div>
+<p>When starting MapStruct nearly six years ago,
+I had no idea how far the project would get eventually.
+It started the same way as so many other open source projects do:
+in my day job back then, I was facing a problem &ndash;
+complex objects had to be mapped forth and back, which was unreliable, slow and hard to reason about with the reflection-based tools we were using at the time.
+Code generation seemed to be a much better approach,
+as it&rsquo;d allow for compile time feedback and result in fast and easy-to-debug code.</p>
+
+<p>So I spent some evenings to work on that idea.
+Thinking that this experiment might be interesting to other people,
+I put the <a href="https://github.com/mapstruct/mapstruct/commit/61f181a589564131b1a540e5322ec63d56604870">first version</a> of the code up to GitHub.
+And indeed MapStruct turned out to be useful to others out there.
+Over the years, it grew a lot in popularity (just in March alone, its artifacts were downloaded from Maven Central more than 900,000 times), not the least by the adoption into the JHipster stack a while ago.
+It&rsquo;s used in a wide range of projects at lots of companies.
+We see a constant inflow of feature requests in the issue tracker and questions
+on StackOverflow.
+There are <a href="/community/other-resources/#presentations">conference presentations</a> and, heck, people even started to list &ldquo;MapStruct&rdquo; in their qualifications on LinkedIn ;)</p>
+
+<p>But most importantly, an active developer community has formed around MapStruct, with many one-time contributors, but also with a <a href="/development/team/">hard core</a> of folks sticking around over the years.
+Having the chance to work together with such enthusiastic, professional and friendly community to create and form an open-source project is something I&rsquo;m very thankful for.</p>
+
+<p>So, while it&rsquo;s a bit of a weird feeling for me to let go the project I&rsquo;ve been working on for so many evenings and weekends, I&rsquo;m very happy about the fact that thanks to its fantastic community, MapStruct continues to thrive.</p>
+
+<p>Filip, many thanks for taking over and looking forward to many more releases of MapStruct!</p></div>
     </div>
     <div>
         <ul class="uk-pagination">
             
-            <li>
-                <a href="/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/" title="Support for Lombok, direct field access and much more: MapStruct 1.2.0.Beta1 is out"><i class="uk-icon-angle-double-left"></i></a>
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
             </li>
             
             
             <li>
-                <a href="/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/" title="MapStruct 1.1.0.Final seen in the wild!"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="/news/2017-10-18-mapstruct-1_2_0_Final-is-out/" title="MapStruct 1.2.0.Final is out"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 

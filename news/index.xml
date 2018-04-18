@@ -6,10 +6,33 @@
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Filip Hrisafov Taking Over as MapStruct Project Lead</title>
+      <link>http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project/</link>
+      <pubDate>Sun, 18 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s with great happiness and excitement that I&amp;rsquo;m announcing that &lt;a href=&#34;https://twitter.com/filiphr&#34;&gt;Filip Hrisafov&lt;/a&gt; is taking over the role of MapStruct&amp;rsquo;s project lead!&lt;/p&gt;
+
+&lt;p&gt;Really that&amp;rsquo;s just manifesting the status quo of the last couple of months, during which Filip already was acting in that role effectively.
+As I&amp;rsquo;ve been able to contribute less and less time towards MapStruct over the last year,
+it was about time to pass on the baton to a new lead,
+with many fresh ideas and a great level of enthusiasm.&lt;/p&gt;
+
+&lt;p&gt;Filip joined the team in 2016, sending in &lt;a href=&#34;https://github.com/mapstruct/mapstruct/pull/863&#34;&gt;a patch&lt;/a&gt; for improving our test suite.
+Since then, he became an invaluable member of the MapStruct community.
+He implemented several new features and stepped up to help with reviewing
+pull requests, providing help to new contributors, answering related questions on StackOverflow and even doing the last few releases of the project.&lt;/p&gt;
+
+&lt;p&gt;Having had the pleasure of working with Filip over the last years, I&amp;rsquo;m convinced that going forward he&amp;rsquo;s the perfect person for leading the project.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.2.0.Final is out</title>
