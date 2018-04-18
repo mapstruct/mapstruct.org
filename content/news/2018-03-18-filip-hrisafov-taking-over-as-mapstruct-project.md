@@ -6,8 +6,8 @@ tags: [news]
 ---
 
 MapStruct started the same way as so many other open source projects:
-In my day job back then, I was facing a problem.
-Complex objects had to be mapped forth and back, which was unreliable, slow and hard to reason about with the reflection-based tools we were using.
+in my day job back then, I was facing a problem;
+complex objects had to be mapped forth and back, which was unreliable, slow and hard to reason about with the reflection-based tools we were using.
 Code generation seemed to be a much better approach,
 as it'd allow for compile time feedback and result in fast and easy-to-debug code.
 
@@ -15,7 +15,7 @@ So I spent some evenings to work on that idea.
 Thinking this also might be interesting to others,
 I put the first version of the code up to GitHub nearly [six years ago](https://github.com/mapstruct/mapstruct/commit/61f181a589564131b1a540e5322ec63d56604870).
 And indeed MapStruct turned out to be useful to others, too.
-Over the years, it grew a lot in popularity (just in March alone, its artifacts where downloaded from Maven Central more than 900,000 times), not the least by the adoption in the JHipster stack a while ago.
+Over the years, it grew a lot in popularity (just in March alone, its artifacts were downloaded from Maven Central more than 900,000 times), not the least by the adoption in the JHipster stack a while ago.
 It's used in a wide range of projects at lots of companies.
 There are [conference presentations](/community/other-resources/#presentations)
 as well as a constant inflow of feature requests in the issue tracker and questions
