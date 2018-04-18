@@ -3,6 +3,8 @@ title: "Filip Hrisafov Taking Over as MapStruct Project Lead"
 author: Gunnar Morling
 date: "2018-03-18"
 tags: [news]
+aliases:
+    - /news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project/
 ---
 
 It's with great happiness and excitement that I'm announcing that [Filip Hrisafov](https://twitter.com/filiphr) is taking over the role of MapStruct's project lead!
