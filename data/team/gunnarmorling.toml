@@ -1,5 +1,5 @@
 name = "Gunnar Morling"
 order = 1
 gravatar = "8e25c0ca4bf25113bd9c0ccc5d118164"
-intro = "**Gunnar Morling** is the original author of MapStruct and leads the project."
-description = "He is a long-time Java developer and open-source committer. He is part of the [Hibernate](http://www.hibernate.org/) team at [Red Hat](https://www.redhat.com/), where he works on Hibernate OGM, Validator and Search. You can follow him on [Google+](https://plus.google.com/+GunnarMorling/) and [Twitter](https://twitter.com/GunnarMorling) or check out his [Blog](http://www.gunnarmorling.de/)."
+intro = "**Gunnar Morling** is the founder of the MapStruct project."
+description = "He is a long-time Java developer and open-source committer. He's leading the [Debezium](http://debezium.io/) project at [Red Hat](https://www.redhat.com/), part of the [Hibernate](http://hibernate.org/) team and the spec lead for Bean Validation 2.0 ([JSR 380](http://beanvalidation.org/)). You can follow him on [Google+](https://plus.google.com/+GunnarMorling/) and [Twitter](https://twitter.com/GunnarMorling) or check out his [Blog](http://www.gunnarmorling.de/)."
