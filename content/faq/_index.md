@@ -32,7 +32,7 @@ which facilitates the definition of mapper interfaces with auto-completion and s
 {{% /faq_question %}}
 
 {{% faq_question "Can I use MapStruct together with Project Lombok?" %}}
-Yes, as of MapStruct 1.2.0.Beta1 and Lombok 1.16.14.
+Yes, as of MapStruct 1.2.0.Final and Lombok 1.16.14.
 
 [Project Lombok](https://projectlombok.org/) is an annotation processor that (amongst other things) adds getters and setters to the AST (abstract syntax tree) of compiled bean classes.
 AST modifications are not foreseen by Java annotation processing API,
