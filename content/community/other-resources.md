@@ -21,6 +21,7 @@ parent = "Community"
 * [MapStruct](https://samerabdelkafi.wordpress.com/2015/10/18/mapstruct/); Introductory post on MapStruct with code examples
 * [Don’t get lost, take the map! – DTO survival code](http://blog.goyello.com/2015/08/11/take-the-map-dto-survival-code/); DTO mapping with MapStruct
 * [Wer ist der optimale Java Bean Mapper?](http://www.frank-rahn.de/java-bean-mapper/); Comparison of several mapping APIs, recommending to use MapStruct (German)
+* [MapStruct file Entity Dto Dönüşümü](http://www.muratoksuzer.com/2018/04/mapstruct-ile-entity-dto-donusumu.html); DTO mapping with MapStruct (Turkish)
 * [Performance of Java Mapping Frameworks](http://www.baeldung.com/java-performance-mapping-frameworks); Performance benchmarks for several mapping frameworks, showing MapStruct has the best performance
 
 ## Presentations
