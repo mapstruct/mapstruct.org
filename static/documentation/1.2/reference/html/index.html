@@ -4541,7 +4541,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>Use the annotation <code>@InheritInverseConfiguration</code> to indicate that a method shall inherit the inverse configuration of the corresponding reverse method.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 63. Inverse mapping method inheriting its configuration</div>
+<div class="title">Example 63. Inverse mapping method inheriting its configuration and ignoring some of them</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4563,6 +4563,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
     CarDto carToDto(Car car);
 
     <span class="annotation">@InheritInverseConfiguration</span>
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">numberOfSeats</span><span class="delimiter">&quot;</span></span>, ignore = true</span>)
     Car carDtoToCar(CarDto carDto);
 }</pre></td>
 </tr></table></code></pre>
