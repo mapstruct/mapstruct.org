@@ -6,10 +6,32 @@
     <description>Recent content in Release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</title>
+      <link>http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/</guid>
+      <description>&lt;p&gt;It&amp;rsquo; my pleasure to announce the first Beta release of MapStruct 1.3.&lt;/p&gt;
+
+&lt;p&gt;The new release comes with a whole lot of new functionality, e.g.:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mapping of (immutable) objects using builders&lt;/li&gt;
+&lt;li&gt;Constructor injection for Annotation Based component models&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;unmappedSourcePolicy&lt;/code&gt; support&lt;/li&gt;
+&lt;li&gt;Support for defaultExpression&lt;/li&gt;
+&lt;li&gt;Limit mapping only to explicitly defined mappings&lt;/li&gt;
+&lt;li&gt;Performance improvement of &lt;code&gt;constant&lt;/code&gt; / &lt;code&gt;defaultValue&lt;/code&gt; primitive to &lt;code&gt;String&lt;/code&gt; mappings&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.2.0.Final is out</title>
