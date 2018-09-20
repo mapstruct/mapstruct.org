@@ -14,7 +14,7 @@ One of the big advantages of MapStruct is the early feedback on problems with th
 
 ### Maven Integration
 
-If your work with a Maven project, then make sure you have the latest version of the [m2e-apt](https://marketplace.eclipse.org/content/m2e-apt) plugin installed, which picks up and applies the annotation processor settings automatically.
+If you are working with a Maven project, then make sure you have the latest version of the [m2e-apt](https://marketplace.eclipse.org/content/m2e-apt) plugin installed, which picks up and applies the annotation processor settings automatically.
 
 For best results, add the following to the `pom.xml`:
 
