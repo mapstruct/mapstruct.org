@@ -19,7 +19,7 @@ There are a whole lot of new enhancements as well, e.g.:
 
 <!--more-->
 
-Altogether, not less than [35 issues](https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.3.0.Beta2) were fixed for this release.
+Altogether, no less than [35 issues](https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.3.0.Beta2) were fixed for this release.
 
 This would not have been possible without our fantastic community of contributors:
 [Florian Tavares](https://github.com/neoXfire),
@@ -44,7 +44,7 @@ Using it as a baseline would allow us to use some of it features and make it eas
 The `mapstruct-jdk8` module has been relocated to `mapstruct`. 
 Upgrade your dependencies in to use the `mapstruct` module.
 
-### Control how null or not present properties are updated within a target
+### Control how null or not present properties are updated within a target bean
 
 We have added a `NullValuePropertyMappingStrategy` that can be used to control how `null` or not present source properties are updated within a target.
 The possibilities are:
@@ -56,8 +56,7 @@ This is also the default, which is the same behaviour from before.
 
 This strategy can be set on `@Mapping`, `@BeanMapping`, `@Mapper` or `@MapperConfig` in precedence order.
 
-While working on this we noticed that we handle differently collections / maps for normal mapping methods 
-(i.e. we were setting those to `null` if the source property was `null` or not present). 
+While working on this we noticed that we handle bean properties that are collections or maps differently. This requires some background information: MapStruct generates mappings in-line in the bean mapping method implementation when the elemnts in the collections and key/values are of the same type. In this particular case, MapStruct was generating code that setting the target property to `null` when the source property was `null` or not present. 
 
 We were generating code that looks like:
 
@@ -101,8 +100,8 @@ public class CustomerMapperImpl implements CustomerMapper {
 }
 {{< /prettify >}}
 
-**NB**: In 1.2.0.Final with [#1273](https://github.com/mapstruct/mapstruct/issues/1273) we added support for using `NullValueMappingStrategy#RETURN_DEFAULT` to control how collections / maps default values are set. 
-We realised that this was a mistake on our side and now one should use `NullValuePropertyMappingStrategy#SET_TO_DEFAULT`.
+**NB**: In 1.2.0.Final with [#1273](https://github.com/mapstruct/mapstruct/issues/1273) we added support for using `NullValueMappingStrategy#RETURN_DEFAULT` to control how collections / maps default values are set in the scenario described above. 
+We realised that this was a mistake on our side. The `NullValueMappingStrategy` is intended to be used on the result of the entire bean mapping mehod given a `null` source bean mapping argument (source bean). Specifically for update methods, the `NullValuePropertyMappingStrategy#SET_TO_DEFAULT` is intended to complement this functionality: giving control over the property mappings in case of `null` property source.
 See [this](https://github.com/mapstruct/mapstruct/issues/1273#issuecomment-433507374) for more information.
 
 ### Warnings for precision loss
@@ -115,7 +114,7 @@ The `@Mapper` and `@MapperConfig` now have new `typeConversionPolicy` option tha
 We are no longer creating a new `DatatypeFactory` instance when mapping into `XmlGregorianCalendar`.
 Before we were doing a call to `DatatypeFactory.newInstance()` on every mapping. 
 This call is an expensive call as it involves `ServiceLoader`usages.
-This is no longer done and a class fields initialized in the constructor of the mapper is used instead. 
+In the new solution fields in the mapper initialized in the constructor of the mapper is used instead. 
 
 
 ### Improvements in the builders support
