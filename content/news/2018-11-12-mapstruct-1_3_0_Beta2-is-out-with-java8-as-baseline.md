@@ -13,7 +13,7 @@ There are a whole lot of new enhancements as well, e.g.:
 
 * New `NullValuePropertyMappingStrategy` for controlling how properties are for update methods
 * Warnings for precision loss
-* Caching and reusing `javax.xml.datatype.DatatyeFactory`
+* Caching and reusing `javax.xml.datatype.DatatypeFactory`
 * Recursive source presence tracking
 * Improvements in the builders support
 
@@ -102,12 +102,12 @@ public class CustomerMapperImpl implements CustomerMapper {
 
 **NB**: In 1.2.0.Final with [#1273](https://github.com/mapstruct/mapstruct/issues/1273) we added support for using `NullValueMappingStrategy#RETURN_DEFAULT` to control how collections / maps default values are set in the scenario described above. 
 We realised that this was a mistake on our side. The `NullValueMappingStrategy` is intended to be used on the result of the entire bean mapping mehod given a `null` source bean mapping argument (source bean). Specifically for update methods, the `NullValuePropertyMappingStrategy#SET_TO_DEFAULT` is intended to complement this functionality: giving control over the property mappings in case of `null` property source.
-See [this](https://github.com/mapstruct/mapstruct/issues/1273#issuecomment-433507374) for more information.
+See [this](https://github.com/mapstruct/mapstruct/issues/1273#issuecomment-433495265) for more information.
 
 ### Warnings for precision loss
 
 The `@Mapper` and `@MapperConfig` now have new `typeConversionPolicy` option that could be set to control how lossy (narrowing) conversion
-(e.g. `long` to `int) should be reported.
+(e.g. `long` to `int`) should be reported.
 
 ### Caching and reusing DatatypeFactory
 
