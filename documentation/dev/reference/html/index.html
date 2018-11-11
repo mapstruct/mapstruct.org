@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.3.0.Beta1 Reference Guide</title>
+<title>MapStruct 1.3.0.Beta2 Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -521,10 +521,10 @@ ga('send', 'pageview');
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.3.0.Beta1 Reference Guide</h1>
+<h1>MapStruct 1.3.0.Beta2 Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2018-07-15</span>
+<span id="revdate">2018-11-11</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -590,9 +590,10 @@ ga('send', 'pageview');
 <li><a href="#default-expressions">10.3. Default Expressions</a></li>
 <li><a href="#determining-result-type">10.4. Determining the result type</a></li>
 <li><a href="#mapping-result-for-null-arguments">10.5. Controlling mapping result for 'null' arguments</a></li>
-<li><a href="#checking-source-property-for-null-arguments">10.6. Controlling checking result for 'null' properties in bean mapping</a></li>
-<li><a href="#source-presence-check">10.7. Source presence checking</a></li>
-<li><a href="#exceptions">10.8. Exceptions</a></li>
+<li><a href="#mapping-result-for-null-properties">10.6. Controlling mapping result for 'null' properties in bean mappings (update mapping methods only).</a></li>
+<li><a href="#checking-source-property-for-null-arguments">10.7. Controlling checking result for 'null' properties in bean mapping</a></li>
+<li><a href="#source-presence-check">10.8. Source presence checking</a></li>
+<li><a href="#exceptions">10.9. Exceptions</a></li>
 </ul>
 </li>
 <li><a href="#_reusing_mapping_configurations">11. Reusing mapping configurations</a>
@@ -687,7 +688,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>org.mapstruct:mapstruct</em>: contains the required annotations such as <code>@Mapping</code>; On Java 8 or later, use <em>org.mapstruct:mapstruct-jdk8</em> instead which takes advantage of language improvements introduced in Java 8</p>
+<p><em>org.mapstruct:mapstruct</em>: contains the required annotations such as <code>@Mapping</code></p>
 </li>
 <li>
 <p><em>org.mapstruct:mapstruct-processor</em>: contains the annotation processor which generates mapper implementations</p>
@@ -742,13 +743,13 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.3.0.Beta1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.3.0.Beta2<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.mapstruct<span class="tag">&lt;/groupId&gt;</span>
-        <span class="tag">&lt;artifactId&gt;</span>mapstruct-jdk8<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>mapstruct<span class="tag">&lt;/artifactId&gt;</span>
         <span class="tag">&lt;version&gt;</span>${org.mapstruct.version}<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span>
@@ -802,7 +803,7 @@ To do so, go to "Preferences" &#8594; "Maven" &#8594; "Annotation Processing" an
 Alternatively, specify the following in the <code>properties</code> section of your POM file: <code>&lt;m2e.apt.activation&gt;jdt_apt&lt;/m2e.apt.activation&gt;</code>.</p>
 </div>
 <div class="paragraph">
-<p>Also make sure that your project is using Java 1.6 or later (project properties &#8594; "Java Compiler" &#8594; "Compile Compliance Level").
+<p>Also make sure that your project is using Java 1.8 or later (project properties &#8594; "Java Compiler" &#8594; "Compile Compliance Level").
 It will not work with older versions.</p>
 </div>
 </td>
@@ -855,7 +856,7 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 
 dependencies {
     ...
-    compile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct-jdk8:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    compile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
 
     annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct-processor:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
     <span class="comment">// If you are using mapstruct in test code</span>
@@ -896,8 +897,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-jdk8-1.3.0.Beta1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.3.0.Beta1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.3.0.Beta2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.3.0.Beta2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -1129,8 +1130,8 @@ suppressGeneratorVersionInfoComment</code></p></td>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In Java 9 <code>java.annotation.processing.Generated</code> was added, which is considered as a general purpose annotation for any code generators
-and is part of the <code>java.compiler</code> module. Support for it is planned within <a href="https://github.com/mapstruct/mapstruct/issues/1551">#1551</a></p>
+<p>In Java 9 <code>java.annotation.processing.Generated</code> was added (part of the <code>java.compiler</code> module),
+if this annotation is available then it will be used.</p>
 </div>
 </td>
 </tr>
@@ -1251,20 +1252,6 @@ Fluent setters are setters that return the same type as the type being modified.
     return this;
 }</code></pre>
 </div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>When using Java 8 or later, you can omit the <code>@Mappings</code> wrapper annotation and directly specify several <code>@Mapping</code> annotations on one method.</p>
 </div>
 </td>
 </tr>
@@ -1685,7 +1672,7 @@ considered as a write accessor.</p>
 <span class="annotation">@Mapper</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">CustomerMapper</span> {
 
-    CustomerMapper MAPPER = Mappers.getMapper( CustomerMapper.class );
+    CustomerMapper INSTANCE = Mappers.getMapper( CustomerMapper.class );
 
     <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">customerName</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)
     Customer toCustomer(CustomerDto customerDto);
@@ -1952,7 +1939,8 @@ E.g. If an object factory exists for our <code>PersonBuilder</code> than this fa
 <p><a href="https://immutables.github.io/">Immutables</a> - When Immutables are present on the annotation processor path then the <code>ImmutablesAccessorNamingStrategy</code> and <code>ImmutablesBuilderProvider</code> would be used by default</p>
 </li>
 <li>
-<p><a href="https://github.com/google/FreeBuilder">FreeBuilder</a></p>
+<p><a href="https://github.com/google/FreeBuilder">FreeBuilder</a> - When FreeBuilder is present on the annotation processor path then the <code>FreeBuilderAccessorNamingStrategy</code> would be used by default.
+When using FreeBuilder then the JavaBean convention should be followed, otherwise MapStruct won&#8217;t recognize the fluent getters.</p>
 </li>
 <li>
 <p>It also works for custom builders (handwritten ones) if the implementation supports the defined rules for the default <code>BuilderProvider</code>.
@@ -2194,7 +2182,7 @@ It is recommended to use constructor injection to simplify testing.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Converting from larger data types to smaller ones (e.g. from <code>long</code> to <code>int</code>) can cause a value or precision loss. There <a href="https://github.com/mapstruct/mapstruct/issues/5">will be</a> an option for raising a warning in such cases in a future MapStruct version.</p>
+<p>Converting from larger data types to smaller ones (e.g. from <code>long</code> to <code>int</code>) can cause a value or precision loss. The <code>Mapper</code> and <code>MapperConfig</code> annotations have a method <code>typeConversionPolicy</code> to control warnings / errors. Due to backward compatibility reasons the default value is 'ReportingPolicy.IGNORE`.</p>
 </div>
 </td>
 </tr>
@@ -2337,7 +2325,10 @@ It is recommended to use constructor injection to simplify testing.</p>
 <p>Between <code>java.time.LocalDateTime</code> from Java 8 Date-Time package and <code>java.util.Date</code> where timezone UTC is used as the timezone.</p>
 </li>
 <li>
-<p>Between <code>java.time.LocalDate</code> from Java 8 Date-Time package and <code>java.util.Date</code> where timezone UTC is used as the timezone.</p>
+<p>Between <code>java.time.LocalDate</code> from Java 8 Date-Time package and <code>java.util.Date</code> / <code>java.sql.Date</code> where timezone UTC is used as the timezone.</p>
+</li>
+<li>
+<p>Between <code>java.time.Instant</code> from Java 8 Date-Time package and <code>java.util.Date</code>.</p>
 </li>
 <li>
 <p>Between <code>java.time.ZonedDateTime</code> from Java 8 Date-Time package and <code>java.util.Calendar</code>.</p>
@@ -2915,7 +2906,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.3.0.Beta1/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.3.0.Beta2/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -4698,7 +4689,29 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 </div>
 </div>
 <div class="sect2">
-<h3 id="checking-source-property-for-null-arguments"><a class="anchor" href="#checking-source-property-for-null-arguments"></a>10.6. Controlling checking result for 'null' properties in bean mapping</h3>
+<h3 id="mapping-result-for-null-properties"><a class="anchor" href="#mapping-result-for-null-properties"></a>10.6. Controlling mapping result for 'null' properties in bean mappings (update mapping methods only).</h3>
+<div class="paragraph">
+<p>MapStruct offers control over the property to set in an <code>@MappingTarget</code> annotated target bean when the source property equals <code>null</code> or the presence check method yields absent.</p>
+</div>
+<div class="paragraph">
+<p>By default the source property will be set to null. However:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>By specifying <code>nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_DEFAULT</code> on <code>@Mapping</code>, <code>@BeanMapping</code>, <code>@Mapper</code> or <code>@MappingConfig</code>, the mapping result can be altered to return <strong>default</strong> values (<code>Object</code>, <code>ArrayList</code>, <code>HashMap</code>).</p>
+</li>
+<li>
+<p>By specifying <code>nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE</code> on <code>@Mapping</code>, <code>@BeanMapping</code>, <code>@Mapper</code> or <code>@MappingConfig</code>, the mapping result will be equal to the original value of the <code>@MappingTarget</code> annotated target.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The strategy works in a hierarchical fashion. Setting <code>Mapping#nullValuePropertyMappingStrategy</code> on mapping level will override <code>nullValuePropertyMappingStrategy</code> on mapping method level will override <code>@Mapper#nullValuePropertyMappingStrategy</code>, and <code>@Mapper#nullValuePropertyMappingStrategy</code> will override <code>@MappingConfig#nullValuePropertyMappingStrategy</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="checking-source-property-for-null-arguments"><a class="anchor" href="#checking-source-property-for-null-arguments"></a>10.7. Controlling checking result for 'null' properties in bean mapping</h3>
 <div class="paragraph">
 <p>MapStruct offers control over when to generate a <code>null</code> check. By default (<code>nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION</code>) a <code>null</code> check will be generated for:</p>
 </div>
@@ -4732,11 +4745,11 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>The option <code>nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS</code> will always include a null check when source is non primitive, unless a source presence checker is defined on the source bean.</p>
 </div>
 <div class="paragraph">
-<p>The strategy works in a hierarchical fashion. <code>@Mapper#nullValueCheckStrategy</code> will override <code>@MappingConfig#nullValueCheckStrategy</code>.</p>
+<p>The strategy works in a hierarchical fashion. <code>@Mapping#nullValueCheckStrategy</code> will override <code>@BeanMapping#nullValueCheckStrategy</code>, <code>@BeanMapping#nullValueCheckStrategy</code> will override <code>@Mapper#nullValueCheckStrategy</code> and <code>@Mapper#nullValueCheckStrategy</code> will override <code>@MappingConfig#nullValueCheckStrategy</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="source-presence-check"><a class="anchor" href="#source-presence-check"></a>10.7. Source presence checking</h3>
+<h3 id="source-presence-check"><a class="anchor" href="#source-presence-check"></a>10.8. Source presence checking</h3>
 <div class="paragraph">
 <p>Some frameworks generate bean properties that have a source presence checker. Often this is in the form of a method <code>hasXYZ</code>, <code>XYZ</code> being a property on the source bean in a bean mapping method. MapStruct will call this <code>hasXYZ</code> instead of performing a <code>null</code> check when it finds such <code>hasXYZ</code> method.</p>
 </div>
@@ -4756,7 +4769,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 </div>
 </div>
 <div class="sect2">
-<h3 id="exceptions"><a class="anchor" href="#exceptions"></a>10.8. Exceptions</h3>
+<h3 id="exceptions"><a class="anchor" href="#exceptions"></a>10.9. Exceptions</h3>
 <div class="paragraph">
 <p>Calling applications may require handling of exceptions when calling a mapping method. These exceptions could be thrown by hand-written logic and by the generated built-in mapping methods or type-conversions of MapStruct. When the calling application requires handling of exceptions, a throws clause can be defined in the mapping method:</p>
 </div>
@@ -5889,7 +5902,7 @@ parameters and constructing a new target bean.</p>
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="predefined-type">String</span> getPropertyName(ExecutableElement getterOrSetterMethod) {
         <span class="predefined-type">String</span> methodName = getterOrSetterMethod.getSimpleName().toString();
-        <span class="keyword">return</span> <span class="predefined-type">Introspector</span>.decapitalize( methodName.startsWith( <span class="string"><span class="delimiter">&quot;</span><span class="content">with</span><span class="delimiter">&quot;</span></span> ) ? methodName.substring(  <span class="integer">4</span> ) : methodName );
+        <span class="keyword">return</span> IntrospectorUtils.decapitalize( methodName.startsWith( <span class="string"><span class="delimiter">&quot;</span><span class="content">with</span><span class="delimiter">&quot;</span></span> ) ? methodName.substring(  <span class="integer">4</span> ) : methodName );
     }
 }</pre></td>
 </tr></table></code></pre>
@@ -6103,18 +6116,14 @@ A nice example is to provide support for a custom builder strategy.</p>
 8
 9
 10
-11
-12
 </pre></td>
   <td class="code"><pre>
 <span class="keyword">import</span> <span class="include">javax.lang.model.type.TypeMirror</span>;
-<span class="keyword">import</span> <span class="include">javax.lang.model.util.Elements</span>;
-<span class="keyword">import</span> <span class="include">javax.lang.model.util.Types</span>;
 
 <span class="directive">public</span> <span class="type">class</span> <span class="class">NoOpBuilderProvider</span> <span class="directive">implements</span> BuilderProvider {
 
     <span class="annotation">@Override</span>
-    <span class="directive">public</span> BuilderInfo findBuilderInfo(TypeMirror type, Elements elements, <span class="predefined-type">Types</span> types) {
+    <span class="directive">public</span> BuilderInfo findBuilderInfo(TypeMirror type) {
         <span class="keyword">return</span> <span class="predefined-constant">null</span>;
     }
 }</pre></td>
@@ -6129,7 +6138,7 @@ A nice example is to provide support for a custom builder strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-15 19:51:49 +02:00
+Last updated 2018-11-11 09:19:09 +01:00
 </div>
 </div>
 </body>
