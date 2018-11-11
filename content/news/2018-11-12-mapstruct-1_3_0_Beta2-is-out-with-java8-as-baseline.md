@@ -1,5 +1,5 @@
 ---
-title: "Java 8 as a baseline, null value property mappings improve builders supper and much more: MapStruct 1.3.0.Beta2 is out"
+title: "Java 8 as a baseline, null value property mappings improved builders support and much more: MapStruct 1.3.0.Beta2 is out"
 author: Filip Hrisafov
 date: "2018-11-12"
 tags: [release, news]
@@ -42,7 +42,7 @@ Java 8 has been around for a long time and MapStruct has been working nicely wit
 Using it as a baseline would allow us to use some of it features and make it easier for us to maintain it for you.
 
 The `mapstruct-jdk8` module has been relocated to `mapstruct`. 
-Upgrade your dependencies in to use the `mapstruct` module.
+Upgrade your dependencies to use the `mapstruct` module.
 
 ### Control how null or not present properties are updated within a target bean
 
