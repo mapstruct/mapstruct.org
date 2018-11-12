@@ -6,10 +6,33 @@
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java 8 as a baseline, null value property mappings improved builders support and much more: MapStruct 1.3.0.Beta2 is out</title>
+      <link>http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/</link>
+      <pubDate>Mon, 12 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s my pleasure to announce the second Beta release of MapStruct 1.3.&lt;/p&gt;
+
+&lt;p&gt;With the new Release we have finally made the switch to Java 8 as a baseline.&lt;/p&gt;
+
+&lt;p&gt;There are a whole lot of new enhancements as well, e.g.:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;New &lt;code&gt;NullValuePropertyMappingStrategy&lt;/code&gt; for controlling how properties are for update methods&lt;/li&gt;
+&lt;li&gt;Warnings for precision loss&lt;/li&gt;
+&lt;li&gt;Caching and reusing &lt;code&gt;javax.xml.datatype.DatatypeFactory&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Recursive source presence tracking&lt;/li&gt;
+&lt;li&gt;Improvements in the builders support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</title>
