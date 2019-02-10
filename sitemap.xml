@@ -19,7 +19,7 @@
   
   <url>
     <loc>http://mapstruct.org/documentation/reference-guide/</loc>
-    <lastmod>2018-11-11T11:43:09+02:00</lastmod>
+    <lastmod>2019-02-10T12:21:00+02:00</lastmod>
   </url>
   
   <url>
@@ -65,6 +65,11 @@
   <url>
     <loc>http://mapstruct.org/development/license/</loc>
     <lastmod>2016-12-31T13:24:06+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/</loc>
+    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -274,19 +279,19 @@
   
   <url>
     <loc>http://mapstruct.org/news/</loc>
-    <lastmod>2018-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/news/</loc>
-    <lastmod>2018-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/release/</loc>
-    <lastmod>2018-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

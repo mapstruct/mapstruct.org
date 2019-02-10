@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.3.0.Beta2 Reference Guide</title>
+<title>MapStruct 1.3.0.Final Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -521,10 +521,10 @@ ga('send', 'pageview');
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.3.0.Beta2 Reference Guide</h1>
+<h1>MapStruct 1.3.0.Final Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2018-11-11</span>
+<span id="revdate">2019-02-10</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -743,7 +743,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.3.0.Beta2<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.3.0.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -817,7 +817,7 @@ It will not work with older versions.</p>
 <p>Add the following to your Gradle build file in order to enable MapStruct:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2. Gradle configuration</div>
+<div class="title">Example 2. Gradle configuration (3.4 and later)</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -846,7 +846,59 @@ It will not work with older versions.</p>
   <td class="code"><pre>...
 plugins {
     ...
-    id <span class="string"><span class="delimiter">'</span><span class="content">net.ltgt.apt</span><span class="delimiter">'</span></span> version <span class="string"><span class="delimiter">'</span><span class="content">0.15</span><span class="delimiter">'</span></span>
+    id <span class="string"><span class="delimiter">'</span><span class="content">net.ltgt.apt</span><span class="delimiter">'</span></span> version <span class="string"><span class="delimiter">'</span><span class="content">0.20</span><span class="delimiter">'</span></span>
+}
+
+<span class="comment">// You can integrate with your IDEs.</span>
+<span class="comment">// See more details: https://github.com/tbroyer/gradle-apt-plugin#usage-with-ides</span>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">net.ltgt.apt-idea</span><span class="delimiter">'</span></span>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">net.ltgt.apt-eclipse</span><span class="delimiter">'</span></span>
+
+dependencies {
+    ...
+    implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct-processor:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+    <span class="comment">// If you are using mapstruct in test code</span>
+    testAnnotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct-processor:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}
+...</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. Gradle (3.3 and older)</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre>...
+plugins {
+    ...
+    id <span class="string"><span class="delimiter">'</span><span class="content">net.ltgt.apt</span><span class="delimiter">'</span></span> version <span class="string"><span class="delimiter">'</span><span class="content">0.20</span><span class="delimiter">'</span></span>
 }
 
 <span class="comment">// You can integrate with your IDEs.</span>
@@ -857,8 +909,8 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 dependencies {
     ...
     compile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-
     annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct-processor:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
     <span class="comment">// If you are using mapstruct in test code</span>
     testAnnotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct-processor:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
 }
@@ -878,7 +930,7 @@ dependencies {
 <p>Add the <code>javac</code> task configured as follows to your <em>build.xml</em> file in order to enable MapStruct in your Ant-based project. Adjust the paths as required for your project layout.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 3. Ant configuration</div>
+<div class="title">Example 4. Ant configuration</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -897,8 +949,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.3.0.Beta2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.3.0.Beta2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.3.0.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.3.0.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -920,7 +972,7 @@ dependencies {
 <p>When invoking javac directly, these options are passed to the compiler in the form <em>-Akey=value</em>. When using MapStruct via Maven, any processor options can be passed using an <code>options</code> element within the configuration of the Maven processor plug-in like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4. Maven configuration</div>
+<div class="title">Example 5. Maven configuration</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -984,7 +1036,7 @@ dependencies {
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5. Gradle configuration</div>
+<div class="title">Example 6. Gradle configuration</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1152,7 +1204,7 @@ if this annotation is available then it will be used.</p>
 <p>To create a mapper simply define a Java interface with the required mapping method(s) and annotate it with the <code>org.mapstruct.Mapper</code> annotation:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 6. Java interface to define a mapper</div>
+<div class="title">Example 7. Java interface to define a mapper</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1167,16 +1219,12 @@ if this annotation is available then it will be used.</p>
 8
 9
 10
-11
-12
 </pre></td>
   <td class="code"><pre><span class="annotation">@Mapper</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">CarMapper</span> {
 
-    <span class="annotation">@Mappings</span>({
-        <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">make</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">manufacturer</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">numberOfSeats</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">seatCount</span><span class="delimiter">&quot;</span></span>)
-    })
+    <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">make</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">manufacturer</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">numberOfSeats</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">seatCount</span><span class="delimiter">&quot;</span></span>)
     CarDto carToCarDto(Car car);
 
     <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fullName</span><span class="delimiter">&quot;</span></span>)
@@ -1261,7 +1309,7 @@ Fluent setters are setters that return the same type as the type being modified.
 <p>To get a better understanding of what MapStruct does have a look at the following implementation of the <code>carToCarDto()</code> method as generated by MapStruct:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Code generated by MapStruct</div>
+<div class="title">Example 8. Code generated by MapStruct</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1390,7 +1438,7 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 <p>As an example let&#8217;s assume the mapping from <code>Person</code> to <code>PersonDto</code> requires some special logic which can&#8217;t be generated by MapStruct. You could then define the mapper from the previous example like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Mapper which defines a custom mapping with a default method</div>
+<div class="title">Example 9. Mapper which defines a custom mapping with a default method</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1405,11 +1453,13 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 8
 9
 10
+11
 </pre></td>
   <td class="code"><pre><span class="annotation">@Mapper</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">CarMapper</span> {
 
-    <span class="annotation">@Mappings</span>({...})
+    <span class="annotation">@Mapping</span>(...)
+    ...
     CarDto carToCarDto(Car car);
 
     <span class="keyword">default</span> PersonDto personToPersonDto(Person person) {
@@ -1431,7 +1481,7 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 <p>The previous example where the mapping from <code>Person</code> to <code>PersonDto</code> requires some special logic could then be defined like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9. Mapper defined by an abstract class</div>
+<div class="title">Example 10. Mapper defined by an abstract class</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1446,12 +1496,14 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 8
 9
 10
+11
 </pre></td>
   <td class="code"><pre><span class="annotation">@Mapper</span>
 <span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">CarMapper</span> {
 
-    <span class="annotation">@Mappings</span>(...)
-    <span class="directive">public</span> <span class="directive">abstract</span> CarDto carToCarDto(Car car);
+    <span class="annotation">@Mapping</span>(...)
+    ...
+    public <span class="directive">abstract</span> CarDto carToCarDto(Car car);
 
     <span class="directive">public</span> PersonDto personToPersonDto(Person person) {
         <span class="comment">//hand-written mapping logic</span>
@@ -1472,7 +1524,7 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 <p>MapStruct also supports mapping methods with several source parameters. This is useful e.g. in order to combine several entities into one data transfer object. The following shows an example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 10. Mapping method with several source parameters</div>
+<div class="title">Example 11. Mapping method with several source parameters</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1484,16 +1536,12 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 5
 6
 7
-8
-9
 </pre></td>
   <td class="code"><pre><span class="annotation">@Mapper</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">AddressMapper</span> {
 
-    <span class="annotation">@Mappings</span>({
-        <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">person.description</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">address.houseNo</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">houseNumber</span><span class="delimiter">&quot;</span></span>)
-    })
+    <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">person.description</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">address.houseNo</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">houseNumber</span><span class="delimiter">&quot;</span></span>)
     DeliveryAddressDto personAndAddressToDeliveryAddressDto(Person person, Address address);
 }</pre></td>
 </tr></table></code></pre>
@@ -1539,7 +1587,7 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 <p>MapStruct also offers the possibility to directly refer to a source parameter.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 11. Mapping method directly referring to a source parameter</div>
+<div class="title">Example 12. Mapping method directly referring to a source parameter</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1551,16 +1599,12 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 5
 6
 7
-8
-9
 </pre></td>
   <td class="code"><pre><span class="annotation">@Mapper</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">AddressMapper</span> {
 
-    <span class="annotation">@Mappings</span>({
-        <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">person.description</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">hn</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">houseNumber</span><span class="delimiter">&quot;</span></span>)
-    })
+    <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">person.description</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(source = <span class="string"><span class="delimiter">&quot;</span><span class="content">hn</span><span class="delimiter">&quot;</span></span>, target = <span class="string"><span class="delimiter">&quot;</span><span class="content">houseNumber</span><span class="delimiter">&quot;</span></span>)
     DeliveryAddressDto personAndAddressToDeliveryAddressDto(Person person, <span class="predefined-type">Integer</span> hn);
 }</pre></td>
 </tr></table></code></pre>
@@ -1578,7 +1622,7 @@ i.e. they are not <code>Collection</code> or <code>Map</code> type properties.</
 <p>In some cases you need mappings which don&#8217;t create a new instance of the target type but instead update an existing instance of that type. This sort of mapping can be realized by adding a parameter for the target object and marking this parameter with <code>@MappingTarget</code>. The following shows an example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 12. Update method</div>
+<div class="title">Example 13. Update method</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1624,7 +1668,7 @@ considered as a write accessor.</p>
 <p>Small example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 13. Example classes for mapping</div>
+<div class="title">Example 14. Example classes for mapping</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1689,7 +1733,7 @@ considered as a write accessor.</p>
 <p>For the configuration from above, the generated mapper looks like:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 14. Generated mapper for example classes</div>
+<div class="title">Example 15. Generated mapper for example classes</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1799,7 +1843,7 @@ E.g. If an object factory exists for our <code>PersonBuilder</code> than this fa
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 15. Person with Builder example</div>
+<div class="title">Example 16. Person with Builder example</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1863,7 +1907,7 @@ E.g. If an object factory exists for our <code>PersonBuilder</code> than this fa
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16. Person Mapper definition</div>
+<div class="title">Example 17. Person Mapper definition</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1883,7 +1927,7 @@ E.g. If an object factory exists for our <code>PersonBuilder</code> than this fa
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 17. Generated mapper with builder</div>
+<div class="title">Example 18. Generated mapper with builder</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1974,7 +2018,7 @@ Otherwise, you would need to write a custom <code>BuilderProvider</code></p>
 <p>Mapper instances can be retrieved via the <code>org.mapstruct.factory.Mappers</code> class. Just invoke the <code>getMapper()</code> method, passing the interface type of the mapper to return:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 18. Using the Mappers factory</div>
+<div class="title">Example 19. Using the Mappers factory</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -1991,7 +2035,7 @@ Otherwise, you would need to write a custom <code>BuilderProvider</code></p>
 <p>By convention, a mapper interface should define a member called <code>INSTANCE</code> which holds a single instance of the mapper type:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 19. Declaring an instance of a mapper</div>
+<div class="title">Example 20. Declaring an instance of a mapper</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2021,7 +2065,7 @@ Otherwise, you would need to write a custom <code>BuilderProvider</code></p>
 <p>This pattern makes it very easy for clients to use mapper objects without repeatedly instantiating new instances:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 20. Accessing a mapper</div>
+<div class="title">Example 21. Accessing a mapper</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2049,7 +2093,7 @@ CarDto dto = CarMapper.INSTANCE.carToCarDto( car );</pre></td>
 <p>Currently there is support for CDI and Spring (the latter either via its custom annotations or using the JSR 330 annotations). See <a href="#configuration-options">Configuration options</a> for the allowed values of the <code>componentModel</code> attribute which are the same as for the <code>mapstruct.defaultComponentModel</code> processor option. In both cases the required annotations will be added to the generated mapper implementations classes in order to make the same subject to dependency injection. The following shows an example using CDI:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 21. A mapper using the CDI component model</div>
+<div class="title">Example 22. A mapper using the CDI component model</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2075,7 +2119,7 @@ CarDto dto = CarMapper.INSTANCE.carToCarDto( car );</pre></td>
 <p>The generated mapper implementation will be marked with the <code>@ApplicationScoped</code> annotation and thus can be injected into fields, constructor arguments etc. using the <code>@Inject</code> annotation:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 22. Obtaining a mapper via dependency injection</div>
+<div class="title">Example 23. Obtaining a mapper via dependency injection</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2101,7 +2145,7 @@ CarDto dto = CarMapper.INSTANCE.carToCarDto( car );</pre></td>
 This can be done by either providing the injection strategy via <code>@Mapper</code> or <code>@MapperConfig</code> annotation.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 23. Using constructor injection</div>
+<div class="title">Example 24. Using constructor injection</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2196,7 +2240,7 @@ It is recommended to use constructor injection to simplify testing.</p>
 </ul>
 </div>
 <div class="exampleblock">
-<div class="title">Example 24. Conversion from int to String</div>
+<div class="title">Example 25. Conversion from int to String</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2236,7 +2280,7 @@ It is recommended to use constructor injection to simplify testing.</p>
 </ul>
 </div>
 <div class="exampleblock">
-<div class="title">Example 25. Conversion from BigDecimal to String</div>
+<div class="title">Example 26. Conversion from BigDecimal to String</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2275,7 +2319,7 @@ It is recommended to use constructor injection to simplify testing.</p>
 </ul>
 </div>
 <div class="exampleblock">
-<div class="title">Example 26. Conversion from Date to String</div>
+<div class="title">Example 27. Conversion from Date to String</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2317,6 +2361,9 @@ It is recommended to use constructor injection to simplify testing.</p>
 </li>
 <li>
 <p>Between <code>java.time.ZonedDateTime</code>, <code>java.time.LocalDateTime</code>, <code>java.time.LocalDate</code>, <code>java.time.LocalTime</code> from Java 8 Date-Time package and <code>String</code>. A format string as understood by <code>java.text.SimpleDateFormat</code> can be specified via the <code>dateFormat</code> option (see above).</p>
+</li>
+<li>
+<p>Between <code>java.time.Instant</code>, <code>java.time.Duration</code>, <code>java.time.Period</code> from Java 8 Date-Time package and <code>String</code> using the <code>parse</code> method in each class to map from <code>String</code> and using <code>toString</code> to map into <code>String</code>.</p>
 </li>
 <li>
 <p>Between <code>java.time.ZonedDateTime</code> from Java 8 Date-Time package and <code>java.util.Date</code> where, when mapping a <code>ZonedDateTime</code> from a given <code>Date</code>, the system default timezone is used.</p>
@@ -2367,7 +2414,7 @@ It is recommended to use constructor injection to simplify testing.</p>
 <p>In this case just define a mapping method for the referenced object type as well:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 27. Mapper with one mapping method using another</div>
+<div class="title">Example 28. Mapper with one mapping method using another</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2468,7 +2515,7 @@ Therefore this can be addressed in a mapping rule: <code>@Mapping(target="fish.k
 This tells MapStruct to deviate from looking for a name <code>kind</code> at this level and map it to <code>type</code>.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 28. Mapper controlling nested beans mappings I</div>
+<div class="title">Example 29. Mapper controlling nested beans mappings I</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2483,19 +2530,15 @@ This tells MapStruct to deviate from looking for a name <code>kind</code> at thi
 8
 9
 10
-11
-12
 </pre></td>
   <td class="code"><pre><span class="annotation">@Mapper</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">FishTankMapper</span> {
 
-    <span class="annotation">@Mappings</span>({
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.kind</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.type</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.name</span><span class="delimiter">&quot;</span></span>, ignore = <span class="predefined-constant">true</span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">ornament</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">interior.ornament</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">material.materialType</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">material</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.report.organisation.name</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.report.organisationName</span><span class="delimiter">&quot;</span></span>)
-    })
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.kind</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.type</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.name</span><span class="delimiter">&quot;</span></span>, ignore = <span class="predefined-constant">true</span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">ornament</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">interior.ornament</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">material.materialType</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">material</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.report.organisation.name</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.report.organisationName</span><span class="delimiter">&quot;</span></span>)
     FishTankDto map( FishTank source );
 }</pre></td>
 </tr></table></code></pre>
@@ -2523,7 +2566,7 @@ In that case MapStruct would again generate a method continuing to map.
 Such is demonstrated in the next example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 29. Mapper controlling nested beans mappings II</div>
+<div class="title">Example 30. Mapper controlling nested beans mappings II</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2541,21 +2584,17 @@ Such is demonstrated in the next example:</p>
 11
 12
 13
-14
-15
 </pre></td>
   <td class="code"><pre><span class="annotation">@Mapper</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">FishTankMapperWithDocument</span> {
 
-    <span class="annotation">@Mappings</span>({
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.kind</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.type</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.name</span><span class="delimiter">&quot;</span></span>, expression = <span class="string"><span class="delimiter">&quot;</span><span class="content">java(</span><span class="char">\&quot;</span><span class="content">Jaws</span><span class="char">\&quot;</span><span class="content">)</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">plant</span><span class="delimiter">&quot;</span></span>, ignore = <span class="predefined-constant">true</span> ),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">ornament</span><span class="delimiter">&quot;</span></span>, ignore = <span class="predefined-constant">true</span> ),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">material</span><span class="delimiter">&quot;</span></span>, ignore = <span class="predefined-constant">true</span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.document</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.report</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.document.organisation.name</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">NoIdeaInc</span><span class="delimiter">&quot;</span></span> )
-    })
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.kind</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.type</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">fish.name</span><span class="delimiter">&quot;</span></span>, expression = <span class="string"><span class="delimiter">&quot;</span><span class="content">java(</span><span class="char">\&quot;</span><span class="content">Jaws</span><span class="char">\&quot;</span><span class="content">)</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">plant</span><span class="delimiter">&quot;</span></span>, ignore = <span class="predefined-constant">true</span> )
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">ornament</span><span class="delimiter">&quot;</span></span>, ignore = <span class="predefined-constant">true</span> )
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">material</span><span class="delimiter">&quot;</span></span>, ignore = <span class="predefined-constant">true</span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.document</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.report</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">quality.document.organisation.name</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">NoIdeaInc</span><span class="delimiter">&quot;</span></span> )
     FishTankWithNestedDocumentDto map( FishTank source );
 
 }</pre></td>
@@ -2614,7 +2653,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 <p>For instance the <code>Car</code> class might contain an attribute <code>manufacturingDate</code> while the corresponding DTO attribute is of type String. In order to map this attribute, you could implement a mapper class like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 30. Manually implemented mapper class</div>
+<div class="title">Example 31. Manually implemented mapper class</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2663,7 +2702,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 <p>In the <code>@Mapper</code> annotation at the <code>CarMapper</code> interface reference the <code>DateMapper</code> class like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 31. Referencing another mapper class</div>
+<div class="title">Example 32. Referencing another mapper class</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2700,7 +2739,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 <p>For instance, the <code>CarDto</code> could have a property <code>owner</code> of type <code>Reference</code> that contains the primary key of a <code>Person</code> entity. You could now create a generic custom mapper that resolves any <code>Reference</code> objects to their corresponding managed JPA entity instances.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 32. Mapping method expecting mapping target type as parameter</div>
+<div class="title">Example 33. Mapping method expecting mapping target type as parameter</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2755,7 +2794,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 <p>MapStruct will then generate something like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 33. Generated code</div>
+<div class="title">Example 34. Generated code</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2827,7 +2866,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 <p>For generated code to call a method that is declared with <code>@Context</code> parameters, the declaration of the mapping method being generated needs to contain at least those (or assignable) <code>@Context</code> parameters as well. The generated code will not create new instances of missing <code>@Context</code> parameters nor will it pass a literal <code>null</code> instead.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 34. Using <code>@Context</code> parameters for passing data down to hand-written property mapping methods</div>
+<div class="title">Example 35. Using <code>@Context</code> parameters for passing data down to hand-written property mapping methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2852,7 +2891,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 <p>MapStruct will then generate something like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 35. Generated code</div>
+<div class="title">Example 36. Generated code</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2906,7 +2945,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.3.0.Beta2/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.3.0.Final/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -2926,7 +2965,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>So, let&#8217;s say there is a hand-written method to map titles with a <code>String</code> return type and <code>String</code> argument amongst many other referenced mappers with the same <code>String</code> return type  - <code>String</code> argument signature:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 36. Several mapping methods with identical source and target types</div>
+<div class="title">Example 37. Several mapping methods with identical source and target types</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2961,7 +3000,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>And a mapper using this handwritten mapper, in which source and target have a property 'title' that should be mapped:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 37. Mapper causing an ambiguous mapping method error</div>
+<div class="title">Example 38. Mapper causing an ambiguous mapping method error</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2991,7 +3030,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>Enter the qualifier approach:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 38. Declaring a qualifier type</div>
+<div class="title">Example 39. Declaring a qualifier type</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3020,7 +3059,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>And, some qualifiers to indicate which translator to use to map from source language to target language:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 39. Declaring qualifier types for mapping methods</div>
+<div class="title">Example 40. Declaring qualifier types for mapping methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3073,7 +3112,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>Then, using the qualifiers, the mapping could look like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 40. Mapper using qualifiers</div>
+<div class="title">Example 41. Mapper using qualifiers</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3099,7 +3138,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 41. Custom mapper qualifying the methods it provides</div>
+<div class="title">Example 42. Custom mapper qualifying the methods it provides</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3182,7 +3221,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>In many occasions, declaring a new annotation to aid the selection process can be too much for what you try to achieve. For those situations, MapStruct has the <code>@Named</code> annotation. This annotation is a pre-defined qualifier (annotated with <code>@Qualifier</code> itself) and can be used to name a Mapper or, more directly a mapping method by means of its value. The same example above would look like:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 42. Custom mapper, annotating the methods to qualify by means of <code>@Named</code></div>
+<div class="title">Example 43. Custom mapper, annotating the methods to qualify by means of <code>@Named</code></div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3220,7 +3259,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 43. Mapper using named</div>
+<div class="title">Example 44. Mapper using named</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3272,7 +3311,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>The generated code will contain a loop which iterates over the source collection, converts each element and puts it into the target collection. If a mapping method for the collection element types is found in the given mapper or the mapper it uses, this method is invoked to perform the element conversion. Alternatively, if an implicit conversion for the source and target element types exists, this conversion routine will be invoked. The following shows an example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 44. Mapper with collection mapping methods</div>
+<div class="title">Example 45. Mapper with collection mapping methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3305,7 +3344,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>The generated implementation of the <code>integerSetToStringSet</code> performs the conversion from <code>Integer</code> to <code>String</code> for each element, while the generated <code>carsToCarDtos()</code> method invokes the <code>carToCarDto()</code> method for each contained element as shown in the following:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 45. Generated collection mapping methods</div>
+<div class="title">Example 46. Generated collection mapping methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3380,7 +3419,7 @@ Multiple qualifiers can be ‘stuck onto’ a method and mapping.</p>
 <p>Note that MapStruct will look for a collection mapping method with matching parameter and return type, when mapping a collection-typed attribute of a bean, e.g. from <code>Car#passengers</code> (of type <code>List&lt;Person&gt;</code>) to <code>CarDto#passengers</code> (of type <code>List&lt;PersonDto&gt;</code>).</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 46. Usage of collection mapping method to map a bean property</div>
+<div class="title">Example 47. Usage of collection mapping method to map a bean property</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3401,7 +3440,7 @@ carDto.setPassengers( personsToPersonDtos( car.getPassengers() ) );
 <p>Some frameworks and libraries only expose JavaBeans getters but no setters for collection-typed properties. Types generated from an XML schema using JAXB adhere to this pattern by default. In this case the generated code for mapping such a property invokes its getter and adds all the mapped elements:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 47. Usage of an adding method for collection mapping</div>
+<div class="title">Example 48. Usage of an adding method for collection mapping</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3438,7 +3477,7 @@ carDto.getPassengers().addAll( personsToPersonDtos( car.getPassengers() ) );
 <p>Also map-based mapping methods are supported. The following shows an example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 48. Map mapping method</div>
+<div class="title">Example 49. Map mapping method</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3463,7 +3502,7 @@ carDto.getPassengers().addAll( personsToPersonDtos( car.getPassengers() ) );
 <p>Similar to iterable mappings, the generated code will iterate through the source map, convert each value and key (either by means of an implicit conversion or by invoking another mapping method) and put them into the target map:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 49. Generated implementation of map mapping method</div>
+<div class="title">Example 50. Generated implementation of map mapping method</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3689,7 +3728,7 @@ provided <code>Stream</code> into an <code>Iterable</code>/array. If a mapping m
 element types exists, then this conversion will be done in <code>Stream#map()</code>. The following shows an example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 50. Mapper with stream mapping methods</div>
+<div class="title">Example 51. Mapper with stream mapping methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3724,7 +3763,7 @@ each element, while the generated <code>carsToCarDtos()</code> method invokes th
 element as shown in the following:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 51. Generated stream mapping methods</div>
+<div class="title">Example 52. Generated stream mapping methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3811,7 +3850,7 @@ collection when doing <code>Stream</code> to <code>Iterable</code> mapping.</p>
 <p>The following shows an example:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 52. Enum mapping method</div>
+<div class="title">Example 53. Enum mapping method</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3847,7 +3886,7 @@ collection when doing <code>Stream</code> to <code>Iterable</code> mapping.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 53. Enum mapping method result</div>
+<div class="title">Example 54. Enum mapping method result</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3948,7 +3987,7 @@ mapping method will throw an IllegalStateException if for some reason an unrecog
 <p>Finally <code>@InheritInverseConfiguration</code> and <code>@InheritConfiguration</code> can be used in combination with <code>@ValueMappings</code>.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 54. Enum mapping method, &lt;NULL&gt; and &lt;ANY_REMAINING&gt;</div>
+<div class="title">Example 55. Enum mapping method, &lt;NULL&gt; and &lt;ANY_REMAINING&gt;</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3984,7 +4023,7 @@ mapping method will throw an IllegalStateException if for some reason an unrecog
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 55. Enum mapping method result, &lt;NULL&gt; and &lt;ANY_REMAINING&gt;</div>
+<div class="title">Example 56. Enum mapping method result, &lt;NULL&gt; and &lt;ANY_REMAINING&gt;</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4076,7 +4115,7 @@ mapping method will throw an IllegalStateException if for some reason an unrecog
 <p>To make use of custom factories register them via <code>@Mapper#uses()</code> as described in <a href="#invoking-other-mappers">Invoking other mappers</a>, or implement them directly in your mapper. When creating the target object of a bean mapping, MapStruct will look for a parameterless method, a method annotated with <code>@ObjectFactory</code>, or a method with only one <code>@TargetType</code> parameter that returns the required target type and invoke this method instead of calling the default constructor:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 56. Custom object factories</div>
+<div class="title">Example 57. Custom object factories</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4217,7 +4256,7 @@ mapping method will throw an IllegalStateException if for some reason an unrecog
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 57. Custom object factories with update methods</div>
+<div class="title">Example 58. Custom object factories with update methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4353,7 +4392,7 @@ Source objects can be added as parameters in the same way as for mapping method.
 annotation is necessary to let MapStruct know that the given method is only a factory method.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 58. Custom object factories with <code>@ObjectFactory</code></div>
+<div class="title">Example 59. Custom object factories with <code>@ObjectFactory</code></div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4396,7 +4435,7 @@ In all other cases, constant or default values are subject to type conversion ei
 <p>A mapping with a constant must not include a reference to a source property. The following example shows some mappings using default values and constants:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 59. Mapping method with default values and constants</div>
+<div class="title">Example 60. Mapping method with default values and constants</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4415,23 +4454,19 @@ In all other cases, constant or default values are subject to type conversion ei
 12
 13
 14
-15
-16
 </pre></td>
   <td class="code"><pre><span class="annotation">@Mapper</span>(uses = StringListMapper.class)
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">SourceTargetMapper</span> {
 
     SourceTargetMapper INSTANCE = Mappers.getMapper( SourceTargetMapper.class );
 
-    <span class="annotation">@Mappings</span>( {
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">stringProperty</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">stringProp</span><span class="delimiter">&quot;</span></span>, defaultValue = <span class="string"><span class="delimiter">&quot;</span><span class="content">undefined</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">longProperty</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">longProp</span><span class="delimiter">&quot;</span></span>, defaultValue = <span class="string"><span class="delimiter">&quot;</span><span class="content">-1</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">stringConstant</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">Constant Value</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">integerConstant</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">14</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">longWrapperConstant</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">3001</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">dateConstant</span><span class="delimiter">&quot;</span></span>, dateFormat = <span class="string"><span class="delimiter">&quot;</span><span class="content">dd-MM-yyyy</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">09-01-2014</span><span class="delimiter">&quot;</span></span>),
-        <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">stringListConstants</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">jack-jill-tom</span><span class="delimiter">&quot;</span></span>)
-    } )
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">stringProperty</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">stringProp</span><span class="delimiter">&quot;</span></span>, defaultValue = <span class="string"><span class="delimiter">&quot;</span><span class="content">undefined</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">longProperty</span><span class="delimiter">&quot;</span></span>, source = <span class="string"><span class="delimiter">&quot;</span><span class="content">longProp</span><span class="delimiter">&quot;</span></span>, defaultValue = <span class="string"><span class="delimiter">&quot;</span><span class="content">-1</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">stringConstant</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">Constant Value</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">integerConstant</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">14</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">longWrapperConstant</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">3001</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">dateConstant</span><span class="delimiter">&quot;</span></span>, dateFormat = <span class="string"><span class="delimiter">&quot;</span><span class="content">dd-MM-yyyy</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">09-01-2014</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@Mapping</span>(target = <span class="string"><span class="delimiter">&quot;</span><span class="content">stringListConstants</span><span class="delimiter">&quot;</span></span>, constant = <span class="string"><span class="delimiter">&quot;</span><span class="content">jack-jill-tom</span><span class="delimiter">&quot;</span></span>)
     <span class="predefined-type">Target</span> sourceToTarget(<span class="predefined-type">Source</span> s);
 }</pre></td>
 </tr></table></code></pre>
@@ -4456,7 +4491,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>The example below demonstrates how two source properties can be mapped to one target:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 60. Mapping method using an expression</div>
+<div class="title">Example 61. Mapping method using an expression</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4489,7 +4524,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>The example demonstrates how the source properties <code>time</code> and <code>format</code> are composed into one target property <code>TimeAndFormat</code>. Please note that the fully qualified package name is specified because MapStruct does not take care of the import of the <code>TimeAndFormat</code> class (unless it&#8217;s used otherwise explicitly in the <code>SourceTargetMapper</code>). This can be resolved by defining <code>imports</code> on the <code>@Mapper</code> annotation.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 61. Declaring an import</div>
+<div class="title">Example 62. Declaring an import</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4535,7 +4570,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>The example below demonstrates how two source properties can be mapped to one target:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 62. Mapping method using a default expression</div>
+<div class="title">Example 63. Mapping method using a default expression</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4576,7 +4611,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>When result types have an inheritance relation, selecting either mapping method (<code>@Mapping</code>) or a factory method (<code>@BeanMapping</code>) can become ambiguous. Suppose an Apple and a Banana, which are both specializations of Fruit.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 63. Specifying the result type of a bean mapping method</div>
+<div class="title">Example 64. Specifying the result type of a bean mapping method</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4691,15 +4726,20 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <div class="sect2">
 <h3 id="mapping-result-for-null-properties"><a class="anchor" href="#mapping-result-for-null-properties"></a>10.6. Controlling mapping result for 'null' properties in bean mappings (update mapping methods only).</h3>
 <div class="paragraph">
-<p>MapStruct offers control over the property to set in an <code>@MappingTarget</code> annotated target bean when the source property equals <code>null</code> or the presence check method yields absent.</p>
+<p>MapStruct offers control over the property to set in an <code>@MappingTarget</code> annotated target bean when the source property equals <code>null</code> or the presence check method results in 'absent'.</p>
 </div>
 <div class="paragraph">
-<p>By default the source property will be set to null. However:</p>
+<p>By default the target property will be set to null.</p>
+</div>
+<div class="paragraph">
+<p>However:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>By specifying <code>nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_DEFAULT</code> on <code>@Mapping</code>, <code>@BeanMapping</code>, <code>@Mapper</code> or <code>@MappingConfig</code>, the mapping result can be altered to return <strong>default</strong> values (<code>Object</code>, <code>ArrayList</code>, <code>HashMap</code>).</p>
+<p>By specifying <code>nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_DEFAULT</code> on <code>@Mapping</code>, <code>@BeanMapping</code>, <code>@Mapper</code> or <code>@MappingConfig</code>, the mapping result can be altered to return <strong>default</strong> values.
+For <code>List</code> MapStruct generates an <code>ArrayList</code>, for <code>Map</code> a <code>HashMap</code>, for arrays an empty array, for <code>String</code> <code>""</code> and for primitive / boxed types a representation of <code>false</code> or <code>0</code>.
+For all other objects an new instance is created. Please note that a default constructor is required. If not available, use the <code>@Mapping#defaultValue</code>.</p>
 </li>
 <li>
 <p>By specifying <code>nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE</code> on <code>@Mapping</code>, <code>@BeanMapping</code>, <code>@Mapper</code> or <code>@MappingConfig</code>, the mapping result will be equal to the original value of the <code>@MappingTarget</code> annotated target.</p>
@@ -4708,6 +4748,35 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 </div>
 <div class="paragraph">
 <p>The strategy works in a hierarchical fashion. Setting <code>Mapping#nullValuePropertyMappingStrategy</code> on mapping level will override <code>nullValuePropertyMappingStrategy</code> on mapping method level will override <code>@Mapper#nullValuePropertyMappingStrategy</code>, and <code>@Mapper#nullValuePropertyMappingStrategy</code> will override <code>@MappingConfig#nullValuePropertyMappingStrategy</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Some types of mappings (collections, maps), in which MapStruct is instructed to use a getter or adder as target accessor see <code>CollectionMappingStrategy</code>, MapStruct will always generate a source property
+null check, regardless the value of the <code>NullValuePropertyMappingStrategy</code> to avoid addition of <code>null</code> to the target collection or map. Since the target is assumed to be initialised this strategy will not be applied.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>NullValuePropertyMappingStrategy</code> also applies when the presense checker returns <code>not present</code>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -4767,6 +4836,21 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Some types of mappings (collections, maps), in which MapStruct is instructed to use a getter or adder as target accessor see <code>CollectionMappingStrategy</code>, MapStruct will always generate a source property
+null check, regardless the value of the <code>NullValueheckStrategy</code> to avoid addition of <code>null</code> to the target collection or map.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="exceptions"><a class="anchor" href="#exceptions"></a>10.9. Exceptions</h3>
@@ -4774,7 +4858,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>Calling applications may require handling of exceptions when calling a mapping method. These exceptions could be thrown by hand-written logic and by the generated built-in mapping methods or type-conversions of MapStruct. When the calling application requires handling of exceptions, a throws clause can be defined in the mapping method:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 64. Mapper using custom method declaring checked exception</div>
+<div class="title">Example 65. Mapper using custom method declaring checked exception</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4799,7 +4883,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>The hand written logic might look like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 65. Custom mapping method declaring checked exception</div>
+<div class="title">Example 66. Custom mapping method declaring checked exception</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4844,7 +4928,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>MapStruct now, wraps the <code>FatalException</code> in a <code>try-catch</code> block and rethrows an unchecked <code>RuntimeException</code>. MapStruct delegates handling of the <code>GearException</code> to the application logic because it is defined as throws clause in the <code>carToCarDto</code> method:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 66. try-catch block in generated implementation</div>
+<div class="title">Example 67. try-catch block in generated implementation</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4907,7 +4991,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>Method-level configuration annotations such as <code>@Mapping</code>, <code>@BeanMapping</code>, <code>@IterableMapping</code>, etc., can be <strong>inherited</strong> from one mapping method to a <strong>similar</strong> method using the annotation <code>@InheritConfiguration</code>:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 67. Update method inheriting its configuration</div>
+<div class="title">Example 68. Update method inheriting its configuration</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4975,7 +5059,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>Use the annotation <code>@InheritInverseConfiguration</code> to indicate that a method shall inherit the inverse configuration of the corresponding reverse method.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 68. Inverse mapping method inheriting its configuration and ignoring some of them</div>
+<div class="title">Example 69. Inverse mapping method inheriting its configuration and ignoring some of them</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5057,7 +5141,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>The <code>@MapperConfig</code> annotation has the same attributes as the <code>@Mapper</code> annotation. Any attributes not given via <code>@Mapper</code> will be inherited from the shared configuration. Attributes specified in <code>@Mapper</code> take precedence over the attributes specified via the referenced configuration class. List properties such as <code>uses</code> are simply combined:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 69. Mapper configuration class and mapper using it</div>
+<div class="title">Example 70. Mapper configuration class and mapper using it</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5110,7 +5194,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>The interface holding the <code>@MapperConfig</code> annotation may also declare <strong>prototypes</strong> of mapping methods that can be used to inherit method-level mapping annotations from. Such prototype methods are not meant to be implemented or used as part of the mapper API.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 70. Mapper configuration class with prototype methods</div>
+<div class="title">Example 71. Mapper configuration class with prototype methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5215,7 +5299,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>To apply a decorator to a mapper class, specify it using the <code>@DecoratedWith</code> annotation.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 71. Applying a decorator</div>
+<div class="title">Example 72. Applying a decorator</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5253,7 +5337,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>The <code>PersonMapperDecorator</code> shown below customizes the <code>personToPersonDto()</code>. It sets an additional attribute which is not present in the source type of the mapping. The <code>addressToAddressDto()</code> method is not customized.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 72. Implementing a decorator</div>
+<div class="title">Example 73. Implementing a decorator</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5309,7 +5393,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>When using <code>@DecoratedWith</code> on a mapper with component model <code>spring</code>, the generated implementation of the original mapper is annotated with the Spring annotation <code>@Qualifier("delegate")</code>. To autowire that bean in your decorator, add that qualifier annotation as well:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 73. Spring-based decorator</div>
+<div class="title">Example 74. Spring-based decorator</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5352,7 +5436,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>The generated class that extends the decorator is annotated with Spring&#8217;s <code>@Primary</code> annotation. To autowire the decorated mapper in the application, nothing special needs to be done:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 74. Using a decorated mapper</div>
+<div class="title">Example 75. Using a decorated mapper</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5374,7 +5458,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>JSR 330 doesn&#8217;t specify qualifiers and only allows to specifically name the beans. Hence, the generated implementation of the original mapper is annotated with <code>@Named("fully-qualified-name-of-generated-implementation")</code> (please note that when using a decorator, the class name of the mapper implementation ends with an underscore). To inject that bean in your decorator, add the same annotation to the delegate field (e.g. by copy/pasting it from the generated class):</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 75. JSR 330 based decorator</div>
+<div class="title">Example 76. JSR 330 based decorator</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5417,7 +5501,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>Unlike with the other component models, the usage site must be aware if a mapper is decorated or not, as for decorated mappers, the parameterless <code>@Named</code> annotation must be added to select the decorator to be injected:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 76. Using a decorated mapper with JSR 330</div>
+<div class="title">Example 77. Using a decorated mapper with JSR 330</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5459,7 +5543,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>Callback methods can be implemented in the abstract mapper itself, in a type reference in <code>Mapper#uses</code>, or in a type used as <code>@Context</code> parameter.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 77. Mapper with @BeforeMapping and @AfterMapping hooks</div>
+<div class="title">Example 78. Mapper with @BeforeMapping and @AfterMapping hooks</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5566,7 +5650,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>As with mapping methods, it is possible to specify type parameters for before/after-mapping methods.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 78. Mapper with @AfterMapping hook that returns a non-null value</div>
+<div class="title">Example 79. Mapper with @AfterMapping hook that returns a non-null value</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5697,7 +5781,7 @@ parameters and constructing a new target bean.</p>
 <p>MapStruct offers the possibility to override the <code>AccessorNamingStrategy</code> via the Service Provide Interface (SPI). A nice example is the use of the fluent API on the source object <code>GolfPlayer</code> and <code>GolfPlayerDto</code> below.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 79. Source object GolfPlayer with fluent API.</div>
+<div class="title">Example 80. Source object GolfPlayer with fluent API.</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5755,7 +5839,7 @@ parameters and constructing a new target bean.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 80. Source object GolfPlayerDto with fluent API.</div>
+<div class="title">Example 81. Source object GolfPlayerDto with fluent API.</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5816,7 +5900,7 @@ parameters and constructing a new target bean.</p>
 <p>We want <code>GolfPlayer</code> to be mapped to a target object <code>GolfPlayerDto</code> similar like we 'always' do this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 81. Source object with fluent API.</div>
+<div class="title">Example 82. Source object with fluent API.</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5851,7 +5935,7 @@ parameters and constructing a new target bean.</p>
 <p>This can be achieved with implementing the SPI <code>org.mapstruct.ap.spi.AccessorNamingStrategy</code> as in the following example. Here&#8217;s an implemented <code>org.mapstruct.ap.spi.AccessorNamingStrategy</code>:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 82. CustomAccessorNamingStrategy</div>
+<div class="title">Example 83. CustomAccessorNamingStrategy</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5952,7 +6036,7 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 83. Source object</div>
+<div class="title">Example 84. Source object</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -5984,7 +6068,7 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 84. Target object</div>
+<div class="title">Example 85. Target object</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6016,7 +6100,7 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 85. Mapper definition</div>
+<div class="title">Example 86. Mapper definition</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6041,7 +6125,7 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 <p>We want to exclude the <code>NestedTarget</code> from the automatic sub-mapping method generation.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 86. CustomMappingExclusionProvider</div>
+<div class="title">Example 87. CustomMappingExclusionProvider</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6101,7 +6185,7 @@ This JAR file needs to be added to the annotation processor classpath
 A nice example is to provide support for a custom builder strategy.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 87. Custom Builder Provider which disables Builder support</div>
+<div class="title">Example 88. Custom Builder Provider which disables Builder support</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6138,7 +6222,7 @@ A nice example is to provide support for a custom builder strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-11 09:19:09 +01:00
+Last updated 2019-02-10 11:48:23 +01:00
 </div>
 </div>
 </body>
