@@ -1,5 +1,5 @@
 +++
-date = "2018-11-11T11:43:09+02:00"
+date = "2019-02-10T12:21:00+02:00"
 draft = false
 title = "Reference Guide"
 weight = 200
@@ -10,13 +10,13 @@ teaser = "The reference documentation and API docs for the current stable and pr
 parent = "Documentation"
 +++
 
-**1.3.0.Beta2** (November 11th 2018; latest dev release)
+**1.3.0.Final** (February 10th 2019; latest sable release)
 
 * Reference guide: [HTML](/documentation/dev/reference/html/) | [PDF](/documentation/dev/reference/pdf/mapstruct-reference-guide.pdf)
 * API documentation: [JavaDoc](/documentation/dev/api/)
-* [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.3.0.Beta2)
+* [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.3.0.Final)
 
-**1.2.0.Final** (October 18th 2017; latest stable release)
+**1.2.0.Final** (October 18th 2017)
 
 * Reference guide: [HTML](/documentation/stable/reference/html/) | [PDF](/documentation/stable/reference/pdf/mapstruct-reference-guide.pdf)
 * API documentation: [JavaDoc](/documentation/stable/api/)
