@@ -1,5 +1,5 @@
 +++
-date = "2016-12-31T13:23:04+01:00"
+date = "2019-02-22T14:00:00+01:00"
 draft = false
 title = "Installation"
 weight = 100
@@ -28,7 +28,7 @@ If you're using Maven to build your project add the following to your _pom.xml_ 
 <dependencies>
     <dependency>
         <groupId>org.mapstruct</groupId>
-        <artifactId>mapstruct</artifactId> <!-- use mapstruct-jdk8 for Java 8 or higher -->
+        <artifactId>mapstruct</artifactId>
         <version>${org.mapstruct.version}</version>
     </dependency>
 </dependencies>
@@ -40,8 +40,8 @@ If you're using Maven to build your project add the following to your _pom.xml_ 
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.5.1</version>
             <configuration>
-                <source>1.6</source> <!-- or higher, depending on your project -->
-                <target>1.6</target> <!-- or higher, depending on your project -->
+                <source>1.8</source> <!-- or lower, depending on your project -->
+                <target>1.8</target> <!-- or lower, depending on your project -->
                 <annotationProcessorPaths>
                     <path>
                         <groupId>org.mapstruct</groupId>
@@ -67,9 +67,6 @@ dependencies {
     ...
     compile 'org.mapstruct:mapstruct:{{% stableversion %}}'
 
-    // OR use this with Java 8 and beyond
-    compile 'org.mapstruct:mapstruct-jdk8:{{% stableversion %}}'
-
     apt 'org.mapstruct:mapstruct-processor:{{% stableversion %}}'
 }
 {{< /prettify >}}
@@ -85,7 +82,7 @@ Add the `javac` task configured as follows to your _build.xml_ file in order to 
 <javac
     srcdir="src/main/java"
     destdir="target/classes"
-    classpath="path/to/mapstruct-jdk8-{{% stableversion %}}.jar">
+    classpath="path/to/mapstruct-{{% stableversion %}}.jar">
     <compilerarg line="-processorpath path/to/mapstruct-processor-{{% stableversion %}}.jar"/>
     <compilerarg line="-s target/generated-sources"/>
 </javac>
