@@ -38,16 +38,17 @@ If you're using Maven to build your project add the following to your _pom.xml_ 
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.5.1</version>
+            <version>3.5.1</version> <!-- or newer version -->
             <configuration>
-                <source>1.8</source> <!-- or lower, depending on your project -->
-                <target>1.8</target> <!-- or lower, depending on your project -->
+                <source>1.8</source> <!-- depending on your project -->
+                <target>1.8</target> <!-- depending on your project -->
                 <annotationProcessorPaths>
                     <path>
                         <groupId>org.mapstruct</groupId>
                         <artifactId>mapstruct-processor</artifactId>
                         <version>${org.mapstruct.version}</version>
                     </path>
+                    <!-- other annotation processors -->
                 </annotationProcessorPaths>
             </configuration>
         </plugin>
