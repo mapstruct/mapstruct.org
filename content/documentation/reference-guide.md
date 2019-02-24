@@ -12,14 +12,14 @@ parent = "Documentation"
 
 **1.3.0.Final** (February 10th 2019; latest sable release)
 
-* Reference guide: [HTML](/documentation/dev/reference/html/) | [PDF](/documentation/dev/reference/pdf/mapstruct-reference-guide.pdf)
-* API documentation: [JavaDoc](/documentation/dev/api/)
+* Reference guide: [HTML](/documentation/stable/reference/html/) | [PDF](/documentation/stable/reference/pdf/mapstruct-reference-guide.pdf)
+* API documentation: [JavaDoc](/documentation/stable/api/)
 * [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.3.0.Final)
 
 **1.2.0.Final** (October 18th 2017)
 
-* Reference guide: [HTML](/documentation/stable/reference/html/) | [PDF](/documentation/stable/reference/pdf/mapstruct-reference-guide.pdf)
-* API documentation: [JavaDoc](/documentation/stable/api/)
+* Reference guide: [HTML](/documentation/1.2/reference/html/) | [PDF](/documentation/1.2/reference/pdf/mapstruct-reference-guide.pdf)
+* API documentation: [JavaDoc](/documentation/1.2/api/)
 * [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.Final)
 
 
