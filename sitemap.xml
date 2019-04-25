@@ -3,13 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://mapstruct.org/development/contributing/</loc>
-    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
+    <loc>http://mapstruct.org/documentation/installation/</loc>
+    <lastmod>2019-02-22T14:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/documentation/installation/</loc>
-    <lastmod>2016-12-31T13:23:04+01:00</lastmod>
+    <loc>http://mapstruct.org/development/contributing/</loc>
+    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
   </url>
   
   <url>
@@ -237,7 +237,7 @@
   
   <url>
     <loc>http://mapstruct.org/documentation/</loc>
-    <lastmod>2016-12-31T13:23:04+01:00</lastmod>
+    <lastmod>2019-02-22T14:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -273,7 +273,7 @@
   
   <url>
     <loc>http://mapstruct.org/</loc>
-    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
+    <lastmod>2019-02-22T14:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
