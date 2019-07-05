@@ -85,3 +85,8 @@ compile('io.springfox:springfox-swagger2:${swagger2.version}') {
 {{< /prettify >}}
 
 {{% /faq_question %}}
+
+{{% faq_question "How to map protobuf classes?" %}}
+For MapStruct to work with protobuf generated classes one needs to use a custom `AccessorNamingStrategy`.
+Have a look in [mapstruct/mapstruct-examples](https://github.com/mapstruct/mapstruct-examples) repository to see how to do it.
+{{% /faq_question %}}
