@@ -85,3 +85,181 @@ compile('io.springfox:springfox-swagger2:${swagger2.version}') {
 {{< /prettify >}}
 
 {{% /faq_question %}}
+
+{{% faq_question "Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?" %}}
+
+Consider this (when thinking what MapStruct should do for updating collections in general):
+
+* What if there's no match: should the non-matching elements be removed?
+* Should the non matching source elements be added?
+* What exactly constitutes to a match: equals? hashcode? comparator==0?
+* Can there be more than one match (Lists, but also depending on what is considered a match.)
+* How should the resulting collection be sorted?
+* Should a newly created object be added to a persistence context?
+* What about JPA child-parent relations?
+
+About the latter one, many IDEs also generates remove methods. So should MapStruct call these in the light of the above?
+
+At this moment it works like this: whenever the user wants a collection update method, MapStruct generates a regular call to element mappings (in stead of an update call), because it is the only sensible thing to do. All the remainder is highly dependent on the use-case. 
+
+{{% /faq_question %}}
+
+{{% faq_question "How do I handle null properties in the source bean?" %}}
+
+The strategies were developed over time and hence the naming / behavior deserves attention in future versions of MapStruct to getter better allignment. This would introduce backward incompatibillties, so we cannot not do this in the 1.x versions of MapStruct. 
+
+The following table expresses when the current strategies apply:
+
+|                                  	| source property 	| source bean 	| direct mapping 	| update mapping (`@MappingTarget`) 	|
+|----------------------------------	|:---------------:	|:-----------:	|:--------------:	|:-------------------------------:	|
+| NullValueCheckStrategy           	|        x        	|             	|        x       	|                x                	|
+| NullValuePropertyMappingStrategy 	|        x       	|             	|                	|                x                	|
+| `@Mapping#defaultValue`          	|        x        	|             	|        x       	|                x                	|
+| NullValueMappingStrategy         	|                 	|      x      	|        x       	|                x                	|
+
+
+We've noticed a common mistake that NullValuePropertyMapping is used in relation to direct mapping, which is understandble because of its naming. So lets look at the following example:
+
+{{< prettify java >}}
+@Mapper
+public interface MyMapper {
+
+    Bar map( Foo source );    
+}
+
+public class Foo {
+
+    private String string;
+    // setters/getters
+}
+
+public class Bar {
+
+    private String string;
+    // setters/getters
+}
+{{< /prettify >}}
+generates:
+
+{{< prettify java >}}
+public class MyMapperImpl implements MyMapper {
+
+    @Override
+    public Bar map(Foo source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Bar bar = new Bar();
+
+        bar.setString( source.getString() );
+
+        return bar;
+    }
+}
+{{< /prettify >}}
+
+So, lets look what it would mean if `NullValuePropertyMappingStrategy` could be applied to direct mappings: 
+
+* `SET_TO_NULL`. What does this mean when the `source.string` is null? It would set the source to null when null. But that is what it already does above without any strategy.
+
+* `IGNORE`. When `source.string` is null, it would ignore setting the target. But that can be achieved with `NullValueCheckStrategy.ALWAYS`. Look at the example below:
+
+{{< prettify java >}}
+@Mapper( nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS )
+public interface MyMapper {
+
+    Bar map( Foo source );
+}
+{{< /prettify >}}
+
+generates:
+
+{{< prettify java >}}
+public class MyMapperImpl implements MyMapper {
+
+    @Override
+    public Bar map(Foo source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Bar bar = new Bar();
+
+        if ( source.getString() != null ) {
+            bar.setString( source.getString() );
+        }
+
+        return bar;
+    }
+}
+{{< /prettify >}}
+
+* `SET_TO_DEFAULT`. `SET_TO_DEFAULT` is not covered by other cases in direct mapping, but can be achieved as well. Lets asume we would like to set an empty String as default value on null source. There are 2 possibilities:
+ 
+{{< prettify java >}}
+@Mapper
+public interface MyMapper {
+
+    @Mapping( target = "string", defaultValue = "" )
+    Bar map( Foo source );
+}
+{{< /prettify >}}
+
+generates:
+
+{{< prettify java >}}
+public class MyMapperImpl implements MyMapper {
+
+    @Override
+    public Bar map(Foo source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Bar bar = new Bar();
+
+        if ( source.getString() != null ) {
+            bar.setString( source.getString() );
+        }
+        else {
+            bar.setString( "" );
+        }
+
+        return bar;
+    }
+}
+{{< /prettify >}}
+
+but has the drawback that this needs to be done for each property. 
+
+The other option would be to create the target object with a default property value, either inside the target (Bar) during construction -if you have control over the target beans-, or via an object factory method:
+
+{{< prettify java >}}
+@Mapper( nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
+public interface MyMapper {
+
+    Bar map( Foo source );
+
+    @ObjectFactory
+    default Bar create() {
+        Bar bar = new Bar();
+        bar.setString( "" );
+        return bar;
+    }
+}
+{{< /prettify >}}
+
+Finally overview below shows on what level a strategy can be applied:
+
+|                                  	| @MapperConfig 	| @Mapper 	| @BeanMapping 	| @Mapping 	|
+|----------------------------------	|:-------------:	|:-------:	|:------------:	|:--------:	|
+| NullValueCheckStrategy           	|       x       	|    x    	|       x      	|     x    	|
+| NullValuePropertyMappingStrategy 	|       x       	|    x    	|       x      	|     x    	|
+| @Mapping#defaultValue            	|               	|         	|              	|     x    	|
+| NullValueMappingStrategy         	|       x       	|    x    	|       x      	|          	|
+
+More detailed information can be found in the reference guide.
+
+{{% /faq_question %}}
+
