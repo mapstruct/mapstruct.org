@@ -101,6 +101,12 @@ ga('send', 'pageview');
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/">Java 8 as a baseline, null value property mappings improved builders support and much more: MapStruct 1.3.0.Beta2 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
+    
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
     
     <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
@@ -108,12 +114,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2017-09-19-announcing-mapstruct-idea/">MapStruct support for IntelliJ IDEA</a></li>
     
     <li><a href="http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/">MapStruct 1.2.0.CR2 released</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/">MapStruct 1.2.0.CR1 released</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/">MapStruct 1.2.0.Beta3 is out</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/">MapStruct 1.2.0.Beta2 released</a></li>
     
 </ul>
 
@@ -123,6 +123,113 @@ ga('send', 'pageview');
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>June 11, 2015</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/">MapStruct 1.0.0.CR1 has landed</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        I am very happy to announce the first candidate release of MapStruct 1.0!
+As we are approach MapStruct 1.0, this release is primarily focused on ironing out remaining glitches and fixing bugs. But there are also some new features:
+ A new SPI for discovering property accessors not adhering to the JavaBeans convention The decorator feature can now also be used with Spring Support for before- and after-mapping lifecycle hooks  The complete list of 24 closed issues can be found in the change log.
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/">Read more...</a>
+        
+    </div>
+</article>
+
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>March 05, 2015</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/">Array mappings, configuration inheritance: MapStruct 1.0.0.Beta4 released</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        The MapStruct community proudly announces the release of MapStruct 1.0.0.Beta4!
+The new release provides support for mapping arrays of Java beans, re-use of mapping configurations via a brand-new inheritance mechanism and ordered setter invocations on the target side. We also fixed quite a few bugs. You can find the complete list of 48 issues in the change log. When upgrading from a previous Beta release, please check out the migration notes for changes which may affect existing applications.
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/">Read more...</a>
+        
+    </div>
+</article>
+
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>November 30, 2014</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_Beta3-nested-properties/">MapStruct 1.0.0.Beta3 is out with nested properties, qualifiers and more</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        I&rsquo;m delighted to announce the release of MapStruct 1.0.0.Beta3.
+This version brings the long awaited support for mapping nested source properties, built-in mappings for Java 8 date/time types, fine-grained selection of mapping methods via qualifiers and much more. You can find the complete list of a whopping 46 closed issues here.
+Note that existing applications using MapStruct need to adapt to some changes we had to do in order to iron out some glitches from the previous beta releases.
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_Beta3-nested-properties/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -191,119 +298,6 @@ One core part of the new release is comprehensive support for mapping JAXB types
     <div>
         
             <a href="http://mapstruct.org/news/2014-03-05-mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>November 28, 2013</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_Alpha2-has-landed/">MapStruct 1.0.0.Alpha2 has landed!</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        It is my great pleasure to announce the release of MapStruct 1.0.0.Alpha2.
-This took us a bit longer than expected, but the new release offers quite a few exciting new features we hope you&rsquo;ll enjoy. The JARs have already been synched to Maven Central. The coordinates are:
- org.mapstruct:mapstruct:1.0.0.Alpha2 for the annotation JAR and org.mapstruct:mapstruct-processor:1.0.0.Alpha2 for the annotation processor.  Alternatively you can get a distribution bundle from SourceForge.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_Alpha2-has-landed/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>July 08, 2013</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2013-07-08-using-mapstruct-with-gradle/">Using MapStruct with Gradle</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        how-to
-    </span>
-    
-    <span class="uk-badge">
-    
-        build
-    </span>
-    
-    <span class="uk-badge">
-    
-        gradle
-    </span>
-    
-</p>
-
-
-    <div>
-        Update Feb. 26, 2017: Since writing this post, usage of annotation processors with Gradle got much easier and the set-up described in the following isn&rsquo;t required anymore. The example project on GitHub has been updated accordingly.
-You work with Gradle to build your application and would like to make use of MapStruct to generate mappings between different representations of your model? Then read on to learn how to make MapStruct work with the Groovy based build tool.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2013-07-08-using-mapstruct-with-gradle/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>June 03, 2013</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2013-06-03-announcing-mapstruct/">Announcing MapStruct</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        feedback
-    </span>
-    
-</p>
-
-
-    <div>
-        It is my pleasure to announce the first release of the MapStruct project!
-MapStruct is a code generator which simplifies the implementation of mappings between Java bean types by generating mapping code at compile time, following a convention-over-configuration approach.
-The problem In multi-layered applications there is often the need to map between objects from diffent models.
-Examples include the conversion from JPA entities into data transfer or view objects and the mapping between the internal model of an application and external-facing representations such as the types of a web service facade.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2013-06-03-announcing-mapstruct/">Read more...</a>
         
     </div>
 </article>
@@ -388,7 +382,7 @@ Examples include the conversion from JPA entities into data transfer or view obj
                     </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-1 ms-subnav-footer">
-                            © Gunnar Morling 2017
+                            © Gunnar Morling 2018
                         </div>
                     </div>
                 </div>

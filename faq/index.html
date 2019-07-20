@@ -134,6 +134,18 @@ ga('send', 'pageview');
             </a>
         </li>
     
+        <li>
+            <a href="#why-is-it-not-possible-for-mapstruct-to-generate-implementations-for-iterable-stream-and-map-types-from-update-mappingtarget-methods">
+                Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?
+            </a>
+        </li>
+    
+        <li>
+            <a href="#how-do-i-handle-null-properties-in-the-source-bean">
+                How do I handle null properties in the source bean?
+            </a>
+        </li>
+    
     </ul>
 
 
@@ -244,6 +256,269 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 
 </div>
 </p>
+
+<p><h2 id="Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods"><a class="ms-header-link" href="#Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods"><i class="fa fa-link"></i></a>Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?</h2>
+<div>
+  <p>Consider this (when thinking what MapStruct should do for updating collections in general):</p>
+
+<ul>
+<li>What if there&rsquo;s no match: should the non-matching elements be removed?</li>
+<li>Should the non matching source elements be added?</li>
+<li>What exactly constitutes to a match: equals? hashcode? comparator==0?</li>
+<li>Can there be more than one match (Lists, but also depending on what is considered a match.)</li>
+<li>How should the resulting collection be sorted?</li>
+<li>Should a newly created object be added to a persistence context?</li>
+<li>What about JPA child-parent relations?</li>
+</ul>
+
+<p>About the latter one, many IDEs also generates remove methods. So should MapStruct call these in the light of the above?</p>
+
+<p>At this moment it works like this: whenever the user wants a collection update method, MapStruct generates a regular call to element mappings (in stead of an update call), because it is the only sensible thing to do. All the remainder is highly dependent on the use-case.</p>
+
+</div>
+</p>
+
+<p><h2 id="How-do-I-handle-null-properties-in-the-source-bean"><a class="ms-header-link" href="#How-do-I-handle-null-properties-in-the-source-bean"><i class="fa fa-link"></i></a>How do I handle null properties in the source bean?</h2>
+<div>
+  <p>The strategies were developed over time and hence the naming / behavior deserves attention in future versions of MapStruct to getter better allignment. This would introduce backward incompatibillties, so we cannot not do this in the 1.x versions of MapStruct.</p>
+
+<p>The following table expresses when the current strategies apply:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">source property</th>
+<th align="center">source bean</th>
+<th align="center">direct mapping</th>
+<th align="center">update mapping (<code>@MappingTarget</code>)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>NullValueCheckStrategy</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+
+<tr>
+<td>NullValuePropertyMappingStrategy</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+</tr>
+
+<tr>
+<td><code>@Mapping#defaultValue</code></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+
+<tr>
+<td>NullValueMappingStrategy</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+</tbody>
+</table>
+
+<p>We&rsquo;ve noticed a common mistake that NullValuePropertyMapping is used in relation to direct mapping, which is understandble because of its naming. So lets look at the following example:</p>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface MyMapper {
+
+    Bar map( Foo source );    
+}
+
+public class Foo {
+
+    private String string;
+    // setters/getters
+}
+
+public class Bar {
+
+    private String string;
+    // setters/getters
+}
+</pre>
+
+<p>generates:</p>
+
+<pre class="prettyprint linenums lang-java">
+public class MyMapperImpl implements MyMapper {
+
+    @Override
+    public Bar map(Foo source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Bar bar = new Bar();
+
+        bar.setString( source.getString() );
+
+        return bar;
+    }
+}
+</pre>
+
+<p>So, lets look what it would mean if <code>NullValuePropertyMappingStrategy</code> could be applied to direct mappings:</p>
+
+<ul>
+<li><p><code>SET_TO_NULL</code>. What does this mean when the <code>source.string</code> is null? It would set the source to null when null. But that is what it already does above without any strategy.</p></li>
+
+<li><p><code>IGNORE</code>. When <code>source.string</code> is null, it would ignore setting the target. But that can be achieved with <code>NullValueCheckStrategy.ALWAYS</code>. Look at the example below:</p></li>
+</ul>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper( nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS )
+public interface MyMapper {
+
+    Bar map( Foo source );
+}
+</pre>
+
+<p>generates:</p>
+
+<pre class="prettyprint linenums lang-java">
+public class MyMapperImpl implements MyMapper {
+
+    @Override
+    public Bar map(Foo source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Bar bar = new Bar();
+
+        if ( source.getString() != null ) {
+            bar.setString( source.getString() );
+        }
+
+        return bar;
+    }
+}
+</pre>
+
+<ul>
+<li><code>SET_TO_DEFAULT</code>. <code>SET_TO_DEFAULT</code> is not covered by other cases in direct mapping, but can be achieved as well. Lets asume we would like to set an empty String as default value on null source. There are 2 possibilities:</li>
+</ul>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface MyMapper {
+
+    @Mapping( target = &#34;string&#34;, defaultValue = &#34;&#34; )
+    Bar map( Foo source );
+}
+</pre>
+
+<p>generates:</p>
+
+<pre class="prettyprint linenums lang-java">
+public class MyMapperImpl implements MyMapper {
+
+    @Override
+    public Bar map(Foo source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Bar bar = new Bar();
+
+        if ( source.getString() != null ) {
+            bar.setString( source.getString() );
+        }
+        else {
+            bar.setString( &#34;&#34; );
+        }
+
+        return bar;
+    }
+}
+</pre>
+
+<p>but has the drawback that this needs to be done for each property.</p>
+
+<p>The other option would be to create the target object with a default property value, either inside the target (Bar) during construction -if you have control over the target beans-, or via an object factory method:</p>
+
+<pre class="prettyprint linenums lang-java">
+@Mapper( nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
+public interface MyMapper {
+
+    Bar map( Foo source );
+
+    @ObjectFactory
+    default Bar create() {
+        Bar bar = new Bar();
+        bar.setString( &#34;&#34; );
+        return bar;
+    }
+}
+</pre>
+
+<p>Finally overview below shows on what level a strategy can be applied:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">@MapperConfig</th>
+<th align="center">@Mapper</th>
+<th align="center">@BeanMapping</th>
+<th align="center">@Mapping</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>NullValueCheckStrategy</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+
+<tr>
+<td>NullValuePropertyMappingStrategy</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+
+<tr>
+<td>@Mapping#defaultValue</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+</tr>
+
+<tr>
+<td>NullValueMappingStrategy</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+<p>More detailed information can be found in the reference guide.</p>
+
+</div>
+</p>
 </div>
 </div>
 
@@ -269,7 +544,7 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
                     </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-1 ms-subnav-footer">
-                            © Gunnar Morling 2017
+                            © Gunnar Morling 2018
                         </div>
                     </div>
                 </div>
