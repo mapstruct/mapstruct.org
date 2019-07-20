@@ -17,6 +17,5 @@ org.mapstruct.ap.internal.util.workarounds
 org.mapstruct.ap.internal.version
 org.mapstruct.ap.internal.writer
 org.mapstruct.ap.spi
-org.mapstruct.ap.spi.util
 org.mapstruct.factory
 org.mapstruct.util

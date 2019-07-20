@@ -3,13 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://mapstruct.org/documentation/installation/</loc>
-    <lastmod>2019-02-22T14:00:00+01:00</lastmod>
+    <loc>http://mapstruct.org/development/contributing/</loc>
+    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/development/contributing/</loc>
-    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
+    <loc>http://mapstruct.org/documentation/installation/</loc>
+    <lastmod>2016-12-31T13:23:04+01:00</lastmod>
   </url>
   
   <url>
@@ -19,7 +19,7 @@
   
   <url>
     <loc>http://mapstruct.org/documentation/reference-guide/</loc>
-    <lastmod>2019-02-10T12:21:00+02:00</lastmod>
+    <lastmod>2017-08-28T22:23:09+01:00</lastmod>
   </url>
   
   <url>
@@ -65,21 +65,6 @@
   <url>
     <loc>http://mapstruct.org/development/license/</loc>
     <lastmod>2016-12-31T13:24:06+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/</loc>
-    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/</loc>
-    <lastmod>2018-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/</loc>
-    <lastmod>2018-07-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -237,7 +222,7 @@
   
   <url>
     <loc>http://mapstruct.org/documentation/</loc>
-    <lastmod>2019-02-22T14:00:00+01:00</lastmod>
+    <lastmod>2016-12-31T13:23:04+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -273,25 +258,25 @@
   
   <url>
     <loc>http://mapstruct.org/</loc>
-    <lastmod>2019-02-22T14:00:00+01:00</lastmod>
+    <lastmod>2016-12-31T13:23:24+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://mapstruct.org/news/</loc>
-    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/news/</loc>
-    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/release/</loc>
-    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

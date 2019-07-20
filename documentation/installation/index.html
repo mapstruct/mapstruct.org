@@ -150,13 +150,13 @@ ga('send', 'pageview');
 
 <pre class="prettyprint linenums lang-xml">...
 &lt;properties&gt;
-    &lt;org.mapstruct.version&gt;1.3.0.Final&lt;/org.mapstruct.version&gt;
+    &lt;org.mapstruct.version&gt;1.2.0.Final&lt;/org.mapstruct.version&gt;
 &lt;/properties&gt;
 ...
 &lt;dependencies&gt;
     &lt;dependency&gt;
         &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;
-        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt;
+        &lt;artifactId&gt;mapstruct&lt;/artifactId&gt; &lt;!-- use mapstruct-jdk8 for Java 8 or higher --&gt;
         &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;
     &lt;/dependency&gt;
 &lt;/dependencies&gt;
@@ -166,17 +166,16 @@ ga('send', 'pageview');
         &lt;plugin&gt;
             &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
             &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
-            &lt;version&gt;3.5.1&lt;/version&gt; &lt;!-- or newer version --&gt;
+            &lt;version&gt;3.5.1&lt;/version&gt;
             &lt;configuration&gt;
-                &lt;source&gt;1.8&lt;/source&gt; &lt;!-- depending on your project --&gt;
-                &lt;target&gt;1.8&lt;/target&gt; &lt;!-- depending on your project --&gt;
+                &lt;source&gt;1.6&lt;/source&gt; &lt;!-- or higher, depending on your project --&gt;
+                &lt;target&gt;1.6&lt;/target&gt; &lt;!-- or higher, depending on your project --&gt;
                 &lt;annotationProcessorPaths&gt;
                     &lt;path&gt;
                         &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;
                         &lt;artifactId&gt;mapstruct-processor&lt;/artifactId&gt;
                         &lt;version&gt;${org.mapstruct.version}&lt;/version&gt;
                     &lt;/path&gt;
-                    &lt;!-- other annotation processors --&gt;
                 &lt;/annotationProcessorPaths&gt;
             &lt;/configuration&gt;
         &lt;/plugin&gt;
@@ -195,9 +194,12 @@ ga('send', 'pageview');
 }
 dependencies {
     ...
-    compile &#39;org.mapstruct:mapstruct:1.3.0.Final&#39;
+    compile &#39;org.mapstruct:mapstruct:1.2.0.Final&#39;
 
-    apt &#39;org.mapstruct:mapstruct-processor:1.3.0.Final&#39;
+    // OR use this with Java 8 and beyond
+    compile &#39;org.mapstruct:mapstruct-jdk8:1.2.0.Final&#39;
+
+    apt &#39;org.mapstruct:mapstruct-processor:1.2.0.Final&#39;
 }
 </pre>
 </p>
@@ -213,8 +215,8 @@ dependencies {
 &lt;javac
     srcdir=&#34;src/main/java&#34;
     destdir=&#34;target/classes&#34;
-    classpath=&#34;path/to/mapstruct-1.3.0.Final.jar&#34;&gt;
-    &lt;compilerarg line=&#34;-processorpath path/to/mapstruct-processor-1.3.0.Final.jar&#34;/&gt;
+    classpath=&#34;path/to/mapstruct-jdk8-1.2.0.Final.jar&#34;&gt;
+    &lt;compilerarg line=&#34;-processorpath path/to/mapstruct-processor-1.2.0.Final.jar&#34;/&gt;
     &lt;compilerarg line=&#34;-s target/generated-sources&#34;/&gt;
 &lt;/javac&gt;
 ...
@@ -246,7 +248,7 @@ dependencies {
                     </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-1 ms-subnav-footer">
-                            © Gunnar Morling 2018
+                            © Gunnar Morling 2017
                         </div>
                     </div>
                 </div>
