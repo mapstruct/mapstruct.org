@@ -110,15 +110,16 @@ The strategies were developed over time and hence the naming / behavior deserves
 
 The following table expresses when the current strategies apply:
 
-|                                  	| source property 	| source bean 	| direct mapping 	| update mapping (`@MappingTarget`) 	|
-|----------------------------------	|:---------------:	|:-----------:	|:--------------:	|:-------------------------------:	|
-| NullValueCheckStrategy           	|        x        	|             	|        x       	|                x                	|
-| NullValuePropertyMappingStrategy 	|        x       	|             	|                	|                x                	|
-| `@Mapping#defaultValue`          	|        x        	|             	|        x       	|                x                	|
-| NullValueMappingStrategy         	|                 	|      x      	|        x       	|                x                	|
+{{% faq_table %}}
+|                                  	| source property | source bean 	| direct mapping 	| update mapping (`@MappingTarget`)|
+|----------------------------------	|:---------------:|:---------------:|:---------------:	|:---------------:	                |
+| NullValueCheckStrategy           	|        x        |             	|        x       	|                x                	|
+| NullValuePropertyMappingStrategy 	|        x        |             	|                	|                x                	|
+| `@Mapping#defaultValue`          	|        x        |             	|        x       	|                x                	|
+| NullValueMappingStrategy         	|                 |      x      	|        x       	|                x                	|
+{{% /faq_table %}}
 
-
-We've noticed a common mistake that NullValuePropertyMapping is used in relation to direct mapping, which is understandble because of its naming. So lets look at the following example:
+We've noticed a common mistake that `NullValuePropertyMappingStrategy` is used in relation to direct mapping, which is understandble because of its naming. So lets look at the following example:
 
 {{< prettify java >}}
 @Mapper
@@ -252,12 +253,14 @@ public interface MyMapper {
 
 Finally overview below shows on what level a strategy can be applied:
 
+{{% faq_table %}}
 |                                  	| @MapperConfig 	| @Mapper 	| @BeanMapping 	| @Mapping 	|
-|----------------------------------	|:-------------:	|:-------:	|:------------:	|:--------:	|
+|----------------------------------	|:------------:	|:------------:	|:------------:	|:------------:	|
 | NullValueCheckStrategy           	|       x       	|    x    	|       x      	|     x    	|
 | NullValuePropertyMappingStrategy 	|       x       	|    x    	|       x      	|     x    	|
 | @Mapping#defaultValue            	|               	|         	|              	|     x    	|
 | NullValueMappingStrategy         	|       x       	|    x    	|       x      	|          	|
+{{% /faq_table %}}
 
 More detailed information can be found in the reference guide.
 
