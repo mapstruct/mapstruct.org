@@ -258,10 +258,11 @@ h5:hover .ms-header-link {
   width: 100%;
 }
 
-.faq-table th, td {
+.faq-table th, .faq-table td {
   text-align: center;
   padding: 8px;
 }
+
 .faq-table td {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
