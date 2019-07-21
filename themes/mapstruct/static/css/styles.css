@@ -247,3 +247,41 @@ h5:hover .ms-header-link {
   margin-left: 3px;
   border-radius: 2px;
 }
+
+.faq-table {
+    width: 800px;
+    border-spacing: 2px;   
+}
+
+.faq-table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.faq-table th, .faq-table td {
+  text-align: center;
+  padding: 8px;
+}
+
+.faq-table td {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;  
+}
+
+.faq-table tr:nth-child(even) {background-color: #f2f2f2;}
+
+.faq-table td:first-child{
+  text-align: left;
+  font-weight: bold;  
+}
+
+.faq-table td:last-child{
+  width:40px;
+}
+@media (max-width: 200px) {
+  .faq-table td:last-child{
+    width:auto;
+  }
+}
