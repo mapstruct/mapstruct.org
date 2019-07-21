@@ -284,7 +284,8 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 
 <p>The following table expresses when the current strategies apply:</p>
 
-<table>
+<div class='faq-table'>
+  <table>
 <thead>
 <tr>
 <th></th>
@@ -330,7 +331,9 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 </tbody>
 </table>
 
-<p>We&rsquo;ve noticed a common mistake that NullValuePropertyMapping is used in relation to direct mapping, which is understandble because of its naming. So lets look at the following example:</p>
+</div>
+
+<p>We&rsquo;ve noticed a common mistake that <code>NullValuePropertyMappingStrategy</code> is used in relation to direct mapping, which is understandble because of its naming. So lets look at the following example:</p>
 
 <pre class="prettyprint linenums lang-java">
 @Mapper
@@ -469,7 +472,8 @@ public interface MyMapper {
 
 <p>Finally overview below shows on what level a strategy can be applied:</p>
 
-<table>
+<div class='faq-table'>
+  <table>
 <thead>
 <tr>
 <th></th>
@@ -514,6 +518,8 @@ public interface MyMapper {
 </tr>
 </tbody>
 </table>
+
+</div>
 
 <p>More detailed information can be found in the reference guide.</p>
 
