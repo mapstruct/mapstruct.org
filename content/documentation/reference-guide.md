@@ -10,7 +10,7 @@ teaser = "The reference documentation and API docs for the current stable and pr
 parent = "Documentation"
 +++
 
-**1.3.0.Final** (February 10th 2019; latest sable release)
+**1.3.0.Final** (February 10th 2019; latest stable release)
 
 * Reference guide: [HTML](/documentation/stable/reference/html/) | [PDF](/documentation/stable/reference/pdf/mapstruct-reference-guide.pdf)
 * API documentation: [JavaDoc](/documentation/stable/api/)
