@@ -6,10 +6,31 @@
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.3.1.Final bug fix released</title>
+      <link>http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/</link>
+      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the 1.3.1.Final bug fix release of MapStruct.
+Since the Final release of MapStruct 1.3.0.Final we have received amazing feedback from the community.&lt;/p&gt;
+
+&lt;p&gt;This release includes 3 enhancements, 12 bug fixes and 7 documentation improvements.&lt;/p&gt;
+
+&lt;p&gt;The enhancements include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ability to disable builders on method level via &lt;code&gt;Builder#disableBuilder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Stricter matching for lifecycle methods / non-unique parameters&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.3.0.Final is out in the wild</title>
