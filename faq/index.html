@@ -146,6 +146,12 @@ ga('send', 'pageview');
             </a>
         </li>
     
+        <li>
+            <a href="#how-to-avoid-mapstruct-selecting-a-method">
+                How to avoid MapStruct selecting a method?
+            </a>
+        </li>
+    
     </ul>
 
 
@@ -522,6 +528,44 @@ public interface MyMapper {
 </div>
 
 <p>More detailed information can be found in the reference guide.</p>
+
+</div>
+</p>
+
+<p><h2 id="How-to-avoid-MapStruct-selecting-a-method"><a class="ms-header-link" href="#How-to-avoid-MapStruct-selecting-a-method"><i class="fa fa-link"></i></a>How to avoid MapStruct selecting a method?</h2>
+<div>
+  <p>MapStruct selects methods by means of assignabillity of source - and target type:</p>
+
+<ul>
+<li>source assignable to the source parameter of a method</li>
+<li>target assignable to the return type or the <code>@MappingTarget</code> annotated target parameter of a method.</li>
+<li>Qualifying methods are in <code>@Mapper#used</code> mappers or in the <code>Mapper</code> class/interface itself.</li>
+</ul>
+
+<p>Problems arise when more than one method meets the qualifications.</p>
+
+<p>In general, qualifiers are used to guide MapStruct to the proper choice. Usualy by indicating <code>@Mapping#qualifiedBy</code> or <code>@Mapping#qualifiedByName</code>. Lesser known is that Qualifiers also work the other way around: if a method is annotated with a qualfier that does not match the <code>@Mapping#qualifiedBy</code> MapStruct will not select that method. This is also valid when <code>@Mapping#qualifiedBy</code> is absent alltogether</p>
+
+<p>Consider specifying a qualifier like this:</p>
+
+<pre class="prettyprint linenums lang-java">
+@Qualifier // make sure that this is the MapStruct qualifier annotation
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.CLASS)
+public @interface DoIgnore {
+}
+</pre>
+
+<p>and placing it on a method:</p>
+
+<pre class="prettyprint linenums lang-java">
+@DoIgnore
+TypeX doSomething(TypeY y) {
+    // -- do something
+}
+</pre>
+
+<p>the method <code>doSomething</code> will be ignored by MapStruct.</p>
 
 </div>
 </p>
