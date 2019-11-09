@@ -266,3 +266,37 @@ More detailed information can be found in the reference guide.
 
 {{% /faq_question %}}
 
+{{% faq_question "How to avoid MapStruct selecting a method?" %}}
+
+MapStruct selects methods by means of assignabillity of source - and target type:
+
+* source assignable to the source parameter of a method
+* target assignable to the return type or the `@MappingTarget` annotated target parameter of a method.
+* Qualifying methods are in `@Mapper#used` mappers or in the `Mapper` class/interface itself. 
+
+Problems arise when more than one method meets the qualifications.
+
+In general, qualifiers are used to guide MapStruct to the proper choice. Usualy by indicating `@Mapping#qualifiedBy` or `@Mapping#qualifiedByName`. Lesser known is that Qualifiers also work the other way around: if a method is annotated with a qualfier that does not match the `@Mapping#qualifiedBy` MapStruct will not select that method. This is also valid when `@Mapping#qualifiedBy` is absent alltogether
+
+Consider specifying a qualifier like this:
+
+{{< prettify java >}}
+@Qualifier // make sure that this is the MapStruct qualifier annotation
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.CLASS)
+public @interface DoIgnore {
+}
+{{< /prettify >}}
+
+and placing it on a method:
+
+{{< prettify java >}}
+@DoIgnore
+TypeX doSomething(TypeY y) {
+    // -- do something
+}
+{{< /prettify >}}
+
+the method `doSomething` will be ignored by MapStruct.
+
+{{% /faq_question %}}
