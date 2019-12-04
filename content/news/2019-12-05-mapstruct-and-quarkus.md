@@ -1,13 +1,13 @@
 ---
 title: "MapStruct and Quarkus - a match made in heaven?"
 author: Christian Bandowski
-date: "2019-12-03"
+date: "2019-12-05"
 tags: [news, examples]
 ---
 
-This year is already over, but it was started with something new that came up in the Java world: [Quarkus](https://quarkus.io/). You may already have heard about it, if not, don’t worry, I will quickly summarize what it is.
+This year is nearly over, but it was started with something new that came up in the Java world: [Quarkus](https://quarkus.io/). You may already have heard about it, if not, don’t worry, I will quickly summarize what it is.
 
-_tl;dr: Take a look at the README in our [examples repository](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-quarkus)._
+Additinally to this post you can also find a working example in our [examples repository](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-quarkus).
 
 <!--more-->
 
@@ -18,15 +18,15 @@ _tl;dr: Take a look at the README in our [examples repository](https://github.co
 
 That’s the description on [quarkus.io](https://quarkus.io/), but what does this mean?
 
-With Quarkus you can built microservices or other Java applications using a stack of already existing components like [Eclipse Vert.x](https://vertx.io/), [Hibernate](http://hibernate.org/) or [Eclipse MicroProfile](https://microprofile.io/). It has a container-first philosophy which means that Quarkus sticks all these frameworks together in a way that the resulting application works very well in container environments like [Kubernetes](https://kubernetes.io/) or [OpenShift](https://openshift.io/).
+With Quarkus you can build microservices or other Java applications using a stack of already existing components like [Eclipse Vert.x](https://vertx.io/), [Hibernate](http://hibernate.org/) or [Eclipse MicroProfile](https://microprofile.io/). It has a container-first philosophy which means that Quarkus puts all these frameworks together in a way that the resulting application works very well in container environments like [Kubernetes](https://kubernetes.io/) or [OpenShift](https://openshift.io/).
 
 Read [this article](http://in.relation.to/2019/03/08/why-quarkus/) if you want to know more about Quarkus itself.
 
 #### And what is so special when using it with MapStruct?
-The important thing is basically that Quarkus runs on the [GraalVM](https://www.graalvm.org/) _(but also on any other JVM)_ that provides ahead-of-time compilation to create a native image of your application (native system-dependent machine code and not bytecode). Thus you don’t need to have an own JVM installation to run this code. Similar to a regular compiled C++ or Go application. \
-This allows having the advantages of native applications also for JVM based apps like a much faster startup time, less memory usage and a much smaller image (just a few megabytes instead of easily more than 100 MB for the JVM and required libraries).
+The special thing about Quarkus is that it not only allows to run applications on the JVM, but also as native binaries via [GraalVM](https://www.graalvm.org/). This provides ahead-of-time compilation that creates a native image of your application (native system-dependent machine code and not bytecode). Thus you don’t need to have an own JVM installation to run the code, similar to a compiled C++ or Go application. \
+This allows having the advantages of native applications also for Java-based apps like a much faster startup time, less memory usage and a much smaller image (just a few megabytes instead of easily more than 100 MB for the JVM and required libraries).
 
-Using a native image is not possible for all kind of applications, especially when reflection is used it is hard for the GraalVM to create the native image. Of course there are also solutions (like providing reflection metadata to the native image compiler), but in general it will make the development much more complicated.
+Using a native image is not possible for all kinds of applications, especially when reflection is used the GraalVM compiler needs some assistance by the developer in order to create the native image. That means you have to provide reflection metadata to the compiler which makes the development more complicated.
 
 And thats exactly the point where MapStruct jumps in as a reflection-free mapping library!
 
@@ -95,9 +95,9 @@ public class PersonService {
 
 What is the first thing you notice?
 
-Okay… the service is very boring. It always returns the same object. But that’s not what I meant, it’s just an example.. Most likely, your application will fetch the information from an external system.
+Okay… the service is very boring. It always returns the same object. But that’s not what I meant, it’s just an example. Most likely, your application will fetch the information from an external system.
 
-What I meant is the `@ApplicationScoped` annotation that was used. If you are just a Spring guy you might not know it, but this is a regular Java EE annotation that belongs to [CDI](https://www.jcp.org/en/jsr/detail?id=299) and marks this class as (more or less) an application-wide singleton that is “injectable”. Similar to `@Component` or `@Service` from Spring.
+What I meant is the `@ApplicationScoped` annotation that was used. If you are a Spring developer you might not know it, but this is a regular Jakarta EE annotation that belongs to [CDI](https://www.jcp.org/en/jsr/detail?id=299) and marks this class as (more or less) an application-wide singleton that is “injectable”. Similar to `@Component` or `@Service` from Spring.
 
 Most of the commonly used frameworks are using reflection for the DI and as mentioned before reflection doesn’t play well with native images. But the Quarkus team did a great job and provided a CDI implementation that can be used together with native images - so that’s then most likely the way to go when you need dependency injection and build a Quarkus application!
 
@@ -123,11 +123,11 @@ public interface PersonMapper {
 }
 {{< /prettify >}}
 
-The MapStruct annotation processor will generate the implementation for us, we just need to tell him that we would like to have a method that accepts a `Person` and returns a new `PersonDto`. A little trap: Our DTO has the property `surname`, so we add a mapping annotation to map `lastname` from `Person` to `surname` from `PersonDto`.
+The MapStruct annotation processor will generate the implementation for us, we just need to tell it that we would like to have a method that accepts a `Person` and returns a new `PersonDto`. A little trap: Our DTO has the property `surname`, so we add a mapping annotation to map `lastname` from `Person` to `surname` from `PersonDto`.
 
 **Very important:** The component model should be set to CDI, as this will allow us to easily inject the generated mapper implementation.
 
-_Side note: As you need to use CDI for all mappers it’s recommended to define a `@MapperConfig` and refer to it in all your mappers, this is the way I did it in the example. But for simplicity I skipped it here._
+_Side note: As you need to use CDI for all mappers it’s recommended to define a `@MapperConfig` and refer to it in all your mappers, this is the way I did it in the example on GitHub. But for simplicity I skipped it here._
 
 #### Endpoint
 As a last step we need to create our endpoint that will get the correct `Person` and finally returns the `PersonDto`.
@@ -172,7 +172,7 @@ Installed features: [cdi, resteasy, resteasy-jsonb]
 You can now open [http://localhost:8080/person](http://localhost:8080/person) in your browser and should see a JSON representating our person.
 
 #### Build the native image
-Okay, starting the application took nearly one and a half second. Very slow, isn’t it? That means every time the app will start you need to waste 1.5 seconds of your lifetime… okay, just kidding. That’s already really fast! But okay, it is also a really small application. Nevertheless, it should be mentioned that Quarkus also has a few optimizations to start the server when using the regular JVM really fast. \
+Okay, starting the application took nearly one and a half second. Very slow, isn’t it? That means every time the app will start you need to waste 1.5 seconds of your lifetime… okay, just kidding. That’s already really fast! But okay, it is also a really small application. Nevertheless, it should be mentioned that Quarkus also has a few optimizations to start the server when using the regular JVM really fast.
 But yeah, we can do it even faster. So let us build a native image!
 
 Following the [guide](https://quarkus.io/guides/building-native-image-guide) on the Quarkus page, you can build the native image just using one command:
@@ -202,7 +202,7 @@ I will repeat: _started in **0.006s**_.
 **This** is incredibly fast!
 
 ### Summing up
-This example shows how easily it is to integrate MapStruct in a Quarkus application. This is a really huge plus-point for using MapStruct as the mapping framework in a Quarkus application compared to most of the other mapping frameworks that are using reflection.
+This example shows how easy it is to integrate MapStruct in a Quarkus application. This is a really huge plus-point for using MapStruct as the mapping framework in a Quarkus application compared to most of the other mapping frameworks that are using reflection.
 
 Therefore generating the mapper implementation does not only lead to be a [really fast](https://www.baeldung.com/java-performance-mapping-frameworks) mapping framework, but also to be a “native image” ready one!
 
@@ -212,9 +212,9 @@ The important point is to use CDI. The default component model (that’s where y
 
 
 #### One small disadvantage still left
-In case you are an experienced MapStruct user you might noticed that [the way how I added MapStruct](#adding-mapstruct) is a bit different to the way it is written in our [reference guide](http://mapstruct.org/documentation/stable/reference/html/#_apache_maven).
+In case you are an experienced MapStruct user you might havenoticed that [the way how I added MapStruct](#adding-mapstruct) is a bit different to the way it is written in our [reference guide](http://mapstruct.org/documentation/stable/reference/html/#_apache_maven).
 
 The Quarkus development mode provides a hot-reload of your application, unfortunately it seems that the annotation processor will not be triggered again when you define the MapStruct processor within the annotation-processor path of the `maven-compiler-plugin` and you have to restart the application to see changes on the mappings.
 
-Adding our processor as a regular dependency will ensure that the processor will be used in the dev-mode in case you make changes to a `@Mapper` annotated class. Unfortunately, one point is still not working out-of-the-box: When you change classes not annotated with `@Mapper` that would change the mapper implementation (like the DTO) the mapper will not be regenerated. I guess that Quarkus is not able to know that the changed DTO has a side effect on the corresponding mapper and as this one will not be regenerated the annotation processor will not update the mapper implementation. (see [Quarkus issue #1502](https://github.com/quarkusio/quarkus/issues/1502))
+Adding our processor as a regular dependency will ensure that the processor will be used in the dev-mode in case you make changes to a `@Mapper` annotated class. Unfortunately, one point is still not working out-of-the-box: When you change classes not annotated with `@Mapper` that would change the mapper implementation (like the DTO) the mapper will not be regenerated. I guess that Quarkus is not able to know that the changed DTO has a side effect on the corresponding mapper and as this one will not be regenerated the annotation processor will not update the mapper implementation (see [Quarkus issue #1502](https://github.com/quarkusio/quarkus/issues/1502)).
 
