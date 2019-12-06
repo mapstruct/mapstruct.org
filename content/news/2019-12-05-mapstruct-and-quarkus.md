@@ -7,7 +7,7 @@ tags: [news, examples]
 
 This year is nearly over, but it was started with something new that came up in the Java world: [Quarkus](https://quarkus.io/). You may already have heard about it, if not, don’t worry, I will quickly summarize what it is.
 
-Additinally to this post you can also find a working example in our [examples repository](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-quarkus).
+Additionally to this post you can also find a working example in our [examples repository](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-quarkus).
 
 <!--more-->
 
@@ -24,7 +24,7 @@ Read [this article](http://in.relation.to/2019/03/08/why-quarkus/) if you want t
 
 #### And what is so special when using it with MapStruct?
 The special thing about Quarkus is that it not only allows to run applications on the JVM, but also as native binaries via [GraalVM](https://www.graalvm.org/). This provides ahead-of-time compilation that creates a native image of your application (native system-dependent machine code and not bytecode). Thus you don’t need to have an own JVM installation to run the code, similar to a compiled C++ or Go application. \
-This allows having the advantages of native applications also for Java-based apps like a much faster startup time, less memory usage and a much smaller image (just a few megabytes instead of easily more than 100 MB for the JVM and required libraries).
+This allows having the advantages of native applications also for Java-based apps like a much faster startup time, less memory usage and a much smaller image (25+ MB for a REST application instead of easily more than 100 MB for the JVM and required libraries).
 
 Using a native image is not possible for all kinds of applications, especially when reflection is used the GraalVM compiler needs some assistance by the developer in order to create the native image. That means you have to provide reflection metadata to the compiler which makes the development more complicated.
 
@@ -68,7 +68,7 @@ You just need to add MapStruct in your projects POM:
 </dependency>
 {{< /prettify >}}
 
-_Side note:_ In case you use for example Lombok pay attention that you define the dependency **before** the one for the MapStruct processor.
+_Side note:_ In case you use for example Lombok pay attention that you must define the Lombok dependency **before** the one for the MapStruct processor.
 
 #### Person service
 This example application will have a `Person` POJO holding information about the person and a `PersonService` that will return the person.
@@ -212,7 +212,7 @@ The important point is to use CDI. The default component model (that’s where y
 
 
 #### One small disadvantage still left
-In case you are an experienced MapStruct user you might havenoticed that [the way how I added MapStruct](#adding-mapstruct) is a bit different to the way it is written in our [reference guide](http://mapstruct.org/documentation/stable/reference/html/#_apache_maven).
+In case you are an experienced MapStruct user you might have noticed that [the way how I added MapStruct](#adding-mapstruct) is a bit different to the way it is written in our [reference guide](http://mapstruct.org/documentation/stable/reference/html/#_apache_maven).
 
 The Quarkus development mode provides a hot-reload of your application, unfortunately it seems that the annotation processor will not be triggered again when you define the MapStruct processor within the annotation-processor path of the `maven-compiler-plugin` and you have to restart the application to see changes on the mappings.
 
