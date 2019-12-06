@@ -1,7 +1,7 @@
 ---
 title: "MapStruct and Quarkus - a match made in heaven?"
 author: Christian Bandowski
-date: "2019-12-05"
+date: "2019-12-06"
 tags: [news, examples]
 ---
 
