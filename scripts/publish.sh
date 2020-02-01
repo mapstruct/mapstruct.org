@@ -59,17 +59,6 @@ then
     exit 1;
 fi
 
-HUGO_REQUIRED_VERSION="Hugo Static Site Generator v0.30.2"
-HUGO_VERSION=`hugo version`
-
-if [[ $HUGO_VERSION != "${HUGO_REQUIRED_VERSION}"*  ]]
-then
-    echo "Website should be build with HUGO version: ${HUGO_REQUIRED_VERSION}. However, ${HUGO_VERSION} is being used"
-    exit 1;
-else
-    echo "Hugo version: ${HUGO_VERSION}"
-fi
-
 echo "### Deleting old publication"
 rm -rf public
 mkdir public
