@@ -7,7 +7,7 @@ cd $DIR/..
 
 STABLE_VERSION=`grep -e stableVersion config.toml | sed 's/stableVersion = "\([0-9]*\.[0-9]*\).*"/\1/'`
 
-if [[ -z $STABLE_VERSION ]]
+if [ -z "$STABLE_VERSION" ]
 then
     echo "Could not extract the stable version from the config.toml"
     exit 1;
@@ -16,7 +16,7 @@ else
 fi
 
 STABLE_VERSION_FOLDER="static/documentation/${STABLE_VERSION}"
-if [[ ! -d ${STABLE_VERSION_FOLDER} ]]
+if [ ! -d "${STABLE_VERSION_FOLDER}" ]
 then
     echo "The folder with the stable version: ${STABLE_VERSION_FOLDER} could not be found. Please provide a valid version"
     exit 1;
@@ -26,7 +26,7 @@ fi
 
 DEV_VERSION=`grep -e devVersion config.toml | sed 's/devVersion = "\([0-9]*\.[0-9]*\).*"/\1/'`
 
-if [[ -z $DEV_VERSION ]]
+if [ -z "$DEV_VERSION" ]
 then
     echo "Could not extract the dev version from the config.toml"
     exit 1;
@@ -35,7 +35,7 @@ else
 fi
 
 DEV_VERSION_FOLDER="static/documentation/${DEV_VERSION}"
-if [[ ! -d ${DEV_VERSION_FOLDER} ]]
+if [ ! -d ${DEV_VERSION_FOLDER} ]
 then
     echo "The folder with the dev version: ${DEV_VERSION_FOLDER} could not be found. Please provide a valid version"
     exit 1;
@@ -45,7 +45,7 @@ fi
 
 GOOGLE_ANALYTICS_ID=`grep -e googleAnalytics config.toml | sed 's/googleAnalytics = "\(.*\)"/\1/' | sed 's/\-/\\-/g'`
 
-if [[ -z $GOOGLE_ANALYTICS_ID ]]
+if [ -z "$GOOGLE_ANALYTICS_ID" ]
 then
     echo "Could not extract the Google Analytics ID from the config.toml"
     exit 1;
