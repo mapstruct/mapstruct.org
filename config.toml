@@ -9,6 +9,12 @@ disqusShortname = "mapstruct"
 googleAnalytics = "UA-41136939-1"
 disablePathToLower = true
 
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [[menu.main]]
 name = "News"
 weight = 100
