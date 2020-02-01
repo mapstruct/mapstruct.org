@@ -7,7 +7,7 @@ cd $DIR/..
 
 STABLE_VERSION=`grep -e stableVersion config.toml | sed 's/stableVersion = "\([0-9]*\.[0-9]*\).*"/\1/'`
 
-if [[ -z $STABLE_VERSION ]]
+if [ -z "$STABLE_VERSION" ]
 then
     echo "Could not extract the stable version from the config.toml"
     exit 1;
@@ -16,7 +16,7 @@ else
 fi
 
 STABLE_VERSION_FOLDER="static/documentation/${STABLE_VERSION}"
-if [[ ! -d ${STABLE_VERSION_FOLDER} ]]
+if [ ! -d "${STABLE_VERSION_FOLDER}" ]
 then
     echo "The folder with the stable version: ${STABLE_VERSION_FOLDER} could not be found. Please provide a valid version"
     exit 1;
@@ -24,7 +24,7 @@ else
     echo "Stable version folder: $STABLE_VERSION_FOLDER"
 fi
 
-if [[ $(git status -s) ]]
+if [ "$(git status -s)" ]
 then
     echo "The working directory is dirty. Please commit any pending changes."
     exit 1;
