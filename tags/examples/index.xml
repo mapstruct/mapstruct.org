@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Examples on MapStruct</title>
+    <title>examples on MapStruct</title>
     <link>http://mapstruct.org/tags/examples/</link>
-    <description>Recent content in Examples on MapStruct</description>
+    <description>Recent content in examples on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Dec 2019 00:00:00 +0000</lastBuildDate>
@@ -18,10 +18,7 @@
       
       <guid>http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/</guid>
       <description>&lt;p&gt;This year is nearly over, but it was started with something new that came up in the Java world: &lt;a href=&#34;https://quarkus.io/&#34;&gt;Quarkus&lt;/a&gt;. You may already have heard about it, if not, don’t worry, I will quickly summarize what it is.&lt;/p&gt;
-
-&lt;p&gt;Additionally to this post you can also find a working example in our &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-quarkus&#34;&gt;examples repository&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Additionally to this post you can also find a working example in our &lt;a href=&#34;https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-quarkus&#34;&gt;examples repository&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
   </channel>

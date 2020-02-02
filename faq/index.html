@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -173,10 +176,8 @@ ga('send', 'pageview');
 <div>
 <div><h2 id="How-is-MapStruct-different-from-other-bean-mapping-tools"><a class="ms-header-link" href="#How-is-MapStruct-different-from-other-bean-mapping-tools"><i class="fa fa-link"></i></a>How is MapStruct different from other bean mapping tools?</h2>
 <div>
-  <p>Unlike most other bean mapping tools, MapStruct doesn&rsquo;t work at runtime but is a compile-time code generator.</p>
-
+<p>Unlike most other bean mapping tools, MapStruct doesn&rsquo;t work at runtime but is a compile-time code generator.</p>
 <p>Generating mapping code at build time has many advantages:</p>
-
 <ul>
 <li>Early feedback about erroneous or incomplete mappings, in command line builds as well as within your IDE</li>
 <li>Excellent performance, as no reflection or byte code generation at runtime is needed;
@@ -185,59 +186,40 @@ the generated code contains plain method invocations, just as if the mapper was 
 <li>The generated code is easy to understand (and debug, if ever needed)</li>
 <li>The optional <a href="http://mapstruct.org/documentation/ide-support/#eclipse">Eclipse plug-in</a> assists you when writing mappings, e.g. by auto-completion</li>
 </ul>
-
 </div>
-
-
-<p><h2 id="Can-I-use-MapStruct-within-Eclipse"><a class="ms-header-link" href="#Can-I-use-MapStruct-within-Eclipse"><i class="fa fa-link"></i></a>Can I use MapStruct within Eclipse?</h2>
+<h2 id="Can-I-use-MapStruct-within-Eclipse"><a class="ms-header-link" href="#Can-I-use-MapStruct-within-Eclipse"><i class="fa fa-link"></i></a>Can I use MapStruct within Eclipse?</h2>
 <div>
-  <p>Yes.</p>
-
+<p>Yes.</p>
 <p>Check out the <a href="http://mapstruct.org/documentation/ide-support/#eclipse">set-up instructions</a> for Eclipse.
 There is also a work-in-progress <a href="https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin#group-metrics-tab">Eclipse plug-in</a>
 which facilitates the definition of mapper interfaces with auto-completion and some quick fixes.</p>
-
 </div>
-</p>
-
-<p><h2 id="Can-I-use-MapStruct-together-with-Project-Lombok"><a class="ms-header-link" href="#Can-I-use-MapStruct-together-with-Project-Lombok"><i class="fa fa-link"></i></a>Can I use MapStruct together with Project Lombok?</h2>
+<h2 id="Can-I-use-MapStruct-together-with-Project-Lombok"><a class="ms-header-link" href="#Can-I-use-MapStruct-together-with-Project-Lombok"><i class="fa fa-link"></i></a>Can I use MapStruct together with Project Lombok?</h2>
 <div>
-  <p>Yes, as of MapStruct 1.2.0.Beta1 and Lombok 1.16.14.</p>
-
+<p>Yes, as of MapStruct 1.2.0.Beta1 and Lombok 1.16.14.</p>
 <p><a href="https://projectlombok.org/">Project Lombok</a> is an annotation processor that (amongst other things) adds getters and setters to the AST (abstract syntax tree) of compiled bean classes.
 AST modifications are not foreseen by Java annotation processing API,
 so quite some trickery was required within Lombok as well MapStruct to make both of them work together.
 Essentially, MapStruct will wait until Lombok has done all its amendments before generating mapper classes for Lombok-enhanced beans.</p>
-
 <p>An example for using the two projects together can be found <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-lombok">here</a>.</p>
-
 <p>If you are on an older version of MapStruct or Lombok,
 the solution is to put the JavaBeans to be amended by Lombok and the mapper interfaces
 to be processed by MapStruct into two separate modules of your project.
 Then Lombok will run in the compilation of the first module,
 causing the bean classes to be complete when MapStruct runs during the compilation of the second module.</p>
-
 </div>
-</p>
-
-<p><h2 id="Why-does-Named-not-work"><a class="ms-header-link" href="#Why-does-Named-not-work"><i class="fa fa-link"></i></a>Why does @Named not work?</h2>
+<h2 id="Why-does-Named-not-work"><a class="ms-header-link" href="#Why-does-Named-not-work"><i class="fa fa-link"></i></a>Why does @Named not work?</h2>
 <div>
-  <p>Check out that you are actually using <a href="http://mapstruct.org/documentation/stable/api/org/mapstruct/Named.html"><code>org.mapstruct.Named</code></a>
+<p>Check out that you are actually using <a href="http://mapstruct.org/documentation/stable/api/org/mapstruct/Named.html"><code>org.mapstruct.Named</code></a>
 and  <strong>not</strong> <code>javax.inject.Named</code>.</p>
-
 </div>
-</p>
-
-<p><h2 id="Why-do-I-get-this-error-Could-not-retrieve-Mapper-annotation-during-compilation"><a class="ms-header-link" href="#Why-do-I-get-this-error-Could-not-retrieve-Mapper-annotation-during-compilation"><i class="fa fa-link"></i></a>Why do I get this error: Could not retrieve @Mapper annotation during compilation?</h2>
+<h2 id="Why-do-I-get-this-error-Could-not-retrieve-Mapper-annotation-during-compilation"><a class="ms-header-link" href="#Why-do-I-get-this-error-Could-not-retrieve-Mapper-annotation-during-compilation"><i class="fa fa-link"></i></a>Why do I get this error: Could not retrieve @Mapper annotation during compilation?</h2>
 <div>
-  <p>This can happen if you are using <a href="http://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8"><code>mapstruct-jdk8</code></a> and
+<p>This can happen if you are using <a href="http://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8"><code>mapstruct-jdk8</code></a> and
 some other dependency is using an older version of <a href="http://mvnrepository.com/artifact/org.mapstruct/mapstruct"><code>mapstruct</code></a>.
 To solve the problem find the dependency that is using <code>mapstruct</code> and exclude it.</p>
-
 <p>A known dependency that uses <code>mapstruct</code> and has this problem is <a href="http://mvnrepository.com/artifact/io.springfox/springfox-swagger2"><code>springfox-swagger2</code></a>.</p>
-
 <p>For Maven you need to exclude it like:</p>
-
 <pre class="prettyprint linenums lang-xml">
 &lt;dependency&gt;
     &lt;groupId&gt;io.springfox&lt;/groupId&gt;
@@ -251,22 +233,16 @@ To solve the problem find the dependency that is using <code>mapstruct</code> an
     &lt;/exclusions&gt;
 &lt;/dependency&gt;
 </pre>
-
 <p>For Gradle you need to exclude it like:</p>
-
 <pre class="prettyprint linenums lang-groovy">
 compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
     exclude group: &#39;org.mapstruct&#39;, module: &#39;mapstruct&#39;
 }
 </pre>
-
 </div>
-</p>
-
-<p><h2 id="Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods"><a class="ms-header-link" href="#Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods"><i class="fa fa-link"></i></a>Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?</h2>
+<h2 id="Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods"><a class="ms-header-link" href="#Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods"><i class="fa fa-link"></i></a>Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?</h2>
 <div>
-  <p>Consider this (when thinking what MapStruct should do for updating collections in general):</p>
-
+<p>Consider this (when thinking what MapStruct should do for updating collections in general):</p>
 <ul>
 <li>What if there&rsquo;s no match: should the non-matching elements be removed?</li>
 <li>Should the non matching source elements be added?</li>
@@ -276,20 +252,13 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 <li>Should a newly created object be added to a persistence context?</li>
 <li>What about JPA child-parent relations?</li>
 </ul>
-
 <p>About the latter one, many IDEs also generates remove methods. So should MapStruct call these in the light of the above?</p>
-
 <p>At this moment it works like this: whenever the user wants a collection update method, MapStruct generates a regular call to element mappings (in stead of an update call), because it is the only sensible thing to do. All the remainder is highly dependent on the use-case.</p>
-
 </div>
-</p>
-
-<p><h2 id="How-do-I-handle-null-properties-in-the-source-bean"><a class="ms-header-link" href="#How-do-I-handle-null-properties-in-the-source-bean"><i class="fa fa-link"></i></a>How do I handle null properties in the source bean?</h2>
+<h2 id="How-do-I-handle-null-properties-in-the-source-bean"><a class="ms-header-link" href="#How-do-I-handle-null-properties-in-the-source-bean"><i class="fa fa-link"></i></a>How do I handle null properties in the source bean?</h2>
 <div>
-  <p>The strategies were developed over time and hence the naming / behavior deserves attention in future versions of MapStruct to getter better allignment. This would introduce backward incompatibillties, so we cannot not do this in the 1.x versions of MapStruct.</p>
-
+<p>The strategies were developed over time and hence the naming / behavior deserves attention in future versions of MapStruct to getter better allignment. This would introduce backward incompatibillties, so we cannot not do this in the 1.x versions of MapStruct.</p>
 <p>The following table expresses when the current strategies apply:</p>
-
 <div class='faq-table'>
   <table>
 <thead>
@@ -301,7 +270,6 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 <th align="center">update mapping (<code>@MappingTarget</code>)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>NullValueCheckStrategy</td>
@@ -310,7 +278,6 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 <td align="center">x</td>
 <td align="center">x</td>
 </tr>
-
 <tr>
 <td>NullValuePropertyMappingStrategy</td>
 <td align="center">x</td>
@@ -318,7 +285,6 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 <td align="center"></td>
 <td align="center">x</td>
 </tr>
-
 <tr>
 <td><code>@Mapping#defaultValue</code></td>
 <td align="center">x</td>
@@ -326,7 +292,6 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 <td align="center">x</td>
 <td align="center">x</td>
 </tr>
-
 <tr>
 <td>NullValueMappingStrategy</td>
 <td align="center"></td>
@@ -336,11 +301,8 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 </tr>
 </tbody>
 </table>
-
 </div>
-
 <p>We&rsquo;ve noticed a common mistake that <code>NullValuePropertyMappingStrategy</code> is used in relation to direct mapping, which is understandble because of its naming. So lets look at the following example:</p>
-
 <pre class="prettyprint linenums lang-java">
 @Mapper
 public interface MyMapper {
@@ -360,9 +322,7 @@ public class Bar {
     // setters/getters
 }
 </pre>
-
 <p>generates:</p>
-
 <pre class="prettyprint linenums lang-java">
 public class MyMapperImpl implements MyMapper {
 
@@ -380,15 +340,15 @@ public class MyMapperImpl implements MyMapper {
     }
 }
 </pre>
-
 <p>So, lets look what it would mean if <code>NullValuePropertyMappingStrategy</code> could be applied to direct mappings:</p>
-
 <ul>
-<li><p><code>SET_TO_NULL</code>. What does this mean when the <code>source.string</code> is null? It would set the source to null when null. But that is what it already does above without any strategy.</p></li>
-
-<li><p><code>IGNORE</code>. When <code>source.string</code> is null, it would ignore setting the target. But that can be achieved with <code>NullValueCheckStrategy.ALWAYS</code>. Look at the example below:</p></li>
+<li>
+<p><code>SET_TO_NULL</code>. What does this mean when the <code>source.string</code> is null? It would set the source to null when null. But that is what it already does above without any strategy.</p>
+</li>
+<li>
+<p><code>IGNORE</code>. When <code>source.string</code> is null, it would ignore setting the target. But that can be achieved with <code>NullValueCheckStrategy.ALWAYS</code>. Look at the example below:</p>
+</li>
 </ul>
-
 <pre class="prettyprint linenums lang-java">
 @Mapper( nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS )
 public interface MyMapper {
@@ -396,9 +356,7 @@ public interface MyMapper {
     Bar map( Foo source );
 }
 </pre>
-
 <p>generates:</p>
-
 <pre class="prettyprint linenums lang-java">
 public class MyMapperImpl implements MyMapper {
 
@@ -418,11 +376,9 @@ public class MyMapperImpl implements MyMapper {
     }
 }
 </pre>
-
 <ul>
 <li><code>SET_TO_DEFAULT</code>. <code>SET_TO_DEFAULT</code> is not covered by other cases in direct mapping, but can be achieved as well. Lets asume we would like to set an empty String as default value on null source. There are 2 possibilities:</li>
 </ul>
-
 <pre class="prettyprint linenums lang-java">
 @Mapper
 public interface MyMapper {
@@ -431,9 +387,7 @@ public interface MyMapper {
     Bar map( Foo source );
 }
 </pre>
-
 <p>generates:</p>
-
 <pre class="prettyprint linenums lang-java">
 public class MyMapperImpl implements MyMapper {
 
@@ -456,11 +410,8 @@ public class MyMapperImpl implements MyMapper {
     }
 }
 </pre>
-
 <p>but has the drawback that this needs to be done for each property.</p>
-
 <p>The other option would be to create the target object with a default property value, either inside the target (Bar) during construction -if you have control over the target beans-, or via an object factory method:</p>
-
 <pre class="prettyprint linenums lang-java">
 @Mapper( nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface MyMapper {
@@ -475,9 +426,7 @@ public interface MyMapper {
     }
 }
 </pre>
-
 <p>Finally overview below shows on what level a strategy can be applied:</p>
-
 <div class='faq-table'>
   <table>
 <thead>
@@ -489,7 +438,6 @@ public interface MyMapper {
 <th align="center">@Mapping</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>NullValueCheckStrategy</td>
@@ -498,7 +446,6 @@ public interface MyMapper {
 <td align="center">x</td>
 <td align="center">x</td>
 </tr>
-
 <tr>
 <td>NullValuePropertyMappingStrategy</td>
 <td align="center">x</td>
@@ -506,7 +453,6 @@ public interface MyMapper {
 <td align="center">x</td>
 <td align="center">x</td>
 </tr>
-
 <tr>
 <td>@Mapping#defaultValue</td>
 <td align="center"></td>
@@ -514,7 +460,6 @@ public interface MyMapper {
 <td align="center"></td>
 <td align="center">x</td>
 </tr>
-
 <tr>
 <td>NullValueMappingStrategy</td>
 <td align="center">x</td>
@@ -524,30 +469,20 @@ public interface MyMapper {
 </tr>
 </tbody>
 </table>
-
 </div>
-
 <p>More detailed information can be found in the reference guide.</p>
-
 </div>
-</p>
-
-<p><h2 id="How-to-avoid-MapStruct-selecting-a-method"><a class="ms-header-link" href="#How-to-avoid-MapStruct-selecting-a-method"><i class="fa fa-link"></i></a>How to avoid MapStruct selecting a method?</h2>
+<h2 id="How-to-avoid-MapStruct-selecting-a-method"><a class="ms-header-link" href="#How-to-avoid-MapStruct-selecting-a-method"><i class="fa fa-link"></i></a>How to avoid MapStruct selecting a method?</h2>
 <div>
-  <p>MapStruct selects methods by means of assignabillity of source - and target type:</p>
-
+<p>MapStruct selects methods by means of assignabillity of source - and target type:</p>
 <ul>
 <li>source assignable to the source parameter of a method</li>
 <li>target assignable to the return type or the <code>@MappingTarget</code> annotated target parameter of a method.</li>
 <li>Qualifying methods are in <code>@Mapper#used</code> mappers or in the <code>Mapper</code> class/interface itself.</li>
 </ul>
-
 <p>Problems arise when more than one method meets the qualifications.</p>
-
 <p>In general, qualifiers are used to guide MapStruct to the proper choice. Usualy by indicating <code>@Mapping#qualifiedBy</code> or <code>@Mapping#qualifiedByName</code>. Lesser known is that Qualifiers also work the other way around: if a method is annotated with a qualfier that does not match the <code>@Mapping#qualifiedBy</code> MapStruct will not select that method. This is also valid when <code>@Mapping#qualifiedBy</code> is absent alltogether</p>
-
 <p>Consider specifying a qualifier like this:</p>
-
 <pre class="prettyprint linenums lang-java">
 @Qualifier // make sure that this is the MapStruct qualifier annotation
 @Target(ElementType.METHOD)
@@ -555,20 +490,15 @@ public interface MyMapper {
 public @interface DoIgnore {
 }
 </pre>
-
 <p>and placing it on a method:</p>
-
 <pre class="prettyprint linenums lang-java">
 @DoIgnore
 TypeX doSomething(TypeY y) {
     // -- do something
 }
 </pre>
-
 <p>the method <code>doSomething</code> will be ignored by MapStruct.</p>
-
 </div>
-</p>
 </div>
 </div>
 
@@ -588,7 +518,6 @@ TypeX doSomething(TypeY y) {
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

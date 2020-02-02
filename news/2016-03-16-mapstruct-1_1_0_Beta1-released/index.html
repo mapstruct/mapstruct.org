@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -145,46 +148,31 @@ ga('send', 'pageview');
 
     <div>
         <div><p>It has been four months since the release of the first final version of MapStruct. We&rsquo;ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.</p>
-
 <p>Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we&rsquo;ve also added some improvements and prepared for new features:</p>
-
 <ul>
 <li>The new annotation <code>@ValueMapping</code> is introduced to be used for <code>enum</code> mappings. Previously, you would have used <code>@Mapping</code> for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of <code>@Mapping</code> for <code>enum</code> mappings now triggers a <em>deprecation warning</em> and asks you to use <code>@ValueMapping</code> instead.</li>
 <li>The new annotation <code>@Named</code> is a predefined <code>@Qualifier</code> that can be used when creating a custom qualifier annotation seems too inconvenient.</li>
 <li>Handling of types with generically typed properties has been improved, so that you can now declare something like <code>SearchResult&lt;VesselDto&gt; vesselSearchResultToDto(SearchResult&lt;Vessel&gt; vessel)</code>.</li>
 <li>The preferred way of configuring the annotation processor in Maven projects has been updated to leverage the latest <code>maven-compiler-plugin</code> version&rsquo;s <code>annotationProcessorPaths</code> option, which makes the configuration a bit more smooth. <a href="/documentation/1.1/reference/html/index.html#setup">Check the updated documentation</a>.</li>
 </ul>
-
-<p></p>
-
 <p>The complete list of 24 closed issues can be found in the <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.1.0.Beta1">change log</a>.</p>
-
 <p>The MapStruct team calls out a big <em>Thank you!</em> to everyone contributing to this release: <a href="https://github.com/grandmasterpixel">Vincent Alexander Beelte</a>, <a href="https://github.com/greuelpirat">Oliver Ehrenmüller</a>, and <a href="https://github.com/samwright">Samuel Wright</a>!</p>
-
-<h3 id="what-s-next"><a class="ms-header-link" href="#what-s-next"><i class="fa fa-link"></i></a>What&rsquo;s next?</h3>
-
+<h3 id="whats-next"><a class="ms-header-link" href="#whats-next"><i class="fa fa-link"></i></a>What&rsquo;s next?</h3>
 <p>We plan the beta phase to be a short one, with a 1.1.0.CR1 release following in a couple of weeks.</p>
-
 <p>In the mean time, you&rsquo;re invited to try out the MapStruct <a href="https://github.com/mapstruct/mapstruct-eclipse">Eclipse plug-in</a>. Although it&rsquo;s in an early stage, it already contains some handy content-assists (e.g. for <code>source</code> and <code>target</code> property names in the <code>@Mapping</code> annotation) and quick-fixes for some common mapping errors detected by MapStruct.</p>
-
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-
 <p>To fetch MapStruct 1.1.0.Beta1 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:</p>
-
 <ul>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.1.0.Beta1|jar">org.mapstruct:mapstruct:1.1.0.Beta1</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.1.0.Beta1|jar">org.mapstruct:mapstruct-jdk8:1.1.0.Beta1</a> (for usage with Java &gt;= 8)</li>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.1.0.Beta1|jar">org.mapstruct:mapstruct-processor:1.1.0.Beta1</a> for the annotation processor.</li>
+<li><a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.1.0.Beta1%7Cjar">org.mapstruct:mapstruct:1.1.0.Beta1</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.1.0.Beta1%7Cjar">org.mapstruct:mapstruct-jdk8:1.1.0.Beta1</a> (for usage with Java &gt;= 8)</li>
+<li><a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.1.0.Beta1%7Cjar">org.mapstruct:mapstruct-processor:1.1.0.Beta1</a> for the annotation processor.</li>
 </ul>
-
 <p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.1.0.Beta1/">SourceForge</a>.</p>
-
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
 <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
 <li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
 </ul>
-
 <p>Happy Mapping!</p></div>
     </div>
     <div>
@@ -241,7 +229,6 @@ ga('send', 'pageview');
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

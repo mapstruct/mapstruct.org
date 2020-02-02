@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -150,25 +153,15 @@ ga('send', 'pageview');
         </div>
     </div>
 </div>
-<div>
-
-<h2 id="intellij-idea"><a class="ms-header-link" href="#intellij-idea"><i class="fa fa-link"></i></a>IntelliJ IDEA</h2>
-
+<div><h2 id="intellij-idea"><a class="ms-header-link" href="#intellij-idea"><i class="fa fa-link"></i></a>IntelliJ IDEA</h2>
 <p>After you&rsquo;ve cloned  you can import it by selecting &ldquo;File -&gt; Import Module &hellip;&rdquo; and then selecting the top level aggregator <em>pom.xml</em> file located in the root folder. IDEA then will load MapStruct, resolve all dependencies and compile the source.</p>
-
 <p>You might face an error on IDEAs Message tab saying</p>
-
-<p><img src="/images/idea-processor-error.png" style="padding-bottom: 3px;"/></p>
-
+<img src="/images/idea-processor-error.png" style="padding-bottom: 3px;"/>
 <p>If so, open the preferences window, navigate to Compiler -&gt; Annotation processor and untick checkbox &ldquo;Enable annotation processing&rdquo; at &ldquo;Annotation profile for mapstruct-integrationtest&rdquo;.</p>
-
-<p><img src="/images/idea-annotation-conf.png" style="padding-bottom: 3px;"/></p>
-
+<img src="/images/idea-annotation-conf.png" style="padding-bottom: 3px;"/>
 <p>You should now be able to rebuild MapStruct.</p>
-
 <p>For running MapStruct unit tests from IDEA open the &ldquo;Run/Debug Configurations&rdquo; preferences, expand &ldquo;Default&rdquo; on the left side and navigate to &ldquo;JUnit&rdquo;. There choose $MODULE_DIR$ as the working directory and you should now be able to run JUnit tests from IDEA.</p>
-
-<p><img src="/images/idea-unittest-conf.png" style="padding-bottom: 3px;"/></p>
+<img src="/images/idea-unittest-conf.png" style="padding-bottom: 3px;"/>
 </div>
 
         </div>
@@ -187,7 +180,6 @@ ga('send', 'pageview');
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

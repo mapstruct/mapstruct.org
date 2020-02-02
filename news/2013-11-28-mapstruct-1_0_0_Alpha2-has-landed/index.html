@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -144,27 +147,17 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        <div>
-
-<p>It is my great pleasure to announce the release of MapStruct 1.0.0.Alpha2.</p>
-
+        <div><p>It is my great pleasure to announce the release of MapStruct 1.0.0.Alpha2.</p>
 <p>This took us a bit longer than expected, but the new release offers quite a few exciting new features we hope you&rsquo;ll enjoy. The JARs have already been synched to Maven Central. The coordinates are:</p>
-
 <ul>
-<li><a href="http://search.maven.org/#artifactdetails&amp;#124;org.mapstruct&amp;#124;mapstruct&amp;#124;1.0.0.Alpha2&amp;#124;jar">org.mapstruct:mapstruct:1.0.0.Alpha2</a> for the annotation JAR and</li>
-<li><a href="http://search.maven.org/#artifactdetails&amp;#124;org.mapstruct&amp;#124;mapstruct-processor&amp;#124;1.0.0.Alpha2&amp;#124;jar">org.mapstruct:mapstruct-processor:1.0.0.Alpha2</a> for the annotation processor.</li>
+<li><a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.0.0.Alpha2%7Cjar">org.mapstruct:mapstruct:1.0.0.Alpha2</a> for the annotation JAR and</li>
+<li><a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.Alpha2%7Cjar">org.mapstruct:mapstruct-processor:1.0.0.Alpha2</a> for the annotation processor.</li>
 </ul>
-
 <p>Alternatively you can get a <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.Alpha2/">distribution bundle</a> from SourceForge.</p>
-
 <p>Beside several new mapping features (e.g. combining several sources into one target object) the release provides integration with CDI and Spring to make the retrieval of mapper objects more comfortable. We&rsquo;ve added several new implicit data type conversions and there is now also support for converting <code>Map</code> objects.</p>
-
 <p>Let&rsquo;s have a closer look at some of the additions.</p>
-
 <h3 id="advanced-mapping-features"><a class="ms-header-link" href="#advanced-mapping-features"><i class="fa fa-link"></i></a>Advanced mapping features</h3>
-
 <p>When working with data transfer objects (DTO) to pass data from the backend to the client, it is common to have one DTO which transports the data from several entities. For this purpose MapStruct supports now mapping methods with several source methods. The following shows an example:</p>
-
 <pre class="prettyprint linenums">
 @Mapper
 public interface OrderMapper {
@@ -176,13 +169,9 @@ public interface OrderMapper {
     OrderDto orderAndAddressToOrderDto(Order order, Address deliveryAddress);
 }
 </pre>
-
 <p>As for single parameter methods all attributes are mapped by name from the source objects to the target object, performing a type conversion if required. In case a property with the same name exists in more than one source object, the source parameter from which to retrieve the property must be specified using the <code>@Mapping</code> annotation as shown for the <code>name</code> property.</p>
-
 <p>One of the core principles in MapStruct is type-safety. Therefore an error will be raised at generation time when such an ambiguity is not resolved. Note that when mapping a property which only exists once in the source objects to another target property name, it is optional to specify the source parameter&rsquo;s name.</p>
-
 <p>Also related to type-safety and correctness of generated mappings is the new option to raise an error in case an attribute of the mapping target is not populated, as this typically indicates an oversight or configuration error. By default a compiler warning is created in this case. To change this e.g. into a compile error instead, the <code>unmappedTargetPolicy</code> property can be used like this:</p>
-
 <pre class="prettyprint linenums">
 @Mapper(unmappedTargetPolicy=ERROR)
 public interface OrderMapper {
@@ -190,9 +179,7 @@ public interface OrderMapper {
     //...
 }
 </pre>
-
 <p>In some cases it is required to update an existing object with the properties from a given source object instead of instantiating a new target object. This use case can be addressed with help of the <code>@MappingTarget</code> annotation which denotes one method parameter as the target of the mapping like this:</p>
-
 <pre class="prettyprint linenums">
 @Mapper
 public interface OrderMapper {
@@ -200,17 +187,11 @@ public interface OrderMapper {
     void updateOrderEntityFromDto(OrderDto dto, @MappingTarget Order order);
 }
 </pre>
-
 <p>Instead of instantiating a new <code>Order</code> object, the generated implementation of <code>updateOrderEntityFromDto()</code> method will update the given order instance with the attributes from the passed <code>OrderDto</code>.</p>
-
 <h3 id="more-implicit-type-conversions"><a class="ms-header-link" href="#more-implicit-type-conversions"><i class="fa fa-link"></i></a>More implicit type conversions</h3>
-
 <p>Several new implicit type conversions have been added for the case that the source and target type of a mapped property differ. <code>BigDecimal</code> and <code>BigInteger</code> can now automatically be converted into other numeric types as well as into <code>String</code>. You can finde a list of all supported conversions in the <a href="http://localhost:4242/documentation/#section-05-01">reference documentation</a>.</p>
-
 <p>Please beware of a possible value or precision loss when performing such conversions from larger to smaller numeric types. It <a href="https://github.com/mapstruct/mapstruct/issues/5">is planned</a> for the next milestone to optionally raise a warning in this case.</p>
-
 <p>It is now also possible to convert <code>Date</code> into <code>String</code> and vice versa. For that purpose a new parameter has been added to the <code>@Mapping</code> annotation which allows to specify a format string as interpreted by <code>SimpleDateFormat</code>:</p>
-
 <pre class="prettyprint linenums">
 @Mapper
 public interface OrderMapper {
@@ -219,13 +200,9 @@ public interface OrderMapper {
     OrderDto orderToOrderDto(Order order);
 }
 </pre>
-
 <h3 id="integration-with-cdi-and-spring"><a class="ms-header-link" href="#integration-with-cdi-and-spring"><i class="fa fa-link"></i></a>Integration with CDI and Spring</h3>
-
 <p>The recommended way for obtaining mapper instances in the 1.0.0.Alpha1 release was to use the <code>Mappers</code> factory.</p>
-
 <p>Alternatively it is now also possible to work with dependency injection. To make this possible, MapStruct can generate mappers which are CDI or Spring beans, based on which flavor of DI you prefer. In the following example MapStruct is adviced to make the generated mapper implementation a CDI bean by specifying &ldquo;cdi&rdquo; via the <code>componentModel</code> attribute in the <code>@Mapper</code> annotation:</p>
-
 <pre class="prettyprint linenums">
 @Mapper(componentModel="cdi")
 public interface OrderMapper {
@@ -233,25 +210,17 @@ public interface OrderMapper {
     //...
 }
 </pre>
-
 <p>This allows to obtain an order mapper simply via <code>@Inject</code> (provided you have CDI enabled within your application):</p>
-
 <pre class="prettyprint linenums">
 @Inject
 private OrderMapper orderMapper;
 }
 </pre>
-
 <p>Note that all other mappers a generated mapper class references are also obtained via the configured component model. So if you e.g. hook in hand-written mapper classes via <code>@Mapper#uses()</code> make sure that these mappers are compliant with the chosen component model, e.g. are CDI beans themselves. Refer to the documentation which <a href="/documentation/#section-04-02">describes</a> all the specifics in detail.</p>
-
 <p>On a related note, if you prefer to work with the <code>Mappers</code> factory as before, you&rsquo;ll have to adapt your imports because this class has been moved to the new package <code>org.mapstruct.factory</code>.</p>
-
 <h3 id="further-info"><a class="ms-header-link" href="#further-info"><i class="fa fa-link"></i></a>Further info</h3>
-
 <p>This concludes our tour through the new features in MapStruct 1.0.0.Alpha2. You can find the complete list of addressed issues in the <a href="https://github.com/mapstruct/mapstruct/issues?milestone=2&amp;state=closed">change log</a> on GitHub. The <a href="/documentation">reference documentation</a> has been updated to cover all new functionality.</p>
-
 <p>If you have any kind of feedback please make sure to let us know. Either post a comment here or open a discussion in the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group. Bugs and feature requests can be reported in the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a> and your pull request on GitHub is highly welcome! The <a href="/contributing">contribution guide</a> has all the info you need to get started with hacking on MapStruct.</p>
-
 <p>Many thanks to <a href="https://github.com/agudian">Andreas Gudian</a> and <a href="https://github.com/kryger">Lukasz Kryger</a> who contributed to this release, that&rsquo;s awesome!</p>
 </div>
     </div>
@@ -309,7 +278,6 @@ private OrderMapper orderMapper;
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

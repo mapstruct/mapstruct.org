@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -146,70 +149,45 @@ ga('send', 'pageview');
     <div>
         <div><p>It is my pleasure to announce the 1.3.1.Final bug fix release of MapStruct.
 Since the Final release of MapStruct 1.3.0.Final we have received amazing feedback from the community.</p>
-
 <p>This release includes 3 enhancements, 12 bug fixes and 7 documentation improvements.</p>
-
 <p>The enhancements include:</p>
-
 <ul>
 <li>Ability to disable builders on method level via <code>Builder#disableBuilder</code></li>
 <li>Stricter matching for lifecycle methods / non-unique parameters</li>
 </ul>
-
-<p></p>
-
 <p>Altogether, not less than <a href="https://github.com/mapstruct/mapstruct/milestone/29?closed=1">21 issues</a> were fixed for this release.</p>
-
-<h3 id="what-s-inside"><a class="ms-header-link" href="#what-s-inside"><i class="fa fa-link"></i></a>What&rsquo;s inside</h3>
-
+<h3 id="whats-inside"><a class="ms-header-link" href="#whats-inside"><i class="fa fa-link"></i></a>What&rsquo;s inside</h3>
 <p>First and foremost we fixed almost all the bugs reported by the community for the 1.3.0.Final release.
 Apart from bug fixes we added some small enhancements.</p>
-
 <h3 id="ability-to-disable-builder-on-method-level"><a class="ms-header-link" href="#ability-to-disable-builder-on-method-level"><i class="fa fa-link"></i></a>Ability to disable builder on method level</h3>
-
 <p>It is now possible to disable the usage of Builders via the <code>Builder#disableBuilder</code> option.
 This is useful if you want to tell MapStruct no to use builders when mapping your beans.</p>
-
-<h3 id="stricter-matching-for-lifecycle-methods-non-unique-parameters"><a class="ms-header-link" href="#stricter-matching-for-lifecycle-methods-non-unique-parameters"><i class="fa fa-link"></i></a>Stricter matching for lifecycle methods / non-unique parameters</h3>
-
+<h3 id="stricter-matching-for-lifecycle-methods--non-unique-parameters"><a class="ms-header-link" href="#stricter-matching-for-lifecycle-methods--non-unique-parameters"><i class="fa fa-link"></i></a>Stricter matching for lifecycle methods / non-unique parameters</h3>
 <p>In case a lifecycle method has multiple matching parameters (e. g. same type)
 all parameter names must match exactly with the ones from the mapping method,
 otherwise the lifecycle method will not be used and a warning will be shown.</p>
-
 <h3 id="welcome-andrei-to-the-mapstruct-team"><a class="ms-header-link" href="#welcome-andrei-to-the-mapstruct-team"><i class="fa fa-link"></i></a>Welcome Andrei to the MapStruct team</h3>
-
 <p>Since our last release we also have a new member join our small MapStruct team.
 We are happy to say welcome to <a href="https://github.com/Captain1653">Andrei Arlou</a>.
 He has been busy answering questions, improving our codebase, fixing bugs and working on different enhancements for our next release.</p>
-
 <h3 id="thanks"><a class="ms-header-link" href="#thanks"><i class="fa fa-link"></i></a>Thanks</h3>
-
 <p>We are very proud and thankful of our of our growing community.
 Recently we passed the 2000 stargazers milestone on GitHub.</p>
-
 <p>Most impressive though are the download numbers we get from the Maven Central repo.
 They have doubled since our last release and we have seen an amazing rate of our users upgrading to the latest release.
 As an example here are the numbers for the <em>org.mapstruct:mapstruct-processor</em> artifact:</p>
-
 <div style="text-align:center">
     <img src="/images/downloads_09-2018_09-2019.png" style="padding-bottom: 3px;"/>
 </div>
-
 <p>Happy coding with MapStruct 1.3!!</p>
-
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-
 <p>You can fetch the new release from Maven Central using the following GAV coordinates:</p>
-
 <ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.3.1.Final|jar">org.mapstruct:mapstruct:1.3.1.Final</a></li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.3.1.Final|jar">org.mapstruct:mapstruct-processor:1.3.1.Final</a></li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.3.1.Final%7Cjar">org.mapstruct:mapstruct:1.3.1.Final</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.3.1.Final%7Cjar">org.mapstruct:mapstruct-processor:1.3.1.Final</a></li>
 </ul>
-
 <p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.3.1.Final">from GitHub</a>.</p>
-
 <p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
-
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
@@ -270,7 +248,6 @@ As an example here are the numbers for the <em>org.mapstruct:mapstruct-processor
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

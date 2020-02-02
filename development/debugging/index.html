@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -151,13 +154,9 @@ ga('send', 'pageview');
     </div>
 </div>
 <div><p>The most straight-forward way to debug the MapStruct annotation processor is to use your IDE and debug one of the JUnit tests in the processor module. The processor is then executed with the same JDK that you use the run the tests with.</p>
-
 <p>But there are subtle differences in the way different compilers implement the annotation processor API, so you might come to a point where you need to debug a specific problem with a certain compiler. The MapStruct integration tests run different smaller Maven projects with different compilers, by using compiler implementations pulled in as dependencies to the maven-compiler-plugin, and by <a href="http://maven.apache.org/guides/mini/guide-using-toolchains.html">Maven Toolchains</a> (see <a href="https://github.com/mapstruct/mapstruct/blob/master/etc/toolchains-example.xml">etc/toolchains-example.xml</a> for a template to modify and put into your local <code>~/.m2</code> directory).</p>
-
 <p>To debug an integration test, pass <code>-DprocessorIntegrationTest.debug=true</code> to the test process. A test case that uses Maven Toolchains (currently <code>oracle_java_6</code> and <code>oracle_java_7</code>) will wait for a remote debugger to attach on port <code>8000</code>. The other tests will launch <code>mvnDebug</code> internally, which by default also lets the Maven process wait on port <code>8000</code> for a remote debugger.</p>
-
 <p>If you like to launch the test with maven, use a command such as the following to focus on a single test case:</p>
-
 <pre class="prettyprint linenums lang-bash">mvn test -Dtest=&lt;TestClass&gt;#&lt;TestCase&gt; -DprocessorIntegrationTest.debug=true
 
 mvn test -Dtest=SimpleTest#oracle_java_6 -DprocessorIntegrationTest.debug=true
@@ -181,7 +180,6 @@ mvn test -Dtest=SimpleTest#oracle_java_6 -DprocessorIntegrationTest.debug=true
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

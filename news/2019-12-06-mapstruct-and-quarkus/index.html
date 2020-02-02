@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -145,46 +148,26 @@ ga('send', 'pageview');
 
     <div>
         <div><p>This year is nearly over, but it was started with something new that came up in the Java world: <a href="https://quarkus.io/">Quarkus</a>. You may already have heard about it, if not, don’t worry, I will quickly summarize what it is.</p>
-
 <p>Additionally to this post you can also find a working example in our <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-quarkus">examples repository</a>.</p>
-
-<p></p>
-
 <h3 id="quarkus"><a class="ms-header-link" href="#quarkus"><i class="fa fa-link"></i></a>Quarkus</h3>
-
 <blockquote>
 <p>Supersonic Subatomic Java</p>
-
 <p>A Kubernetes Native Java stack tailored for GraalVM &amp; OpenJDK HotSpot, crafted from the best of breed Java libraries and standards</p>
 </blockquote>
-
 <p>That’s the description on <a href="https://quarkus.io/">quarkus.io</a>, but what does this mean?</p>
-
 <p>With Quarkus you can build microservices or other Java applications using a stack of already existing components like <a href="https://vertx.io/">Eclipse Vert.x</a>, <a href="http://hibernate.org/">Hibernate</a> or <a href="https://microprofile.io/">Eclipse MicroProfile</a>. It has a container-first philosophy which means that Quarkus puts all these frameworks together in a way that the resulting application works very well in container environments like <a href="https://kubernetes.io/">Kubernetes</a> or <a href="https://openshift.io/">OpenShift</a>.</p>
-
 <p>Read <a href="http://in.relation.to/2019/03/08/why-quarkus/">this article</a> if you want to know more about Quarkus itself.</p>
-
 <h4 id="and-what-is-so-special-when-using-it-with-mapstruct"><a class="ms-header-link" href="#and-what-is-so-special-when-using-it-with-mapstruct"><i class="fa fa-link"></i></a>And what is so special when using it with MapStruct?</h4>
-
-<p>The special thing about Quarkus is that it not only allows to run applications on the JVM, but also as native binaries via <a href="https://www.graalvm.org/">GraalVM</a>. This provides ahead-of-time compilation that creates a native image of your application (native system-dependent machine code and not bytecode). Thus you don’t need to have an own JVM installation to run the code, similar to a compiled C++ or Go application. <br />
+<p>The special thing about Quarkus is that it not only allows to run applications on the JVM, but also as native binaries via <a href="https://www.graalvm.org/">GraalVM</a>. This provides ahead-of-time compilation that creates a native image of your application (native system-dependent machine code and not bytecode). Thus you don’t need to have an own JVM installation to run the code, similar to a compiled C++ or Go application.<br>
 This allows having the advantages of native applications also for Java-based apps like a much faster startup time, less memory usage and a much smaller image (25+ MB for a REST application instead of easily more than 100 MB for the JVM and required libraries).</p>
-
 <p>Using a native image is not possible for all kinds of applications, especially when reflection is used the GraalVM compiler needs some assistance by the developer in order to create the native image. That means you have to provide reflection metadata to the compiler which makes the development more complicated.</p>
-
 <p>And thats exactly the point where MapStruct jumps in as a reflection-free mapping library!</p>
-
 <h3 id="how-to-integrate-mapstruct-in-a-quarkus-application"><a class="ms-header-link" href="#how-to-integrate-mapstruct-in-a-quarkus-application"><i class="fa fa-link"></i></a>How to integrate MapStruct in a Quarkus application</h3>
-
 <p>So let us see how well MapStruct plays together with Quarkus!</p>
-
 <p>I made an example application that will show you how you can integrate MapStruct in your Quarkus application. You will find the complete demo application in our <a href="https://github.com/mapstruct/mapstruct-examples/mapstruct-quarkus">examples repository</a>.</p>
-
 <p>The example should be a simple REST application just having a <code>/person</code> endpoint returning information about a person. Obviously, the internally used classes should not be exposed, but a DTO will be created and filled with information from a MapStruct mapper.</p>
-
 <h4 id="create-a-new-quarkus-application"><a class="ms-header-link" href="#create-a-new-quarkus-application"><i class="fa fa-link"></i></a>Create a new Quarkus application</h4>
-
 <p>After reading the <a href="https://quarkus.io/guides/getting-started-guide">Getting Started</a> on the Quarkus pages it was really easy to figure out how to create a new application. Just run the following command:</p>
-
 <pre class="prettyprint linenums lang-">
 mvn io.quarkus:quarkus-maven-plugin:1.0.1.Final:create \
   -DprojectGroupId=org.mapstruct.examples.quarkus \
@@ -194,13 +177,9 @@ mvn io.quarkus:quarkus-maven-plugin:1.0.1.Final:create \
   -Dextensions=&#34;resteasy-jsonb&#34;
 </pre>
 
-
 <p>This will setup a new Quarkus application having a REST endpoint <code>/person</code> defined in a <code>PersonResource</code>. We want to expose the JSON structure automatically, so we need the <code>resteasy-jsonb</code> extension that will allow us to marshall our object to JSON (like you probably know it from Spring REST or similar frameworks).</p>
-
 <h4 id="adding-mapstruct"><a class="ms-header-link" href="#adding-mapstruct"><i class="fa fa-link"></i></a>Adding MapStruct</h4>
-
 <p>You just need to add MapStruct in your projects POM:</p>
-
 <pre class="prettyprint linenums lang-xml">
 &lt;dependency&gt;
   &lt;groupId&gt;org.mapstruct&lt;/groupId&gt;
@@ -215,15 +194,10 @@ mvn io.quarkus:quarkus-maven-plugin:1.0.1.Final:create \
 &lt;/dependency&gt;
 </pre>
 
-
 <p><em>Side note:</em> In case you use for example Lombok pay attention that you must define the Lombok dependency <strong>before</strong> the one for the MapStruct processor.</p>
-
 <h4 id="person-service"><a class="ms-header-link" href="#person-service"><i class="fa fa-link"></i></a>Person service</h4>
-
 <p>This example application will have a <code>Person</code> POJO holding information about the person and a <code>PersonService</code> that will return the person.</p>
-
 <p>So we have to create the following two classes:</p>
-
 <pre class="prettyprint linenums lang-java">
 public class Person {
   private String firstname;
@@ -232,7 +206,6 @@ public class Person {
   // all-args constructor, getters, setters
 }
 </pre>
-
 
 <pre class="prettyprint linenums lang-java">
 @ApplicationScoped
@@ -243,19 +216,12 @@ public class PersonService {
 }
 </pre>
 
-
 <p>What is the first thing you notice?</p>
-
 <p>Okay… the service is very boring. It always returns the same object. But that’s not what I meant, it’s just an example. Most likely, your application will fetch the information from an external system.</p>
-
 <p>What I meant is the <code>@ApplicationScoped</code> annotation that was used. If you are a Spring developer you might not know it, but this is a regular Jakarta EE annotation that belongs to <a href="https://www.jcp.org/en/jsr/detail?id=299">CDI</a> and marks this class as (more or less) an application-wide singleton that is “injectable”. Similar to <code>@Component</code> or <code>@Service</code> from Spring.</p>
-
 <p>Most of the commonly used frameworks are using reflection for the DI and as mentioned before reflection doesn’t play well with native images. But the Quarkus team did a great job and provided a CDI implementation that can be used together with native images - so that’s then most likely the way to go when you need dependency injection and build a Quarkus application!</p>
-
 <h4 id="dto-and-mapper"><a class="ms-header-link" href="#dto-and-mapper"><i class="fa fa-link"></i></a>DTO and mapper</h4>
-
 <p>We don’t like to expose internal objects, thus we create a new <code>PersonDto</code> that matches our API.</p>
-
 <pre class="prettyprint linenums lang-java">
 public class PersonDto {
   private String firstname;
@@ -265,9 +231,7 @@ public class PersonDto {
 }
 </pre>
 
-
 <p>So now, we have a <code>Person</code> and <code>PersonDto</code> that both have a similar structure. We are able to retrieve a <code>Person</code>, but want to return a <code>PersonDto</code>, so that’s the time where we finally add our MapStruct mapper!</p>
-
 <pre class="prettyprint linenums lang-java">
 @Mapper(componentModel = &#34;cdi&#34;)
 public interface PersonMapper {
@@ -276,19 +240,12 @@ public interface PersonMapper {
 }
 </pre>
 
-
 <p>The MapStruct annotation processor will generate the implementation for us, we just need to tell it that we would like to have a method that accepts a <code>Person</code> and returns a new <code>PersonDto</code>. A little trap: Our DTO has the property <code>surname</code>, so we add a mapping annotation to map <code>lastname</code> from <code>Person</code> to <code>surname</code> from <code>PersonDto</code>.</p>
-
 <p><strong>Very important:</strong> The component model should be set to CDI, as this will allow us to easily inject the generated mapper implementation.</p>
-
 <p><em>Side note: As you need to use CDI for all mappers it’s recommended to define a <code>@MapperConfig</code> and refer to it in all your mappers, this is the way I did it in the example on GitHub. But for simplicity I skipped it here.</em></p>
-
 <h4 id="endpoint"><a class="ms-header-link" href="#endpoint"><i class="fa fa-link"></i></a>Endpoint</h4>
-
 <p>As a last step we need to create our endpoint that will get the correct <code>Person</code> and finally returns the <code>PersonDto</code>.</p>
-
 <p>The <code>PersonResource</code> was already generated by Quarkus providing a <code>/person</code> endpoint that just returns a static text. We will remove this operation and exchange it with a new one that returns our person:</p>
-
 <pre class="prettyprint linenums lang-java">
 @Path(&#34;/person&#34;)
 public class PersonResource {
@@ -307,77 +264,48 @@ public class PersonResource {
 }
 </pre>
 
-
 <p>To be able to access our <code>PersonService</code> and <code>PersonMapper</code> we will inject both using CDI.</p>
-
 <p>The <code>loadPerson()</code> method will then just call our service to load the person, throw it into our mapper and return the DTO.</p>
-
 <p>That’s it!</p>
-
 <h4 id="start-the-application"><a class="ms-header-link" href="#start-the-application"><i class="fa fa-link"></i></a>Start the application</h4>
-
 <p>If you would like to run the application you just need to hit <code>mvn compile quarkus:dev</code>. This will compile everything (which includes mapper generation) and starts a local server running the application.</p>
-
 <p>After starting the application you should see a log output similar to the following one:</p>
-
 <pre class="prettyprint linenums lang-">
 Quarkus 1.0.1.Final started in 1.448s. Listening on: http://0.0.0.0:8080
 Profile dev activated. Live Coding activated.
 Installed features: [cdi, resteasy, resteasy-jsonb]
 </pre>
 
-
 <p>You can now open <a href="http://localhost:8080/person">http://localhost:8080/person</a> in your browser and should see a JSON representating our person.</p>
-
 <h4 id="build-the-native-image"><a class="ms-header-link" href="#build-the-native-image"><i class="fa fa-link"></i></a>Build the native image</h4>
-
 <p>Okay, starting the application took nearly one and a half second. Very slow, isn’t it? That means every time the app will start you need to waste 1.5 seconds of your lifetime… okay, just kidding. That’s already really fast! But okay, it is also a really small application. Nevertheless, it should be mentioned that Quarkus also has a few optimizations to start the server when using the regular JVM really fast.
 But yeah, we can do it even faster. So let us build a native image!</p>
-
 <p>Following the <a href="https://quarkus.io/guides/building-native-image-guide">guide</a> on the Quarkus page, you can build the native image just using one command:</p>
-
 <pre class="prettyprint linenums lang-">
 mvn package -Pnative
 </pre>
 
-
 <p><em>(In case you get an error that tests fail remove those or update them, I skipped this here as well)</em></p>
-
 <p>As a prerequisite you need to have the GraalVM installed correctly. In case you don’t want or can install it on your machine take a look at the multi-stage Docker build in the previously mentioned guide.</p>
-
 <p>The command will produce an executable application in the <code>target</code> folder (it ends with <code>-runner</code>) that you can just start.</p>
-
 <p>You will notice that running the native compilation will take a while as it will not just compile your application as usual, it will afterwards create the native image. This process takes some time, but you will save this time afterwards in production when you need to (re)start your application plenty of times.</p>
-
 <p>The output after starting the app should look like this:</p>
-
 <pre class="prettyprint linenums lang-">
 mapstruct-examples-quarkus 1.0-SNAPSHOT (running on Quarkus 1.0.1.Final) started in 0.006s. Listening on: http://0.0.0.0:8080
 Profile prod activated. 
 Installed features: [cdi, resteasy, resteasy-jsonb]
 </pre>
 
-
 <p>I will repeat: <em>started in <strong>0.006s</strong></em>.</p>
-
 <p><strong>This</strong> is incredibly fast!</p>
-
 <h3 id="summing-up"><a class="ms-header-link" href="#summing-up"><i class="fa fa-link"></i></a>Summing up</h3>
-
 <p>This example shows how easy it is to integrate MapStruct in a Quarkus application. This is a really huge plus-point for using MapStruct as the mapping framework in a Quarkus application compared to most of the other mapping frameworks that are using reflection.</p>
-
 <p>Therefore generating the mapper implementation does not only lead to be a <a href="https://www.baeldung.com/java-performance-mapping-frameworks">really fast</a> mapping framework, but also to be a “native image” ready one!</p>
-
 <p>So yes: <strong>MapStruct and Quarkus is definitely a match made in heaven!</strong></p>
-
 <p>The important point is to use CDI. The default component model (that’s where you retrieve the mapper with <code>Mappers.getMapper(PersonMapper.class)</code>) will not work out-of-the-box as this is the only part in MapStruct where reflection is used. If you still prefer this way you have to provide an own <a href="https://github.com/oracle/graal/blob/master/substratevm/REFLECTION.md">reflection configuration</a>. Maybe in the future MapStruct will also support this out-of-the box. But with version 1.3.1.Final it is not yet supported.</p>
-
 <h4 id="one-small-disadvantage-still-left"><a class="ms-header-link" href="#one-small-disadvantage-still-left"><i class="fa fa-link"></i></a>One small disadvantage still left</h4>
-
 <p>In case you are an experienced MapStruct user you might have noticed that <a href="#adding-mapstruct">the way how I added MapStruct</a> is a bit different to the way it is written in our <a href="http://mapstruct.org/documentation/stable/reference/html/#_apache_maven">reference guide</a>.</p>
-
 <p>The Quarkus development mode provides a hot-reload of your application, unfortunately it seems that the annotation processor will not be triggered again when you define the MapStruct processor within the annotation-processor path of the <code>maven-compiler-plugin</code> and you have to restart the application to see changes on the mappings.</p>
-
 <p>Adding our processor as a regular dependency will ensure that the processor will be used in the dev-mode in case you make changes to a <code>@Mapper</code> annotated class. Unfortunately, one point is still not working out-of-the-box: When you change classes not annotated with <code>@Mapper</code> that would change the mapper implementation (like the DTO) the mapper will not be regenerated. I guess that Quarkus is not able to know that the changed DTO has a side effect on the corresponding mapper and as this one will not be regenerated the annotation processor will not update the mapper implementation (see <a href="https://github.com/quarkusio/quarkus/issues/1502">Quarkus issue #1502</a>).</p></div>
     </div>
     <div>
@@ -434,7 +362,6 @@ Installed features: [cdi, resteasy, resteasy-jsonb]
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

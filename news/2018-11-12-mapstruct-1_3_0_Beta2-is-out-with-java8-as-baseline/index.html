@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -145,11 +148,8 @@ ga('send', 'pageview');
 
     <div>
         <div><p>It&rsquo;s my pleasure to announce the second Beta release of MapStruct 1.3.</p>
-
 <p>With the new Release we have finally made the switch to Java 8 as a baseline.</p>
-
 <p>There are a whole lot of new enhancements as well, e.g.:</p>
-
 <ul>
 <li>New <code>NullValuePropertyMappingStrategy</code> for controlling how properties are for update methods</li>
 <li>Warnings for precision loss</li>
@@ -157,11 +157,7 @@ ga('send', 'pageview');
 <li>Recursive source presence tracking</li>
 <li>Improvements in the builders support</li>
 </ul>
-
-<p></p>
-
 <p>Altogether, no less than <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.3.0.Beta2">35 issues</a> were fixed for this release.</p>
-
 <p>This would not have been possible without our fantastic community of contributors:
 <a href="https://github.com/neoXfire">Florian Tavares</a>,
 <a href="https://github.com/chris922">Christian Bandowski</a>,
@@ -169,40 +165,27 @@ ga('send', 'pageview');
 <a href="https://github.com/sebastianhaberey">Sebastian Haberey</a>,
 <a href="https://github.com/sahebpreet">Saheb Preet Singh</a>,
 as well as seasoned MapStruct hackers <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a>, <a href="https://github.com/gunnarmorling">Gunnar Morling</a> and <a href="https://github.com/sjaakd">Sjaak Derksen</a>.</p>
-
 <p>Thanks a lot everyone for all your hard work!</p>
-
 <p>Big thanks to all the users of the 1.3.0.Beta1 dependency of MapStruct.
 It has helped us in ironing out our Builders support.</p>
-
 <p>Enough of the pep talk, let&rsquo;s take a closer look at some of the new enhancements!</p>
-
 <h3 id="java-8-baseline"><a class="ms-header-link" href="#java-8-baseline"><i class="fa fa-link"></i></a>Java 8 Baseline</h3>
-
 <p>Java 8 has been around for a long time and MapStruct has been working nicely with it for a long time.
 Using it as a baseline would allow us to use some of it features and make it easier for us to maintain it for you.</p>
-
 <p>The <code>mapstruct-jdk8</code> module has been relocated to <code>mapstruct</code>.
 Upgrade your dependencies to use the <code>mapstruct</code> module.</p>
-
 <h3 id="control-how-null-or-not-present-properties-are-updated-within-a-target-bean"><a class="ms-header-link" href="#control-how-null-or-not-present-properties-are-updated-within-a-target-bean"><i class="fa fa-link"></i></a>Control how null or not present properties are updated within a target bean</h3>
-
 <p>We have added a <code>NullValuePropertyMappingStrategy</code> that can be used to control how <code>null</code> or not present source properties are updated within a target.
 The possibilities are:</p>
-
 <ul>
 <li><code>SET_TO_NULL</code> - If the source property is <code>null</code> or not present the target property is set to <code>null</code>.
 This is also the default, which is the same behaviour from before.</li>
 <li><code>SET_TO_DEFAULT</code> - If the source property is <code>null</code> or not present the target property is set to default (empty list, empty set, new object instantiation etc)</li>
 <li><code>IGNORE</code> - If the source property is <code>null</code> or not present the target property is not set at all</li>
 </ul>
-
 <p>This strategy can be set on <code>@Mapping</code>, <code>@BeanMapping</code>, <code>@Mapper</code> or <code>@MapperConfig</code> in precedence order.</p>
-
 <p>While working on this we noticed that we handle bean properties that are collections or maps differently. This requires some background information: MapStruct generates mappings in-line in the bean mapping method implementation when the elemnts in the collections and key/values are of the same type. In this particular case, MapStruct was generating code that setting the target property to <code>null</code> when the source property was <code>null</code> or not present.</p>
-
 <p>We were generating code that looks like:</p>
-
 <pre class="prettyprint linenums lang-java">
 public class CustomerMapperImpl implements CustomerMapper {
 
@@ -221,13 +204,10 @@ public class CustomerMapperImpl implements CustomerMapper {
 }
 </pre>
 
-
 <p>This generated code is not consistent with how other properties are mapped.
 Therefore we have adapted this not create the <code>else</code> branch.
 In case you were relying on that branch we advice to use <code>@ObjectFactory</code> or set the default in the constructor of the target object.</p>
-
 <p>The newly generated code looks like:</p>
-
 <pre class="prettyprint linenums lang-java">
 public class CustomerMapperImpl implements CustomerMapper {
 
@@ -244,57 +224,41 @@ public class CustomerMapperImpl implements CustomerMapper {
 }
 </pre>
 
-
 <p><strong>NB</strong>: In 1.2.0.Final with <a href="https://github.com/mapstruct/mapstruct/issues/1273">#1273</a> we added support for using <code>NullValueMappingStrategy#RETURN_DEFAULT</code> to control how collections / maps default values are set in the scenario described above.
 We realised that this was a mistake on our side. The <code>NullValueMappingStrategy</code> is intended to be used on the result of the entire bean mapping mehod given a <code>null</code> source bean mapping argument (source bean). Specifically for update methods, the <code>NullValuePropertyMappingStrategy#SET_TO_DEFAULT</code> is intended to complement this functionality: giving control over the property mappings in case of <code>null</code> property source.
 See <a href="https://github.com/mapstruct/mapstruct/issues/1273#issuecomment-433495265">this</a> for more information.</p>
-
 <h3 id="warnings-for-precision-loss"><a class="ms-header-link" href="#warnings-for-precision-loss"><i class="fa fa-link"></i></a>Warnings for precision loss</h3>
-
 <p>The <code>@Mapper</code> and <code>@MapperConfig</code> now have new <code>typeConversionPolicy</code> option that could be set to control how lossy (narrowing) conversion
 (e.g. <code>long</code> to <code>int</code>) should be reported.</p>
-
 <h3 id="caching-and-reusing-datatypefactory"><a class="ms-header-link" href="#caching-and-reusing-datatypefactory"><i class="fa fa-link"></i></a>Caching and reusing DatatypeFactory</h3>
-
 <p>We are no longer creating a new <code>DatatypeFactory</code> instance when mapping into <code>XmlGregorianCalendar</code>.
 Before we were doing a call to <code>DatatypeFactory.newInstance()</code> on every mapping.
 This call is an expensive call as it involves <code>ServiceLoader</code>usages.
 In the new solution fields in the mapper initialized in the constructor of the mapper is used instead.</p>
-
 <h3 id="improvements-in-the-builders-support"><a class="ms-header-link" href="#improvements-in-the-builders-support"><i class="fa fa-link"></i></a>Improvements in the builders support</h3>
-
 <p>We have ironed out the builder support.
 There was an issue with generic builders, which is now fixed.
 Fluent setters were not working for methods starting with <code>is</code>.
 Some imports for Immutables were missing.
 Support for FreeBuilder has been enhanced by using a custom <code>FreeBuilderAccessorNamingStrategy</code> that disables the check for fluent setters.
 (see <a href="https://github.com/mapstruct/mapstruct/commit/104ebf88da8c6145b790905f0c1db66a3cd35a6b">this</a> for more information).</p>
-
 <p>For people that provide their own <code>BuilderProvider</code>.
 We have changed the signature of the <code>findBuilderInfo</code> method.
 The <code>Elements</code> and <code>Types</code> utils are no longer passed in the method, but rather the SPI is initialized with the <code>MapStructProcessingEnvironment</code> before each annotation processing round.
 If you are using the <code>DefaultBuilderProvider</code> as a basis you can access those utils through a <code>protected</code> class variable.</p>
-
-<h3 id="when-will-1-3-0-final-be-released"><a class="ms-header-link" href="#when-will-1-3-0-final-be-released"><i class="fa fa-link"></i></a>When will 1.3.0.Final be released?</h3>
-
+<h3 id="when-will-130final-be-released"><a class="ms-header-link" href="#when-will-130final-be-released"><i class="fa fa-link"></i></a>When will 1.3.0.Final be released?</h3>
 <p>We have received this question a lot lately.
 We hope that this would be the last release before the 1.3.0.Final release.
 We don&rsquo;t anticipate more issues with the builders support and if the feedback is good we would release the final in few weeks.</p>
-
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-
 <p>This concludes our tour through MapStruct 1.3 Beta2.
 If you&rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:</p>
-
 <ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.3.0.Beta2|jar">org.mapstruct:mapstruct:1.3.0.Beta2</a></li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.3.0.Beta2|jar">org.mapstruct:mapstruct-processor:1.3.0.Beta2</a></li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.3.0.Beta2%7Cjar">org.mapstruct:mapstruct:1.3.0.Beta2</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.3.0.Beta2%7Cjar">org.mapstruct:mapstruct-processor:1.3.0.Beta2</a></li>
 </ul>
-
 <p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.3.0.Beta2">from GitHub</a>.</p>
-
 <p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
-
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
@@ -356,7 +320,6 @@ If you&rsquo;d like to try out the features described above, you can fetch the n
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

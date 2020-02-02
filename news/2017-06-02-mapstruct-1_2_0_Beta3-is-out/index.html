@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -146,52 +149,35 @@ ga('send', 'pageview');
     <div>
         <div><p>The summer is nearly there, and so is MapStruct 1.2.
 Today it&rsquo;s my pleasure to announce another release on our way to the Final: MapStruct 1.2 Beta 3!</p>
-
 <p>This release continues to improve and stabilize the new feature of automatically creating <a href="/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/#automatic-creation-of-sub-mapping-methods">sub-mapping methods</a>.
 By default, <a href="https://github.com/mapstruct/mapstruct/issues/1154">no sub-mapping methods are generated</a> for any types of the JDK (as those are typically no bean types which one would like to step into in the course of mapping).
 If more fine-grained control is needed, there is <a href="http://mapstruct.org/documentation/dev/reference/html/#_mapping_exclusion_provider">an SPI</a> now which lets you define for which types sub-mapping methods should be created.
 Eventually, you also can <a href="https://github.com/mapstruct/mapstruct/issues/993">turn off</a> automatic sub-mappings completely if you prefer to have full control by explicitly defining all required bean mapping methods.</p>
-
 <p>Besides that, several bugs were fixed:</p>
-
 <ul>
 <li>The generated mappers were missing import statements in some cases (<a href="https://github.com/mapstruct/mapstruct/issues/1215">#1215</a>, <a href="https://github.com/mapstruct/mapstruct/issues/1164">#1164</a>)</li>
 <li>Field mappings didn&rsquo;t work for nested target properties (<a href="https://github.com/mapstruct/mapstruct/issues/1155">#1155</a>)</li>
 <li>Accessing a non-existent nested target property wasn&rsquo;t handled gracefully (<a href="https://github.com/mapstruct/mapstruct/issues/1153">#1153</a>)</li>
 </ul>
-
-<p></p>
-
 <p>Another nice improvement related to the latter is that MapStruct <a href="https://github.com/mapstruct/mapstruct/issues/122">will suggest</a> the most-similar actual property name now when accidentally referring to a non-existing property.</p>
-
 <p>Altogether this release fixes <a href="https://github.com/mapstruct/mapstruct/milestone/21?closed=1">15 issues</a>.
 Please refer to the <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.Beta3">release notes</a> for more details.</p>
-
 <p>As always, a big thank you goes to everyone involved with the release, be it by filing bug reports or sending pull requests.
 Let me specifically mention <a href="https://twitter.com/madfilip">Filip Hrisafov</a> though who contributed the majority of changes to this release and also performed the actual release. Thanks a lot for all your hard work, Filip, that&rsquo;s much appreciated!</p>
-
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-
 <p>You can find MapStruct 1.2 Beta 3 in Maven Central under the following GAV coordinates:</p>
-
 <ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.Beta3|jar">org.mapstruct:mapstruct-jdk8:1.2.0.Beta3</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.Beta3|jar">org.mapstruct:mapstruct:1.2.0.Beta3</a> (for earlier Java versions)</li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.Beta3|jar">org.mapstruct:mapstruct-processor:1.2.0.Beta3</a></li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.2.0.Beta3%7Cjar">org.mapstruct:mapstruct-jdk8:1.2.0.Beta3</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.2.0.Beta3%7Cjar">org.mapstruct:mapstruct:1.2.0.Beta3</a> (for earlier Java versions)</li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.2.0.Beta3%7Cjar">org.mapstruct:mapstruct-processor:1.2.0.Beta3</a></li>
 </ul>
-
 <p>For those relying on the distribution bundles - containing all the JARs, documentation etc. - there&rsquo;s a small change.
 As of this release, you can download the ZIP and TAR.GZ bundles directly <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.Beta3">from GitHub</a>.
 We won&rsquo;t upload any new releases to SourceForge anymore as we found the GitHub release functionality to be more user-friendly.</p>
-
 <h3 id="next-steps"><a class="ms-header-link" href="#next-steps"><i class="fa fa-link"></i></a>Next steps</h3>
-
 <p>Beta3 is planned to be the last Beta release for MapStruct 1.2.</p>
-
 <p>So please give it a try and let us know as soon as possible if you run into any trouble.
 If no further critical bugs show up, we&rsquo;ll do one CR (candidate release) in a few weeks, followed by the Final which should be in your hands in the summer.</p>
-
 <p>To get in touch, post a comment below or use one the following channels:</p>
-
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
@@ -253,7 +239,6 @@ If no further critical bugs show up, we&rsquo;ll do one CR (candidate release) i
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

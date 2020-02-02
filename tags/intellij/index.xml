@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Intellij on MapStruct</title>
+    <title>intellij on MapStruct</title>
     <link>http://mapstruct.org/tags/intellij/</link>
-    <description>Recent content in Intellij on MapStruct</description>
+    <description>Recent content in intellij on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 19 Sep 2017 00:00:00 +0000</lastBuildDate>
@@ -19,12 +19,9 @@
       <guid>http://mapstruct.org/news/2017-09-19-announcing-mapstruct-idea/</guid>
       <description>&lt;p&gt;I am very happy to announce the first version of the MapStruct IntelliJ IDEA plugin.
 Now we have official support for 2 IDEs, Eclipse being the first IDE for which we had support from earlier (plugin &lt;a href=&#34;https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
-
 &lt;p&gt;With the power of IntelliJ you now get completions in &lt;code&gt;@Mapping&lt;/code&gt; and &lt;code&gt;@ValueMapping&lt;/code&gt; annotations (also for nested mappings ;)).
 Apart from that you also get support for: finding usages of methods directly within annotations,
-going to declarations from annotations, highlighting support within annotations and refactoring support.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+going to declarations from annotations, highlighting support within annotations and refactoring support.&lt;/p&gt;</description>
     </item>
     
   </channel>

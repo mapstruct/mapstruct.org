@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -148,15 +151,34 @@ ga('send', 'pageview');
 
     <div>
         <p>This year is nearly over, but it was started with something new that came up in the Java world: <a href="https://quarkus.io/">Quarkus</a>. You may already have heard about it, if not, don’t worry, I will quickly summarize what it is.</p>
-
 <p>Additionally to this post you can also find a working example in our <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-quarkus">examples repository</a>.</p>
-
-<p></p>
     </div>
 
     <div>
         
             <a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">Read more...</a>
+        
+    </div>
+</article>
+
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>December 06, 2019</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/">News</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b></b> under 
+</p>
+
+
+    <div>
+        
+    </div>
+
+    <div>
         
     </div>
 </article>
@@ -187,17 +209,12 @@ ga('send', 'pageview');
     <div>
         <p>It is my pleasure to announce the 1.3.1.Final bug fix release of MapStruct.
 Since the Final release of MapStruct 1.3.0.Final we have received amazing feedback from the community.</p>
-
 <p>This release includes 3 enhancements, 12 bug fixes and 7 documentation improvements.</p>
-
 <p>The enhancements include:</p>
-
 <ul>
 <li>Ability to disable builders on method level via <code>Builder#disableBuilder</code></li>
 <li>Stricter matching for lifecycle methods / non-unique parameters</li>
 </ul>
-
-<p></p>
     </div>
 
     <div>
@@ -233,9 +250,7 @@ Since the Final release of MapStruct 1.3.0.Final we have received amazing feedba
     <div>
         <p>Long overdue it is our pleasure to announce the final version MapStruct 1.3.
 This is our 3rd release since november 2015.</p>
-
 <p>Besides bug fixes, the 1.3 release brings some new exciting features:</p>
-
 <ul>
 <li>Mapping (immutable) objects using builders</li>
 <li>Enhanced and more flexible update method (<code>@MappingTarget</code>) handling</li>
@@ -246,8 +261,6 @@ This is our 3rd release since november 2015.</p>
 <li>Performance improvement of <code>constant</code> / <code>defaultValue</code> primitive to <code>String</code> mappings</li>
 <li>Warnings for precision loss</li>
 </ul>
-
-<p></p>
     </div>
 
     <div>
@@ -282,11 +295,8 @@ This is our 3rd release since november 2015.</p>
 
     <div>
         <p>It&rsquo;s my pleasure to announce the second Beta release of MapStruct 1.3.</p>
-
 <p>With the new Release we have finally made the switch to Java 8 as a baseline.</p>
-
 <p>There are a whole lot of new enhancements as well, e.g.:</p>
-
 <ul>
 <li>New <code>NullValuePropertyMappingStrategy</code> for controlling how properties are for update methods</li>
 <li>Warnings for precision loss</li>
@@ -294,60 +304,11 @@ This is our 3rd release since november 2015.</p>
 <li>Recursive source presence tracking</li>
 <li>Improvements in the builders support</li>
 </ul>
-
-<p></p>
     </div>
 
     <div>
         
             <a href="http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>July 15, 2018</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Filip Hrisafov</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>It&rsquo; my pleasure to announce the first Beta release of MapStruct 1.3.</p>
-
-<p>The new release comes with a whole lot of new functionality, e.g.:</p>
-
-<ul>
-<li>Mapping of (immutable) objects using builders</li>
-<li>Constructor injection for Annotation Based component models</li>
-<li><code>unmappedSourcePolicy</code> support</li>
-<li>Support for defaultExpression</li>
-<li>Limit mapping only to explicitly defined mappings</li>
-<li>Performance improvement of <code>constant</code> / <code>defaultValue</code> primitive to <code>String</code> mappings</li>
-</ul>
-
-<p></p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Read more...</a>
         
     </div>
 </article>
@@ -432,7 +393,6 @@ This is our 3rd release since november 2015.</p>
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

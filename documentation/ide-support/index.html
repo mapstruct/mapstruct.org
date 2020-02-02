@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -138,18 +141,11 @@ ga('send', 'pageview');
         </div>
     </div>
 </div>
-<div>
-
-<p>One of the big advantages of MapStruct is the early feedback on problems with the mapping configuration. To fully leverage this in your IDE, make sure the annotation processor runs with each compilation.</p>
-
+<div><p>One of the big advantages of MapStruct is the early feedback on problems with the mapping configuration. To fully leverage this in your IDE, make sure the annotation processor runs with each compilation.</p>
 <h2 id="eclipse"><a class="ms-header-link" href="#eclipse"><i class="fa fa-link"></i></a>Eclipse</h2>
-
 <h3 id="maven-integration"><a class="ms-header-link" href="#maven-integration"><i class="fa fa-link"></i></a>Maven Integration</h3>
-
 <p>If you are working with a Maven project, then make sure you have the latest version of the <a href="https://marketplace.eclipse.org/content/m2e-apt">m2e-apt</a> plugin installed, which picks up and applies the annotation processor settings automatically.</p>
-
 <p>For best results, add the following to the <code>pom.xml</code>:</p>
-
 <pre class="prettyprint linenums lang-">
 &lt;properties&gt;
   &lt;!-- automatically run annotation processors within the incremental compilation --&gt;
@@ -157,70 +153,44 @@ ga('send', 'pageview');
 &lt;/properties&gt;
 </pre>
 
-
 <h3 id="editing-support"><a class="ms-header-link" href="#editing-support"><i class="fa fa-link"></i></a>Editing Support</h3>
-
 <p>For Eclipse, we are also working on a Plugin that adds <em>Code Completion</em> (e.g. for property names) and <em>Quick Fixes</em> for common use cases:</p>
-
 <h4 id="completion-for-properties-and-enum-constants"><a class="ms-header-link" href="#completion-for-properties-and-enum-constants"><i class="fa fa-link"></i></a>Completion for Properties and Enum Constants</h4>
-
 <div style="text-align:center">
     <img src="/images/eclipse/still-completion-1.png" alt="Code completion for properties and enum constants"/>
 </div>
-
 <h4 id="quick-fix-to-ignore-an-unmapped-property"><a class="ms-header-link" href="#quick-fix-to-ignore-an-unmapped-property"><i class="fa fa-link"></i></a>Quick Fix to Ignore an Unmapped Property</h4>
-
 <div style="text-align:center">
     <img src="/images/eclipse/still-quickfix-1.png" alt="Quick Fix to ignore an unmapped property"/>
 </div>
-
 <h4 id="installation"><a class="ms-header-link" href="#installation"><i class="fa fa-link"></i></a>Installation</h4>
-
 <p>Drag the following icon into your running Eclipse workspace:
 <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2844337" class="drag" title="Drag to your running Eclipse workspace."><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace." /></a>.</p>
-
 <p>Alternatively, you can obtain the MapStruct Eclipse Plugin from the <a href="https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin">Eclipse Marketplace</a>.
 For more information and for installing the latest Snapshot version, visit the <a href="https://github.com/mapstruct/mapstruct-eclipse">plugins GitHub project</a>.</p>
-
 <h2 id="intellij-idea"><a class="ms-header-link" href="#intellij-idea"><i class="fa fa-link"></i></a>IntelliJ IDEA</h2>
-
 <p>Depending on how you configured the annotation processor in your Maven or Gradle project, IntelliJ may or may not pick it up automatically. You might need to make sure of it yourself in the project configuration.</p>
-
 <h3 id="maven-integration-1"><a class="ms-header-link" href="#maven-integration-1"><i class="fa fa-link"></i></a>Maven Integration</h3>
-
 <p>For example, if you use the way of Maven configuration that is proposed in our documentation using <code>annotationProcessorPaths</code> in the maven-compiler-plugin, then you need to configure IntelliJ manually until the feature request <a href="https://youtrack.jetbrains.com/issue/IDEA-150621">IDEA-150621</a> is implemented. An alternative is to add the <code>mapstruct-processor</code> as a project dependency with <code>&lt;optional&gt;true&lt;/optional&gt;</code> in your <code>pom.xml</code>, which should then be picked up automatically again.</p>
-
 <h3 id="editing-support-1"><a class="ms-header-link" href="#editing-support-1"><i class="fa fa-link"></i></a>Editing Support</h3>
-
 <p>There is an IntelliJ plugin for MapStruct support, that you can find in the Jetbrains plugins repository <a href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support">here</a>.
 The plugin is open source and you can report bugs and feature requests <a href="https://github.com/mapstruct/mapstruct-idea/issues">here</a> on GitHub.</p>
-
 <h4 id="completion-for-properties-and-enum-constants-1"><a class="ms-header-link" href="#completion-for-properties-and-enum-constants-1"><i class="fa fa-link"></i></a>Completion for Properties and Enum Constants</h4>
-
 <div style="text-align:center">
     <img src="/images/idea/source-auto-complete.gif" alt="Code completion for source"/>
 </div>
-
 <h4 id="go-to-declaration-from-annotation"><a class="ms-header-link" href="#go-to-declaration-from-annotation"><i class="fa fa-link"></i></a>Go To Declaration from annotation</h4>
-
 <div style="text-align:center">
     <img src="/images/idea/go-to-declaration-from-target.gif" alt="Go To Declaration"/>
 </div>
-
 <h4 id="find-usages"><a class="ms-header-link" href="#find-usages"><i class="fa fa-link"></i></a>Find Usages</h4>
-
 <div style="text-align:center">
     <img src="/images/idea/find-usages-from-source-method.png" alt="Find usages from Source methods"/>
 </div>
-
 <h2 id="netbeans"><a class="ms-header-link" href="#netbeans"><i class="fa fa-link"></i></a>NetBeans</h2>
-
 <h3 id="maven-integration-2"><a class="ms-header-link" href="#maven-integration-2"><i class="fa fa-link"></i></a>Maven Integration</h3>
-
 <p>If you use a Maven project, then there&rsquo;s nothing more to do. NetBeans uses Maven to compile your sources, which includes the invocation of the annotation processor.</p>
-
 <h3 id="editing-support-2"><a class="ms-header-link" href="#editing-support-2"><i class="fa fa-link"></i></a>Editing Support</h3>
-
 <p>There are no plans of special editing support for MapStruct mappers in NetBeans that we know of, yet. But we&rsquo;d love to see one!</p>
 </div>
 
@@ -240,7 +210,6 @@ The plugin is open source and you can report bugs and feature requests <a href="
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

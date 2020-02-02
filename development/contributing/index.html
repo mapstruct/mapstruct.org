@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -151,7 +154,6 @@ ga('send', 'pageview');
     </div>
 </div>
 <div><p>You love MapStruct but miss a certain feature? You found a bug and want to report it, or even better, fix it yourself? That&rsquo;s great! MapStruct is all open source and your help is highly appreciated.</p>
-
 <table class="uk-table">
 <thead>
   <tr>
@@ -176,18 +178,15 @@ ga('send', 'pageview');
   </tr>
 </tbody>
 </table>
-
 <p>MapStruct follows the <em>Fork &amp; Pull</em> development approach. To get started just fork the <a href="http://github.com/mapstruct/mapstruct">MapStruct repository</a> to your GitHub account and create a new topic branch for each change. Once you are done with your change, submit a <a href="https://help.github.com/articles/using-pull-requests">pull request</a> against the MapStruct repo.</p>
-
 <p>When doing changes, keep the following best practices in mind:</p>
-
 <ul>
 <li>Provide test cases</li>
 <li>Update the <a href="mapstruct.org/documentation">reference documentation</a> on <a href="mapstruct.org">mapstruct.org</a> where required</li>
 <li>Discuss new features you&rsquo;d like to implement at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">Google group</a> before getting started</li>
 <li>Create one pull request per feature</li>
 <li>Provide a meaningful history, e.g. squash intermediary commits before submitting a pull request</li>
-<li>Start your commit messages with &ldquo;#&lt;issue no&gt;&rdquo;, e.g. &ldquo;#123 Adding new mapping feature&rdquo;</li>
+<li>Start your commit messages with &ldquo;#&lt;issue no&gt;&quot;, e.g. &ldquo;#123 Adding new mapping feature&rdquo;</li>
 <li>Have git automatically manage line endings as described <a href="https://help.github.com/articles/dealing-with-line-endings">here</a></li>
 <li>Format your sources using the provided IntelliJ <a href="https://github.com/mapstruct/mapstruct/blob/master/etc/mapstruct.xml">code style template</a>. Eclipse users can import the <a href="https://github.com/mapstruct/mapstruct/blob/master/etc/eclipse-formatter-config.xml">Eclipse code formatter settings</a> - it&rsquo;s close enough, but configure the Save Actions to only format edited lines. If you use another IDE stick to the used style as much as possible.</li>
 </ul>
@@ -209,7 +208,6 @@ ga('send', 'pageview');
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

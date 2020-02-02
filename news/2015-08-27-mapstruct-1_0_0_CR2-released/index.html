@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -144,39 +147,25 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        <div>
-
-<p>It is my pleasure to announce the second candidate release of MapStruct 1.0!</p>
-
+        <div><p>It is my pleasure to announce the second candidate release of MapStruct 1.0!</p>
 <p>With this release, we&rsquo;re fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a <em>final</em>. Highlights of this release are:</p>
-
 <ul>
 <li>Configure package and class name for the generated mapper implementations.</li>
 <li>Define default values for target properties in case the source property is <code>null</code>.</li>
 <li>The decorator feature now fully works with Spring and JSR 330 and the documentation has been clarified on how to use decorators with all our supported component models (CDI, Spring, JSR 330, default).</li>
 </ul>
-
 <p>The complete list of 19 closed issues can be found in the <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.CR2">change log</a>.</p>
-
-<p>The MapStruct team calls out a big <em>Thank you!</em> to everyone contributing to this release: <a href="https://github.com/vgt-tomek">Tomek Gubala</a>, <a href="https://github.com/bedla">Ivo Smid</a>, <a href="https://github.com/luxmeter">Mustafa Caylak</a>, and <a href="https://github.com/ggtools">Christophe Labouisse</a>!</p>
-
+<p>The MapStruct team calls out a big <em>Thank you!</em> to everyone contributing to this release: <a href="https://github.com/vgt-tomek">Tomek Gubala</a>, <a href="https://github.com/bedla">Ivo Smid</a>, [Mustafa Caylak] (<a href="https://github.com/luxmeter),">https://github.com/luxmeter),</a> and <a href="https://github.com/ggtools">Christophe Labouisse</a>!</p>
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-
 <p>To fetch MapStruct 1.0.0.CR2 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:</p>
-
 <ul>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.0.0.CR2|jar">org.mapstruct:mapstruct:1.0.0.CR2</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.0.0.CR2|jar">org.mapstruct:mapstruct-jdk8:1.0.0.CR2</a> (for usage with Java &gt;= 8)</li>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.0.0.CR2|jar">org.mapstruct:mapstruct-processor:1.0.0.CR2</a> for the annotation processor.</li>
+<li><a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.0.0.CR2%7Cjar">org.mapstruct:mapstruct:1.0.0.CR2</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.0.0.CR2%7Cjar">org.mapstruct:mapstruct-jdk8:1.0.0.CR2</a> (for usage with Java &gt;= 8)</li>
+<li><a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.CR2%7Cjar">org.mapstruct:mapstruct-processor:1.0.0.CR2</a> for the annotation processor.</li>
 </ul>
-
 <p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.CR2/">SourceForge</a> or from <a href="https://bintray.com/mapstruct/bundles/mapstruct-dist/1.0.0.CR2/">BinTray</a>.</p>
-
 <h3 id="configure-package-and-class-name-for-the-generated-mapper-implementations"><a class="ms-header-link" href="#configure-package-and-class-name-for-the-generated-mapper-implementations"><i class="fa fa-link"></i></a>Configure package and class name for the generated mapper implementations</h3>
-
 <p>By default, MapStruct generates the mapper implementation with the class name suffix &ldquo;Impl&rdquo; in the same package as the declared mapper interface or abstract class.</p>
-
 <p>If a project follows different naming conventions, package-dependency rules or simply a ambiguity needs to be resolved, the package name and the class name of the generated implementation can be configured:</p>
-
 <pre class="prettyprint linenums">
 package com.examples.mappers;
 
@@ -189,17 +178,11 @@ public interface PersonMapper {
     PersonDto toPersonDto(Person person);
 }
 </pre>
-
 <p>In the example above, the mapper implementation would be generated to the package <code>com.examples.mappers.internal</code> with the class name <code>MapStructPersonMapperImpl</code>. As you might have already guessed, the strings <code>&lt;PACKAGE_NAME&gt;</code> and <code>&lt;CLASS_NAME&gt;</code> are replaced with the package name and the class name of the mapper interface or abstract class for which the implementation is generated.</p>
-
 <p>These options are also available in the annotation <code>@MapperConfig</code>, so you can configure this once for all mappers that use the same <a href="http://mapstruct.org/documentation/#section-shared-config">@MapperConfig</a> type.</p>
-
 <p>If you are using the component model <code>default</code> (i.e. <code>Mappers.get(...)</code>) to obtain your mapper instances, the generator will create an SPI file in <em>META-INF/services/</em> for each mapper with a customized naming pattern. The implementation of <code>Mappers</code> finds those implementation classes using the <code>ServiceLoader</code> API.</p>
-
 <h3 id="default-values-for-target-properties-in-case-the-source-property-is-null"><a class="ms-header-link" href="#default-values-for-target-properties-in-case-the-source-property-is-null"><i class="fa fa-link"></i></a>Default values for target properties in case the source property is null</h3>
-
 <p>Default values can be specified to set a predefined value to a target property if the corresponding source property is <code>null</code>.</p>
-
 <pre class="prettyprint linenums">
 @Mapper
 public interface PersonMapper {
@@ -207,17 +190,11 @@ public interface PersonMapper {
    PersonDto toPersonDto(Person person);
 }
 </pre>
-
 <p>The implementation that is generated for the example above would set the property <code>middleName</code> in the result object to the empty String <code>&quot;&quot;</code> in case <code>person.getMiddleName() == null</code>. If the target property for which the default assignment shall be done is not of type <code>String</code>, the usual type conversion / type mapping mechanism is applied.</p>
-
-<h3 id="what-s-next"><a class="ms-header-link" href="#what-s-next"><i class="fa fa-link"></i></a>What&rsquo;s next?</h3>
-
+<h3 id="whats-next"><a class="ms-header-link" href="#whats-next"><i class="fa fa-link"></i></a>What&rsquo;s next?</h3>
 <p>With CR2 out, we want to release MapStruct 1.0 Final as soon as possible. We won&rsquo;t add any new features or large refactorings for 1.0 and will allow only bugfixes. Based on the number of bugs reported against CR2, we should be ready to build the Final within the next couple of weeks.</p>
-
 <p>In the mean time, you&rsquo;re invited to try out the MapStruct <a href="https://github.com/mapstruct/mapstruct-eclipse">Eclipse plug-in</a>. Although it&rsquo;s in an early stage, it already contains some handy content-assists (e.g. for <code>source</code> and <code>target</code> property names in the <code>@Mapping</code> annotation) and quick-fixes for some common mapping errors detected by MapStruct.</p>
-
 <p>Any feedback is welcome, just post a comment below or get in touch through the following channels:</p>
-
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
@@ -280,7 +257,6 @@ public interface PersonMapper {
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

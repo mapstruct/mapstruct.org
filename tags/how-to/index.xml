@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>How To on MapStruct</title>
+    <title>how-to on MapStruct</title>
     <link>http://mapstruct.org/tags/how-to/</link>
-    <description>Recent content in How To on MapStruct</description>
+    <description>Recent content in how-to on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 08 Jul 2013 00:00:00 +0000</lastBuildDate>

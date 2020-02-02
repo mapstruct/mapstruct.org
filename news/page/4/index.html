@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -113,8 +118,6 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
     
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
-    
 </ul>
 
 
@@ -123,6 +126,51 @@ ga('send', 'pageview');
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>November 22, 2016</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/">MapStruct 1.1.0.Final seen in the wild!</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>I&rsquo;m more than thrilled to report that MapStruct 1.1 Final has been spotted in the wild!
+We grew that puppy for almost one year since the announcement of <a href="/news/2015/11/25/mapstruct-1_0_Final-released.html">MapStruct 1.0</a>, so it was about time to let it go and put a final release into your hands.</p>
+<p>Besides a plethora of bug fixes the 1.1 release adds many new features which should be very welcome to users of MapStruct 1.0:</p>
+<ul>
+<li>Nested target properties</li>
+<li><code>@ValueMapping</code> annotation for enum mappings</li>
+<li><code>@Named</code> annotation for simple string based mapping qualifiers</li>
+<li>Support for custom <code>hasXyz()</code> methods to check the presence of source properties instead of null checks</li>
+<li>Extended support of <code>java.text.NumberFormat</code> for Number types to String mapping</li>
+<li>OSGi support</li>
+<li>New built-in conversions around date/time type</li>
+</ul>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -148,11 +196,8 @@ ga('send', 'pageview');
 
     <div>
         <p>It&rsquo;s my pleasure to announce the second candidate release of MapStruct 1.1!</p>
-
 <p>This release fixes several bugs discovered in the first CR but also adds some new built-in conversions around date/time types (e.g. from/to the <code>java.sql.*</code> types and between <code>java.time.LocalDate</code> and <code>java.util.Date</code>).
 Normally, we wouldn&rsquo;t add new functionality during the CR phase, but as these conversions have been contributed by community members (kudos to you!), we thought it&rsquo;d be nice to put them into a release as soon as possible.</p>
-
-<p></p>
     </div>
 
     <div>
@@ -187,7 +232,6 @@ Normally, we wouldn&rsquo;t add new functionality during the CR phase, but as th
 
     <div>
         <p>MapStruct 1.1.0.CR1 consolodates the functionality introduced in the preceeding MapStruct 1.1.0 Beta releases. A number of bugs were solved:</p>
-
 <ul>
 <li>Automatic generation of an iterable mapping methods where the property selection is based on a qualfier.</li>
 <li>Collection source getter null check to avoid NullPointExceptions.</li>
@@ -197,8 +241,6 @@ Normally, we wouldn&rsquo;t add new functionality during the CR phase, but as th
 <li>Fixing order for dependsOn.</li>
 <li>Fixing an issue introduced 1.1.0.Beta2 that causes problems for the @MappingTarget in combination with @InheritInverseConfiguration</li>
 </ul>
-
-<p></p>
     </div>
 
     <div>
@@ -233,10 +275,7 @@ Normally, we wouldn&rsquo;t add new functionality during the CR phase, but as th
 
     <div>
         <p>It has been a while since the latest release of MapStruct. Via our mailing list, issue list and other channels we have received valuable feedback. We have tried to incorporate some of that feedback into a number of new features.</p>
-
 <p>MapStruct 1.1.0.Beta2 introduces a number of popular requested features, like source presence check and nested target properties.</p>
-
-<p></p>
     </div>
 
     <div>
@@ -271,53 +310,18 @@ Normally, we wouldn&rsquo;t add new functionality during the CR phase, but as th
 
     <div>
         <p>It has been four months since the release of the first final version of MapStruct. We&rsquo;ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.</p>
-
 <p>Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we&rsquo;ve also added some improvements and prepared for new features:</p>
-
 <ul>
 <li>The new annotation <code>@ValueMapping</code> is introduced to be used for <code>enum</code> mappings. Previously, you would have used <code>@Mapping</code> for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of <code>@Mapping</code> for <code>enum</code> mappings now triggers a <em>deprecation warning</em> and asks you to use <code>@ValueMapping</code> instead.</li>
 <li>The new annotation <code>@Named</code> is a predefined <code>@Qualifier</code> that can be used when creating a custom qualifier annotation seems too inconvenient.</li>
 <li>Handling of types with generically typed properties has been improved, so that you can now declare something like <code>SearchResult&lt;VesselDto&gt; vesselSearchResultToDto(SearchResult&lt;Vessel&gt; vessel)</code>.</li>
 <li>The preferred way of configuring the annotation processor in Maven projects has been updated to leverage the latest <code>maven-compiler-plugin</code> version&rsquo;s <code>annotationProcessorPaths</code> option, which makes the configuration a bit more smooth. <a href="/documentation/1.1/reference/html/index.html#setup">Check the updated documentation</a>.</li>
 </ul>
-
-<p></p>
     </div>
 
     <div>
         
             <a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>February 14, 2016</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/">Reference Guide brushed up and converted to AsciiDoc</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time. To name just one issue, readability wasn&rsquo;t great on smaller screen sizes.
-All that&rsquo;s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic AsciiDoctor tool.
-The guide is provided in two formats now: HTML and as PDF.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/">Read more...</a>
         
     </div>
 </article>
@@ -402,7 +406,6 @@ The guide is provided in two formats now: HTML and as PDF.
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

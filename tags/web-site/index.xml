@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web Site on MapStruct</title>
+    <title>web-site on MapStruct</title>
     <link>http://mapstruct.org/tags/web-site/</link>
-    <description>Recent content in Web Site on MapStruct</description>
+    <description>Recent content in web-site on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 02 Jan 2017 00:00:00 +0000</lastBuildDate>
@@ -18,10 +18,7 @@
       
       <guid>http://mapstruct.org/news/2017-01-02-new-year-new-website/</guid>
       <description>&lt;p&gt;The MapStruct team wishes a Happy New Year to all our users out there!&lt;/p&gt;
-
-&lt;p&gt;To start the new year fresh, we&amp;rsquo;ve given some love to our website. While its looks only slightly changed, its inner workings have been overhauled from ground up. It&amp;rsquo;s driven by &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; now, a static website generator written in Go which is very popular these days.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;To start the new year fresh, we&amp;rsquo;ve given some love to our website. While its looks only slightly changed, its inner workings have been overhauled from ground up. It&amp;rsquo;s driven by &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; now, a static website generator written in Go which is very popular these days.&lt;/p&gt;</description>
     </item>
     
     <item>

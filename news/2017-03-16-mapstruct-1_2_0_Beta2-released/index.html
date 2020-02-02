@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -145,38 +148,25 @@ ga('send', 'pageview');
 
     <div>
         <div><p>Just shy of a month after the first Beta release of MapStruct 1.2, the team is happy to announce the second Beta, fixing a couple of bugs that sneaked in with the <a href="/news/2017-02-20-mapstruct-1_2_0_Beta2-is-out-with-lombok-support-and-direct-field-access/">many new features</a> offered by the new 1.2 release line.</p>
-
 <p>We fixed <a href="https://github.com/mapstruct/mapstruct/milestone/20?closed=1">16 issues</a>, most of them reported by users. The most infamous bugs reported and fixed are:</p>
-
 <ul>
 <li><a href="https://github.com/mapstruct/mapstruct/issues/1121">Some type conversions stopped working</a> under some circumstances due to an odd JDK behaviour that we didn&rsquo;t run into previously.</li>
 <li><a href="https://github.com/mapstruct/mapstruct/issues/1104">Unmapped target properties in name based mappings</a> resulted in an error instead of being reported as configured with <code>unmappedTargetPolicy</code>.</li>
 <li>A <a href="https://github.com/mapstruct/mapstruct/issues/1103">StackOverflowError</a> was thrown while automatically generating methods in a type structure with circles.</li>
 <li><a href="https://github.com/mapstruct/mapstruct/issues/1124"><code>@Context</code> parameters didn&rsquo;t play along with nested property mappings</a>.</li>
 </ul>
-
 <p>Plus, the newly introduced automapping feature now also <a href="https://github.com/mapstruct/mapstruct/issues/1102">creates Enum mapping methods</a>.</p>
-
-<p></p>
-
 <p>We were incredibly amazed by the amount and the quality of feedback we got on the last release in such a short time. So a big <em>Thank You</em> to <a href="https://github.com/brabenetz">Harald Brabenetz</a>, <a href="https://github.com/zelark">Alexander Zhuravlev</a>, <a href="https://github.com/johnwatsondev">John Watson</a>, <a href="https://github.com/44past4">44past4</a>, <a href="https://github.com/Azork">Azork</a>, <a href="https://github.com/iersel">iersel</a>, and <a href="https://github.com/idkw">idkw</a> for your issue reports that contributed to the release!
 And after initially contributing the awesome automapping feature, <a href="https://github.com/navpil">Dmytro Polovinkin</a> continued to help out improving it - many thanks to you as well, we really appreciate it!</p>
-
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-
 <p>Ready to try out the new release? Great! We need the feedback!</p>
-
 <p>You find the new release from Maven Central using the following GAV coordinates:</p>
-
 <ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.2.0.Beta2|jar">org.mapstruct:mapstruct-jdk8:1.2.0.Beta2</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.2.0.Beta2|jar">org.mapstruct:mapstruct:1.2.0.Beta2</a> (for earlier Java versions)</li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.2.0.Beta2|jar">org.mapstruct:mapstruct-processor:1.2.0.Beta2</a></li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.2.0.Beta2%7Cjar">org.mapstruct:mapstruct-jdk8:1.2.0.Beta2</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.2.0.Beta2%7Cjar">org.mapstruct:mapstruct:1.2.0.Beta2</a> (for earlier Java versions)</li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.2.0.Beta2%7Cjar">org.mapstruct:mapstruct-processor:1.2.0.Beta2</a></li>
 </ul>
-
 <p>For those not using a dependency management tool such as Maven or Gradle, we also provide distribution bundles (ZIP, TAR.GZ) on <a href="http://sourceforge.net/projects/mapstruct/files/1.2.0.Beta2/">SourceForge</a>.</p>
-
 <p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
-
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
@@ -238,7 +228,6 @@ And after initially contributing the awesome automapping feature, <a href="https
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

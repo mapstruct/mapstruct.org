@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -145,9 +148,7 @@ ga('send', 'pageview');
 
     <div>
         <div><p>It&rsquo; my pleasure to announce the first Beta release of MapStruct 1.3.</p>
-
 <p>The new release comes with a whole lot of new functionality, e.g.:</p>
-
 <ul>
 <li>Mapping of (immutable) objects using builders</li>
 <li>Constructor injection for Annotation Based component models</li>
@@ -156,11 +157,7 @@ ga('send', 'pageview');
 <li>Limit mapping only to explicitly defined mappings</li>
 <li>Performance improvement of <code>constant</code> / <code>defaultValue</code> primitive to <code>String</code> mappings</li>
 </ul>
-
-<p></p>
-
 <p>Altogether, not less than <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.3.0.Beta1">59 issues</a> were fixed for this release.</p>
-
 <p>This would not have been possible without our fantastic community of contributors:
 <a href="https://github.com/chris922">Christian Bandowski</a>,
 <a href="https://github.com/dvfeinblum">David Feinblum</a>,
@@ -176,21 +173,14 @@ ga('send', 'pageview');
 <a href="https://github.com/sgrekov">Sergey Grekov</a>,
 <a href="https://github.com/yokotaso">Tomoya Yokota</a>,
 as well as seasoned MapStruct hackers <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a>, <a href="https://github.com/gunnarmorling">Gunnar Morling</a> and <a href="https://github.com/sjaakd">Sjaak Derksen</a>.</p>
-
 <p>Thanks a lot everyone for all your hard work!</p>
-
 <p>Big thanks to all the users of the 1.3.0-SNAPSHOT dependency of MapStruct.
 Without their input we would not have been able to release such a thorough support of the Builder mappings.</p>
-
 <p>Enough of the pep talk, let&rsquo;s take a closer look at some of the new features!</p>
-
 <h3 id="mapping-of-immutable-objects-using-builders"><a class="ms-header-link" href="#mapping-of-immutable-objects-using-builders"><i class="fa fa-link"></i></a>Mapping of (immutable) objects using builders</h3>
-
 <p>Use of builder to <a href="https://github.com/mapstruct/mapstruct/issues/782">map (immutable) objects</a> has been one of the most requested features of MapStruct.</p>
-
 <p>We are happy to announce that as of 1.3.0.Beta1 MapStruct has out of the box support for builders.
 Works with:</p>
-
 <ul>
 <li><a href="https://projectlombok.org/">Lombok</a> - requires having the Lombok classes in a separate module see <a href="https://github.com/rzwitserloot/lombok/issues/1538">rzwitserloot/lombok#1538</a></li>
 <li><a href="https://github.com/google/auto/blob/master/value/userguide/index.md">AutoValue</a></li>
@@ -199,17 +189,11 @@ Works with:</p>
 <li><a href="https://developers.google.com/protocol-buffers/docs/javatutorial">Protocol Buffer builder</a></li>
 <li>It also works for custom builders if the object being build provides a parameterless public static method for instantiating the builder. Otherwise, you would need to write a custom <code>BuilderProvider</code></li>
 </ul>
-
 <p>For more details how the Builder support works have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#mapping-with-builders">Using builders</a> of the reference guide</p>
-
 <p>We have modified our example project with protobuf support to use the out of the box support for Builders. Have a look at it <a href="https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-protobuf3">here</a>.</p>
-
 <h3 id="constructor-injection-for-annotation-based-component-models"><a class="ms-header-link" href="#constructor-injection-for-annotation-based-component-models"><i class="fa fa-link"></i></a>Constructor injection for annotation based component models</h3>
-
 <p>Construction injection for annotation based component models (<code>spring</code>, <code>cdi</code>, <code>jsr330</code>) can bow <a href="https://github.com/mapstruct/mapstruct/issues/571">be used</a>.</p>
-
 <p>Example:</p>
-
 <pre class="prettyprint linenums lang-java">
 @Mapper(uses = OrderMapper.class, componentModel = &#34;spring&#34;, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface CustomerMapper {
@@ -218,16 +202,11 @@ public interface CustomerMapper {
 }
 </pre>
 
-
 <h3 id="support-for-unmapped-properties-in-the-source-type"><a class="ms-header-link" href="#support-for-unmapped-properties-in-the-source-type"><i class="fa fa-link"></i></a>Support for unmapped properties in the source type</h3>
-
 <p>Using <code>Mapper#unmappedSourcePolicy</code> one can now control how unmapped properties of the source type of a mapping should be reported.
 For backwards compatibility it is set to <code>ReportingPolicy.IGNORE</code>.</p>
-
 <h3 id="support-for-defaultexpression"><a class="ms-header-link" href="#support-for-defaultexpression"><i class="fa fa-link"></i></a>Support for defaultExpression</h3>
-
 <p><code>Mapping#defaultExpression</code> can now <a href="https://github.com/mapstruct/mapstruct/issues/1363">be used</a> to customize the default value of a mapping.</p>
-
 <pre class="prettyprint linenums lang-java">
 @Mapper
 public interface CustomerMapper {
@@ -237,17 +216,12 @@ public interface CustomerMapper {
 }
 </pre>
 
-
 <h3 id="limit-mapping-only-to-explicitly-defined-mappings"><a class="ms-header-link" href="#limit-mapping-only-to-explicitly-defined-mappings"><i class="fa fa-link"></i></a>Limit mapping only to explicitly defined mappings</h3>
-
 <p>By using <code>@BeanMapping(ignoreByDefault = true)</code> one can limit the mapping only to the explicitly defined mappings.
 This annotation actually applies ignore to all target properties, which means that it can be used in configuration mappings to only map explicit properties in base classes.</p>
-
-<h3 id="performance-improvement-of-constant-defaultvalue-primitive-to-string-mappings"><a class="ms-header-link" href="#performance-improvement-of-constant-defaultvalue-primitive-to-string-mappings"><i class="fa fa-link"></i></a>Performance improvement of constant / defaultValue primitive to String mappings</h3>
-
+<h3 id="performance-improvement-of-constant--defaultvalue-primitive-to-string-mappings"><a class="ms-header-link" href="#performance-improvement-of-constant--defaultvalue-primitive-to-string-mappings"><i class="fa fa-link"></i></a>Performance improvement of constant / defaultValue primitive to String mappings</h3>
 <p>With <a href="https://github.com/mapstruct/mapstruct/issues/1401">#1401</a> we now try to check if it is possible to assign a <code>defaultValue</code> and / or a <code>constant</code> directly without doing a conversion.
 For example for the following mapper:</p>
-
 <pre class="prettyprint linenums lang-java">
 @Mapper
 public interface PersonMapper {
@@ -258,9 +232,7 @@ public interface PersonMapper {
 }
 </pre>
 
-
 <p>Before the following was generated:</p>
-
 <pre class="prettyprint linenums lang-java">
 public class PersonMapperImpl implements PersonMapper {
 
@@ -282,9 +254,7 @@ public class PersonMapperImpl implements PersonMapper {
 }
 </pre>
 
-
 <p>And now the following is generated:</p>
-
 <pre class="prettyprint linenums lang-java">
 public class PersonMapperImpl implements PersonMapper {
 
@@ -306,9 +276,7 @@ public class PersonMapperImpl implements PersonMapper {
 }
 </pre>
 
-
 <h3 id="enhancements"><a class="ms-header-link" href="#enhancements"><i class="fa fa-link"></i></a>Enhancements</h3>
-
 <ul>
 <li>Package private mappers with the default component model</li>
 <li>Improve performance of <code>mapstruct-processor</code> on Java 9</li>
@@ -316,22 +284,16 @@ public class PersonMapperImpl implements PersonMapper {
 <li>Implicit converstion between <code>String</code> and <code>java.util.Currency</code></li>
 <li>Improved error messages and locations</li>
 </ul>
-
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-
 <p>This concludes our tour through MapStruct 1.3 Beta1.
 If you&rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:</p>
-
 <ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.3.0.Beta1|jar">org.mapstruct:mapstruct-jdk8:1.3.0.Beta1</a> (for usage with Java &gt;= 8)
-or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.3.0.Beta1|jar">org.mapstruct:mapstruct:1.3.0.Beta1</a> (for earlier Java versions)</li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.3.0.Beta1|jar">org.mapstruct:mapstruct-processor:1.3.0.Beta1</a></li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.3.0.Beta1%7Cjar">org.mapstruct:mapstruct-jdk8:1.3.0.Beta1</a> (for usage with Java &gt;= 8)
+or <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.3.0.Beta1%7Cjar">org.mapstruct:mapstruct:1.3.0.Beta1</a> (for earlier Java versions)</li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.3.0.Beta1%7Cjar">org.mapstruct:mapstruct-processor:1.3.0.Beta1</a></li>
 </ul>
-
 <p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.3.0.Beta1">from GitHub</a>.</p>
-
 <p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
-
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
@@ -393,7 +355,6 @@ or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.3
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

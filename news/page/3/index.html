@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -113,8 +118,6 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
     
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
-    
 </ul>
 
 
@@ -123,6 +126,43 @@ ga('send', 'pageview');
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>July 25, 2017</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/">MapStruct 1.2.0.CR1 released</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>I&rsquo;m very happy to announce the first candidate release of MapStruct 1.2!</p>
+<p>The CR1 release mostly provides bug fixes and other smaller improvements since the <a href="http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/">Beta 3</a>,
+e.g. related to the handling of the <code>@ObjectFactory</code> annotation (issues <a href="https://github.com/mapstruct/mapstruct/issues/1131">#1131</a> and <a href="https://github.com/mapstruct/mapstruct/issues/1242">#1242</a>).
+Further fixes concern the handling of imports in the generated code (<a href="https://github.com/mapstruct/mapstruct/issues/1227">#1227</a>, <a href="https://github.com/mapstruct/mapstruct/issues/543">#543</a>) and the error reporting in case of incorrect mapper definitions (<a href="https://github.com/mapstruct/mapstruct/issues/1150">#1150</a>, <a href="https://github.com/mapstruct/mapstruct/issues/1185">#1185</a>).</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -149,21 +189,16 @@ ga('send', 'pageview');
     <div>
         <p>The summer is nearly there, and so is MapStruct 1.2.
 Today it&rsquo;s my pleasure to announce another release on our way to the Final: MapStruct 1.2 Beta 3!</p>
-
 <p>This release continues to improve and stabilize the new feature of automatically creating <a href="/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/#automatic-creation-of-sub-mapping-methods">sub-mapping methods</a>.
 By default, <a href="https://github.com/mapstruct/mapstruct/issues/1154">no sub-mapping methods are generated</a> for any types of the JDK (as those are typically no bean types which one would like to step into in the course of mapping).
 If more fine-grained control is needed, there is <a href="http://mapstruct.org/documentation/dev/reference/html/#_mapping_exclusion_provider">an SPI</a> now which lets you define for which types sub-mapping methods should be created.
 Eventually, you also can <a href="https://github.com/mapstruct/mapstruct/issues/993">turn off</a> automatic sub-mappings completely if you prefer to have full control by explicitly defining all required bean mapping methods.</p>
-
 <p>Besides that, several bugs were fixed:</p>
-
 <ul>
 <li>The generated mappers were missing import statements in some cases (<a href="https://github.com/mapstruct/mapstruct/issues/1215">#1215</a>, <a href="https://github.com/mapstruct/mapstruct/issues/1164">#1164</a>)</li>
 <li>Field mappings didn&rsquo;t work for nested target properties (<a href="https://github.com/mapstruct/mapstruct/issues/1155">#1155</a>)</li>
 <li>Accessing a non-existent nested target property wasn&rsquo;t handled gracefully (<a href="https://github.com/mapstruct/mapstruct/issues/1153">#1153</a>)</li>
 </ul>
-
-<p></p>
     </div>
 
     <div>
@@ -198,19 +233,14 @@ Eventually, you also can <a href="https://github.com/mapstruct/mapstruct/issues/
 
     <div>
         <p>Just shy of a month after the first Beta release of MapStruct 1.2, the team is happy to announce the second Beta, fixing a couple of bugs that sneaked in with the <a href="/news/2017-02-20-mapstruct-1_2_0_Beta2-is-out-with-lombok-support-and-direct-field-access/">many new features</a> offered by the new 1.2 release line.</p>
-
 <p>We fixed <a href="https://github.com/mapstruct/mapstruct/milestone/20?closed=1">16 issues</a>, most of them reported by users. The most infamous bugs reported and fixed are:</p>
-
 <ul>
 <li><a href="https://github.com/mapstruct/mapstruct/issues/1121">Some type conversions stopped working</a> under some circumstances due to an odd JDK behaviour that we didn&rsquo;t run into previously.</li>
 <li><a href="https://github.com/mapstruct/mapstruct/issues/1104">Unmapped target properties in name based mappings</a> resulted in an error instead of being reported as configured with <code>unmappedTargetPolicy</code>.</li>
 <li>A <a href="https://github.com/mapstruct/mapstruct/issues/1103">StackOverflowError</a> was thrown while automatically generating methods in a type structure with circles.</li>
 <li><a href="https://github.com/mapstruct/mapstruct/issues/1124"><code>@Context</code> parameters didn&rsquo;t play along with nested property mappings</a>.</li>
 </ul>
-
 <p>Plus, the newly introduced automapping feature now also <a href="https://github.com/mapstruct/mapstruct/issues/1102">creates Enum mapping methods</a>.</p>
-
-<p></p>
     </div>
 
     <div>
@@ -245,24 +275,17 @@ Eventually, you also can <a href="https://github.com/mapstruct/mapstruct/issues/
 
     <div>
         <p>It&rsquo; my pleasure to announce the first Beta release of MapStruct 1.2.</p>
-
 <p>The new release comes with a whole lot of new functionality, e.g.:</p>
-
 <ul>
 <li>MapStruct can now be used together with Project Lombok</li>
 <li>Support for Java 8 streams</li>
 <li>Mappings based on public fields (i.e. you can write DTOs without getters and setters)</li>
 <li>Automatic creation of sub-mapping methods</li>
-<li>Mapping methods can take &ldquo;pass-through&rdquo; context parameters, addressing different use cases like
-
-<ul>
+<li>Mapping methods can take &ldquo;pass-through&rdquo; context parameters, addressing different use cases like</li>
 <li>Passing a locale, timezone or similar to custom mapping methods</li>
 <li>Keeping track of processed nodes in circular object graphs</li>
-</ul></li>
 <li>Target bean factory methods can access a mapping&rsquo;s source parameter(s)</li>
 </ul>
-
-<p></p>
     </div>
 
     <div>
@@ -292,64 +315,12 @@ Eventually, you also can <a href="https://github.com/mapstruct/mapstruct/issues/
 
     <div>
         <p>The MapStruct team wishes a Happy New Year to all our users out there!</p>
-
 <p>To start the new year fresh, we&rsquo;ve given some love to our website. While its looks only slightly changed, its inner workings have been overhauled from ground up. It&rsquo;s driven by <a href="https://gohugo.io/">Hugo</a> now, a static website generator written in Go which is very popular these days.</p>
-
-<p></p>
     </div>
 
     <div>
         
             <a href="http://mapstruct.org/news/2017-01-02-new-year-new-website/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>November 22, 2016</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/">MapStruct 1.1.0.Final seen in the wild!</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>I&rsquo;m more than thrilled to report that MapStruct 1.1 Final has been spotted in the wild!
-We grew that puppy for almost one year since the announcement of <a href="/news/2015/11/25/mapstruct-1_0_Final-released.html">MapStruct 1.0</a>, so it was about time to let it go and put a final release into your hands.</p>
-
-<p>Besides a plethora of bug fixes the 1.1 release adds many new features which should be very welcome to users of MapStruct 1.0:</p>
-
-<ul>
-<li>Nested target properties</li>
-<li><code>@ValueMapping</code> annotation for enum mappings</li>
-<li><code>@Named</code> annotation for simple string based mapping qualifiers</li>
-<li>Support for custom <code>hasXyz()</code> methods to check the presence of source properties instead of null checks</li>
-<li>Extended support of <code>java.text.NumberFormat</code> for Number types to String mapping</li>
-<li>OSGi support</li>
-<li>New built-in conversions around date/time type</li>
-</ul>
-
-<p></p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/">Read more...</a>
         
     </div>
 </article>
@@ -434,7 +405,6 @@ We grew that puppy for almost one year since the announcement of <a href="/news/
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

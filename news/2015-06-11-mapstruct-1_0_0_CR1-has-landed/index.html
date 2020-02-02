@@ -16,14 +16,17 @@
         <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
 
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-41136939-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
     </head>
@@ -103,6 +106,8 @@ ga('send', 'pageview');
     
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
+    <li><a href="http://mapstruct.org/news/">News</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
@@ -112,8 +117,6 @@ ga('send', 'pageview');
     <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
     
 </ul>
 
@@ -144,41 +147,26 @@ ga('send', 'pageview');
 </p>
 
     <div>
-        <div>
-
-<p>I am very happy to announce the first candidate release of MapStruct 1.0!</p>
-
+        <div><p>I am very happy to announce the first candidate release of MapStruct 1.0!</p>
 <p>As we are approach MapStruct 1.0, this release is primarily focused on ironing out remaining glitches and fixing bugs. But there are also some new features:</p>
-
 <ul>
 <li>A new SPI for discovering property accessors not adhering to the JavaBeans convention</li>
 <li>The decorator feature can now also be used with Spring</li>
 <li>Support for before- and after-mapping lifecycle hooks</li>
 </ul>
-
 <p>The complete list of 24 closed issues can be found in the <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.0.0.CR1">change log</a>.</p>
-
 <p>A big thank you to everyone contributing to this release: <a href="https://github.com/sjaakd/">Sjaak Derksen</a>, <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/chschu">Christian Schuster</a>, <a href="https://github.com/ps-powa">Paul Strugnell</a> and <a href="https://github.com/sonata82">Remko Plantenga</a>!</p>
-
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-
 <p>To fetch MapStruct 1.0.0.CR1 via Maven, Gradle or similar dependency management tools, use the following GAV coordinates:</p>
-
 <ul>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct|1.0.0.CR1|jar">org.mapstruct:mapstruct:1.0.0.CR1</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-jdk8|1.0.0.CR1|jar">org.mapstruct:mapstruct-jdk8:1.0.0.CR1</a> (for usage with Java &gt;= 8)</li>
-<li><a href="http://search.maven.org/#artifactdetails|org.mapstruct|mapstruct-processor|1.0.0.CR1|jar">org.mapstruct:mapstruct-processor:1.0.0.CR1</a> for the annotation processor.</li>
+<li><a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.0.0.CR1%7Cjar">org.mapstruct:mapstruct:1.0.0.CR1</a> for the annotation JAR (to be used with Java &lt;= 7) or <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.0.0.CR1%7Cjar">org.mapstruct:mapstruct-jdk8:1.0.0.CR1</a> (for usage with Java &gt;= 8)</li>
+<li><a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.0.0.CR1%7Cjar">org.mapstruct:mapstruct-processor:1.0.0.CR1</a> for the annotation processor.</li>
 </ul>
-
 <p>Alternatively, you can download distribution bundles (ZIP, TAR.GZ) from <a href="http://sourceforge.net/projects/mapstruct/files/1.0.0.CR1/">SourceForge</a>.</p>
-
 <h3 id="spi-for-property-accessor-discovery"><a class="ms-header-link" href="#spi-for-property-accessor-discovery"><i class="fa fa-link"></i></a>SPI for property accessor discovery</h3>
-
 <p>By default, MapStruct expects property getters and setters adhering to the <a href="http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html">JavaBeans specification</a>.</p>
-
 <p>In some cases though models to be mapped derive from this convention. E.g. builder objects could expose property write accessors such as <code>withName()</code> (instead of <code>setName()</code>). O domain models could expose property read accessors just in the form of <code>name()</code> (instead of <code>getName()</code>).</p>
-
 <p>To make MapStruct work with such models, there is now an SPI (service provider interface) which makes the discovery of property accessors customizable. This SPI comes in the form of the following contract:</p>
-
 <pre class="prettyprint linenums">
 public interface AccessorNamingStrategy {
 
@@ -192,19 +180,13 @@ public interface AccessorNamingStrategy {
     String getCollectionGetterName(String property);
 }
 </pre>
-
 <p>The MapStruct engine will pass all candidate methods of mapping source and target types to this SPI in order to detect their property accessors. Once you have created an implementation of the contract based on your project&rsquo;s specific property naming conventions (<a href="https://github.com/mapstruct/mapstruct/blob/master/integrationtest/src/test/resources/namingStrategyTest/strategy/src/main/java/org/mapstruct/itest/naming/CustomAccessorNamingStrategy.java">an example</a> can be found in our test suite), it needs to be registered through the Java <a href="http://docs.oracle.com/javase/8/docs/api/index.html?java/util/ServiceLoader.html">service loader</a> mechanism. To do so, create the file <em>META-INF/services/org.mapstruct.ap.spi.AccessorNamingStrategy</em> with the fully-qualified name of your implementation as contents:</p>
-
 <pre class="prettyprint linenums">
 com.example.CustomAccessorNamingStrategy
 </pre>
-
 <p>Note that in order to have MapStruct find your custom strategy, it must be added as dependency either to the project class path or to the factory path of the compilation.</p>
-
 <h3 id="improved-decorator-support"><a class="ms-header-link" href="#improved-decorator-support"><i class="fa fa-link"></i></a>Improved decorator support</h3>
-
 <p><a href="/documentation/#section-decorators">Mapper decorators</a> have been supported for the default component model since Beta1. As of CR1, they can be used now with the Spring component model, too (CDI has its own notion of decorators which can be used just as is with MapStruct mappers). To enable a decorator, add it via <code>@DecoratedWith</code>:</p>
-
 <pre class="prettyprint linenums">
 @Mapper(componentModel = "spring")
 @DecoratedWith( OrderMappingDecorator.class )
@@ -213,9 +195,7 @@ public interface OrderMapper {
     OrderDto orderToDto(Order order);
 }
 </pre>
-
 <p>The decorator is simply another Spring bean which implements the decorated type. It can have the generated mapper implementation injected using the &ldquo;delegate&rdquo; qualifier:</p>
-
 <pre class="prettyprint linenums">
 @Component
 @Primary
@@ -238,15 +218,10 @@ public class OrderMappingDecorator implements OrderMapper {
     }
 }
 </pre>
-
 <p>By adding the <code>@Primary</code> annotation to the decorator it is ensured that the decorated mapper can be obtained through dependency injection without the need for further qualification at injection points.</p>
-
 <h3 id="before-and-after-mapping-callbacks"><a class="ms-header-link" href="#before-and-after-mapping-callbacks"><i class="fa fa-link"></i></a>Before and after mapping callbacks</h3>
-
 <p>Somewhat related to decorators is the new feature of before and after mapping <a href="/documentation#section-before-after">callback methods</a>. They are useful to implement generic before and after mapping logic for a wider range of source and target types. Whereas decorators are bound to a specific mapper contract, before and after mapping callbacks are bound to arbitrary source and target types.</p>
-
 <p>The following gives an example:</p>
-
 <pre class="prettyprint linenums">
 @Mapper
 public abstract class VehicleMapper {
@@ -265,17 +240,11 @@ public abstract class VehicleMapper {
     public abstract CarDto toCarDto(Car car);
 }
 </pre>
-
 <p>All generated implementations of mapping methods with <code>AbstractVehicle</code> or a sub-type as source-type (such as <code>toCarDto()</code>) will invoke the method annotated with <code>@BeforeMapping</code> at the beginning. Similarly, all methods mapping <code>AbstractVehicle</code> or a sub-type into <code>AbstractVehicleDto</code> or a sub-type will invoke the method annotated with <code>@AfterMapping</code> at the end.</p>
-
 <p>Before and after mapping callback methods are a quite powerful mechanism to implement cross-cutting concerns common to a larger group of mapping methods. Refer to the JavaDocs of <code>@BeforeMapping</code> and <code>@AfterMapping</code> to learn more, e.g. about ordering of several lifecycle methods etc. Note that before and after mapping callback methods are considered and experimental features as of MapStruct 1.0. Based on feedback from using this feature in practice we may fine-tune semantics in a subsequent release.</p>
-
-<h3 id="what-s-next"><a class="ms-header-link" href="#what-s-next"><i class="fa fa-link"></i></a>What&rsquo;s next?</h3>
-
+<h3 id="whats-next"><a class="ms-header-link" href="#whats-next"><i class="fa fa-link"></i></a>What&rsquo;s next?</h3>
 <p>With CR 1 out, MapStruct 1.0 Final is getting in sight! Based on the number of bugs reported against CR1, we may either do another CR in two or three weeks or go straight to the Final. In parallel work on the MapStruct <a href="https://github.com/mapstruct/mapstruct-eclipse">Eclipse plug-in</a> continues. We plan to do a first Alpha release of that very soon. Stay tuned!</p>
-
 <p>Finally, some useful links:</p>
-
 <ul>
 <li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
@@ -338,7 +307,6 @@ public abstract class VehicleMapper {
                                 <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
                                 <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
                                 <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
-                                <li><a class="ms-link-footer" href="https://plus.google.com/u/0/118070742567787866481">Google+</a></li>
                             </ul>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on MapStruct</title>
@@ -6,22 +6,13 @@
     <description>Recent content in Tags on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Build</title>
-      <link>http://mapstruct.org/tags/build/</link>
-      <pubDate>Mon, 08 Jul 2013 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/tags/build/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Examples</title>
+      <title>examples</title>
       <link>http://mapstruct.org/tags/examples/</link>
       <pubDate>Fri, 06 Dec 2019 00:00:00 +0000</pubDate>
       
@@ -30,52 +21,7 @@
     </item>
     
     <item>
-      <title>Feedback</title>
-      <link>http://mapstruct.org/tags/feedback/</link>
-      <pubDate>Mon, 03 Jun 2013 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/tags/feedback/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gradle</title>
-      <link>http://mapstruct.org/tags/gradle/</link>
-      <pubDate>Mon, 08 Jul 2013 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/tags/gradle/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>How To</title>
-      <link>http://mapstruct.org/tags/how-to/</link>
-      <pubDate>Mon, 08 Jul 2013 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/tags/how-to/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ide</title>
-      <link>http://mapstruct.org/tags/ide/</link>
-      <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/tags/ide/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Intellij</title>
-      <link>http://mapstruct.org/tags/intellij/</link>
-      <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/tags/intellij/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>News</title>
+      <title>news</title>
       <link>http://mapstruct.org/tags/news/</link>
       <pubDate>Fri, 06 Dec 2019 00:00:00 +0000</pubDate>
       
@@ -84,7 +30,7 @@
     </item>
     
     <item>
-      <title>Release</title>
+      <title>release</title>
       <link>http://mapstruct.org/tags/release/</link>
       <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
       
@@ -93,11 +39,65 @@
     </item>
     
     <item>
-      <title>Web Site</title>
+      <title>ide</title>
+      <link>http://mapstruct.org/tags/ide/</link>
+      <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/tags/ide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>intellij</title>
+      <link>http://mapstruct.org/tags/intellij/</link>
+      <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/tags/intellij/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web-site</title>
       <link>http://mapstruct.org/tags/web-site/</link>
       <pubDate>Mon, 02 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>http://mapstruct.org/tags/web-site/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>build</title>
+      <link>http://mapstruct.org/tags/build/</link>
+      <pubDate>Mon, 08 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/tags/build/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gradle</title>
+      <link>http://mapstruct.org/tags/gradle/</link>
+      <pubDate>Mon, 08 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/tags/gradle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>how-to</title>
+      <link>http://mapstruct.org/tags/how-to/</link>
+      <pubDate>Mon, 08 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/tags/how-to/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>feedback</title>
+      <link>http://mapstruct.org/tags/feedback/</link>
+      <pubDate>Mon, 03 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/tags/feedback/</guid>
       <description></description>
     </item>
     
