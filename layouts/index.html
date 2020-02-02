@@ -41,7 +41,7 @@
     <div class="uk-grid">
         <div class="uk-width-medium-1-1 uk-row-first">
             <h2>Latest News</h2>
-            {{ $paginator := .Paginate (where .Site.Pages "Type" "news") 3 }}
+            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "news") 3 }}
             {{ range $paginator.Pages }}
                 {{ partial "news_summary_compact.html" . }}
             {{ end }}
