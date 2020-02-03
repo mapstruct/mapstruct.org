@@ -68,12 +68,37 @@
   </url>
   
   <url>
-    <loc>http://mapstruct.org/tags/examples/</loc>
-    <lastmod>2019-12-06T00:00:00+00:00</lastmod>
+    <loc>http://mapstruct.org/news/2020-02-03-announcing-gem-tools/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/news/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/release/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/examples/</loc>
     <lastmod>2019-12-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -83,27 +108,7 @@
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/</loc>
-    <lastmod>2019-12-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/tags/news/</loc>
-    <lastmod>2019-12-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/tags/</loc>
-    <lastmod>2019-12-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/</loc>
-    <lastmod>2019-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/tags/release/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
   </url>
   

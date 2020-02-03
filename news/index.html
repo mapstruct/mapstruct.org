@@ -104,6 +104,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Announcing Gem Tools</a></li>
+    
     <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
     
     <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
@@ -116,8 +118,6 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
     
-    <li><a href="http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/">MapStruct 1.2.0.Final is out</a></li>
-    
 </ul>
 
 
@@ -126,6 +126,70 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>February 03, 2020</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Announcing Gem Tools</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Filip Hrisafov, Sjaak Derksen</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>Lately, we have been busy working on the release of MapStruct 1.4, adding new features and trying to
+simplify our codebase so we can maintain it easier and add features faster.</p>
+<p>From the start of the project we have been using a utility tool <a href="https://web.archive.org/web/20070724060104/https://hickory.dev.java.net/">Hickory</a>
+for generating Prisms (partial reflection access to annotations) during compilation time.
+Basically, we&rsquo;ve been using an annotation processor to generate access to the MapStruct annotations,
+this allows us to access the MapStruct annotation in a type-safe way, without requiring the annotation JAR to be on the processor path.
+This is a really old project and the only release on Maven Central is from March 2010.</p>
+<p>Thus we needed something newer and created our own utility.
+Say hi to <a href="https://github.com/mapstruct/tools-gem">Gem Tools</a>.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Read more...</a>
+        
+    </div>
+</article>
+
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>February 03, 2020</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/">News</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b></b> under 
+</p>
+
+
+    <div>
+        
+    </div>
+
+    <div>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -157,28 +221,6 @@ if (!doNotTrack) {
     <div>
         
             <a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>December 06, 2019</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/">News</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b></b> under 
-</p>
-
-
-    <div>
-        
-    </div>
-
-    <div>
         
     </div>
 </article>
@@ -266,49 +308,6 @@ This is our 3rd release since november 2015.</p>
     <div>
         
             <a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>November 12, 2018</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/">Java 8 as a baseline, null value property mappings improved builders support and much more: MapStruct 1.3.0.Beta2 is out</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Filip Hrisafov</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>It&rsquo;s my pleasure to announce the second Beta release of MapStruct 1.3.</p>
-<p>With the new Release we have finally made the switch to Java 8 as a baseline.</p>
-<p>There are a whole lot of new enhancements as well, e.g.:</p>
-<ul>
-<li>New <code>NullValuePropertyMappingStrategy</code> for controlling how properties are for update methods</li>
-<li>Warnings for precision loss</li>
-<li>Caching and reusing <code>javax.xml.datatype.DatatypeFactory</code></li>
-<li>Recursive source presence tracking</li>
-<li>Improvements in the builders support</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/">Read more...</a>
         
     </div>
 </article>

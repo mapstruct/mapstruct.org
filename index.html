@@ -139,6 +139,34 @@ if (!doNotTrack) {
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">Announcing Gem Tools</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>February 03, 2020</time>
+</p>
+
+
+    <div>
+        <p>Lately, we have been busy working on the release of MapStruct 1.4, adding new features and trying to
+simplify our codebase so we can maintain it easier and add features faster.</p>
+<p>From the start of the project we have been using a utility tool <a href="https://web.archive.org/web/20070724060104/https://hickory.dev.java.net/">Hickory</a>
+for generating Prisms (partial reflection access to annotations) during compilation time.
+Basically, we&rsquo;ve been using an annotation processor to generate access to the MapStruct annotations,
+this allows us to access the MapStruct annotation in a type-safe way, without requiring the annotation JAR to be on the processor path.
+This is a really old project and the only release on Maven Central is from March 2010.</p>
+<p>Thus we needed something newer and created our own utility.
+Say hi to <a href="https://github.com/mapstruct/tools-gem">Gem Tools</a>.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">MapStruct and Quarkus - a match made in heaven?</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -181,38 +209,6 @@ Since the Final release of MapStruct 1.3.0.Final we have received amazing feedba
     <div>
         
             <a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">MapStruct 1.3.0.Final is out in the wild</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>February 10, 2019</time>
-</p>
-
-
-    <div>
-        <p>Long overdue it is our pleasure to announce the final version MapStruct 1.3.
-This is our 3rd release since november 2015.</p>
-<p>Besides bug fixes, the 1.3 release brings some new exciting features:</p>
-<ul>
-<li>Mapping (immutable) objects using builders</li>
-<li>Enhanced and more flexible update method (<code>@MappingTarget</code>) handling</li>
-<li>Constructor injection for Annotation Based component models</li>
-<li>Source policy for unmapped source properties (<code>unmappedSourcePolicy</code>)</li>
-<li>Support for <code>defaultExpression</code></li>
-<li>Limit mapping only to explicitly defined mappings</li>
-<li>Performance improvement of <code>constant</code> / <code>defaultValue</code> primitive to <code>String</code> mappings</li>
-<li>Warnings for precision loss</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">Read more...</a>
         
     </div>
 </article>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Announcing Gem Tools &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+
+    <body>
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            
+
+    <li class="uk-active">
+    <a href="/news/">News</a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/">FAQ</a>
+    </li>
+
+            </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
+        </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                
+
+    <li class="uk-active">
+    <a href="/news/">News</a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/">FAQ</a>
+    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    
+    <li><a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Announcing Gem Tools</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/">Java 8 as a baseline, null value property mappings improved builders support and much more: MapStruct 1.3.0.Beta2 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/">Filip Hrisafov Taking Over as MapStruct Project Lead</a></li>
+    
+</ul>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<article class="uk-article">
+    <p class="uk-article-meta ms-article-date">
+    <time>February 03, 2020</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Announcing Gem Tools</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Filip Hrisafov, Sjaak Derksen</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+    <div>
+        <div><p>Lately, we have been busy working on the release of MapStruct 1.4, adding new features and trying to
+simplify our codebase so we can maintain it easier and add features faster.</p>
+<p>From the start of the project we have been using a utility tool <a href="https://web.archive.org/web/20070724060104/https://hickory.dev.java.net/">Hickory</a>
+for generating Prisms (partial reflection access to annotations) during compilation time.
+Basically, we&rsquo;ve been using an annotation processor to generate access to the MapStruct annotations,
+this allows us to access the MapStruct annotation in a type-safe way, without requiring the annotation JAR to be on the processor path.
+This is a really old project and the only release on Maven Central is from March 2010.</p>
+<p>Thus we needed something newer and created our own utility.
+Say hi to <a href="https://github.com/mapstruct/tools-gem">Gem Tools</a>.</p>
+<h3 id="why-create-a-new-tool"><a class="ms-header-link" href="#why-create-a-new-tool"><i class="fa fa-link"></i></a>Why create a new tool?</h3>
+<p>The Hickory Annotation processor is a really simple processor, which has served us for a really long time.
+We&rsquo;ve had no problems with it.
+However, we noticed that it is no longer easy for us to add new features quickly.
+Andrei had to close his PR <a href="https://github.com/mapstruct/mapstruct/pull/1923">#1923</a> due to different maintainability problems.
+The processor being old also meant that it had some warnings when compiling our code on newer Java versions.</p>
+<h3 id="benefits"><a class="ms-header-link" href="#benefits"><i class="fa fa-link"></i></a>Benefits</h3>
+<p>The benefits of the Gem Tools are that you can generate a gem for any annotation out there.
+The annotation can be in any third party library.
+We are actually doing this create a gem for <code>javax.xml.bind.annotation.XmlElementDecl</code>.</p>
+<h3 id="usage"><a class="ms-header-link" href="#usage"><i class="fa fa-link"></i></a>Usage</h3>
+<p>Gem Tools has 2 dependencies that you would use:</p>
+<ul>
+<li><code>gem-api</code> - The public API</li>
+<li><code>gem-processor</code> - The annotation processor needed only during compilation type.</li>
+</ul>
+<h4 id="apache-maven"><a class="ms-header-link" href="#apache-maven"><i class="fa fa-link"></i></a>Apache Maven</h4>
+<p>If you&rsquo;re using Maven to build your project add the following to your <em>pom.xml</em> to use Gem Tools:</p>
+<pre class="prettyprint linenums lang-xml">...
+&lt;properties&gt;
+    &lt;tools.gem.version&gt;1.0.0.Alpha1&lt;/tools.gem.version&gt;
+&lt;/properties&gt;
+...
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mapstruct.tools.gem&lt;/groupId&gt;
+        &lt;artifactId&gt;gem-api&lt;/artifactId&gt;
+        &lt;version&gt;${tools.gem.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+...
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;version&gt;3.5.1&lt;/version&gt; &lt;!-- or newer version --&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.8&lt;/source&gt; &lt;!-- depending on your project --&gt;
+                &lt;target&gt;1.8&lt;/target&gt; &lt;!-- depending on your project --&gt;
+                &lt;annotationProcessorPaths&gt;
+                    &lt;path&gt;
+                        &lt;groupId&gt;org.mapstruct.tools.gem&lt;/groupId&gt;
+                        &lt;artifactId&gt;gem-processor&lt;/artifactId&gt;
+                        &lt;version&gt;${tools.gem.version}&lt;/version&gt;
+                    &lt;/path&gt;
+                    &lt;!-- other annotation processors --&gt;
+                &lt;/annotationProcessorPaths&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</pre>
+
+<h4 id="gradle"><a class="ms-header-link" href="#gradle"><i class="fa fa-link"></i></a>Gradle</h4>
+<p>With Gradle, you add something along the following lines to your <em>build.gradle</em>:</p>
+<pre class="prettyprint linenums lang-groovy">
+dependencies {
+    ...
+    compile &#39;org.mapstruct.tools.gem:gem-api:1.0.0.Alpha1&#39;
+
+    annotationProcessor &#39;org.mapstruct.tools.gem:gem-processor:1.0.0.Alpha1&#39;
+}
+</pre>
+
+<h4 id="gem-api"><a class="ms-header-link" href="#gem-api"><i class="fa fa-link"></i></a>Gem API</h4>
+<p>The API surface is extremely small.
+There is one repeatable <code>GemDefinition</code> annotation which is used to tell the Gem Processor for which annotations it should generate your gems.
+For every gem definition there will be one <code>Gem</code> created which would provide access to its <code>GemValue</code>(s).</p>
+<p>e.g.</p>
+<p>Let&rsquo;s show how to create <code>MappingGem</code> for the well known MapStruct <code>@Mapping</code>.</p>
+<pre class="prettyprint linenums lang-java">
+@GemDefinition(Mapping.class)
+public interface GemGenerator {
+}
+</pre>
+
+<p>This would create a <code>MappingGem</code> with the following structure:</p>
+<pre class="prettyprint linenums lang-java">
+public class MappingGem implements Gem {
+
+    // Gem Value fields removed for clarity
+
+    private final boolean isValid;
+    private final AnnotationMirror mirror;
+
+    private MappingGem( BuilderImpl builder ) {
+        //...
+    }
+
+    public GemValue&lt;String&gt; target( ) {
+        return target;
+    }
+
+    public GemValue&lt;String&gt; source( ) {
+        return source;
+    }
+
+    public GemValue&lt;String&gt; dateFormat( ) {
+        return dateFormat;
+    }
+
+    public GemValue&lt;String&gt; numberFormat( ) {
+        return numberFormat;
+    }
+
+    public GemValue&lt;String&gt; constant( ) {
+        return constant;
+    }
+
+    public GemValue&lt;String&gt; expression( ) {
+        return expression;
+    }
+
+    public GemValue&lt;String&gt; defaultExpression( ) {
+        return defaultExpression;
+    }
+
+    public GemValue&lt;Boolean&gt; ignore( ) {
+        return ignore;
+    }
+
+    public GemValue&lt;List&lt;TypeMirror&gt;&gt; qualifiedBy( ) {
+        return qualifiedBy;
+    }
+
+    public GemValue&lt;List&lt;String&gt;&gt; qualifiedByName( ) {
+        return qualifiedByName;
+    }
+
+    public GemValue&lt;TypeMirror&gt; resultType( ) {
+        return resultType;
+    }
+
+    public GemValue&lt;List&lt;String&gt;&gt; dependsOn( ) {
+        return dependsOn;
+    }
+
+    public GemValue&lt;String&gt; defaultValue( ) {
+        return defaultValue;
+    }
+
+    public GemValue&lt;String&gt; nullValueCheckStrategy( ) {
+        return nullValueCheckStrategy;
+    }
+
+    public GemValue&lt;String&gt; nullValuePropertyMappingStrategy( ) {
+        return nullValuePropertyMappingStrategy;
+    }
+
+    @Override
+    public AnnotationMirror mirror( ) {
+        return mirror;
+    }
+
+    @Override
+    public boolean isValid( ) {
+        return isValid;
+    }
+
+    public static MappingGem  instanceOn(Element element) {
+        return build( element, new BuilderImpl() );
+    }
+
+    public static MappingGem instanceOn(AnnotationMirror mirror ) {
+        return build( mirror, new BuilderImpl() );
+    }
+
+    public static  &lt;T&gt; T  build(Element element, Builder&lt;T&gt; builder) {
+        AnnotationMirror mirror = element.getAnnotationMirrors().stream()
+            .filter( a -&gt;  &#34;org.mapstruct.Mapping&#34;.contentEquals( ( ( TypeElement )a.getAnnotationType().asElement() ).getQualifiedName() ) )
+            .findAny()
+            .orElse( null );
+        return build( mirror, builder );
+    }
+
+    public static &lt;T&gt; T build(AnnotationMirror mirror, Builder&lt;T&gt; builder ) {
+
+        // return fast
+        if ( mirror == null || builder == null ) {
+            return null;
+        }
+
+        // fetch defaults from all defined values in the annotation type
+        List&lt;ExecutableElement&gt; enclosed = ElementFilter.methodsIn( mirror.getAnnotationType().asElement().getEnclosedElements() );
+        Map&lt;String, AnnotationValue&gt; defaultValues = new HashMap&lt;&gt;( enclosed.size() );
+        enclosed.forEach( e -&gt; defaultValues.put( e.getSimpleName().toString(), e.getDefaultValue() ) );
+
+        // fetch all explicitely set annotation values in the annotation instance
+        Map&lt;String, AnnotationValue&gt; values = new HashMap&lt;&gt;( enclosed.size() );
+        mirror.getElementValues().entrySet().forEach( e -&gt; values.put( e.getKey().getSimpleName().toString(), e.getValue() ) );
+
+        // iterate and populate builder
+        for ( String methodName : defaultValues.keySet() ) {
+
+            if ( &#34;target&#34;.equals( methodName ) ) {
+                builder.setTarget( GemValue.create( values.get( methodName ), defaultValues.get( methodName ), String.class ) );
+            }
+            //...
+        }
+        builder.setMirror( mirror );
+        return builder.build();
+    }
+
+    /**
+     * A builder that can be implemented by the user to define custom logic e.g. in the
+     * build method, prior to creating the annotation gem.
+     */
+    public interface Builder&lt;T&gt; {
+
+       //...
+
+        /**
+         * The build method can be overriden in a custom custom implementation, which allows
+         * the user to define his own custom validation on the annotation.
+         *
+         * @return the representation of the annotation
+         */
+        T build();
+    }
+
+    private static class BuilderImpl implements Builder&lt;MappingGem&gt; {
+
+
+        // ...
+
+        public MappingGem build() {
+            return new MappingGem( this );
+        }
+    }
+
+}
+</pre>
+
+<p><code>GemValue</code> is a wrapper that provides access to the annotation values:</p>
+<pre class="prettyprint linenums lang-java">
+public class GemValue&lt;T&gt; {
+
+    // Different creator functions
+
+    private final T value;
+    private final T defaultValue;
+    private final AnnotationValue annotationValue;
+
+    private GemValue(T value, T defaultValue, AnnotationValue annotationValue) {
+        this.value = value;
+        this.defaultValue = defaultValue;
+        this.annotationValue = annotationValue;
+    }
+
+    /**
+     * The implied valued, the value set by the user, default value when not defined
+     *
+     * @return the implied value
+     */
+    public T get() {
+        return value != null ? value : defaultValue;
+    }
+
+    /**
+     * The value set by the user
+     *
+     * @return the value, null when not set
+     */
+    public T getValue() {
+        return value;
+    }
+
+    /**
+     * The default value, as declared in the annotation
+     *
+     * @return the default value
+     */
+    public T getDefaultValue() {
+        return defaultValue;
+    }
+
+    /**
+     * The annotation value, e.g. for printing messages {@link javax.annotation.processing.Messager#printMessage}
+     *
+     * @return the annotation value (null when not set)
+     */
+    public AnnotationValue getAnnotationValue() {
+        return annotationValue;
+    }
+
+    /**
+     * @return true a value is set by user
+     */
+    public boolean hasValue() {
+        return value != null;
+    }
+
+    /**
+     * An annotation set to be valid when set by user or a default value is present.
+     *
+     * @return true when valid
+     */
+    public boolean isValid() {
+        return value != null || defaultValue != null;
+    }
+
+}
+</pre>
+
+<p>We saw how the implementation looks like. However, the most interesting bit is how this can be used.</p>
+<pre class="prettyprint linenums lang-java">
+
+ExecutableElement method = getMappingMethod();
+for ( AnnotationMirror annotationMirror : method.getAnnotationMirrors() ) {
+   MappingGem mapping = MappingGem.instanceOn( annotationMirror );
+   if ( mapping != null ) {
+       GemValue&lt;String&gt; targetValue = mapping.target();
+       if ( !mapping.target().hasValue() ) {
+           messager.printMessage(
+               method,
+               mapping.mirror(),
+               mapping.target().getAnnotationValue(),
+               Message.PROPERTYMAPPING_EMPTY_TARGET
+           );
+       }
+    
+       if ( mapping.source().hasValue() &amp;&amp; mapping.constant().hasValue() ) {
+           messager.printMessage(
+                          method,
+                          mapping.mirror(),
+                          Message.PROPERTYMAPPING_SOURCE_AND_CONSTANT_BOTH_DEFINED
+                      );
+       }
+   }  
+}
+</pre>
+
+<p>Here we are iterating over all the annotations of the mapping method (<code>method.getAnnotationMirros()</code>).
+We try to get the <code>MappingGem</code> from the annotation (<code>MappingGem.instanceOn( annotationMirror )</code>).
+Then ff the annotation is a <code>@Mapping</code> annotation (i.e. <code>mapping != null</code>) we do some error checks:</p>
+<ul>
+<li>If there is no target value (i.e. the mapping was defined with <code>@Mapping</code>) then add a compilation error</li>
+<li>If there are both source and constant values defined, which is not allowed in MapStruct
+(i.e. defined with <code>@Mapping(target = &quot;firstName&quot;, source = &quot;name&quot;, constant = &quot;Filip&quot;)</code>) then add a compilation error</li>
+</ul>
+<h3 id="future"><a class="ms-header-link" href="#future"><i class="fa fa-link"></i></a>Future</h3>
+<p>We would like to use this project to try some ideas with the code generation that could benefit us within MapStruct.
+Currently we use Freemarker for the code generation, but we would like to explore <a href="https://github.com/square/javapoet">JavaPoet</a>.</p>
+<p>We would also invite you to try it out and tell us what you want to see in it.
+Feel Free to create issues and PRs with new functionality.</p>
+<h3 id="thanks"><a class="ms-header-link" href="#thanks"><i class="fa fa-link"></i></a>Thanks</h3>
+<p>I would like to say big thank you to Sjaak for the efforts in doing this and bringing it into MapStruct.</p>
+<p>Happy coding with Gem Tools!!</p>
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+<p>You can fetch the new release from Maven Central using the following GAV coordinates:</p>
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct.tools.gem%7Cgem-api%7C1.0.0.Alpha1%7Cjar">org.mapstruct.tools.gem:gem-api:1.0.0.Alpha1</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct.tools.gem%7Cgem-processor%7C1.0.0.Alpha1%7Cjar">org.mapstruct.tools.gem:gem-processor:1.0.0.Alpha1</a></li>
+</ul>
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
+<ul>
+<li>Get help in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/tools-gem/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+</ul></div>
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
+            </li>
+            
+            
+            <li>
+                <a href="/news/2019-12-06-mapstruct-and-quarkus/" title="MapStruct and Quarkus - a match made in heaven?"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'mapstruct';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+</article>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://groups.google.com/forum/#!forum/mapstruct-users">Google Group</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © The MapStruct authors 2019
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+
