@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Support for constructors, Gradle incremental compilation and much more: MapStruct 1.4.0.Beta1 is out &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+
+    <body>
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            
+
+    <li class="uk-active">
+    <a href="/news/">News</a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/">FAQ</a>
+    </li>
+
+            </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
+        </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                
+
+    <li class="uk-active">
+    <a href="/news/">News</a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/">FAQ</a>
+    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    
+    <li><a href="http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta1-is-out-with-constructor-support/">Support for constructors, Gradle incremental compilation and much more: MapStruct 1.4.0.Beta1 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Announcing Gem Tools</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/">MapStruct and Quarkus - a match made in heaven?</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/">MapStruct 1.3.1.Final bug fix released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/">Java 8 as a baseline, null value property mappings improved builders support and much more: MapStruct 1.3.0.Beta2 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></li>
+    
+</ul>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<article class="uk-article">
+    <p class="uk-article-meta ms-article-date">
+    <time>June 01, 2020</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta1-is-out-with-constructor-support/">Support for constructors, Gradle incremental compilation and much more: MapStruct 1.4.0.Beta1 is out</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Filip Hrisafov, Sjaak Derksen</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+    <div>
+        <div><p>It&rsquo; my pleasure to announce the first Beta release of MapStruct 1.4.</p>
+<p>The new release comes with a whole lot of new functionality, e.g.:</p>
+<ul>
+<li>Making use of constructor arguments when instantiating mapping targets</li>
+<li>Support Gradle incremental annotation processing feature</li>
+<li>Map nested bean properties to current target</li>
+<li>Support value mapping between <code>String</code> and <code>Enum</code></li>
+<li>Support <code>@Mapping</code> in meta annotations</li>
+<li>User control over mapping features (direct, method, conversion, 2step)</li>
+<li>Support mapping from / to Java 14 records (preview feature)</li>
+<li>New <code>EnumTransformationStrategy</code> and <code>EnumNamingStrategy</code> SPIs</li>
+</ul>
+<p>Altogether, not less than <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.4.0.Beta1">76 issues</a> were fixed for this release.</p>
+<p>This would not have been possible without our fantastic community of contributors:</p>
+<ul>
+<li><a href="https://github.com/Zomzog">@Zomzog</a>,</li>
+<li><a href="https://github.com/xcorail">@xcorail</a>,</li>
+<li><a href="https://github.com/juliojgd">@juliojgd</a>,</li>
+<li><a href="https://github.com/power721">@power721</a>,</li>
+<li><a href="https://github.com/mattdrees">@mattdrees</a>,</li>
+<li><a href="https://github.com/jakraska">@jakraska</a>,</li>
+<li><a href="https://github.com/dekelpilli">@dekelpilli</a>,</li>
+<li><a href="https://github.com/ttzn">@ttzn</a>,</li>
+<li><a href="https://github.com/fml2">@fml2</a>,</li>
+<li><a href="https://github.com/marceloverdijk">@marceloverdijk</a>,</li>
+<li><a href="https://github.com/vegemite4me">@vegemite4me</a>,</li>
+<li><a href="https://github.com/timjb">@timjb</a>,</li>
+<li><a href="https://github.com/sullis">@sullis</a>,</li>
+<li><a href="https://github.com/pradzins">@pradzins</a>,</li>
+<li><a href="https://github.com/seime">@seime</a>,
+and of course seasoned MapStruct hackers <a href="https://github.com/sjaakd">Sjaak Derksen</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a>, <a href="https://github.com/chris922">Christian Bandowski</a> and <a href="https://github.com/Captain1653">Andrei Arlou</a>. Thanks to <a href="https://github.com/gunnarmorling">Gunnar Morling</a> and <a href="https://github.com/agudian">Andreas Gudian</a> for the council and advice on this release.</li>
+</ul>
+<p>Thank you everyone for all your hard work!</p>
+<p>We know that it took us some time to do this, and we want to thank everyone for the patience.</p>
+<p>This release is also the first release which uses our new Gem Tools project instead of <a href="https://web.archive.org/web/20070724060104/https://hickory.dev.java.net/">Hickory</a>.
+You can read more about it in the <a href="/news/2020-02-03-announcing-gem-tools.md">Announcing Gem Tools</a> blog.
+With this release we also want to introduce a new community driven effort for different MapStruct extensions.
+More about it below.</p>
+<p>Enough of the pep talk, let&rsquo;s take a closer look at some of the new features!</p>
+<h3 id="making-use-of-constructor-arguments-when-instantiating-mapping-targets"><a class="ms-header-link" href="#making-use-of-constructor-arguments-when-instantiating-mapping-targets"><i class="fa fa-link"></i></a>Making use of constructor arguments when instantiating mapping targets</h3>
+<p>Making use of <a href="https://github.com/mapstruct/mapstruct/issues/73">constructor arguments</a> when instantiating mapping targets has been one of the oldest and the most requested feature of MapStruct.</p>
+<p>We are happy to announce that as of 1.4.0.Beta1 MapStruct has out of the box support for mapping your immutable objects via constructors.
+This works with:</p>
+<ul>
+<li><a href="https://openjdk.java.net/jeps/359">Java 14 Records</a></li>
+<li><a href="https://kotlinlang.org/docs/reference/data-classes.html">Kotlin Data Classes</a></li>
+</ul>
+<p>For more details how the Constructor support works have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#mapping-with-constructors">Using constructors</a> section of the reference guide.</p>
+<h3 id="gradle-incremental-annotation-processing"><a class="ms-header-link" href="#gradle-incremental-annotation-processing"><i class="fa fa-link"></i></a>Gradle incremental annotation processing</h3>
+<p>Starting From Gradle 4.7, Gradle has supported <a href="https://docs.gradle.org/current/userguide/java_plugin.html#sec:incremental_annotation_processing">incremental annotation processing</a>.
+We are happy to say that starting from 1.4.0.Beta1 MapStruct is an isolating processor.
+MapStruct will no longer be the reason for triggering an entire recompilation in your Gradle projects.</p>
+<h3 id="map-nested-bean-properties-to-current-target"><a class="ms-header-link" href="#map-nested-bean-properties-to-current-target"><i class="fa fa-link"></i></a>Map nested bean properties to current target</h3>
+<p>Using this you can map nested properties to the current target object.</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface CustomerMapper {
+
+    @Mapping(source = &#34;record&#34;, target = &#34;.&#34;)
+    Customer customerDtoToCustomer(CustomerDto customerDto);
+}
+</pre>
+
+<p>The generated code will map every property from <code>CustomerDto.record</code> to <code>Customer</code> directly, without need to manually name any of them.</p>
+<p>For more details have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#mapping-nested-bean-properties-to-current-target">Mapping nested bean properties to current target</a> section of the reference guide.</p>
+<h3 id="value-mapping-between-string-and-enum"><a class="ms-header-link" href="#value-mapping-between-string-and-enum"><i class="fa fa-link"></i></a>Value mapping between <code>String</code> and <code>Enum</code></h3>
+<p>We&rsquo;ve had support for mapping between different enums for a while now.
+In this release we iterated over that and expanded to support mapping between <code>String</code> and <code>Enum</code>.</p>
+<pre class="prettyprint linenums lang-java">
+public enum CheeseType {
+    BRIE,
+    ROQUEFORT
+}
+
+@Mapper
+public interface CheeseMapper {
+
+    String cheeseToString(CheeseType cheese);
+    
+    CheeseType stringToCheese(String cheese);
+}
+</pre>
+
+<p>This would generate an implementation that would use the enum value constants for mapping.
+This can be customised by using <code>@ValueMapping</code>.</p>
+<p>For more details have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#mapping-enum-types">Mapping Value</a> section of the reference guide.</p>
+<h3 id="support-mapping-in-meta-annotations"><a class="ms-header-link" href="#support-mapping-in-meta-annotations"><i class="fa fa-link"></i></a>Support <code>@Mapping</code> in meta annotations</h3>
+<p>Starting from 1.4.0.Beta1 there is an experimental support for <code>@Mapping</code> compositions.
+This allows reusing <code>@Mapping</code> via other annotations.</p>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+@Retention(RetentionPolicy.CLASS)
+@Mapping(target = &#34;id&#34;, ignore = true)
+@Mapping(target = &#34;creationDate&#34;, expression = &#34;java(new java.util.Date())&#34;)
+@Mapping(target = &#34;name&#34;, source = &#34;groupName&#34;)
+public @interface ToEntity { }
+
+@Mapper
+public interface StorageMapper {
+    
+    @ToEntity
+    @Mapping( target = &#34;weightLimit&#34;, source = &#34;maxWeight&#34;)
+    ShelveEntity map(ShelveDto source);
+    
+    @ToEntity
+    @Mapping( target = &#34;label&#34;, source = &#34;designation&#34;)
+    BoxEntity map(BoxDto source);
+}
+</pre>
+
+<p>This is an alternative to using inheritance configuration.
+The difference here is that the entities don&rsquo;t need to have any common hierarchy.
+The <code>@Mapping</code> annotations from <code>@ToEntity</code> are transformed as if they have been written on the method.</p>
+<p>For more details have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#mapping-composition">Mapping Composition</a> section of the reference guide.</p>
+<h3 id="user-control-over-mapping-features"><a class="ms-header-link" href="#user-control-over-mapping-features"><i class="fa fa-link"></i></a>User control over mapping features</h3>
+<p>MapStruct has an extensive support for implicit type conversions, reusing other mappers, 2 step conversion, etc.
+However, users were not able to control this.
+For example it was not possible to easily tell MapStruct to create a Mapper for deep cloning.</p>
+<p>In 1.4.0.Beta1 we added a new experimental annotation (<code>@MappingControl</code>) that can be used to control how the mapping should be performed.
+It can enable or disable certain types of mappings.
+This can be set over the different mechanisms that we support (<code>@BeanMapping</code>, <code>@Mapper</code>, <code>@MapperConfig</code>, etc.)</p>
+<p>The following mapping possibilities exist:</p>
+<ul>
+<li><code>BUILT_IN_CONVERSION</code> - Allows using the built in MapStruct type conversions</li>
+<li><code>COMPLEX_MAPPING</code> - Allows using 2 step mappings (type conversion passed into a mapping method, mapping method passed into a type conversion and mapping method passed into another mapping method)</li>
+<li><code>DIRECT</code> - Allows using direct mapping when the source and target type match. Types from the <code>java</code> package are always directly mapped</li>
+<li><code>MAPPING_METHOD</code> - Allows using custom referred or built in mapping methods</li>
+</ul>
+<p>Apart from being able to create your own <code>@MappingControl</code> there are some out of the box controls:</p>
+<ul>
+<li><code>@DeepClone</code> - Clones a source type to a target type (assuming source and target are of the same type).</li>
+<li><code>@NoComplexMapping</code> - Disables complex mappings, mappings that require 2 mapping means (method, built-in conversion) to constitute a mapping from source to target. This can speed up your compilation if you have mappers with a lot of methods</li>
+</ul>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+public class ShelveDTO {
+
+    private CoolBeerDTO coolBeer;
+
+    public CoolBeerDTO getCoolBeer() {
+        return coolBeer;
+    }
+
+    public void setCoolBeer(CoolBeerDTO coolBeer) {
+        this.coolBeer = coolBeer;
+    }
+}
+
+public class CoolBeerDTO {
+
+    private String beerCount;
+
+    public String getBeerCount() {
+        return beerCount;
+    }
+
+    public void setBeerCount(String beerCount) {
+        this.beerCount = beerCount;
+    }
+}
+
+@Mapper(mappingControl = DeepClone.class)
+public interface CloningMapper {
+
+    FridgeDTO clone(FridgeDTO in);
+}
+</pre>
+
+<p>In the example above without using <code>@Mapper(mappingControl = DeepClone.class)</code> MapStruct will create a shallow copy of <code>coolBeer</code> in <code>FridgeDto</code>.</p>
+<h3 id="new-spis-for-value-enum-mappings"><a class="ms-header-link" href="#new-spis-for-value-enum-mappings"><i class="fa fa-link"></i></a>New SPIs for Value (Enum) mappings</h3>
+<p>There have been a lot of requests for supporting different ways of auto mapping enums.
+For example using a prefix / suffix when mapping between different generated enums.</p>
+<p>In this release we&rsquo;ve reiterated over this and have added new ways of customizing this.
+We&rsquo;ve added a new annotation (<code>@EnumMapping</code>) for customizing how an enum mapping should look like.</p>
+<p>And we added 2 new SPIs:</p>
+<ul>
+<li><a href="https://mapstruct.org/documentation/stable/api/org/mapstruct/ap/spi/EnumTransformationStrategy.html"><code>EnumTransformationStrategy</code></a></li>
+<li><a href="https://mapstruct.org/documentation/stable/api/org/mapstruct/ap/spi/EnumNamingStrategy.html"><code>EnumNamingStrategy</code></a></li>
+</ul>
+<p>For more details have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#mapping-enum-types">Mapping Value</a> section of the reference guide.</p>
+<h4 id="enumtransformationstrategy-spi"><a class="ms-header-link" href="#enumtransformationstrategy-spi"><i class="fa fa-link"></i></a>EnumTransformationStrategy SPI</h4>
+<p>This is an SPI which allows registering custom functions that can be applied when mapping between enums on a case by case basis.
+The following are the out of the box functions:</p>
+<ul>
+<li><code>suffix</code> - Applies a suffix on the source enum</li>
+<li><code>stripSuffix</code> - Strips a suffix from the source enum</li>
+<li><code>prefix</code> - Applies a prefix on the source enum</li>
+<li><code>stripPrefix</code> - Strips a prefix from the source enum</li>
+</ul>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+public enum CheeseType {
+    BRIE,
+    ROQUEFORT
+}
+
+public enum CheeseTypePrefixed {
+    CUSTOM_BRIE,
+    CUSTOM_ROQUEFORT
+}
+
+public enum CheeseTypeSuffixed {
+    BRIE_CHEESE,
+    ROQUEFORT_CHEESE
+}
+
+@Mapper
+public interface CheeseMapper {
+
+    @EnumMapping(nameTransformationStrategy = &#34;prefix&#34;, configuration = &#34;CUSTOM_&#34;)
+    CheeseTypePrefixed map(CheeseType cheese);
+    
+    @InheritInverseConfiguration
+    CheeseType map(CheeseTypePrefixed cheese);
+    
+    @EnumMapping(nameTransformationStrategy = &#34;suffix&#34;, configuration = &#34;_CHEESE&#34;)
+    CheeseTypeSuffixed map(CheeseType cheese);
+ 
+    @InheritInverseConfiguration
+    CheeseType map(CheeseTypeSuffixed cheese);
+}
+</pre>
+
+<h4 id="enumnamingstrategy-spi"><a class="ms-header-link" href="#enumnamingstrategy-spi"><i class="fa fa-link"></i></a>EnumNamingStrategy SPI</h4>
+<p>This SPI is more advanced and is similar to the <code>AccessorNamingStrategy</code>.
+It opens the door for even more customization and providing a way to auto map enums which follow a certain standard.</p>
+<p>One example is the Protobuf <a href="https://developers.google.com/protocol-buffers/docs/style#enums">Enum Style Guide</a>.</p>
+<h3 id="enhancements"><a class="ms-header-link" href="#enhancements"><i class="fa fa-link"></i></a>Enhancements</h3>
+<ul>
+<li>Add &ldquo;verbose&rdquo; processor option to print out details if required - Can be activated by using the compiler argument <code>mapstruct.verbose=true</code></li>
+<li>Add imports to <code>@MapperConfig</code></li>
+<li>Annotation processor option for default injection strategy</li>
+<li>Allow mapping between enum and non enum in the same way as mapping between primitive and objects</li>
+<li>Support for conversion between <code>java.time.LocalDateTime</code> and <code>javax.xml.datatype.XMLGregorianCalendar</code></li>
+</ul>
+<h3 id="mapstruct-community-extensions"><a class="ms-header-link" href="#mapstruct-community-extensions"><i class="fa fa-link"></i></a>MapStruct Community Extensions</h3>
+<p>Apart from all the new features and enhancements with this release.
+We would like to introduce a new concept with which we are trying to improve the MapStruct experience.</p>
+<p>MapStruct has a lot of functionality and there are a lot of different ways that it can be used.
+Recently <a href="https://github.com/Chessray">Raimund Klein</a> came up with an interesting idea for providing some extra helpful additions to MapStruct when using the <a href="https://spring.io/">Spring Framework</a>.
+This idea lead to an initial implementation, which lead to creating the first community extension, the <a href="https://github.com/mapstruct/mapstruct-spring-extensions">MapStruct Spring Extensions</a>.
+I would like to thank Raimund for the initiative and taking the lead for this project.
+There is still no release from this extension, because it is waiting on some enhancements coming from this release.</p>
+<p>The idea of these extensions is to have their own releases which are entirely independent of MapStruct core and are driven by the community.
+The way we envision this is to have different extensions for different technology stacks (e.g. Quarkus, Micronaut, Protobuf, etc.).
+In case someone has an idea and wants to propose a new extension feel free to reach to us.</p>
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+<p>This concludes our tour through MapStruct 1.4 Beta1.
+If you&rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:</p>
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.4.0.Beta1%7Cjar">org.mapstruct:mapstruct:1.4.0.Beta1</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.4.0.Beta1%7Cjar">org.mapstruct:mapstruct-processor:1.4.0.Beta1</a></li>
+</ul>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.4.0.Beta1">from GitHub</a>.</p>
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
+<ul>
+<li>Get help in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a> or at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+</ul></div>
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
+            </li>
+            
+            
+            <li>
+                <a href="/news/2020-02-03-announcing-gem-tools/" title="Announcing Gem Tools"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'mapstruct';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+</article>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://groups.google.com/forum/#!forum/mapstruct-users">Google Group</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © The MapStruct authors 2020
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+

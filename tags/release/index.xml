@@ -6,10 +6,30 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Support for constructors, Gradle incremental compilation and much more: MapStruct 1.4.0.Beta1 is out</title>
+      <link>http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta1-is-out-with-constructor-support/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta1-is-out-with-constructor-support/</guid>
+      <description>&lt;p&gt;It&amp;rsquo; my pleasure to announce the first Beta release of MapStruct 1.4.&lt;/p&gt;
+&lt;p&gt;The new release comes with a whole lot of new functionality, e.g.:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Making use of constructor arguments when instantiating mapping targets&lt;/li&gt;
+&lt;li&gt;Support Gradle incremental annotation processing feature&lt;/li&gt;
+&lt;li&gt;Map nested bean properties to current target&lt;/li&gt;
+&lt;li&gt;Support value mapping between &lt;code&gt;String&lt;/code&gt; and &lt;code&gt;Enum&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Support &lt;code&gt;@Mapping&lt;/code&gt; in meta annotations&lt;/li&gt;
+&lt;li&gt;User control over mapping features (direct, method, conversion, 2step)&lt;/li&gt;
+&lt;li&gt;Support mapping from / to Java 14 records (preview feature)&lt;/li&gt;
+&lt;li&gt;New &lt;code&gt;EnumTransformationStrategy&lt;/code&gt; and &lt;code&gt;EnumNamingStrategy&lt;/code&gt; SPIs&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>Announcing Gem Tools</title>
