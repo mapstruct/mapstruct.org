@@ -58,16 +58,28 @@ If you're using Maven to build your project add the following to your _pom.xml_ 
 
 ## Gradle
 
-With Gradle, you add something along the following lines to your _build.gradle_:
+When using a modern version of Gradle (>= 4.6), you add something along the following lines to your _build.gradle_:
+
+{{< prettify groovy >}}dependencies {
+    ...
+    implementation 'org.mapstruct:mapstruct:{{% stableversion %}}'
+
+    annotationProcessor 'org.mapstruct:mapstruct-processor:{{% stableversion %}}'
+}
+{{< /prettify >}}
+
+If using Gradle => 4.6 and < 5.2 you might want to look at [gradle-apt-plugin](https://github.com/tbroyer/gradle-apt-plugin). There might be some tweaks you want to apply to improve the handling of generated sources.
+
+For older versions of Gradle (< 4.6), use something like this:
 
 {{< prettify groovy >}}plugins {
     ...
-    id 'net.ltgt.apt' version '0.8'
+    id 'net.ltgt.apt' version '0.21'
 }
 dependencies {
     ...
     compile 'org.mapstruct:mapstruct:{{% stableversion %}}'
-
+ 
     apt 'org.mapstruct:mapstruct-processor:{{% stableversion %}}'
 }
 {{< /prettify >}}
