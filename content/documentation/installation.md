@@ -38,7 +38,7 @@ If you're using Maven to build your project add the following to your _pom.xml_ 
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.5.1</version> <!-- or newer version -->
+            <version>3.8.1</version>
             <configuration>
                 <source>1.8</source> <!-- depending on your project -->
                 <target>1.8</target> <!-- depending on your project -->
