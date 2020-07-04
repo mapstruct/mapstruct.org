@@ -163,7 +163,7 @@ if (!doNotTrack) {
         &lt;plugin&gt;
             &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
             &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
-            &lt;version&gt;3.5.1&lt;/version&gt; &lt;!-- or newer version --&gt;
+            &lt;version&gt;3.8.1&lt;/version&gt;
             &lt;configuration&gt;
                 &lt;source&gt;1.8&lt;/source&gt; &lt;!-- depending on your project --&gt;
                 &lt;target&gt;1.8&lt;/target&gt; &lt;!-- depending on your project --&gt;
@@ -182,15 +182,25 @@ if (!doNotTrack) {
 </pre>
 
 <h2 id="gradle"><a class="ms-header-link" href="#gradle"><i class="fa fa-link"></i></a>Gradle</h2>
-<p>With Gradle, you add something along the following lines to your <em>build.gradle</em>:</p>
+<p>When using a modern version of Gradle (&gt;= 4.6), you add something along the following lines to your <em>build.gradle</em>:</p>
+<pre class="prettyprint linenums lang-groovy">dependencies {
+    ...
+    implementation &#39;org.mapstruct:mapstruct:1.3.1.Final&#39;
+
+    annotationProcessor &#39;org.mapstruct:mapstruct-processor:1.3.1.Final&#39;
+}
+</pre>
+
+<p>If using Gradle =&gt; 4.6 and &lt; 5.2 you might want to look at <a href="https://github.com/tbroyer/gradle-apt-plugin">gradle-apt-plugin</a>. There might be some tweaks you want to apply to improve the handling of generated sources.</p>
+<p>For older versions of Gradle (&lt; 4.6), use something like this:</p>
 <pre class="prettyprint linenums lang-groovy">plugins {
     ...
-    id &#39;net.ltgt.apt&#39; version &#39;0.8&#39;
+    id &#39;net.ltgt.apt&#39; version &#39;0.21&#39;
 }
 dependencies {
     ...
     compile &#39;org.mapstruct:mapstruct:1.3.1.Final&#39;
-
+ 
     apt &#39;org.mapstruct:mapstruct-processor:1.3.1.Final&#39;
 }
 </pre>
