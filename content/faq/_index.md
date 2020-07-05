@@ -266,6 +266,20 @@ More detailed information can be found in the reference guide.
 
 {{% /faq_question %}}
 
+{{% faq_question "Problems with qualifiers" %}}
+MapStruct uses the mechanism of Qualifiers to resolve conflicts. MapStruct selects methods based on the combination of source type and target type.
+
+An error labeled: "Qualifier error" is MapStructs way of letting you know that it cannot find the method you intended to annotate with a qualifier annotation or with `@Named`. There can be several reasons for this:
+
+* you forgot to add the proper retention policy. It must be `@Retention(RetentionPolicy.CLASS)`
+* you forgot to add the qualifier (your own annotation, or `@Named`) to the designated method
+* the method signature to which you added the qualfier does not match the source type and target type required for the mapping
+* in 1.3.x and earlier, MapStruct was more lenient and allowed qualifiers also if MapStruct did not actually use them. That has been fixed in 1.4.x, on order to get consistent behaviour
+* if you wanted to use a 2 step mapping (so selecting two mapping methods) to get from source to target, you need to add the qualifier to both designated methods.
+
+
+{{% /faq_question %}}
+
 {{% faq_question "How to avoid MapStruct selecting a method?" %}}
 
 MapStruct selects methods by means of assignabillity of source - and target type:
