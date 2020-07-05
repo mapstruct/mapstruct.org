@@ -150,6 +150,12 @@ if (!doNotTrack) {
         </li>
     
         <li>
+            <a href="#problems-with-qualifiers">
+                Problems with qualifiers
+            </a>
+        </li>
+    
+        <li>
             <a href="#how-to-avoid-mapstruct-selecting-a-method">
                 How to avoid MapStruct selecting a method?
             </a>
@@ -471,6 +477,18 @@ public interface MyMapper {
 </table>
 </div>
 <p>More detailed information can be found in the reference guide.</p>
+</div>
+<h2 id="Problems-with-qualifiers"><a class="ms-header-link" href="#Problems-with-qualifiers"><i class="fa fa-link"></i></a>Problems with qualifiers</h2>
+<div>
+<p>MapStruct uses the mechanism of Qualifiers to resolve conflicts. MapStruct selects methods based on the combination of source type and target type.</p>
+<p>An error labeled: &ldquo;Qualifier error&rdquo; is MapStructs way of letting you know that it cannot find the method you intended to annotate with a qualifier annotation or with <code>@Named</code>. There can be several reasons for this:</p>
+<ul>
+<li>you forgot to add the proper retention policy. It must be <code>@Retention(RetentionPolicy.CLASS)</code></li>
+<li>you forgot to add the qualifier (your own annotation, or <code>@Named</code>) to the designated method</li>
+<li>the method signature to which you added the qualfier does not match the source type and target type required for the mapping</li>
+<li>in 1.3.x and earlier, MapStruct was more lenient and allowed qualifiers also if MapStruct did not actually use them. That has been fixed in 1.4.x, on order to get consistent behaviour</li>
+<li>if you wanted to use a 2 step mapping (so selecting two mapping methods) to get from source to target, you need to add the qualifier to both designated methods.</li>
+</ul>
 </div>
 <h2 id="How-to-avoid-MapStruct-selecting-a-method"><a class="ms-header-link" href="#How-to-avoid-MapStruct-selecting-a-method"><i class="fa fa-link"></i></a>How to avoid MapStruct selecting a method?</h2>
 <div>

@@ -6,10 +6,24 @@
     <description>Recent content in news on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.4.0.Beta2 is out</title>
+      <link>http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta2-is-out/</link>
+      <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta2-is-out/</guid>
+      <description>&lt;p&gt;Today we release a new beta version of MapStruct 1.4.0. We are very happy to have received good feedback from our users. However, it is like always when writing software bugs are made and are there to be solved. So what did we tackle in 1.4.0.Beta2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Improve perforance for 2 step mapping methods&lt;/li&gt;
+&lt;li&gt;Having 2 step mapping methods, based on a generic -in between- type. For example: source (String) -&amp;gt; Embeded mapStringToEmbeded(String s) -&amp;gt; &lt;T&gt; List&lt;T&gt; toSingleElementList( T e ) -&amp;gt; target (List&lt;Embeded&gt;)&lt;/li&gt;
+&lt;li&gt;Improved error messages for qualifiers&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>Support for constructors, Gradle incremental compilation and much more: MapStruct 1.4.0.Beta1 is out</title>
