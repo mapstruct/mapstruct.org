@@ -31,7 +31,7 @@ You love MapStruct but miss a certain feature? You found a bug and want to repor
     <td width="20%">Discussions</td><td>Join the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> Google group</td>
   </tr>
   <tr>
-    <td width="20%">CI build</td><td><a href="https://mapstruct.ci.cloudbees.com">https://mapstruct.ci.cloudbees.com</a></td>
+    <td width="20%">CI build</td><td><a href="https://github.com/mapstruct/mapstruct/actions?query=branch%3Amaster+workflow%3ACI"</a></td>
   </tr>
   <tr>
     <td width="20%">This web site</td><td><a href="https://github.com/mapstruct/mapstruct.org">https://github.com/mapstruct/mapstruct.org</a></td>
