@@ -7,7 +7,7 @@ tags: [release, news]
 
 Today we release a new beta version of MapStruct 1.4.0. We are very happy to have received good feedback from our users. However, it is like always when writing software bugs are made and are there to be solved. So what did we tackle in 1.4.0.Beta2
 
-* Improve perforance for 2 step mapping methods
+* Improve performance for 2 step mapping methods
 * Having 2 step mapping methods, based on a generic -in between- type. For example: source (String) -> Embeded mapStringToEmbeded(String s) -> <T> List<T> toSingleElementList( T e ) -> target (List<Embeded>)
 * Improved error messages for qualifiers    
     
