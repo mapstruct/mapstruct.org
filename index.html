@@ -139,6 +139,31 @@ if (!doNotTrack) {
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">MapStruct 1.4.0.Beta3 is out</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>July 19, 2020</time>
+</p>
+
+
+    <div>
+        <p>Today we release a new beta version of MapStruct 1.4.0. We are very happy to have received good feedback from our users. However, it is like always when writing software bugs are made and are there to be solved. So what did we tackle in 1.4.0.Beta3</p>
+<ul>
+<li>Improve selection of mapping constructor</li>
+<li>Improve error messages for 2 step mapping methods</li>
+<li>Fix various bugs and regressions in relation to 2 step mappings</li>
+</ul>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2020-07-19-mapstruct-1_4_0_Beta3-is-out/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">MapStruct 1.4.0.Beta2 is out</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -149,7 +174,7 @@ if (!doNotTrack) {
     <div>
         <p>Today we release a new beta version of MapStruct 1.4.0. We are very happy to have received good feedback from our users. However, it is like always when writing software bugs are made and are there to be solved. So what did we tackle in 1.4.0.Beta2</p>
 <ul>
-<li>Improve perforance for 2 step mapping methods</li>
+<li>Improve performance for 2 step mapping methods</li>
 <li>Having 2 step mapping methods, based on a generic -in between- type. For example: source (String) -&gt; Embeded mapStringToEmbeded(String s) -&gt; <T> List<T> toSingleElementList( T e ) -&gt; target (List<Embeded>)</li>
 <li>Improved error messages for qualifiers</li>
 </ul>
@@ -189,34 +214,6 @@ if (!doNotTrack) {
     <div>
         
             <a href="http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta1-is-out-with-constructor-support/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">Announcing Gem Tools</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>February 03, 2020</time>
-</p>
-
-
-    <div>
-        <p>Lately, we have been busy working on the release of MapStruct 1.4, adding new features and trying to
-simplify our codebase so we can maintain it easier and add features faster.</p>
-<p>From the start of the project we have been using a utility tool <a href="https://web.archive.org/web/20070724060104/https://hickory.dev.java.net/">Hickory</a>
-for generating Prisms (partial reflection access to annotations) during compilation time.
-Basically, we&rsquo;ve been using an annotation processor to generate access to the MapStruct annotations,
-this allows us to access the MapStruct annotation in a type-safe way, without requiring the annotation JAR to be on the processor path.
-This is a really old project and the only release on Maven Central is from March 2010.</p>
-<p>Thus we needed something newer and created our own utility.
-Say hi to <a href="https://github.com/mapstruct/tools-gem">Gem Tools</a>.</p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Read more...</a>
         
     </div>
 </article>
