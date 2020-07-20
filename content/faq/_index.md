@@ -271,17 +271,17 @@ More detailed information can be found in the reference guide.
 MapStruct tries various mechanisms to map a sourceproperty to a taregtproperty when it cannot make a direct mapping. In order, MapStruct tries:
 
 1. other mapping methods (inside the mapper, or via the uses relation). This concerns both hand-written methods and MapStruct generated methods
-2. direct mapping (soure type is directly assignable to target type)
+2. direct mapping (source type is directly assignable to target type)
 3. type conversions (e.g. from int to String)
 4. BuiltIn methods (see documentation on a list of supported methods)
 5. 2 step method, variant 1: `target = methodY( methodX ( source ) )`
 6. 2 step method, variant 2: `target = methodY( conversionX ( source ) )`
 7. 2 step method, variant 3: `target = conversionY( methodX ( source ) )`
 
-Whenever MapStruct finds a unique candidate, MapStruct stops and uses this method to make the mapping between source and target. However, for option 1, 5, 6, 7 it is possible that multiple egible candidtates are found for which MapStruct cannot decide to make select one. MapStruct reports this as "ambiguous mapping method" and lists the methods from which it cannot make a selection. Here, you have to guide MapStruct making the correct mapping.
+Whenever MapStruct finds a unique candidate, MapStruct stops and uses this method to make the mapping between source and target. However, for option 1, 5, 6, 7 it is possible that multiple eligible candidtates are found for which MapStruct cannot decide which one to select. MapStruct reports this as "ambiguous mapping method" and lists the methods from which it cannot make a selection. Here, you have to guide MapStruct in making the correct mapping.
 
 This can be done in the following ways:
-* provide an method with the exact signature if MapStruct cannot select between base- and super types.
+* provide a method with the exact signature if MapStruct cannot select between base- and super types.
 * provide qualifiers.
 
 {{% /faq_question %}}
