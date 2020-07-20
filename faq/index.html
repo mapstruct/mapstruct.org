@@ -150,6 +150,12 @@ if (!doNotTrack) {
         </li>
     
         <li>
+            <a href="#how-to-solve-ambiguous-methods">
+                How to solve ambiguous methods
+            </a>
+        </li>
+    
+        <li>
             <a href="#problems-with-qualifiers">
                 Problems with qualifiers
             </a>
@@ -477,6 +483,25 @@ public interface MyMapper {
 </table>
 </div>
 <p>More detailed information can be found in the reference guide.</p>
+</div>
+<h2 id="How-to-solve-ambiguous-methods"><a class="ms-header-link" href="#How-to-solve-ambiguous-methods"><i class="fa fa-link"></i></a>How to solve ambiguous methods</h2>
+<div>
+<p>MapStruct tries various mechanisms to map a sourceproperty to a taregtproperty when it cannot make a direct mapping. In order, MapStruct tries:</p>
+<ol>
+<li>other mapping methods (inside the mapper, or via the uses relation). This concerns both hand-written methods and MapStruct generated methods</li>
+<li>direct mapping (source type is directly assignable to target type)</li>
+<li>type conversions (e.g. from int to String)</li>
+<li>BuiltIn methods (see documentation on a list of supported methods)</li>
+<li>2 step method, variant 1: <code>target = methodY( methodX ( source ) )</code></li>
+<li>2 step method, variant 2: <code>target = methodY( conversionX ( source ) )</code></li>
+<li>2 step method, variant 3: <code>target = conversionY( methodX ( source ) )</code></li>
+</ol>
+<p>Whenever MapStruct finds a unique candidate, MapStruct stops and uses this method to make the mapping between source and target. However, for option 1, 5, 6, 7 it is possible that multiple eligible candidtates are found for which MapStruct cannot decide which one to select. MapStruct reports this as &ldquo;ambiguous mapping method&rdquo; and lists the methods from which it cannot make a selection. Here, you have to guide MapStruct in making the correct mapping.</p>
+<p>This can be done in the following ways:</p>
+<ul>
+<li>provide a method with the exact signature if MapStruct cannot select between base- and super types.</li>
+<li>provide qualifiers.</li>
+</ul>
 </div>
 <h2 id="Problems-with-qualifiers"><a class="ms-header-link" href="#Problems-with-qualifiers"><i class="fa fa-link"></i></a>Problems with qualifiers</h2>
 <div>
