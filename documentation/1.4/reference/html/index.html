@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.4.0.Beta3 Reference Guide</title>
+<title>MapStruct 1.4.0.CR1 Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -534,10 +534,10 @@ ga('send', 'pageview');
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.4.0.Beta3 Reference Guide</h1>
+<h1>MapStruct 1.4.0.CR1 Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2020-07-19</span>
+<span id="revdate">2020-08-30</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -764,7 +764,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.4.0.Beta3<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.4.0.CR1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -970,8 +970,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.4.0.Beta3.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.4.0.Beta3.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.4.0.CR1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.4.0.CR1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -3548,7 +3548,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.4.0.Beta3/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.4.0.CR1/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -5504,7 +5504,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 </div>
 </div>
 <div class="paragraph">
-<p>So, which <code>Fruit</code> must be factorized in the mapping method <code>Fruit map(FruitDto source);</code>? A <code>Banana</code> or an <code>Apple</code>? Here&#8217;s were the <code>@BeanMapping#resultType</code> comes in handy. It controls the factory method to select, or in absence of a factory method, the return type to create.</p>
+<p>So, which <code>Fruit</code> must be factorized in the mapping method <code>Fruit map(FruitDto source);</code>? A <code>Banana</code> or an <code>Apple</code>? Here&#8217;s where the <code>@BeanMapping#resultType</code> comes in handy. It controls the factory method to select, or in absence of a factory method, the return type to create.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -5584,7 +5584,7 @@ For all other objects an new instance is created. Please note that a default con
 </ol>
 </div>
 <div class="paragraph">
-<p>The strategy works in a hierarchical fashion. Setting <code>Mapping#nullValuePropertyMappingStrategy</code> on mapping level will override <code>nullValuePropertyMappingStrategy</code> on mapping method level will override <code>@Mapper#nullValuePropertyMappingStrategy</code>, and <code>@Mapper#nullValuePropertyMappingStrategy</code> will override <code>@MappingConfig#nullValuePropertyMappingStrategy</code>.</p>
+<p>The strategy works in a hierarchical fashion. Setting <code>nullValuePropertyMappingStrategy</code> on mapping method level will override <code>@Mapper#nullValuePropertyMappingStrategy</code>, and <code>@Mapper#nullValuePropertyMappingStrategy</code> will override <code>@MappingConfig#nullValuePropertyMappingStrategy</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6607,7 +6607,7 @@ parameters and constructing a new target bean.</p>
 <div class="sect2">
 <h3 id="_custom_accessor_naming_strategy"><a class="anchor" href="#_custom_accessor_naming_strategy"></a>13.1. Custom Accessor Naming Strategy</h3>
 <div class="paragraph">
-<p>MapStruct offers the possibility to override the <code>AccessorNamingStrategy</code> via the Service Provide Interface (SPI). A nice example is the use of the fluent API on the source object <code>GolfPlayer</code> and <code>GolfPlayerDto</code> below.</p>
+<p>MapStruct offers the possibility to override the <code>AccessorNamingStrategy</code> via the Service Provider Interface (SPI). A nice example is the use of the fluent API on the source object <code>GolfPlayer</code> and <code>GolfPlayerDto</code> below.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 90. Source object GolfPlayer with fluent API.</div>
@@ -7051,7 +7051,7 @@ A nice example is to provide support for a custom builder strategy.</p>
 <div class="sect2">
 <h3 id="custom-enum-naming-strategy"><a class="anchor" href="#custom-enum-naming-strategy"></a>13.3. Custom Enum Naming Strategy</h3>
 <div class="paragraph">
-<p>MapStruct offers the possibility to override the <code>EnumNamingStrategy</code> via the Service Provider Interface (SPI).
+<p>MapStruct offers the possibility to override the <code>EnumMappingStrategy</code> via the Service Provider Interface (SPI).
 This can be used when you have certain enums that follow some conventions within your organization.
 For example all enums which implement an interface named <code>CustomEnumMarker</code> are prefixed with <code>CUSTOM_</code>
 and the default value for them when mapping from <code>null</code> is <code>UNSPECIFIED</code></p>
@@ -7130,8 +7130,8 @@ and the default value for them when mapping from <code>null</code> is <code>UNSP
 </div>
 </div>
 <div class="paragraph">
-<p>This can be achieved with implementing the SPI <code>org.mapstruct.ap.spi.EnumNamingStrategy</code> as in the following example.
-Here’s an implemented <code>org.mapstruct.ap.spi.EnumNamingStrategy</code>:</p>
+<p>This can be achieved with implementing the SPI <code>org.mapstruct.ap.spi.EnumMappingStrategy</code> as in the following example.
+Here’s an implemented <code>org.mapstruct.ap.spi.EnumMappingStrategy</code>:</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 102. Custom enum naming strategy</div>
@@ -7173,7 +7173,7 @@ Here’s an implemented <code>org.mapstruct.ap.spi.EnumNamingStrategy</code>:</p
 32
 33
 </pre></td>
-  <td class="code"><pre><span class="directive">public</span> <span class="type">class</span> <span class="class">CustomEnumNamingStrategy</span> <span class="directive">extends</span> DefaultEnumNamingStrategy {
+  <td class="code"><pre><span class="directive">public</span> <span class="type">class</span> <span class="class">CustomEnumMappingStrategy</span> <span class="directive">extends</span> DefaultEnumMappingStrategy {
 
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="predefined-type">String</span> getDefaultNullEnumConstant(TypeElement enumType) {
@@ -7365,7 +7365,7 @@ A nice example is to provide support for a custom transformation strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-19 18:10:18 +0200
+Last updated 2020-08-30 16:31:48 +0200
 </div>
 </div>
 </body>
