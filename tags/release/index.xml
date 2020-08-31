@@ -6,10 +6,26 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.4.0.CR1 released</title>
+      <link>http://mapstruct.org/news/2020-08-31-mapstruct-1_4_0_CR1-released/</link>
+      <pubDate>Sun, 30 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2020-08-31-mapstruct-1_4_0_CR1-released/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m very happy to announce the first candidate release of MapStruct 1.4!&lt;/p&gt;
+&lt;p&gt;The CR1 release mostly provides bug fixes and other smaller improvements since the &lt;a href=&#34;https://mapstruct.org/news/2020-07-19-mapstruct-1_4_0_Beta3-is-out/&#34;&gt;Beta 3&lt;/a&gt;,
+So what did we tackle in 1.4.0.RC1&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for using a custom exception for an unexpected value mapping&lt;/li&gt;
+&lt;li&gt;Fix various bugs with generics and constructor mapping&lt;/li&gt;
+&lt;li&gt;Various small enhancements around error messages&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.4.0.Beta3 is out</title>

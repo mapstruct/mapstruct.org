@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MapStruct 1.4.0.Beta2 is out &ndash; MapStruct</title>
+        <title>MapStruct 1.4.0.CR1 released &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -127,10 +127,10 @@ if (!doNotTrack) {
             
 <article class="uk-article">
     <p class="uk-article-meta ms-article-date">
-    <time>July 05, 2020</time>
+    <time>August 30, 2020</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta2-is-out/">MapStruct 1.4.0.Beta2 is out</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-08-31-mapstruct-1_4_0_CR1-released/">MapStruct 1.4.0.CR1 released</a></h1>
 
 <p class="uk-article-meta ms-article-author">
     By <b>Filip Hrisafov, Sjaak Derksen</b> under 
@@ -147,23 +147,84 @@ if (!doNotTrack) {
 </p>
 
     <div>
-        <div><p>Today we release a new beta version of MapStruct 1.4.0. We are very happy to have received good feedback from our users. However, it is like always when writing software bugs are made and are there to be solved. So what did we tackle in 1.4.0.Beta2</p>
+        <div><p>I&rsquo;m very happy to announce the first candidate release of MapStruct 1.4!</p>
+<p>The CR1 release mostly provides bug fixes and other smaller improvements since the <a href="https://mapstruct.org/news/2020-07-19-mapstruct-1_4_0_Beta3-is-out/">Beta 3</a>,
+So what did we tackle in 1.4.0.RC1</p>
 <ul>
-<li>Improve performance for 2 step mapping methods</li>
-<li>Having 2 step mapping methods, based on a generic -in between- type. For example: source (String) -&gt; Embeded mapStringToEmbeded(String s) -&gt; <T> List<T> toSingleElementList( T e ) -&gt; target (List<Embeded>)</li>
-<li>Improved error messages for qualifiers</li>
+<li>Support for using a custom exception for an unexpected value mapping</li>
+<li>Fix various bugs with generics and constructor mapping</li>
+<li>Various small enhancements around error messages</li>
 </ul>
-<p><a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.4.0.Beta2">11 issues</a> were fixed for this release.</p>
+<p><a href="https://github.com/mapstruct/mapstruct/milestone/33">8 issues</a> were fixed for this release.</p>
 <p>Thanks to our MapStruct community for being vigilant. The MapStruct authors: <a href="https://github.com/filiphr">Filip Hrisafov</a>, <a href="https://github.com/chris922">Christian Bandowski</a>, <a href="https://github.com/Captain1653">Andrei Arlou</a> and <a href="https://github.com/sjaakd">Sjaak Derksen</a>.</p>
 <p>Thank you everyone for all your hard work!</p>
+<h3 id="support-for-using-a-custom-exception-for-an-unexpected-value-mapping"><a class="ms-header-link" href="#support-for-using-a-custom-exception-for-an-unexpected-value-mapping"><i class="fa fa-link"></i></a>Support for using a custom exception for an unexpected value mapping</h3>
+<p>In this release we added support for using custom exceptions for unexpected value mappings</p>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+public class CustomIllegalArgumentException extends RuntimeException {
+
+    public CustomIllegalArgumentException(String message) {
+        super(message);
+    }
+}
+
+public enum OrderType {
+
+    RETAIL, STANDARD, NORMAL
+}
+
+public enum ExternalOrderType {
+
+    RETAIL, STANDARD, NORMAL
+}
+
+@Mapper
+public interface OrderTypeMapperMapper {
+    
+    @EnumMapping(unexpectedValueMappingException = CustomIllegalArgumentException.class)
+    ExternalOrderType map(OrderType orderType);
+}
+</pre>
+
+<p>Will generate the following mapper:</p>
+<pre class="prettyprint linenums lang-java">
+public OrderTypeMapperImpl implements OrderTypeMapper {
+
+    @Override
+    public ExternalOrderType map(OrderType orderType) {
+        if ( orderType == null ) {
+            return null;
+        }
+
+        ExternalOrderType externalOrderType;
+
+        switch ( orderType ) {
+            case STANDARD: externalOrderType = ExternalOrderType.STANDARD;
+            break;
+            case NORMAL: externalOrderType = ExternalOrderType.NORMAL;
+            break;
+            case RETAIL: externalOrderType = ExternalOrderType.RETAIL;
+            break;
+            default: throw new CustomIllegalArgumentException( &#34;Unexpected enum constant: &#34; + orderType );
+        }
+
+        return externalOrderType;
+    }
+}
+</pre>
+
+<h3 id="when-will-we-release-14-final"><a class="ms-header-link" href="#when-will-we-release-14-final"><i class="fa fa-link"></i></a>When will we release 1.4 Final?</h3>
+<p>We will wait for few weeks to get some feedback from the community and then do the final release for 1.4.
+We don&rsquo;t expect major issues, since we have already received good feedback and ironed out the problems that we&rsquo;ve had.</p>
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-<p>This concludes our tour through MapStruct 1.4 Beta2.
+<p>This concludes our tour through MapStruct 1.4 CR1.
 If you&rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:</p>
 <ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.4.0.Beta2%7Cjar">org.mapstruct:mapstruct:1.4.0.Beta2</a></li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.4.0.Beta2%7Cjar">org.mapstruct:mapstruct-processor:1.4.0.Beta2</a></li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.4.0.CR1%7Cjar">org.mapstruct:mapstruct:1.4.0.CR1</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.4.0.CR1%7Cjar">org.mapstruct:mapstruct-processor:1.4.0.CR1</a></li>
 </ul>
-<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.4.0.Beta2">from GitHub</a>.</p>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.4.0.CR1">from GitHub</a>.</p>
 <p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
 <ul>
 <li>Get help in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a> or at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
@@ -174,13 +235,13 @@ If you&rsquo;d like to try out the features described above, you can fetch the n
     <div>
         <ul class="uk-pagination">
             
-            <li>
-                <a href="/news/2020-07-19-mapstruct-1_4_0_Beta3-is-out/" title="MapStruct 1.4.0.Beta3 is out"><i class="uk-icon-angle-double-left"></i></a>
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
             </li>
             
             
             <li>
-                <a href="/news/2020-06-01-mapstruct-1_4_0_Beta1-is-out-with-constructor-support/" title="Support for constructors, Gradle incremental compilation and much more: MapStruct 1.4.0.Beta1 is out"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="/news/2020-07-19-mapstruct-1_4_0_Beta3-is-out/" title="MapStruct 1.4.0.Beta3 is out"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 
