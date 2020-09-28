@@ -1,7 +1,7 @@
 ---
 title: "MapStruct 1.4.0.Final is out"
 author: Filip Hrisafov, Sjaak Derksen
-date: "2020-09-28"
+date: "2020-09-27"
 tags: [release, news]
 ---
 
