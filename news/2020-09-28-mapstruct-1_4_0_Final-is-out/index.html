@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MapStruct 1.3.0.Final is out in the wild &ndash; MapStruct</title>
+        <title>MapStruct 1.4.0.Final is out &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -127,10 +127,10 @@ if (!doNotTrack) {
             
 <article class="uk-article">
     <p class="uk-article-meta ms-article-date">
-    <time>February 10, 2019</time>
+    <time>September 27, 2020</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/">MapStruct 1.3.0.Final is out in the wild</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-09-28-mapstruct-1_4_0_Final-is-out/">MapStruct 1.4.0.Final is out</a></h1>
 
 <p class="uk-article-meta ms-article-author">
     By <b>Filip Hrisafov, Sjaak Derksen</b> under 
@@ -147,110 +147,96 @@ if (!doNotTrack) {
 </p>
 
     <div>
-        <div><p>Long overdue it is our pleasure to announce the final version MapStruct 1.3.
-This is our 3rd release since november 2015.</p>
-<p>Besides bug fixes, the 1.3 release brings some new exciting features:</p>
+        <div><p>Long overdue it is our pleasure to announce the final version MapStruct 1.4.
+This is our 4th release since november 2015.</p>
+<p>Besides bug fixes, the 1.4 release brings some new exciting features:</p>
 <ul>
-<li>Mapping (immutable) objects using builders</li>
-<li>Enhanced and more flexible update method (<code>@MappingTarget</code>) handling</li>
-<li>Constructor injection for Annotation Based component models</li>
-<li>Source policy for unmapped source properties (<code>unmappedSourcePolicy</code>)</li>
-<li>Support for <code>defaultExpression</code></li>
-<li>Limit mapping only to explicitly defined mappings</li>
-<li>Performance improvement of <code>constant</code> / <code>defaultValue</code> primitive to <code>String</code> mappings</li>
-<li>Warnings for precision loss</li>
+<li>Making use of constructor arguments when instantiating mapping targets</li>
+<li>Support Gradle incremental annotation processing feature</li>
+<li>Map nested bean properties to current target</li>
+<li>Support value mapping between <code>String</code> and <code>Enum</code></li>
+<li>Support <code>@Mapping</code> in meta annotations</li>
+<li>User control over mapping features (direct, method, conversion, 2step)</li>
+<li>Support mapping from / to Java 14 records (preview feature)</li>
+<li>New <code>EnumTransformationStrategy</code> and <code>EnumNamingStrategy</code> SPIs</li>
+<li>Improve performance for 2 step mapping methods</li>
 </ul>
 <p>For more details checkout the individual release announcements for the
-<a href="/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support.md">Beta1</a> and
-<a href="/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline.md">Beta2</a> releases.</p>
+<a href="/news/2020-06-01-mapstruct-1_4_0_Beta1-is-out-with-constructor-support.md">Beta1</a>,
+<a href="/news/2020-06-01-mapstruct-1_4_0_Beta2-is-out.md">Beta2</a>,
+<a href="/news/2020-07-19-mapstruct-1_4_0_Beta3-is-out.md">Beta3</a> and
+<a href="/news/2020-09-28-mapstruct-1_5_0_Final-is-out.md">CR1</a> releases.</p>
 <h3 id="whats-inside"><a class="ms-header-link" href="#whats-inside"><i class="fa fa-link"></i></a>What&rsquo;s inside</h3>
-<p>First and foremost we have delivered the ability to cope with immutable beans via the builder pattern.
-There are many frameworks out there for which we added (experimental) support,
-most notably <a href="https://immutables.github.io">Immutables</a>, <a href="https://projectlombok.org">Lombok</a> and
-<a href="https://developers.google.com/protocol-buffers/">Protobuf</a>.</p>
-<p>We haven&rsquo;t forgotten the initialization via a constructor, it is high on our list to support it within the next release.</p>
-<p>Next we realised that the way we handle update / merge methods (<code>@MappingTarget</code>) deserved more attention.
-Initially this functionality was modelled after the non update methods (regular mappings), but the use case for these types is different.
-The API behaved inconsistent and left the user unable to choose what to do in case of <code>null</code> or not present source objects:</p>
+<p>First and foremost as we promised in the 1.3.0.Final release we have delivered the ability to cope with creating beans via constructors.
+Here it is included mapping into Kotlin Data Classes and Java 14 records.
+Apart from that we also have the following new features / enhancements:</p>
 <ul>
-<li>Set <code>null</code></li>
-<li>Set default</li>
-<li>Ignore and leave the target as is</li>
+<li>Support Gradle incremental annotation processing - MapStruct will no longer cause an entire recompilation of your java module</li>
+<li>Map nested beans to current target - i.e. you can use &ldquo;.&rdquo; in <code>Mapping#target</code> to map nested beans to the current target</li>
+<li>Supporting value mapping between <code>String</code> and <code>Enum</code> - i.e. <code>@ValueMapping</code> can be used to map enums into strings and vice versa</li>
+<li>Supping meta annotations wih <code>@Mapping</code> - i.e. you can create your own annotation that holds common <code>@Mapping</code> definitions</li>
+<li>User control over mapping features - i.e. you can decide which steps MapStruct should execute during the mapping, meaning that you can easily define clone methods without the need to define mappings for your entire object structure</li>
+<li>New SPIs for enum mapping</li>
 </ul>
-<p>This can now be controlled via <code>NullValuePropertyMappingStrategy</code>.</p>
-<p>We also dropped support for Java 6 an 7 in 1.3 and are using Java 8 as a baseline across the MapStruct codebase.
-This has been long overdue and would enable us to simplify our codebase.
-It would also allow us to spent our effort on newer features rather than backwards compatible support for Java 6 and 7.</p>
-<p>In total 105 have been fixed between the 1.2.0.Final and 1.3.0.Final releases.</p>
+<p>In total 105 issues have been fixed between the 1.3.0.Final and 1.4.0.Final releases.
+It is interesting that the number of fixed issues is the same as between the 1.2.0.Final and 1.3.0.Final release (this is not on purpose :)).</p>
 <h3 id="whats-next"><a class="ms-header-link" href="#whats-next"><i class="fa fa-link"></i></a>What&rsquo;s next</h3>
-<p>Functionality wise many features have been added since the 1.0.0.Final release.
-Some of these features would have justified major releases, but we chose to be very careful.
-Bringing out a number of beta releases and release candidates we tried to mitigate risks.
-Perhaps we are too careful, looking at the issues that are found on the new features and we should be more daring in bringing out minor releases faster.</p>
-<p>Development wise, in many ways, we are standing on a crossroad.
-Our code base has grown and the handling of beans / property mapping has grown complex.
-It is time to look at restructuring the code in a major fashion if we want to grow in features.
-Don&rsquo;t let this scare you, the public API exposed by MapStruct will not change.
-We are only talking about the internal API of the processor.
-All of our tests are done in such way that they are only using the MapStruct public API.
-Each test has a mapper for which the compiler is invoked to generate the implementation and we test against that.
-This tests give us confidence that we can restructure the code and keep everything working as is now.
-During this refactoring we want to drop some of our deprecated features.
-The refactored code will most likely lead to a 2.0 version and will be done transparently with the community.
-In between 1.3 and 2.0 we plan smaller and faster feature / bug fix releases.</p>
-<p>We are also going to scrutinise our open issues and close the ones which will not make it into MapStruct.
-In case we close your issue and you think that it should be a feature or enhancement from MapStruct, then please say so in the issue and we can reconsider.</p>
-<p>One other big feature that we would like to see as soon as possible is the possibility to map via constructors.
-This has been one of the most requested features and we would like to tackle it.</p>
-<p>If you have any ideas or are willing to help out with any features feel free to reach to us, we are always looking for new fresh ideas and support from the community.</p>
+<p>We have said numerous times that we want to do more smaller and more frequent releases.
+However, every time we say that something else comes up and we still take our time between releases.
+This is mostly because we are doing this in our spare time.</p>
+<p>We will try to do the releases more frequently.
+There are already some interesting feature requests that we would like to include in some of the future releases.</p>
+<p>Most notable requests are:</p>
+<ul>
+<li>Conditional mapping (i.e. use custom methods to check whether a value is present, think whether string is not blank).
+There is already a PR from the community about this issue, so this will most likely be the basis for the 1.5 release</li>
+<li>Mapping into / from Map like structures from / into beans</li>
+</ul>
+<p>In case you have some other ideas please feel free to share them with us or vote for issues that you&rsquo;d like to see implemented in our <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a>.
+We are also always looking for new contributors, so if you are interested in helping us out please have a look at our issue tracker or contact us.</p>
 <h3 id="stats"><a class="ms-header-link" href="#stats"><i class="fa fa-link"></i></a>Stats</h3>
-<p>We are very proud and thankful of our of our growing community.
+<p>We are very proud and thankful of our growing community.
 It is really satisfying to see how everyone helps each other in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter Room</a>, on <a href="https://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a> or in our <a href="https://groups.google.com/forum/#!forum/mapstruct-users">Google group</a>.
-We currently have 1500+ stars and 50+ contributors on GitHub.
-More than 16000 people are using our <a href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support">IntelliJ</a> plugin.
-And don&rsquo;t worry we haven&rsquo;t forgotten about it, a new fresh version with builder and fluent setter support will be released shortly.</p>
+We currently have 3100+ stars and 70+ contributors on GitHub.
+More than 16000 people are using our <a href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support">IntelliJ</a> plugin, which is already released with support for the new constructor mapping.</p>
 <p>Most impressive though are the download numbers we get from the Maven Central repo.
 As an example here are the numbers for the <em>org.mapstruct:mapstruct-processor</em> artifact:</p>
 <div style="text-align:center">
-    <img src="/images/downloads_02-2018_01-2019.png" style="padding-bottom: 3px;"/>
+    <img src="/images/downloads_09-2019_09-2020.png" style="padding-bottom: 3px;"/>
 </div>
+<p>The number of Downloads compared to the time we released 1.3.0.Final has been quadrupled.</p>
 <h3 id="thanks"><a class="ms-header-link" href="#thanks"><i class="fa fa-link"></i></a>Thanks</h3>
 <p>Last but not least we would like to congratulate all the enthusiastic MapStruct contributors making this release possible.
-In alphabetic order this are all the contributors that contributed to the 1.3 release of Mapstruct:</p>
+In alphabetic order this are all the contributors that contributed to the 1.4 release of Mapstruct:</p>
 <ul>
-<li><a href="https://github.com/seime">Arne Seime</a></li>
-<li><a href="https://github.com/stianrincon">Andres Jose Sebastian Rincon Gonzalez</a></li>
-<li><a href="https://github.com/chris922">Christian Bandowski</a></li>
-<li><a href="https://github.com/dvfeinblum">David Feinblum</a></li>
-<li><a href="https://github.com/xyzst">Darren Rambaud</a></li>
-<li><a href="https://github.com/dastrobu">Daniel Strobusch</a></li>
-<li><a href="https://github.com/ericmartineau">Eric Martineau</a></li>
-<li><a href="https://github.com/neoXfire">Florian Tavares</a></li>
-<li><a href="https://github.com/gervaisb">Gervais Blaise</a></li>
-<li><a href="https://github.com/smythie86">Jeff Smyth</a></li>
-<li><a href="https://github.com/spoerri">Joshua Spoerri</a></li>
-<li><a href="https://github.com/kevcodez">Kevin Grüneberg</a></li>
-<li><a href="https://github.com/lappleapple">Lauri Apple</a></li>
-<li><a href="https://github.com/chigix">Richard Lea</a></li>
-<li><a href="https://github.com/sahebpreet">Saheb Preet Singh</a></li>
-<li><a href="https://github.com/sebastianhaberey">Sebastian Haberey</a></li>
-<li><a href="https://github.com/sgrekov">Sergey Grekov</a></li>
-<li><a href="https://github.com/sivviswa22">Sivaraman Viswanathan</a></li>
-<li><a href="https://github.com/twentylemon">Taras Mychaskiw</a></li>
-<li><a href="https://github.com/yokotaso">Tomoya Yokota</a></li>
+<li><a href="https://github.com/dekelpilli">@dekelpilli</a>,</li>
+<li><a href="https://github.com/fml2">@fml2</a>,</li>
+<li><a href="https://github.com/jakraska">@jakraska</a>,</li>
+<li><a href="https://github.com/juliojgd">@juliojgd</a>,</li>
+<li><a href="https://github.com/marceloverdijk">@marceloverdijk</a>,</li>
+<li><a href="https://github.com/mattdrees">@mattdrees</a>,</li>
+<li><a href="https://github.com/power721">@power721</a>,</li>
+<li><a href="https://github.com/pradzins">@pradzins</a>,</li>
+<li><a href="https://github.com/seime">@seime</a></li>
+<li><a href="https://github.com/sullis">@sullis</a>,</li>
+<li><a href="https://github.com/timjb">@timjb</a>,</li>
+<li><a href="https://github.com/ttzn">@ttzn</a>,</li>
+<li><a href="https://github.com/vegemite4me">@vegemite4me</a>,</li>
+<li><a href="https://github.com/xcorail">@xcorail</a>,</li>
+<li><a href="https://github.com/Zomzog">@Zomzog</a>,
+and of course seasoned MapStruct hackers <a href="https://github.com/sjaakd">Sjaak Derksen</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a>, <a href="https://github.com/chris922">Christian Bandowski</a> and <a href="https://github.com/Captain1653">Andrei Arlou</a>.</li>
 </ul>
-<p>and of course seasoned MapStruct hackers hackers <a href="https://github.com/sjaakd">Sjaak Derksen</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a>, <a href="https://github.com/chris922">Christian Bandowski</a>, <a href="https://github.com/gunnarmorling">Gunnar Morling</a> and <a href="https://github.com/agudian">Andreas Gudian</a>.</p>
-<p>Happy coding with MapStruct 1.3!!</p>
+<p>Happy coding with MapStruct 1.4!!</p>
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
 <p>You can fetch the new release from Maven Central using the following GAV coordinates:</p>
 <ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.3.0.Final%7Cjar">org.mapstruct:mapstruct:1.3.0.Final</a></li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.3.0.Final%7Cjar">org.mapstruct:mapstruct-processor:1.3.0.Final</a></li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.4.0.Final%7Cjar">org.mapstruct:mapstruct:1.4.0.Final</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.4.0.Final%7Cjar">org.mapstruct:mapstruct-processor:1.4.0.Final</a></li>
 </ul>
-<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.3.0.Final">from GitHub</a>.</p>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.4.0.Final">from GitHub</a>.</p>
 <p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
 <ul>
-<li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
+<li>Get help in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a> or at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
 <li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
 <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
 </ul></div>
@@ -258,13 +244,13 @@ In alphabetic order this are all the contributors that contributed to the 1.3 re
     <div>
         <ul class="uk-pagination">
             
-            <li>
-                <a href="/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/" title="MapStruct 1.3.1.Final bug fix released"><i class="uk-icon-angle-double-left"></i></a>
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
             </li>
             
             
             <li>
-                <a href="/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/" title="Java 8 as a baseline, null value property mappings improved builders support and much more: MapStruct 1.3.0.Beta2 is out"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="/news/2020-08-31-mapstruct-1_4_0_CR1-released/" title="MapStruct 1.4.0.CR1 released"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 

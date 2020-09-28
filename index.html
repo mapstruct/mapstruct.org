@@ -139,6 +139,39 @@ if (!doNotTrack) {
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">MapStruct 1.4.0.Final is out</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>September 27, 2020</time>
+</p>
+
+
+    <div>
+        <p>Long overdue it is our pleasure to announce the final version MapStruct 1.4.
+This is our 4th release since november 2015.</p>
+<p>Besides bug fixes, the 1.4 release brings some new exciting features:</p>
+<ul>
+<li>Making use of constructor arguments when instantiating mapping targets</li>
+<li>Support Gradle incremental annotation processing feature</li>
+<li>Map nested bean properties to current target</li>
+<li>Support value mapping between <code>String</code> and <code>Enum</code></li>
+<li>Support <code>@Mapping</code> in meta annotations</li>
+<li>User control over mapping features (direct, method, conversion, 2step)</li>
+<li>Support mapping from / to Java 14 records (preview feature)</li>
+<li>New <code>EnumTransformationStrategy</code> and <code>EnumNamingStrategy</code> SPIs</li>
+<li>Improve performance for 2 step mapping methods</li>
+</ul>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2020-09-28-mapstruct-1_4_0_Final-is-out/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">MapStruct 1.4.0.CR1 released</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -185,31 +218,6 @@ So what did we tackle in 1.4.0.RC1</p>
     <div>
         
             <a href="http://mapstruct.org/news/2020-07-19-mapstruct-1_4_0_Beta3-is-out/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">MapStruct 1.4.0.Beta2 is out</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>July 05, 2020</time>
-</p>
-
-
-    <div>
-        <p>Today we release a new beta version of MapStruct 1.4.0. We are very happy to have received good feedback from our users. However, it is like always when writing software bugs are made and are there to be solved. So what did we tackle in 1.4.0.Beta2</p>
-<ul>
-<li>Improve performance for 2 step mapping methods</li>
-<li>Having 2 step mapping methods, based on a generic -in between- type. For example: source (String) -&gt; Embeded mapStringToEmbeded(String s) -&gt; <T> List<T> toSingleElementList( T e ) -&gt; target (List<Embeded>)</li>
-<li>Improved error messages for qualifiers</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta2-is-out/">Read more...</a>
         
     </div>
 </article>
