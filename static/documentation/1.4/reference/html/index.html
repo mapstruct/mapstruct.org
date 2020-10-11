@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.4.0.Final Reference Guide</title>
+<title>MapStruct 1.4.1.Final Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -525,10 +525,10 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.4.0.Final Reference Guide</h1>
+<h1>MapStruct 1.4.1.Final Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2020-09-26</span>
+<span id="revdate">2020-10-11</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -755,7 +755,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.4.0.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.4.1.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -961,8 +961,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.4.0.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.4.0.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.4.1.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.4.1.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -2219,7 +2219,7 @@ When there are multiple constructors then the following is done to pick the one 
 <p>If a parameterless constructor exists then it will be used to construct the object, and the other constructors will be ignored.</p>
 </li>
 <li>
-<p>If there are multiple eligible constructors then there will be a compilation error due to ambigious constructors. In order to break the ambiquity an annotation named <code>@Default</code> (from any package) can used.</p>
+<p>If there are multiple eligible constructors then there will be a compilation error due to ambiguous constructors. In order to break the ambiguity an annotation named <code>@Default</code> (from any package) can used.</p>
 </li>
 </ul>
 </div>
@@ -3539,7 +3539,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.4.0.Final/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.4.1.Final/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -4164,7 +4164,7 @@ carDto.getPassengers().addAll( personsToPersonDtos( car.getPassengers() ) );
 <p>MapStruct has a <code>CollectionMappingStrategy</code>, with the possible values: <code>ACCESSOR_ONLY</code>, <code>SETTER_PREFERRED</code>, <code>ADDER_PREFERRED</code> and <code>TARGET_IMMUTABLE</code>.</p>
 </div>
 <div class="paragraph">
-<p>In the table below, the dash <code>-</code> indicates a property name. Next, the trailing <code>s</code> indicates the plural form. The table explains the options and how they are applied to the presence/absense of a <code>set-s</code>, <code>add-</code> and / or <code>get-s</code> method on the target object:</p>
+<p>In the table below, the dash <code>-</code> indicates a property name. Next, the trailing <code>s</code> indicates the plural form. The table explains the options and how they are applied to the presence/absence of a <code>set-s</code>, <code>add-</code> and / or <code>get-s</code> method on the target object:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Collection mapping strategy options</caption>
@@ -4724,7 +4724,7 @@ mapping method will throw an IllegalStateException if for some reason an unrecog
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Similarity: All not explicit defined mappings will result in the target enum constant mapped from the <code>String</code> value when that maches the target enum constant name.</p>
+<p>Similarity: All not explicit defined mappings will result in the target enum constant mapped from the <code>String</code> value when that matches the target enum constant name.</p>
 </li>
 <li>
 <p>Similarity: <code>&lt;ANY_UNMAPPED</code>&gt; stops after handling defined mapping and proceeds to the switch/default clause value.</p>
@@ -7356,7 +7356,7 @@ A nice example is to provide support for a custom transformation strategy.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-26 10:21:12 +0200
+Last updated 2020-10-11 09:35:34 +0200
 </div>
 </div>
 </body>
