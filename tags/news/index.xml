@@ -6,10 +6,22 @@
     <description>Recent content in news on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.4.1.Final bug fix released</title>
+      <link>http://mapstruct.org/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the 1.4.1.Final bug fix release of MapStruct.
+Even though we did 3 Beta and 1 CR release we still managed to introduce some regressions.&lt;/p&gt;
+&lt;p&gt;This release includes 6 bug fixes.&lt;/p&gt;
+&lt;p&gt;The most notable fix is the support for the IntelliJ incremental annotation processing.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.4.0.Final is out</title>
