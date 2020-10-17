@@ -68,7 +68,7 @@
         {{- end -}}
     {{- else -}}
         {{- if ne .Name "Index" -}}
-            <a href="{{.URL}}">{{ .Name }}</a>
+            <a href="{{.URL}}">{{ .Pre }} {{ .Name }} {{ .Post }}</a>
         {{- end -}}
     {{- end }}
     </li>

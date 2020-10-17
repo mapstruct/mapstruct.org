@@ -41,6 +41,13 @@ parent = "Documentation"
 identifier = "examples"
 url = "https://github.com/mapstruct/mapstruct-examples"
 
+[[menu.main]]
+name = "Code & Issues"
+pre = "<i class='fa fa-github fa-lg'></i>"
+weight = 900
+identifier = "code-issues"
+url = "https://github.com/mapstruct/mapstruct"
+
 [Params]
 stableVersion = "1.4.1.Final"
 devVersion = "1.4.1.Final"
