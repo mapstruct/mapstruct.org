@@ -41,6 +41,8 @@ Essentially, MapStruct will wait until Lombok has done all its amendments before
 
 An example for using the two projects together can be found [here](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-lombok).
 
+If you are using Lombok 1.18.16 or newer you also need to add [lombok-mapstruct-binding](https://search.maven.org/artifact/org.projectlombok/lombok-mapstruct-binding) in order to make Lombok and MapStruct work together.
+
 If you are on an older version of MapStruct or Lombok,
 the solution is to put the JavaBeans to be amended by Lombok and the mapper interfaces
 to be processed by MapStruct into two separate modules of your project.
