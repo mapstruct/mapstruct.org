@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MapStruct 1.2.0.CR1 released &ndash; MapStruct</title>
+        <title>MapStruct Spring Extensions 0.0.1 released &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -135,13 +135,13 @@ if (!doNotTrack) {
             
 <article class="uk-article">
     <p class="uk-article-meta ms-article-date">
-    <time>July 25, 2017</time>
+    <time>December 03, 2020</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/">MapStruct 1.2.0.CR1 released</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-12-03-mapstruct-spring-extensions-0-0-1-released/">MapStruct Spring Extensions 0.0.1 released</a></h1>
 
 <p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
+    By <b>Raimund Klein</b> under 
     <span class="uk-badge">
     
         release
@@ -155,48 +155,39 @@ if (!doNotTrack) {
 </p>
 
     <div>
-        <div><p>I&rsquo;m very happy to announce the first candidate release of MapStruct 1.2!</p>
-<p>The CR1 release mostly provides bug fixes and other smaller improvements since the <a href="http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/">Beta 3</a>,
-e.g. related to the handling of the <code>@ObjectFactory</code> annotation (issues <a href="https://github.com/mapstruct/mapstruct/issues/1131">#1131</a> and <a href="https://github.com/mapstruct/mapstruct/issues/1242">#1242</a>).
-Further fixes concern the handling of imports in the generated code (<a href="https://github.com/mapstruct/mapstruct/issues/1227">#1227</a>, <a href="https://github.com/mapstruct/mapstruct/issues/543">#543</a>) and the error reporting in case of incorrect mapper definitions (<a href="https://github.com/mapstruct/mapstruct/issues/1150">#1150</a>, <a href="https://github.com/mapstruct/mapstruct/issues/1185">#1185</a>).</p>
-<p>One useful improvement relates to the usage of MapStruct under Java 9: we have defined module names now which will take effect when using MapStruct as <em>automatic module</em> (<a href="https://github.com/mapstruct/mapstruct/issues/1224">#1224</a>).</p>
-<p>The module names are <code>org.mapstruct</code> for the annotation JARs (only one of them is to be used at a given time, so using the same name is fine) and <code>org.mapstruct.processor</code> for the processor JAR.
-This is done using the new JAR manifest header <code>Automatic-Module-Name</code> which is supported by recent Java 9 preview builds.</p>
-<p>Overall, <a href="https://github.com/mapstruct/mapstruct/milestone/22?closed=1">21 issues</a> have been fixed with the CR1 release.
-Please see the <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.CR1">release notes</a> for more details on the issues fixed.</p>
-<p>Kudos to everyone contributing to this release: <a href="https://github.com/shalugin">Aleksandr Shalugin</a>, <a href="https://github.com/cornzy">Cornelius Dirmeier</a>,
-<a href="https://github.com/xyzst">Darren Rambaud</a> and <a href="https://github.com/Tillerino">Tillerino</a> as well as long-term MapStruct afficionados <a href="https://github.com/agudian">Andreas Gudian</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a> and <a href="https://github.com/sjaakd">Sjaak Derksen</a>.</p>
+        <div><p>It is my pleasure to announce the first official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> over a year ago has turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>This first release solves the issue described in the question linked above: How can we use MapStruct mappers defined as Spring <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert">Converters</a> in a Spring-idiomatic way when building a hierarchy of them?
+Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+<h3 id="thanks"><a class="ms-header-link" href="#thanks"><i class="fa fa-link"></i></a>Thanks</h3>
+<p>Thanks to <a href="https://github.com/sjaakd">Sjaak Derksen</a> for suggesting this solution and <a href="https://github.com/filiphr">Filip Hrisafov</a> for opening the community project.
+If you feel like there&rsquo;s something missing in MapStruct which could make the Spring experience any smoother, please get involved!</p>
+<p>Also, if your favourite library or framework could use some tweaking with regard to MapStruct, contact us.</p>
+<p>Happy coding with MapStruct Spring Extensions!</p>
 <h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
-<p>You can find MapStruct 1.2 CR 1 in Maven Central under the following GAV coordinates:</p>
+<p>You can fetch the release from Maven Central using the following GAV coordinates:</p>
 <ul>
-<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-jdk8%7C1.2.0.CR1%7Cjar">org.mapstruct:mapstruct-jdk8:1.2.0.CR1</a> (for usage with Java &gt;= 8) or <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.2.0.CR1%7Cjar">org.mapstruct:mapstruct:1.2.0.CR1</a> (for earlier Java versions)</li>
-<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.2.0.CR1%7Cjar">org.mapstruct:mapstruct-processor:1.2.0.CR1</a></li>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct.extensions.spring%7Cmapstruct-spring-annotations%7C0.0.1%7Cjar">org.mapstruct.extensions.spring:mapstruct-spring-annotations:0.0.1</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct.extensions.spring%7Cmapstruct-spring-extensions%7C0.0.1%7Cjar">org.mapstruct.extensions.spring:mapstruct-spring-extensions:0.0.1</a></li>
 </ul>
-<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.2.0.CR1">from GitHub</a>.</p>
-<h3 id="next-steps"><a class="ms-header-link" href="#next-steps"><i class="fa fa-link"></i></a>Next steps</h3>
-<p>With this candidate release we believe that we&rsquo;re mostly ready for releasing MapStruct 1.2 Final.</p>
-<p>No further feature development is planned for 1.2 at this point.
-Depending on the number of bug reports popping up in the next few days and weeks, we&rsquo;ll either do another CR or go to 1.2 Final right away.
-The final release should be in your hands in late summer.</p>
-<p>Please give the candidate release a spin and let us know as soon as possible if you run into any trouble.
-To get in touch, post a comment below or use one the following channels:</p>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct-spring-extensions/releases/tag/v0.0.1">from GitHub</a>.</p>
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
 <ul>
-<li>Get help at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group or in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a></li>
-<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Get help in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a> or at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/issues">issue tracker</a></li>
 <li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
-<li>Follow MapStruct on <a href="https://plus.google.com/u/0/118070742567787866481/posts">Google+</a></li>
 </ul></div>
     </div>
     <div>
         <ul class="uk-pagination">
             
-            <li>
-                <a href="/news/2017-08-28-mapstruct-1_2_0_cr2-released/" title="MapStruct 1.2.0.CR2 released"><i class="uk-icon-angle-double-left"></i></a>
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
             </li>
             
             
             <li>
-                <a href="/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/" title="MapStruct 1.2.0.Beta3 is out"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/" title="MapStruct 1.4.1.Final bug fix released"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 

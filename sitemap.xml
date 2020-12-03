@@ -69,31 +69,36 @@
   
   <url>
     <loc>http://mapstruct.org/</loc>
-    <lastmod>2020-10-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/</loc>
-    <lastmod>2020-10-11T00:00:00+00:00</lastmod>
+    <loc>http://mapstruct.org/news/2020-12-03-mapstruct-spring-extensions-0-0-1-released/</loc>
+    <lastmod>2020-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/news/</loc>
-    <lastmod>2020-10-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/news/</loc>
-    <lastmod>2020-10-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/release/</loc>
-    <lastmod>2020-10-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/</loc>
+    <lastmod>2020-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url>
   
