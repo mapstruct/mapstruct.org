@@ -6,10 +6,21 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.4.2.Final bug fix released</title>
+      <link>http://mapstruct.org/news/2021-01-31-mapstruct-1_4_2_Final-bug-fix-released/</link>
+      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2021-01-31-mapstruct-1_4_2_Final-bug-fix-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the 1.4.2.Final bug fix release of MapStruct.&lt;/p&gt;
+&lt;p&gt;This release includes 2 enhancements, 10 bug fixes, and some documentation fixes.&lt;/p&gt;
+&lt;p&gt;The most notable enhancement is the relaxing of the strictness for &lt;code&gt;Mapping#qualifiedByName&lt;/code&gt; and &lt;code&gt;Mapping#qualifier&lt;/code&gt; for collection mappings.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct Spring Extensions 0.0.1 released</title>
