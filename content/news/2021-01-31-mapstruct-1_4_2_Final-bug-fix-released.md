@@ -42,7 +42,7 @@ public interface TopologyMapper {
 
 ### Thanks
 
-Thanks to our entire community for being patient with us. 
+Thanks to our entire community for reporting these errors and being patient with our release schedule. 
 
 Happy coding with MapStruct 1.4.2!!
 
