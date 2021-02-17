@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>http://mapstruct.org/development/testing-mapstruct/</loc>
+    <lastmod>2021-02-17T18:55:58+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://mapstruct.org/development/debugging/</loc>
     <lastmod>2016-12-31T13:23:56+01:00</lastmod>
   </url>
@@ -68,8 +73,13 @@
   </url>
   
   <url>
+    <loc>http://mapstruct.org/development/</loc>
+    <lastmod>2021-02-17T18:55:58+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://mapstruct.org/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-17T18:55:58+02:00</lastmod>
   </url>
   
   <url>
@@ -235,11 +245,6 @@
   <url>
     <loc>http://mapstruct.org/tags/web-site/</loc>
     <lastmod>2017-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/development/</loc>
-    <lastmod>2016-12-31T13:24:06+01:00</lastmod>
   </url>
   
   <url>

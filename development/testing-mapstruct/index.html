@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Testing MapStruct &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+
+    <body>
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            
+
+    <li>
+    <a href="/news/"> News </a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li class="uk-active">
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/"> FAQ </a>
+    </li>
+
+    <li>
+    <a href="https://github.com/mapstruct/mapstruct"><i class='fa fa-github fa-lg'></i> Code &amp; Issues </a>
+    </li>
+
+            </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
+        </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                
+
+    <li>
+    <a href="/news/"> News </a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li class="uk-active">
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/"> FAQ </a>
+    </li>
+
+    <li>
+    <a href="https://github.com/mapstruct/mapstruct"><i class='fa fa-github fa-lg'></i> Code &amp; Issues </a>
+    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <aside>
+    <div id="sidebar">
+        <ul class="uk-nav uk-nav-side">
+        
+            <li class="uk-nav-header">Development</li>
+
+                    
+            <li>
+                <a href="/development/contributing/"> Contributing </a>
+            </li>
+                    
+            <li>
+                <a href="/development/team/"> Team </a>
+            </li>
+                    
+            <li>
+                <a href="/development/technical-documentation/"> Technical Documentation </a>
+            </li>
+                    
+            <li>
+                <a href="/development/debugging/"> Debugging </a>
+            </li>
+                    
+            <li class="uk-active">
+                <a href="/development/testing-mapstruct/"> Testing MapStruct </a>
+            </li>
+                    
+            <li>
+                <a href="/development/updating-mapstructorg/"> Updating mapstruct.org </a>
+            </li>
+                    
+            <li>
+                <a href="/development/ide-setup/"> IDE Set-Up </a>
+            </li>
+                    
+            <li>
+                <a href="/development/license/"> License </a>
+            </li>
+                    
+        </ul>
+    </div>
+</aside>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<div>
+    <div class="uk-flex uk-flex-space-between">
+        <div>
+            <h1>Testing MapStruct</h1>
+        </div>
+        <div class="uk-hidden-small uk-float-right ms-edit-on-github">
+            <a href="https://github.com/mapstruct/mapstruct.org/tree/master/content/development/testing-mapstruct.md" title="Open the source of this page on GitHub" target="_blank"><i class="fa fa-github"></i> Edit on GitHub</a>
+        </div>
+    </div>
+</div>
+<div><p>MapStruct uses the <a href="https://junit.org/junit4/">JUnit 4</a> framework for writing tests and <a href="https://assertj.github.io/doc/">AssertJ</a> for writing test asserts.</p>
+<p>Since MapStruct is an annotation processor it needs to be invoked by a Java compiler in order for us to validate the functionality.
+The MapStruct team has decided to write only integration tests and almost no unit tests. The reason for this is two fold:</p>
+<ul>
+<li>We only want to test that MapStruct generates valid expected mappers -
+this makes it easy for us to refactor code and be confident that the code we generate is still valid.</li>
+<li>We want to test with 2 different compilers (javac and ecj)</li>
+</ul>
+<p>In order to achieve this the MapStruct team has built their own small testing framework on top of JUnit 4.</p>
+<p>Our test utils are located <a href="https://github.com/mapstruct/mapstruct/tree/master/processor/src/test/java/org/mapstruct/ap/testutil">here</a>.</p>
+<h2 id="writing-a-test"><a class="ms-header-link" href="#writing-a-test"><i class="fa fa-link"></i></a>Writing a test</h2>
+<p>In order to explain how to write a test we are going to use the <a href="https://github.com/mapstruct/mapstruct/blob/master/processor/src/test/java/org/mapstruct/ap/test/value/enum2enum/EnumToEnumMappingTest.java"><code>EnumToEnumMappingTest</code></a>.
+The java classes and mappers for this are located <a href="https://github.com/mapstruct/mapstruct/tree/master/processor/src/test/java/org/mapstruct/ap/test/value/enum2enum">here</a>.</p>
+<h3 id="set-up"><a class="ms-header-link" href="#set-up"><i class="fa fa-link"></i></a>Set-up</h3>
+<p>First thing that we do is to define the POJOs. For this test we have:</p>
+<ul>
+<li><a href="https://github.com/mapstruct/mapstruct/blob/master/processor/src/test/java/org/mapstruct/ap/test/value/enum2enum/OrderDto.java"><code>OrderDto</code></a></li>
+<li><a href="https://github.com/mapstruct/mapstruct/blob/master/processor/src/test/java/org/mapstruct/ap/test/value/enum2enum/OrderEntity.java"><code>OrderEntity</code></a></li>
+<li><a href="https://github.com/mapstruct/mapstruct/blob/master/processor/src/test/java/org/mapstruct/ap/test/value/ExternalOrderType.java"><code>ExternalOrderType</code></a></li>
+<li><a href="https://github.com/mapstruct/mapstruct/blob/master/processor/src/test/java/org/mapstruct/ap/test/value/OrderType.java"><code>OrderType</code></a></li>
+</ul>
+<pre class="prettyprint linenums lang-java">
+public class OrderDto {
+
+    private ExternalOrderType orderType;
+
+    // Getters and setters ommitted
+}
+
+public class OrderEntity {
+
+    private OrderType orderType;
+    
+    // Getters and setters ommitted
+}
+
+public enum ExternalOrderType {
+
+    RETAIL, B2B, SPECIAL, DEFAULT
+}
+
+public enum OrderType {
+
+    RETAIL, B2B, EXTRA, STANDARD, NORMAL
+}
+</pre>
+
+<h3 id="happy-path-testing"><a class="ms-header-link" href="#happy-path-testing"><i class="fa fa-link"></i></a>Happy path testing</h3>
+<p>Once we define our POJOs we need to write the mapper that we want to test.
+For this we will use the <a href="https://github.com/mapstruct/mapstruct/blob/master/processor/src/test/java/org/mapstruct/ap/test/value/enum2enum/OrderMapper.java"><code>OrderMapper</code></a></p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface OrderMapper {
+
+    OrderMapper INSTANCE = Mappers.getMapper( OrderMapper.class );
+
+    OrderDto orderEntityToDto(OrderEntity order);
+
+    @ValueMappings({
+        @ValueMapping(source = &#34;EXTRA&#34;, target = &#34;SPECIAL&#34;),
+        @ValueMapping(source = &#34;STANDARD&#34;, target = &#34;DEFAULT&#34;),
+        @ValueMapping(source = &#34;NORMAL&#34;, target = &#34;DEFAULT&#34;)
+    })
+    ExternalOrderType orderTypeToExternalOrderType(OrderType orderType);
+
+    @InheritInverseConfiguration
+    OrderType externalOrderTypeToOrderType(ExternalOrderType orderType);
+
+}
+</pre>
+
+<p>Everything until now looks exactly as a user would be writing their own mappers and POJOs.
+We now start writing our <code>EnumToEnumMappingTest</code>.</p>
+<pre class="prettyprint linenums lang-java">
+@IssueKey(&#34;128&#34;)
+@WithClasses({  
+  OrderMapper.class,
+  SpecialOrderMapper.class,
+  DefaultOrderMapper.class,
+  OrderEntity.class,
+  OrderType.class,
+  OrderDto.class,
+  ExternalOrderType.class })
+@RunWith(@RunWith(AnnotationProcessorTestRunner.class).class)
+public class EnumToEnumMappingTest {
+
+}
+</pre>
+
+<p>This is an empty test that doesn&rsquo;t test anything yet.
+However, there are some annotations there.</p>
+<ul>
+<li><code>@IssueKey(&quot;128&quot;)</code> - This is a MapStruct specific annotation that tells us for which GitHub issue this test is for.
+This can be used on classes or methods.</li>
+<li><code>@WithClasses</code> - This is also a MapStruct specific annotation that contains all the mappers and POJOs that we want to use for our test.</li>
+<li><code>@RunWith</code> - This is a JUnit 4 annotation that tells the JUnit framework which runner is responsible for running these tests.
+As you can imagine by now. MapStruct needs a custom runner to achieve our goals.</li>
+<li><code>AnnotationProcessorTestRunner</code> - This is the custom MapStruct specific JUnit 4 Runner which is responsible for running the tests for MapStruct and achieving our goals</li>
+</ul>
+<pre class="prettyprint linenums lang-java">
+@Test
+public void shouldGenerateEnumMappingMethod() {
+    ExternalOrderType target = OrderMapper.INSTANCE.orderTypeToExternalOrderType( OrderType.B2B );
+    assertThat( target ).isEqualTo( ExternalOrderType.B2B );
+
+    target = OrderMapper.INSTANCE.orderTypeToExternalOrderType( OrderType.RETAIL );
+    assertThat( target ).isEqualTo( ExternalOrderType.RETAIL );
+}
+</pre>
+
+<p>This test looks identical as a test written by a user in their own code.
+However, running this test will give us the following output:</p>
+<img src="/images/testing-mapstruct-test-run-intellij-initial.png" style="padding-bottom: 3px;"/>
+<p>There were actually 2 test runs and not 1.
+One test (<code>jdk11</code>) is run using the javac compiler from the JDK,
+and one test (<code>eclipse11</code>) is run using the ecj compiler from Eclipse.
+You can think of this like a parametrized test which tests 2 compilers.</p>
+<h3 id="testing-errors--warnings"><a class="ms-header-link" href="#testing-errors--warnings"><i class="fa fa-link"></i></a>Testing errors / warnings</h3>
+<p>One of the key reasons to use MapStruct is its thorough error checking.
+This means that we also need to test the compiler errors / warnings that MapStruct generates.</p>
+<p>For this we are going to write the following mapper.</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface ErroneousOrderMapperUsingUnknownEnumConstants {
+
+    ErroneousOrderMapperUsingUnknownEnumConstants INSTANCE = Mappers.getMapper(
+        ErroneousOrderMapperUsingUnknownEnumConstants.class
+    );
+
+    @ValueMappings({
+        @ValueMapping(source = &#34;FOO&#34;, target = &#34;SPECIAL&#34;),
+        @ValueMapping(source = &#34;EXTRA&#34;, target = &#34;BAR&#34;)
+    })
+    ExternalOrderType orderTypeToExternalOrderType(OrderType orderType);
+}
+
+</pre>
+
+<p>When a user writes this mapper MapStruct will generate 2 compiler errors:</p>
+<ul>
+<li>Constant FOO doesn&rsquo;t exist in enum type org.mapstruct.ap.test.value.OrderType.</li>
+<li>Constant BAR doesn&rsquo;t exist in enum type org.mapstruct.ap.test.value.ExternalOrderType.</li>
+</ul>
+<p>In order to test this we will write the following method:</p>
+<pre class="prettyprint linenums lang-java">
+@Test
+@WithClasses(ErroneousOrderMapperUsingUnknownEnumConstants.class)
+public void shouldRaiseErrorIfUnknownEnumConstantsAreSpecifiedInMapping() {
+}
+</pre>
+
+<p>If we now run this test, the test will fail with the following output</p>
+<pre class="prettyprint linenums lang-">
+org.junit.ComparisonFailure: [Compilation failed. Diagnostics: [
+    DiagnosticDescriptor: ERROR ErroneousOrderMapperUsingUnknownEnumConstants.java:26 Constant FOO doesn&#39;t exist in enum type org.mapstruct.ap.test.value.OrderType.,
+    DiagnosticDescriptor: ERROR ErroneousOrderMapperUsingUnknownEnumConstants.java:27 Constant BAR doesn&#39;t exist in enum type org.mapstruct.ap.test.value.ExternalOrderType.
+]]
+Expected :SUCCEEDED
+Actual   :FAILED
+</pre>
+
+<p>As you can see the testing framework fails if there were any errors or warnings during the generation.
+However, MapStruct has some utils to validate errors as well.
+To do that the test needs to look like:</p>
+<pre class="prettyprint linenums lang-java">
+@Test
+@WithClasses(ErroneousOrderMapperUsingUnknownEnumConstants.class)
+@ExpectedCompilationOutcome(
+    value = CompilationResult.FAILED,
+    diagnostics = {
+        @Diagnostic(type = ErroneousOrderMapperUsingUnknownEnumConstants.class,
+            kind = Kind.ERROR,
+            line = 26,
+            message = &#34;Constant FOO doesn&#39;t exist in enum type org.mapstruct.ap.test.value.OrderType.&#34;),
+        @Diagnostic(type = ErroneousOrderMapperUsingUnknownEnumConstants.class,
+            kind = Kind.ERROR,
+            line = 27,
+            message = &#34;Constant BAR doesn&#39;t exist in enum type org.mapstruct.ap.test.value.&#34; +
+                &#34;ExternalOrderType.&#34;)
+    }
+)
+public void shouldRaiseErrorIfUnknownEnumConstantsAreSpecifiedInMapping() {
+}
+</pre>
+
+<p>The test has nothing in the body.
+However, now there is another annotation (<code>@ExpectedCompilationOutcome</code>) there.
+This annotation is a MapStruct specific annotation which tells our testing framework how it should verify the test output.</p>
+<p>For this particular test we know that the <code>CompilationResult</code> (also MapStruct test specific) is <code>FAILED</code>.
+And that it will output the 2 specified diagnostics.</p>
+<p><code>@Diagnostic</code> is also MapStruct specific annotation and has the following mandatory members:</p>
+<ul>
+<li><code>type</code> - This is the class i.e. the Mapper where we expect the error / warning to happen</li>
+<li><code>kind</code> - What kind of diagnostic this is (error, warning, note, etc.)</li>
+<li><code>line</code> - What is the line in the type where this message should be outputted</li>
+<li><code>message</code> - The message that would be visible to the user</li>
+</ul>
+<p>As a convention all mappers that generate an error, i.e. they will lead to a compilation error have to contain <code>Erroneous</code> in their name.</p>
+<h3 id="verifying-generated-output"><a class="ms-header-link" href="#verifying-generated-output"><i class="fa fa-link"></i></a>Verifying generated output</h3>
+<p>Apart from verifying the functionality of the generated mappers.
+There are certain cases where we want to verify the generated code.
+The reason for this is that the MapStruct team strives for generating human-readable code.</p>
+<p>In order to do this we have another specific class in our test arsenal, the <code>GeneratedSource</code>.</p>
+<p>This is a JUnit 4 TestRule which allows us to verify the generated code for mappers defined via <code>GeneratedSource#addComparisonFixtureFor</code>.
+After the test is run this class will look for code located under the test resources directory <code>fixtures</code>.
+It will look for a mapper within the same folder structure as its package.</p>
+<p>This testing mechanism is rarely used within the MapStruct test suite.</p>
+<h2 id="testing-framework"><a class="ms-header-link" href="#testing-framework"><i class="fa fa-link"></i></a>Testing Framework</h2>
+<p>Coming up a write-up on how our testing framework actually works.</p>
+</div>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://groups.google.com/forum/#!forum/mapstruct-users">Google Group</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © The MapStruct authors 2020
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+
