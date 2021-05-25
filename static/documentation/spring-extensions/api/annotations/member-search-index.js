@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"org.mapstruct.extensions.spring","c":"SpringMapperConfig","l":"conversionServiceAdapterClassName()"},{"p":"org.mapstruct.extensions.spring","c":"SpringMapperConfig","l":"conversionServiceAdapterPackage()"},{"p":"org.mapstruct.extensions.spring","c":"SpringMapperConfig","l":"conversionServiceBeanName()"}]
