@@ -73,37 +73,42 @@
   </url>
   
   <url>
+    <loc>http://mapstruct.org/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2021-05-25-mapstruct-spring-extensions-0-0-3-released/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/news/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/release/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/tags/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://mapstruct.org/development/</loc>
     <lastmod>2021-02-17T18:55:58+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/</loc>
-    <lastmod>2021-02-17T18:55:58+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://mapstruct.org/news/2021-02-15-mapstruct-spring-extensions-0-0-2-released/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/news/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/tags/news/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/tags/release/</loc>
-    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/tags/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url>
   

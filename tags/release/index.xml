@@ -6,10 +6,22 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 May 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct Spring Extensions 0.0.3 released</title>
+      <link>http://mapstruct.org/news/2021-05-25-mapstruct-spring-extensions-0-0-3-released/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2021-05-25-mapstruct-spring-extensions-0-0-3-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the third official release of MapStruct Spring Extensions.
+What started out as a &lt;a href=&#34;https://stackoverflow.com/q/58081224/3361467&#34;&gt;StackOverflow question&lt;/a&gt; turned into its own &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions&#34;&gt;(sub-)project&lt;/a&gt; within the MapStruct organization.&lt;/p&gt;
+&lt;p&gt;This third release fixes a circular dependency issue which occurred in non-trivial mapper hierarchies. and would lead to mappers being hidden from the &lt;code&gt;ConversionService&lt;/code&gt;. Kudos go to &lt;a href=&#34;https://github.com/danielshiplett&#34;&gt;Daniel Shiplett&lt;/a&gt; and &lt;a href=&#34;https://github.com/PRIESt512&#34;&gt;Alexey&lt;/a&gt; for their help in chasing down the cause and resolving the issue.&lt;/p&gt;
+&lt;p&gt;Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&amp;rsquo;s conventions and Spring&amp;rsquo;s &lt;a href=&#34;https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API&#34;&gt;ConversionService API&lt;/a&gt; that in turn can be added to any Mapper&amp;rsquo;s &lt;code&gt;uses&lt;/code&gt; attribute. See the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples&#34;&gt;examples&lt;/a&gt; for details.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct Spring Extensions 0.0.2 released</title>
