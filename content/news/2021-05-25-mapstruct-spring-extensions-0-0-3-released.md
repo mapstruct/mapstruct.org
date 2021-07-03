@@ -8,7 +8,7 @@ tags: [release, news]
 It is my pleasure to announce the third official release of MapStruct Spring Extensions.
 What started out as a [StackOverflow question](https://stackoverflow.com/q/58081224/3361467) turned into its own [(sub-)project](https://github.com/mapstruct/mapstruct-spring-extensions) within the MapStruct organization.
 
-This third release fixes a circular dependency issue which occurred in non-trivial mapper hierarchies. and would lead to mappers being hidden from the `ConversionService`. Kudos go to [Daniel Shiplett](https://github.com/danielshiplett) and [Alexey](https://github.com/PRIESt512) for their help in chasing down the cause and resolving the issue.
+This third release fixes a circular dependency issue which occurred in non-trivial mapper hierarchies and would lead to mappers being hidden from the `ConversionService`. Kudos go to [Daniel Shiplett](https://github.com/danielshiplett) and [Alexey](https://github.com/PRIESt512) for their help in chasing down the cause and resolving the issue.
 
 Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct's conventions and Spring's [ConversionService API](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API) that in turn can be added to any Mapper's `uses` attribute. See the [examples](https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples) for details. 
 
