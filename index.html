@@ -147,6 +147,29 @@ if (!doNotTrack) {
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">MapStruct Spring Extensions 0.1.0 released</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>July 03, 2021</time>
+</p>
+
+
+    <div>
+        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>This release adds the possibility to provide &ldquo;external&rdquo; conversions to the generated <code>ConversionServiceAdapter</code>. These could be Spring builtin ones or provided in some runtime dependency. See the <a href="/documentation/spring-extensions/reference/html/">reference guide</a> for details.</p>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2021-07-03-mapstruct-spring-extensions-0-1-0-released/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">MapStruct Spring Extensions 0.0.3 released</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -157,7 +180,7 @@ if (!doNotTrack) {
     <div>
         <p>It is my pleasure to announce the third official release of MapStruct Spring Extensions.
 What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
-<p>This third release fixes a circular dependency issue which occurred in non-trivial mapper hierarchies. and would lead to mappers being hidden from the <code>ConversionService</code>. Kudos go to <a href="https://github.com/danielshiplett">Daniel Shiplett</a> and <a href="https://github.com/PRIESt512">Alexey</a> for their help in chasing down the cause and resolving the issue.</p>
+<p>This third release fixes a circular dependency issue which occurred in non-trivial mapper hierarchies and would lead to mappers being hidden from the <code>ConversionService</code>. Kudos go to <a href="https://github.com/danielshiplett">Daniel Shiplett</a> and <a href="https://github.com/PRIESt512">Alexey</a> for their help in chasing down the cause and resolving the issue.</p>
 <p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
     </div>
 
@@ -187,28 +210,6 @@ What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">Sta
     <div>
         
             <a href="http://mapstruct.org/news/2021-02-15-mapstruct-spring-extensions-0-0-2-released/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">MapStruct 1.4.2.Final bug fix released</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>January 31, 2021</time>
-</p>
-
-
-    <div>
-        <p>It is my pleasure to announce the 1.4.2.Final bug fix release of MapStruct.</p>
-<p>This release includes 2 enhancements, 10 bug fixes, and some documentation fixes.</p>
-<p>The most notable enhancement is the relaxing of the strictness for <code>Mapping#qualifiedByName</code> and <code>Mapping#qualifier</code> for collection mappings.</p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2021-01-31-mapstruct-1_4_2_Final-bug-fix-released/">Read more...</a>
         
     </div>
 </article>

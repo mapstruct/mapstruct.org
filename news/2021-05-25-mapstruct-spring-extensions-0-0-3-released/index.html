@@ -112,6 +112,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2021-07-03-mapstruct-spring-extensions-0-1-0-released/">MapStruct Spring Extensions 0.1.0 released</a></li>
+    
     <li><a href="http://mapstruct.org/news/2021-05-25-mapstruct-spring-extensions-0-0-3-released/">MapStruct Spring Extensions 0.0.3 released</a></li>
     
     <li><a href="http://mapstruct.org/news/2021-02-15-mapstruct-spring-extensions-0-0-2-released/">MapStruct Spring Extensions 0.0.2 released</a></li>
@@ -123,8 +125,6 @@ if (!doNotTrack) {
     <li><a href="http://mapstruct.org/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/">MapStruct 1.4.1.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2020-09-28-mapstruct-1_4_0_Final-is-out/">MapStruct 1.4.0.Final is out</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2020-08-31-mapstruct-1_4_0_CR1-released/">MapStruct 1.4.0.CR1 released</a></li>
     
 </ul>
 
@@ -157,7 +157,7 @@ if (!doNotTrack) {
     <div>
         <div><p>It is my pleasure to announce the third official release of MapStruct Spring Extensions.
 What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
-<p>This third release fixes a circular dependency issue which occurred in non-trivial mapper hierarchies. and would lead to mappers being hidden from the <code>ConversionService</code>. Kudos go to <a href="https://github.com/danielshiplett">Daniel Shiplett</a> and <a href="https://github.com/PRIESt512">Alexey</a> for their help in chasing down the cause and resolving the issue.</p>
+<p>This third release fixes a circular dependency issue which occurred in non-trivial mapper hierarchies and would lead to mappers being hidden from the <code>ConversionService</code>. Kudos go to <a href="https://github.com/danielshiplett">Daniel Shiplett</a> and <a href="https://github.com/PRIESt512">Alexey</a> for their help in chasing down the cause and resolving the issue.</p>
 <p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
 <h3 id="thanks"><a class="ms-header-link" href="#thanks"><i class="fa fa-link"></i></a>Thanks</h3>
 <p>Thanks to <a href="https://github.com/sjaakd">Sjaak Derksen</a> for suggesting this solution and <a href="https://github.com/filiphr">Filip Hrisafov</a> for opening the community project.
@@ -181,8 +181,8 @@ If you feel like there&rsquo;s something missing in MapStruct which could make t
     <div>
         <ul class="uk-pagination">
             
-            <li class="uk-disabled">
-                <span><i class="uk-icon-angle-double-left"></i></span>
+            <li>
+                <a href="/news/2021-07-03-mapstruct-spring-extensions-0-1-0-released/" title="MapStruct Spring Extensions 0.1.0 released"><i class="uk-icon-angle-double-left"></i></a>
             </li>
             
             
