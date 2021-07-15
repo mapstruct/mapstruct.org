@@ -25,6 +25,23 @@ For best results, add the following to the `pom.xml`:
 </properties>
 {{< /prettify >}}
 
+### Gradle Integration
+
+If you are working with a gradle project, then add the folowing plugin to the gradle project configuration in which you use the mapstruct mappers:
+{{< prettify >}}
+plugins {
+    // Allow configuration calls for setting up the eclipse annotation processing configuration.
+    id 'net.ltgt.apt-eclipse' version "0.21"
+}
+{{< /prettify >}}
+You can then generate the required eclipse project information by calling `gradle eclipseJdtApt eclipseFactorypath eclipseJdt`
+After generating the eclipse project information you need to synchronize your eclipse project to recognize the changes, you do this by refreshing the gradle project.
+In eclipse this is found in the context menu (usually right clicking on the project) of the project and then looking under `Gradle` for `Refresh Gradle Project`.
+Next check the project properties and make certain that the annotation processing is enabled.
+<div style="text-align:center">
+    <img src="images/eclipse/enable-annotation-processing.png" alt="Eclipse enabling annotation processing for gradle."/>
+</div>
+
 ### Editing Support
 
 For Eclipse, we are also working on a Plugin that adds *Code Completion* (e.g. for property names) and *Quick Fixes* for common use cases:
