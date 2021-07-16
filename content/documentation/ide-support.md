@@ -39,7 +39,7 @@ After generating the eclipse project information you need to synchronize your ec
 In eclipse this is found in the context menu (usually right clicking on the project) of the project and then looking under `Gradle` for `Refresh Gradle Project`.
 Next check the project properties and make certain that the annotation processing is enabled.
 <div style="text-align:center">
-    <img src="images/eclipse/enable-annotation-processing.png" alt="Eclipse enabling annotation processing for gradle."/>
+    <img src="/images/eclipse/enable-annotation-processing.png" alt="Eclipse enabling annotation processing for gradle."/>
 </div>
 
 ### Editing Support
