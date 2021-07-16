@@ -161,6 +161,22 @@ if (!doNotTrack) {
 &lt;/properties&gt;
 </pre>
 
+<h3 id="gradle-integration"><a class="ms-header-link" href="#gradle-integration"><i class="fa fa-link"></i></a>Gradle Integration</h3>
+<p>If you are working with a gradle project, then add the folowing plugin to the gradle project configuration in which you use the mapstruct mappers:
+<pre class="prettyprint linenums lang-">
+plugins {
+    // Allow configuration calls for setting up the eclipse annotation processing configuration.
+    id &#39;net.ltgt.apt-eclipse&#39; version &#34;0.21&#34;
+}
+</pre>
+
+You can then generate the required eclipse project information by calling <code>gradle eclipseJdtApt eclipseFactorypath eclipseJdt</code>
+After generating the eclipse project information you need to synchronize your eclipse project to recognize the changes, you do this by refreshing the gradle project.
+In eclipse this is found in the context menu (usually right clicking on the project) of the project and then looking under <code>Gradle</code> for <code>Refresh Gradle Project</code>.
+Next check the project properties and make certain that the annotation processing is enabled.</p>
+<div style="text-align:center">
+    <img src="images/eclipse/enable-annotation-processing.png" alt="Eclipse enabling annotation processing for gradle."/>
+</div>
 <h3 id="editing-support"><a class="ms-header-link" href="#editing-support"><i class="fa fa-link"></i></a>Editing Support</h3>
 <p>For Eclipse, we are also working on a Plugin that adds <em>Code Completion</em> (e.g. for property names) and <em>Quick Fixes</em> for common use cases:</p>
 <h4 id="completion-for-properties-and-enum-constants"><a class="ms-header-link" href="#completion-for-properties-and-enum-constants"><i class="fa fa-link"></i></a>Completion for Properties and Enum Constants</h4>
