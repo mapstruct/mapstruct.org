@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Support for mapping from Map to bean, conditional mapping and much more: MapStruct 1.5.0.Beta1 is out &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+
+    <body>
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            
+
+    <li class="uk-active">
+    <a href="/news/"> News </a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/"> FAQ </a>
+    </li>
+
+    <li>
+    <a href="https://github.com/mapstruct/mapstruct"><i class='fa fa-github fa-lg'></i> Code &amp; Issues </a>
+    </li>
+
+            </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
+        </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                
+
+    <li class="uk-active">
+    <a href="/news/"> News </a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/faq/"> FAQ </a>
+    </li>
+
+    <li>
+    <a href="https://github.com/mapstruct/mapstruct"><i class='fa fa-github fa-lg'></i> Code &amp; Issues </a>
+    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    
+    <li><a href="http://mapstruct.org/news/2021-07-18-mapstruct-1_5_0_Beta1-is-out/">Support for mapping from Map to bean, conditional mapping and much more: MapStruct 1.5.0.Beta1 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2021-07-03-mapstruct-spring-extensions-0-1-0-released/">MapStruct Spring Extensions 0.1.0 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2021-05-25-mapstruct-spring-extensions-0-0-3-released/">MapStruct Spring Extensions 0.0.3 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2021-02-15-mapstruct-spring-extensions-0-0-2-released/">MapStruct Spring Extensions 0.0.2 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2021-01-31-mapstruct-1_4_2_Final-bug-fix-released/">MapStruct 1.4.2.Final bug fix released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2020-12-03-mapstruct-spring-extensions-0-0-1-released/">MapStruct Spring Extensions 0.0.1 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/">MapStruct 1.4.1.Final bug fix released</a></li>
+    
+</ul>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<article class="uk-article">
+    <p class="uk-article-meta ms-article-date">
+    <time>July 18, 2021</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2021-07-18-mapstruct-1_5_0_Beta1-is-out/">Support for mapping from Map to bean, conditional mapping and much more: MapStruct 1.5.0.Beta1 is out</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Filip Hrisafov, Sjaak Derksen</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+    <div>
+        <div><p>It&rsquo;s my pleasure to announce the first Beta release of MapStruct 1.5.</p>
+<p>The new release comes with a lot of new functionality, e.g.:</p>
+<ul>
+<li>Support for mapping from <code>Map&lt;String, ???&gt;</code> to a bean</li>
+<li>Conditional mapping</li>
+<li>Mapping <code>Iterable&lt;?&gt;</code> object to an object</li>
+<li>New built-in conversions</li>
+<li>Value mapping enhancements</li>
+</ul>
+<p>Altogether, not less than <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.5.0.Beta1">41 issues</a> were fixed for this release.</p>
+<p>This would not have been possible without our fantastic community of contributors:</p>
+<ul>
+<li>
+<p><a href="https://github.com/Blackbaud-JasonBodnar">@Blackbaud-JasonBodnar</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/dmngb">@dmngb</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/eforest">@eforest</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/incaseoftrouble">@incaseoftrouble</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/jpbassinello">@jpbassinello</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/JudeNiroshan">@JudeNiroshan</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/jvwilge">@jvwilge</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/LukeLaz">@LukeLaz</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/Saljack">@Saljack</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/sahebpreet">@sahebpreet</a>,</p>
+</li>
+<li>
+<p><a href="https://github.com/yekeoe">@yekeoe</a>,</p>
+</li>
+<li>
+<p>and of course seasoned MapStruct hackers <a href="https://github.com/sjaakd">Sjaak Derksen</a> and <a href="https://github.com/filiphr">Filip Hrisafov</a>.</p>
+</li>
+</ul>
+<p>Thank you everyone for all your hard work!</p>
+<p>Slightly more than a year after the first Beta release of 1.4, we are proud to present you with the first Beta of the 1.5 release.</p>
+<p>Last time we announced a new community driven effort for MapStruct extensions.
+Since then, we have officially released 3 versions of the MapStruct Spring Extensions.
+I would like to thank Raimund Klein for successfully leading this MapStruct extension.</p>
+<p>Enough of the pep talk, let&rsquo;s take a closer look at some of the new features and enhancement!</p>
+<h3 id="mapping-from-map-to-bean"><a class="ms-header-link" href="#mapping-from-map-to-bean"><i class="fa fa-link"></i></a>Mapping from Map to Bean</h3>
+<p><a href="https://github.com/mapstruct/mapstruct/issues/1075">Mapping from Map to Bean</a> has been one of the top requested features for MapStruct.</p>
+<p>We are happy to announce that as of 1.5.0.Beta1 MapStruct has out of the box support for mapping maps into objects.
+Currently, we support mapping from <code>Map&lt;String, ???&gt;</code> into an object.
+Maps that do not have a <code>String</code> as a key will generate a warning and will not be used in the generated code.
+The type of the value is not important and same rules for mapping apply as with different types.</p>
+<p>e.g. Defining a mapping in the following way</p>
+<pre class="prettyprint linenums lang-java">
+public class Customer {
+    private Long id;
+    private String name;
+    //getters and setter omitted for brevity
+}
+
+@Mapper
+public interface CustomerMapper {
+    @Mapping(target = &#34;name&#34;, source = &#34;customerName&#34;)
+    Customer toCustomer(Map&lt;String, String&gt; map);
+}
+</pre>
+
+<p>Will generate the following code</p>
+<pre class="prettyprint linenums lang-java">
+// GENERATED CODE
+public class CustomerMapperImpl implements CustomerMapper {
+
+    @Override
+    public Customer toCustomer(Map&lt;String, String&gt; map) {
+        // ...
+        if ( map.containsKey( &#34;id&#34; ) ) {
+            customer.setId( Integer.parseInt( map.get( &#34;id&#34; ) ) );
+        }
+        if ( map.containsKey( &#34;customerName&#34; ) ) {
+            customer.setName( source.get( &#34;customerName&#34; ) );
+        }
+        // ...
+    }
+}
+</pre>
+
+<p>For more details how Mapping Map to Bean works have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#mapping-map-to-bean">Mapping Map to Bean</a> section of the reference guide.</p>
+<h3 id="conditional-mapping"><a class="ms-header-link" href="#conditional-mapping"><i class="fa fa-link"></i></a>Conditional Mapping</h3>
+<p>We&rsquo;ve had support for conditional mapping with the help of so called presence check methods on your objects.
+Methods like that have the format of <code>boolean hasXXX()</code> where <code>XXX</code> is the name of the property.
+However, this is sometimes limiting since you do not have the possibility to change your object, or you want to have a global check and do not map empty strings.</p>
+<p>In this release we have added support for conditional mapping outside your objects.
+You can now write custom conditional methods that will be used for checking if a property is present or not in the generated code.
+A custom condition method is a method that is annotated with <code>org.mapstruct.Condition</code> and returns <code>boolean</code>.</p>
+<p>For example if you want to map a String property only when it is not null and it is not empty then you can do something like:</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface CarMapper {
+
+    CarDto carToCarDto(Car car);
+
+    @Condition
+    default boolean isNotEmpty(String value) {
+        return value != null &amp;&amp; !value.isEmpty();
+    }
+}
+</pre>
+
+<p>This will generate the following code</p>
+<pre class="prettyprint linenums lang-java">
+// GENERATED CODE
+public class CarMapperImpl implements CarMapper {
+
+    @Override
+    public CarDto carToCarDto(Car car) {
+        if ( car == null ) {
+            return null;
+        }
+    
+        CarDto carDto = new CarDto();
+
+        if ( isNotEmpty( car.getOwner() ) ) {
+            carDto.setOwner( car.getOwner() );
+        }
+
+        // Mapping of other properties
+
+        return carDto;
+    }
+}
+</pre>
+
+<p>Methods annotated with <code>@Condition</code> work in similar way as other methods (object factories, lifecycle, mapping) in MapStruct.
+This means that you can include the source parameter, the <code>@MappingTarget</code>, use qualifiers, define your conditions in other classes and use them via <code>Mapper#uses</code></p>
+<p>For more details how conditional mapping works have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#conditional-mapping">Conditional Mapping</a> section of the reference guide.</p>
+<h3 id="mapping-iterable-into-an-object"><a class="ms-header-link" href="#mapping-iterable-into-an-object"><i class="fa fa-link"></i></a>Mapping Iterable&lt;?&gt; into an Object</h3>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface CustomerMapper {
+
+    @Mapping(source = &#34;record&#34;, target = &#34;.&#34;)
+    Customer customerDtoToCustomer(CustomerDto customerDto);
+}
+</pre>
+
+<h3 id="new-built-in-conversions"><a class="ms-header-link" href="#new-built-in-conversions"><i class="fa fa-link"></i></a>New Built-In conversions</h3>
+<p>We have extensive number of built-in conversions between different types.
+As of this release we have 2 more:</p>
+<ul>
+<li>Between <code>String</code> and <code>StringBuilder</code></li>
+<li>Between <code>UUID</code> and <code>String</code></li>
+</ul>
+<h3 id="value-mapping-enhancements"><a class="ms-header-link" href="#value-mapping-enhancements"><i class="fa fa-link"></i></a>Value mapping enhancements</h3>
+<h4 id="case-name-transformation-strategy"><a class="ms-header-link" href="#case-name-transformation-strategy"><i class="fa fa-link"></i></a>Case name transformation strategy</h4>
+<p>In the last release we added a new <code>@EnumMapping</code> that allows applying custom functions when mapping between enums.
+In this release we are adding a new function <code>case</code> for performing case transformation of the source enum.
+The new case transformations are:</p>
+<ul>
+<li><code>upper</code> - Performs upper case transformation to the source enum</li>
+<li><code>lower</code> - Performs lower case transformation to the source enum</li>
+<li><code>capital</code> - Performs capitalisation of the first character of every word in the source enum, and everything else to lower case. A word is split by &lsquo;_&rsquo;</li>
+</ul>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+public enum CheeseType {
+    BRIE,
+    ROQUEFORT
+}
+
+public enum CheeseTypeLowerCase {
+    brie,
+    roquefort
+}
+
+public enum CheeseTypeCapitalized {
+    Brie,
+    Roquefort
+}
+
+@Mapper
+public interface CheeseMapper {
+
+    @EnumMapping(nameTransformationStrategy = &#34;case&#34;, configuration = &#34;lowercase&#34;)
+    CheeseTypeLowerCase map(CheeseType cheese);
+    
+    @InheritInverseConfiguration
+    CheeseType map(CheeseTypePrefixed cheese);
+    
+    @EnumMapping(nameTransformationStrategy = &#34;case&#34;, configuration = &#34;capital&#34;)
+    CheeseTypeCapitalized map(CheeseType cheese);
+
+    @EnumMapping(nameTransformationStrategy = &#34;case&#34;, configuration = &#34;uppercase&#34;)
+    CheeseType map(CheeseTypeCapitalized cheese);
+}
+</pre>
+
+<h4 id="throw-an-exception-as-a-value-mapping-option"><a class="ms-header-link" href="#throw-an-exception-as-a-value-mapping-option"><i class="fa fa-link"></i></a>Throw an exception as a Value Mapping Option</h4>
+<p>It is now possible to throw an exception for a particular enum.</p>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface OrderTypeMapper {
+
+    @ValueMapping(source = MappingConstants.ANY_UNMAPPED, target = MappingConstants.THROW_EXCEPTION)
+    ExternalOrderType map(OrderType cheese);
+
+    @ValueMapping(source = &#34;NORMAL&#34;, target = MappingConstants.THROW_EXCEPTION)
+    OrderType map(ExternalOrderType cheese);
+}
+</pre>
+
+<p>In the first example instead of generating a warning MapStruct will throw an exception for all the unmapped enums.</p>
+<p>In the second example there will be an exception when mapping from <code>ExternalOrderType#NORMAL</code></p>
+<h3 id="enhancements"><a class="ms-header-link" href="#enhancements"><i class="fa fa-link"></i></a>Enhancements</h3>
+<ul>
+<li>Add constants for <code>componentModel</code> in <code>MappingConstants.ComponentModel</code></li>
+<li>Reuse singleton <code>INSTANCE</code> (if it exists) in mapper references when using the default component model</li>
+<li>Add <code>unmappedTargetPolicy</code> to <code>BeanMapping</code></li>
+<li>Use instance final fields for custom <code>DateTimeFormatter</code>(s) (instead of creating a new instance each time)</li>
+</ul>
+<h3 id="breaking-changes"><a class="ms-header-link" href="#breaking-changes"><i class="fa fa-link"></i></a>Breaking Changes</h3>
+<ul>
+<li>The default implementation for <code>Map</code> and <code>Set</code> have been changed to use insertion order preserving implementations <code>LinkedHashMap</code> and <code>LinkedHashSet</code> instead of <code>HashMap</code> and <code>HashSet</code>. If you still want to use <code>HashMap</code> and <code>HashSet</code> then you should use an <code>@ObjectFactory</code></li>
+<li>Compile error is created if an unknown property is used in <code>BeanMapping#ignoreUnmappedSourceProperties</code> - before the property was ignored which might have lead to false sense of security.</li>
+</ul>
+<h3 id="varia"><a class="ms-header-link" href="#varia"><i class="fa fa-link"></i></a>Varia</h3>
+<p>There have been numerous bug fixes, which have improved the error reporting and fixed some inconsistencies.</p>
+<p>Apart from bug fixes we did some changes in the way we build and test MapStruct.
+We have migrated our test suite to use the latest from JUnit 5.
+We have adapted our entire build to work on Java 11, this means that we had to remove the nice graphs from our Javadoc.
+The reason for removing them is that the Doclet we were using no longer works on Java 11 and we would like to use the improved Javadoc generation of Java 11.</p>
+<p>We have also refactored the way we handle detect generics.</p>
+<h3 id="mapstruct-discussions"><a class="ms-header-link" href="#mapstruct-discussions"><i class="fa fa-link"></i></a>MapStruct Discussions</h3>
+<p>We would also like to let you know that we have opened the Discussions section of our GitHub repository and would like to <a href="https://github.com/mapstruct/mapstruct/discussions/2518">Welcome you to MapStruct Discussions!</a>.</p>
+<p>We have had (and still have) the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group.
+However, we believe that switching to GitHub Discussions will bring more engagement from our community and will be easier for us to maintain it.</p>
+<p>We would like to use these discussions to interact with the community, get ideas from all of you, see best practices, discuss potential new features, ideas, etc.</p>
+<p>If you have questions about using MapStruct please continue using <a href="https://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a>.</p>
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+<p>This concludes our tour through MapStruct 1.5 Beta1.
+If you&rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:</p>
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.5.0.Beta1%7Cjar">org.mapstruct:mapstruct:1.5.0.Beta1</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.5.0.Beta1%7Cjar">org.mapstruct:mapstruct-processor:1.5.0.Beta1</a></li>
+</ul>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.5.0.Beta1">from GitHub</a>.</p>
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
+<ul>
+<li>Get help in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a>, the <a href="https://github.com/mapstruct/mapstruct/discussions">GitHub Discussion</a> or <a href="https://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+</ul></div>
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
+            </li>
+            
+            
+            <li>
+                <a href="/news/2021-07-03-mapstruct-spring-extensions-0-1-0-released/" title="MapStruct Spring Extensions 0.1.0 released"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'mapstruct';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+</article>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://groups.google.com/forum/#!forum/mapstruct-users">Google Group</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="http://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © The MapStruct authors 2020
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+

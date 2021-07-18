@@ -6,10 +6,27 @@
     <description>Recent content in news on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Jul 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Support for mapping from Map to bean, conditional mapping and much more: MapStruct 1.5.0.Beta1 is out</title>
+      <link>http://mapstruct.org/news/2021-07-18-mapstruct-1_5_0_Beta1-is-out/</link>
+      <pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2021-07-18-mapstruct-1_5_0_Beta1-is-out/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s my pleasure to announce the first Beta release of MapStruct 1.5.&lt;/p&gt;
+&lt;p&gt;The new release comes with a lot of new functionality, e.g.:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for mapping from &lt;code&gt;Map&amp;lt;String, ???&amp;gt;&lt;/code&gt; to a bean&lt;/li&gt;
+&lt;li&gt;Conditional mapping&lt;/li&gt;
+&lt;li&gt;Mapping &lt;code&gt;Iterable&amp;lt;?&amp;gt;&lt;/code&gt; object to an object&lt;/li&gt;
+&lt;li&gt;New built-in conversions&lt;/li&gt;
+&lt;li&gt;Value mapping enhancements&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct Spring Extensions 0.1.0 released</title>
