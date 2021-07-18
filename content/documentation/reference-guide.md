@@ -12,7 +12,7 @@ parent = "Documentation"
 
 **1.5.0.Beta1** (July 18th 2021; latest beta release)
 
-* Reference guide: [HTML](/documentation/stable/reference/html/) | [PDF](/documentation/dev/reference/pdf/mapstruct-reference-guide.pdf)
+* Reference guide: [HTML](/documentation/dev/reference/html/) | [PDF](/documentation/dev/reference/pdf/mapstruct-reference-guide.pdf)
 * API documentation: [JavaDoc](/documentation/dev/api/)
 * [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.5.0.Beta1)
 
