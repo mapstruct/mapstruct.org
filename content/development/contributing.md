@@ -28,7 +28,7 @@ You love MapStruct but miss a certain feature? You found a bug and want to repor
     <td width="20%">Issue tracker</td><td><a href="https://github.com/mapstruct/mapstruct/issues">https://github.com/mapstruct/mapstruct/issues</a></td>
   </tr>
   <tr>
-    <td width="20%">Discussions</td><td>Join the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> Google group</td>
+    <td width="20%">Discussions</td><td>Join the <a href="https://github.com/mapstruct/mapstruct/discussions">MapStruct GitHub Discussions</a></td>
   </tr>
   <tr>
     <td width="20%">CI build</td><td><a href="https://github.com/mapstruct/mapstruct/actions?query=branch%3Amaster+workflow%3ACI"</a>https://github.com/mapstruct/mapstruct/actions?query=branch%3Amaster+workflow%3ACI</td>
@@ -45,7 +45,7 @@ When doing changes, keep the following best practices in mind:
 
 * Provide test cases
 * Update the [reference documentation](mapstruct.org/documentation) on [mapstruct.org](mapstruct.org) where required
-* Discuss new features you'd like to implement at the [Google group](https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users) before getting started
+* Discuss new features you'd like to implement at the [GitHub Discussions](https://github.com/mapstruct/mapstruct/discussions) before getting started
 * Create one pull request per feature
 * Provide a meaningful history, e.g. squash intermediary commits before submitting a pull request
 * Start your commit messages with "#&lt;issue no&gt;", e.g. "#123 Adding new mapping feature"
