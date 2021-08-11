@@ -268,7 +268,7 @@ More detailed information can be found in the reference guide.
 
 {{% /faq_question %}}
 
-{{% faq_question "How to solve ambiguous methods" %}}
+{{% faq_question "How to solve ambiguous methods" "ambiguous" %}}
 
 MapStruct tries various mechanisms to map a sourceproperty to a taregtproperty when it cannot make a direct mapping. In order, MapStruct tries:
 
@@ -288,7 +288,7 @@ This can be done in the following ways:
 
 {{% /faq_question %}}
 
-{{% faq_question "Problems with qualifiers" %}}
+{{% faq_question "Problems with qualifiers" "qualifier" %}}
 MapStruct uses the mechanism of Qualifiers to resolve conflicts. MapStruct selects methods based on the combination of source type and target type.
 
 An error labeled: "Qualifier error" is MapStructs way of letting you know that it cannot find the method you intended to annotate with a qualifier annotation or with `@Named`. There can be several reasons for this:

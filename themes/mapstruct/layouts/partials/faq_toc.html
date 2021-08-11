@@ -7,7 +7,7 @@
     <ul class="uk-nav uk-nav-sub">
     {{ range $headers }}
         <li>
-            <a href="#{{ . | plainify | urlize | lower }}">
+            <a href="#{{ . | plainify | urlize }}">
                 {{ . | plainify }}
             </a>
         </li>

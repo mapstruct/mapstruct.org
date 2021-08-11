@@ -1,3 +1,6 @@
+{{ if (.Get 1) }}
+<section id="{{ .Get 1 | plainify | urlize }}"></section>
+{{ end }}
 <h2 id="{{ .Get 0 | plainify | urlize }}">{{ .Get 0 }}</h2>
 <div>
   {{ .Inner }}
