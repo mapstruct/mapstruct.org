@@ -116,61 +116,61 @@ if (!doNotTrack) {
     <ul class="uk-nav uk-nav-sub">
     
         <li>
-            <a href="#how-is-mapstruct-different-from-other-bean-mapping-tools">
+            <a href="#How-is-MapStruct-different-from-other-bean-mapping-tools">
                 How is MapStruct different from other bean mapping tools?
             </a>
         </li>
     
         <li>
-            <a href="#can-i-use-mapstruct-within-eclipse">
+            <a href="#Can-I-use-MapStruct-within-Eclipse">
                 Can I use MapStruct within Eclipse?
             </a>
         </li>
     
         <li>
-            <a href="#can-i-use-mapstruct-together-with-project-lombok">
+            <a href="#Can-I-use-MapStruct-together-with-Project-Lombok">
                 Can I use MapStruct together with Project Lombok?
             </a>
         </li>
     
         <li>
-            <a href="#why-does-named-not-work">
+            <a href="#Why-does-Named-not-work">
                 Why does @Named not work?
             </a>
         </li>
     
         <li>
-            <a href="#why-do-i-get-this-error-could-not-retrieve-mapper-annotation-during-compilation">
+            <a href="#Why-do-I-get-this-error-Could-not-retrieve-Mapper-annotation-during-compilation">
                 Why do I get this error: Could not retrieve @Mapper annotation during compilation?
             </a>
         </li>
     
         <li>
-            <a href="#why-is-it-not-possible-for-mapstruct-to-generate-implementations-for-iterable-stream-and-map-types-from-update-mappingtarget-methods">
+            <a href="#Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods">
                 Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?
             </a>
         </li>
     
         <li>
-            <a href="#how-do-i-handle-null-properties-in-the-source-bean">
+            <a href="#How-do-I-handle-null-properties-in-the-source-bean">
                 How do I handle null properties in the source bean?
             </a>
         </li>
     
         <li>
-            <a href="#how-to-solve-ambiguous-methods">
+            <a href="#How-to-solve-ambiguous-methods">
                 How to solve ambiguous methods
             </a>
         </li>
     
         <li>
-            <a href="#problems-with-qualifiers">
+            <a href="#Problems-with-qualifiers">
                 Problems with qualifiers
             </a>
         </li>
     
         <li>
-            <a href="#how-to-avoid-mapstruct-selecting-a-method">
+            <a href="#How-to-avoid-MapStruct-selecting-a-method">
                 How to avoid MapStruct selecting a method?
             </a>
         </li>
@@ -493,6 +493,7 @@ public interface MyMapper {
 </div>
 <p>More detailed information can be found in the reference guide.</p>
 </div>
+<section id="ambiguous"></section>
 <h2 id="How-to-solve-ambiguous-methods"><a class="ms-header-link" href="#How-to-solve-ambiguous-methods"><i class="fa fa-link"></i></a>How to solve ambiguous methods</h2>
 <div>
 <p>MapStruct tries various mechanisms to map a sourceproperty to a taregtproperty when it cannot make a direct mapping. In order, MapStruct tries:</p>
@@ -512,6 +513,7 @@ public interface MyMapper {
 <li>provide qualifiers.</li>
 </ul>
 </div>
+<section id="qualifier"></section>
 <h2 id="Problems-with-qualifiers"><a class="ms-header-link" href="#Problems-with-qualifiers"><i class="fa fa-link"></i></a>Problems with qualifiers</h2>
 <div>
 <p>MapStruct uses the mechanism of Qualifiers to resolve conflicts. MapStruct selects methods based on the combination of source type and target type.</p>
