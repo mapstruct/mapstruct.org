@@ -270,7 +270,7 @@ More detailed information can be found in the reference guide.
 
 {{% faq_question "How to solve ambiguous methods" "ambiguous" %}}
 
-MapStruct tries various mechanisms to map a sourceproperty to a taregtproperty when it cannot make a direct mapping. In order, MapStruct tries:
+MapStruct tries various mechanisms to map a sourceproperty to a targetproperty when it cannot make a direct mapping. In order, MapStruct tries:
 
 1. other mapping methods (inside the mapper, or via the uses relation). This concerns both hand-written methods and MapStruct generated methods
 2. direct mapping (source type is directly assignable to target type)
