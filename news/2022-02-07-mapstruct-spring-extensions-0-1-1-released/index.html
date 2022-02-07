@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Reference Guide brushed up and converted to AsciiDoc &ndash; MapStruct</title>
+        <title>MapStruct Spring Extensions 0.1.1 released &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -135,13 +135,18 @@ if (!doNotTrack) {
             
 <article class="uk-article">
     <p class="uk-article-meta ms-article-date">
-    <time>February 14, 2016</time>
+    <time>February 07, 2021</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/">Reference Guide brushed up and converted to AsciiDoc</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2022-02-07-mapstruct-spring-extensions-0-1-1-released/">MapStruct Spring Extensions 0.1.1 released</a></h1>
 
 <p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
+    By <b>Raimund Klein</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
     <span class="uk-badge">
     
         news
@@ -150,25 +155,41 @@ if (!doNotTrack) {
 </p>
 
     <div>
-        <div><p>While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time.
-To name just one issue, readability wasn&rsquo;t great on smaller screen sizes.</p>
-<p>All that&rsquo;s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic <a href="http://asciidoctor.org/">AsciiDoctor</a> tool.</p>
-<p>The guide is provided in two formats now: <a href="/documentation/stable/reference/html/">HTML</a> and as <a href="/documentation/stable/reference/pdf/mapstruct-reference-guide.pdf">PDF</a>. The actual contents is largely unchanged, but we moved some sections around in order to reduce the number of chapters to a more digestable level. It&rsquo;s high on our agenda to rewrite some parts of the guide which aren&rsquo;t perfect yet, which should be much lesser of a burden now thanks to AsciiDoc.</p>
-<p>In addition, you also can find the <a href="/documentation/stable/api/">API JavaDoc</a> online now.</p>
-<p>The main <a href="/documentation">documentation page</a> page which previously just contained the reference documentation has been revamped into a landing page for all thing related to documentation. It provides links to the reference guide, example projects and many useful resources around MapStruct provided at other places on the web, such as blog posts and conference presentation slides.</p>
-<p>Enjoy!</p>
-</div>
+        <div><p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>This release fixes a bug related to dealing with array types as mapping sources or targets.</p>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+<h3 id="thanks"><a class="ms-header-link" href="#thanks"><i class="fa fa-link"></i></a>Thanks</h3>
+<p>Thanks to <a href="https://github.com/sjaakd">Sjaak Derksen</a> for suggesting this solution and <a href="https://github.com/filiphr">Filip Hrisafov</a> for opening the community project.
+Thanks to <a href="https://github.com/cdprete">Cosimo Damiano Prete</a> for pointing out the array type bug fixed in 0.1.1.
+Also thanks to <a href="https://github.com/danielshiplett">Daniel Shiplett</a> and <a href="https://github.com/PRIESt512">Alexey</a> for their fix on a previous release.
+If you feel like there&rsquo;s something missing in MapStruct which could make the Spring experience any smoother, please get involved!</p>
+<p>Also, if your favourite library or framework could use some tweaking with regard to MapStruct, contact us.</p>
+<p>Happy coding with MapStruct Spring Extensions!</p>
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+<p>You can fetch the release from Maven Central using the following GAV coordinates:</p>
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct.extensions.spring%7Cmapstruct-spring-annotations%7C0.1.1%7Cjar">org.mapstruct.extensions.spring:mapstruct-spring-annotations:0.1.1</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct.extensions.spring%7Cmapstruct-spring-extensions%7C0.1.1%7Cjar">org.mapstruct.extensions.spring:mapstruct-spring-extensions:0.1.1</a></li>
+</ul>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct-spring-extensions/releases/tag/v0.1.1">from GitHub</a>.</p>
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
+<ul>
+<li>Get help in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a> or at the <a href="https://groups.google.com/forum/?fromgroups#!forum/mapstruct-users">mapstruct-users</a> group</li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+</ul></div>
     </div>
     <div>
         <ul class="uk-pagination">
             
             <li>
-                <a href="/news/2016-03-16-mapstruct-1_1_0_Beta1-released/" title="MapStruct 1.1.0.Beta1 released"><i class="uk-icon-angle-double-left"></i></a>
+                <a href="/news/2021-02-15-mapstruct-spring-extensions-0-0-2-released/" title="MapStruct Spring Extensions 0.0.2 released"><i class="uk-icon-angle-double-left"></i></a>
             </li>
             
             
             <li>
-                <a href="/news/2015-11-25-mapstruct-1_0_Final-released/" title="MapStruct 1.0 Final released"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="/news/2021-01-31-mapstruct-1_4_2_Final-bug-fix-released/" title="MapStruct 1.4.2.Final bug fix released"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 
