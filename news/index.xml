@@ -6,10 +6,22 @@
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Feb 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct Spring Extensions 0.1.1 released</title>
+      <link>http://mapstruct.org/news/2022-02-07-mapstruct-spring-extensions-0-1-1-released/</link>
+      <pubDate>Mon, 07 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2022-02-07-mapstruct-spring-extensions-0-1-1-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a &lt;a href=&#34;https://stackoverflow.com/q/58081224/3361467&#34;&gt;StackOverflow question&lt;/a&gt; turned into its own &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions&#34;&gt;(sub-)project&lt;/a&gt; within the MapStruct organization.&lt;/p&gt;
+&lt;p&gt;This release fixes a bug related to dealing with array types as mapping sources or targets.&lt;/p&gt;
+&lt;p&gt;Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&amp;rsquo;s conventions and Spring&amp;rsquo;s &lt;a href=&#34;https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API&#34;&gt;ConversionService API&lt;/a&gt; that in turn can be added to any Mapper&amp;rsquo;s &lt;code&gt;uses&lt;/code&gt; attribute. See the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples&#34;&gt;examples&lt;/a&gt; for details.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Support for subclass mapping, various enhancements and much more: MapStruct 1.5.0.Beta2 is out</title>
@@ -77,18 +89,6 @@ What started out as a &lt;a href=&#34;https://stackoverflow.com/q/58081224/33614
       <description>&lt;p&gt;It is my pleasure to announce the second official release of MapStruct Spring Extensions.
 What started out as a &lt;a href=&#34;https://stackoverflow.com/q/58081224/3361467&#34;&gt;StackOverflow question&lt;/a&gt; over a year ago has turned into its own &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions&#34;&gt;(sub-)project&lt;/a&gt; within the MapStruct organization.&lt;/p&gt;
 &lt;p&gt;This second release allows specifying a defined name for the generated ConversionServiceAdapter bean. Kudos go to &lt;a href=&#34;https://github.com/dmham86&#34;&gt;David Hamilton&lt;/a&gt; for this contribution. Additionally, you will now find a &lt;a href=&#34;http://mapstruct.org/documentation/spring-extensions/reference/html/&#34;&gt;reference guide&lt;/a&gt; on the main MapStruct homepage.&lt;/p&gt;
-&lt;p&gt;Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&amp;rsquo;s conventions and Spring&amp;rsquo;s &lt;a href=&#34;https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API&#34;&gt;ConversionService API&lt;/a&gt; that in turn can be added to any Mapper&amp;rsquo;s &lt;code&gt;uses&lt;/code&gt; attribute. See the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples&#34;&gt;examples&lt;/a&gt; for details.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>MapStruct Spring Extensions 0.1.1 released</title>
-      <link>http://mapstruct.org/news/2022-02-07-mapstruct-spring-extensions-0-1-1-released/</link>
-      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/news/2022-02-07-mapstruct-spring-extensions-0-1-1-released/</guid>
-      <description>&lt;p&gt;It is my pleasure to announce the next official release of MapStruct Spring Extensions.
-What started out as a &lt;a href=&#34;https://stackoverflow.com/q/58081224/3361467&#34;&gt;StackOverflow question&lt;/a&gt; turned into its own &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions&#34;&gt;(sub-)project&lt;/a&gt; within the MapStruct organization.&lt;/p&gt;
-&lt;p&gt;This release fixes a bug related to dealing with array types as mapping sources or targets.&lt;/p&gt;
 &lt;p&gt;Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&amp;rsquo;s conventions and Spring&amp;rsquo;s &lt;a href=&#34;https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API&#34;&gt;ConversionService API&lt;/a&gt; that in turn can be added to any Mapper&amp;rsquo;s &lt;code&gt;uses&lt;/code&gt; attribute. See the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples&#34;&gt;examples&lt;/a&gt; for details.&lt;/p&gt;</description>
     </item>
     
