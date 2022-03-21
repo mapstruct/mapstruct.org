@@ -6,10 +6,25 @@
     <description>Recent content in news on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Mar 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.5.0.RC1 is out</title>
+      <link>http://mapstruct.org/news/2022-03-20-mapstruct-1_5_0_RC1-is-out/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2022-03-20-mapstruct-1_5_0_RC1-is-out/</guid>
+      <description>&lt;p&gt;I am very happy to announce the first release candidate of MapStruct 1.5!&lt;/p&gt;
+&lt;p&gt;This release provides mostly bug fixes and other smaller improvements since &lt;a href=&#34;https://mapstruct.org/news/2021-12-12-mapstruct-1_5_0_Beta2-is-out/&#34;&gt;1.5.0.Beta2&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for Jakarta dependency injection&lt;/li&gt;
+&lt;li&gt;Allow &lt;code&gt;@InheritInverseConfiguration&lt;/code&gt; with &lt;code&gt;@SubclassMapping&lt;/code&gt;(s)&lt;/li&gt;
+&lt;li&gt;Various small bug fixes and documentation clarifications&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct Spring Extensions 0.1.1 released</title>
