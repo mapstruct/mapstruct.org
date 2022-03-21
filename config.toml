@@ -50,7 +50,7 @@ url = "https://github.com/mapstruct/mapstruct"
 
 [Params]
 stableVersion = "1.4.2.Final"
-devVersion = "1.5.0.Beta2"
+devVersion = "1.5.0.RC1"
 numberOfLatestPosts = 7
 tagLine = "Java bean mappings, the easy way!"
 contentSourceUrl = "https://github.com/mapstruct/mapstruct.org/tree/master/content/"

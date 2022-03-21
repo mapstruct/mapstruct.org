@@ -10,11 +10,11 @@ teaser = "The reference documentation and API docs for the current stable and pr
 parent = "Documentation"
 +++
 
-**1.5.0.Beta2** (December 12th 2021; latest beta release)
+**1.5.0.RC1** (March 21st 2022; latest beta release)
 
 * Reference guide: [HTML](/documentation/dev/reference/html/) | [PDF](/documentation/dev/reference/pdf/mapstruct-reference-guide.pdf)
 * API documentation: [JavaDoc](/documentation/dev/api/)
-* [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.5.0.Beta2)
+* [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.5.0.RC1)
 
 **1.4.2.Final** (January 31st 2021; latest stable release)
 

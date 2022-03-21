@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.15">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.5.0.Beta2 Reference Guide</title>
+<title>MapStruct 1.5.0.RC1 Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -528,10 +528,10 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.5.0.Beta2 Reference Guide</h1>
+<h1>MapStruct 1.5.0.RC1 Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2021-12-12</span>
+<span id="revdate">2022-03-21</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -606,11 +606,12 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#sub-class-mappings">10.4. Subclass Mapping</a></li>
 <li><a href="#determining-result-type">10.5. Determining the result type</a></li>
 <li><a href="#mapping-result-for-null-arguments">10.6. Controlling mapping result for 'null' arguments</a></li>
-<li><a href="#mapping-result-for-null-properties">10.7. Controlling mapping result for 'null' properties in bean mappings (update mapping methods only).</a></li>
-<li><a href="#checking-source-property-for-null-arguments">10.8. Controlling checking result for 'null' properties in bean mapping</a></li>
-<li><a href="#source-presence-check">10.9. Source presence checking</a></li>
-<li><a href="#conditional-mapping">10.10. Conditional Mapping</a></li>
-<li><a href="#exceptions">10.11. Exceptions</a></li>
+<li><a href="#mapping-result-for-null-collection-or-map-arguments">10.7. Controlling mapping result for 'null' collection or map arguments</a></li>
+<li><a href="#mapping-result-for-null-properties">10.8. Controlling mapping result for 'null' properties in bean mappings (update mapping methods only).</a></li>
+<li><a href="#checking-source-property-for-null-arguments">10.9. Controlling checking result for 'null' properties in bean mapping</a></li>
+<li><a href="#source-presence-check">10.10. Source presence checking</a></li>
+<li><a href="#conditional-mapping">10.11. Conditional Mapping</a></li>
+<li><a href="#exceptions">10.12. Exceptions</a></li>
 </ul>
 </li>
 <li><a href="#_reusing_mapping_configurations">11. Reusing mapping configurations</a>
@@ -768,7 +769,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.0.Beta2<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.0.RC1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -912,8 +913,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.5.0.Beta2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.5.0.Beta2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.5.0.RC1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.5.0.RC1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -1099,7 +1100,10 @@ suppressGeneratorVersionInfoComment</code></p></td>
 <p><code>spring</code>: the generated mapper is a singleton-scoped Spring bean and can be retrieved via <code>@Autowired</code></p>
 </li>
 <li>
-<p><code>jsr330</code>: the generated mapper is annotated with {@code @Named} and can be retrieved via <code>@Inject</code>, e.g. using Spring</p>
+<p><code>jsr330</code>: the generated mapper is annotated with {@code @Named} and can be retrieved via <code>@Inject</code> (from javax.inject or jakarta.inject, depending which one is available with javax.inject having priority), e.g. using Spring</p>
+</li>
+<li>
+<p><code>jakarta</code>: the generated mapper is annotated with {@code @Named} and can be retrieved via <code>@Inject</code> (from jakarta.inject), e.g. using Spring</p>
 </li>
 </ul>
 </div>
@@ -1186,6 +1190,14 @@ If a policy is given for a specific bean mapping via <code>@BeanMapping#unmapped
 If a policy is given for a specific bean mapping via <code>@BeanMapping#ignoreUnmappedSourceProperties()</code>, it takes precedence over both <code>@Mapper#unmappedSourcePolicy()</code> and the option.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>WARN</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mapstruct.
+disableBuilders</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>If set to <code>true</code>, then MapStruct will not use builder patterns when doing the mapping. This is equivalent to doing <code>@Mapper( builder = @Builder( disableBuilder = true ) )</code> for all of your mappers.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1987,6 +1999,20 @@ E.g. If an object factory exists for our <code>PersonBuilder</code> then this fa
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Detected builders influence <code>@BeforeMapping</code> and <code>@AfterMapping</code> behavior. See chapter <code>Mapping customization with before-mapping and after-mapping methods</code> for more information.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="exampleblock">
 <div class="title">Example 16. Person with Builder example</div>
 <div class="content">
@@ -2146,7 +2172,7 @@ Otherwise, you would need to write a custom <code>BuilderProvider</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In case you want to disable using builders then you can use the <code>NoOpBuilderProvider</code> by creating a <code>org.mapstruct.ap.spi.BuilderProvider</code> file in the <code>META-INF/services</code> directory with <code>org.mapstruct.ap.spi.NoOpBuilderProvider</code> as it&#8217;s content.</p>
+<p>In case you want to disable using builders then you can pass the MapStruct processor option <code>mapstruct.disableBuilders</code> to the compiler. e.g. <code>-Amapstruct.disableBuilders=true</code>.</p>
 </div>
 </td>
 </tr>
@@ -2684,7 +2710,7 @@ This can be done by either providing the injection strategy via <code>@Mapper</c
 </div>
 </div>
 <div class="paragraph">
-<p>The generated mapper will inject all classes defined in the <strong>uses</strong> attribute.
+<p>The generated mapper will inject classes defined in the <strong>uses</strong> attribute if MapStruct has detected that it needs to use an instance of it for a mapping.
 When <code>InjectionStrategy#CONSTRUCTOR</code> is used, the constructor will have the appropriate annotation and the fields won&#8217;t.
 When <code>InjectionStrategy#FIELD</code> is used, the annotation is on the field itself.
 For now, the default injection strategy is field injection, but it can be configured with <a href="#configuration-options">Configuration options</a>.
@@ -3638,7 +3664,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.5.0.Beta2/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.5.0.RC1/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -5640,7 +5666,7 @@ The String <code>"Constant Value"</code> is set as is to the target property <co
 <p>The same warnings and restrictions apply to default expressions that apply to expressions. Only Java is supported, and MapStruct will not validate the expression at generation-time.</p>
 </div>
 <div class="paragraph">
-<p>The example below demonstrates how two source properties can be mapped to one target:</p>
+<p>The example below demonstrates how a default expression can be used to set a value when the source attribute is not present (e.g. is <code>null</code>):</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 77. Mapping method using a default expression</div>
@@ -5871,7 +5897,53 @@ The same issue exists for the <code>@Context</code> and <code>@TargetType</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mapping-result-for-null-properties"><a class="anchor" href="#mapping-result-for-null-properties"></a>10.7. Controlling mapping result for 'null' properties in bean mappings (update mapping methods only).</h3>
+<h3 id="mapping-result-for-null-collection-or-map-arguments"><a class="anchor" href="#mapping-result-for-null-collection-or-map-arguments"></a>10.7. Controlling mapping result for 'null' collection or map arguments</h3>
+<div class="paragraph">
+<p>With <a href="#mapping-result-for-null-arguments">Controlling mapping result for 'null' arguments</a> it is possible to control how the return type should be constructed when the source argument of the mapping method is <code>null</code>.
+That is applied for all mapping methods (bean, iterable or map mapping methods).</p>
+</div>
+<div class="paragraph">
+<p>However, MapStruct also offers a more dedicated way to control how collections / maps should be mapped.
+e.g. return default (empty) collections / maps, but return <code>null</code> for beans.</p>
+</div>
+<div class="paragraph">
+<p>For collections (iterables) this can be controlled through:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MapperConfig#nullValueIterableMappingStrategy</code></p>
+</li>
+<li>
+<p><code>Mapper#nullValueIterableMappingStrategy</code></p>
+</li>
+<li>
+<p><code>IterableMapping#nullValueMappingStrategy</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For maps this can be controlled through:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MapperConfig#nullValueMapMappingStrategy</code></p>
+</li>
+<li>
+<p><code>Mapper#nullValueMapMappingStrategy</code></p>
+</li>
+<li>
+<p><code>MapMapping#nullValueMappingStrategy</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>How the value of the <code>NullValueMappingStrategy</code> is applied is the same as in <a href="#mapping-result-for-null-arguments">Controlling mapping result for 'null' arguments</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mapping-result-for-null-properties"><a class="anchor" href="#mapping-result-for-null-properties"></a>10.8. Controlling mapping result for 'null' properties in bean mappings (update mapping methods only).</h3>
 <div class="paragraph">
 <p>MapStruct offers control over the property to set in an <code>@MappingTarget</code> annotated target bean when the source property equals <code>null</code> or the presence check method results in 'absent'.</p>
 </div>
@@ -5927,7 +5999,7 @@ null check, regardless of the value of the <code>NullValuePropertyMappingStrateg
 </div>
 </div>
 <div class="sect2">
-<h3 id="checking-source-property-for-null-arguments"><a class="anchor" href="#checking-source-property-for-null-arguments"></a>10.8. Controlling checking result for 'null' properties in bean mapping</h3>
+<h3 id="checking-source-property-for-null-arguments"><a class="anchor" href="#checking-source-property-for-null-arguments"></a>10.9. Controlling checking result for 'null' properties in bean mapping</h3>
 <div class="paragraph">
 <p>MapStruct offers control over when to generate a <code>null</code> check. By default (<code>nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION</code>) a <code>null</code> check will be generated for:</p>
 </div>
@@ -5965,7 +6037,7 @@ null check, regardless of the value of the <code>NullValuePropertyMappingStrateg
 </div>
 </div>
 <div class="sect2">
-<h3 id="source-presence-check"><a class="anchor" href="#source-presence-check"></a>10.9. Source presence checking</h3>
+<h3 id="source-presence-check"><a class="anchor" href="#source-presence-check"></a>10.10. Source presence checking</h3>
 <div class="paragraph">
 <p>Some frameworks generate bean properties that have a source presence checker. Often this is in the form of a method <code>hasXYZ</code>, <code>XYZ</code> being a property on the source bean in a bean mapping method. MapStruct will call this <code>hasXYZ</code> instead of performing a <code>null</code> check when it finds such <code>hasXYZ</code> method.</p>
 </div>
@@ -6000,7 +6072,7 @@ null check, regardless the value of the <code>NullValueCheckStrategy</code> to a
 </div>
 </div>
 <div class="sect2">
-<h3 id="conditional-mapping"><a class="anchor" href="#conditional-mapping"></a>10.10. Conditional Mapping</h3>
+<h3 id="conditional-mapping"><a class="anchor" href="#conditional-mapping"></a>10.11. Conditional Mapping</h3>
 <div class="paragraph">
 <p>Conditional Mapping is a type of <a href="#source-presence-check">Source presence checking</a>.
 The difference is that it allows users to write custom condition methods that will be invoked to check if a property needs to be mapped or not.</p>
@@ -6047,7 +6119,7 @@ The difference is that it allows users to write custom condition methods that wi
 <p>The generated mapper will look like:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 81. try-catch block in generated implementation</div>
+<div class="title">Example 81. Custom condition check in generated implementation</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6098,6 +6170,96 @@ The difference is that it allows users to write custom condition methods that wi
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>When using this in combination with an update mapping method it will replace the <code>null-check</code> there, for example:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 82. Update mapper using custom condition check method</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+  <td class="code"><pre><span class="annotation">@Mapper</span>
+<span class="directive">public</span> <span class="type">interface</span> <span class="class">CarMapper</span> {
+
+    CarDto carToCarDto(Car car, <span class="annotation">@MappingTarget</span> CarDto carDto);
+
+    <span class="annotation">@Condition</span>
+    <span class="keyword">default</span> <span class="type">boolean</span> isNotEmpty(<span class="predefined-type">String</span> value) {
+        <span class="keyword">return</span> value != <span class="predefined-constant">null</span> &amp;&amp; !value.isEmpty();
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The generated update mapper will look like:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 83. Custom condition check in generated implementation</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="comment">// GENERATED CODE</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CarMapperImpl</span> <span class="directive">implements</span> CarMapper {
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CarDto carToCarDto(Car car, CarDto carDto) {
+        <span class="keyword">if</span> ( car == <span class="predefined-constant">null</span> ) {
+            <span class="keyword">return</span> carDto;
+        }
+
+        <span class="keyword">if</span> ( isNotEmpty( car.getOwner() ) ) {
+            carDto.setOwner( car.getOwner() );
+        } <span class="keyword">else</span> {
+            carDto.setOwner( <span class="predefined-constant">null</span> );
+        }
+
+        <span class="comment">// Mapping of other properties</span>
+
+        <span class="keyword">return</span> carDto;
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -6132,12 +6294,12 @@ In order to use a more specific condition method you will need to use one of <co
 </div>
 </div>
 <div class="sect2">
-<h3 id="exceptions"><a class="anchor" href="#exceptions"></a>10.11. Exceptions</h3>
+<h3 id="exceptions"><a class="anchor" href="#exceptions"></a>10.12. Exceptions</h3>
 <div class="paragraph">
 <p>Calling applications may require handling of exceptions when calling a mapping method. These exceptions could be thrown by hand-written logic and by the generated built-in mapping methods or type-conversions of MapStruct. When the calling application requires handling of exceptions, a throws clause can be defined in the mapping method:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 82. Mapper using custom method declaring checked exception</div>
+<div class="title">Example 84. Mapper using custom method declaring checked exception</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6162,7 +6324,7 @@ In order to use a more specific condition method you will need to use one of <co
 <p>The hand written logic might look like this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 83. Custom mapping method declaring checked exception</div>
+<div class="title">Example 85. Custom mapping method declaring checked exception</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6207,7 +6369,7 @@ In order to use a more specific condition method you will need to use one of <co
 <p>MapStruct now, wraps the <code>FatalException</code> in a <code>try-catch</code> block and rethrows an unchecked <code>RuntimeException</code>. MapStruct delegates handling of the <code>GearException</code> to the application logic because it is defined as throws clause in the <code>carToCarDto</code> method:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 84. try-catch block in generated implementation</div>
+<div class="title">Example 86. try-catch block in generated implementation</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6270,7 +6432,7 @@ In order to use a more specific condition method you will need to use one of <co
 <p>Method-level configuration annotations such as <code>@Mapping</code>, <code>@BeanMapping</code>, <code>@IterableMapping</code>, etc., can be <strong>inherited</strong> from one mapping method to a <strong>similar</strong> method using the annotation <code>@InheritConfiguration</code>:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 85. Update method inheriting its configuration</div>
+<div class="title">Example 87. Update method inheriting its configuration</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6338,7 +6500,7 @@ In order to use a more specific condition method you will need to use one of <co
 <p>Use the annotation <code>@InheritInverseConfiguration</code> to indicate that a method shall inherit the inverse configuration of the corresponding reverse method.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 86. Inverse mapping method inheriting its configuration and ignoring some of them</div>
+<div class="title">Example 88. Inverse mapping method inheriting its configuration and ignoring some of them</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6423,7 +6585,7 @@ In order to use a more specific condition method you will need to use one of <co
 <p>The <code>@MapperConfig</code> annotation has the same attributes as the <code>@Mapper</code> annotation. Any attributes not given via <code>@Mapper</code> will be inherited from the shared configuration. Attributes specified in <code>@Mapper</code> take precedence over the attributes specified via the referenced configuration class. List properties such as <code>uses</code> are simply combined:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 87. Mapper configuration class and mapper using it</div>
+<div class="title">Example 89. Mapper configuration class and mapper using it</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6476,7 +6638,7 @@ In order to use a more specific condition method you will need to use one of <co
 <p>The interface holding the <code>@MapperConfig</code> annotation may also declare <strong>prototypes</strong> of mapping methods that can be used to inherit method-level mapping annotations from. Such prototype methods are not meant to be implemented or used as part of the mapper API.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 88. Mapper configuration class with prototype methods</div>
+<div class="title">Example 90. Mapper configuration class with prototype methods</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6581,7 +6743,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>To apply a decorator to a mapper class, specify it using the <code>@DecoratedWith</code> annotation.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 89. Applying a decorator</div>
+<div class="title">Example 91. Applying a decorator</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6619,7 +6781,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>The <code>PersonMapperDecorator</code> shown below customizes the <code>personToPersonDto()</code>. It sets an additional attribute which is not present in the source type of the mapping. The <code>addressToAddressDto()</code> method is not customized.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 90. Implementing a decorator</div>
+<div class="title">Example 92. Implementing a decorator</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6675,7 +6837,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>When using <code>@DecoratedWith</code> on a mapper with component model <code>spring</code>, the generated implementation of the original mapper is annotated with the Spring annotation <code>@Qualifier("delegate")</code>. To autowire that bean in your decorator, add that qualifier annotation as well:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 91. Spring-based decorator</div>
+<div class="title">Example 93. Spring-based decorator</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6718,7 +6880,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>The generated class that extends the decorator is annotated with Spring&#8217;s <code>@Primary</code> annotation. To autowire the decorated mapper in the application, nothing special needs to be done:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 92. Using a decorated mapper</div>
+<div class="title">Example 94. Using a decorated mapper</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6740,7 +6902,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>JSR 330 doesn&#8217;t specify qualifiers and only allows to specifically name the beans. Hence, the generated implementation of the original mapper is annotated with <code>@Named("fully-qualified-name-of-generated-implementation")</code> (please note that when using a decorator, the class name of the mapper implementation ends with an underscore). To inject that bean in your decorator, add the same annotation to the delegate field (e.g. by copy/pasting it from the generated class):</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 93. JSR 330 based decorator</div>
+<div class="title">Example 95. JSR 330 based decorator</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6783,7 +6945,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>Unlike with the other component models, the usage site must be aware if a mapper is decorated or not, as for decorated mappers, the parameterless <code>@Named</code> annotation must be added to select the decorator to be injected:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 94. Using a decorated mapper with JSR 330</div>
+<div class="title">Example 96. Using a decorated mapper with JSR 330</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6811,7 +6973,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>Callback methods can be implemented in the abstract mapper itself, in a type reference in <code>Mapper#uses</code>, or in a type used as <code>@Context</code> parameter.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 95. Mapper with @BeforeMapping and @AfterMapping hooks</div>
+<div class="title">Example 97. Mapper with @BeforeMapping and @AfterMapping hooks</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -6918,7 +7080,7 @@ When working with the component model <code>cdi</code>, use <a href="https://doc
 <p>As with mapping methods, it is possible to specify type parameters for before/after-mapping methods.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 96. Mapper with @AfterMapping hook that returns a non-null value</div>
+<div class="title">Example 98. Mapper with @AfterMapping hook that returns a non-null value</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7052,7 +7214,7 @@ parameters and constructing a new target bean.</p>
 <p>MapStruct offers the possibility to override the <code>AccessorNamingStrategy</code> via the Service Provider Interface (SPI). A nice example is the use of the fluent API on the source object <code>GolfPlayer</code> and <code>GolfPlayerDto</code> below.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 97. Source object GolfPlayer with fluent API.</div>
+<div class="title">Example 99. Source object GolfPlayer with fluent API.</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7110,7 +7272,7 @@ parameters and constructing a new target bean.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 98. Source object GolfPlayerDto with fluent API.</div>
+<div class="title">Example 100. Source object GolfPlayerDto with fluent API.</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7171,7 +7333,7 @@ parameters and constructing a new target bean.</p>
 <p>We want <code>GolfPlayer</code> to be mapped to a target object <code>GolfPlayerDto</code> similar like we 'always' do this:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 99. Source object with fluent API.</div>
+<div class="title">Example 101. Source object with fluent API.</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7206,7 +7368,7 @@ parameters and constructing a new target bean.</p>
 <p>This can be achieved with implementing the SPI <code>org.mapstruct.ap.spi.AccessorNamingStrategy</code> as in the following example. Here&#8217;s an implemented <code>org.mapstruct.ap.spi.AccessorNamingStrategy</code>:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 100. CustomAccessorNamingStrategy</div>
+<div class="title">Example 102. CustomAccessorNamingStrategy</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7307,7 +7469,7 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 101. Source object</div>
+<div class="title">Example 103. Source object</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7339,7 +7501,7 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 102. Target object</div>
+<div class="title">Example 104. Target object</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7371,7 +7533,7 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 103. Mapper definition</div>
+<div class="title">Example 105. Mapper definition</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7396,7 +7558,7 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 <p>We want to exclude the <code>NestedTarget</code> from the automatic sub-mapping method generation.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 104. CustomMappingExclusionProvider</div>
+<div class="title">Example 106. CustomMappingExclusionProvider</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7456,7 +7618,7 @@ This JAR file needs to be added to the annotation processor classpath
 A nice example is to provide support for a custom builder strategy.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 105. Custom Builder Provider which disables Builder support</div>
+<div class="title">Example 107. Custom Builder Provider which disables Builder support</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7499,7 +7661,7 @@ For example all enums which implement an interface named <code>CustomEnumMarker<
 and the default value for them when mapping from <code>null</code> is <code>UNSPECIFIED</code></p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 106. Normal Enum</div>
+<div class="title">Example 108. Normal Enum</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7519,7 +7681,7 @@ and the default value for them when mapping from <code>null</code> is <code>UNSP
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 107. Custom marker enum</div>
+<div class="title">Example 109. Custom marker enum</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7546,7 +7708,7 @@ and the default value for them when mapping from <code>null</code> is <code>UNSP
 <p>We want <code>CheeseType</code> and <code>CustomCheeseType</code> to be mapped without the need to manually define the value mappings:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 108. Custom enum mapping</div>
+<div class="title">Example 110. Custom enum mapping</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7576,7 +7738,7 @@ and the default value for them when mapping from <code>null</code> is <code>UNSP
 Here’s an implemented <code>org.mapstruct.ap.spi.EnumMappingStrategy</code>:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 109. Custom enum naming strategy</div>
+<div class="title">Example 111. Custom enum naming strategy</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7657,7 +7819,7 @@ Here’s an implemented <code>org.mapstruct.ap.spi.EnumMappingStrategy</code>:</
 <p>The generated code then for the <code>CheeseMapper</code> looks like:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 110. Generated CheeseTypeMapper</div>
+<div class="title">Example 112. Generated CheeseTypeMapper</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7760,7 +7922,7 @@ Here’s an implemented <code>org.mapstruct.ap.spi.EnumMappingStrategy</code>:</
 A nice example is to provide support for a custom transformation strategy.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 111. Custom Enum Transformation Strategy which lower-cases the value and applies a suffix</div>
+<div class="title">Example 113. Custom Enum Transformation Strategy which lower-cases the value and applies a suffix</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7913,7 +8075,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 <p>The set up using Maven or Gradle does not differ from what is described in <a href="#setup">Set up</a>. Additionally, you need to provide Lombok dependencies.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 112. Maven configuration</div>
+<div class="title">Example 114. Maven configuration</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -7977,7 +8139,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 </pre></td>
   <td class="code"><pre>
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.0.Beta2<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.0.RC1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
     <span class="tag">&lt;org.projectlombok.version&gt;</span>1.18.16<span class="tag">&lt;/org.projectlombok.version&gt;</span>
     <span class="tag">&lt;maven.compiler.source&gt;</span>1.8<span class="tag">&lt;/maven.compiler.source&gt;</span>
     <span class="tag">&lt;maven.compiler.target&gt;</span>1.8<span class="tag">&lt;/maven.compiler.target&gt;</span>
@@ -8037,7 +8199,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 113. Gradle configuration (3.4 and later)</div>
+<div class="title">Example 115. Gradle configuration (3.4 and later)</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -8071,7 +8233,7 @@ dependencies {
 <p>The usage combines what you already know from <a href="#defining-mapper">Defining a mapper</a> and Lombok.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 114. Usage of MapStruct with Lombok</div>
+<div class="title">Example 116. Usage of MapStruct with Lombok</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -8147,7 +8309,7 @@ dependencies {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-12 12:48:58 +0100
+Last updated 2022-03-21 08:14:10 +0100
 </div>
 </div>
 </body>
