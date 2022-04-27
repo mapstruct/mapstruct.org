@@ -31,7 +31,7 @@ If you are working with a gradle project, then add the folowing plugin to the gr
 {{< prettify >}}
 plugins {
     // Allow configuration calls for setting up the eclipse annotation processing configuration.
-    id 'net.ltgt.apt-eclipse' version "0.21"
+    id "com.diffplug.eclipse.apt" version "3.36.2"
 }
 {{< /prettify >}}
 You can then generate the required eclipse project information by calling `gradle eclipseJdtApt eclipseFactorypath eclipseJdt`
