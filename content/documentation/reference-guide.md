@@ -10,16 +10,16 @@ teaser = "The reference documentation and API docs for the current stable and pr
 parent = "Documentation"
 +++
 
-**1.5.0.RC1** (March 21st 2022; latest beta release)
-
-* Reference guide: [HTML](/documentation/dev/reference/html/) | [PDF](/documentation/dev/reference/pdf/mapstruct-reference-guide.pdf)
-* API documentation: [JavaDoc](/documentation/dev/api/)
-* [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.5.0.RC1)
-
-**1.4.2.Final** (January 31st 2021; latest stable release)
+**1.5.0.Final** (June 3rd 2022; latest stable release)
 
 * Reference guide: [HTML](/documentation/stable/reference/html/) | [PDF](/documentation/stable/reference/pdf/mapstruct-reference-guide.pdf)
 * API documentation: [JavaDoc](/documentation/stable/api/)
+* [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.5.0.Final)
+
+**1.4.2.Final** (January 31st 2021)
+
+* Reference guide: [HTML](/documentation/1.4/reference/html/) | [PDF](/documentation/1.4/reference/pdf/mapstruct-reference-guide.pdf)
+* API documentation: [JavaDoc](/documentation/1.4/api/)
 * [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.4.2.Final)
 
 **Spring Extensions** (February 15th 2021; latest milestone release)
