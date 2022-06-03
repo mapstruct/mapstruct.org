@@ -6,10 +6,27 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jun 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.5.0.Final is out</title>
+      <link>http://mapstruct.org/news/2022-06-03-mapstruct-1_5_0_Final-is-out/</link>
+      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2022-06-03-mapstruct-1_5_0_Final-is-out/</guid>
+      <description>&lt;p&gt;I am very happy to announce the final release of MapStruct 1.5!
+This is our 5th major release since November 2015.&lt;/p&gt;
+&lt;p&gt;Besides bug fixes, the 1.5 release brings some new exicting features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for mapping from &lt;code&gt;Map&amp;lt;String, ???&amp;gt;&lt;/code&gt; to a bean&lt;/li&gt;
+&lt;li&gt;Conditional mapping&lt;/li&gt;
+&lt;li&gt;Support for subclass mapping&lt;/li&gt;
+&lt;li&gt;Support for Jakarta dependency injection&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.5.0.RC1 is out</title>

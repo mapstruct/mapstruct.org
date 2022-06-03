@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.15">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.5.0.RC1 Reference Guide</title>
+<title>MapStruct 1.5.0.Final Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -537,10 +537,10 @@ ga('send', 'pageview');
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.5.0.RC1 Reference Guide</h1>
+<h1>MapStruct 1.5.0.Final Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2022-03-21</span>
+<span id="revdate">2022-06-02</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -639,10 +639,10 @@ ga('send', 'pageview');
 <li><a href="#using-spi">13. Using the MapStruct SPI</a>
 <ul class="sectlevel2">
 <li><a href="#_custom_accessor_naming_strategy">13.1. Custom Accessor Naming Strategy</a></li>
-<li><a href="#_mapping_exclusion_provider">Mapping Exclusion Provider</a></li>
-<li><a href="#custom-builder-provider">13.2. Custom Builder Provider</a></li>
-<li><a href="#custom-enum-naming-strategy">13.3. Custom Enum Naming Strategy</a></li>
-<li><a href="#custom-enum-transformation-strategy">13.4. Custom Enum Transformation Strategy</a></li>
+<li><a href="#mapping-exclusion-provider">13.2. Mapping Exclusion Provider</a></li>
+<li><a href="#custom-builder-provider">13.3. Custom Builder Provider</a></li>
+<li><a href="#custom-enum-naming-strategy">13.4. Custom Enum Naming Strategy</a></li>
+<li><a href="#custom-enum-transformation-strategy">13.5. Custom Enum Transformation Strategy</a></li>
 </ul>
 </li>
 <li><a href="#third-party-api-integration">14. Third-party API integration</a>
@@ -778,7 +778,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.0.RC1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.0.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -922,8 +922,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.5.0.RC1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.5.0.RC1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.5.0.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.5.0.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -3673,7 +3673,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.5.0.RC1/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.5.0.Final/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -7217,8 +7217,28 @@ parameters and constructing a new target bean.</p>
 <div class="sect1">
 <h2 id="using-spi"><a class="anchor" href="#using-spi"></a>13. Using the MapStruct SPI</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>To use a custom SPI implementation, it must be located in a separate JAR file together with a file named after the SPI (e.g. <code>org.mapstruct.ap.spi.AccessorNamingStrategy</code>) in <code>META-INF/services/</code> with the fully qualified name of your custom implementation as content (e.g. <code>org.mapstruct.example.CustomAccessorNamingStrategy</code>). This JAR file needs to be added to the annotation processor classpath (i.e. add it next to the place where you added the mapstruct-processor jar).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It might also be necessary to add the jar to your IDE&#8217;s annotation processor factory path. Otherwise you might get an error stating that it cannot be found, while a run using your build tool does succeed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
 <h3 id="_custom_accessor_naming_strategy"><a class="anchor" href="#_custom_accessor_naming_strategy"></a>13.1. Custom Accessor Naming Strategy</h3>
+<div class="paragraph">
+<p>SPI name: <code>org.mapstruct.ap.spi.AccessorNamingStrategy</code></p>
+</div>
 <div class="paragraph">
 <p>MapStruct offers the possibility to override the <code>AccessorNamingStrategy</code> via the Service Provider Interface (SPI). A nice example is the use of the fluent API on the source object <code>GolfPlayer</code> and <code>GolfPlayerDto</code> below.</p>
 </div>
@@ -7439,9 +7459,6 @@ parameters and constructing a new target bean.</p>
 <div class="paragraph">
 <p>The <code>CustomAccessorNamingStrategy</code> makes use of the <code>DefaultAccessorNamingStrategy</code> (also available in mapstruct-processor) and relies on that class to leave most of the default behaviour unchanged.</p>
 </div>
-<div class="paragraph">
-<p>To use a custom SPI implementation, it must be located in a separate JAR file together with the file <code>META-INF/services/org.mapstruct.ap.spi.AccessorNamingStrategy</code> with the fully qualified name of your custom implementation as content (e.g. <code>org.mapstruct.example.CustomAccessorNamingStrategy</code>). This JAR file needs to be added to the annotation processor classpath (i.e. add it next to the place where you added the mapstruct-processor jar).</p>
-</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -7456,7 +7473,10 @@ Fore more details: The example above is present in our examples repository (<a h
 </div>
 </div>
 <div class="sect2">
-<h3 id="_mapping_exclusion_provider"><a class="anchor" href="#_mapping_exclusion_provider"></a>Mapping Exclusion Provider</h3>
+<h3 id="mapping-exclusion-provider"><a class="anchor" href="#mapping-exclusion-provider"></a>13.2. Mapping Exclusion Provider</h3>
+<div class="paragraph">
+<p>SPI name: <code>org.mapstruct.ap.spi.MappingExclusionProvider</code></p>
+</div>
 <div class="paragraph">
 <p>MapStruct offers the possibility to override the <code>MappingExclusionProvider</code> via the Service Provider Interface (SPI).
 A nice example is to not allow MapStruct to create an automatic sub-mapping for a certain type,
@@ -7612,16 +7632,12 @@ This means that MapStruct will not try to generate an automatic sub-mapping meth
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>To use a custom SPI implementation, it must be located in a separate JAR file
-together with the file <code>META-INF/services/org.mapstruct.ap.spi.MappingExclusionProvider</code> with the fully qualified name of your custom implementation as content
-(e.g. <code>org.mapstruct.example.CustomMappingExclusionProvider</code>).
-This JAR file needs to be added to the annotation processor classpath
-(i.e. add it next to the place where you added the mapstruct-processor jar).</p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="custom-builder-provider"><a class="anchor" href="#custom-builder-provider"></a>13.2. Custom Builder Provider</h3>
+<h3 id="custom-builder-provider"><a class="anchor" href="#custom-builder-provider"></a>13.3. Custom Builder Provider</h3>
+<div class="paragraph">
+<p>SPI name: org.mapstruct.ap.spi.BuilderProvider</p>
+</div>
 <div class="paragraph">
 <p>MapStruct offers the possibility to override the <code>DefaultProvider</code> via the Service Provider Interface (SPI).
 A nice example is to provide support for a custom builder strategy.</p>
@@ -7662,7 +7678,10 @@ A nice example is to provide support for a custom builder strategy.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="custom-enum-naming-strategy"><a class="anchor" href="#custom-enum-naming-strategy"></a>13.3. Custom Enum Naming Strategy</h3>
+<h3 id="custom-enum-naming-strategy"><a class="anchor" href="#custom-enum-naming-strategy"></a>13.4. Custom Enum Naming Strategy</h3>
+<div class="paragraph">
+<p>SPI name: <code>org.mapstruct.ap.spi.EnumMappingStrategy</code></p>
+</div>
 <div class="paragraph">
 <p>MapStruct offers the possibility to override the <code>EnumMappingStrategy</code> via the Service Provider Interface (SPI).
 This can be used when you have certain enums that follow some conventions within your organization.
@@ -7925,7 +7944,10 @@ Here’s an implemented <code>org.mapstruct.ap.spi.EnumMappingStrategy</code>:</
 </div>
 </div>
 <div class="sect2">
-<h3 id="custom-enum-transformation-strategy"><a class="anchor" href="#custom-enum-transformation-strategy"></a>13.4. Custom Enum Transformation Strategy</h3>
+<h3 id="custom-enum-transformation-strategy"><a class="anchor" href="#custom-enum-transformation-strategy"></a>13.5. Custom Enum Transformation Strategy</h3>
+<div class="paragraph">
+<p>SPI name: <code>org.mapstruct.ap.spi.EnumTransformationStrategy</code></p>
+</div>
 <div class="paragraph">
 <p>MapStruct offers the possibility to other transformations strategies by implementing <code>EnumTransformationStrategy</code> via the Service Provider Interface (SPI).
 A nice example is to provide support for a custom transformation strategy.</p>
@@ -8070,7 +8092,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;path&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.projectlombok<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>lombok-mapstruct-binding<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>0.1.0<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>0.2.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/path&gt;</span></code></pre>
 </div>
 </div>
@@ -8148,7 +8170,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 </pre></td>
   <td class="code"><pre>
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.0.RC1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.0.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
     <span class="tag">&lt;org.projectlombok.version&gt;</span>1.18.16<span class="tag">&lt;/org.projectlombok.version&gt;</span>
     <span class="tag">&lt;maven.compiler.source&gt;</span>1.8<span class="tag">&lt;/maven.compiler.source&gt;</span>
     <span class="tag">&lt;maven.compiler.target&gt;</span>1.8<span class="tag">&lt;/maven.compiler.target&gt;</span>
@@ -8195,7 +8217,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
                     <span class="tag">&lt;path&gt;</span>
                         <span class="tag">&lt;groupId&gt;</span>org.projectlombok<span class="tag">&lt;/groupId&gt;</span>
                         <span class="tag">&lt;artifactId&gt;</span>lombok-mapstruct-binding<span class="tag">&lt;/artifactId&gt;</span>
-                        <span class="tag">&lt;version&gt;</span>0.1.0<span class="tag">&lt;/version&gt;</span>
+                        <span class="tag">&lt;version&gt;</span>0.2.0<span class="tag">&lt;/version&gt;</span>
                     <span class="tag">&lt;/path&gt;</span>
                 <span class="tag">&lt;/annotationProcessorPaths&gt;</span>
             <span class="tag">&lt;/configuration&gt;</span>
@@ -8228,7 +8250,7 @@ dependencies {
 
     implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
     implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.projectlombok:lombok:1.18.16</span><span class="delimiter">&quot;</span></span>
-    annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.projectlombok:lombok-mapstruct-binding:0.1.0</span><span class="delimiter">&quot;</span></span>
+    annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.projectlombok:lombok-mapstruct-binding:0.2.0</span><span class="delimiter">&quot;</span></span>
     annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct-processor:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
     annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.projectlombok:lombok:1.18.16</span><span class="delimiter">&quot;</span></span>
 }
@@ -8318,7 +8340,7 @@ dependencies {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-21 08:14:10 +0100
+Last updated 2022-06-02 23:11:44 +0200
 </div>
 </div>
 </body>
