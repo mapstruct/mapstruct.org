@@ -6,10 +6,24 @@
     <description>Recent content in news on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jun 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.5.2.Final bug fix released</title>
+      <link>http://mapstruct.org/news/2022-06-18-mapstruct-1_5_2_Final-bug-fix-released/</link>
+      <pubDate>Sat, 18 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2022-06-18-mapstruct-1_5_2_Final-bug-fix-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the 1.5.2.Final bug fix release of MapStruct.
+You might ask yourself, where is 1.5.1.
+We released that version on 5th of June 2022, 3 days after the 1.5.0.Final release.
+It had a fix for a bug that was reported by our good friends from JHipster.&lt;/p&gt;
+&lt;p&gt;This release includes 1 enhancements and 2 bug fixes.&lt;/p&gt;
+&lt;p&gt;With this release we started supporting Text blocks for all the expressions.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct Spring Extensions 0.1.2 released</title>
