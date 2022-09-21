@@ -36,7 +36,7 @@ Yes, as of MapStruct 1.2.0.Beta1 and Lombok 1.16.14.
 
 [Project Lombok](https://projectlombok.org/) is an annotation processor that (amongst other things) adds getters and setters to the AST (abstract syntax tree) of compiled bean classes.
 AST modifications are not foreseen by Java annotation processing API,
-so quite some trickery was required within Lombok as well MapStruct to make both of them work together.
+so quite some trickery was required within Lombok as well as MapStruct to make both of them work together.
 Essentially, MapStruct will wait until Lombok has done all its amendments before generating mapper classes for Lombok-enhanced beans.
 
 An example for using the two projects together can be found [here](https://github.com/mapstruct/mapstruct-examples/tree/master/mapstruct-lombok).
