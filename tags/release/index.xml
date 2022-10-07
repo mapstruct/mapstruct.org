@@ -6,10 +6,21 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Oct 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.5.3.Final bug fix released</title>
+      <link>http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the 1.5.3.Final bug fix release of MapStruct.
+This release includes 18 bug fixes and 7 documentation improvements.&lt;/p&gt;
+&lt;p&gt;The most notable fixes are around the handling of nested imports and generics handling&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.5.2.Final bug fix released</title>
