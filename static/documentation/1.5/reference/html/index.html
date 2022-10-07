@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.15">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.5.2.Final Reference Guide</title>
+<title>MapStruct 1.5.3.Final Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -528,10 +528,10 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.5.2.Final Reference Guide</h1>
+<h1>MapStruct 1.5.3.Final Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2022-06-18</span>
+<span id="revdate">2022-10-07</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -545,6 +545,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_apache_ant">2.3. Apache Ant</a></li>
 <li><a href="#configuration-options">2.4. Configuration options</a></li>
 <li><a href="#_using_mapstruct_with_the_java_module_system">2.5. Using MapStruct with the Java Module System</a></li>
+<li><a href="#_ide_integration">2.6. IDE Integration</a></li>
 </ul>
 </li>
 <li><a href="#defining-mapper">3. Defining a mapper</a>
@@ -769,7 +770,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.2.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.3.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -913,8 +914,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.5.2.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.5.2.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.5.3.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.5.3.Final.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -933,7 +934,7 @@ dependencies {
 <p>The MapStruct code generator can be configured using <em>annotation processor options</em>.</p>
 </div>
 <div class="paragraph">
-<p>When invoking javac directly, these options are passed to the compiler in the form <em>-Akey=value</em>. When using MapStruct via Maven, any processor options can be passed using an <code>options</code> element within the configuration of the Maven processor plug-in like this:</p>
+<p>When invoking javac directly, these options are passed to the compiler in the form <em>-Akey=value</em>. When using MapStruct via Maven, any processor options can be passed using <code>compilerArgs</code> within the configuration of the Maven processor plug-in like this:</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 4. Maven configuration</div>
@@ -1211,6 +1212,59 @@ disableBuilders</code></p></td>
 <p>To allow usage of the <code>@Generated</code> annotation <code>java.annotation.processing.Generated</code> (part of the <code>java.compiler</code> module) can be enabled.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_ide_integration"><a class="anchor" href="#_ide_integration"></a>2.6. IDE Integration</h3>
+<div class="paragraph">
+<p>There are optional MapStruct plugins for IntelliJ and Eclipse that allow you to have additional completion support (and more) in the annotations.</p>
+</div>
+<div class="sect3">
+<h4 id="_intellij"><a class="anchor" href="#_intellij"></a>2.6.1. IntelliJ</h4>
+<div class="paragraph">
+<p>The <a href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support">MapStruct IntelliJ</a> plugin offers assistance in projects that use MapStruct.</p>
+</div>
+<div class="paragraph">
+<p>Some features include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Code completion in <code>target</code>, <code>source</code>, <code>expression</code></p>
+</li>
+<li>
+<p>Go To Declaration for properties in <code>target</code> and <code>source</code></p>
+</li>
+<li>
+<p>Find Usages of properties in <code>target</code> and <code>source</code></p>
+</li>
+<li>
+<p>Refactoring support</p>
+</li>
+<li>
+<p>Errors and Quick Fixes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_eclipse"><a class="anchor" href="#_eclipse"></a>2.6.2. Eclipse</h4>
+<div class="paragraph">
+<p>The <a href="https://marketplace.eclipse.org/content/mapstruct-eclipse-plugin">MapStruct Eclipse</a> Plugin offers assistance in projects that use MapStruct.</p>
+</div>
+<div class="paragraph">
+<p>Some features include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Code completion in <code>target</code> and <code>source</code></p>
+</li>
+<li>
+<p>Quick Fixes</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1294,7 +1348,8 @@ disableBuilders</code></p></td>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>By means of the <code>@BeanMapping(ignoreByDefault = true)</code> the default behavior will be <strong>explicit mapping</strong>, meaning that all mappings have to be specified by means of the <code>@Mapping</code> and no warnings will be issued on missing target properties.</p>
+<p>By means of the <code>@BeanMapping(ignoreByDefault = true)</code> the default behavior will be <strong>explicit mapping</strong>, meaning that all mappings have to be specified by means of the <code>@Mapping</code> and no warnings will be issued on missing target properties.
+This allows to ignore all fields, except the ones that are explicitly defined through <code>@Mapping</code>.</p>
 </div>
 </td>
 </tr>
@@ -3664,7 +3719,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.5.2.Final/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.5.3.Final/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -6063,7 +6118,7 @@ null check, regardless of the value of the <code>NullValuePropertyMappingStrateg
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Some types of mappings (collections, maps), in which MapStruct is instructed to use a getter or adder as target accessor see <code>CollectionMappingStrategy</code>, MapStruct will always generate a source property
+<p>Some types of mappings (collections, maps), in which MapStruct is instructed to use a getter or adder as target accessor (see <code>CollectionMappingStrategy</code>), MapStruct will always generate a source property
 null check, regardless the value of the <code>NullValueCheckStrategy</code> to avoid addition of <code>null</code> to the target collection or map.</p>
 </div>
 </td>
@@ -6498,6 +6553,9 @@ In order to use a more specific condition method you will need to use one of <co
 </div>
 <div class="paragraph">
 <p>Use the annotation <code>@InheritInverseConfiguration</code> to indicate that a method shall inherit the inverse configuration of the corresponding reverse method.</p>
+</div>
+<div class="paragraph">
+<p>In the example below, there is no need to write the inverse mapping manually. Think of a case where there are several mappings, so writing the inverse ones can be cumbersome and error prone.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 88. Inverse mapping method inheriting its configuration and ignoring some of them</div>
@@ -8161,7 +8219,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 </pre></td>
   <td class="code"><pre>
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.2.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.5.3.Final<span class="tag">&lt;/org.mapstruct.version&gt;</span>
     <span class="tag">&lt;org.projectlombok.version&gt;</span>1.18.16<span class="tag">&lt;/org.projectlombok.version&gt;</span>
     <span class="tag">&lt;maven.compiler.source&gt;</span>1.8<span class="tag">&lt;/maven.compiler.source&gt;</span>
     <span class="tag">&lt;maven.compiler.target&gt;</span>1.8<span class="tag">&lt;/maven.compiler.target&gt;</span>
@@ -8240,7 +8298,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 dependencies {
 
     implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-    implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.projectlombok:lombok:1.18.16</span><span class="delimiter">&quot;</span></span>
+    compileOnly <span class="string"><span class="delimiter">&quot;</span><span class="content">org.projectlombok:lombok:1.18.16</span><span class="delimiter">&quot;</span></span>
     annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.projectlombok:lombok-mapstruct-binding:0.2.0</span><span class="delimiter">&quot;</span></span>
     annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.mapstruct:mapstruct-processor:</span><span class="inline"><span class="inline-delimiter">${</span>mapstructVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
     annotationProcessor <span class="string"><span class="delimiter">&quot;</span><span class="content">org.projectlombok:lombok:1.18.16</span><span class="delimiter">&quot;</span></span>
@@ -8331,7 +8389,7 @@ dependencies {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-06-18 19:01:23 +0200
+Last updated 2022-10-07 20:10:30 +0200
 </div>
 </div>
 </body>
