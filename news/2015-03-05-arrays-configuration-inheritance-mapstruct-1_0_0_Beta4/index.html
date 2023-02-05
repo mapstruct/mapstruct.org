@@ -188,7 +188,7 @@ CustomerDto[] customersToDtos(List&lt;Customer&gt; customers);
 Customer customerDtoToCustomer(CustomerDto customerDto);
 
 @InheritConfiguration
-void updateCustomerFromDto(CustomerDto dto, @MappingTarget customer);
+void updateCustomerFromDto(CustomerDto dto, @MappingTarget Customer customer);
 </pre>
 <p>The <code>@InheritConfiguration</code> annotation will let the <code>updateCustomerFromDto()</code> inherit all the mappings from <code>customerDtoToCustomer()</code>. The selection of the template method is done by matching source and target types, but you could explicitly specify a method as configuration source if needed.</p>
 <p>Configuration inheritance is particularly useful when working with complex type hierarchies. You can define a configuration for the base types of the source and target models and let specific mapping methods inherit this configuration. But what if a base type is abstract? Naturally, MapStruct cannot generate an implementation of a method whose return type is an abstract one.</p>
@@ -310,7 +310,7 @@ AddressDto addressToDto(Address address);
                     </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-1 ms-subnav-footer">
-                            © The MapStruct authors 2022
+                            © The MapStruct authors 2023
                         </div>
                     </div>
                 </div>
