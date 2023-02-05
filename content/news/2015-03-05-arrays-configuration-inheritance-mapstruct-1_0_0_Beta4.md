@@ -54,7 +54,7 @@ This comes in handy for instance when having a "normal" mapping method and an up
 Customer customerDtoToCustomer(CustomerDto customerDto);
 
 @InheritConfiguration
-void updateCustomerFromDto(CustomerDto dto, @MappingTarget customer);
+void updateCustomerFromDto(CustomerDto dto, @MappingTarget Customer customer);
 </pre>
 
 The `@InheritConfiguration` annotation will let the `updateCustomerFromDto()` inherit all the mappings from `customerDtoToCustomer()`. The selection of the template method is done by matching source and target types, but you could explicitly specify a method as configuration source if needed.
