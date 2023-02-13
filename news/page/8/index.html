@@ -112,6 +112,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/">MapStruct Spring Extensions 1.0.0 released</a></li>
+    
     <li><a href="http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/">MapStruct 1.5.3.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2022-06-18-mapstruct-1_5_2_Final-bug-fix-released/">MapStruct 1.5.2.Final bug fix released</a></li>
@@ -124,8 +126,6 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2022-02-07-mapstruct-spring-extensions-0-1-1-released/">MapStruct Spring Extensions 0.1.1 released</a></li>
     
-    <li><a href="http://mapstruct.org/news/2021-12-12-mapstruct-1_5_0_Beta2-is-out/">Support for subclass mapping, various enhancements and much more: MapStruct 1.5.0.Beta2 is out</a></li>
-    
 </ul>
 
 
@@ -134,6 +134,36 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>January 02, 2017</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-01-02-new-year-new-website/">New Year, new Website!</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        web-site
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>The MapStruct team wishes a Happy New Year to all our users out there!</p>
+<p>To start the new year fresh, we&rsquo;ve given some love to our website. While its looks only slightly changed, its inner workings have been overhauled from ground up. It&rsquo;s driven by <a href="https://gohugo.io/">Hugo</a> now, a static website generator written in Go which is very popular these days.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2017-01-02-new-year-new-website/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -289,47 +319,6 @@ Normally, we wouldn&rsquo;t add new functionality during the CR phase, but as th
     <div>
         
             <a href="http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>March 16, 2016</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/">MapStruct 1.1.0.Beta1 released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Andreas Gudian</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>It has been four months since the release of the first final version of MapStruct. We&rsquo;ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.</p>
-<p>Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we&rsquo;ve also added some improvements and prepared for new features:</p>
-<ul>
-<li>The new annotation <code>@ValueMapping</code> is introduced to be used for <code>enum</code> mappings. Previously, you would have used <code>@Mapping</code> for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of <code>@Mapping</code> for <code>enum</code> mappings now triggers a <em>deprecation warning</em> and asks you to use <code>@ValueMapping</code> instead.</li>
-<li>The new annotation <code>@Named</code> is a predefined <code>@Qualifier</code> that can be used when creating a custom qualifier annotation seems too inconvenient.</li>
-<li>Handling of types with generically typed properties has been improved, so that you can now declare something like <code>SearchResult&lt;VesselDto&gt; vesselSearchResultToDto(SearchResult&lt;Vessel&gt; vessel)</code>.</li>
-<li>The preferred way of configuring the annotation processor in Maven projects has been updated to leverage the latest <code>maven-compiler-plugin</code> version&rsquo;s <code>annotationProcessorPaths</code> option, which makes the configuration a bit more smooth. <a href="/documentation/1.1/reference/html/index.html#setup">Check the updated documentation</a>.</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/">Read more...</a>
         
     </div>
 </article>

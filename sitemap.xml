@@ -74,31 +74,36 @@
   
   <url>
     <loc>http://mapstruct.org/</loc>
-    <lastmod>2022-10-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/</loc>
-    <lastmod>2022-10-07T00:00:00+00:00</lastmod>
+    <loc>http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/news/</loc>
-    <lastmod>2022-10-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/news/</loc>
-    <lastmod>2022-10-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/release/</loc>
-    <lastmod>2022-10-07T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://mapstruct.org/tags/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
   </url>
   
