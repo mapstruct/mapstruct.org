@@ -155,7 +155,7 @@ if (!doNotTrack) {
 <p>If you&rsquo;re using Maven to build your project add the following to your <em>pom.xml</em> to use MapStruct:</p>
 <pre class="prettyprint linenums lang-xml">...
 &lt;properties&gt;
-    &lt;org.mapstruct.version&gt;1.5.3.Final&lt;/org.mapstruct.version&gt;
+    &lt;org.mapstruct.version&gt;1.5.4.Final&lt;/org.mapstruct.version&gt;
 &lt;/properties&gt;
 ...
 &lt;dependencies&gt;
@@ -193,9 +193,9 @@ if (!doNotTrack) {
 <p>When using a modern version of Gradle (&gt;= 4.6), you add something along the following lines to your <em>build.gradle</em>:</p>
 <pre class="prettyprint linenums lang-groovy">dependencies {
     ...
-    implementation &#39;org.mapstruct:mapstruct:1.5.3.Final&#39;
+    implementation &#39;org.mapstruct:mapstruct:1.5.4.Final&#39;
 
-    annotationProcessor &#39;org.mapstruct:mapstruct-processor:1.5.3.Final&#39;
+    annotationProcessor &#39;org.mapstruct:mapstruct-processor:1.5.4.Final&#39;
 }
 </pre>
 
@@ -207,9 +207,9 @@ if (!doNotTrack) {
 }
 dependencies {
     ...
-    compile &#39;org.mapstruct:mapstruct:1.5.3.Final&#39;
+    compile &#39;org.mapstruct:mapstruct:1.5.4.Final&#39;
  
-    apt &#39;org.mapstruct:mapstruct-processor:1.5.3.Final&#39;
+    apt &#39;org.mapstruct:mapstruct-processor:1.5.4.Final&#39;
 }
 </pre>
 
@@ -221,8 +221,8 @@ dependencies {
 &lt;javac
     srcdir=&#34;src/main/java&#34;
     destdir=&#34;target/classes&#34;
-    classpath=&#34;path/to/mapstruct-1.5.3.Final.jar&#34;&gt;
-    &lt;compilerarg line=&#34;-processorpath path/to/mapstruct-processor-1.5.3.Final.jar&#34;/&gt;
+    classpath=&#34;path/to/mapstruct-1.5.4.Final.jar&#34;&gt;
+    &lt;compilerarg line=&#34;-processorpath path/to/mapstruct-processor-1.5.4.Final.jar&#34;/&gt;
     &lt;compilerarg line=&#34;-s target/generated-sources&#34;/&gt;
 &lt;/javac&gt;
 ...

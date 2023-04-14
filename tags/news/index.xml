@@ -6,10 +6,20 @@
     <description>Recent content in news on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Apr 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct 1.5.4.Final bug fix released</title>
+      <link>http://mapstruct.org/news/2023-04-13-mapstruct-1_5_4_Final-bug-fix-released/</link>
+      <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2023-04-13-mapstruct-1_5_4_Final-bug-fix-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the 1.5.4.Final bug fix release of MapStruct.
+This release includes support for Jakarta CDI , 5 bug fixes and a documentation improvement.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct Spring Extensions 1.0.0 released</title>
