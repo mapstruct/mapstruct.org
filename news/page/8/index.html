@@ -112,6 +112,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2023-04-23-mapstruct-spring-extensions-1-0-1-released/">MapStruct Spring Extensions 1.0.1 released</a></li>
+    
     <li><a href="http://mapstruct.org/news/2023-04-13-mapstruct-1_5_4_Final-bug-fix-released/">MapStruct 1.5.4.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/">MapStruct Spring Extensions 1.0.0 released</a></li>
@@ -124,8 +126,6 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2022-06-03-mapstruct-1_5_0_Final-is-out/">MapStruct 1.5.0.Final is out</a></li>
     
-    <li><a href="http://mapstruct.org/news/2022-03-20-mapstruct-1_5_0_RC1-is-out/">MapStruct 1.5.0.RC1 is out</a></li>
-    
 </ul>
 
 
@@ -134,6 +134,48 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>March 16, 2017</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/">MapStruct 1.2.0.Beta2 released</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Andreas Gudian</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>Just shy of a month after the first Beta release of MapStruct 1.2, the team is happy to announce the second Beta, fixing a couple of bugs that sneaked in with the <a href="/news/2017-02-20-mapstruct-1_2_0_Beta2-is-out-with-lombok-support-and-direct-field-access/">many new features</a> offered by the new 1.2 release line.</p>
+<p>We fixed <a href="https://github.com/mapstruct/mapstruct/milestone/20?closed=1">16 issues</a>, most of them reported by users. The most infamous bugs reported and fixed are:</p>
+<ul>
+<li><a href="https://github.com/mapstruct/mapstruct/issues/1121">Some type conversions stopped working</a> under some circumstances due to an odd JDK behaviour that we didn&rsquo;t run into previously.</li>
+<li><a href="https://github.com/mapstruct/mapstruct/issues/1104">Unmapped target properties in name based mappings</a> resulted in an error instead of being reported as configured with <code>unmappedTargetPolicy</code>.</li>
+<li>A <a href="https://github.com/mapstruct/mapstruct/issues/1103">StackOverflowError</a> was thrown while automatically generating methods in a type structure with circles.</li>
+<li><a href="https://github.com/mapstruct/mapstruct/issues/1124"><code>@Context</code> parameters didn&rsquo;t play along with nested property mappings</a>.</li>
+</ul>
+<p>Plus, the newly introduced automapping feature now also <a href="https://github.com/mapstruct/mapstruct/issues/1102">creates Enum mapping methods</a>.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -286,49 +328,6 @@ Normally, we wouldn&rsquo;t add new functionality during the CR phase, but as th
     <div>
         
             <a href="http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>September 07, 2016</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/">MapStruct 1.1.0.CR1 released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Sjaak Derksen</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>MapStruct 1.1.0.CR1 consolodates the functionality introduced in the preceeding MapStruct 1.1.0 Beta releases. A number of bugs were solved:</p>
-<ul>
-<li>Automatic generation of an iterable mapping methods where the property selection is based on a qualfier.</li>
-<li>Collection source getter null check to avoid NullPointExceptions.</li>
-<li>Missing imports for generic types in collections in generated methods.</li>
-<li>Removing redundant code from generated code when using nested source properties.</li>
-<li>Optimisation when using enum constant (using an enum constant instead of a String conversion).</li>
-<li>Fixing order for dependsOn.</li>
-<li>Fixing an issue introduced 1.1.0.Beta2 that causes problems for the @MappingTarget in combination with @InheritInverseConfiguration</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/">Read more...</a>
         
     </div>
 </article>
