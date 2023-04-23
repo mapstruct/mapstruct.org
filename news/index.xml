@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>MapStruct 1.5.5.Final bug fix released</title>
+      <link>http://mapstruct.org/news/2023-04-23-mapstruct-1_5_5_Final-bug-fix-released/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2023-04-23-mapstruct-1_5_5_Final-bug-fix-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the 1.5.5.Final bug fix release of MapStruct.
+This release includes support for Jakarta XML Binding , 1 bug fixes and a documentation improvements.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>MapStruct Spring Extensions 1.0.1 released</title>
       <link>http://mapstruct.org/news/2023-04-23-mapstruct-spring-extensions-1-0-1-released/</link>
       <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
