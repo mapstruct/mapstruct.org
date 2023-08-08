@@ -195,21 +195,27 @@ What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">Sta
 
             
                 <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">MapStruct 1.5.4.Final bug fix released</h3>
+    <h3 class="uk-h3">MapStruct Spring Extensions 1.0.1 released</h3>
 
 <p class="uk-article-meta ms-article-author">
-    <time>April 13, 2023</time>
+    <time>April 23, 2023</time>
 </p>
 
 
     <div>
-        <p>It is my pleasure to announce the 1.5.4.Final bug fix release of MapStruct.
-This release includes support for Jakarta CDI , 5 bug fixes and a documentation improvement.</p>
+        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>Changes in this release:</p>
+<ul>
+<li>Spring Extensions will now honour the <code>mapstruct.suppressGeneratorTimestamp</code> processor option. Thanks to <a href="https://github.com/freund17">freund17</a> for pointing out this omission.</li>
+</ul>
+<p>We&rsquo;re functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases as well as community requests.</p>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
     </div>
 
     <div>
         
-            <a href="http://mapstruct.org/news/2023-04-13-mapstruct-1_5_4_Final-bug-fix-released/">Read more...</a>
+            <a href="http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/">Read more...</a>
         
     </div>
 </article>

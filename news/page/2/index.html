@@ -116,6 +116,8 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2023-04-23-mapstruct-spring-extensions-1-0-1-released/">MapStruct Spring Extensions 1.0.1 released</a></li>
     
+    <li><a href="http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/">MapStruct Spring Extensions 1.0.1 released</a></li>
+    
     <li><a href="http://mapstruct.org/news/2023-04-13-mapstruct-1_5_4_Final-bug-fix-released/">MapStruct 1.5.4.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/">MapStruct Spring Extensions 1.0.0 released</a></li>
@@ -123,8 +125,6 @@ if (!doNotTrack) {
     <li><a href="http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/">MapStruct 1.5.3.Final bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2022-06-18-mapstruct-1_5_2_Final-bug-fix-released/">MapStruct 1.5.2.Final bug fix released</a></li>
-    
-    <li><a href="http://mapstruct.org/news/2022-06-09-mapstruct-spring-extensions-0-1-2-released/">MapStruct Spring Extensions 0.1.2 released</a></li>
     
 </ul>
 
@@ -134,6 +134,47 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>February 09, 2023</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/">MapStruct Spring Extensions 1.0.0 released</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Raimund Klein</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>Changes in this release:</p>
+<ul>
+<li>It is not necessary anymore to explicitly declare the convert method in the mapper interface if it doesn&rsquo;t require any Mapstruct core annotations like <code>@Mapping</code>. Thanks to <a href="https://github.com/myatmin">Myat Min</a> for pointing out this oversight.</li>
+</ul>
+<p>We&rsquo;re now functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases.</p>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -289,46 +330,6 @@ This is our 5th major release since November 2015.</p>
     <div>
         
             <a href="http://mapstruct.org/news/2022-06-03-mapstruct-1_5_0_Final-is-out/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>March 20, 2022</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2022-03-20-mapstruct-1_5_0_RC1-is-out/">MapStruct 1.5.0.RC1 is out</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Filip Hrisafov</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>I am very happy to announce the first release candidate of MapStruct 1.5!</p>
-<p>This release provides mostly bug fixes and other smaller improvements since <a href="https://mapstruct.org/news/2021-12-12-mapstruct-1_5_0_Beta2-is-out/">1.5.0.Beta2</a>.</p>
-<ul>
-<li>Support for Jakarta dependency injection</li>
-<li>Allow <code>@InheritInverseConfiguration</code> with <code>@SubclassMapping</code>(s)</li>
-<li>Various small bug fixes and documentation clarifications</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2022-03-20-mapstruct-1_5_0_RC1-is-out/">Read more...</a>
         
     </div>
 </article>
