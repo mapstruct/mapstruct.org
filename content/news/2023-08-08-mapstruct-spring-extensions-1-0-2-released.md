@@ -9,7 +9,7 @@ It is my pleasure to announce the next official release of MapStruct Spring Exte
 What started out as a [StackOverflow question](https://stackoverflow.com/q/58081224/3361467) turned into its own [(sub-)project](https://github.com/mapstruct/mapstruct-spring-extensions) within the MapStruct organization.
 
 Changes in this release:
-- Spring Extensions will now honour the `mapstruct.suppressGeneratorTimestamp` processor option. Thanks to [freund17](https://github.com/freund17) and [coding-guo](https://github.com/coding-guo) for pointing out this omission.
+- Spring Extensions will now honour the `mapstruct.suppressGeneratorTimestamp` processor option. Thanks to [freund17](https://github.com/freund17) for pointing out this omission.
 
 We're functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases as well as community requests.
 
