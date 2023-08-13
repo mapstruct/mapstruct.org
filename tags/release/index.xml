@@ -6,10 +6,26 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Aug 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MapStruct Spring Extensions 1.0.2 released</title>
+      <link>http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/</link>
+      <pubDate>Tue, 08 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a &lt;a href=&#34;https://stackoverflow.com/q/58081224/3361467&#34;&gt;StackOverflow question&lt;/a&gt; turned into its own &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions&#34;&gt;(sub-)project&lt;/a&gt; within the MapStruct organization.&lt;/p&gt;
+&lt;p&gt;Changes in this release:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Extensions will now honour the &lt;code&gt;mapstruct.suppressGeneratorTimestamp&lt;/code&gt; processor option. Thanks to &lt;a href=&#34;https://github.com/freund17&#34;&gt;freund17&lt;/a&gt; for pointing out this omission.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We&amp;rsquo;re functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases as well as community requests.&lt;/p&gt;
+&lt;p&gt;Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&amp;rsquo;s conventions and Spring&amp;rsquo;s &lt;a href=&#34;https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API&#34;&gt;ConversionService API&lt;/a&gt; that in turn can be added to any Mapper&amp;rsquo;s &lt;code&gt;uses&lt;/code&gt; attribute. See the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples&#34;&gt;examples&lt;/a&gt; for details.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MapStruct 1.5.5.Final bug fix released</title>
@@ -34,22 +50,6 @@ What started out as a &lt;a href=&#34;https://stackoverflow.com/q/58081224/33614
 &lt;li&gt;Collection type mappings ignored the generic element type. This was no functional problem as such, but it prevented generating an adapter class for several collection type mappings within the same scope. Thanks to &lt;a href=&#34;https://github.com/hypercube-software&#34;&gt;Hypercube Software&lt;/a&gt; and &lt;a href=&#34;https://github.com/coding-guo&#34;&gt;coding-guo&lt;/a&gt; for pointing this out.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;We&amp;rsquo;re now functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases.&lt;/p&gt;
-&lt;p&gt;Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&amp;rsquo;s conventions and Spring&amp;rsquo;s &lt;a href=&#34;https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API&#34;&gt;ConversionService API&lt;/a&gt; that in turn can be added to any Mapper&amp;rsquo;s &lt;code&gt;uses&lt;/code&gt; attribute. See the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples&#34;&gt;examples&lt;/a&gt; for details.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>MapStruct Spring Extensions 1.0.1 released</title>
-      <link>http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/</link>
-      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/</guid>
-      <description>&lt;p&gt;It is my pleasure to announce the next official release of MapStruct Spring Extensions.
-What started out as a &lt;a href=&#34;https://stackoverflow.com/q/58081224/3361467&#34;&gt;StackOverflow question&lt;/a&gt; turned into its own &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions&#34;&gt;(sub-)project&lt;/a&gt; within the MapStruct organization.&lt;/p&gt;
-&lt;p&gt;Changes in this release:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Spring Extensions will now honour the &lt;code&gt;mapstruct.suppressGeneratorTimestamp&lt;/code&gt; processor option. Thanks to &lt;a href=&#34;https://github.com/freund17&#34;&gt;freund17&lt;/a&gt; for pointing out this omission.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;We&amp;rsquo;re functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases as well as community requests.&lt;/p&gt;
 &lt;p&gt;Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&amp;rsquo;s conventions and Spring&amp;rsquo;s &lt;a href=&#34;https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API&#34;&gt;ConversionService API&lt;/a&gt; that in turn can be added to any Mapper&amp;rsquo;s &lt;code&gt;uses&lt;/code&gt; attribute. See the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples&#34;&gt;examples&lt;/a&gt; for details.&lt;/p&gt;</description>
     </item>
     
