@@ -16,10 +16,10 @@ parent = "Documentation"
 * API documentation: [JavaDoc](/documentation/stable/api/)
 * [Migration notes](https://github.com/mapstruct/mapstruct/releases/tag/1.5.5.Final)
 
-**Spring Extensions** (August 8th 2023; latest milestone release)
+**Spring Extensions** (September 25th 2023; latest milestone release)
 
 * Reference guide: [HTML](/documentation/spring-extensions/reference/html/)
-* API documentation: [Annotations JavaDoc](/documentation/spring-extensions/api/annotations/) | [Extensions JavaDoc](/documentation/spring-extensions/api/extensions/)
+* API documentation: [Annotations JavaDoc](/documentation/spring-extensions/api/annotations/) | [Extensions JavaDoc](/documentation/spring-extensions/api/extensions/) | [Test Extensions JavaDoc](/documentation/spring-extensions/api/test-extensions/)
 
 **1.4.2.Final** (January 31st 2021)
 
