@@ -147,6 +147,39 @@ if (!doNotTrack) {
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">MapStruct Spring Extensions 1.1.0 released</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>September 25, 2023</time>
+</p>
+
+
+    <div>
+        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its
+own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>Changes in this release:</p>
+<ul>
+<li>New module <code>test-extensions</code> which contains a <code>@ConverterScan</code> annotation that greatly simplifies the writing of integration tests. Thanks to <a href="https://github.com/joosehav">Joose Haverinen</a> for the suggestion.</li>
+<li>New annotation <code>@AdapterMethodName</code> which allows a developer to override the default name for generated adapter methods. Thanks to <a href="https://github.com/pw-lehre">pw-lehre</a> for the inspiration.</li>
+<li>New annotation <code>@DelegatingConverter</code> that will generate a converter calling the one whose method is annotated with this. The intended use is in conjunction with MapStruct Core&rsquo;s <code>@InheritInverseConfiguration</code>. Thanks again to <a href="https://github.com/pw-lehre">pw-lehre</a> for the idea.</li>
+</ul>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between
+MapStruct&rsquo;s conventions and Spring&rsquo;
+s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a>
+that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See
+the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2023-09-25-mapstruct-spring-extensions-1-1-0-released/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">MapStruct Spring Extensions 1.0.2 released</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -189,33 +222,6 @@ This release includes support for Jakarta XML Binding , 1 bug fixes and a docume
     <div>
         
             <a href="http://mapstruct.org/news/2023-04-23-mapstruct-1_5_5_Final-bug-fix-released/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">MapStruct Spring Extensions 1.0.1 released</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>April 23, 2023</time>
-</p>
-
-
-    <div>
-        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
-What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
-<p>Changes in this release:</p>
-<ul>
-<li>Collection type mappings ignored the generic element type. This was no functional problem as such, but it prevented generating an adapter class for several collection type mappings within the same scope. Thanks to <a href="https://github.com/hypercube-software">Hypercube Software</a> and <a href="https://github.com/coding-guo">coding-guo</a> for pointing this out.</li>
-</ul>
-<p>We&rsquo;re now functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases.</p>
-<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2023-04-23-mapstruct-spring-extensions-1-0-1-released/">Read more...</a>
         
     </div>
 </article>

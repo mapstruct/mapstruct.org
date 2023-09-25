@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.mapstruct.extensions.spring","l":"ExternalConversion"},{"p":"org.mapstruct.extensions.spring","l":"SpringMapperConfig"}]
+typeSearchIndex = [{"p":"org.mapstruct.extensions.spring","l":"AdapterMethodName"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.mapstruct.extensions.spring","l":"DelegatingConverter"},{"p":"org.mapstruct.extensions.spring","l":"ExternalConversion"},{"p":"org.mapstruct.extensions.spring","l":"SpringMapperConfig"}]
