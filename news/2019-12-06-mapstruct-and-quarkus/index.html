@@ -28,7 +28,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     </head>
 
     <body>
@@ -51,6 +50,10 @@ if (!doNotTrack) {
 
     <li>
     <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
     </li>
 
     <li>
@@ -85,6 +88,10 @@ if (!doNotTrack) {
 
     <li>
     <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
     </li>
 
     <li>
@@ -166,7 +173,7 @@ if (!doNotTrack) {
 <p>With Quarkus you can build microservices or other Java applications using a stack of already existing components like <a href="https://vertx.io/">Eclipse Vert.x</a>, <a href="http://hibernate.org/">Hibernate</a> or <a href="https://microprofile.io/">Eclipse MicroProfile</a>. It has a container-first philosophy which means that Quarkus puts all these frameworks together in a way that the resulting application works very well in container environments like <a href="https://kubernetes.io/">Kubernetes</a> or <a href="https://openshift.io/">OpenShift</a>.</p>
 <p>Read <a href="http://in.relation.to/2019/03/08/why-quarkus/">this article</a> if you want to know more about Quarkus itself.</p>
 <h4 id="and-what-is-so-special-when-using-it-with-mapstruct"><a class="ms-header-link" href="#and-what-is-so-special-when-using-it-with-mapstruct"><i class="fa fa-link"></i></a>And what is so special when using it with MapStruct?</h4>
-<p>The special thing about Quarkus is that it not only allows to run applications on the JVM, but also as native binaries via <a href="https://www.graalvm.org/">GraalVM</a>. This provides ahead-of-time compilation that creates a native image of your application (native system-dependent machine code and not bytecode). Thus you don’t need to have an own JVM installation to run the code, similar to a compiled C++ or Go application.<br>
+<p>The special thing about Quarkus is that it not only allows to run applications on the JVM, but also as native binaries via <a href="https://www.graalvm.org/">GraalVM</a>. This provides ahead-of-time compilation that creates a native image of your application (native system-dependent machine code and not bytecode). Thus you don’t need to have an own JVM installation to run the code, similar to a compiled C++ or Go application. <br>
 This allows having the advantages of native applications also for Java-based apps like a much faster startup time, less memory usage and a much smaller image (25+ MB for a REST application instead of easily more than 100 MB for the JVM and required libraries).</p>
 <p>Using a native image is not possible for all kinds of applications, especially when reflection is used the GraalVM compiler needs some assistance by the developer in order to create the native image. That means you have to provide reflection metadata to the compiler which makes the development more complicated.</p>
 <p>And thats exactly the point where MapStruct jumps in as a reflection-free mapping library!</p>

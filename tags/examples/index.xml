@@ -6,11 +6,7 @@
     <description>Recent content in examples on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Dec 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://mapstruct.org/tags/examples/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 06 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/examples/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MapStruct and Quarkus - a match made in heaven?</title>
       <link>http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/</link>

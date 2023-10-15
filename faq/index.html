@@ -28,7 +28,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     </head>
 
     <body>
@@ -51,6 +50,10 @@ if (!doNotTrack) {
 
     <li>
     <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
     </li>
 
     <li class="uk-active">
@@ -85,6 +88,10 @@ if (!doNotTrack) {
 
     <li>
     <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
     </li>
 
     <li class="uk-active">
@@ -134,19 +141,19 @@ if (!doNotTrack) {
         </li>
     
         <li>
-            <a href="#Why-does-Named-not-work">
+            <a href="#Why-does-%40Named-not-work">
                 Why does @Named not work?
             </a>
         </li>
     
         <li>
-            <a href="#Why-do-I-get-this-error-Could-not-retrieve-Mapper-annotation-during-compilation">
+            <a href="#Why-do-I-get-this-error-Could-not-retrieve-%40Mapper-annotation-during-compilation">
                 Why do I get this error: Could not retrieve @Mapper annotation during compilation?
             </a>
         </li>
     
         <li>
-            <a href="#Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods">
+            <a href="#Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-%40MappingTarget-methods">
                 Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?
             </a>
         </li>
@@ -189,7 +196,7 @@ if (!doNotTrack) {
             <h1>Frequently Asked Questions (FAQ)</h1>
         </div>
         <div class="uk-hidden-small uk-float-right ms-edit-on-github">
-            <a href="https://github.com/mapstruct/mapstruct.org/tree/master/content/faq/_index.md" title="Open the source of this page on GitHub" target="_blank"><i class="fa fa-github"></i> Edit on GitHub</a>
+            <a href="https://github.com/mapstruct/mapstruct.org/tree/main/content/faq/_index.md" title="Open the source of this page on GitHub" target="_blank"><i class="fa fa-github"></i> Edit on GitHub</a>
         </div>
     </div>
 </div>
@@ -229,12 +236,12 @@ to be processed by MapStruct into two separate modules of your project.
 Then Lombok will run in the compilation of the first module,
 causing the bean classes to be complete when MapStruct runs during the compilation of the second module.</p>
 </div>
-<h2 id="Why-does-Named-not-work"><a class="ms-header-link" href="#Why-does-Named-not-work"><i class="fa fa-link"></i></a>Why does @Named not work?</h2>
+<h2 id="Why-does-@Named-not-work"><a class="ms-header-link" href="#Why-does-@Named-not-work"><i class="fa fa-link"></i></a>Why does @Named not work?</h2>
 <div>
 <p>Check out that you are actually using <a href="http://mapstruct.org/documentation/stable/api/org/mapstruct/Named.html"><code>org.mapstruct.Named</code></a>
 and  <strong>not</strong> <code>javax.inject.Named</code>.</p>
 </div>
-<h2 id="Why-do-I-get-this-error-Could-not-retrieve-Mapper-annotation-during-compilation"><a class="ms-header-link" href="#Why-do-I-get-this-error-Could-not-retrieve-Mapper-annotation-during-compilation"><i class="fa fa-link"></i></a>Why do I get this error: Could not retrieve @Mapper annotation during compilation?</h2>
+<h2 id="Why-do-I-get-this-error-Could-not-retrieve-@Mapper-annotation-during-compilation"><a class="ms-header-link" href="#Why-do-I-get-this-error-Could-not-retrieve-@Mapper-annotation-during-compilation"><i class="fa fa-link"></i></a>Why do I get this error: Could not retrieve @Mapper annotation during compilation?</h2>
 <div>
 <p>This can happen if you are using <a href="http://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8"><code>mapstruct-jdk8</code></a> and
 some other dependency is using an older version of <a href="http://mvnrepository.com/artifact/org.mapstruct/mapstruct"><code>mapstruct</code></a>.
@@ -261,7 +268,7 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 }
 </pre>
 </div>
-<h2 id="Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods"><a class="ms-header-link" href="#Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-MappingTarget-methods"><i class="fa fa-link"></i></a>Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?</h2>
+<h2 id="Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-@MappingTarget-methods"><a class="ms-header-link" href="#Why-is-it-not-possible-for-MapStruct-to-generate-implementations-for-Iterable-Stream-and-Map-Types-from-update-@MappingTarget-methods"><i class="fa fa-link"></i></a>Why is it not possible for MapStruct to generate implementations for Iterable, Stream and Map Types from update (`@MappingTarget`) methods?</h2>
 <div>
 <p>Consider this (when thinking what MapStruct should do for updating collections in general):</p>
 <ul>
@@ -285,40 +292,40 @@ compile(&#39;io.springfox:springfox-swagger2:${swagger2.version}&#39;) {
 <thead>
 <tr>
 <th></th>
-<th align="center">source property</th>
-<th align="center">source bean</th>
-<th align="center">direct mapping</th>
-<th align="center">update mapping (<code>@MappingTarget</code>)</th>
+<th style="text-align:center">source property</th>
+<th style="text-align:center">source bean</th>
+<th style="text-align:center">direct mapping</th>
+<th style="text-align:center">update mapping (<code>@MappingTarget</code>)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>NullValueCheckStrategy</td>
-<td align="center">x</td>
-<td align="center"></td>
-<td align="center">x</td>
-<td align="center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
 </tr>
 <tr>
 <td>NullValuePropertyMappingStrategy</td>
-<td align="center">x</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">x</td>
 </tr>
 <tr>
 <td><code>@Mapping#defaultValue</code></td>
-<td align="center">x</td>
-<td align="center"></td>
-<td align="center">x</td>
-<td align="center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
 </tr>
 <tr>
 <td>NullValueMappingStrategy</td>
-<td align="center"></td>
-<td align="center">x</td>
-<td align="center">x</td>
-<td align="center">x</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
 </tr>
 </tbody>
 </table>
@@ -453,40 +460,40 @@ public interface MyMapper {
 <thead>
 <tr>
 <th></th>
-<th align="center">@MapperConfig</th>
-<th align="center">@Mapper</th>
-<th align="center">@BeanMapping</th>
-<th align="center">@Mapping</th>
+<th style="text-align:center">@MapperConfig</th>
+<th style="text-align:center">@Mapper</th>
+<th style="text-align:center">@BeanMapping</th>
+<th style="text-align:center">@Mapping</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>NullValueCheckStrategy</td>
-<td align="center">x</td>
-<td align="center">x</td>
-<td align="center">x</td>
-<td align="center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
 </tr>
 <tr>
 <td>NullValuePropertyMappingStrategy</td>
-<td align="center">x</td>
-<td align="center">x</td>
-<td align="center">x</td>
-<td align="center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
 </tr>
 <tr>
 <td>@Mapping#defaultValue</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">x</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">x</td>
 </tr>
 <tr>
 <td>NullValueMappingStrategy</td>
-<td align="center">x</td>
-<td align="center">x</td>
-<td align="center">x</td>
-<td align="center"></td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>

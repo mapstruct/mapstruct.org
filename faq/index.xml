@@ -6,10 +6,6 @@
     <description>Recent content in Frequently Asked Questions (FAQ) on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Dec 2016 13:23:04 +0100</lastBuildDate>
-    
-	<atom:link href="http://mapstruct.org/faq/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 31 Dec 2016 13:23:04 +0100</lastBuildDate><atom:link href="http://mapstruct.org/faq/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

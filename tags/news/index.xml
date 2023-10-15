@@ -6,11 +6,7 @@
     <description>Recent content in news on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Sep 2023 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 25 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MapStruct Spring Extensions 1.1.0 released</title>
       <link>http://mapstruct.org/news/2023-09-25-mapstruct-spring-extensions-1-1-0-released/</link>
@@ -27,7 +23,7 @@ own &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions&#34
 &lt;li&gt;New annotation &lt;code&gt;@DelegatingConverter&lt;/code&gt; that will generate a converter calling the one whose method is annotated with this. The intended use is in conjunction with MapStruct Core&amp;rsquo;s &lt;code&gt;@InheritInverseConfiguration&lt;/code&gt;. Thanks again to &lt;a href=&#34;https://github.com/pw-lehre&#34;&gt;pw-lehre&lt;/a&gt; for the idea.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Including the annotations and extensions defined in this project will generate a class acting as bridge between
-MapStruct&amp;rsquo;s conventions and Spring&amp;rsquo;
+MapStruct&amp;rsquo;s conventions and Spring&#39;
 s &lt;a href=&#34;https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API&#34;&gt;ConversionService API&lt;/a&gt;
 that in turn can be added to any Mapper&amp;rsquo;s &lt;code&gt;uses&lt;/code&gt; attribute. See
 the &lt;a href=&#34;https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples&#34;&gt;examples&lt;/a&gt; for details.&lt;/p&gt;</description>
@@ -706,7 +702,7 @@ The guide is provided in two formats now: HTML and as PDF.</description>
       <guid>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/</guid>
       <description>It&amp;rsquo;s with great pleasure and excitement that I announce the final release of MapStruct 1.0!
 MapStruct is a source code generator for efficient, type-safe mappings between Java bean types, based on annotated interface definitions. It works in your command line builds (e.g. via Maven or Gradle) as well as your favourite IDE. The advantages of this approach are manifold:
- Great performance: Plain method invocations only, no use of reflection Compile-time type safety: Only objects and attributes actually mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.</description>
+Great performance: Plain method invocations only, no use of reflection Compile-time type safety: Only objects and attributes actually mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.</description>
     </item>
     
     <item>
@@ -717,7 +713,7 @@ MapStruct is a source code generator for efficient, type-safe mappings between J
       <guid>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/</guid>
       <description>It is my pleasure to announce the second candidate release of MapStruct 1.0!
 With this release, we&amp;rsquo;re fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a final. Highlights of this release are:
- Configure package and class name for the generated mapper implementations.</description>
+Configure package and class name for the generated mapper implementations.</description>
     </item>
     
     <item>
@@ -728,7 +724,7 @@ With this release, we&amp;rsquo;re fixing several bugs that showed up after our 
       <guid>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/</guid>
       <description>I am very happy to announce the first candidate release of MapStruct 1.0!
 As we are approach MapStruct 1.0, this release is primarily focused on ironing out remaining glitches and fixing bugs. But there are also some new features:
- A new SPI for discovering property accessors not adhering to the JavaBeans convention The decorator feature can now also be used with Spring Support for before- and after-mapping lifecycle hooks  The complete list of 24 closed issues can be found in the change log.</description>
+A new SPI for discovering property accessors not adhering to the JavaBeans convention The decorator feature can now also be used with Spring Support for before- and after-mapping lifecycle hooks The complete list of 24 closed issues can be found in the change log.</description>
     </item>
     
     <item>
@@ -761,7 +757,7 @@ Note that existing applications using MapStruct need to adapt to some changes we
       <description>It&amp;rsquo;s my great pleasure to announce the release of MapStruct 1.0.0.Beta2.
 Amongst the new features is initial support for Java 8, built-in mappings for the types of the Joda-Time date and time API, flexible mapping customization via inline Java expressions and much more.
 Distribution bundles (ZIP, TAR.GZ) are available on SourceForge. Alternatively, you can obtain the dependencies from Maven Central. The GAV coordinates are:
- org.mapstruct:mapstruct:1.0.0.Beta2 for the annotation JAR, to be used with Java &amp;lt;= 7 org.</description>
+org.mapstruct:mapstruct:1.0.0.Beta2 for the annotation JAR, to be used with Java &amp;lt;= 7 org.</description>
     </item>
     
     <item>
@@ -782,7 +778,7 @@ One core part of the new release is comprehensive support for mapping JAXB types
       <guid>http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_Alpha2-has-landed/</guid>
       <description>It is my great pleasure to announce the release of MapStruct 1.0.0.Alpha2.
 This took us a bit longer than expected, but the new release offers quite a few exciting new features we hope you&amp;rsquo;ll enjoy. The JARs have already been synched to Maven Central. The coordinates are:
- org.mapstruct:mapstruct:1.0.0.Alpha2 for the annotation JAR and org.mapstruct:mapstruct-processor:1.0.0.Alpha2 for the annotation processor.  Alternatively you can get a distribution bundle from SourceForge.
+org.mapstruct:mapstruct:1.0.0.Alpha2 for the annotation JAR and org.mapstruct:mapstruct-processor:1.0.0.Alpha2 for the annotation processor. Alternatively you can get a distribution bundle from SourceForge.
 Beside several new mapping features (e.</description>
     </item>
     

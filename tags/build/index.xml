@@ -6,11 +6,7 @@
     <description>Recent content in build on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jul 2013 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://mapstruct.org/tags/build/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 08 Jul 2013 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/build/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using MapStruct with Gradle</title>
       <link>http://mapstruct.org/news/2013-07-08-using-mapstruct-with-gradle/</link>

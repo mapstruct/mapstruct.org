@@ -28,7 +28,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     </head>
 
     <body>
@@ -51,6 +50,10 @@ if (!doNotTrack) {
 
     <li>
     <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
     </li>
 
     <li>
@@ -85,6 +88,10 @@ if (!doNotTrack) {
 
     <li>
     <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
     </li>
 
     <li>
@@ -299,7 +306,7 @@ public class CarMapperImpl implements CarMapper {
 <p>Methods annotated with <code>@Condition</code> work in similar way as other methods (object factories, lifecycle, mapping) in MapStruct.
 This means that you can include the source parameter, the <code>@MappingTarget</code>, use qualifiers, define your conditions in other classes and use them via <code>Mapper#uses</code></p>
 <p>For more details how conditional mapping works have a look at the <a href="http://mapstruct.org/documentation/dev/reference/html/#conditional-mapping">Conditional Mapping</a> section of the reference guide.</p>
-<h3 id="mapping-iterable-into-an-object"><a class="ms-header-link" href="#mapping-iterable-into-an-object"><i class="fa fa-link"></i></a>Mapping Iterable&lt;?&gt; into an Object</h3>
+<h3 id="mapping-iterable-into-an-object"><a class="ms-header-link" href="#mapping-iterable-into-an-object"><i class="fa fa-link"></i></a>Mapping Iterable<?> into an Object</h3>
 <pre class="prettyprint linenums lang-java">
 @Mapper
 public interface CustomerMapper {

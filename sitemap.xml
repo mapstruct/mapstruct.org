@@ -1,444 +1,271 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>http://mapstruct.org/documentation/installation/</loc>
     <lastmod>2019-02-22T14:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/development/contributing/</loc>
     <lastmod>2016-12-31T13:23:24+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/community/getting-help/</loc>
     <lastmod>2016-12-31T13:22:16+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/documentation/reference-guide/</loc>
     <lastmod>2019-02-10T12:21:00+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/community/other-resources/</loc>
     <lastmod>2016-12-31T13:22:54+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/development/team/</loc>
     <lastmod>2016-02-14T16:11:58+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/documentation/ide-support/</loc>
     <lastmod>2017-01-04T21:20:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/development/technical-documentation/</loc>
     <lastmod>2016-12-31T13:23:50+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://mapstruct.org/sponsor/</loc>
+    <lastmod>2023-10-15T10:00:00+01:00</lastmod>
+  </url><url>
     <loc>http://mapstruct.org/development/testing-mapstruct/</loc>
     <lastmod>2021-02-17T18:55:58+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/development/debugging/</loc>
     <lastmod>2016-12-31T13:23:56+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/faq/</loc>
     <lastmod>2016-12-31T13:23:04+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/development/updating-mapstructorg/</loc>
     <lastmod>2016-02-14T16:11:58+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/development/ide-setup/</loc>
     <lastmod>2016-12-31T13:24:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/development/license/</loc>
     <lastmod>2016-12-31T13:24:06+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/</loc>
     <lastmod>2023-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2023-09-25-mapstruct-spring-extensions-1-1-0-released/</loc>
     <lastmod>2023-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://mapstruct.org/news/</loc>
-    <lastmod>2023-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/news/</loc>
     <lastmod>2023-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://mapstruct.org/news/</loc>
+    <lastmod>2023-09-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://mapstruct.org/tags/release/</loc>
     <lastmod>2023-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/</loc>
     <lastmod>2023-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/</loc>
     <lastmod>2023-08-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2023-04-23-mapstruct-1_5_5_Final-bug-fix-released/</loc>
     <lastmod>2023-04-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2023-04-23-mapstruct-spring-extensions-1-0-1-released/</loc>
     <lastmod>2023-04-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2023-04-13-mapstruct-1_5_4_Final-bug-fix-released/</loc>
     <lastmod>2023-04-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/</loc>
     <lastmod>2023-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2022-06-18-mapstruct-1_5_2_Final-bug-fix-released/</loc>
     <lastmod>2022-06-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2022-06-09-mapstruct-spring-extensions-0-1-2-released/</loc>
     <lastmod>2022-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2022-06-03-mapstruct-1_5_0_Final-is-out/</loc>
     <lastmod>2022-06-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2022-03-20-mapstruct-1_5_0_RC1-is-out/</loc>
     <lastmod>2022-03-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2022-02-07-mapstruct-spring-extensions-0-1-1-released/</loc>
     <lastmod>2022-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2021-12-12-mapstruct-1_5_0_Beta2-is-out/</loc>
     <lastmod>2021-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2021-07-18-mapstruct-1_5_0_Beta1-is-out/</loc>
     <lastmod>2021-07-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2021-07-03-mapstruct-spring-extensions-0-1-0-released/</loc>
     <lastmod>2021-07-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2021-05-25-mapstruct-spring-extensions-0-0-3-released/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/development/</loc>
     <lastmod>2021-02-17T18:55:58+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2021-02-15-mapstruct-spring-extensions-0-0-2-released/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2021-01-31-mapstruct-1_4_2_Final-bug-fix-released/</loc>
     <lastmod>2021-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2020-12-03-mapstruct-spring-extensions-0-0-1-released/</loc>
     <lastmod>2020-12-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2020-09-28-mapstruct-1_4_0_Final-is-out/</loc>
     <lastmod>2020-09-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2020-08-31-mapstruct-1_4_0_CR1-released/</loc>
     <lastmod>2020-08-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2020-07-19-mapstruct-1_4_0_Beta3-is-out/</loc>
     <lastmod>2020-07-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta2-is-out/</loc>
     <lastmod>2020-07-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2020-06-01-mapstruct-1_4_0_Beta1-is-out-with-constructor-support/</loc>
     <lastmod>2020-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2020-02-03-announcing-gem-tools/</loc>
     <lastmod>2020-02-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/examples/</loc>
     <lastmod>2019-12-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2019-12-06-mapstruct-and-quarkus/</loc>
     <lastmod>2019-12-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2019-09-29-mapstruct-1_3_1_Final-bug-fix-released/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/documentation/</loc>
     <lastmod>2019-02-22T14:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2019-02-11-mapstruct-1_3_0_Final-is-out-in-the-wild/</loc>
     <lastmod>2019-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/</loc>
     <lastmod>2018-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/</loc>
     <lastmod>2018-07-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2018-03-18-filip-hrisafov-taking-over-as-mapstruct-project-lead/</loc>
     <lastmod>2018-03-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2017-10-18-mapstruct-1_2_0_Final-is-out/</loc>
     <lastmod>2017-10-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/ide/</loc>
     <lastmod>2017-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/intellij/</loc>
     <lastmod>2017-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2017-09-19-announcing-mapstruct-idea/</loc>
     <lastmod>2017-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2017-08-28-mapstruct-1_2_0_cr2-released/</loc>
     <lastmod>2017-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2017-07-25-mapstruct-1_2_0_CR1-released/</loc>
     <lastmod>2017-07-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2017-06-02-mapstruct-1_2_0_Beta3-is-out/</loc>
     <lastmod>2017-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2017-03-16-mapstruct-1_2_0_Beta2-released/</loc>
     <lastmod>2017-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2017-02-20-mapstruct-1_2_0_Beta1-is-out-with-lombok-support-and-direct-field-access/</loc>
     <lastmod>2017-02-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2017-01-02-new-year-new-website/</loc>
     <lastmod>2017-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/web-site/</loc>
     <lastmod>2017-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/community/</loc>
     <lastmod>2016-12-31T13:22:54+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2016-11-22-mapstruct-1_1_0_Final-seen-in-the-wild/</loc>
     <lastmod>2016-11-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/</loc>
     <lastmod>2016-11-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/</loc>
     <lastmod>2016-09-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/</loc>
     <lastmod>2016-07-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/</loc>
     <lastmod>2016-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/</loc>
     <lastmod>2016-02-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/</loc>
     <lastmod>2015-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/</loc>
     <lastmod>2015-08-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2015-06-11-mapstruct-1_0_0_CR1-has-landed/</loc>
     <lastmod>2015-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2015-03-05-arrays-configuration-inheritance-mapstruct-1_0_0_Beta4/</loc>
     <lastmod>2015-03-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2014-11-30-mapstruct-1_0_0_Beta3-nested-properties/</loc>
     <lastmod>2014-11-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2014-07-02-Java_8_support_in_mapstruct-1_0_0_Beta2/</loc>
     <lastmod>2014-07-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2014-03-05-mapstruct-1_0_0_Beta1-with-JAXB-support-factories-decorators-and-more/</loc>
     <lastmod>2014-03-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2013-11-28-mapstruct-1_0_0_Alpha2-has-landed/</loc>
     <lastmod>2013-11-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/build/</loc>
     <lastmod>2013-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/gradle/</loc>
     <lastmod>2013-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/how-to/</loc>
     <lastmod>2013-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2013-07-08-using-mapstruct-with-gradle/</loc>
     <lastmod>2013-07-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2013-06-03-announcing-mapstruct/</loc>
     <lastmod>2013-06-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/tags/feedback/</loc>
     <lastmod>2013-06-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/news/2013-05-22-website-live/</loc>
     <lastmod>2013-05-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://mapstruct.org/categories/</loc>
   </url>
-  
 </urlset>
