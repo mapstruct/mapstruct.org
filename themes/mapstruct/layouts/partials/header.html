@@ -53,7 +53,7 @@
 
     <!-- a single news post; they don't have a menu -->
     {{- if eq $currentPage.IsNode false -}}
-        {{- if and ( eq "News" .Name ) ( in $currentPage.Path "news" ) -}}
+        {{- if and ( eq "News" .Name ) ( eq $currentPage.Section "news" ) -}}
         {{- $.Scratch.Set "active" true -}}
         {{- end -}}
     {{- end }}
