@@ -8,7 +8,7 @@
         <ul class="uk-pagination">
             {{ if .NextInSection }}
             <li>
-                <a href="{{ .NextInSection.URL }}" title="{{ .NextInSection.LinkTitle }}"><i class="uk-icon-angle-double-left"></i></a>
+                <a href="{{ .NextInSection.RelPermalink }}" title="{{ .NextInSection.LinkTitle }}"><i class="uk-icon-angle-double-left"></i></a>
             </li>
             {{ else }}
             <li class="uk-disabled">
@@ -17,7 +17,7 @@
             {{end}}
             {{ if .PrevInSection }}
             <li>
-                <a href="{{ .PrevInSection.URL }}" title="{{ .PrevInSection.LinkTitle }}"><i class="uk-icon-angle-double-right"></i></a>
+                <a href="{{ .PrevInSection.RelPermalink }}" title="{{ .PrevInSection.LinkTitle }}"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             {{ else }}
             <li class="uk-disabled">
