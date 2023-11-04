@@ -6,7 +6,30 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Support for accessing property names, passing annotations to generated code, sponsoring MapStruct and much more: MapStruct 1.6.0.Beta1 is out</title>
+      <link>http://mapstruct.org/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/</link>
+      <pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s my pleasure to announce the first Beta release of MapStruct 1.6.&lt;/p&gt;
+&lt;p&gt;The new release comes with a lot of new functionality, e.g.:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Access to target / source property names in conditional and mapping methods&lt;/li&gt;
+&lt;li&gt;Passing annotations to generated code&lt;/li&gt;
+&lt;li&gt;Add javadoc to generated code&lt;/li&gt;
+&lt;li&gt;New built-in conversions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With this release we are also happy to announce that MapStruct has started accepting donations through &lt;a href=&#34;https://opencollective.com/mapstruct&#34;&gt;Open Collective&lt;/a&gt; or &lt;a href=&#34;https://github.com/sponsors/mapstruct&#34;&gt;GitHub&lt;/a&gt;.
+We&amp;rsquo;d like to thank to everyone that has already started in supporting us:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/adessoSE&#34;&gt;addesso SE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/bileto&#34;&gt;Bileto&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/atomfrede&#34;&gt;Frederik Hahne&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>MapStruct Spring Extensions 1.1.0 released</title>
       <link>http://mapstruct.org/news/2023-09-25-mapstruct-spring-extensions-1-1-0-released/</link>

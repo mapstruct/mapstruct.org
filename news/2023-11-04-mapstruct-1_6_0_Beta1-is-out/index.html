@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Support for accessing property names, passing annotations to generated code, sponsoring MapStruct and much more: MapStruct 1.6.0.Beta1 is out &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+
+    <body>
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            
+
+    <li class="uk-active">
+    <a href="/news/"> News </a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
+    </li>
+
+    <li>
+    <a href="/faq/"> FAQ </a>
+    </li>
+
+    <li>
+    <a href="https://github.com/mapstruct/mapstruct"><i class='fa fa-github fa-lg'></i> Code &amp; Issues </a>
+    </li>
+
+            </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
+        </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                
+
+    <li class="uk-active">
+    <a href="/news/"> News </a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
+    </li>
+
+    <li>
+    <a href="/faq/"> FAQ </a>
+    </li>
+
+    <li>
+    <a href="https://github.com/mapstruct/mapstruct"><i class='fa fa-github fa-lg'></i> Code &amp; Issues </a>
+    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    
+    <li><a href="http://mapstruct.org/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/">Support for accessing property names, passing annotations to generated code, sponsoring MapStruct and much more: MapStruct 1.6.0.Beta1 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2023-09-25-mapstruct-spring-extensions-1-1-0-released/">MapStruct Spring Extensions 1.1.0 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/">MapStruct Spring Extensions 1.0.2 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2023-04-23-mapstruct-1_5_5_Final-bug-fix-released/">MapStruct 1.5.5.Final bug fix released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2023-04-23-mapstruct-spring-extensions-1-0-1-released/">MapStruct Spring Extensions 1.0.1 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2023-04-13-mapstruct-1_5_4_Final-bug-fix-released/">MapStruct 1.5.4.Final bug fix released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/">MapStruct Spring Extensions 1.0.0 released</a></li>
+    
+</ul>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<article class="uk-article">
+    <p class="uk-article-meta ms-article-date">
+    <time>November 04, 2023</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/">Support for accessing property names, passing annotations to generated code, sponsoring MapStruct and much more: MapStruct 1.6.0.Beta1 is out</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Filip Hrisafov</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+    <div>
+        <div><p>It&rsquo;s my pleasure to announce the first Beta release of MapStruct 1.6.</p>
+<p>The new release comes with a lot of new functionality, e.g.:</p>
+<ul>
+<li>Access to target / source property names in conditional and mapping methods</li>
+<li>Passing annotations to generated code</li>
+<li>Add javadoc to generated code</li>
+<li>New built-in conversions</li>
+</ul>
+<p>With this release we are also happy to announce that MapStruct has started accepting donations through <a href="https://opencollective.com/mapstruct">Open Collective</a> or <a href="https://github.com/sponsors/mapstruct">GitHub</a>.
+We&rsquo;d like to thank to everyone that has already started in supporting us:</p>
+<ul>
+<li><a href="https://github.com/adessoSE">addesso SE</a></li>
+<li><a href="https://opencollective.com/bileto">Bileto</a></li>
+<li><a href="https://opencollective.com/atomfrede">Frederik Hahne</a></li>
+</ul>
+<p>Altogether, not less than <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.6.0.Beta1">63 issues</a> were fixed for this release.</p>
+<p>This would not have been possible without our fantastic community of contributors:</p>
+<ul>
+<li>
+<p><a href="https://github.com/anton-erofeev">@anton-erofeev</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Blackbaud-JasonBodnar">@Blackbaud-JasonBodnar</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Bragolgirith">@Bragolgirith</a></p>
+</li>
+<li>
+<p><a href="https://github.com/chenzijia12300">@chenzijia12300</a></p>
+</li>
+<li>
+<p><a href="https://github.com/eroznik">@eroznik</a></p>
+</li>
+<li>
+<p><a href="https://github.com/EvaristeGalois11">@EvaristeGalois11</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ivlcic">@ivlcic</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jccampanero">@jccampanero</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kooixh">@kooixh</a></p>
+</li>
+<li>
+<p><a href="https://github.com/MengxingYuan">@MengxingYuan</a></p>
+</li>
+<li>
+<p><a href="https://github.com/MLNW">@MLNW</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Nikolas-Charalambidis">@Nikolas-Charalambidis</a></p>
+</li>
+<li>
+<p><a href="https://github.com/paparadva">@paparadva</a></p>
+</li>
+<li>
+<p><a href="https://github.com/prasanth08">@prasanth08</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ro0sterjam">@ro0sterjam</a></p>
+</li>
+<li>
+<p><a href="https://github.com/rgdoliveira">@rgdoliveira</a></p>
+</li>
+<li>
+<p><a href="https://github.com/venkatesh2090">@venkatesh2090</a></p>
+</li>
+<li>
+<p>our latest MapStruct contributor <a href="https://github.com/thunderhook">Oliver Erhart</a></p>
+</li>
+<li>
+<p>and of course seasoned MapStruct hackers <a href="https://github.com/Zegveld">Ben Zegveld</a>, <a href="https://github.com/sjaakd">Sjaak Derksen</a>, <a href="https://github.com/filiphr">Filip Hrisafov</a>.</p>
+</li>
+</ul>
+<p>Thank you everyone for all your hard work!</p>
+<p>Slightly more than a year after the first Beta release of 1.6, we are proud to present you with the first Beta of the 1.6 release.</p>
+<p>Enough of the pep talk, let&rsquo;s take a closer look at some of the new features and enhancement!</p>
+<h3 id="access-to-target--source-property-names-in-conditional-and-mapping-methods"><a class="ms-header-link" href="#access-to-target--source-property-names-in-conditional-and-mapping-methods"><i class="fa fa-link"></i></a>Access to target / source property names in conditional and mapping methods</h3>
+<p>It is now possible to get access to the target property name in conditional and mapping methods.</p>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+public class HibernateUtils {
+
+    @Condition
+    public static boolean isAccessible(Customer customer, @TargetPropertyName String propertyName) {
+        return Hibernate.isPropertyInitialized(customer, propertyName);
+    }
+
+}
+
+@Mapper(uses = HibernateUtils.class)
+public interface CustomerMapper {
+
+	CustomerDto map(Customer customer);
+}
+</pre>
+
+<p>Will generate something like</p>
+<pre class="prettyprint linenums lang-java">
+// GENERATED CODE
+public class CustomerMapperImpl implements CustomerMapper {
+
+    @Override
+    public CustomerDto map(Customer customer) {
+        // ...
+        if ( HiberateUtils.isAccessible( customer, &#34;orders&#34; ) ) {
+            customer.setOrders( mapOrders( customer.getOrders() ) );
+        }
+        // ...
+    }
+
+    // ...
+}
+</pre>
+
+<h3 id="passing-annotations-to-generate-code"><a class="ms-header-link" href="#passing-annotations-to-generate-code"><i class="fa fa-link"></i></a>Passing annotations to generate code</h3>
+<p>Using <code>@AnnotateWith</code> custom annotations can be passed to the generated code.</p>
+<pre class="prettyprint linenums lang-java">
+@AnnotateWith( value = Component.class, elements = @AnnotateWith.Element( strings = &#34;customerMapperV1&#34; ) )
+@Mapper( componentModel = MappingConstants.ComponentModel.SPRING )
+public interface CustomerMapper {
+    // ...
+}
+</pre>
+
+<p>This will generate:</p>
+<pre class="prettyprint linenums lang-java">
+// GENERATED CODE
+@Component(&#34;customerMapperV1&#34;)
+public class CustomerMapperImpl implements CustomerMapper {
+    // ...
+}
+</pre>
+
+<p>This for example can be used to provide a custom name for the Spring <code>@Component</code></p>
+<h3 id="add-javadoc-to-generated-code"><a class="ms-header-link" href="#add-javadoc-to-generated-code"><i class="fa fa-link"></i></a>Add Javadoc to generated code</h3>
+<p>Using <code>@Javadoc</code> it is possible to pass custom javadoc to the generated code.</p>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+@Javadoc(&#34;This is the description\n&#34;
+    + &#34;\n&#34;
+    + &#34;@author author1\n&#34;
+    + &#34;@author author2\n&#34;
+    + &#34;\n&#34;
+    + &#34;@deprecated Use {@link CustomerV2Mapper} instead\n&#34;
+    + &#34;@since 0.1\n&#34;)
+@Deprecated
+public interface CustomerMapper {
+}
+</pre>
+
+<p>or</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+@Javadoc(
+    value = &#34;This is the description&#34;,
+    authors = { &#34;author1&#34;, &#34;author2&#34; },
+    deprecated = &#34;Use {@link CustomerV2Mapper} instead&#34;,
+    since = &#34;0.1&#34;
+)
+@Deprecated
+public interface CustomerMapper {
+}
+</pre>
+
+<p>In both cases the generated code looks like:</p>
+<pre class="prettyprint linenums lang-java">
+/**
+* This is the description
+* 
+* @author author1
+* @author author2
+* 
+* @deprecated Use {@link CustomerV2Mapper} instead
+* @since 0.1
+*/
+@Deprecated
+// GENERATED CODE
+public class CustomerMapperImpl implements CustomerMapper {
+}
+</pre>
+
+<h3 id="new-built-in-conversions"><a class="ms-header-link" href="#new-built-in-conversions"><i class="fa fa-link"></i></a>New Built-In conversions</h3>
+<p>We have extensive number of built-in conversions between different types.
+As of this release we have 4 more:</p>
+<ul>
+<li>Between <code>Enum</code> and <code>Integer</code> - This basically uses <code>Enum#ordinal</code> to map to integer and <code>MyEnum.values()[value]</code> to map from an integer value</li>
+<li>Between <code>Locale</code> and <code>String</code></li>
+<li>Between <code>java.time.LocalDate</code> and <code>java.time.LocalDateTime</code></li>
+<li>Between <code>Iterable</code> and <code>Collection</code></li>
+</ul>
+<h3 id="enhancements"><a class="ms-header-link" href="#enhancements"><i class="fa fa-link"></i></a>Enhancements</h3>
+<ul>
+<li>New compiler options have been added for defining <code>nullValueIterableMappingStrategy</code> and <code>nullValueMapMappingStrategy</code> globally. The options are <code>mapstruct.nullValueIterableMappingStrategy</code> and <code>mapstruct.nullValueMapMappingStrategy</code> respectively.</li>
+<li>Subclass mappings now support qualifiers</li>
+<li>SPI implementations now have the possibility to provide custom compiler options.
+A new SPI (<code>AdditionalSupportedOptionsProvider</code>) needs to be implemented to provide the custom options.
+Custom compiler options are not allowed to start with <code>mapstruct</code></li>
+<li>The most specific mapping will be picked when the return type can be assigned to a simpler type. e.g.
+<pre class="prettyprint linenums lang-java">
+  public static java.util.Date toUtilDate(String strDate);
+  public static java.sql.TimeStamp toTimeStamp(String strDate);
+  public static java.sql.Date toSqlDate(String strDate);
+</pre>
+
+Previously mapping from a <code>String</code> to <code>java.util.Date</code> would fail since any of the 3 methods could be used.
+However, now the <code>toUtilDate</code> would be picked</li>
+<li>Collection getter is not treated as a write accessor when using <code>CollectionMappingStrategy#TARGET_IMMUTABLE</code></li>
+<li>Error location has been improved for <code>@SubclassMapping</code></li>
+<li>Support <code>@InheritConfiguration</code> for <code>@SubclassMapping</code></li>
+<li>Do not require <code>subclassExhaustiveStrategy</code> when source is a sealed class and all subtypes are specified</li>
+<li>All lifecycle methods are support for builders
+<ul>
+<li><code>@BeforeMapping</code> with <code>@TargetType</code> the type being build</li>
+<li><code>@AfterMapping</code> with <code>@TargetType</code> the type being build</li>
+<li><code>@AfterMapping</code> with <code>@MappingTarget</code> the type being build</li>
+</ul>
+</li>
+<li>Some redundant null checks have been removed for nested properties</li>
+<li>Support <code>@Default</code> for records</li>
+<li>Add <code>InjectionStrategy.SETTER</code></li>
+<li>Add <code>BeanMapping#unmappedSourcePolicy</code></li>
+<li>Improve support for <code>Map</code> attributes for Immutables</li>
+</ul>
+<h3 id="breaking-changes"><a class="ms-header-link" href="#breaking-changes"><i class="fa fa-link"></i></a>Breaking Changes</h3>
+<p>Map to Bean
+In 1.5 we added support for mapping a map to a bean by implicitly mapping all the properties from the target bean by accessing them from the map.
+However, this lead to some problems in multi mapping methods.
+Therefore, in this release we tightened up a bit and in multi source mapping methods the Map will not be considered when doing implicit mappings.</p>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface CarMapper {
+
+    // This method is going to implicitly map all the target properties from the map
+    Target map(Map&lt;String, Object&gt; map);
+    
+    // This method is not going to use the map for implicit mappings.
+    //  Only the name will be mapped from the map (since it has been defined like that
+    @Mapping(target = &#34;name&#34;, source = &#34;map.name&#34;)
+    Target map(Source source, Map&lt;String, Object&gt; map)
+
+}
+</pre>
+
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+<p>This concludes our tour through MapStruct 1.6 Beta1.
+If you&rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:</p>
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.6.0.Beta1%7Cjar">org.mapstruct:mapstruct:1.6.0.Beta1</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.6.0.Beta1%7Cjar">org.mapstruct:mapstruct-processor:1.6.0.Beta1</a></li>
+</ul>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.6.0.Beta1">from GitHub</a>.</p>
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
+<ul>
+<li>Get help in our <a href="https://gitter.im/mapstruct/mapstruct-users">Gitter room</a>, the <a href="https://github.com/mapstruct/mapstruct/discussions">GitHub Discussion</a> or <a href="https://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+</ul></div>
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
+            </li>
+            
+            
+            <li>
+                <a href="/news/2023-09-25-mapstruct-spring-extensions-1-1-0-released/" title="MapStruct Spring Extensions 1.1.0 released"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'mapstruct';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+</article>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct/discussions">Discussions</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="https://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © The MapStruct authors 2023
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+
