@@ -337,3 +337,21 @@ the method `doSomething` will be ignored by MapStruct.
 
 {{% /faq_question %}}
 
+{{% faq_question "How do I write a Spring Extension Converter using MapStruct's @Context feature?" %}}
+
+The unfortunate short answer: You can't.
+Spring's [Converter definition](https://docs.spring.io/spring-framework/reference/core/validation/convert.html#core-convert-Converter-API)
+only allows for a `convert` method that has a single input parameter (the source object) and returns the converted (mapped) response.
+
+If you ever find yourself in a situation where you'd like to combine Spring's `Converter` and MapStruct's `@context`
+concepts, your options are:
+
+* Instead of supplying a `@Context` object as parameter, consider injecting it.
+* If injecting the object is no option, sometimes you may be able to inject some form of modifiable wrapper object that
+  can be given the `@Contet` object at runtime.
+* If neither of the above two are possible and you can't implement a mapping without a `@Context` object, you should
+  stick to MapStruct's core functionality and refrain from letting this particular Mapper extend the `Converter`
+  interface.
+
+{{% /faq_question %}}
+
