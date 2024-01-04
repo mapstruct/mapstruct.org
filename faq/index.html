@@ -182,6 +182,12 @@ if (!doNotTrack) {
             </a>
         </li>
     
+        <li>
+            <a href="#How-do-I-write-a-Spring-Extension-Converter-using-MapStruct%2339s-%40Context-feature">
+                How do I write a Spring Extension Converter using MapStruct&amp;#39;s @Context feature?
+            </a>
+        </li>
+    
     </ul>
 
 
@@ -560,6 +566,22 @@ TypeX doSomething(TypeY y) {
 </pre>
 <p>the method <code>doSomething</code> will be ignored by MapStruct.</p>
 </div>
+<h2 id="How-do-I-write-a-Spring-Extension-Converter-using-MapStructs-@Context-feature"><a class="ms-header-link" href="#How-do-I-write-a-Spring-Extension-Converter-using-MapStructs-@Context-feature"><i class="fa fa-link"></i></a>How do I write a Spring Extension Converter using MapStruct&#39;s @Context feature?</h2>
+<div>
+<p>The unfortunate short answer: You can&rsquo;t.
+Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/reference/core/validation/convert.html#core-convert-Converter-API">Converter definition</a>
+only allows for a <code>convert</code> method that has a single input parameter (the source object) and returns the converted (mapped) response.</p>
+<p>If you ever find yourself in a situation where you&rsquo;d like to combine Spring&rsquo;s <code>Converter</code> and MapStruct&rsquo;s <code>@context</code>
+concepts, your options are:</p>
+<ul>
+<li>Instead of supplying a <code>@Context</code> object as parameter, consider injecting it.</li>
+<li>If injecting the object is no option, sometimes you may be able to inject some form of modifiable wrapper object that
+can be given the <code>@Context</code> object at runtime.</li>
+<li>If neither of the above two are possible and you can&rsquo;t implement a mapping without a <code>@Context</code> object, you should
+stick to MapStruct&rsquo;s core functionality and refrain from letting this particular Mapper extend the <code>Converter</code>
+interface.</li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -584,7 +606,7 @@ TypeX doSomething(TypeY y) {
                     </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-1 ms-subnav-footer">
-                            © The MapStruct authors 2023
+                            © The MapStruct authors 2024
                         </div>
                     </div>
                 </div>

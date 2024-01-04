@@ -154,6 +154,40 @@ if (!doNotTrack) {
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">MapStruct Spring Extensions 1.1.1 released</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>January 04, 2024</time>
+</p>
+
+
+    <div>
+        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its
+own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>Changes in this release:</p>
+<ul>
+<li>This release is functionally identical to 1.1.0. The only modification worthwhile mentioning is a fix to the
+dependencies for the newly introduced test-extensions module which now won&rsquo;t rely on outdated Spring versions anymore.
+Thanks to <a href="https://github.com/giorgioscia">George Noble</a> for pointing out this oversight which led to some
+organizations rejecting the library due to a security vulnerability in the respective Spring versions.</li>
+</ul>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between
+MapStruct&rsquo;s conventions and Spring'
+s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a>
+that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See
+the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2024-01-04-mapstruct-spring-extensions-1-1-1-released/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">Support for accessing property names, passing annotations to generated code, sponsoring MapStruct and much more: MapStruct 1.6.0.Beta1 is out</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -215,33 +249,6 @@ the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/maste
     <div>
         
             <a href="http://mapstruct.org/news/2023-09-25-mapstruct-spring-extensions-1-1-0-released/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">MapStruct Spring Extensions 1.0.2 released</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>August 08, 2023</time>
-</p>
-
-
-    <div>
-        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
-What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
-<p>Changes in this release:</p>
-<ul>
-<li>Spring Extensions will now honour the <code>mapstruct.suppressGeneratorTimestamp</code> processor option. Thanks to <a href="https://github.com/freund17">freund17</a> for pointing out this omission.</li>
-</ul>
-<p>We&rsquo;re functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases as well as community requests.</p>
-<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/">Read more...</a>
         
     </div>
 </article>
@@ -399,7 +406,7 @@ public void shouldMapCarToDto() {
                     </div>
                     <div class="uk-grid">
                         <div class="uk-width-1-1 ms-subnav-footer">
-                            © The MapStruct authors 2023
+                            © The MapStruct authors 2024
                         </div>
                     </div>
                 </div>
