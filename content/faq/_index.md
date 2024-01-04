@@ -348,7 +348,7 @@ concepts, your options are:
 
 * Instead of supplying a `@Context` object as parameter, consider injecting it.
 * If injecting the object is no option, sometimes you may be able to inject some form of modifiable wrapper object that
-  can be given the `@Contet` object at runtime.
+  can be given the `@Context` object at runtime.
 * If neither of the above two are possible and you can't implement a mapping without a `@Context` object, you should
   stick to MapStruct's core functionality and refrain from letting this particular Mapper extend the `Converter`
   interface.
