@@ -2,3 +2,4 @@
 public
 .idea/
 *.iml
+tmp/
