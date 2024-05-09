@@ -1,0 +1,5 @@
+name = "1.1.0.Final"
+versionRef = "1.1"
+order = 2
+releaseDate = 2016-11-18
+migrationNotesLink = "https://github.com/mapstruct/mapstruct/wiki/Migration-notes#110final"

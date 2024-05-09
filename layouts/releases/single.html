@@ -1,0 +1,54 @@
+{{ define "main" }}
+<div>
+    <div class="uk-flex uk-flex-space-between">
+        <div>
+            <h1>{{ .Title }}</h1>
+        </div>
+        <div class="uk-hidden-small uk-float-right ms-edit-on-github">
+            {{ partial "edit_on_github.html" . }}
+        </div>
+    </div>
+</div>
+<div>{{ .Content }}</div>
+<div>
+    {{ range sort $.Site.Data.releases "order" "desc" }}
+    <p>
+        <strong>{{ .name }}</strong>
+        ({{ time.Format "January" .releaseDate }} {{ humanize .releaseDate.Day }} {{ .releaseDate.Year }}{{ if eq $.Site.Params.stableVersion .name }}; latest stable release{{ else if eq $.Site.Params.devVersion .name }}; latest beta release{{ end }})
+    </p>
+    <ul>
+        <li>Reference guide:
+            <a href="/documentation/{{ .versionRef }}/reference/html/">HTML</a>
+            {{ if not .spring }}| <a href="/documentation/{{ .versionRef }}/reference/pdf/">PDF</a>{{ end }}
+        </li>
+        <li>
+            API documentation:
+            {{ if .spring }}
+            <a href="/documentation/spring-extensions/api/annotations/">Annotations JavaDoc</a> |
+            <a href="/documentation/spring-extensions/api/extensions/">Extensions JavaDoc</a> |
+            <a href="/documentation/spring-extensions/api/test-extensions/">Test Extensions JavaDoc</a>
+            {{ else if .stable }}
+            <a href="/documentation/stable/api/">JavaDoc</a>
+            {{ else if .dev }}
+            <a href="/documentation/dev/api/">JavaDoc</a>
+            {{ else }}
+            <a href="/documentation/{{ .versionRef }}/api/">JavaDoc</a>
+            {{ end }}
+        </li>
+        {{ if .migrationNotesLink }}
+        <li>
+            <a href="{{ .migrationNotesLink }}">Migration notes</a>
+        </li>
+        {{ else if not .spring }}
+        <li>
+            <a href="https://github.com/mapstruct/mapstruct/releases/tag/{{ .name }}">Migration notes</a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ end }}
+</div>
+{{ end }}
+
+{{ define "aside" }}
+    {{ partial "section_menu.html" . }}
+{{ end }}

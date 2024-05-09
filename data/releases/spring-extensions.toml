@@ -1,0 +1,5 @@
+name = "Spring Extensions"
+versionRef = "spring-extensions"
+order = 450
+releaseDate = 2023-09-25
+spring = true
