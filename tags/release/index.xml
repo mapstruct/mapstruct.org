@@ -6,7 +6,39 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conditional mapping for source parameters and much more: MapStruct 1.6.0.Beta2 is out</title>
+      <link>http://mapstruct.org/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out/</link>
+      <pubDate>Sat, 11 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s my pleasure to announce the second Beta release of MapStruct 1.6.&lt;/p&gt;
+&lt;p&gt;The new release comes with some new functionality, e.g.:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Conditional mapping for source parameters&lt;/li&gt;
+&lt;li&gt;Support to access source property name in condition methods via an annotation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This release is also our first release that has been fully automated using the great &lt;a href=&#34;https://jreleaser.org/&#34;&gt;JReleaser&lt;/a&gt;.
+This would hopefully mean that we can realase more often, as the burden of manual release has been reduced.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;d like to thank our new supporters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/cybozu&#34;&gt;Cybozu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kjuyoung&#34;&gt;Juyoung Kim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/lansana&#34;&gt;Lansana&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marisnb&#34;&gt;Mariselvam&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jan-prisma&#34;&gt;PRISMA European Capacity Platform GmbH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/st-galler-kantonalbank-ag&#34;&gt;St. Galler Kantonalbank AG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And of course thanks to our previous supporters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/adessoSE&#34;&gt;addesso SE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/bileto&#34;&gt;Bileto&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/atomfrede&#34;&gt;Frederik Hahne&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you&amp;rsquo;d like to join this list and donate to the project MapStruct is accepting donations through &lt;a href=&#34;https://opencollective.com/mapstruct&#34;&gt;Open Collective&lt;/a&gt; or &lt;a href=&#34;https://github.com/sponsors/mapstruct&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>MapStruct Spring Extensions 1.1.1 released</title>
       <link>http://mapstruct.org/news/2024-01-04-mapstruct-spring-extensions-1-1-1-released/</link>
