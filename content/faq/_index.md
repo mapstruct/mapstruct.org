@@ -280,7 +280,7 @@ MapStruct tries various mechanisms to map a sourceproperty to a targetproperty w
 6. 2 step method, variant 2: `target = methodY( conversionX ( source ) )`
 7. 2 step method, variant 3: `target = conversionY( methodX ( source ) )`
 
-Whenever MapStruct finds a unique candidate, MapStruct stops and uses this method to make the mapping between source and target. However, for option 1, 5, 6, 7 it is possible that multiple eligible candidtates are found for which MapStruct cannot decide which one to select. MapStruct reports this as "ambiguous mapping method" and lists the methods from which it cannot make a selection. Here, you have to guide MapStruct in making the correct mapping.
+Whenever MapStruct finds a unique candidate, MapStruct stops and uses this method to make the mapping between source and target. However, for option 1, 5, 6, 7 it is possible that multiple eligible candidates are found for which MapStruct cannot decide which one to select. MapStruct reports this as "ambiguous mapping method" and lists the methods from which it cannot make a selection. Here, you have to guide MapStruct in making the correct mapping.
 
 This can be done in the following ways:
 * provide a method with the exact signature if MapStruct cannot select between base- and super types.
