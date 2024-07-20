@@ -12,6 +12,8 @@ This release provides mostly bug fixes since [1.6.0.Beta2](https://mapstruct.org
 
 This release contains 2 breaking changes, have a look at them when upgrading
 
+<!--more-->
+
 We'd like to thank our new supporters:
 
 * [Lee Anne](https://github.com/AnneMayor)
@@ -29,8 +31,6 @@ And of course thanks to our previous supporters:
 * [St. Galler Kantonalbank AG](https://opencollective.com/st-galler-kantonalbank-ag)
 
 If you'd like to join this list and donate to the project MapStruct is accepting donations through [Open Collective](https://opencollective.com/mapstruct) or [GitHub](https://github.com/sponsors/mapstruct).
-
-<!--more-->
 
 Altogether, not less than [8 issues](https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.6.0.RC1) were fixed for this release.
 
