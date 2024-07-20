@@ -119,6 +119,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2024-07-20-mapstruct-1_6_0_RC1-is-out/">MapStruct 1.6.0.RC1 is out</a></li>
+    
     <li><a href="http://mapstruct.org/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out/">Conditional mapping for source parameters and much more: MapStruct 1.6.0.Beta2 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2024-01-04-mapstruct-spring-extensions-1-1-1-released/">MapStruct Spring Extensions 1.1.1 released</a></li>
@@ -131,8 +133,6 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2023-04-23-mapstruct-1_5_5_Final-bug-fix-released/">MapStruct 1.5.5.Final bug fix released</a></li>
     
-    <li><a href="http://mapstruct.org/news/2023-04-23-mapstruct-spring-extensions-1-0-1-released/">MapStruct Spring Extensions 1.0.1 released</a></li>
-    
 </ul>
 
 
@@ -141,6 +141,48 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>February 03, 2020</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Announcing Gem Tools</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Filip Hrisafov, Sjaak Derksen</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>Lately, we have been busy working on the release of MapStruct 1.4, adding new features and trying to
+simplify our codebase so we can maintain it easier and add features faster.</p>
+<p>From the start of the project we have been using a utility tool <a href="https://web.archive.org/web/20070724060104/https://hickory.dev.java.net/">Hickory</a>
+for generating Prisms (partial reflection access to annotations) during compilation time.
+Basically, we&rsquo;ve been using an annotation processor to generate access to the MapStruct annotations,
+this allows us to access the MapStruct annotation in a type-safe way, without requiring the annotation JAR to be on the processor path.
+This is a really old project and the only release on Maven Central is from March 2010.</p>
+<p>Thus we needed something newer and created our own utility.
+Say hi to <a href="https://github.com/mapstruct/tools-gem">Gem Tools</a>.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2020-02-03-announcing-gem-tools/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -302,49 +344,6 @@ This is our 3rd release since november 2015.</p>
     <div>
         
             <a href="http://mapstruct.org/news/2018-11-12-mapstruct-1_3_0_Beta2-is-out-with-java8-as-baseline/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>July 15, 2018</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Support for builders, mapper constructor injection and much more: MapStruct 1.3.0.Beta1 is out</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Filip Hrisafov</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>It&rsquo; my pleasure to announce the first Beta release of MapStruct 1.3.</p>
-<p>The new release comes with a whole lot of new functionality, e.g.:</p>
-<ul>
-<li>Mapping of (immutable) objects using builders</li>
-<li>Constructor injection for Annotation Based component models</li>
-<li><code>unmappedSourcePolicy</code> support</li>
-<li>Support for defaultExpression</li>
-<li>Limit mapping only to explicitly defined mappings</li>
-<li>Performance improvement of <code>constant</code> / <code>defaultValue</code> primitive to <code>String</code> mappings</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2018-07-15-mapstruct-1_3_0_Beta1-is-out-with-builder-support/">Read more...</a>
         
     </div>
 </article>

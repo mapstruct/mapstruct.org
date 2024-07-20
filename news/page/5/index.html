@@ -119,6 +119,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2024-07-20-mapstruct-1_6_0_RC1-is-out/">MapStruct 1.6.0.RC1 is out</a></li>
+    
     <li><a href="http://mapstruct.org/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out/">Conditional mapping for source parameters and much more: MapStruct 1.6.0.Beta2 is out</a></li>
     
     <li><a href="http://mapstruct.org/news/2024-01-04-mapstruct-spring-extensions-1-1-1-released/">MapStruct Spring Extensions 1.1.1 released</a></li>
@@ -131,8 +133,6 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2023-04-23-mapstruct-1_5_5_Final-bug-fix-released/">MapStruct 1.5.5.Final bug fix released</a></li>
     
-    <li><a href="http://mapstruct.org/news/2023-04-23-mapstruct-spring-extensions-1-0-1-released/">MapStruct Spring Extensions 1.0.1 released</a></li>
-    
 </ul>
 
 
@@ -141,6 +141,43 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>May 25, 2021</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2021-05-25-mapstruct-spring-extensions-0-0-3-released/">MapStruct Spring Extensions 0.0.3 released</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Raimund Klein</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>It is my pleasure to announce the third official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>This third release fixes a circular dependency issue which occurred in non-trivial mapper hierarchies and would lead to mappers being hidden from the <code>ConversionService</code>. Kudos go to <a href="https://github.com/danielshiplett">Daniel Shiplett</a> and <a href="https://github.com/PRIESt512">Alexey</a> for their help in chasing down the cause and resolving the issue.</p>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2021-05-25-mapstruct-spring-extensions-0-0-3-released/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -284,53 +321,6 @@ Even though we did 3 Beta and 1 CR release we still managed to introduce some re
     <div>
         
             <a href="http://mapstruct.org/news/2020-10-11-mapstruct-1_4_1_Final-bug-fix-released/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>September 27, 2020</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2020-09-28-mapstruct-1_4_0_Final-is-out/">MapStruct 1.4.0.Final is out</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Filip Hrisafov, Sjaak Derksen</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>Long overdue it is our pleasure to announce the final version MapStruct 1.4.
-This is our 4th release since november 2015.</p>
-<p>Besides bug fixes, the 1.4 release brings some new exciting features:</p>
-<ul>
-<li>Making use of constructor arguments when instantiating mapping targets</li>
-<li>Support Gradle incremental annotation processing feature</li>
-<li>Map nested bean properties to current target</li>
-<li>Support value mapping between <code>String</code> and <code>Enum</code></li>
-<li>Support <code>@Mapping</code> in meta annotations</li>
-<li>User control over mapping features (direct, method, conversion, 2step)</li>
-<li>Support mapping from / to Java 14 records (preview feature)</li>
-<li>New <code>EnumTransformationStrategy</code> and <code>EnumNamingStrategy</code> SPIs</li>
-<li>Improve performance for 2 step mapping methods</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2020-09-28-mapstruct-1_4_0_Final-is-out/">Read more...</a>
         
     </div>
 </article>

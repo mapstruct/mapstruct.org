@@ -6,7 +6,36 @@
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MapStruct 1.6.0.RC1 is out</title>
+      <link>http://mapstruct.org/news/2024-07-20-mapstruct-1_6_0_RC1-is-out/</link>
+      <pubDate>Sat, 20 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2024-07-20-mapstruct-1_6_0_RC1-is-out/</guid>
+      <description>&lt;p&gt;I am very happy to announce the first (and last) release candidate of MapStruct 1.6.
+We are looking into release the final version of 1.6 in the next two weeks.&lt;/p&gt;
+&lt;p&gt;This release provides mostly bug fixes since &lt;a href=&#34;https://mapstruct.org/news/2024-04-20-mapstruct-1_6_0_Beta2-is-out/&#34;&gt;1.6.0.Beta2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release contains 2 breaking changes, have a look at them when upgrading&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;d like to thank our new supporters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/AnneMayor&#34;&gt;Lee Anne&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And of course thanks to our previous supporters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/adessoSE&#34;&gt;addesso SE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/bileto&#34;&gt;Bileto&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/cybozu&#34;&gt;Cybozu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/atomfrede&#34;&gt;Frederik Hahne&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kjuyoung&#34;&gt;Juyoung Kim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/lansana&#34;&gt;Lansana&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/marisnb&#34;&gt;Mariselvam&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jan-prisma&#34;&gt;PRISMA European Capacity Platform GmbH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opencollective.com/st-galler-kantonalbank-ag&#34;&gt;St. Galler Kantonalbank AG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you&amp;rsquo;d like to join this list and donate to the project MapStruct is accepting donations through &lt;a href=&#34;https://opencollective.com/mapstruct&#34;&gt;Open Collective&lt;/a&gt; or &lt;a href=&#34;https://github.com/sponsors/mapstruct&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Conditional mapping for source parameters and much more: MapStruct 1.6.0.Beta2 is out</title>
       <link>http://mapstruct.org/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out/</link>
