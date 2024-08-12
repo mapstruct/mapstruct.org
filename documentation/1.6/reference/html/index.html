@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.15">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.6.0.RC1 Reference Guide</title>
+<title>MapStruct 1.6.0 Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -537,10 +537,10 @@ ga('send', 'pageview');
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.6.0.RC1 Reference Guide</h1>
+<h1>MapStruct 1.6.0 Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2024-07-20</span>
+<span id="revdate">2024-08-12</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -783,7 +783,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.6.0.RC1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.6.0<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -927,8 +927,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.6.0.RC1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.6.0.RC1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.6.0.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.6.0.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -4107,7 +4107,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.6.0.RC1/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.6.0/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -5467,20 +5467,6 @@ mapping method will throw an <code>IllegalStateException</code> if for some reas
 </div>
 </div>
 </div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The mapping of enum to enum via the <code>@Mapping</code> annotation is <strong>DEPRECATED</strong>. It will be removed from future versions of MapStruct. Please adapt existing enum mapping methods to make use of <code>@ValueMapping</code> instead.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -9150,7 +9136,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 </pre></td>
   <td class="code"><pre>
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.6.0.RC1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.6.0<span class="tag">&lt;/org.mapstruct.version&gt;</span>
     <span class="tag">&lt;org.projectlombok.version&gt;</span>1.18.16<span class="tag">&lt;/org.projectlombok.version&gt;</span>
     <span class="tag">&lt;maven.compiler.source&gt;</span>1.8<span class="tag">&lt;/maven.compiler.source&gt;</span>
     <span class="tag">&lt;maven.compiler.target&gt;</span>1.8<span class="tag">&lt;/maven.compiler.target&gt;</span>
@@ -9320,7 +9306,7 @@ dependencies {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-20 15:36:00 UTC
+Last updated 2024-08-12 20:59:18 UTC
 </div>
 </div>
 </body>
