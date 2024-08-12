@@ -154,6 +154,37 @@ if (!doNotTrack) {
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">MapStruct 1.6.0 is out</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>August 12, 2024</time>
+</p>
+
+
+    <div>
+        <p>I am very happy to announce the final release of MapStruct 1.6!
+This is our 6th major release since November 2015.</p>
+<p>As you can see with this release we decided to remove the <code>.Final</code> and only use the version (1.6.0).
+We&rsquo;ll keep doing this for final releases.</p>
+<p>Besides bug fixes, the 1.6 release brings some new exciting features:</p>
+<ul>
+<li>Access to target / source property names in conditional and mapping methods</li>
+<li>Conditional mapping for source parameters</li>
+<li>Passing annotations to generated code</li>
+<li>Add javadoc to generated code</li>
+<li>New built-in conversions</li>
+</ul>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2024-08-12-mapstruct-1_6_0-is-out/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">MapStruct 1.6.0.RC1 is out</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -214,40 +245,6 @@ This would hopefully mean that we can realase more often, as the burden of manua
     <div>
         
             <a href="http://mapstruct.org/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">MapStruct Spring Extensions 1.1.1 released</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>January 04, 2024</time>
-</p>
-
-
-    <div>
-        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
-What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its
-own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
-<p>Changes in this release:</p>
-<ul>
-<li>This release is functionally identical to 1.1.0. The only modification worthwhile mentioning is a fix to the
-dependencies for the newly introduced test-extensions module which now won&rsquo;t rely on outdated Spring versions anymore.
-Thanks to <a href="https://github.com/giorgioscia">George Noble</a> for pointing out this oversight which led to some
-organizations rejecting the library due to a security vulnerability in the respective Spring versions.</li>
-</ul>
-<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between
-MapStruct&rsquo;s conventions and Spring'
-s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a>
-that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See
-the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2024-01-04-mapstruct-spring-extensions-1-1-1-released/">Read more...</a>
         
     </div>
 </article>

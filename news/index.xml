@@ -6,7 +6,27 @@
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MapStruct 1.6.0 is out</title>
+      <link>http://mapstruct.org/news/2024-08-12-mapstruct-1_6_0-is-out/</link>
+      <pubDate>Mon, 12 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2024-08-12-mapstruct-1_6_0-is-out/</guid>
+      <description>&lt;p&gt;I am very happy to announce the final release of MapStruct 1.6!
+This is our 6th major release since November 2015.&lt;/p&gt;
+&lt;p&gt;As you can see with this release we decided to remove the &lt;code&gt;.Final&lt;/code&gt; and only use the version (1.6.0).
+We&amp;rsquo;ll keep doing this for final releases.&lt;/p&gt;
+&lt;p&gt;Besides bug fixes, the 1.6 release brings some new exciting features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Access to target / source property names in conditional and mapping methods&lt;/li&gt;
+&lt;li&gt;Conditional mapping for source parameters&lt;/li&gt;
+&lt;li&gt;Passing annotations to generated code&lt;/li&gt;
+&lt;li&gt;Add javadoc to generated code&lt;/li&gt;
+&lt;li&gt;New built-in conversions&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>MapStruct 1.6.0.RC1 is out</title>
       <link>http://mapstruct.org/news/2024-07-20-mapstruct-1_6_0_RC1-is-out/</link>
