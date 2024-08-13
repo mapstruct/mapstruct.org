@@ -17,7 +17,7 @@ The new release comes with a lot of new functionality, e.g.:
 With this release we are also happy to announce that MapStruct has started accepting donations through [Open Collective](https://opencollective.com/mapstruct) or [GitHub](https://github.com/sponsors/mapstruct).
 We'd like to thank to everyone that has already started in supporting us:
 
-* [addesso SE](https://github.com/adessoSE)
+* [adesso SE](https://github.com/adessoSE)
 * [Bileto](https://opencollective.com/bileto)
 * [Frederik Hahne](https://opencollective.com/atomfrede)
 

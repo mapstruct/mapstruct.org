@@ -20,7 +20,7 @@ We'd like to thank our new supporters:
 
 And of course thanks to our previous supporters:
 
-* [addesso SE](https://github.com/adessoSE)
+* [adesso SE](https://github.com/adessoSE)
 * [Bileto](https://opencollective.com/bileto)
 * [Cybozu](https://github.com/cybozu)
 * [Frederik Hahne](https://opencollective.com/atomfrede)
