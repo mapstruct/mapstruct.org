@@ -74,7 +74,7 @@ In this release we also started accepting donations through [Open Collective](ht
 
 We'd like to thank all the supporters that supported us with donations in this period:
 
-* [addesso SE](https://github.com/adessoSE)
+* [adesso SE](https://github.com/adessoSE)
 * [Bileto](https://opencollective.com/bileto)
 * [Cybozu](https://github.com/cybozu)
 * [Frederik Hahne](https://opencollective.com/atomfrede)
