@@ -22,15 +22,15 @@ Besides bug fixes, the 1.6 release brings some new exciting features:
 <!--more-->
 
 For more details checkout the individual release announcements for the 
-[Beta1](/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out.md),
-[Beta2](/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out.md),
-[RC1](/news/2024-07-20-mapstruct-1_6_0_RC1-is-out.md)
+[Beta1](/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out),
+[Beta2](/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out),
+[RC1](/news/2024-07-20-mapstruct-1_6_0_RC1-is-out)
 
 ### What's inside
 
 This major release brings few big new features for MapStruct:
-* [Access to target / source property names in conditional and mapping methods](/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out.md/#access-to-target--source-property-names-in-conditional-and-mapping-methods)
-* [Conditional mapping for source parameters](/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out.md/#conditional-mapping-for-source-parameters)
+* [Access to target / source property names in conditional and mapping methods](/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/#access-to-target--source-property-names-in-conditional-and-mapping-methods)
+* [Conditional mapping for source parameters](/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/#conditional-mapping-for-source-parameters)
 * [Passing annotations to generated code](/documentation/stable/reference/html/#adding-annotations)
 * [Add javadoc to generated code](/documentation/stable/reference/html/#javadoc)
 
