@@ -154,6 +154,43 @@ if (!doNotTrack) {
             
             
                 <article class="uk-article ms-article-compact">
+    <h3 class="uk-h3">MapStruct Spring Extensions 1.1.2 released</h3>
+
+<p class="uk-article-meta ms-article-author">
+    <time>August 31, 2024</time>
+</p>
+
+
+    <div>
+        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its
+own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>Changes in this release:</p>
+<ul>
+<li>TypeDescriptors will now be kept as fields in generated ConversionServiceAdapters which can speed up the conversion
+process. Thanks to <a href="https://github.com/jbonzohln">Jesse Bonzo</a> for this contribution.</li>
+<li>The <a href="https://mapstruct.org/documentation/spring-extensions/reference/html/#generateConverterScan">generated ConverterScan</a>
+so far used the legacy <code>@PostConstruct</code> annotation from the deprecated <code>javax.annotation</code> package underneath. Thanks
+to <a href="https://github.com/stickfigure">Jeff Schnitzer</a>&rsquo;s contribution, the generator now checks for the availability of
+the &ldquo;new&rdquo; <code>jakarta.annotation.PostConstruct</code> annotation and will prefer this if it&rsquo;s available. For reasons of backwards
+compatibility, <code>javax.annotation.PostConstruct</code> is the fallback.</li>
+</ul>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between
+MapStruct&rsquo;s conventions and Spring'
+s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a>
+that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See
+the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2024-08-31-mapstruct-spring-extensions-1-1-2-released/">Read more...</a>
+        
+    </div>
+</article>
+
+            
+                <article class="uk-article ms-article-compact">
     <h3 class="uk-h3">MapStruct 1.6.0 is out</h3>
 
 <p class="uk-article-meta ms-article-author">
@@ -202,49 +239,6 @@ We are looking into release the final version of 1.6 in the next two weeks.</p>
     <div>
         
             <a href="http://mapstruct.org/news/2024-07-20-mapstruct-1_6_0_RC1-is-out/">Read more...</a>
-        
-    </div>
-</article>
-
-            
-                <article class="uk-article ms-article-compact">
-    <h3 class="uk-h3">Conditional mapping for source parameters and much more: MapStruct 1.6.0.Beta2 is out</h3>
-
-<p class="uk-article-meta ms-article-author">
-    <time>May 11, 2024</time>
-</p>
-
-
-    <div>
-        <p>It&rsquo;s my pleasure to announce the second Beta release of MapStruct 1.6.</p>
-<p>The new release comes with some new functionality, e.g.:</p>
-<ul>
-<li>Conditional mapping for source parameters</li>
-<li>Support to access source property name in condition methods via an annotation</li>
-</ul>
-<p>This release is also our first release that has been fully automated using the great <a href="https://jreleaser.org/">JReleaser</a>.
-This would hopefully mean that we can realase more often, as the burden of manual release has been reduced.</p>
-<p>We&rsquo;d like to thank our new supporters:</p>
-<ul>
-<li><a href="https://github.com/cybozu">Cybozu</a></li>
-<li><a href="https://github.com/kjuyoung">Juyoung Kim</a></li>
-<li><a href="https://opencollective.com/lansana">Lansana</a></li>
-<li><a href="https://github.com/marisnb">Mariselvam</a></li>
-<li><a href="https://github.com/jan-prisma">PRISMA European Capacity Platform GmbH</a></li>
-<li><a href="https://opencollective.com/st-galler-kantonalbank-ag">St. Galler Kantonalbank AG</a></li>
-</ul>
-<p>And of course thanks to our previous supporters:</p>
-<ul>
-<li><a href="https://github.com/adessoSE">adesso SE</a></li>
-<li><a href="https://opencollective.com/bileto">Bileto</a></li>
-<li><a href="https://opencollective.com/atomfrede">Frederik Hahne</a></li>
-</ul>
-<p>If you&rsquo;d like to join this list and donate to the project MapStruct is accepting donations through <a href="https://opencollective.com/mapstruct">Open Collective</a> or <a href="https://github.com/sponsors/mapstruct">GitHub</a>.</p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2024-05-11-mapstruct-1_6_0_Beta2-is-out/">Read more...</a>
         
     </div>
 </article>
