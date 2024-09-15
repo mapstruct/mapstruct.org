@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>mapstruct.org has landed! &ndash; MapStruct</title>
+        <title>MapStruct 1.6.1 bug fix released &ndash; MapStruct</title>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="/css/prettify.css" />
@@ -142,34 +142,90 @@ if (!doNotTrack) {
             
 <article class="uk-article">
     <p class="uk-article-meta ms-article-date">
-    <time>May 22, 2013</time>
+    <time>September 15, 2024</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2013-05-22-website-live/">mapstruct.org has landed!</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2024-09-15-mapstruct-1_6_1_bug-fix-released/">MapStruct 1.6.1 bug fix released</a></h1>
 
 <p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
+    By <b>Filip Hrisafov</b> under 
     <span class="uk-badge">
     
-        web-site
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
     </span>
     
 </p>
 
     <div>
-        <div><p>MapStruct has now its own web site, <a href="http://mapstruct.org">mapstruct.org</a>!</p>
-</div>
+        <div><p>It is my pleasure to announce the 1.6.1 bug fix release of MapStruct.
+This release includes 1 enhancement and 8 bug fixes, including some regressions introduced in 1.6.0.</p>
+<p>With this release we support the use of the Java 19 <code>LinkedHashSet</code> and <code>LinkedHashMap</code> factory methods.</p>
+<h3 id="linkedhashset-and-linkedhashmap-factory-method"><a class="ms-header-link" href="#linkedhashset-and-linkedhashmap-factory-method"><i class="fa fa-link"></i></a>LinkedHashSet and LinkedHashMap factory method</h3>
+<p>With this release if your source code is Java 19 or later MapStruct is going to use the new factory methods when creating a <code>Set</code> or <code>Map</code></p>
+<p>On Java 18 or earlier it looks like</p>
+<pre class="prettyprint linenums lang-java">
+Map&lt;AuctionDto, AuctionDto&gt; map = new LinkedHashMap&lt;AuctionDto, AuctionDto&gt;( Math.max( (int) ( auctions.size() / .75f ) + 1, 16 ) );
+Set&lt;TargetFoo&gt; set = new LinkedHashSet&lt;TargetFoo&gt;( Math.max( (int) ( foos.size() / .75f ) + 1, 16 ) );
+</pre>
+
+<p>Whereas on Java 19 or later it looks like
+<pre class="prettyprint linenums lang-java">
+Map&lt;AuctionDto, AuctionDto&gt; map = LinkedHashMap.newLinkedHashMap( auctions.size() );
+Set&lt;TargetFoo&gt; set = LinkedHashSet.newLinkedHashSet( foos.size() );
+</pre>
+</p>
+<h3 id="thanks"><a class="ms-header-link" href="#thanks"><i class="fa fa-link"></i></a>Thanks</h3>
+<p>Thanks to our entire community for reporting these errors.</p>
+<p>In alphabetic order this are all the contributors that contributed to the 1.6.1 release of Mapstruct:</p>
+<ul>
+<li><a href="https://github.com/hduelme">@hduelme</a></li>
+<li><a href="https://github.com/Hypnagokali">@Hypnagokali</a></li>
+<li><a href="https://github.com/Obolrom">@Obolrom</a></li>
+</ul>
+<p>We are also accepting donations through <a href="https://opencollective.com/mapstruct">Open Collective</a> or <a href="https://github.com/sponsors/mapstruct">GitHub</a>.
+We&rsquo;d like to thank all the supporters that supported us with donations in this period:</p>
+<ul>
+<li><a href="https://github.com/adessoSE">adesso SE</a></li>
+<li><a href="https://opencollective.com/bileto">Bileto</a></li>
+<li><a href="https://github.com/cybozu">Cybozu</a></li>
+<li><a href="https://opencollective.com/atomfrede">Frederik Hahne</a></li>
+<li><a href="https://github.com/kjuyoung">Juyoung Kim</a></li>
+<li><a href="https://opencollective.com/lansana">Lansana</a></li>
+<li><a href="https://github.com/AnneMayor">Lee Anne</a></li>
+<li><a href="https://github.com/marisnb">Mariselvam</a></li>
+<li><a href="https://github.com/jan-prisma">PRISMA European Capacity Platform GmbH</a></li>
+<li><a href="https://opencollective.com/st-galler-kantonalbank-ag">St. Galler Kantonalbank AG</a></li>
+</ul>
+<p>Happy coding with MapStruct 1.6.1!!</p>
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+<p>You can fetch the new release from Maven Central using the following GAV coordinates:</p>
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.6.1%7Cjar">org.mapstruct:mapstruct:1.6.1</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.6.1%7Cjar">org.mapstruct:mapstruct-processor:1.6.1</a></li>
+</ul>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.6.1">from GitHub</a>.</p>
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
+<ul>
+<li>Get help in our <a href="https://github.com/mapstruct/mapstruct/discussions">GitHub Discussions</a> or <a href="https://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+</ul></div>
     </div>
     <div>
         <ul class="uk-pagination">
             
-            <li>
-                <a href="/news/2013-06-03-announcing-mapstruct/" title="Announcing MapStruct"><i class="uk-icon-angle-double-left"></i></a>
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
             </li>
             
             
-            <li class="uk-disabled">
-                <span><i class="uk-icon-angle-double-right"></i></span>
+            <li>
+                <a href="/news/2024-08-31-mapstruct-spring-extensions-1-1-2-released/" title="MapStruct Spring Extensions 1.1.2 released"><i class="uk-icon-angle-double-right"></i></a>
             </li>
             
 

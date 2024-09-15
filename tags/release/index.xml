@@ -6,7 +6,18 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MapStruct 1.6.1 bug fix released</title>
+      <link>http://mapstruct.org/news/2024-09-15-mapstruct-1_6_1_bug-fix-released/</link>
+      <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2024-09-15-mapstruct-1_6_1_bug-fix-released/</guid>
+      <description>&lt;p&gt;It is my pleasure to announce the 1.6.1 bug fix release of MapStruct.
+This release includes 1 enhancement and 8 bug fixes, including some regressions introduced in 1.6.0.&lt;/p&gt;
+&lt;p&gt;With this release we support the use of the Java 19 &lt;code&gt;LinkedHashSet&lt;/code&gt; and &lt;code&gt;LinkedHashMap&lt;/code&gt; factory methods.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>MapStruct Spring Extensions 1.1.2 released</title>
       <link>http://mapstruct.org/news/2024-08-31-mapstruct-spring-extensions-1-1-2-released/</link>

@@ -119,6 +119,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2024-09-15-mapstruct-1_6_1_bug-fix-released/">MapStruct 1.6.1 bug fix released</a></li>
+    
     <li><a href="http://mapstruct.org/news/2024-08-31-mapstruct-spring-extensions-1-1-2-released/">MapStruct Spring Extensions 1.1.2 released</a></li>
     
     <li><a href="http://mapstruct.org/news/2024-08-12-mapstruct-1_6_0-is-out/">MapStruct 1.6.0 is out</a></li>
@@ -131,8 +133,6 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/">Support for accessing property names, passing annotations to generated code, sponsoring MapStruct and much more: MapStruct 1.6.0.Beta1 is out</a></li>
     
-    <li><a href="http://mapstruct.org/news/2023-09-25-mapstruct-spring-extensions-1-1-0-released/">MapStruct Spring Extensions 1.1.0 released</a></li>
-    
 </ul>
 
 
@@ -141,6 +141,49 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>September 07, 2016</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/">MapStruct 1.1.0.CR1 released</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Sjaak Derksen</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>MapStruct 1.1.0.CR1 consolodates the functionality introduced in the preceeding MapStruct 1.1.0 Beta releases. A number of bugs were solved:</p>
+<ul>
+<li>Automatic generation of an iterable mapping methods where the property selection is based on a qualfier.</li>
+<li>Collection source getter null check to avoid NullPointExceptions.</li>
+<li>Missing imports for generic types in collections in generated methods.</li>
+<li>Removing redundant code from generated code when using nested source properties.</li>
+<li>Optimisation when using enum constant (using an enum constant instead of a String conversion).</li>
+<li>Fixing order for dependsOn.</li>
+<li>Fixing an issue introduced 1.1.0.Beta2 that causes problems for the @MappingTarget in combination with @InheritInverseConfiguration</li>
+</ul>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -280,42 +323,6 @@ Great performance: Plain method invocations only, no use of reflection Compile-t
     <div>
         
             <a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>August 27, 2015</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/">MapStruct 1.0.0.CR2 released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Andreas Gudian</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        It is my pleasure to announce the second candidate release of MapStruct 1.0!
-With this release, we&rsquo;re fixing several bugs that showed up after our first candidate release. But we also received some great new feature contributions from the community that we wanted to include in our 1.0 release, so we decided to build this second candidate release before calling it a final. Highlights of this release are:
-Configure package and class name for the generated mapper implementations.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2015-08-27-mapstruct-1_0_0_CR2-released/">Read more...</a>
         
     </div>
 </article>
