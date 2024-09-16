@@ -49,8 +49,8 @@ identifier = "code-issues"
 url = "https://github.com/mapstruct/mapstruct"
 
 [Params]
-stableVersion = "1.6.1"
-devVersion = "1.6.1"
+stableVersion = "1.6.2"
+devVersion = "1.6.2"
 numberOfLatestPosts = 7
 tagLine = "Java bean mappings, the easy way!"
 contentSourceUrl = "https://github.com/mapstruct/mapstruct.org/tree/main/content/"
