@@ -119,6 +119,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/">MapStruct 1.6.1 bug fix released</a></li>
+    
     <li><a href="http://mapstruct.org/news/2024-09-15-mapstruct-1_6_1_bug-fix-released/">MapStruct 1.6.1 bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2024-08-31-mapstruct-spring-extensions-1-1-2-released/">MapStruct Spring Extensions 1.1.2 released</a></li>
@@ -131,8 +133,6 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2024-01-04-mapstruct-spring-extensions-1-1-1-released/">MapStruct Spring Extensions 1.1.1 released</a></li>
     
-    <li><a href="http://mapstruct.org/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/">Support for accessing property names, passing annotations to generated code, sponsoring MapStruct and much more: MapStruct 1.6.0.Beta1 is out</a></li>
-    
 </ul>
 
 
@@ -141,6 +141,47 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>August 08, 2023</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/">MapStruct Spring Extensions 1.0.2 released</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Raimund Klein</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>It is my pleasure to announce the next official release of MapStruct Spring Extensions.
+What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">StackOverflow question</a> turned into its own <a href="https://github.com/mapstruct/mapstruct-spring-extensions">(sub-)project</a> within the MapStruct organization.</p>
+<p>Changes in this release:</p>
+<ul>
+<li>Spring Extensions will now honour the <code>mapstruct.suppressGeneratorTimestamp</code> processor option. Thanks to <a href="https://github.com/freund17">freund17</a> for pointing out this omission.</li>
+</ul>
+<p>We&rsquo;re functionally complete. There are currently no plans for further features, although we will keep an eye on compatibility with future MapStruct and Spring releases as well as community requests.</p>
+<p>Including the annotations and extensions defined in this project will generate a class acting as bridge between MapStruct&rsquo;s conventions and Spring&rsquo;s <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#core-convert-ConversionService-API">ConversionService API</a> that in turn can be added to any Mapper&rsquo;s <code>uses</code> attribute. See the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/master/examples">examples</a> for details.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2023-08-08-mapstruct-spring-extensions-1-0-2-released/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -289,42 +330,6 @@ What started out as a <a href="https://stackoverflow.com/q/58081224/3361467">Sta
     <div>
         
             <a href="http://mapstruct.org/news/2023-02-09-mapstruct-spring-extensions-1-0-0-released/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>October 07, 2022</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/">MapStruct 1.5.3.Final bug fix released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Filip Hrisafov</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>It is my pleasure to announce the 1.5.3.Final bug fix release of MapStruct.
-This release includes 18 bug fixes and 7 documentation improvements.</p>
-<p>The most notable fixes are around the handling of nested imports and generics handling</p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2022-10-07-mapstruct-1_5_3_Final-bug-fix-released/">Read more...</a>
         
     </div>
 </article>

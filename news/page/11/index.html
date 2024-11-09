@@ -119,6 +119,8 @@ if (!doNotTrack) {
 </ul>
 <ul class="uk-nav uk-nav-sub">
     
+    <li><a href="http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/">MapStruct 1.6.1 bug fix released</a></li>
+    
     <li><a href="http://mapstruct.org/news/2024-09-15-mapstruct-1_6_1_bug-fix-released/">MapStruct 1.6.1 bug fix released</a></li>
     
     <li><a href="http://mapstruct.org/news/2024-08-31-mapstruct-spring-extensions-1-1-2-released/">MapStruct Spring Extensions 1.1.2 released</a></li>
@@ -131,8 +133,6 @@ if (!doNotTrack) {
     
     <li><a href="http://mapstruct.org/news/2024-01-04-mapstruct-spring-extensions-1-1-1-released/">MapStruct Spring Extensions 1.1.1 released</a></li>
     
-    <li><a href="http://mapstruct.org/news/2023-11-04-mapstruct-1_6_0_Beta1-is-out/">Support for accessing property names, passing annotations to generated code, sponsoring MapStruct and much more: MapStruct 1.6.0.Beta1 is out</a></li>
-    
 </ul>
 
 
@@ -141,6 +141,42 @@ if (!doNotTrack) {
         <div class="uk-width-medium-3-4 ms-main">
             
     
+    
+        <article class="uk-article ms-article-compact">
+    <p class="uk-article-meta ms-article-date">
+    <time>November 08, 2016</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/">MapStruct 1.1.0.CR2 is out</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Gunnar Morling</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+
+    <div>
+        <p>It&rsquo;s my pleasure to announce the second candidate release of MapStruct 1.1!</p>
+<p>This release fixes several bugs discovered in the first CR but also adds some new built-in conversions around date/time types (e.g. from/to the <code>java.sql.*</code> types and between <code>java.time.LocalDate</code> and <code>java.util.Date</code>).
+Normally, we wouldn&rsquo;t add new functionality during the CR phase, but as these conversions have been contributed by community members (kudos to you!), we thought it&rsquo;d be nice to put them into a release as soon as possible.</p>
+    </div>
+
+    <div>
+        
+            <a href="http://mapstruct.org/news/2016-11-08-mapstruct-1_1_0_CR2-is-out/">Read more...</a>
+        
+    </div>
+</article>
+
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
@@ -287,42 +323,6 @@ The guide is provided in two formats now: HTML and as PDF.
     <div>
         
             <a href="http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>November 25, 2015</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/">MapStruct 1.0 Final released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        It&rsquo;s with great pleasure and excitement that I announce the final release of MapStruct 1.0!
-MapStruct is a source code generator for efficient, type-safe mappings between Java bean types, based on annotated interface definitions. It works in your command line builds (e.g. via Maven or Gradle) as well as your favourite IDE. The advantages of this approach are manifold:
-Great performance: Plain method invocations only, no use of reflection Compile-time type safety: Only objects and attributes actually mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/">Read more...</a>
         
     </div>
 </article>

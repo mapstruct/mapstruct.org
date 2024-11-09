@@ -6,7 +6,18 @@
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MapStruct 1.6.1 bug fix released</title>
+      <link>http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/</link>
+      <pubDate>Sat, 09 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/</guid>
+      <description>It is my pleasure to announce the 1.6.3 bug fix release of MapStruct. This release includes 3 bug fixes. You may wonder where the Blog Post for 1.6.2 is. There was no blog post as we released it immediately after 1.6.1 due to a regression in the 1.6.1 release, when using Java records.
+With this release we support the use of the Java 19 LinkedHashSet and LinkedHashMap factory methods.
+Redundant if condition in Java record mapping with RETURN_DEFAULT strategy (#3747) Stackoverflow with Immutables custom builder (#3370) Unused import of java.</description>
+    </item>
+    
     <item>
       <title>MapStruct 1.6.1 bug fix released</title>
       <link>http://mapstruct.org/news/2024-09-15-mapstruct-1_6_1_bug-fix-released/</link>
@@ -968,18 +979,6 @@ Examples include the conversion from JPA entities into data transfer or view obj
       
       <guid>http://mapstruct.org/news/2013-05-22-website-live/</guid>
       <description>MapStruct has now its own web site, mapstruct.org!</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/</guid>
-      <description>— title: &amp;ldquo;MapStruct 1.6.3 bug fix released&amp;rdquo; author: Filip Hrisafov date: &amp;ldquo;2024-11-09&amp;rdquo;
-== tags: [release, news]
-It is my pleasure to announce the 1.6.3 bug fix release of MapStruct. This release includes 3 bug fixes. You may wonder where the Blog Post for 1.6.2 is. There was no blog post as we released it immediately after 1.6.1 due to a regression in the 1.6.1 release, when using Java records.
-With this release we support the use of the Java 19 LinkedHashSet and LinkedHashMap factory methods.</description>
     </item>
     
   </channel>
