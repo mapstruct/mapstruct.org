@@ -144,185 +144,33 @@ if (!doNotTrack) {
     
         <article class="uk-article ms-article-compact">
     <p class="uk-article-meta ms-article-date">
-    <time>September 07, 2016</time>
+    <time>January 01, 0001</time>
 </p>
 
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/">MapStruct 1.1.0.CR1 released</a></h1>
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/"></a></h1>
 
 <p class="uk-article-meta ms-article-author">
-    By <b>Sjaak Derksen</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
+    By <b></b> under 
 </p>
 
 
     <div>
-        <p>MapStruct 1.1.0.CR1 consolodates the functionality introduced in the preceeding MapStruct 1.1.0 Beta releases. A number of bugs were solved:</p>
-<ul>
-<li>Automatic generation of an iterable mapping methods where the property selection is based on a qualfier.</li>
-<li>Collection source getter null check to avoid NullPointExceptions.</li>
-<li>Missing imports for generic types in collections in generated methods.</li>
-<li>Removing redundant code from generated code when using nested source properties.</li>
-<li>Optimisation when using enum constant (using an enum constant instead of a String conversion).</li>
-<li>Fixing order for dependsOn.</li>
-<li>Fixing an issue introduced 1.1.0.Beta2 that causes problems for the @MappingTarget in combination with @InheritInverseConfiguration</li>
-</ul>
+        —
+title: &#34;MapStruct 1.6.3 bug fix released&#34;
+author: Filip Hrisafov
+date: &#34;2024-11-09&#34;
+
+== tags: [release, news]
+
+It is my pleasure to announce the 1.6.3 bug fix release of MapStruct.
+This release includes 3 bug fixes.
+You may wonder where the Blog Post for 1.6.2 is.
+There was no blog post as we released it immediately after 1.6.1 due to a regression in the 1.6.1 release, when using Java records.
     </div>
 
     <div>
         
-            <a href="http://mapstruct.org/news/2016-09-07-mapstruct-1_1_0_CR1/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>July 22, 2016</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/">MapStruct 1.1.0.Beta2 released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Sjaak Derksen</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>It has been a while since the latest release of MapStruct. Via our mailing list, issue list and other channels we have received valuable feedback. We have tried to incorporate some of that feedback into a number of new features.</p>
-<p>MapStruct 1.1.0.Beta2 introduces a number of popular requested features, like source presence check and nested target properties.</p>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2016-07-22-mapstruct-1_1_0_Beta2-released/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>March 16, 2016</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/">MapStruct 1.1.0.Beta1 released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Andreas Gudian</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        <p>It has been four months since the release of the first final version of MapStruct. We&rsquo;ve received a lot of great feedback and noticed a substantial increase of interest in the project. A couple of bugs were reported that we intend to fix with MapStruct 1.1 while also working on new features.</p>
-<p>Today we release MapStruct 1.1.0.Beta1, containing fixes for most of the user-reported bugs. But we&rsquo;ve also added some improvements and prepared for new features:</p>
-<ul>
-<li>The new annotation <code>@ValueMapping</code> is introduced to be used for <code>enum</code> mappings. Previously, you would have used <code>@Mapping</code> for this, but we found a separate annotation makes things more clear and puts us in a better position for some upcoming features. The usage of <code>@Mapping</code> for <code>enum</code> mappings now triggers a <em>deprecation warning</em> and asks you to use <code>@ValueMapping</code> instead.</li>
-<li>The new annotation <code>@Named</code> is a predefined <code>@Qualifier</code> that can be used when creating a custom qualifier annotation seems too inconvenient.</li>
-<li>Handling of types with generically typed properties has been improved, so that you can now declare something like <code>SearchResult&lt;VesselDto&gt; vesselSearchResultToDto(SearchResult&lt;Vessel&gt; vessel)</code>.</li>
-<li>The preferred way of configuring the annotation processor in Maven projects has been updated to leverage the latest <code>maven-compiler-plugin</code> version&rsquo;s <code>annotationProcessorPaths</code> option, which makes the configuration a bit more smooth. <a href="/documentation/1.1/reference/html/index.html#setup">Check the updated documentation</a>.</li>
-</ul>
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2016-03-16-mapstruct-1_1_0_Beta1-released/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>February 14, 2016</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/">Reference Guide brushed up and converted to AsciiDoc</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        While we pride ourselves on providing a comprehensive and detailed documentation, the MapStruct reference guide grew out of form a bit over time. To name just one issue, readability wasn&rsquo;t great on smaller screen sizes.
-All that&rsquo;s history now, the reference guide has been converted into the AsciiDoc format, which makes the documentation much easier to maintain and allows for several publishing options using the fantastic AsciiDoctor tool.
-The guide is provided in two formats now: HTML and as PDF.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2016-02-14-reference-guide-brushed-up/">Read more...</a>
-        
-    </div>
-</article>
-
-    
-        <article class="uk-article ms-article-compact">
-    <p class="uk-article-meta ms-article-date">
-    <time>November 25, 2015</time>
-</p>
-
-<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/">MapStruct 1.0 Final released</a></h1>
-
-<p class="uk-article-meta ms-article-author">
-    By <b>Gunnar Morling</b> under 
-    <span class="uk-badge">
-    
-        release
-    </span>
-    
-    <span class="uk-badge">
-    
-        news
-    </span>
-    
-</p>
-
-
-    <div>
-        It&rsquo;s with great pleasure and excitement that I announce the final release of MapStruct 1.0!
-MapStruct is a source code generator for efficient, type-safe mappings between Java bean types, based on annotated interface definitions. It works in your command line builds (e.g. via Maven or Gradle) as well as your favourite IDE. The advantages of this approach are manifold:
-Great performance: Plain method invocations only, no use of reflection Compile-time type safety: Only objects and attributes actually mapping to each other can be mapped, no accidental mapping of an order entity into a customer DTO etc.
-    </div>
-
-    <div>
-        
-            <a href="http://mapstruct.org/news/2015-11-25-mapstruct-1_0_Final-released/">Read more...</a>
+            <a href="http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/">Read more...</a>
         
     </div>
 </article>
@@ -334,7 +182,7 @@ Great performance: Plain method invocations only, no use of reflection Compile-t
     <ul class="uk-pagination">
         
         <li>
-            <a href="/news/page/10/"><i class="uk-icon-angle-double-left"></i></a>
+            <a href="/news/page/13/"><i class="uk-icon-angle-double-left"></i></a>
         </li>
         
 
@@ -400,8 +248,8 @@ Great performance: Plain method invocations only, no use of reflection Compile-t
             
         
             
-        <li class="uk-active">
-            <span>11</span>
+        <li>
+            <a href="/news/page/11/">11</a>
         </li>
             
         
@@ -418,15 +266,15 @@ Great performance: Plain method invocations only, no use of reflection Compile-t
             
         
             
-        <li>
-            <a href="/news/page/14/">14</a>
+        <li class="uk-active">
+            <span>14</span>
         </li>
             
         
 
         
-        <li>
-            <a href="/news/page/12/"><i class="uk-icon-angle-double-right"></i></a>
+        <li class="uk-disabled">
+            <span><i class="uk-icon-angle-double-right"></i></span>
         </li>
         
     </ul>

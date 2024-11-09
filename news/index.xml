@@ -970,5 +970,24 @@ Examples include the conversion from JPA entities into data transfer or view obj
       <description>MapStruct has now its own web site, mapstruct.org!</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/</guid>
+      <description>—
+title: &amp;#34;MapStruct 1.6.3 bug fix released&amp;#34;
+author: Filip Hrisafov
+date: &amp;#34;2024-11-09&amp;#34;
+
+== tags: [release, news]
+
+It is my pleasure to announce the 1.6.3 bug fix release of MapStruct.
+This release includes 3 bug fixes.
+You may wonder where the Blog Post for 1.6.2 is.
+There was no blog post as we released it immediately after 1.6.1 due to a regression in the 1.6.1 release, when using Java records.</description>
+    </item>
+    
   </channel>
 </rss>
