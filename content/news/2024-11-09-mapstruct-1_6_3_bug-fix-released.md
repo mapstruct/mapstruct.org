@@ -1,9 +1,10 @@
-—
-title: "MapStruct 1.6.3 bug fix released"
+---
+title: "MapStruct 1.6.1 bug fix released"
 author: Filip Hrisafov
 date: "2024-11-09"
+tags: [release, news]
+---
 
-== tags: [release, news]
 
 It is my pleasure to announce the 1.6.3 bug fix release of MapStruct.
 This release includes 3 bug fixes.
