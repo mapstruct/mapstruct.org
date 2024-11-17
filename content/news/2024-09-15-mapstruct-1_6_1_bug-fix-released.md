@@ -29,6 +29,40 @@ Map<AuctionDto, AuctionDto> map = LinkedHashMap.newLinkedHashMap( auctions.size(
 Set<TargetFoo> set = LinkedHashSet.newLinkedHashSet( foos.size() );
 {{< /prettify >}}
 
+### Behaviour change
+
+#### Inverse Inheritance Strategy not working for ignored mappings only with target
+
+Prior to this fix `@Mapping(target = "myProperty", ignore = true)` was being ignored when using `@InheritInverseConfiguration`.
+
+e.g.
+
+{{< prettify java >}}
+@Mapper
+public interface ModelMapper {
+
+    @Mapping(target = "creationDate", ignore = true)
+    Entity toEntity(Model model);    
+
+    @InheritInverseConfiguration
+    Model toModel(Entity entity);
+}
+{{< /prettify >}}
+
+In the example above prior 1.6.1 the `Model toModel(Entity entity)` was going to map the `id` property. In order to keep that behavior you'll need to explicitly do the mapping for it.
+
+{{< prettify java >}}
+@Mapper
+public interface ModelMappe {
+    @Mapping(target = "creationDate", ignore = true) // NOTE: Handled by JPA.
+    Entity toEntity(Model model);    
+
+    @InheritInverseConfiguration
+    @Mapping(target = "creationDate", source = "creationDate") // Allow reading from Entity
+    Model toModel(Entity entity);
+}
+{{< /prettify >}}
+
 ### Thanks
 
 Thanks to our entire community for reporting these errors. 
