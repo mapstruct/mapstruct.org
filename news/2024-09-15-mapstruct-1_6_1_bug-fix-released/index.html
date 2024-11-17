@@ -179,6 +179,35 @@ Map&lt;AuctionDto, AuctionDto&gt; map = LinkedHashMap.newLinkedHashMap( auctions
 Set&lt;TargetFoo&gt; set = LinkedHashSet.newLinkedHashSet( foos.size() );
 </pre>
 </p>
+<h3 id="behaviour-change"><a class="ms-header-link" href="#behaviour-change"><i class="fa fa-link"></i></a>Behaviour change</h3>
+<h4 id="inverse-inheritance-strategy-not-working-for-ignored-mappings-only-with-target"><a class="ms-header-link" href="#inverse-inheritance-strategy-not-working-for-ignored-mappings-only-with-target"><i class="fa fa-link"></i></a>Inverse Inheritance Strategy not working for ignored mappings only with target</h4>
+<p>Prior to this fix <code>@Mapping(target = &quot;myProperty&quot;, ignore = true)</code> was being ignored when using <code>@InheritInverseConfiguration</code>.</p>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface ModelMapper {
+
+    @Mapping(target = &#34;creationDate&#34;, ignore = true)
+    Entity toEntity(Model model);    
+
+    @InheritInverseConfiguration
+    Model toModel(Entity entity);
+}
+</pre>
+
+<p>In the example above prior 1.6.1 the <code>Model toModel(Entity entity)</code> was going to map the <code>id</code> property. In order to keep that behavior you&rsquo;ll need to explicitly do the mapping for it.</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper
+public interface ModelMappe {
+    @Mapping(target = &#34;creationDate&#34;, ignore = true) // NOTE: Handled by JPA.
+    Entity toEntity(Model model);    
+
+    @InheritInverseConfiguration
+    @Mapping(target = &#34;creationDate&#34;, source = &#34;creationDate&#34;) // Allow reading from Entity
+    Model toModel(Entity entity);
+}
+</pre>
+
 <h3 id="thanks"><a class="ms-header-link" href="#thanks"><i class="fa fa-link"></i></a>Thanks</h3>
 <p>Thanks to our entire community for reporting these errors.</p>
 <p>In alphabetic order this are all the contributors that contributed to the 1.6.1 release of Mapstruct:</p>
