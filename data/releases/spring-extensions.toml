@@ -1,5 +1,5 @@
 name = "Spring Extensions"
 versionRef = "spring-extensions"
 order = 450
-releaseDate = 2024-08-31
+releaseDate = 2025-03-14
 spring = true
