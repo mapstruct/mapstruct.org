@@ -1,7 +1,7 @@
 ---
-title: "MapStruct Spring Extensions 1.1.3 released"
+title: "MapStruct Spring Extensions 2.0.0 released"
 author: Raimund Klein
-date: "2025-03-14"
+date: "2025-11-15"
 tags: [ release, news ]
 ---
 
