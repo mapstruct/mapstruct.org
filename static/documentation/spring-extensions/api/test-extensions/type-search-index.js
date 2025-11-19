@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.mapstruct.extensions.spring.test","l":"ConverterScan"},{"p":"org.mapstruct.extensions.spring.test","l":"ConverterScans"}]
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.mapstruct.extensions.spring.test","l":"ConverterScan"},{"p":"org.mapstruct.extensions.spring.test","l":"ConverterScans"}];updateSearchResults();

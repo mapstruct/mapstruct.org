@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Asciidoctor 2.0.18">
     <meta name="author" content="Raimund Klein">
-    <title>MapStruct Spring Extensions 1.1.3 Reference Guide</title>
+    <title>MapStruct Spring Extensions 2.0.0 Reference Guide</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
     <style>
         /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -529,10 +529,10 @@
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-    <h1>MapStruct Spring Extensions 1.1.3 Reference Guide</h1>
+    <h1>MapStruct Spring Extensions 2.0.0 Reference Guide</h1>
     <div class="details">
         <span id="author" class="author">Raimund Klein</span><br>
-        <span id="revnumber">version 1.1.3,</span>
+        <span id="revnumber">version 2.0.0,</span>
         <span id="revdate">2023-09-25</span>
     </div>
     <div id="toc" class="toc2">
@@ -615,7 +615,7 @@
         <h2 id="setup"><a class="anchor" href="#setup"></a>2. Set up</h2>
         <div class="sectionbody">
             <div class="paragraph">
-                <p>MapStruct Spring Extensions is a Java annotation processor based on <a href="http://www.jcp.org/en/jsr/detail?id=269">JSR 269</a> and as such can be used within command line builds (javac, Ant, Maven etc.) as well as from within your IDE. The minimum JDK version is 11.</p>
+                <p>MapStruct Spring Extensions is a Java annotation processor based on <a href="http://www.jcp.org/en/jsr/detail?id=269">JSR 269</a> and as such can be used within command line builds (javac, Ant, Maven etc.) as well as from within your IDE. The minimum JDK version is 17.</p>
             </div>
             <div class="admonitionblock important">
                 <table>
@@ -690,7 +690,7 @@
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.extensions.spring.version&gt;</span>1.1.3<span class="tag">&lt;/org.mapstruct.extensions.spring.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.extensions.spring.version&gt;</span>2.0.0<span class="tag">&lt;/org.mapstruct.extensions.spring.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -708,8 +708,8 @@
             <span class="tag">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="tag">&lt;/artifactId&gt;</span>
             <span class="tag">&lt;version&gt;</span>3.8.1<span class="tag">&lt;/version&gt;</span>
             <span class="tag">&lt;configuration&gt;</span>
-                <span class="tag">&lt;source&gt;</span>1.8<span class="tag">&lt;/source&gt;</span>
-                <span class="tag">&lt;target&gt;</span>1.8<span class="tag">&lt;/target&gt;</span>
+                <span class="tag">&lt;source&gt;</span>17<span class="tag">&lt;/source&gt;</span>
+                <span class="tag">&lt;target&gt;</span>17<span class="tag">&lt;/target&gt;</span>
                 <span class="tag">&lt;annotationProcessorPaths&gt;</span>
                     <span class="tag">&lt;path&gt;</span>
                         <span class="tag">&lt;groupId&gt;</span>org.mapstruct.extensions.spring<span class="tag">&lt;/groupId&gt;</span>
@@ -1045,8 +1045,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-spring-annotations1.1.3.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-spring-extensions-1.1.3.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-spring-annotations-2.0.0.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-spring-extensions-2.0.0.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -1850,7 +1850,7 @@ dependencies {
 </div>
 <div id="footer">
     <div id="footer-text">
-        Version 1.1.3<br>
+        Version 2.0.0<br>
         Last updated 2023-09-25 20:08:03 +0100
     </div>
 </div>
