@@ -6,7 +6,23 @@
     <description>Recent content in News on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/news/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Native Optional support, improved Kotlin Support, and much more: MapStruct 1.7.0.Beta1 is out</title>
+      <link>http://mapstruct.org/news/2026-02-01-mapstruct-1_7_0_Beta1-is-out/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2026-02-01-mapstruct-1_7_0_Beta1-is-out/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s my pleasure to announce the first Beta release of MapStruct 1.7.&lt;/p&gt;
+&lt;p&gt;The new release comes with a lot of new functionality, e.g.:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Native &lt;code&gt;Optional&lt;/code&gt; support&lt;/li&gt;
+&lt;li&gt;Improved Kotlin support&lt;/li&gt;
+&lt;li&gt;Support for Java 21 Sequenced Collections&lt;/li&gt;
+&lt;li&gt;Support for ignoring multiple target properties at once&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>MapStruct Spring Extensions 2.0.0 released</title>
       <link>http://mapstruct.org/news/2025-11-15-mapstruct-spring-extensions-2-0-0-released/</link>
