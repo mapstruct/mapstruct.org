@@ -150,6 +150,122 @@ if (!doNotTrack) {
     <hr/>
     <div class="uk-grid">
         <div class="uk-width-medium-1-1 uk-row-first">
+            <h2 id="get-started">MapStruct in 2 Minutes</h2>
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-3 uk-row-first">
+                    <p>The following shows how to map two objects using MapStruct.</p>
+
+                    <p>Let's assume we have a class representing cars (e.g. a JPA entity) and an accompanying data transfer object (DTO).</p>
+
+                    <p>Both types are rather similar, only the seat count attributes have different names and the type attribute is of a special enum type in the <code>Car</code> class but is a plain string in the DTO.</p>
+                </div>
+                <div class="uk-width-medium-2-3">
+                    <ul class="uk-tab" data-uk-tab="{connect:'#listing-1'}">
+                        <li class="uk-active"><a href="">Car.java</a></li>
+                        <li><a href="">CarDto.java</a></li>
+                    </ul>
+                    <ul id="listing-1" class="uk-switcher uk-margin">
+                        <li>
+                            <pre class="prettyprint linenums">public class Car {
+
+    private String make;
+    private int numberOfSeats;
+    private CarType type;
+
+    //constructor, getters, setters etc.
+}</pre>
+                        </li>
+                        <li>
+                            <pre class="prettyprint linenums">public class CarDto {
+
+    private String make;
+    private int seatCount;
+    private String type;
+
+    //constructor, getters, setters etc.
+}</pre>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-1 uk-row-first">
+            <h3>The mapper interface</h3>
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-3 uk-row-first">
+                    <p>To generate a mapper for creating a <code>CarDto</code> object out of a <code>Car</code> object, a mapper interface needs to be defined:</p>
+                </div>
+                <div class="uk-width-medium-2-3">
+                    <ul class="uk-tab" data-uk-tab="{connect:'#listing-2'}">
+                        <li class="uk-active"><a href="">CarMapper.java</a></li>
+                    </ul>
+                    <ul id="listing-2" class="uk-switcher uk-margin">
+                        <li>
+                            
+                            
+                            <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="lit">@Mapper</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">1</span></li><li class="L1"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">interface</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pln"> </span><span class="pun">{</span></li><li class="L2"><span class="pln">&nbsp;</span></li><li class="L3"><span class="pln">    </span><span class="typ">CarMapper</span><span class="pln"> INSTANCE </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Mappers</span><span class="pun">.</span><span class="pln">getMapper</span><span class="pun">(</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pun">.</span><span class="kwd">class</span><span class="pln"> </span><span class="pun">);</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">3</span></li><li class="L4"><span class="pln">&nbsp;</span></li><li class="L5"><span class="pln">    </span><span class="lit">@Mapping</span><span class="pun">(</span><span class="pln">source </span><span class="pun">=</span><span class="pln"> </span><span class="str">"numberOfSeats"</span><span class="pun">,</span><span class="pln"> target </span><span class="pun">=</span><span class="pln"> </span><span class="str">"seatCount"</span><span class="pun">)</span></li><li class="L6"><span class="pln">    </span><span class="typ">CarDto</span><span class="pln"> carToCarDto</span><span class="pun">(</span><span class="typ">Car</span><span class="pln"> car</span><span class="pun">);</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">2</span></li><li class="L7"><span class="pun">}</span></li></ol></pre>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-3 uk-row-first">
+            <p>The <code>@Mapper</code> annotation <span class="uk-badge uk-badge-notification">1</span> marks the interface as mapping interface and lets the MapStruct processor kick in during compilation.</p>
+
+            <p>The actual mapping method <span class="uk-badge uk-badge-notification">2</span> expects the source object as parameter and returns the target object. Its name can be freely chosen.</p>
+        </div>
+
+        <div class="uk-width-medium-1-3">
+            <p>For attributes with different names in source and target object, the <code>@Mapping</code> annotation can be used to configure the names.</p>
+
+            <p>Where required and possible a type conversion will be executed for attributes with different types in source and target, e.g. the <code>type</code> attribute will be converted from the enumeration type into a string.</p>
+        </div>
+
+        <div class="uk-width-medium-1-3">
+            <p>Of course there can be multiple mapping methods in one interface, for all of which an implementation will be generated by MapStruct.</p>
+            <p>An instance of the interface implementation can be retrieved from the <code>Mappers</code> class. By convention, the interface declares a member <code>INSTANCE</code> <span class="uk-badge uk-badge-notification">3</span>, providing clients access to the mapper implementation.</p>
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-1 uk-row-first">
+            <h3>Using the mapper</h3>
+            <div class="uk-grid">
+                <div class="uk-width-medium-1-3 uk-row-first">
+                    <p>Based on the mapper interface, clients can perform object mappings in a very easy and type-safe manner:</p>
+                </div>
+                <div class="uk-width-medium-2-3">
+                    <ul class="uk-tab" data-uk-tab="{connect:'#listing-3'}">
+                        <li class="uk-active"><a href="">CarMapperTest.java</a></li>
+                    </ul>
+                    <ul id="listing-3" class="uk-switcher uk-margin">
+                        <li>
+                            <pre class="prettyprint linenums">@Test
+public void shouldMapCarToDto() {
+    //given
+    Car car = new Car( "Morris", 5, CarType.SEDAN );
+
+    //when
+    CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );
+
+    //then
+    assertThat( carDto ).isNotNull();
+    assertThat( carDto.getMake() ).isEqualTo( "Morris" );
+    assertThat( carDto.getSeatCount() ).isEqualTo( 5 );
+    assertThat( carDto.getType() ).isEqualTo( "SEDAN" );
+}</pre>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-1 uk-row-first">
             <h2>Latest News</h2>
             
             
@@ -250,122 +366,6 @@ the <a href="https://github.com/mapstruct/mapstruct-spring-extensions/tree/maste
         <div class="uk-width-medium-1-1 uk-row-first uk-text-center">
             <a class="uk-button uk-button-primary" href="/news/">More News</a> |
             <a class="uk-button uk-button-primary" href="/news/index.xml">RSS Feed</a>
-        </div>
-    </div>
-    <hr/>
-    <div class="uk-grid">
-        <div class="uk-width-medium-1-1 uk-row-first">
-            <h2 id="get-started">MapStruct in 2 Minutes</h2>
-            <div class="uk-grid">
-                <div class="uk-width-medium-1-3 uk-row-first">
-                    <p>The following shows how to map two objects using MapStruct.</p>
-
-                    <p>Let's assume we have a class representing cars (e.g. a JPA entity) and an accompanying data transfer object (DTO).</p>
-
-                    <p>Both types are rather similar, only the seat count attributes have different names and the type attribute is of a special enum type in the <code>Car</code> class but is a plain string in the DTO.</p>
-                </div>
-                <div class="uk-width-medium-2-3">
-                    <ul class="uk-tab" data-uk-tab="{connect:'#listing-1'}">
-                        <li class="uk-active"><a href="">Car.java</a></li>
-                        <li><a href="">CarDto.java</a></li>
-                    </ul>
-                    <ul id="listing-1" class="uk-switcher uk-margin">
-                        <li>
-                            <pre class="prettyprint linenums">public class Car {
-
-    private String make;
-    private int numberOfSeats;
-    private CarType type;
-
-    //constructor, getters, setters etc.
-}</pre>
-                        </li>
-                        <li>
-                            <pre class="prettyprint linenums">public class CarDto {
-
-    private String make;
-    private int seatCount;
-    private String type;
-
-    //constructor, getters, setters etc.
-}</pre>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-grid">
-        <div class="uk-width-medium-1-1 uk-row-first">
-            <h3>The mapper interface</h3>
-            <div class="uk-grid">
-                <div class="uk-width-medium-1-3 uk-row-first">
-                    <p>To generate a mapper for creating a <code>CarDto</code> object out of a <code>Car</code> object, a mapper interface needs to be defined:</p>
-                </div>
-                <div class="uk-width-medium-2-3">
-                    <ul class="uk-tab" data-uk-tab="{connect:'#listing-2'}">
-                        <li class="uk-active"><a href="">CarMapper.java</a></li>
-                    </ul>
-                    <ul id="listing-2" class="uk-switcher uk-margin">
-                        <li>
-                            
-                            
-    <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="lit">@Mapper</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">1</span></li><li class="L1"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">interface</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pln"> </span><span class="pun">{</span></li><li class="L2"><span class="pln">&nbsp;</span></li><li class="L3"><span class="pln">    </span><span class="typ">CarMapper</span><span class="pln"> INSTANCE </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Mappers</span><span class="pun">.</span><span class="pln">getMapper</span><span class="pun">(</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pun">.</span><span class="kwd">class</span><span class="pln"> </span><span class="pun">);</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">3</span></li><li class="L4"><span class="pln">&nbsp;</span></li><li class="L5"><span class="pln">    </span><span class="lit">@Mapping</span><span class="pun">(</span><span class="pln">source </span><span class="pun">=</span><span class="pln"> </span><span class="str">"numberOfSeats"</span><span class="pun">,</span><span class="pln"> target </span><span class="pun">=</span><span class="pln"> </span><span class="str">"seatCount"</span><span class="pun">)</span></li><li class="L6"><span class="pln">    </span><span class="typ">CarDto</span><span class="pln"> carToCarDto</span><span class="pun">(</span><span class="typ">Car</span><span class="pln"> car</span><span class="pun">);</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">2</span></li><li class="L7"><span class="pun">}</span></li></ol></pre>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-grid">
-        <div class="uk-width-medium-1-3 uk-row-first">
-            <p>The <code>@Mapper</code> annotation <span class="uk-badge uk-badge-notification">1</span> marks the interface as mapping interface and lets the MapStruct processor kick in during compilation.</p>
-
-            <p>The actual mapping method <span class="uk-badge uk-badge-notification">2</span> expects the source object as parameter and returns the target object. Its name can be freely chosen.</p>
-        </div>
-
-        <div class="uk-width-medium-1-3">
-            <p>For attributes with different names in source and target object, the <code>@Mapping</code> annotation can be used to configure the names.</p>
-
-            <p>Where required and possible a type conversion will be executed for attributes with different types in source and target, e.g. the <code>type</code> attribute will be converted from the enumeration type into a string.</p>
-        </div>
-
-        <div class="uk-width-medium-1-3">
-            <p>Of course there can be multiple mapping methods in one interface, for all of which an implementation will be generated by MapStruct.</p>
-            <p>An instance of the interface implementation can be retrieved from the <code>Mappers</code> class. By convention, the interface declares a member <code>INSTANCE</code> <span class="uk-badge uk-badge-notification">3</span>, providing clients access to the mapper implementation.</p>
-        </div>
-    </div>
-    <div class="uk-grid">
-        <div class="uk-width-medium-1-1 uk-row-first">
-            <h3>Using the mapper</h3>
-            <div class="uk-grid">
-                <div class="uk-width-medium-1-3 uk-row-first">
-                    <p>Based on the mapper interface, clients can perform object mappings in a very easy and type-safe manner:</p>
-                </div>
-                <div class="uk-width-medium-2-3">
-                    <ul class="uk-tab" data-uk-tab="{connect:'#listing-3'}">
-                        <li class="uk-active"><a href="">CarMapperTest.java</a></li>
-                    </ul>
-                    <ul id="listing-3" class="uk-switcher uk-margin">
-                        <li>
-                            <pre class="prettyprint linenums">@Test
-public void shouldMapCarToDto() {
-    //given
-    Car car = new Car( "Morris", 5, CarType.SEDAN );
-
-    //when
-    CarDto carDto = CarMapper.INSTANCE.carToCarDto( car );
-
-    //then
-    assertThat( carDto ).isNotNull();
-    assertThat( carDto.getMake() ).isEqualTo( "Morris" );
-    assertThat( carDto.getSeatCount() ).isEqualTo( 5 );
-    assertThat( carDto.getType() ).isEqualTo( "SEDAN" );
-}</pre>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
     <hr/>
