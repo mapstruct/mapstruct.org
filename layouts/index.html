@@ -40,22 +40,6 @@
     <hr/>
     <div class="uk-grid">
         <div class="uk-width-medium-1-1 uk-row-first">
-            <h2>Latest News</h2>
-            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "news") 3 }}
-            {{ range $paginator.Pages }}
-                {{ partial "news_summary_compact.html" . }}
-            {{ end }}
-        </div>
-    </div>
-    <div class="uk-grid">
-        <div class="uk-width-medium-1-1 uk-row-first uk-text-center">
-            <a class="uk-button uk-button-primary" href="/news/">More News</a> |
-            <a class="uk-button uk-button-primary" href="/news/index.xml">RSS Feed</a>
-        </div>
-    </div>
-    <hr/>
-    <div class="uk-grid">
-        <div class="uk-width-medium-1-1 uk-row-first">
             <h2 id="get-started">MapStruct in 2 Minutes</h2>
             <div class="uk-grid">
                 <div class="uk-width-medium-1-3 uk-row-first">
@@ -113,14 +97,14 @@
                             {{/*
                             <pre class="prettyprint linenums">@Mapper 1
     public interface CarMapper {
- 
+
         CarMapper INSTANCE = Mappers.getMapper( CarMapper.class ); 3
- 
+
         @Mapping(source = "numberOfSeats", target = "seatCount")
         CarDto carToCarDto(Car car); 2
     }</pre>
-    */}}
-    <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="lit">@Mapper</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">1</span></li><li class="L1"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">interface</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pln"> </span><span class="pun">{</span></li><li class="L2"><span class="pln">&nbsp;</span></li><li class="L3"><span class="pln">    </span><span class="typ">CarMapper</span><span class="pln"> INSTANCE </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Mappers</span><span class="pun">.</span><span class="pln">getMapper</span><span class="pun">(</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pun">.</span><span class="kwd">class</span><span class="pln"> </span><span class="pun">);</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">3</span></li><li class="L4"><span class="pln">&nbsp;</span></li><li class="L5"><span class="pln">    </span><span class="lit">@Mapping</span><span class="pun">(</span><span class="pln">source </span><span class="pun">=</span><span class="pln"> </span><span class="str">"numberOfSeats"</span><span class="pun">,</span><span class="pln"> target </span><span class="pun">=</span><span class="pln"> </span><span class="str">"seatCount"</span><span class="pun">)</span></li><li class="L6"><span class="pln">    </span><span class="typ">CarDto</span><span class="pln"> carToCarDto</span><span class="pun">(</span><span class="typ">Car</span><span class="pln"> car</span><span class="pun">);</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">2</span></li><li class="L7"><span class="pun">}</span></li></ol></pre>
+                            */}}
+                            <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="lit">@Mapper</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">1</span></li><li class="L1"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">interface</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pln"> </span><span class="pun">{</span></li><li class="L2"><span class="pln">&nbsp;</span></li><li class="L3"><span class="pln">    </span><span class="typ">CarMapper</span><span class="pln"> INSTANCE </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Mappers</span><span class="pun">.</span><span class="pln">getMapper</span><span class="pun">(</span><span class="pln"> </span><span class="typ">CarMapper</span><span class="pun">.</span><span class="kwd">class</span><span class="pln"> </span><span class="pun">);</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">3</span></li><li class="L4"><span class="pln">&nbsp;</span></li><li class="L5"><span class="pln">    </span><span class="lit">@Mapping</span><span class="pun">(</span><span class="pln">source </span><span class="pun">=</span><span class="pln"> </span><span class="str">"numberOfSeats"</span><span class="pun">,</span><span class="pln"> target </span><span class="pun">=</span><span class="pln"> </span><span class="str">"seatCount"</span><span class="pun">)</span></li><li class="L6"><span class="pln">    </span><span class="typ">CarDto</span><span class="pln"> carToCarDto</span><span class="pun">(</span><span class="typ">Car</span><span class="pln"> car</span><span class="pun">);</span><span class="pln"> </span><span class="uk-badge uk-badge-notification">2</span></li><li class="L7"><span class="pun">}</span></li></ol></pre>
                         </li>
                     </ul>
                 </div>
@@ -176,6 +160,22 @@ public void shouldMapCarToDto() {
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-1 uk-row-first">
+            <h2>Latest News</h2>
+            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "news") 3 }}
+            {{ range $paginator.Pages }}
+                {{ partial "news_summary_compact.html" . }}
+            {{ end }}
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-1 uk-row-first uk-text-center">
+            <a class="uk-button uk-button-primary" href="/news/">More News</a> |
+            <a class="uk-button uk-button-primary" href="/news/index.xml">RSS Feed</a>
         </div>
     </div>
     <hr/>
