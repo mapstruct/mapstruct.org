@@ -1,7 +1,7 @@
 ---
 title: "JSpecify nullness support, configurable mapper accessibility, and much more: MapStruct 1.7.0.Beta2 is out"
 author: Filip Hrisafov
-date: "2026-07-27"
+date: "2026-06-27"
 tags: [release, news]
 ---
 
