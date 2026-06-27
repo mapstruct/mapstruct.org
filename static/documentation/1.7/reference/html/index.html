@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.15">
 <meta name="author" content="Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community">
-<title>MapStruct 1.7.0.Beta1 Reference Guide</title>
+<title>MapStruct 1.7.0.Beta2 Reference Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -528,10 +528,10 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
-<h1>MapStruct 1.7.0.Beta1 Reference Guide</h1>
+<h1>MapStruct 1.7.0.Beta2 Reference Guide</h1>
 <div class="details">
 <span id="author" class="author">Gunnar Morling, Andreas Gudian, Sjaak Derksen, Filip Hrisafov and the MapStruct community</span><br>
-<span id="revdate">2026-02-01</span>
+<span id="revdate">2026-06-27</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -571,6 +571,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#mappers-factory">4.1. The Mappers factory (no dependency injection)</a></li>
 <li><a href="#using-dependency-injection">4.2. Using dependency injection</a></li>
 <li><a href="#injection-strategy">4.3. Injection strategy</a></li>
+<li><a href="#class-accessibility">4.4. Class accessibility</a></li>
 </ul>
 </li>
 <li><a href="#datatype-conversions">5. Data type conversions</a>
@@ -615,9 +616,10 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#mapping-result-for-null-collection-or-map-arguments">10.7. Controlling mapping result for 'null' collection or map arguments</a></li>
 <li><a href="#mapping-result-for-null-properties">10.8. Controlling mapping result for 'null' properties in bean mappings (update mapping methods only).</a></li>
 <li><a href="#checking-source-property-for-null-arguments">10.9. Controlling checking result for 'null' properties in bean mapping</a></li>
-<li><a href="#source-presence-check">10.10. Source presence checking</a></li>
-<li><a href="#conditional-mapping">10.11. Conditional Mapping</a></li>
-<li><a href="#exceptions">10.12. Exceptions</a></li>
+<li><a href="#jspecify-nullness-annotations">10.10. JSpecify nullness annotations</a></li>
+<li><a href="#source-presence-check">10.11. Source presence checking</a></li>
+<li><a href="#conditional-mapping">10.12. Conditional Mapping</a></li>
+<li><a href="#exceptions">10.13. Exceptions</a></li>
 </ul>
 </li>
 <li><a href="#_reusing_mapping_configurations">11. Reusing mapping configurations</a>
@@ -776,7 +778,7 @@ or, better yet, help the community and send a pull request for fixing it!</p>
 </pre></td>
   <td class="code"><pre>...
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.7.0.Beta1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.7.0.Beta2<span class="tag">&lt;/org.mapstruct.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 ...
 <span class="tag">&lt;dependencies&gt;</span>
@@ -920,8 +922,8 @@ dependencies {
 <span class="tag">&lt;javac</span>
     <span class="attribute-name">srcdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java</span><span class="delimiter">&quot;</span></span>
     <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.7.0.Beta1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.7.0.Beta1.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">path/to/mapstruct-1.7.0.Beta2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-processorpath path/to/mapstruct-processor-1.7.0.Beta2.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;compilerarg</span> <span class="attribute-name">line</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-s target/generated-sources</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/javac&gt;</span>
 ...</pre></td>
@@ -1206,6 +1208,14 @@ If a policy is given for a specific bean mapping via <code>@BeanMapping#ignoreUn
 disableBuilders</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>If set to <code>true</code>, then MapStruct will not use builder patterns when doing the mapping. This is equivalent to doing <code>@Mapper( builder = @Builder( disableBuilder = true ) )</code> for all of your mappers.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mapstruct.
+disableJSpecify</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>If set to <code>true</code>, MapStruct ignores all JSpecify nullness annotations (<code>@NonNull</code>, <code>@Nullable</code>, <code>@NullMarked</code>, <code>@NullUnmarked</code>) when deciding whether to generate null checks and does not raise the compilation error for a nullable source mapped to a <code>@NonNull</code> constructor parameter. Null-check generation falls back to the <code>NullValueCheckStrategy</code>-driven behavior.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
 </tr>
@@ -3963,6 +3973,37 @@ In that case utilize the <code>InjectionStrategy#SETTER</code> strategy.</p>
 </table>
 </div>
 </div>
+<div class="sect2">
+<h3 id="class-accessibility"><a class="anchor" href="#class-accessibility"></a>4.4. Class accessibility</h3>
+<div class="paragraph">
+<p>By default, the generated Mapper implementation will have the same accessibility (<code>public</code> or none) as the interface or abstract class carrying the <code>@Mapper</code> annotation. Especially in conjunction with a DI framework, this might not be desired. If you wish to reduce the visibility of the generated class, you can make use of the <code>accessibility</code> attribute like this:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="annotation">@Mapper</span>(componentModel = MappingConstants.ComponentModel.SPRING, accessibility = ClassAccessibility.PACKAGE_PRIVATE)
+<span class="directive">public</span> <span class="type">interface</span> <span class="class">CarMapper</span> {
+
+    CarDto carToCarDto(Car car);
+}
+</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, the generated Mapper will have no modifier. Possible values are <code>ClassAccessibility.DEFAULT</code> (the behavior described above), <code>ClassAccessibility.PUBLIC</code>, and <code>ClassAccessibility.PACKAGE_PRIVATE</code> (no modifier).</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4171,6 +4212,18 @@ In that case utilize the <code>InjectionStrategy#SETTER</code> strategy.</p>
 <p>Between <code>java.time.LocalDateTime</code> from Java 8 Date-Time package and <code>java.time.LocalDate</code> from the same package.</p>
 </li>
 <li>
+<p>Between <code>java.time.ZonedDateTime</code> from Java 8 Date-Time package and <code>java.time.LocalDateTime</code> from the same package.</p>
+</li>
+<li>
+<p>Between <code>java.time.OffsetDateTime</code> from Java 8 Date-Time package and <code>java.time.LocalDateTime</code> from the same package.</p>
+</li>
+<li>
+<p>Between <code>java.time.ZonedDateTime</code> from Java 8 Date-Time package and <code>java.time.Instant</code> from the same package.</p>
+</li>
+<li>
+<p>Between <code>java.time.OffsetDateTime</code> from Java 8 Date-Time package and <code>java.time.Instant</code> from the same package.</p>
+</li>
+<li>
 <p>Between <code>java.time.ZonedDateTime</code> from Java 8 Date-Time package and <code>java.util.Calendar</code>.</p>
 </li>
 <li>
@@ -4207,6 +4260,16 @@ In that case utilize the <code>InjectionStrategy#SETTER</code> strategy.</p>
 </li>
 <li>
 <p>Between <code>String</code> and <code>StringBuilder</code></p>
+</li>
+<li>
+<p>Between <code>java.net.URI</code> and <code>String</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When converting from a <code>String</code>, the value needs to be a valid <a href="https://datatracker.ietf.org/doc/html/rfc2396">RFC 2396 URI</a> otherwise an <code>IllegalArgumentException</code> is thrown.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Between <code>java.net.URL</code> and <code>String</code>.</p>
@@ -5011,7 +5074,7 @@ This means that it is possible for MapStruct not to report unmapped target prope
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.7.0.Beta1/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
+<p>When working with JAXB, e.g. when converting a <code>String</code> to a corresponding <code>JAXBElement&lt;String&gt;</code>, MapStruct will take the <code>scope</code> and <code>name</code> attributes of <code>@XmlElementDecl</code> annotations into account when looking for a mapping method. This makes sure that the created <code>JAXBElement</code> instances will have the right QNAME value. You can find a test which maps JAXB objects <a href="https://github.com/mapstruct/mapstruct/blob/1.7.0.Beta2/integrationtest/src/test/resources/jaxbTest/src/test/java/org/mapstruct/itest/jaxb/JaxbBasedMapperTest.java">here</a>.</p>
 </div>
 </td>
 </tr>
@@ -7582,7 +7645,85 @@ An empty <code>Optional</code> (i.e., <code>Optional.isEmpty()</code> returns <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="source-presence-check"><a class="anchor" href="#source-presence-check"></a>10.10. Source presence checking</h3>
+<h3 id="jspecify-nullness-annotations"><a class="anchor" href="#jspecify-nullness-annotations"></a>10.10. JSpecify nullness annotations</h3>
+<div class="paragraph">
+<p>MapStruct recognises <a href="https://jspecify.dev/">JSpecify</a> nullness annotations on source and target types and uses them to refine when null checks are generated. Only the annotations from <code>org.jspecify.annotations</code> are interpreted; MapStruct does not introduce a compile-time dependency on JSpecify, so consumers opt in by adding the dependency themselves.</p>
+</div>
+<div class="paragraph">
+<p>The following annotations participate:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@NonNull</code>: the annotated value is guaranteed not to be <code>null</code>.</p>
+</li>
+<li>
+<p><code>@Nullable</code>: the annotated value may be <code>null</code>.</p>
+</li>
+<li>
+<p><code>@NullMarked</code>: within this scope (package, class, or method), unannotated reference types are treated as <code>@NonNull</code>.</p>
+</li>
+<li>
+<p><code>@NullUnmarked</code>: reverts to unknown nullability within its scope (overrides a <code>@NullMarked</code> outer scope).</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_property_level_rules"><a class="anchor" href="#_property_level_rules"></a>10.10.1. Property-level rules</h4>
+<div class="paragraph">
+<p>For a single property mapping:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the source is <code>@NonNull</code>, the null check is skipped, since the value is treated as guaranteed non-null.</p>
+</li>
+<li>
+<p>If the target is <code>@NonNull</code> (and the source is not <code>@NonNull</code>), a null check is always added so the target&#8217;s contract is not violated.</p>
+</li>
+<li>
+<p>In all other cases, the existing <code>NullValueCheckStrategy</code> decides.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The existing safety guards (<code>defaultValue</code> / <code>defaultExpression</code>, primitive unboxing, and the relevant <code>NullValuePropertyMappingStrategy</code> modes) continue to apply.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_scope_nullmarked_and_nullunmarked"><a class="anchor" href="#_scope_nullmarked_and_nullunmarked"></a>10.10.2. Scope: <code>@NullMarked</code> and <code>@NullUnmarked</code></h4>
+<div class="paragraph">
+<p><code>@NullMarked</code> and <code>@NullUnmarked</code> are resolved by walking from the annotated element outward: method, then declaring class, then outer classes, then package. The closest annotation wins: a <code>@NullUnmarked</code> method inside a <code>@NullMarked</code> class reverts only that method, while a <code>@Nullable</code> annotation on an individual type always overrides the surrounding scope.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_method_level_source_parameter"><a class="anchor" href="#_method_level_source_parameter"></a>10.10.3. Method-level source parameter</h4>
+<div class="paragraph">
+<p>When the source parameter of a mapping method is annotated <code>@NonNull</code> (directly or via a <code>@NullMarked</code> scope), MapStruct skips the method-level null guard, since the caller is contractually obliged to pass a non-null value.
+This rule applies uniformly to bean, iterable, map, and stream mapping methods.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_method_level_return_type"><a class="anchor" href="#_method_level_return_type"></a>10.10.4. Method-level return type</h4>
+<div class="paragraph">
+<p>When the return type of a mapping method is <code>@NonNull</code> (directly or via a <code>@NullMarked</code> scope), MapStruct forces <code>NullValueMappingStrategy.RETURN_DEFAULT</code> semantics. The generated method returns a default-constructed target (bean methods), an empty collection (<code>Iterable</code> / array mappings), an empty map (<code>Map</code> mappings), or <code>Stream.empty()</code> (stream mappings) rather than <code>null</code>, so the return contract is never violated. This rule applies regardless of the explicit <code>NullValueMappingStrategy</code> setting.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_constructor_parameter_constraint"><a class="anchor" href="#_constructor_parameter_constraint"></a>10.10.5. Constructor parameter constraint</h4>
+<div class="paragraph">
+<p>If a property mapping would assign a potentially <code>null</code> source value to a <code>@NonNull</code> constructor parameter, MapStruct raises a <strong>compilation error</strong>. Neither inserting a null check (which would leave the variable at <code>null</code> and violate the contract) nor passing the value through is safe. Provide a <code>defaultValue</code> or <code>defaultExpression</code> on the <code>@Mapping</code> to satisfy the parameter when the source is absent.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_disabling_jspecify_support"><a class="anchor" href="#_disabling_jspecify_support"></a>10.10.6. Disabling JSpecify support</h4>
+<div class="paragraph">
+<p>All JSpecify-driven inference can be turned off by setting the processor option <code>-Amapstruct.disableJSpecify=true</code>. With the option enabled, MapStruct ignores every JSpecify annotation (<code>@NonNull</code>, <code>@Nullable</code>, <code>@NullMarked</code>, <code>@NullUnmarked</code>) and the compilation error for nullable sources mapped to <code>@NonNull</code> constructor parameters is not raised. Null-check generation falls back to the pre-JSpecify behavior driven by <code>NullValueCheckStrategy</code>. Use this flag when you need to freeze MapStruct&#8217;s null-handling behavior while JSpecify annotations exist elsewhere on the classpath.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="source-presence-check"><a class="anchor" href="#source-presence-check"></a>10.11. Source presence checking</h3>
 <div class="paragraph">
 <p>Some frameworks generate bean properties that have a source presence checker. Often this is in the form of a method <code>hasXYZ</code>, <code>XYZ</code> being a property on the source bean in a bean mapping method. MapStruct will call this <code>hasXYZ</code> instead of performing a <code>null</code> check when it finds such <code>hasXYZ</code> method.</p>
 </div>
@@ -7617,7 +7758,7 @@ null check, regardless the value of the <code>NullValueCheckStrategy</code> to a
 </div>
 </div>
 <div class="sect2">
-<h3 id="conditional-mapping"><a class="anchor" href="#conditional-mapping"></a>10.11. Conditional Mapping</h3>
+<h3 id="conditional-mapping"><a class="anchor" href="#conditional-mapping"></a>10.12. Conditional Mapping</h3>
 <div class="paragraph">
 <p>Conditional Mapping is a type of <a href="#source-presence-check">Source presence checking</a>.
 The difference is that it allows users to write custom condition methods that will be invoked to check if a property needs to be mapped or not.
@@ -8046,7 +8187,7 @@ In order to use a more specific condition method you will need to use one of <co
 </div>
 </div>
 <div class="sect2">
-<h3 id="exceptions"><a class="anchor" href="#exceptions"></a>10.12. Exceptions</h3>
+<h3 id="exceptions"><a class="anchor" href="#exceptions"></a>10.13. Exceptions</h3>
 <div class="paragraph">
 <p>Calling applications may require handling of exceptions when calling a mapping method. These exceptions could be thrown by hand-written logic and by the generated built-in mapping methods or type-conversions of MapStruct. When the calling application requires handling of exceptions, a throws clause can be defined in the mapping method:</p>
 </div>
@@ -10084,7 +10225,7 @@ This resolves the compilation issues of Lombok and MapStruct modules.</p>
 </pre></td>
   <td class="code"><pre>
 <span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.7.0.Beta1<span class="tag">&lt;/org.mapstruct.version&gt;</span>
+    <span class="tag">&lt;org.mapstruct.version&gt;</span>1.7.0.Beta2<span class="tag">&lt;/org.mapstruct.version&gt;</span>
     <span class="tag">&lt;org.projectlombok.version&gt;</span>1.18.16<span class="tag">&lt;/org.projectlombok.version&gt;</span>
     <span class="tag">&lt;maven.compiler.source&gt;</span>1.8<span class="tag">&lt;/maven.compiler.source&gt;</span>
     <span class="tag">&lt;maven.compiler.target&gt;</span>1.8<span class="tag">&lt;/maven.compiler.target&gt;</span>
@@ -10254,7 +10395,7 @@ dependencies {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-02-01 21:45:13 UTC
+Last updated 2026-06-27 06:54:46 UTC
 </div>
 </div>
 </body>
