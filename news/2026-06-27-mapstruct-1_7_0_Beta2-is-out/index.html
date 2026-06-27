@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>JSpecify nullness support, configurable mapper accessibility, and much more: MapStruct 1.7.0.Beta2 is out &ndash; MapStruct</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="/css/prettify.css" />
+        <link rel="stylesheet" href="/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="alternate" href="/news/index.xml" type="application/rss+xml" title="MapStruct" />
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+
+        
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-41136939-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    </head>
+
+    <body>
+        <nav class="uk-navbar uk-margin-large-bottom uk-navbar-attached">
+            <a class="uk-navbar-brand ms-hidden-small ms-navbar-brand" href="/">MapStruct</a>
+            <ul class="uk-navbar-nav ms-hidden-small">
+            
+
+    <li class="uk-active">
+    <a href="/news/"> News </a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
+    </li>
+
+    <li>
+    <a href="/faq/"> FAQ </a>
+    </li>
+
+    <li>
+    <a href="https://github.com/mapstruct/mapstruct"><i class='fa fa-github fa-lg'></i> Code &amp; Issues </a>
+    </li>
+
+            </ul>
+            <a href="#nav-small" class="ms-visible-small uk-navbar-toggle" data-uk-offcanvas="{mode:'slide'}"></a>
+            <a class="uk-navbar-brand uk-navbar-center ms-visible-small ms-navbar-brand" href="/">MapStruct</a>
+        </nav>
+
+        <div id="nav-small" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                
+
+    <li class="uk-active">
+    <a href="/news/"> News </a>
+    </li>
+
+    <li>
+    <a href="/documentation/installation/">Documentation</a>
+    </li>
+
+    <li>
+    <a href="/community/getting-help/">Community</a>
+    </li>
+
+    <li>
+    <a href="/development/contributing/">Development</a>
+    </li>
+
+    <li>
+    <a href="/sponsor/"> Sponsor </a>
+    </li>
+
+    <li>
+    <a href="/faq/"> FAQ </a>
+    </li>
+
+    <li>
+    <a href="https://github.com/mapstruct/mapstruct"><i class='fa fa-github fa-lg'></i> Code &amp; Issues </a>
+    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+<div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-4">
+            <div class="ms-aside">
+            
+    <ul class="uk-nav uk-nav-side">
+    <li class="uk-nav-header">Latest News</li>
+</ul>
+<ul class="uk-nav uk-nav-sub">
+    
+    <li><a href="http://mapstruct.org/news/2026-06-27-mapstruct-1_7_0_Beta2-is-out/">JSpecify nullness support, configurable mapper accessibility, and much more: MapStruct 1.7.0.Beta2 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2026-02-01-mapstruct-1_7_0_Beta1-is-out/">Native Optional support, improved Kotlin Support, and much more: MapStruct 1.7.0.Beta1 is out</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2025-11-15-mapstruct-spring-extensions-2-0-0-released/">MapStruct Spring Extensions 2.0.0 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2025-03-14-mapstruct-spring-extensions-1-1-3-released/">MapStruct Spring Extensions 1.1.3 released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2024-11-09-mapstruct-1_6_3_bug-fix-released/">MapStruct 1.6.3 bug fix released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2024-09-15-mapstruct-1_6_1_bug-fix-released/">MapStruct 1.6.1 bug fix released</a></li>
+    
+    <li><a href="http://mapstruct.org/news/2024-08-31-mapstruct-spring-extensions-1-1-2-released/">MapStruct Spring Extensions 1.1.2 released</a></li>
+    
+</ul>
+
+
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4 ms-main">
+            
+<article class="uk-article">
+    <p class="uk-article-meta ms-article-date">
+    <time>June 27, 2026</time>
+</p>
+
+<h1 class="uk-article-title"><a href="http://mapstruct.org/news/2026-06-27-mapstruct-1_7_0_Beta2-is-out/">JSpecify nullness support, configurable mapper accessibility, and much more: MapStruct 1.7.0.Beta2 is out</a></h1>
+
+<p class="uk-article-meta ms-article-author">
+    By <b>Filip Hrisafov</b> under 
+    <span class="uk-badge">
+    
+        release
+    </span>
+    
+    <span class="uk-badge">
+    
+        news
+    </span>
+    
+</p>
+
+    <div>
+        <div><p>It&rsquo;s my pleasure to announce the second Beta release of MapStruct 1.7.</p>
+<p>The new release comes with some new functionality and many quality of life improvements to the generated code, e.g.:</p>
+<ul>
+<li>JSpecify nullness annotation support</li>
+<li>Configurable accessibility for the generated mapper class</li>
+<li>Built-in conversion between <code>URI</code> and <code>String</code></li>
+<li>Modernized generated code (switch expressions for value mappings, diamond operator, multi-catch)</li>
+</ul>
+<p>Altogether, not less than <a href="https://github.com/mapstruct/mapstruct/issues?q=milestone%3A1.7.0.Beta2">45 issues</a> were fixed for this release.</p>
+<p>This would not have been possible without our fantastic community of contributors:</p>
+<ul>
+<li><a href="https://github.com/bydrim">@bydrim</a></li>
+<li><a href="https://github.com/Chessray">@Chessray</a></li>
+<li><a href="https://github.com/hduelme">@hduelme</a></li>
+<li><a href="https://github.com/jmwbRyDWLeNsvtzrihGoY">@jmwbRyDWLeNsvtzrihGoY</a></li>
+<li><a href="https://github.com/mk868">@mk868</a></li>
+<li><a href="https://github.com/nealeu">@nealeu</a></li>
+<li><a href="https://github.com/seonwooj0810">@seonwooj0810</a></li>
+<li><a href="https://github.com/Takch02">@Takch02</a></li>
+<li><a href="https://github.com/yvasyliev">@yvasyliev</a></li>
+</ul>
+<p>A very special welcome to <a href="https://github.com/hduelme">@hduelme</a>, who joined us as a regular contributor in this release cycle and is behind a large portion of the improvements that ship with 1.7.0.Beta2. Thank you for the dedication and the steady stream of high-quality contributions!</p>
+<p>Thank you everyone for all your hard work!</p>
+<p>We are also accepting donations through <a href="https://opencollective.com/mapstruct">Open Collective</a> or <a href="https://github.com/sponsors/mapstruct">GitHub</a>.
+We&rsquo;d like to thank all the supporters that supported us with donations in this period:</p>
+<ul>
+<li><a href="https://github.com/adessoSE">adesso SE</a></li>
+<li><a href="https://github.com/cybozu">Cybozu</a></li>
+<li><a href="https://github.com/foal">@foal</a></li>
+<li><a href="https://opencollective.com/atomfrede">Frederik Hahne</a></li>
+<li><a href="https://opencollective.com/lansana">Lansana</a></li>
+<li><a href="https://github.com/mercedes-benz">Mercedes-Benz Group</a></li>
+<li><a href="https://github.com/TotallyMehis">Miikka Ylätalo</a></li>
+<li><a href="https://opencollective.com/neale-u">Neale U</a></li>
+<li><a href="https://github.com/pmkyl">@pmkyl</a></li>
+<li><a href="https://opencollective.com/solum-financial">Solum Financial</a></li>
+<li><a href="https://github.com/vemaeg">VEMA eG</a></li>
+<li><a href="https://github.com/znight1020">znight1020</a></li>
+</ul>
+<p>Enough of the pep talk, let&rsquo;s take a closer look at some of the new features and enhancements!</p>
+<h3 id="jspecify-nullness-annotation-support"><a class="ms-header-link" href="#jspecify-nullness-annotation-support"><i class="fa fa-link"></i></a>JSpecify nullness annotation support</h3>
+<p>MapStruct now understands <a href="https://jspecify.dev/">JSpecify</a> nullness annotations and uses them to decide whether to emit null checks in the generated code.</p>
+<p>The annotations <code>@NonNull</code>, <code>@Nullable</code>, <code>@NullMarked</code> and <code>@NullUnmarked</code> from <code>org.jspecify.annotations</code> are detected automatically.</p>
+<h4 id="property-level-null-checks"><a class="ms-header-link" href="#property-level-null-checks"><i class="fa fa-link"></i></a>Property-level null checks</h4>
+<ul>
+<li>A <code>@NonNull</code> source value is treated as guaranteed non-null, so the null check is skipped.</li>
+<li>A <code>@NonNull</code> target always gets a null check, to protect it from a null assignment.</li>
+<li>In all other cases MapStruct falls back to the existing <code>NullValueCheckStrategy</code>.</li>
+</ul>
+<p>The same rules apply to collection-typed properties, so a <code>@NonNull List&lt;String&gt;</code> source no longer triggers a redundant null check around the wrapper.</p>
+<p>Safety guards like <code>defaultValue</code>, unboxing checks and <code>NullValuePropertyMappingStrategy</code> are still applied.</p>
+<h4 id="method-level-source-parameter-and-return-type"><a class="ms-header-link" href="#method-level-source-parameter-and-return-type"><i class="fa fa-link"></i></a>Method-level source parameter and return type</h4>
+<p>If the source parameter of a mapping method is <code>@NonNull</code>, MapStruct skips the method-level null guard at the beginning of the generated method.</p>
+<p>The same is true for container mapping methods (<code>Iterable</code> → <code>Iterable</code>, <code>Map</code> → <code>Map</code>, <code>Stream</code> → <code>Stream</code>), which now honor JSpecify on their source parameter rather than always emitting an <code>if ( source == null ) return null;</code> guard.</p>
+<p>When a mapping method&rsquo;s return type is <code>@NonNull</code>, MapStruct will no longer emit <code>return null;</code> (which would violate the return contract), and instead applies <code>NullValueMappingStrategy.RETURN_DEFAULT</code> semantics. This applies consistently across bean, iterable, map and stream mapping methods.</p>
+<p>e.g.</p>
+<pre class="prettyprint linenums lang-java">
+@NullMarked
+@Mapper
+public interface CustomerMapper {
+
+    CustomerDto map(Customer customer);
+}
+</pre>
+
+<p>Will generate something like:</p>
+<pre class="prettyprint linenums lang-java">
+// GENERATED CODE
+public class CustomerMapperImpl implements CustomerMapper {
+
+    @Override
+    public CustomerDto map(Customer customer) {
+        CustomerDto customerDto = new CustomerDto();
+        // ...
+        return customerDto;
+    }
+}
+</pre>
+
+<p>Note that there is no <code>if ( customer == null )</code> guard, because <code>customer</code> is effectively <code>@NonNull</code> within the <code>@NullMarked</code> scope, and the method does not return <code>null</code> because the return type is also effectively <code>@NonNull</code>.</p>
+<h4 id="nullmarked--nullunmarked-scope"><a class="ms-header-link" href="#nullmarked--nullunmarked-scope"><i class="fa fa-link"></i></a><code>@NullMarked</code> / <code>@NullUnmarked</code> scope</h4>
+<ul>
+<li>Inside a <code>@NullMarked</code> class or package, unannotated reference types are effectively <code>@NonNull</code>.</li>
+<li><code>@NullUnmarked</code> reverts to unknown nullability within its scope.</li>
+<li><code>@Nullable</code> on a specific type always overrides the surrounding scope.</li>
+<li>The scope is resolved by walking the enclosing element chain (method → class → outer class → package → module).</li>
+</ul>
+<h4 id="constructor-parameters"><a class="ms-header-link" href="#constructor-parameters"><i class="fa fa-link"></i></a>Constructor parameters</h4>
+<p>When a potentially nullable source is mapped to a <code>@NonNull</code> constructor parameter, and there is no <code>defaultValue</code>, MapStruct now raises a compile error.
+A null check at that point would leave the variable at <code>null</code>, which would violate the contract of the constructor.</p>
+<h4 id="opting-out"><a class="ms-header-link" href="#opting-out"><i class="fa fa-link"></i></a>Opting out</h4>
+<p>If you want to keep the pre-1.7.0.Beta2 behavior, you can disable JSpecify inference with the processor option <code>mapstruct.disableJSpecify=true</code>.
+When set, all JSpecify-driven decisions (property-level inference, method-level guard skipping, scope resolution and the constructor-parameter error) are suppressed and code generation falls back to the <code>NullValueCheckStrategy</code>-driven behavior.</p>
+<p>For more details have a look at the <a href="https://mapstruct.org/documentation/dev/reference/html/#jspecify-nullness-annotations">JSpecify nullness annotations</a> section of the reference guide.</p>
+<h3 id="configurable-accessibility-for-the-generated-mapper-class"><a class="ms-header-link" href="#configurable-accessibility-for-the-generated-mapper-class"><i class="fa fa-link"></i></a>Configurable accessibility for the generated mapper class</h3>
+<p>By default, the generated mapper implementation has the same accessibility (<code>public</code> or package-private) as the interface or abstract class carrying the <code>@Mapper</code> annotation.
+In some cases — typically when relying on a DI framework like Spring — you may want the generated implementation to be package-private, even when the mapper interface itself is <code>public</code>.</p>
+<p>A new <code>accessibility</code> attribute on <code>@Mapper</code> and <code>@MapperConfig</code> (along with a new <code>ClassAccessibility</code> enum) gives you control over this:</p>
+<pre class="prettyprint linenums lang-java">
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
+        accessibility = ClassAccessibility.PACKAGE_PRIVATE)
+public interface CarMapper {
+
+    CarDto carToCarDto(Car car);
+}
+</pre>
+
+<p>Possible values are:</p>
+<ul>
+<li><code>ClassAccessibility.DEFAULT</code> - mirror the accessibility of the annotated interface or class (the existing behavior).</li>
+<li><code>ClassAccessibility.PUBLIC</code> - the generated mapper is <code>public</code>.</li>
+<li><code>ClassAccessibility.PACKAGE_PRIVATE</code> - the generated mapper has no visibility modifier.</li>
+</ul>
+<p>For more details have a look at the <a href="https://mapstruct.org/documentation/dev/reference/html/#class-accessibility">Class accessibility</a> section of the reference guide.</p>
+<h3 id="switch-expressions-for-value-mappings"><a class="ms-header-link" href="#switch-expressions-for-value-mappings"><i class="fa fa-link"></i></a>Switch expressions for value mappings</h3>
+<p>Value mapping methods (such as enum-to-enum or <code>String</code>-to-enum mappings) now generate a Java 14 switch expression instead of the classic <code>switch</code> statement, when the target compiler level is JDK 14 or later.</p>
+<p>Instead of generating:</p>
+<pre class="prettyprint linenums lang-java">
+switch ( b ) {
+    case &#34;A&#34;: a = ValueMapper.A.A;
+    break;
+    case &#34;B&#34;: a = ValueMapper.A.B;
+    break;
+    default: throw new IllegalArgumentException( &#34;Unexpected enum constant: &#34; + b );
+}
+</pre>
+
+<p>MapStruct will now generate:</p>
+<pre class="prettyprint linenums lang-java">
+ValueMapper.A a = switch ( b ) {
+    case &#34;A&#34; -&gt; ValueMapper.A.A;
+    case &#34;B&#34; -&gt; ValueMapper.A.B;
+    default -&gt; throw new IllegalArgumentException( &#34;Unexpected enum constant: &#34; + b );
+};
+</pre>
+
+<p>When the switch has only a <code>default</code> branch, MapStruct will skip the switch altogether and assign the default target directly.</p>
+<h3 id="enhancements"><a class="ms-header-link" href="#enhancements"><i class="fa fa-link"></i></a>Enhancements</h3>
+<ul>
+<li>Add a built-in conversion between <code>java.net.URI</code> and <code>String</code>, similar to the existing conversions for <code>UUID</code> and <code>URL</code>.</li>
+<li>Add built-in conversions between <code>ZonedDateTime</code>, <code>OffsetDateTime</code>, <code>Instant</code> and <code>LocalDateTime</code>, so these <code>java.time</code> types now convert directly instead of going through <code>XMLGregorianCalendar</code>.</li>
+<li>Use the diamond operator (<code>&lt;&gt;</code>) in generated code instead of repeating the generic type arguments.</li>
+<li>Use Java&rsquo;s multi-catch in generated code when several exceptions are handled the same way, instead of multiple separate <code>catch</code> blocks.</li>
+<li>Use <code>URI.create(String).toURL()</code> instead of the deprecated <code>new URL(String)</code> constructor in <code>String</code> to <code>URL</code> conversions, avoiding deprecation warnings on Java 20+.</li>
+</ul>
+<h3 id="enhancements-with-behavior-changes"><a class="ms-header-link" href="#enhancements-with-behavior-changes"><i class="fa fa-link"></i></a>Enhancements with behavior changes</h3>
+<ul>
+<li>Mappings from <code>Collection&lt;? super Type&gt;</code> to <code>Collection&lt;? extends Type&gt;</code> (and the corresponding <code>Stream</code> case) now result in <code>PROPERTYMAPPING_MAPPING_NOT_FOUND</code> instead of generating code that fails to compile due to an unchecked cast.</li>
+</ul>
+<h3 id="download"><a class="ms-header-link" href="#download"><i class="fa fa-link"></i></a>Download</h3>
+<p>This concludes our tour through MapStruct 1.7 Beta2.
+If you&rsquo;d like to try out the features described above, you can fetch the new release from Maven Central using the following GAV coordinates:</p>
+<ul>
+<li>Annotation JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct%7C1.7.0.Beta2%7Cjar">org.mapstruct:mapstruct:1.7.0.Beta2</a></li>
+<li>Annotation processor JAR: <a href="http://search.maven.org/#artifactdetails%7Corg.mapstruct%7Cmapstruct-processor%7C1.7.0.Beta2%7Cjar">org.mapstruct:mapstruct-processor:1.7.0.Beta2</a></li>
+</ul>
+<p>Alternatively, you can get ZIP and TAR.GZ distribution bundles - containing all the JARs, documentation etc. - <a href="https://github.com/mapstruct/mapstruct/releases/tag/1.7.0.Beta2">from GitHub</a>.</p>
+<p>If you run into any trouble or would like to report a bug, feature request or similar, use the following channels to get in touch:</p>
+<ul>
+<li>Get help in our <a href="https://github.com/mapstruct/mapstruct/discussions">GitHub Discussions</a> or <a href="https://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+<li>Report bugs and feature requests via the <a href="https://github.com/mapstruct/mapstruct/issues">issue tracker</a></li>
+<li>Follow <a href="https://twitter.com/GetMapStruct">@GetMapStruct</a> on Twitter</li>
+</ul></div>
+    </div>
+    <div>
+        <ul class="uk-pagination">
+            
+            <li class="uk-disabled">
+                <span><i class="uk-icon-angle-double-left"></i></span>
+            </li>
+            
+            
+            <li>
+                <a href="/news/2026-02-01-mapstruct-1_7_0_Beta1-is-out/" title="Native Optional support, improved Kotlin Support, and much more: MapStruct 1.7.0.Beta1 is out"><i class="uk-icon-angle-double-right"></i></a>
+            </li>
+            
+
+        </ul>
+    </div>
+
+    <div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'mapstruct';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+</article>
+
+        </div>
+    </div>
+</div>
+
+        <div class="ms-footer">
+            <div class="uk-container uk-container-center uk-vertical-align uk-height-1-1">
+                <div class="uk-vertical-align-middle uk-width-1-1">
+                    <div class="uk-grid-small" >
+                        <div class="uk-width-1-1 ">
+                            <ul class="uk-subnav uk-subnav-line uk-flex-center ms-subnav-footer">
+                                <li><a class="ms-link-footer" href="/documentation/installation">Documentation</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct">Source Code</a></li>
+                                <li><a class="ms-link-footer" href="https://github.com/mapstruct/mapstruct/discussions">Discussions</a></li>
+                                <li><a class="ms-link-footer" href="https://gitter.im/mapstruct/mapstruct-users">Gitter</a></li>
+                                <li><a class="ms-link-footer" href="https://stackoverflow.com/questions/tagged/mapstruct">StackOverflow</a></li>
+                                <li><a class="ms-link-footer" href="https://twitter.com/GetMapStruct">Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1 ms-subnav-footer">
+                            © The MapStruct authors 2026
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+           prettyPrint();
+        </script>
+    </body>
+</html>
+

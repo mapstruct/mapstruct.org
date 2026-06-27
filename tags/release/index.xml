@@ -6,7 +6,23 @@
     <description>Recent content in release on MapStruct</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://mapstruct.org/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JSpecify nullness support, configurable mapper accessibility, and much more: MapStruct 1.7.0.Beta2 is out</title>
+      <link>http://mapstruct.org/news/2026-06-27-mapstruct-1_7_0_Beta2-is-out/</link>
+      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://mapstruct.org/news/2026-06-27-mapstruct-1_7_0_Beta2-is-out/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s my pleasure to announce the second Beta release of MapStruct 1.7.&lt;/p&gt;
+&lt;p&gt;The new release comes with some new functionality and many quality of life improvements to the generated code, e.g.:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JSpecify nullness annotation support&lt;/li&gt;
+&lt;li&gt;Configurable accessibility for the generated mapper class&lt;/li&gt;
+&lt;li&gt;Built-in conversion between &lt;code&gt;URI&lt;/code&gt; and &lt;code&gt;String&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Modernized generated code (switch expressions for value mappings, diamond operator, multi-catch)&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>Native Optional support, improved Kotlin Support, and much more: MapStruct 1.7.0.Beta1 is out</title>
       <link>http://mapstruct.org/news/2026-02-01-mapstruct-1_7_0_Beta1-is-out/</link>
